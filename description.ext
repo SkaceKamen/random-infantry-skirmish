@@ -1,0 +1,12 @@
+#include "dialogs\base.hpp"
+#include "dialogs\titles.hpp"
+#include "dialogs\configDialog.hpp"
+#include "dialogs\factionsDialog.hpp"
+#include "dialogs\deathDialog.hpp"
+#include "dialogs\equipDialog.hpp"
+//#include "dialogs\mapsDialog.hpp"
+
+author = "SkaceKachna";
+overviewText = "Random infantry skirmish on random place on island";
+overviewPicture = "random.paa";
+briefing = 0;

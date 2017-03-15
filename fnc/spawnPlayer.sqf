@@ -1,0 +1,63 @@
+_side = _this;
+
+_grps = RSTF_GROUPS select _side;
+_spawn = objNull;
+
+switch(RSTF_SPAWN_TYPE) do {
+	case RSTF_SPAWN_CLOSEST: {
+		_closestDistance = 0;
+		{
+			_grp = _x;
+			_alive = 0;
+			{
+				if (alive(_x)) then {
+					_dis = _x distance RSTF_DEATH_POSITION;
+					if (isNull(_spawn) ||  _dis < _closestDistance) then {
+						_spawn = _x;
+						_closestDistance = _dis;
+					};
+				};
+			} foreach units(_grp);
+		} foreach _grps;
+	};
+	case RSTF_SPAWN_GROUP: {
+		_grp = RSTF_DEATH_GROUP;
+		_index = 0;
+		while { _index < count(_grps) } do {
+			if (alive(leader(_grp))) exitWith {
+				_spawn = leader(_grp);
+			};
+			
+			{
+				if (alive(_x)) exitWith {
+					_spawn = _x;
+				};
+			} foreach units(_grp);
+			
+			if (!isNull(_spawn)) exitWith { };
+
+			_grp = _grps select _index;
+			_index = _index + 1;
+		};
+	};
+	case RSTF_SPAWN_RANDOM: {
+		_grps = _grps call BIS_fnc_arrayShuffle;
+		{
+			_grp = _x;
+			{
+				if (alive(_x)) exitWith {
+					_spawn = _x;
+				};
+			} foreach units(_grp);
+			if (!isNull(_spawn)) exitWith {};
+		} foreach _grps;
+	};
+};
+
+if (isNull(_spawn)) exitWith {
+	systemChat "Noone alive. Waiting for reinforcements.";
+	sleep 1;
+	_this spawn RSTF_spawnPlayer;
+};
+
+_spawn spawn RSTF_assignPlayer;

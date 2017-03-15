@@ -1,0 +1,1 @@
+#define DLOG(s) (diag_log ("__FILE__:__LINE__ " + str(s)))

@@ -1,0 +1,55 @@
+_dialogName = "RSTF_RscDialogEquip";
+_ok = createDialog _dialogName;
+if (!_ok) exitWith {
+	systemChat "Fatal error. Couldn't create equip dialog.";
+};
+
+_side = SIDE_FRIENDLY;
+_weapons = RSTF_WEAPONS;
+_launchers = RSTF_LAUNCHERS;
+if (RSTF_RANDOMIZE_WEAPONS_RESTRICT) then {
+	_weapons = RSTF_WEAPONS select _side;
+	_launchers = RSTF_LAUNCHERS select _side;
+};
+
+_ctrl = [_dialogName, "weapons"] call RSTF_getCtrl;
+_index = 0;
+{
+	_name = getText(configFile >> "cfgWeapons" >> _x >> "displayName");
+	_icon = getText(configFile >> "cfgWeapons" >> _x >> "picture");
+	_data = _x call BIS_fnc_weaponComponents;
+	if (_data select 0 == _x) then {
+		_ctrl lnbAddRow [_name];
+		_ctrl lnbSetData [[_index, 0], _x];
+		_ctrl lnbSetPicture [[_index, 0], _icon];
+		_index = _index + 1;
+	};
+} foreach _weapons;
+
+_ctrl ctrlAddEventHandler ["LBSelChanged", {
+	_ctrl = _this select 0;
+	_index = lnbCurSelRow _ctrl;
+	if (_index >=0) then {
+		_weapon = _ctrl lnbData [_index, 0];
+		_attachments = [];
+		_cfg = configFile >> "cfgWeapons" >> _weapon >> "WeaponSlotsInfo";
+		for[{_i = 0},{_i < count(_cfg)},{_i = _i + 1}] do {
+			_slot = _cfg select _i;
+			if (isClass(_slot)) then {
+				_attachments = _attachments + getArray(_slot >> "compatibleItems");
+			};
+		};
+		
+		_ctrl = ["RSTF_RscDialogEquip", "attachments"] call RSTF_getCtrl;
+		lnbClear _ctrl;
+		
+		{
+			_name = getText(configFile >> "cfgWeapons" >> _x >> "displayName");
+			_icon = getText(configFile >> "cfgWeapons" >> _x >> "picture");
+
+			_ctrl lnbAddRow [_name];
+			_ctrl lnbSetData [[_foreachIndex, 0], _x];
+			_ctrl lnbSetPicture [[_foreachIndex, 0], _icon];
+		} foreach _attachments;
+	};
+}];

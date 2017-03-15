@@ -1,0 +1,99 @@
+#define RSTF_EQUIP_LEFT_X (SafeZoneX + 0.1)
+#define RSTF_EQUIP_LEFT_Y (SafeZoneY + 0.2)
+#define RSTF_EQUIP_LEFT_W 0.5
+#define RSTF_EQUIP_LEFT_H (SafeZoneH - 0.4)
+#define RSTF_EQUIP_WEAPONS_H (RSTF_EQUIP_LEFT_H*0.6)
+#define RSTF_EQUIP_ATTACHMENTS_H (RSTF_EQUIP_LEFT_H*0.4)
+#define RSTF_EQUIP_BUTTON_H 0.05
+
+class RSTF_RscDialogEquip
+{
+    idd = 1007;
+    enableDisplay = true;
+    movingEnable = true;
+    class controlsBackground
+    {
+		class weaponsBack : RSTF_Background
+		{
+			x = RSTF_EQUIP_LEFT_X;
+			y = RSTF_EQUIP_LEFT_Y + RSTF_SUBTITLE_H + RSTF_SUBTITLE_M;
+			w = RSTF_EQUIP_LEFT_W;
+			h = RSTF_EQUIP_WEAPONS_H - RSTF_SUBTITLE_H - RSTF_EQUIP_BUTTON_H - RSTF_SUBTITLE_M*3;
+			colorBackground[] = { 0.5, 0.5, 0.5, 0.8 };
+		};
+		
+		class attachmentsBack : RSTF_Background
+		{
+			x = RSTF_EQUIP_LEFT_X;
+			y = RSTF_EQUIP_LEFT_Y + RSTF_SUBTITLE_H + RSTF_SUBTITLE_M + RSTF_EQUIP_WEAPONS_H;
+			w = RSTF_EQUIP_LEFT_W;
+			h = RSTF_EQUIP_ATTACHMENTS_H - RSTF_SUBTITLE_H - RSTF_EQUIP_BUTTON_H - RSTF_SUBTITLE_M*2;
+			colorBackground[] = { 0.5, 0.5, 0.5, 0.8 };
+		};
+	};
+	class controls
+	{
+		class nothing : RscStatic
+		{
+			
+		};
+		
+		class weaponsTitle : RSTF_Subtitle
+		{
+			x = RSTF_EQUIP_LEFT_X;
+			y = RSTF_EQUIP_LEFT_Y;
+			w = RSTF_EQUIP_LEFT_W;
+			text = "Weapon";
+		};
+		
+		class weapons : RscListNBox
+		{
+			idc = 1;
+			x = RSTF_EQUIP_LEFT_X;
+			y = RSTF_EQUIP_LEFT_Y + RSTF_SUBTITLE_H + RSTF_SUBTITLE_M;
+			w = RSTF_EQUIP_LEFT_W;
+			h = RSTF_EQUIP_WEAPONS_H - RSTF_SUBTITLE_H - RSTF_EQUIP_BUTTON_H - RSTF_SUBTITLE_M*3;
+			columns[] = { 0, 0.6 };
+			rowHeight = 0.1;
+		};
+		
+		class selectWeapon : RscButton
+		{
+			idc = 2;
+			x = RSTF_EQUIP_LEFT_X;
+			y = RSTF_EQUIP_LEFT_Y + RSTF_EQUIP_WEAPONS_H - RSTF_EQUIP_BUTTON_H - RSTF_SUBTITLE_M;
+			w = RSTF_EQUIP_LEFT_W;
+			h = RSTF_EQUIP_BUTTON_H;
+			text = "Select";
+		};
+		
+		class attachmentsTitle : RSTF_Subtitle
+		{
+			x = RSTF_EQUIP_LEFT_X;
+			y = RSTF_EQUIP_LEFT_Y + RSTF_EQUIP_WEAPONS_H;
+			w = RSTF_EQUIP_LEFT_W;
+			text = "Attachments";
+		};
+		
+		class attachments : RscListNBox
+		{
+			idc = 3;
+			x = RSTF_EQUIP_LEFT_X;
+			y = RSTF_EQUIP_LEFT_Y + RSTF_SUBTITLE_H + RSTF_SUBTITLE_M + RSTF_EQUIP_WEAPONS_H;
+			w = RSTF_EQUIP_LEFT_W;
+			h = RSTF_EQUIP_ATTACHMENTS_H - RSTF_SUBTITLE_H - RSTF_EQUIP_BUTTON_H - RSTF_SUBTITLE_M*2;
+			columns[] = { 0, 0.6 };
+			rowHeight = 0.1;
+		};
+		
+		class selectAttachment : RscButton
+		{
+			idc = 4;
+			x = RSTF_EQUIP_LEFT_X;
+			y = RSTF_EQUIP_LEFT_Y + RSTF_EQUIP_WEAPONS_H + RSTF_EQUIP_ATTACHMENTS_H - RSTF_EQUIP_BUTTON_H;
+			w = RSTF_EQUIP_LEFT_W;
+			h = RSTF_EQUIP_BUTTON_H;
+			text = "Select";
+		};
+	};
+};
