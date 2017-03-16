@@ -1,4 +1,29 @@
+RSTF_TASK_RESCUE_createVIP = {
+	_grp = creategroup side(player);
+	_vip = _grp createUnit [(SIDE_FRIENDLY call RSTF_getRandomSoldier), _this select 0, [], 0, "NONE"];
+	removeAllWeapons _vip;
+	_vip setCaptive true;
+
+	_vip addEventHandler ["Killed", RSTF_TASK_RESCUE_vipKilled];
+	_vip addAction ["Rescue", {
+		_vip = _this;
+		_wp = group(_vip) addWaypoint [RSTF_SPAWNS select SIDE_FRIENDLY, 100];
+		_wp setWaypointType "MOVE";
+		_wp setWaypointSpeed "FULL";
+		_wp setWaypointBehaviour "CARELESS";
+
+		call RSTF_TASKS_TASK_completed;
+	}, _vip];
+
+	_vip;
+};
+
+RSTF_TASK_RESCUE_vipKilled = {
+	call RSTF_TASKS_TASK_failed;
+};
+
 RSTF_TASK_RESCUE_VEHICLE_isAvailable = {
+	// @TODO: Add check
 	true;
 };
 
@@ -44,10 +69,7 @@ RSTF_TASK_RESCUE_VEHICLE_load = {
 	_road = _this select 1;
 
 	if (!_spawned) then {
-		_grp = creategroup side(player);
-		_vip = _grp createUnit [(SIDE_FRIENDLY call RSTF_getRandomSoldier), getPos(_road), [], 0, "NONE"];
-		removeAllWeapons _vip;
-		_vip setCaptive true;
+		_vip = [getPos(_road)] call RSTF_TASK_RESCUE_createVIP;
 
 		_enemies = creategroup east;
 		for [{_i = 0}, {_i < 10}, {_i = _i + 1}] do {
@@ -59,6 +81,7 @@ RSTF_TASK_RESCUE_VEHICLE_load = {
 		_wp setWaypointType "SUPPORT";
 
 		RSTF_TASK_PARAMS = [true, _road];
+
 	};
 
 	RSTF_TASK = [

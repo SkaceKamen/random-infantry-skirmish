@@ -52,10 +52,7 @@ RSTF_TASK_RESCUE_HOUSE_load = {
 	_house = _this select 1;
 
 	if (!_spawned) then {
-		_grp = creategroup side(player);
-		_vip = _grp createUnit [(SIDE_FRIENDLY call RSTF_getRandomSoldier), getPos(_house), [], 0, "NONE"];
-		removeAllWeapons _vip;
-		_vip setCaptive true;
+		_vip = [getPos(_house)] call RSTF_TASK_RESCUE_createVIP;
 
 		_enemies = creategroup east;
 		for [{_i = 0}, {_i < 10}, {_i = _i + 1}] do {

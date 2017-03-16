@@ -74,15 +74,7 @@ RSTF_TASK_CLEAR_load = {
 
 			diag_log ["House at", getPos(_house select 0), "is now cleared"];
 
-			[RSTF_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
-			["Task", RSTF_SCORE_PER_TASK] call RSTF_addPlayerScore;
-
-			RSTF_TASK = "";
-			RSTF_TASK_TYPE = "";
-			RSTF_TASK_PARAMS = [];
-
-			diag_log "Task completed. Starting new task.";
-			call RSTF_TASKS_start;
+			call RSTF_TASKS_TASK_completed;
 		};
 	};
 };

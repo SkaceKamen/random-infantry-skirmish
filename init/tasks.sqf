@@ -52,3 +52,25 @@ RSTF_TASKS_start = {
 		diag_log text("Task started.");
 	};
 };
+
+RSTF_TASKS_TASK_failed = {
+	[RSTF_TASK, "FAILED", true] call BIS_fnc_taskSetState;
+
+	call RSTF_TASKS_clear;
+};
+
+RSTF_TASKS_TASK_completed = {
+	[RSTF_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
+	["Task", RSTF_SCORE_PER_TASK] call RSTF_addPlayerScore;
+
+	call RSTF_TASKS_clear;
+};
+
+RSTF_TASKS_clear = {
+	RSTF_TASK = "";
+	RSTF_TASK_TYPE = "";
+	RSTF_TASK_PARAMS = [];
+
+	diag_log "Task completed. Starting new task.";
+	call RSTF_TASKS_start;
+};
