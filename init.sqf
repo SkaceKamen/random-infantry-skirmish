@@ -72,8 +72,9 @@ RSTF_functions = [
 RSTF_initScripts = [
 	"map",
 	"tasks",
-	"tasks\clear",
-	//"tasks\rescue"
+	// "tasks\clear",
+	"tasks\rescue-house",
+	"tasks\rescue-vehicle",
 	"start"
 ];
 
