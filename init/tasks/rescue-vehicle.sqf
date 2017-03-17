@@ -6,7 +6,7 @@ RSTF_TASK_RESCUE_createVIP = {
 
 	_vip addEventHandler ["Killed", RSTF_TASK_RESCUE_vipKilled];
 	_vip addAction ["Rescue", {
-		_vip = _this;
+		_vip = _this select 3;
 		_wp = group(_vip) addWaypoint [RSTF_SPAWNS select SIDE_FRIENDLY, 100];
 		_wp setWaypointType "MOVE";
 		_wp setWaypointSpeed "FULL";
@@ -28,9 +28,6 @@ RSTF_TASK_RESCUE_VEHICLE_isAvailable = {
 };
 
 RSTF_TASK_RESCUE_VEHICLE_start = {
-	_position = [];
-	_unit = objNull;
-
 	/*
 		OPTIONS:
 			1. Spawn guy inside car
@@ -38,7 +35,6 @@ RSTF_TASK_RESCUE_VEHICLE_start = {
 				+ destroy tire or something
 				! need to correctly choose location (close to enemies, not too far / close from player, on road)
 	*/
-	
 
 	_roads = RSTF_POINT nearRoads RSTF_NEUTRALS_RADIUS;
 	_roads = _roads call BIS_fnc_arrayShuffle;
@@ -60,13 +56,14 @@ RSTF_TASK_RESCUE_VEHICLE_start = {
 		};
 	} foreach _roads;
 
-	[false, _road] call RSTF_TASK_RESCUE_VEHICLE_load;
+	[false, _road, objNull] call RSTF_TASK_RESCUE_VEHICLE_load;
 
 };
 
 RSTF_TASK_RESCUE_VEHICLE_load = {
 	_spawned = _this select 0;
 	_road = _this select 1;
+	_vip = _this select 2;
 
 	if (!_spawned) then {
 		_vip = [getPos(_road)] call RSTF_TASK_RESCUE_createVIP;
@@ -80,14 +77,16 @@ RSTF_TASK_RESCUE_VEHICLE_load = {
 		_wp = _enemies addWaypoint [getPos(_vip), 0];
 		_wp setWaypointType "SUPPORT";
 
-		RSTF_TASK_PARAMS = [true, _road];
+		RSTF_TASK_PARAMS = [true, _road, _vip];
 
 	};
 
+	RSTF_TASK_TYPE = "rescue-vehicle";
+
 	RSTF_TASK = [
 		side(player), ["sideTask"],
-		["Save this guy, please","Rescue VIP",""],
-		_position,
+		["Save this guy, please (from road)","Rescue VIP",""],
+		_vip,
 		"ASSIGNED"
 	] call BIS_fnc_taskCreate;
 };
