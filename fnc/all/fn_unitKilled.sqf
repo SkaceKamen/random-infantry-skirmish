@@ -31,12 +31,12 @@ if (_index != -1) then {
 if (_killer == player) then {
 	if (_side != side(player)) then {
 		if (_side == civilian) then {
-			["Civilan kill -500", 5] call RSTF_UI_AddMessage;
+			["Civilan kill -500", 5] call RSTF_fnc_UI_AddMessage;
 		} else {
-			[format["Kill +%1", RSTF_SCORE_PER_KILL], 5] call RSTF_UI_AddMessage;
+			[format["Kill +%1", RSTF_SCORE_PER_KILL], 5] call RSTF_fnc_UI_AddMessage;
 		};
 	} else {
-		[format["Team kill -%1", RSTF_SCORE_PER_TEAMKILL], 5] call RSTF_UI_AddMessage;
+		[format["Team kill -%1", RSTF_SCORE_PER_TEAMKILL], 5] call RSTF_fnc_UI_AddMessage;
 	};
 };
 

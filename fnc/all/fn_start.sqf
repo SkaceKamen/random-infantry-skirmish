@@ -31,7 +31,7 @@ call RSTF_fnc_spawnNeutrals;
 } foreach RSTF_SPAWNS;
 
 //Start UI features
-[] spawn RSTF_UI_Start;
+[] spawn RSTF_fnc_UI_Start;
 
 //Hide camera border
 waitUntil { time > 0 };

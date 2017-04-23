@@ -10,7 +10,7 @@ _script = format["
 }
 ", MISSION_ROOT];
 
-_script = "['" + MISSION_ROOT + "', true] spawn { " + RSTF_INIT + "; };";
+// _script = "['" + MISSION_ROOT + "', true] spawn { " + RSTF_INIT + "; };";
 
 /*
 _i = 0;

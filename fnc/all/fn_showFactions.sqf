@@ -90,17 +90,9 @@ _ctrl ctrlAddEventHandler ["ButtonClick", _method];
 _ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["LBDblClick", _method];
 
-RSTF_pathString = {
-	_str = "";
-	{
-		_str = _str + str(_x) + "/";
-	} foreach _this;
-	_str;
-};
-
 _expand = {
 	_ctrl = _this select 0;
-	_path = (_this select 1) call RSTF_pathString;
+	_path = (_this select 1) call RSTF_fnc_pathString;
 	
 	_list = [RSTF_EXPANDED, _ctrl] call AMAP_get;
 	_list pushBackUnique _path;
@@ -108,7 +100,7 @@ _expand = {
 
 _collapse = {
 	_ctrl = _this select 0;
-	_path = (_this select 1) call RSTF_pathString;
+	_path = (_this select 1) call RSTF_fnc_pathString;
 	
 	_list = [RSTF_EXPANDED, _ctrl] call AMAP_get;
 	_index = _list find _path;

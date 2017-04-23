@@ -7,7 +7,7 @@ _expandCache = {
 	_ex = [];
 	{
 		_ex pushBack _x;
-		if (_list find (_ex call RSTF_pathString) != -1) then {
+		if (_list find (_ex call RSTF_fnc_pathString) != -1) then {
 			_ctrl tvExpand _ex;
 		};
 	} foreach (_this select 1);

@@ -7,7 +7,6 @@ class all
 	class configUpdateFactions {};
 	class configValidate {};
 	class countTurrets {};
-	class createNeutral {};
 	class createRandomUnit {};
 	class createRandomVehicle {};
 	class equipSoldier {};
@@ -51,4 +50,5 @@ class all
 	class UI_addMessage {};
 	class UI_start {};
 	class unitKilled {};
+	class pathString {};
 };
