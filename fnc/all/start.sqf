@@ -1,9 +1,9 @@
 //Load avaible weapons and classes
-call RSTF_loadWeapons;
-call RSTF_loadClasses;
+call RSTF_fnc_loadWeapons;
+call RSTF_fnc_loadClasses;
 
 if (count(RSTF_POINT) == 0) then {
-	call RSTF_randomPoint;
+	call RSTF_fnc_randomPoint;
 };
 
 //Create helper marker
@@ -23,11 +23,11 @@ _marker setMarkerText "Attack this position";
 } foreach RSTF_SPAWNS;*/
 
 //Spawn neutral units
-call RSTF_spawnNeutrals;
+call RSTF_fnc_spawnNeutrals;
 
 // Spawn spawns
 {
-	[_foreachIndex, _x] call RSTF_spawnSpawnDefenses;
+	[_foreachIndex, _x] call RSTF_fnc_spawnSpawnDefenses;
 } foreach RSTF_SPAWNS;
 
 //Start UI features
@@ -38,10 +38,10 @@ waitUntil { time > 0 };
 showCinemaBorder false;
 
 //Time
-call RSTF_superRandomTime;
+call RSTF_fnc_superRandomTime;
 
 //Weather
-[] spawn RSTF_superRandomWeather;
+[] spawn RSTF_fnc_superRandomWeather;
 
 [
 	[
@@ -53,7 +53,7 @@ call RSTF_superRandomTime;
 sleep 2;
 
 //Start game loop
-[] spawn RSTF_loop;
+[] spawn RSTF_fnc_loop;
 
 //Update score display
-[] call RSTF_scoreChanged;
+[] call RSTF_fnc_scoreChanged;

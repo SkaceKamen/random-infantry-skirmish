@@ -61,7 +61,7 @@ RSTF_TASKS_TASK_failed = {
 
 RSTF_TASKS_TASK_completed = {
 	[RSTF_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
-	["Task", RSTF_SCORE_PER_TASK] call RSTF_addPlayerScore;
+	["Task", RSTF_SCORE_PER_TASK] call RSTF_fnc_addPlayerScore;
 
 	call RSTF_TASKS_clear;
 };

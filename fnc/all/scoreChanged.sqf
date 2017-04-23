@@ -11,7 +11,7 @@ for[{_i = 0}, {_i < 2}, {_i = _i + 1}] do {
 	_commando = RSTF_COMMANDO select _i;
 	_count = RSTF_LIMIT_COMMANDO min floor(_score / RSTF_SCORE_COMMANDO);
 	for[{_c = count(_commando)},{_c < _count},{_c = _c + 1}] do {
-		_i call RSTF_spawnCommando;
+		_i call RSTF_fnc_spawnCommando;
 	};
 	
 	(_display displayCtrl (2 + _i)) ctrlSetText str(_score);

@@ -90,9 +90,9 @@ if (alive(_unit)) then {
 	};
 
 	selectPlayer _unit;
-	_unit addEventHandler ["Killed", RSTF_playerKilled];
+	_unit addEventHandler ["Killed", RSTF_fnc_playerKilled];
 } else {
-	[_unit, objNull] call RSTF_playerKilled;
+	[_unit, objNull] call RSTF_fnc_playerKilled;
 };
 
 RSTF_CAM cameraEffect ["terminate","back"];

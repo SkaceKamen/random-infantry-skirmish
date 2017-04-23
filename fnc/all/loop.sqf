@@ -42,14 +42,14 @@ while{true} do {
 
 				//Spawn water units if we're in water
 				if (RSTF_WATER) then {
-					_vehicle = _group call RSTF_groupVehicle;
+					_vehicle = _group call RSTF_fnc_groupVehicle;
 					if (isNull(_vehicle)) then {
-						_vehicle = [_group, _index, 3] call RSTF_createRandomVehicle;
+						_vehicle = [_group, _index, 3] call RSTF_fnc_createRandomVehicle;
 					};
 				} else {
 					if (count(units(_x)) < RSTF_LIMIT_UNITS) then {
 						for[{_i = count(units(_x)); _k = 0},{_i < RSTF_LIMIT_UNITS && _k < 5},{_i = _i + 1; _k = _k + 1}] do {
-							[_x, _index] call RSTF_createRandomUnit;
+							[_x, _index] call RSTF_fnc_createRandomUnit;
 						};
 					};
 				};
@@ -84,7 +84,7 @@ while{true} do {
 			
 			_i = 0;
 			{
-				_vehicle = _x call RSTF_groupVehicle;
+				_vehicle = _x call RSTF_fnc_groupVehicle;
 				_group = _x;
 				
 				if (isNull(_vehicle)) then {
@@ -95,7 +95,7 @@ while{true} do {
 					if (_i >= RSTF_LIMIT_CARS) then {
 						_subindex = 1;
 					};
-					[_group, _index, _subindex] call RSTF_createRandomVehicle;
+					[_group, _index, _subindex] call RSTF_fnc_createRandomVehicle;
 				};
 				
 				_i = _i + 1;

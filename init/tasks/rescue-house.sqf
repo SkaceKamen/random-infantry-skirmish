@@ -60,7 +60,7 @@ RSTF_TASK_RESCUE_HOUSE_load = {
 
 		_enemies = creategroup east;
 		for [{_i = 0}, {_i < 10}, {_i = _i + 1}] do {
-			_soldier = [_enemies, SIDE_ENEMY] call RSTF_createRandomUnit;
+			_soldier = [_enemies, SIDE_ENEMY] call RSTF_fnc_createRandomUnit;
 			_soldier setPos(getPos(_houseObj));
 		};
 

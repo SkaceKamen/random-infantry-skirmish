@@ -27,7 +27,7 @@ if (isNull(gunner(_vehicle)) || !alive(gunner(_vehicle))) then {
 		};
 		RSTF_SCORE set [_index, _score];
 		
-		[] spawn RSTF_scoreChanged;
+		[] spawn RSTF_fnc_scoreChanged;
 	};
 	
 	//Show player hitn

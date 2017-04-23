@@ -36,7 +36,7 @@ RSTF_CAM camCommit 0.1;
 
 RSTF_MOUSE = false;
 
-_display = _dialogName call RSTF_getDisplay;
+_display = _dialogName call RSTF_fnc_getDisplay;
 _display displayAddEventHandler ["MouseButtonDown", {
 	RSTF_MOUSE = true;
 }];
@@ -82,7 +82,7 @@ if (RSTF_RANDOMIZE_WEAPONS_RESTRICT) then {
 
 _secondary = _pistols + _launchers;
 
-_ctrl = [_dialogName, "primary"] call RSTF_getCtrl;
+_ctrl = [_dialogName, "primary"] call RSTF_fnc_getCtrl;
 
 _index = 0;
 _selected = 0;
@@ -113,9 +113,9 @@ _ctrl ctrlAddEventHandler ["LBSelChanged", {
 	_index = lnbCurSelRow _ctrl;
 	if (_index >= 0) then {
 		_weapon = _ctrl lnbData [_index, 0];
-		_attachments = _weapon call RSTF_getAttachments;
+		_attachments = _weapon call RSTF_fnc_getAttachments;
 
-		_ctrl = ["RSTF_RscDialogEquip", "attachments"] call RSTF_getCtrl;
+		_ctrl = ["RSTF_RscDialogEquip", "attachments"] call RSTF_fnc_getCtrl;
 		lnbClear _ctrl;
 
 		_toremove = [];
@@ -164,7 +164,7 @@ _ctrl ctrlAddEventHandler ["LBSelChanged", {
 _ctrl lnbSetCurSelRow _selected;
 
 RSTF_refreshEquippedAttachments = {
-	_ctrl = ["RSTF_RscDialogEquip", "equipped"] call RSTF_getCtrl;
+	_ctrl = ["RSTF_RscDialogEquip", "equipped"] call RSTF_fnc_getCtrl;
 	lnbClear _ctrl;
 
 	{
@@ -207,7 +207,7 @@ RSTF_refreshWeapon = {
 };
 
 RSTF_equipAttachmentAdd = {
-	_ctrl = ["RSTF_RscDialogEquip", "attachments"] call RSTF_getCtrl;
+	_ctrl = ["RSTF_RscDialogEquip", "attachments"] call RSTF_fnc_getCtrl;
 	_index = lnbCurSelRow _ctrl;
 	if (_index >= 0) then {
 		_attachment = _ctrl lnbData [_index, 0];
@@ -238,7 +238,7 @@ RSTF_equipAttachmentAdd = {
 };
 
 RSTF_equipAttachmentRemove = {
-	_ctrl = ["RSTF_RscDialogEquip", "equipped"] call RSTF_getCtrl;
+	_ctrl = ["RSTF_RscDialogEquip", "equipped"] call RSTF_fnc_getCtrl;
 	_index = lnbCurSelRow _ctrl;
 	if (_index >= 0) then {
 		RSTF_PLAYER_ATTACHMENTS = [RSTF_PLAYER_ATTACHMENTS, [_index]] call BIS_fnc_removeIndex;
@@ -246,7 +246,7 @@ RSTF_equipAttachmentRemove = {
 	};
 };
 
-_ctrl = [_dialogName, "secondary"] call RSTF_getCtrl;
+_ctrl = [_dialogName, "secondary"] call RSTF_fnc_getCtrl;
 
 _ctrl lnbAddRow ["Nothing"];
 _ctrl lnbSetData [[0, 0], ""];
@@ -285,18 +285,18 @@ _ctrl ctrlAddEventHandler ["LBSelChanged", {
 	};
 }];
 
-_ctrl = ["RSTF_RscDialogEquip", "attachments"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogEquip", "attachments"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["LBDblClick", RSTF_equipAttachmentAdd];
-_ctrl = ["RSTF_RscDialogEquip", "buttonAttach"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogEquip", "buttonAttach"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", RSTF_equipAttachmentAdd];
 
 
-_ctrl = [_dialogName, "equipped"] call RSTF_getCtrl;
+_ctrl = [_dialogName, "equipped"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["LBDblClick", RSTF_equipAttachmentRemove];
-_ctrl = ["RSTF_RscDialogEquip", "buttonDeattach"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogEquip", "buttonDeattach"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", RSTF_equipAttachmentAdd];
 
-_ctrl = ["RSTF_RscDialogEquip", "buttonBack"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogEquip", "buttonBack"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", { closeDialog 0; }];
 
 call RSTF_refreshEquippedAttachments;

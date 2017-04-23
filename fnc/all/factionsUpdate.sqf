@@ -1,4 +1,4 @@
-_ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
 
 _expandCache = {
 	private ["_list", "_ex"];
@@ -33,11 +33,11 @@ lnbClear _ctrl;
 	};
 } foreach RSTF_FACTIONS;
 
-_list = [RSTF_FACTIONS_LIST, true] call RSTF_loadSoldiers;
+_list = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadSoldiers;
 _soldiers = _list select 0;
 _weapons = _list select 1;
 
-_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
 
@@ -106,7 +106,7 @@ _roots = call AMAP_create;
 
 //_ctrl tvSetCurSel _sel;
 
-_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
 

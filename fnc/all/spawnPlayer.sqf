@@ -57,7 +57,7 @@ switch(RSTF_SPAWN_TYPE) do {
 if (isNull(_spawn)) exitWith {
 	systemChat "Noone alive. Waiting for reinforcements.";
 	sleep 1;
-	_this spawn RSTF_spawnPlayer;
+	_this spawn RSTF_fnc_spawnPlayer;
 };
 
-_spawn spawn RSTF_assignPlayer;
+_spawn spawn RSTF_fnc_assignPlayer;

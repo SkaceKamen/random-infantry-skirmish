@@ -1,6 +1,6 @@
 RSTF_TASK_RESCUE_createVIP = {
 	_grp = creategroup side(player);
-	_vip = _grp createUnit [(SIDE_FRIENDLY call RSTF_getRandomSoldier), _this select 0, [], 0, "NONE"];
+	_vip = _grp createUnit [(SIDE_FRIENDLY call RSTF_fnc_getRandomSoldier), _this select 0, [], 0, "NONE"];
 	removeAllWeapons _vip;
 	_vip setCaptive true;
 	_vip switchMove "Acts_AidlPsitMstpSsurWnonDnon01";
@@ -76,7 +76,7 @@ RSTF_TASK_RESCUE_VEHICLE_load = {
 
 		_enemies = creategroup east;
 		for [{_i = 0}, {_i < 10}, {_i = _i + 1}] do {
-			_soldier = [_enemies, SIDE_ENEMY] call RSTF_createRandomUnit;
+			_soldier = [_enemies, SIDE_ENEMY] call RSTF_fnc_createRandomUnit;
 			_soldier setPos(getPos(_road));
 		};
 

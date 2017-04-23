@@ -24,7 +24,7 @@ if (_index != -1) then {
 	};
 	RSTF_SCORE set [_index, _score];
 	
-	[] spawn RSTF_scoreChanged;
+	[] spawn RSTF_fnc_scoreChanged;
 };
 
 //Show player hitn

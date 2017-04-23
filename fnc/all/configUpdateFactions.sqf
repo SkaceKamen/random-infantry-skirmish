@@ -11,7 +11,7 @@ _updated = [];
 
 _list = _updated;
 
-_ctrl = ["RSTF_RscDialogConfig", "factions", ["controls", _ctrl, "controls"]] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogConfig", "factions", ["controls", _ctrl, "controls"]] call RSTF_fnc_getCtrl;
 lnbClear _ctrl;
 {
 	_name = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "displayName") + " (" + _x + ")";

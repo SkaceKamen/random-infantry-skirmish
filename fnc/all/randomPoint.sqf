@@ -4,7 +4,7 @@ RSTF_WATER = true;
 
 while {RSTF_WATER} do {
 	//Load random location
-	_center = ["NameCityCapital","NameCity","NameVillage"] call RSTF_randomLocation;
+	_center = ["NameCityCapital","NameCity","NameVillage"] call RSTF_fnc_randomLocation;
 
 	//Direction and distance between two spanws
 	_direction = random(360);

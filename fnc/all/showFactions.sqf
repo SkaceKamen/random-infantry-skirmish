@@ -25,7 +25,7 @@ RSTF_FACTIONS_WEAPON_HOLDER enableSimulation false;
 
 RSTF_EXPANDED = call AMAP_create;
 
-_display = "RSTF_RscDialogFactions" call RSTF_getDisplay;
+_display = "RSTF_RscDialogFactions" call RSTF_fnc_getDisplay;
 _display displayAddEventHandler ["unload", {
 	if (!isNull(RSTF_FACTIONS_SOLDIER)) then {
 		deleteVehicle RSTF_FACTIONS_SOLDIER;
@@ -45,12 +45,12 @@ _display displayAddEventHandler ["unload", {
 	RSTF_FACTIONS_LIST call RSTF_FACTIONS_EVENT;
 }];
 
-_ctrl = ["RSTF_RscDialogFactions", "close"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "close"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	closeDialog 0;
 }];
 
-_template_list = '_ctrl = ["RSTF_RscDialogFactions", "%1"] call RSTF_getCtrl;
+_template_list = '_ctrl = ["RSTF_RscDialogFactions", "%1"] call RSTF_fnc_getCtrl;
 _row = lnbCurSelRow _ctrl;
 if (_row >= 0) then {
 	_class = _ctrl lnbData [_row, 0];
@@ -61,10 +61,10 @@ if (_row >= 0) then {
 		%2 set [count(%2), _class];
 	};
 	
-	call RSTF_factionsUpdate;
+	call RSTF_fnc_factionsUpdate;
 };';
 
-_template_tree = '_ctrl = ["RSTF_RscDialogFactions", "%1"] call RSTF_getCtrl;
+_template_tree = '_ctrl = ["RSTF_RscDialogFactions", "%1"] call RSTF_fnc_getCtrl;
 _path = tvCurSel _ctrl;
 if (count(_path) == %3) then {
 	_class = _ctrl tvData _path;
@@ -81,13 +81,13 @@ if (count(_path) == %3) then {
 		_ctrl tvSetPictureColor [_path, [0,0,0,1]];
 	};
 	
-	//call RSTF_factionsUpdate;
+	//call RSTF_fnc_factionsUpdate;
 };';
 
 _method = compile(format [_template_list, "factions", "RSTF_FACTIONS_LIST"]);
-_ctrl = ["RSTF_RscDialogFactions", "toggleFaction"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "toggleFaction"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", _method];
-_ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["LBDblClick", _method];
 
 RSTF_pathString = {
@@ -118,9 +118,9 @@ _collapse = {
 };
 
 _method = compile(format [_template_tree, "avaibleSoldiers", "RSTF_SOLDIERS_BANNED", 3]);
-_ctrl = ["RSTF_RscDialogFactions", "banSoldier"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "banSoldier"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", _method];
-_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
 
 [RSTF_EXPANDED, _ctrl, []] call AMAP_set;
 _ctrl ctrlAddEventHandler ["TreeExpanded", _expand];
@@ -138,7 +138,7 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 		RSTF_FACTIONS_WEAPON = objNull;
 	};
 	
-	_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_getCtrl;
+	_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
 	_path = tvCurSel _ctrl;
 	if (count(_path) == 3) then {
 		_class = _ctrl tvData _path;
@@ -152,9 +152,9 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 }];
 
 _method = compile(format [_template_tree, "avaibleWeapons", "RSTF_WEAPONS_BANNED", 2]);
-_ctrl = ["RSTF_RscDialogFactions", "banWeapon"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "banWeapon"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", _method];
-_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
 
 [RSTF_EXPANDED, _ctrl, []] call AMAP_set;
 _ctrl ctrlAddEventHandler ["TreeExpanded", _expand];
@@ -172,7 +172,7 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 		RSTF_FACTIONS_WEAPON = objNull;
 	};
 	 
-	_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_getCtrl;
+	_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
 	_path = tvCurSel _ctrl;
 	if (count(_path) == 2) then {
 		_class = _ctrl tvData _path;
@@ -188,4 +188,4 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 	};
 }];
 
-call RSTF_factionsUpdate;
+call RSTF_fnc_factionsUpdate;

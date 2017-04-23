@@ -1,14 +1,14 @@
 private ["_factionsCheck", "_limitCheck", "_validation", "_errors"];
 
 _factionsCheck = '
-	_list = [%1] call RSTF_loadSoldiers;
+	_list = [%1] call RSTF_fnc_loadSoldiers;
 	if (count(_list select 0) == 0) exitWith {
 		"%2 does not have any soldiers. Please select faction with soldiers."
 	};
 	true;
 ';
 _limitCheck = '
-	_ctrl = ["RSTF_RscDialogConfig", "%1", ["controls", "gameConfig", "controls"]] call RSTF_getCtrl;
+	_ctrl = ["RSTF_RscDialogConfig", "%1", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
 	_limit = parseNumber(ctrlText _ctrl);
 	if (_limit <= 0) exitWith {
 		"%2 must be bigger than 0."

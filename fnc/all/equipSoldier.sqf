@@ -11,7 +11,7 @@ if (RSTF_RANDOMIZE_WEAPONS) then {
 		_pistols = RSTF_PISTOLS select _side;
 	};
 
-	_weapon = _weapons call RSTF_randomElement;
+	_weapon = _weapons call RSTF_fnc_randomElement;
 	_mgzs = getArray(configFile >> "cfgWeapons" >> _weapon >> "magazines");
 	_magazine = _mgzs select 0;
 
@@ -24,7 +24,7 @@ if (RSTF_RANDOMIZE_WEAPONS) then {
 	} foreach ["ItemMap", "ItemGPS","ItemCompass","ItemWatch","ItemRadio"];
 
 	if (count(_launchers) > 0 && round(random(10)) == 8) then {
-		_launcher = _launchers call RSTF_randomElement;
+		_launcher = _launchers call RSTF_fnc_randomElement;
 		_mgzs = getArray(configFile >> "cfgWeapons" >> _launcher >> "magazines");
 		_unit addMagazines [_mgzs select 0, 2];
 		_unit addWeapon _launcher;
@@ -52,7 +52,7 @@ if (RSTF_RANDOMIZE_WEAPONS) then {
 	_unit addWeapon _weapon;
 
 	if (_magazine_size <= 10 && count(_pistols) > 0) then {
-		_pistol = _pistols call RSTF_randomElement;
+		_pistol = _pistols call RSTF_fnc_randomElement;
 		_mag = getArray(configFile >> "cfgWeapons" >> _pistol >> "magazines") select 0;
 		_mag_size = getNumber(configFile >> "cfgMagazines" >> _mag >> "count");
 

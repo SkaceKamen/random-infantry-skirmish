@@ -5,9 +5,9 @@ if (!_ok) exitWith {
 	systemChat "Fatal error. Couldn't create factions dialog.";
 };
 
-_ctrl = ["RSTF_RscDialogMaps", "select"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogMaps", "select"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
-	_ctrl = ["RSTF_RscDialogMaps", "mapsList"] call RSTF_getCtrl;
+	_ctrl = ["RSTF_RscDialogMaps", "mapsList"] call RSTF_fnc_getCtrl;
 	_x = lnbCurSelRow _ctrl;
 	if (_x >= 0) then {
 		RSTF_SELECTED_WORLD = _ctrl lnbData [_x, 0];
@@ -15,15 +15,15 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	closeDialog 0;
 }];
 
-_ctrl = ["RSTF_RscDialogMaps", "mapsList"] call RSTF_getCtrl;
+_ctrl = ["RSTF_RscDialogMaps", "mapsList"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["LBSelChanged", {
-	_ctrl = ["RSTF_RscDialogMaps", "mapsList"] call RSTF_getCtrl;
+	_ctrl = ["RSTF_RscDialogMaps", "mapsList"] call RSTF_fnc_getCtrl;
 	_x = lnbCurSelRow _ctrl;
 	if (_x >= 0) then {
 		_ident = _ctrl lnbData [_x, 0];
 		_img = _ctrl lnbData [_x, 1];
 		
-		_ctrl = ["RSTF_RscDialogMaps", "mapsImage"] call RSTF_getCtrl;
+		_ctrl = ["RSTF_RscDialogMaps", "mapsImage"] call RSTF_fnc_getCtrl;
 		_ctrl ctrlSetText _img;
 	};
 }];

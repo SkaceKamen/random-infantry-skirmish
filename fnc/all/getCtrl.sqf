@@ -17,7 +17,7 @@ _config = missionConfigFile >> _display;
 	_config = _config >> _x;
 } foreach _ns;
 
-_displayCtrl = _display call RSTF_getDisplay;
+_displayCtrl = _display call RSTF_fnc_getDisplay;
 _idc = getNumber(_config >> _ctrl >> "idc");
 _result = _displayCtrl displayCtrl _idc;
 

@@ -48,7 +48,7 @@ for[{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 			};
 
 			{
-				_usable = (configFile >> "cfgWeapons" >> _x) call RSTF_isUsableWeapon;
+				_usable = (configFile >> "cfgWeapons" >> _x) call RSTF_fnc_isUsableWeapon;
 				if (_x != "FakeWeapon" && _x != "Throw" && _x != "Put" && _usable) then {
 					_weaponized = true;
 				};

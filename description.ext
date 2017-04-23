@@ -6,6 +6,14 @@
 #include "dialogs\equipDialog.hpp"
 //#include "dialogs\mapsDialog.hpp"
 
+class cfgFunctions
+{
+	class RSTF
+	{
+		#include "functions.hpp"
+	};
+};
+
 author = "SkaceKachna";
 overviewText = "Random infantry skirmish on random place on island";
 overviewPicture = "random.paa";

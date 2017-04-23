@@ -50,7 +50,7 @@ for[{_i = 0},{_i < RSTF_NEUTRALS_GROUPS},{_i = _i + 1}] do {
 		_group = creategroup resistance;
 		
 		//Create equipped unit
-		_unit = [_group, SIDE_NEUTRAL] call RSTF_createRandomUnit;
+		_unit = [_group, SIDE_NEUTRAL] call RSTF_fnc_createRandomUnit;
 		_dir = [getPos(_house), _position] call BIS_fnc_dirTo;
 		_group setFormDir _dir;
 		_unit setDir _dir;

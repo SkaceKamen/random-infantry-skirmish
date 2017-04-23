@@ -4,7 +4,7 @@ _group = _this select 0;
 _index = _this select 1;
 _subindex = _this select 2;
 
-_class = [_index, _subindex] call RSTF_getRandomVehicle;
+_class = [_index, _subindex] call RSTF_fnc_getRandomVehicle;
 _vehicle = createVehicle [_class, RSTF_SPAWNS select _index, [], 100, "NONE"];
 
 _boat = _class isKindOf "Ship";
@@ -15,9 +15,9 @@ createVehicleCrew _vehicle;
 {
 	_x setVariable ["SPAWNED_SIDE", side(_group)];
 	_x setVariable ["RSTF_vehicle", _vehicle];
-	_x addEventHandler ["Killed", RSTF_unitKilled];
+	_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 	if (_boat) then {
-		_x addEventHandler ["Killed", RSTF_sailorKilled];
+		_x addEventHandler ["Killed", RSTF_fnc_sailorKilled];
 	};
 } foreach crew _vehicle;
 
@@ -31,7 +31,7 @@ if (side(_group) == side(player)) then {
 	if (!PLAYER_SPAWNED) then {
 		PLAYER_SPAWNED = true;
 		PLAYER_SIDE = side(player);
-		_unit call RSTF_assignPlayer;
+		_unit call RSTF_fnc_assignPlayer;
 	};
 };
 

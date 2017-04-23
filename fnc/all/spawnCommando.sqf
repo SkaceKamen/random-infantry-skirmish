@@ -34,7 +34,7 @@ if (_vehicle != "") then {
 };
 
 for[{_i = 0},{_i < _size},{_i = _i + 1}] do {
-	_unit = [_group, _index] call RSTF_createRandomUnit;
+	_unit = [_group, _index] call RSTF_fnc_createRandomUnit;
 	_unit setSkill 1;
 	
 	if (!isNull(_vehicle)) then {
