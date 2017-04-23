@@ -74,7 +74,7 @@ RSTF_TASK_RESCUE_HOUSE_load = {
 
 	RSTF_TASK = [
 		side(player), ["sideTask"],
-		["Save this guy (from house), please","Rescue VIP",""],
+		["Save this guy, please","Rescue VIP",""],
 		_vip,
 		"ASSIGNED"
 	] call BIS_fnc_taskCreate;

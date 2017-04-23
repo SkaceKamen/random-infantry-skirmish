@@ -5,9 +5,19 @@ RSTF_MEN = [ [], [], [] ];
 	_factions = _x select 1;
 
 	_list = [_factions] call RSTF_loadSoldiers;
+	_vehicles = [_factions] call RSTF_loadVehicles;
 	RSTF_MEN set [_side, _list select 0];
+	RSTF_VEHICLES set [_side, _vehicles];
 
-	diag_log format["Loaded %1 soldiers for side %2 from factions %3", count(_list select 0), _side, _factions];
+	diag_log format[
+		"Loaded %1 soldiers, %2 transport vehicles, %3 apcs and %4 static weapons for side %5 from factions %6",
+		count(_list select 0),
+		count(_vehicles select RSTF_VEHICLE_TRANSPORT),
+		count(_vehicles select RSTF_VEHICLE_APC),
+		count(_vehicles select RSTF_VEHICLE_STATIC),
+		_side,
+		_factions
+	];
 
 	if (RSTF_RANDOMIZE_WEAPONS_RESTRICT) then {
 		_launchers = [];

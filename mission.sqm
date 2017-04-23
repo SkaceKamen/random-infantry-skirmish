@@ -1,4 +1,4 @@
-version=52;
+version=53;
 class EditorData
 {
 	moveGridStep=1;
@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=8;
+		nextID=22;
 	};
 	class MarkerIDProvider
 	{
@@ -16,44 +16,36 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14075.528,63.82383,16435.781};
-		dir[]={0.55012107,-0.63533497,0.54202825};
-		up[]={0.45259637,0.77220124,0.445939};
-		aside[]={0.70187068,-7.5170828e-007,-0.71235281};
+		pos[]={14061.989,39.448112,16453.73};
+		dir[]={0.91493398,-0.23972358,0.32482949};
+		up[]={0.225982,0.9708215,0.080231152};
+		aside[]={0.33458176,-1.5061814e-006,-0.94240612};
 	};
 };
 binarizationWanted=0;
 addons[]=
 {
 	"A3_Ui_F",
-	"A3_Characters_F",
-	"A3_Data_F_Curator_Characters"
+	"A3_Characters_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=3;
+		items=2;
 		class Item0
 		{
 			className="A3_Ui_F";
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item1
 		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
-		};
-		class Item2
-		{
-			className="A3_Data_F_Curator";
-			name="Arma 3 Zeus Update - Main Configuration";
-			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 	};
 };

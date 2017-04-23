@@ -27,8 +27,8 @@ class rscTitles
 					shadow = 0;
 				};
 			};
-			
-			class FRScoreBar : RscText
+
+			class FRScoreBar : RscStatic
 			{
 				idc = 3;
 				style = ST_RIGHT;
@@ -37,9 +37,10 @@ class rscTitles
 				w = 0.10;
 				h = 0.05;
 				colorBackground[] = { 0, 0.77, 0, 0.9 };
+
 			};
 			
-			class ENScoreBar : RscText
+			class ENScoreBar : RscStatic
 			{
 				idc = 2;
 				x = SafeZoneX + SafeZoneW / 2 + 0.005;

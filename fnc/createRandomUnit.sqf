@@ -8,6 +8,16 @@ if (isNull(_unit)) then {
 	systemChat "FAILED TO SPAWN AI!";
 };
 
+if (count(RSTF_SPAWN_VEHICLES select _index) > 0) then {
+	_vehicles = RSTF_SPAWN_VEHICLES select _index;
+	{
+		if (alive(_x) && (_x emptyPositions "CARGO") > 0) exitWith {
+			_unit moveInCargo _x;
+			[_unit, _x] spawn { sleep 1; unassignVehicle (_this select 0); (_this select 0) action ["Eject", _this select 1]; };
+		};
+	} foreach _vehicles;
+};
+
 _unit setSkill random(1);
 
 [_unit] joinSilent _group;

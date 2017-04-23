@@ -220,7 +220,6 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	RSTF_CAM camSetRelPos [1,1,50];
 	RSTF_CAM camCommit 0;
 
-
 	call RSTF_profileSave;
 
 	//if (RSTF_SELECTED_WORLD != worldName) then {

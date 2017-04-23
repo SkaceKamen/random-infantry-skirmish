@@ -48,7 +48,7 @@ while{true} do {
 					};
 				} else {
 					if (count(units(_x)) < RSTF_LIMIT_UNITS) then {
-						for[{_i = count(units(_x))},{_i < RSTF_LIMIT_UNITS},{_i = _i + 1}] do {
+						for[{_i = count(units(_x)); _k = 0},{_i < RSTF_LIMIT_UNITS && _k < 5},{_i = _i + 1; _k = _k + 1}] do {
 							[_x, _index] call RSTF_createRandomUnit;
 						};
 					};

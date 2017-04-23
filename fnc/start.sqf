@@ -2,16 +2,6 @@
 call RSTF_loadWeapons;
 call RSTF_loadClasses;
 
-//Debug output
-{
-	diag_log format["Loaded %1 men, %2 tanks, %3 cars for %4",
-		count(RSTF_MEN select _x),
-		count((RSTF_VEHICLES select _x) select 1),
-		count((RSTF_VEHICLES select _x) select 0),
-		_x
-	];
-} foreach RSTF_SIDES;
-
 if (count(RSTF_POINT) == 0) then {
 	call RSTF_randomPoint;
 };
@@ -35,6 +25,11 @@ _marker setMarkerText "Attack this position";
 //Spawn neutral units
 call RSTF_spawnNeutrals;
 
+// Spawn spawns
+{
+	[_foreachIndex, _x] call RSTF_spawnSpawnDefenses;
+} foreach RSTF_SPAWNS;
+
 //Start UI features
 [] spawn RSTF_UI_Start;
 
@@ -47,6 +42,15 @@ call RSTF_superRandomTime;
 
 //Weather
 [] spawn RSTF_superRandomWeather;
+
+[
+	[
+		[text(RSTF_LOCATION), "%1<br />"],
+		[format["%1:%2", date select 3, date select 4],"<t align = 'center' shadow = '1' size = '0.7'>%1</t><br/>"]
+	]
+] call BIS_fnc_typeText;
+
+sleep 2;
 
 //Start game loop
 [] spawn RSTF_loop;

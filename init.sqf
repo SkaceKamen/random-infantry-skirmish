@@ -1,8 +1,4 @@
-NL = "
-";
 SCRIPTS_ROOT = "";
-
-RSTF_INIT = "";
 call compile(preprocessFileLineNumbers('init-game.sqf'));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "variables.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "options.sqf"));
@@ -18,6 +14,7 @@ RSTF_functions = [
 	"getCtrl",
 	"getDisplay",
 	"loadClasses",
+	"loadVehicles",
 	"loadWeapons",
 	"randomPosition",
 	"createNeutral",
@@ -57,6 +54,7 @@ RSTF_functions = [
 	"showEquip",
 	"getAttachments",
 	"superRandomWeather",
+	"spawnSpawnDefenses",
 	"superRandomTime",
 	//"switchIsland",
 	"addPlayerScore"
@@ -71,9 +69,9 @@ RSTF_functions = [
 RSTF_initScripts = [
 	"map",
 	"tasks",
-	// "tasks\clear",
-	"tasks\rescue-house",
-	"tasks\rescue-vehicle",
+	"tasks\clear",
+	// "tasks\rescue-house",
+	// "tasks\rescue-vehicle",
 	"start"
 ];
 

@@ -1,30 +1,25 @@
-// Indexes used for various arrays
+//Indexes used for various arrays
 SIDE_ENEMY = 0;
 SIDE_FRIENDLY = 1;
 SIDE_NEUTRAL = 2;
 
-// Center point
+//Center point
 RSTF_POINT = [];
 RSTF_LOCATION = locationNull;
 
-// Building that shouldn't be populated
+//Building that shouldn't be populated
 RSTF_BANNED_BUILDINGS = [ "Land_Pier_F", "Land_Metal_Shed_F" ];
 
-// Sides in this conflict
+//Sides in this conflict
 RSTF_SIDES = [ SIDE_ENEMY, SIDE_FRIENDLY, SIDE_NEUTRAL ];
 
-// Vehicle classes [ STATIC, TRANSPORT, APC ] for each side
-RSTF_VEHICLES = [ [[], [], []], [[], [], []], [[], [], []] ];
-RSTF_VEHICLE_STATIC = 0;
-RSTF_VEHICLE_TRANSPORT = 1;
-RSTF_VEHICLE_APC = 2;
-RSTF_VEHICLES_TYPES = [RSTF_VEHICLE_STATIC, RSTF_VEHICLE_TRANSPORT, RSTF_VEHICLE_APC];
-
-// Men classes for each side (inc neutral)
+//Vehicle classes [ CARS, TANKS, HELIS, SHIPS ] for each side
+RSTF_VEHICLES = [ [[], [], [], [], []], [[], [], [], [], []] ];
+//Men classes for each side (inc neutral)
 RSTF_MEN = [ [], [], [] ];
-// Command groups
+//Command groups
 RSTF_COMMANDO = [ [], [] ];
-// Actual state of score for each side
+//Actual state of score for each side
 RSTF_SCORE = [ 0, 0 ];
 
 //Weapon classes - universal
@@ -41,7 +36,7 @@ RSTF_GROUPS = [ [], [] ];
 RSRF_NEUTRAL_HOUSES = [];
 
 //Vehicle groups
-RSTF_VEHICLE_GROUPS = [ [], [], [] ];
+RSTF_VEHICLE_GROUPS = [ [], [] ];
 
 //Rate of UI update
 RSTF_UI_STEP = 0.5;
@@ -124,13 +119,6 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_TIME"
 	//"RSTF_SELECTED_WORLD"
 ];
-
-// List of spawns, indexed by side
-RSTF_SPAWNS = [];
-// List of vehicles that can be used for spawn, indexed by side
-RSTF_SPAWN_VEHICLES = [[], []];
-// List of buildings that can be used for spawn, indexed by side
-RSTF_SPAWN_BUILDINGS = [[], []];
 
 /**
  * List of available side missions.

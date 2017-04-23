@@ -17,8 +17,6 @@ RESISTANCE setFriend [EAST, 0];
 
 SCRIPTS_ROOT = _root;
 
-DLOG([_root, _player]);
-
 //Create player if needed
 if (_player) then {
 	_unit = (creategroup west) createUnit [ "B_Soldier_F", [0, 0, 0], [], 0, "NONE" ];
@@ -29,10 +27,4 @@ if (_player) then {
 	
 	setPlayable _unit;
 	selectPlayer _unit;
-};
-
-_config = missionConfigFile;
-diag_log _config;
-for[{_i = 0},{_i < count(_config)},{_i = _i + 1}] do {
-	diag_log(_config select _i);
 };

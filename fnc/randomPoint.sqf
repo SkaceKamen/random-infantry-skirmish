@@ -10,6 +10,8 @@ while {RSTF_WATER} do {
 	_direction = random(360);
 	_distance = 200 + random(50);
 
+	RSTF_LOCATION = _center;
+
 	//Save center position
 	RSTF_POINT = getPos(_center);
 	//RSTF_POINT = markerPos "TestCenter";
@@ -22,8 +24,8 @@ while {RSTF_WATER} do {
 		//Load spawn locations
 		//INDEX is side index
 		RSTF_SPAWNS = [
-			[(RSTF_POINT select 0) + cos(_direction) * _distance,(RSTF_POINT select 1) + sin(_direction) * _distance],
-			[(RSTF_POINT select 0) + cos(180 + _direction) * _distance,(RSTF_POINT select 1) + sin(180 + _direction) * _distance],
+			[(RSTF_POINT select 0) + cos(_direction) * _distance,(RSTF_POINT select 1) + sin(_direction) * _distance, 0],
+			[(RSTF_POINT select 0) + cos(180 + _direction) * _distance,(RSTF_POINT select 1) + sin(180 + _direction) * _distance, 0],
 			[0,0,0] //For netural defenders
 		];
 		
