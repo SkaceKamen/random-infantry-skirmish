@@ -10,7 +10,7 @@ class cfgFunctions
 {
 	class RSTF
 	{
-		#include "functions.hpp"
+		#include "fnc/functions.hpp"
 	};
 };
 
