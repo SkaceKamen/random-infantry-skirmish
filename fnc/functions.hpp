@@ -7,8 +7,6 @@ class all
 	class configUpdateFactions {};
 	class configValidate {};
 	class countTurrets {};
-	class createRandomUnit {};
-	class createRandomVehicle {};
 	class equipSoldier {};
 	class factionsUpdate {};
 	class getAttachments {};
@@ -39,16 +37,30 @@ class all
 	class showDeath {};
 	class showEquip {};
 	class showFactions {};
-	class spawnCommando {};
-	class spawnNeutrals {};
-	class spawnPlayer {};
-	class spawnSpawnDefenses {};
 	class start {};
 	class superRandomTime {};
 	class superRandomWeather {};
 	class switchIsland {};
-	class UI_addMessage {};
-	class UI_start {};
 	class unitKilled {};
 	class pathString {};
+};
+
+class spawn
+{
+	file = "fnc/spawn";
+
+	class createRandomUnit {};
+	class createRandomVehicle {};
+	class spawnCommando {};
+	class spawnNeutrals {};
+	class spawnPlayer {};
+	class spawnSpawnDefenses {};
+};
+
+class ui
+{
+	file = "fnc/ui";
+
+	class UI_addMessage {};
+	class UI_start {};
 };
