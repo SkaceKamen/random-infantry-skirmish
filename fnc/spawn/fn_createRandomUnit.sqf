@@ -10,12 +10,18 @@ if (isNull(_unit)) then {
 
 if (count(RSTF_SPAWN_VEHICLES select _index) > 0) then {
 	_vehicles = RSTF_SPAWN_VEHICLES select _index;
+	_candidates = [];
 	{
-		if (alive(_x) && (_x emptyPositions "CARGO") > 0) exitWith {
-			_unit moveInCargo _x;
-			[_unit, _x] spawn { sleep 1; unassignVehicle (_this select 0); (_this select 0) action ["Eject", _this select 1]; };
+		if (alive(_x) && (_x emptyPositions "CARGO") > 0) then {
+			_candidates pushBack _x;
 		};
 	} foreach _vehicles;
+
+	if (count(_candidates) > 0) then {
+		_vehicle = selectRandom _candidates;
+		_unit moveInCargo _vehicle;
+		[_unit, _vehicle] spawn { sleep 1; unassignVehicle (_this select 0); (_this select 0) action ["Eject", _this select 1]; };
+	};
 };
 
 _unit setSkill random(1);

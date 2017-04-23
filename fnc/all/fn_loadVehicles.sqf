@@ -17,7 +17,7 @@ private _apcs = _vehicles select RSTF_VEHICLE_APC;
 private _classes = configFile >> "CfgVehicles";
 
 //Load men and vehicles for each faction
-for[{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
+for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 	_c = _classes select _i;
 	if (isClass(_c)) then {
 		_scope = getNumber(_c >> "scope");
@@ -38,15 +38,15 @@ for[{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 				getNumber(_c >> "transportSoldier");
 			} else { 0 };
 
-			// Scan vehicle weapons to determine if there is any attack weapon
-			_wp = getArray(_c >> "weapons");
+			// Scan vehicle turrets to determine if there is any attack weapon
 			if (isClass(_c >> "Turrets")) then {
-				_turrets = "true" configClasses (_c >> "Turrets");
-				{
-					_wp = _wp + getArray(_x >> "weapons");
-				} foreach _turrets;
+				if (_c call RSTF_fnc_countTurrets > 0) then {
+					_weaponized = true;
+				};
 			};
 
+			// Scan weapons, mainly for soliders
+			_wp = getArray(_c >> "weapons");
 			{
 				_usable = (configFile >> "cfgWeapons" >> _x) call RSTF_fnc_isUsableWeapon;
 				if (_x != "FakeWeapon" && _x != "Throw" && _x != "Put" && _usable) then {
@@ -60,9 +60,9 @@ for[{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 
 			if (_weaponized) then {
 				if (_static) then {
-					_apcs pushBack configName(_c);
-				} else {
 					_statics pushBack configName(_c);
+				} else {
+					_apcs pushBack configName(_c);
 				};
 			};
 		};

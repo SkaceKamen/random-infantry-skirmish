@@ -1,6 +1,6 @@
 class all
 {
-	file = "fnc/all";
+	file = "fnc\all";
 
 	class addPlayerScore {};
 	class assignPlayer {};
@@ -47,7 +47,7 @@ class all
 
 class spawn
 {
-	file = "fnc/spawn";
+	file = "fnc\spawn";
 
 	class createRandomUnit {};
 	class createRandomVehicle {};
@@ -59,7 +59,7 @@ class spawn
 
 class ui
 {
-	file = "fnc/ui";
+	file = "fnc\ui";
 
 	class UI_addMessage {};
 	class UI_start {};

@@ -7,7 +7,7 @@ for[{_ii = 0},{_ii < count(_c >> "Turrets")},{_ii = _ii + 1}] do {
 	_weapons = getArray(_turret >> "weapons");
 	_wpns = 0;
 	{
-		if (_x != "Laserdesignator_mounted" && _x != "SmokeLauncher") exitWith {
+		if (_x != "FakeWeapon" && _x != "Laserdesignator_mounted" && _x != "SmokeLauncher") exitWith {
 			_wpns = _wpns + 1;
 		};
 	} foreach _weapons;
