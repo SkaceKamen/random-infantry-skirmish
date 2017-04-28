@@ -23,7 +23,7 @@ _result = _displayCtrl displayCtrl _idc;
 
 if (isNull(_result)) then {
 	systemChat format["Failed to find %1/%2 (%3,%4,%5)", _display, _ctrl, _displayCtrl, _result, _idc];
-	diag_log format["Failed to find %1/%2 (%3,%4,%5-%6)", _display, _ctrl, _displayCtrl, _result, _idc, typeName(_idc)];
+	diag_log text(format["getCtrl: Failed to find %1/%2 (%3,%4,%5-%6)", _display, _ctrl, _displayCtrl, _result, _idc, typeName(_idc)]);
 	
 };
 
