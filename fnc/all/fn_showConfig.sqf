@@ -2,16 +2,14 @@ disableSerialization;
 
 call RSTF_fnc_randomPoint;
 
+if (isMultiplayer) then {
+	sleep 1;
+};
+
 waitUntil { time > 0 };
 showCinemaBorder false;
 
 publicVariable "RSTF_POINT";
-
-_ok = createDialog "RSTF_RscDialogConfig";
-if (!_ok) exitWith {
-	systemChat "Fatal error. Couldn't create config dialog.";
-	call RSTF_fnc_start;
-};
 
 RSTF_CAM = "camera" camCreate RSTF_CAM_TARGET;
 RSTF_CAM camSetTarget RSTF_CAM_TARGET;
@@ -27,6 +25,12 @@ if (true) exitWith {
 	call RSTF_fnc_showEquip;
 };
 */
+
+_ok = createDialog "RSTF_RscDialogConfig";
+if (!_ok) exitWith {
+	systemChat "Fatal error. Couldn't create config dialog.";
+	call RSTF_fnc_start;
+};
 
 _display = findDisplay getNumber(missionConfigFile >> "RSTF_RscDialogConfig" >> "idd");
 
