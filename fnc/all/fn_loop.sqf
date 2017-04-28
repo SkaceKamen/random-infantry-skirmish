@@ -31,6 +31,8 @@ while{true} do {
 					_wp setWaypointType "SAD";
 					_groups set [_i, _group];
 				};
+
+				publicVariable "RSTF_GROUPS";
 			};
 			
 			{

@@ -90,6 +90,7 @@ if (alive(_unit)) then {
 	};
 
 	selectPlayer _unit;
+	[_unit] joinSilent group(_unit);
 	_unit addEventHandler ["Killed", RSTF_fnc_playerKilled];
 } else {
 	[_unit, objNull] call RSTF_fnc_playerKilled;
@@ -99,5 +100,4 @@ RSTF_CAM cameraEffect ["terminate","back"];
 camDestroy RSTF_CAM;
 RSTF_CAM = objNull;
 
-diag_log "Player spawned. Starting task.";
 call RSTF_TASKS_start;

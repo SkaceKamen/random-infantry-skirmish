@@ -31,17 +31,22 @@ _unit setSkill random(1);
 
 // This is initial spawn
 {
-	_player = _x select 0;
-	_assigned = _x select 1;
-	if (isNull(_assigned) && side(_player) == side(_unit)) exitWith {
-		RSTF_ASSIGNED_UNITS set [_foreachIndex, [_player, _unit]];
+	_player = _x;
+	// systemChat str([_player, player getVariable ["ASSIGNED", true]]);
+	if (!(_player getVariable ["ASSIGNED", true]) and side(_player) == side(_unit)) exitWith {
+		_player setVariable ["ASSIGNED", true, true];
+		
+		RSTF_ASSIGNED_UNITS set [0, _player];
+		RSTF_ASSIGNED_UNITS set [1, _unit];
+
+		systemChat str(RSTF_ASSIGNED_UNITS);
 		publicVariable "RSTF_ASSIGNED_UNITS";
 
 		if (!isDedicated && _player == player) then {
 			_unit spawn RSTF_fnc_assignPlayer;
 		};
 	};
-} foreach RSTF_ASSIGNED_UNITS;
+} foreach (call BIS_fnc_listPlayers);
 
 _unit setVariable ["SPAWNED_SIDE", side(_group), true];
 _unit addEventHandler ["Killed", RSTF_fnc_unitKilled];

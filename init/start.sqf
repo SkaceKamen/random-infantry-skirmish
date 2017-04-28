@@ -1,3 +1,7 @@
+if (!isDedicated) then {
+	player setVariable ["ASSIGNED", false, true];
+};
+
 if (isServer) then {
 	if (RSTF_SKIP_CONFIG) then {
 		//Start game

@@ -5,6 +5,8 @@ RSTF_DEATH_GROUP = group(_unit);
 
 selectPlayer RSTF_BACKUP_PLAYER;
 
+RSTF_BACKUP_PLAYER setVariable ["ASSIGNED", false, true];
+
 _side = SIDE_ENEMY;
 if (PLAYER_SIDE == west) then {
 	_side = SIDE_FRIENDLY;
