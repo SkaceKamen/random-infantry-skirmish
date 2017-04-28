@@ -37,8 +37,8 @@ _unit setSkill random(1);
 		RSTF_ASSIGNED_UNITS set [_foreachIndex, [_player, _unit]];
 		publicVariable "RSTF_ASSIGNED_UNITS";
 
-		if (not isDedicated && _player == player) then {
-			_unit call RSTF_fnc_assignPlayer;
+		if (!isDedicated && _player == player) then {
+			_unit spawn RSTF_fnc_assignPlayer;
 		};
 	};
 } foreach RSTF_ASSIGNED_UNITS;

@@ -7,7 +7,7 @@ RSTF_TASKS_start = {
 	_found = false;
 	_task = [];
 
-	diag_log text("Searching for task");
+	diag_log text("TASKS: Searching for task");
 
 	// Reload last active task if possible
 	if (RSTF_TASK_TYPE != "") then {
@@ -18,12 +18,12 @@ RSTF_TASKS_start = {
 		} foreach RSTF_TASKS;
 
 		if (count(_task) > 0) exitWith {
-			diag_log text("Restarting " + str(_task select 0) + ". Starting...");
+			diag_log text("TASKS: Restarting " + str(_task select 0) + ". Starting...");
 			RSTF_TASK_PARAMS call (_task select RSTF_TASK_LOAD);
-			diag_log text("Task started.");
+			diag_log text("TASKS: Task started.");
 		};
 
-		diag_log text("Failed to load previous task. Starting new.");
+		diag_log text("TASKS: Failed to load previous task. Starting new.");
 	};
 
 	// We resumed previous task, stop
@@ -47,9 +47,9 @@ RSTF_TASKS_start = {
 
 	// Start task if found
 	if (count(_task) > 0) then {
-		diag_log text("Task found: " + str(_task select 0) + ". Starting...");
+		diag_log text("TASKS: Task found: " + str(_task select 0) + ". Starting...");
 		call (_task select RSTF_TASK_START);
-		diag_log text("Task started.");
+		diag_log text("TASKS: Task started.");
 	};
 };
 
@@ -71,6 +71,6 @@ RSTF_TASKS_clear = {
 	RSTF_TASK_TYPE = "";
 	RSTF_TASK_PARAMS = [];
 
-	diag_log "Task completed. Starting new task.";
+	diag_log text("TASKS: Task completed. Starting new task.");
 	call RSTF_TASKS_start;
 };

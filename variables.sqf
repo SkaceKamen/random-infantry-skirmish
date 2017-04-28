@@ -169,3 +169,6 @@ RSTF_ASSIGNED_UNITS = [];
 
 // Used for multiplayer, contains kill info
 RSTF_KILL_OCCURED = [];
+
+// This is used when respawning
+PLAYER_SIDE = side(player);

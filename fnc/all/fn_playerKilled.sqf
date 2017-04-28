@@ -17,5 +17,4 @@ RSTF_CAM camCommit 0;
 RSTF_CAM camSetRelPos [10, 0, 50];
 RSTF_CAM camCommit 2;
 
-//_side call RSTF_fnc_spawnPlayer;
 [_side, _this select 1, _unit] call RSTF_fnc_showDeath;
