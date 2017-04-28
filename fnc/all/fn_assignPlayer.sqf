@@ -1,4 +1,4 @@
-_unit = _this;
+_unit = this;
 
 if (isNull(RSTF_CAM)) then {
 	RSTF_CAM = "camera" camCreate [RSTF_POINT select 0, RSTF_POINT select 1, 100];

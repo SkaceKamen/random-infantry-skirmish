@@ -3,8 +3,9 @@ disableSerialization;
 call RSTF_fnc_randomPoint;
 
 waitUntil { time > 0 };
-
 showCinemaBorder false;
+
+publicVariable "RSTF_POINT";
 
 _ok = createDialog "RSTF_RscDialogConfig";
 if (!_ok) exitWith {
@@ -215,10 +216,6 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	_ctrl = _display displayCtrl getNumber(missionConfigFile >> "RSTF_RscDialogConfig" >> "controls" >> "LABEL_LOADING" >> "idc");
 	_ctrl ctrlShow true;
 	*/
-
-	RSTF_CAM camSetTarget RSTF_POINT;
-	RSTF_CAM camSetRelPos [1,1,50];
-	RSTF_CAM camCommit 0;
 
 	call RSTF_fnc_profileSave;
 

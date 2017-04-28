@@ -15,7 +15,7 @@ _expandCache = {
 
 lnbClear _ctrl;
 {
-	_name = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "displayName") + " (" + _x + ")";
+	_name = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "displayName");
 	_icon = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "icon");
 	_selected = "";
 
@@ -27,7 +27,7 @@ lnbClear _ctrl;
 	_ctrl lnbSetPicture [[_foreachIndex,0], _icon];
 	_ctrl lnbSetPictureColor [[_foreachIndex,0], [1,1,1,1]];
 	_ctrl lnbSetData [[_foreachIndex, 0], _x];
-	
+
 	if (_selected == "") then {
 		_ctrl lnbSetColor [[_foreachIndex, 0], [0.8,0.8,0.8,1]];
 	};

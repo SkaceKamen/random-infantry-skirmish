@@ -64,3 +64,14 @@ class ui
 	class UI_addMessage {};
 	class UI_start {};
 };
+
+class net
+{
+	file = "fnc\net";
+
+	class clientStart {};
+	class onStarted {};
+	class onPointChanged {};
+	class onKill {};
+	class onScore {};
+};

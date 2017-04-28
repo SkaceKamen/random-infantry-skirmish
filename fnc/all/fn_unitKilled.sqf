@@ -27,18 +27,14 @@ if (_index != -1) then {
 	[] spawn RSTF_fnc_scoreChanged;
 };
 
-//Show player hitn
-if (_killer == player) then {
-	if (_side != side(player)) then {
-		if (_side == civilian) then {
-			["Civilan kill -500", 5] call RSTF_fnc_UI_AddMessage;
-		} else {
-			[format["Kill +%1", RSTF_SCORE_PER_KILL], 5] call RSTF_fnc_UI_AddMessage;
-		};
-	} else {
-		[format["Team kill -%1", RSTF_SCORE_PER_TEAMKILL], 5] call RSTF_fnc_UI_AddMessage;
-	};
+// Broadcast kill info, making it appear on UI for all players
+RSTF_KILL_OCCURED = [_killed, _killer, _side];
+publicVariable "RSTF_KILL_OCCURED";
+
+if (!isDedicated) then {
+	RSTF_KILL_OCCURED call RSTF_fnc_onKill;
 };
+
 
 if (RSTF_CLEAN) then {
 	_killed spawn {

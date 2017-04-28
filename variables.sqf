@@ -160,3 +160,12 @@ RSTF_CAM_TARGET = RSTF_CAM_SPAWN vectorAdd [0,0, 1];
 if (isNil("RSTF_SKIP_CONFIG")) then {
 	RSTF_SKIP_CONFIG = false;
 };
+
+// Inidicates if game has started
+RSTF_STARTED = false;
+
+// Contains units assinged to players
+RSTF_ASSIGNED_UNITS = [];
+
+// Used for multiplayer, contains kill info
+RSTF_KILL_OCCURED = [];

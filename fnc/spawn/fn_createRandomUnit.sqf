@@ -29,16 +29,21 @@ _unit setSkill random(1);
 [_unit] joinSilent _group;
 [_unit, _index] call RSTF_fnc_equipSoldier;
 
-if (side(_unit) == side(player)) then {
-	setPlayable _unit;
-	if (!PLAYER_SPAWNED) then {
-		PLAYER_SPAWNED = true;
-		PLAYER_SIDE = side(player);
-		_unit call RSTF_fnc_assignPlayer;
-	};
-};
+// This is initial spawn
+{
+	_player = _x select 0;
+	_assigned = _x select 1;
+	if (isNull(_assigned) && side(_player) == side(_unit)) exitWith {
+		RSTF_ASSIGNED_UNITS set [_foreachIndex, [_player, _unit]];
+		publicVariable "RSTF_ASSIGNED_UNITS";
 
-_unit setVariable ["SPAWNED_SIDE", side(_group)];
+		if (not isDedicated && _player == player) then {
+			_unit call RSTF_fnc_assignPlayer;
+		};
+	};
+} foreach RSTF_ASSIGNED_UNITS;
+
+_unit setVariable ["SPAWNED_SIDE", side(_group), true];
 _unit addEventHandler ["Killed", RSTF_fnc_unitKilled];
 
 _unit;
