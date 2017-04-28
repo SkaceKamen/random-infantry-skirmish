@@ -9,4 +9,4 @@
 [] spawn RSTF_fnc_UI_Start;
 
 // Update score display
-[] call RSTF_fnc_scoreChanged;
+[] spawn RSTF_fnc_onScore;

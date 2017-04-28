@@ -31,3 +31,9 @@
 "RSTF_KILL_OCCURED" addPublicVariableEventHandler {
 	(_x select 1) call RSTF_fnc_onKill;
 };
+
+// Global score
+"RSTF_SCORE" addPublicVariableEventHandler {
+	RSTF_SCORE = _this select 1;
+	call RSTF_fnc_onScore;
+};
