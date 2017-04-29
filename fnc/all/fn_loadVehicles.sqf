@@ -30,6 +30,10 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 			// Used to identify static weapons by its base class
 			_parents = [_c, true] call BIS_fnc_returnParents;
 	
+			// Air vehicles need to be treated differently
+			_air = "Air" in _parents;
+			_land = "Land" in _parents;
+
 			// Load only non-AA static weapons
 			_static = "StaticWeapon" in _parents && !("StaticAAWeapon" in _parents);
 			
@@ -45,24 +49,26 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 				};
 			};
 
-			// Scan weapons, mainly for soliders
+			// Scan weapons
 			_wp = getArray(_c >> "weapons");
 			{
-				_usable = (configFile >> "cfgWeapons" >> _x) call RSTF_fnc_isUsableWeapon;
-				if (_x != "FakeWeapon" && _x != "Throw" && _x != "Put" && _usable) then {
+				_usable = [configFile >> "cfgWeapons" >> _x, true] call RSTF_fnc_isUsableWeapon;
+				if (_x != "FakeWeapon" && _usable) then {
 					_weaponized = true;
 				};
 			} foreach _wp;
-			
-			if (_transport > 3 && !_weaponized) then {
-				_transports pushBack configName(_c);
-			};
 
-			if (_weaponized) then {
-				if (_static) then {
-					_statics pushBack configName(_c);
-				} else {
-					_apcs pushBack configName(_c);
+			if (_land) then {
+				if (_transport >= 2 && !_weaponized) then {
+					_transports pushBack configName(_c);
+				};
+
+				if (_weaponized) then {
+					if (_static) then {
+						_statics pushBack configName(_c);
+					} else {
+						_apcs pushBack configName(_c);
+					};
 				};
 			};
 		};

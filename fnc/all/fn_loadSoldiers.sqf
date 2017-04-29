@@ -22,7 +22,7 @@ for[{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 			_weaponized = false;
 			_wp = getArray(_c >> "weapons");
 			{
-				_usable = (configFile >> "cfgWeapons" >> _x) call RSTF_fnc_isUsableWeapon;
+				_usable = [configFile >> "cfgWeapons" >> _x, false] call RSTF_fnc_isUsableWeapon;
 				if (_x != "Throw" && _x != "Put" && _usable) then {
 					_weaponized = true;
 					if (!(_x in _weapons) && (_ignore_bans || !(_x in RSTF_WEAPONS_BANNED))) then {
