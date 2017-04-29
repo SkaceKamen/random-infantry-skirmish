@@ -5,32 +5,22 @@
 	Initializes client side stuff.
 */
 
-waitUntil { time > 0 && alive(player) };
-
-
-0 spawn {
-	while { true } do {
-		systemChat str(RSTF_STARTED);
-		sleep 1;
-	};
-};
-
 {
 	_x addPublicVariableEventHandler {
 		systemChat format["%1 changed to %2", _this select 0, _this select 1];
-	}
+	};
 } foreach allVariables missionNamespace;
 
 // Location of battle
 "RSTF_POINT" addPublicVariableEventHandler {
 	RSTF_POINT = _this select 1;
-	[] spawn RSTF_fnc_onPointChanged;
+	0 spawn RSTF_fnc_onPointChanged;
 };
 
 // Marks start of mission
 "RSTF_STARTED" addPublicVariableEventHandler {
 	if (_this select 1) then {
-		[] spawn RSTF_fnc_onStarted;
+		0 spawn RSTF_fnc_onStarted;
 	};
 };
 
@@ -51,5 +41,9 @@ waitUntil { time > 0 && alive(player) };
 // Global score
 "RSTF_SCORE" addPublicVariableEventHandler {
 	RSTF_SCORE = _this select 1;
-	[] spawn RSTF_fnc_onScore;
+	0 spawn RSTF_fnc_onScore;
+};
+
+if (count(RSTF_POINT) > 0) then {
+	0 spawn RSTF_fnc_onPointChanged;
 };

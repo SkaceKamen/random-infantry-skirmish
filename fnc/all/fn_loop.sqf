@@ -108,6 +108,10 @@ while{true} do {
 	} else {
 		_spawnVehicles = _spawnVehicles - 1;
 	};
+
+	if (isServer && RSTF_TASK == "") then {
+		0 spawn RSTF_TASKS_start;
+	};
 	
 	sleep 1;
 };
