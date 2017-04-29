@@ -57,7 +57,7 @@ RSTF_TASK_CLEAR_load = {
 
 	RSTF_TASK = [
 		side(player), "CLEAR" + str(getPos(_house select 0)),
-		["Clear this house, because ... I don't know why","Clear house at " + str(mapGridPosition(getPos(_house select 0))),""],
+		["Clear this house, because ... I don't know why", "Clear house at " + str(mapGridPosition(getPos(_house select 0))),""],
 		getPos(_house select 0),
 		"ASSIGNED"
 	] call BIS_fnc_taskCreate;
@@ -71,8 +71,6 @@ RSTF_TASK_CLEAR_load = {
 		[_house] spawn {
 			_house = _this select 0;
 			waitUntil {({ alive _x } count (_house select 1)) == 0};
-
-			diag_log ["House at", getPos(_house select 0), "is now cleared"];
 
 			call RSTF_TASKS_TASK_completed;
 		};
