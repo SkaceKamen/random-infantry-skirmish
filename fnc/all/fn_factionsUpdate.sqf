@@ -64,8 +64,6 @@ _roots = call AMAP_create;
 		_className = getText(ConfigFile >> "cfgEditorSubcategories" >> _class >> "displayName");
 	};
 	
-	diag_log [_faction, _class, _x];
-	
 	_banned = "";
 	if (_x in RSTF_SOLDIERS_BANNED) then {
 		_banned = "[BANNED] ";
