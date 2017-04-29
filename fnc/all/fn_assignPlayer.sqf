@@ -1,5 +1,7 @@
 private _unit = _this;
 
+RSTF_BACKUP_PLAYER setVariable ["ASSIGNED", true, true];
+
 if (isNull(RSTF_CAM)) then {
 	RSTF_CAM = "camera" camCreate [RSTF_POINT select 0, RSTF_POINT select 1, 100];
 	RSTF_CAM camSetTarget RSTF_POINT;
@@ -99,5 +101,3 @@ if (alive(_unit)) then {
 RSTF_CAM cameraEffect ["terminate","back"];
 camDestroy RSTF_CAM;
 RSTF_CAM = objNull;
-
-call RSTF_TASKS_start;
