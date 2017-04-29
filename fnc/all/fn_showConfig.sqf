@@ -221,6 +221,11 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	_ctrl ctrlShow true;
 	*/
 
+	// Broadcast settings
+	{
+		publicVariable ("RSTF_" + _x);
+	} foreach RSTF_PROFILE_VALUES;
+
 	call RSTF_fnc_profileSave;
 
 	//if (RSTF_SELECTED_WORLD != worldName) then {
