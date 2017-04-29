@@ -48,15 +48,8 @@ call RSTF_fnc_superRandomTime;
 RSTF_STARTED = true;
 publicVariable "RSTF_STARTED";
 if (!isDedicated) then {
-	call RSTF_fnc_onStarted;
+	0 spawn RSTF_fnc_onStarted;
 };
-
-[
-	[
-		[text(RSTF_LOCATION), "%1<br />"],
-		[format["%1:%2", date select 3, date select 4],"<t align = 'center' shadow = '1' size = '0.7'>%1</t><br/>"]
-	]
-] call BIS_fnc_typeText;
 
 sleep 2;
 
