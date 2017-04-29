@@ -21,3 +21,5 @@ lnbClear _ctrl;
 	_ctrl lnbSetPicture [[_foreachIndex,0], _icon];
 	_ctrl lnbSetPictureColor [[_foreachIndex,0], [1,1,1,1]];
 } foreach _list;
+
+publicVariable "RSTF_FACTIONS";
