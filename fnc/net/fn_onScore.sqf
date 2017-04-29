@@ -20,9 +20,7 @@ for[{_i = 0}, {_i < 2}, {_i = _i + 1}] do {
 		RSTF_ENDED = true;
 	
 		if (isNull(RSTF_CAM)) then {
-			RSTF_CAM = "camera" camCreate [RSTF_POINT select 0, RSTF_POINT select 1, 100];
-			RSTF_CAM cameraEffect ["internal", "back"];
-			RSTF_CAM camCommit 0;
+			call RSTF_fnc_createCam;
 		};
 
 		waitUntil { camCommitted RSTF_CAM; };

@@ -37,12 +37,14 @@ class all
 	class showDeath {};
 	class showEquip {};
 	class showFactions {};
+	class showWaiting {};
 	class start {};
 	class superRandomTime {};
 	class superRandomWeather {};
 	class switchIsland {};
 	class unitKilled {};
 	class pathString {};
+	class createCam {};
 };
 
 class spawn

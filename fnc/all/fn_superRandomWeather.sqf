@@ -1,20 +1,47 @@
 _speed = 300;
 
+RSTF_WEATHER_ehOvercast = {
+	(_this select 0) setOvercast (_this select 1);
+};
+RSTF_WEATHER_ehRain = {
+	(_this select 0) setRain (_this select 1);
+};
+RSTF_WEATHER_ehWind = {
+	setWind _this;
+};
+
+"RSTF_WEATHER_OVERCAST" addPublicVariableEventHandler { (_this select 1) spawn RSTF_WEATHER_ehOvercast };
+"RSTF_WEATHER_RAIN" addPublicVariableEventHandler { (_this select 1) spawn RSTF_WEATHER_ehRain };
+"RSTF_WEATHER_WIND" addPublicVariableEventHandler { (_this select 1) spawn RSTF_WEATHER_ehWind };
+"RSTF_WEATHER_SYNC" addPublicVariableEventHandler {
+	0 spawn {
+		skipTime -24;
+
+		RSTF_WEATHER_OVERCAST call RSTF_WEATHER_ehOvercast;
+		RSTF_WEATHER_RAIN call RSTF_WEATHER_ehRain;
+		RSTF_WEATHER_WIND call RSTF_WEATHER_ehWind;
+
+		skipTime 24;
+		sleep 1;
+		simulWeatherSync;
+	};
+};
+
 _weather = {
 	if (RSTF_WEATHER == 0) then {
 		_type = round(random(1));
 		if (_type == 0) then {
-			_this setOvercast random(0.3);
-			_this setRain 0;
+			RSTF_WEATHER_OVERCAST = [_this, random(0.3)];
+			RSTF_WEATHER_RAIN = [_this, 0];
 		} else {
-			_this setOvercast random(1);
-			_this setRain random(1);
+			RSTF_WEATHER_OVERCAST = [_this, random(1)];
+			RSTF_WEATHER_RAIN = [_this, random(1)];
 		};
-		
+
 		if (_this == 0) then {
-			setWind [random(5), random(5), true];
+			RSTF_WEATHER_WIND = [random(5), random(5), true];
 		} else {
-			setWind [random(5), random(5)];
+			RSTF_WEATHER_WIND = [random(5), random(5)];
 		};
 	} else {
 		_options = RSTF_WEATHER_OPTIONS select RSTF_WEATHER;
@@ -49,15 +76,27 @@ _weather = {
 			_wind_set set [2, true];
 		};
 	
-		_this setOvercast _over;
-		_this setRain _rain;
-		setWind _wind_set;
+		RSTF_WEATHER_OVERCAST = [_this, _over];
+		RSTF_WEATHER_RAIN = [_this, _rain];
+		RSTF_WEATHER_WIND = _wind_set;
 	};
+
+	publicVariable "RSTF_WEATHER_OVERCAST";
+	publicVariable "RSTF_WEATHER_RAIN";
+	publicVariable "RSTF_WEATHER_WIND";
+
+	RSTF_WEATHER_OVERCAST call RSTF_WEATHER_ehOvercast;
+	RSTF_WEATHER_RAIN call RSTF_WEATHER_ehRain;
+	RSTF_WEATHER_WIND call RSTF_WEATHER_ehWind;
 };
 
 skipTime -24;
 0 call _weather;
 skipTime 24;
+
+RSTF_WEATHER_SYNC = [ RSTF_WEATHER_OVERCAST, RSTF_WEATHER_RAIN, RSTF_WEATHER_WIND ];
+publicVariable "RSTF_WEATHER_SYNC";
+
 sleep 1;
 simulWeatherSync;
 

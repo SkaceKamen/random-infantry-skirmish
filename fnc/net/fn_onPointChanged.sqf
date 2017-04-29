@@ -6,7 +6,7 @@
 */
 
 if (isNull(RSTF_CAM)) then {
-	RSTF_CAM = "camera" camCreate [RSTF_POINT select 0, RSTF_POINT select 1, 100];
+	call RSTF_fnc_createCam;
 };
 
 RSTF_CAM camSetTarget RSTF_POINT;

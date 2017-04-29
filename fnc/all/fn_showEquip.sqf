@@ -26,7 +26,7 @@ RSTF_EQUIP_DIRECTION = 90;
 RSTF_EQUIP_YAW = 0;
 
 if (isNull(RSTF_CAM)) then {
-	RSTF_CAM = "camera" camCreate RSTF_CAM_TARGET;
+	call RSTF_fnc_createCam;
 };
 
 RSTF_CAM camSetTarget (RSTF_CAM_TARGET vectorAdd [0,0,0.5]);

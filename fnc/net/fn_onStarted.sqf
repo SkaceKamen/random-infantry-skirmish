@@ -5,6 +5,8 @@
 	Called when actual game starts.
 */
 
+closeDialog 1;
+
 [
 	[
 		[text(RSTF_LOCATION), "%1<br />"],

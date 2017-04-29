@@ -47,3 +47,7 @@
 if (count(RSTF_POINT) > 0) then {
 	0 spawn RSTF_fnc_onPointChanged;
 };
+
+if (!RSTF_STARTED) then {
+	0 spawn RSTF_fnc_showWaiting;
+};

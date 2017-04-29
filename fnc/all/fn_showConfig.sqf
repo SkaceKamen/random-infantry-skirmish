@@ -2,13 +2,6 @@ disableSerialization;
 
 call RSTF_fnc_randomPoint;
 
-if (isMultiplayer) then {
-	sleep 1;
-};
-
-waitUntil { time > 0 };
-showCinemaBorder false;
-
 publicVariable "RSTF_POINT";
 
 RSTF_CAM = "camera" camCreate RSTF_CAM_TARGET;

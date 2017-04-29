@@ -3,10 +3,7 @@ private _unit = _this;
 RSTF_BACKUP_PLAYER setVariable ["ASSIGNED", true, true];
 
 if (isNull(RSTF_CAM)) then {
-	RSTF_CAM = "camera" camCreate [RSTF_POINT select 0, RSTF_POINT select 1, 100];
-	RSTF_CAM camSetTarget RSTF_POINT;
-	RSTF_CAM cameraEffect ["internal", "back"];
-	RSTF_CAM camCommit 0;
+	call RSTF_fnc_createCam;
 };
 
 waitUntil { camCommitted RSTF_CAM; };

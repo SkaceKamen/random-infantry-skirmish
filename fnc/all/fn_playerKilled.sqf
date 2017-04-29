@@ -12,7 +12,11 @@ if (PLAYER_SIDE == west) then {
 	_side = SIDE_FRIENDLY;
 };
 
-RSTF_CAM = "camera" camCreate getPos(_unit);
+if (isNull(RSTF_CAM)) then {
+	RSTF_CAM = "camera" camCreate getPos(_unit);
+};
+
+RSTF_CAM camSetPos getPos(_unit);
 RSTF_CAM camSetTarget _unit;
 RSTF_CAM cameraEffect ["internal", "back"];
 RSTF_CAM camCommit 0;
