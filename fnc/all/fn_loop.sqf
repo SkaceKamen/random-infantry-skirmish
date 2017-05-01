@@ -63,52 +63,6 @@ while{true} do {
 		_spawn = _spawn - 1;
 	};
 	
-	if (_spawnVehicles == 0) then {
-		_spawnVehicles = RSTF_LIMIT_SPAWN_VEHICLES;
-		
-		_index = 0;
-		{
-			_side = east;
-			if (_index == 1) then {
-				_side = west;
-			};
-		
-			_groups = _x;
-			if (count(_groups) == 0) then {
-				for[{_i = 0},{_i < RSTF_LIMIT_CARS + RSTF_LIMIT_TANKS},{_i = _i + 1}] do {
-					_group = creategroup _side;
-					_wp = _group addWaypoint [_point,50];
-					_wp setWaypointType "SAD";
-					_wp setWaypointSpeed "FULL";
-					_groups set [_i, _group];
-				};
-			};
-			
-			_i = 0;
-			{
-				_vehicle = _x call RSTF_fnc_groupVehicle;
-				_group = _x;
-				
-				if (isNull(_vehicle)) then {
-					{
-						_x setDamage 1;
-					} foreach units(_group);
-					_subindex = 0;
-					if (_i >= RSTF_LIMIT_CARS) then {
-						_subindex = 1;
-					};
-					[_group, _index, _subindex] call RSTF_fnc_createRandomVehicle;
-				};
-				
-				_i = _i + 1;
-			} foreach _groups;
-			
-			_index = _index + 1;
-		} foreach RSTF_VEHICLE_GROUPS;
-	} else {
-		_spawnVehicles = _spawnVehicles - 1;
-	};
-
 	if (isServer && RSTF_TASK == "") then {
 		0 spawn RSTF_TASKS_start;
 	};
