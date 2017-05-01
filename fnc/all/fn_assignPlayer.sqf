@@ -1,6 +1,7 @@
 private _unit = _this;
 
 RSTF_BACKUP_PLAYER setVariable ["ASSIGNED", true, true];
+_unit setVariable ["USED", true, true];
 
 if (isNull(RSTF_CAM)) then {
 	call RSTF_fnc_createCam;

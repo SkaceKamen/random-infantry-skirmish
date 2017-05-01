@@ -3,6 +3,10 @@ _side = _this;
 _grps = RSTF_GROUPS select _side;
 _spawn = objNull;
 
+_usable = {
+	alive(_x) && !(_x getVariable ["USED", false])
+};
+
 switch(RSTF_SPAWN_TYPE) do {
 	case RSTF_SPAWN_CLOSEST: {
 		_closestDistance = 0;
@@ -10,7 +14,7 @@ switch(RSTF_SPAWN_TYPE) do {
 			_grp = _x;
 			_alive = 0;
 			{
-				if (alive(_x)) then {
+				if (_x call _usable) then {
 					_dis = _x distance RSTF_DEATH_POSITION;
 					if (isNull(_spawn) ||  _dis < _closestDistance) then {
 						_spawn = _x;
@@ -29,7 +33,7 @@ switch(RSTF_SPAWN_TYPE) do {
 			};
 			
 			{
-				if (alive(_x)) exitWith {
+				if (_x call _usable) exitWith {
 					_spawn = _x;
 				};
 			} foreach units(_grp);
@@ -45,7 +49,7 @@ switch(RSTF_SPAWN_TYPE) do {
 		{
 			_grp = _x;
 			{
-				if (alive(_x)) exitWith {
+				if (_x call _usable) exitWith {
 					_spawn = _x;
 				};
 			} foreach units(_grp);
