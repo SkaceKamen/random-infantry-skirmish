@@ -90,6 +90,7 @@ if (alive(_unit)) then {
 	};
 
 	selectPlayer _unit;
+	RSTF_BACKUP_PLAYER setVariable ["ASSIGNED", false, true];
 	[_unit] joinSilent group(_unit);
 	_unit addEventHandler ["Killed", RSTF_fnc_playerKilled];
 } else {
