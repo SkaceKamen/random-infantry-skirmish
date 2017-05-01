@@ -99,3 +99,7 @@ if (alive(_unit)) then {
 RSTF_CAM cameraEffect ["terminate","back"];
 camDestroy RSTF_CAM;
 RSTF_CAM = objNull;
+
+if (RSTF_TASK != "") then {
+	[RSTF_TASK, "ASSIGNED", false] spawn BIS_fnc_taskSetState; 
+};

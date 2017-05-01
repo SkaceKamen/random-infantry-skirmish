@@ -71,6 +71,9 @@ RSTF_TASKS_clear = {
 	RSTF_TASK_TYPE = "";
 	RSTF_TASK_PARAMS = [];
 
+	publicVariable "RSTF_TASK";
+
 	diag_log text("TASKS: Task completed. Starting new task.");
 	call RSTF_TASKS_start;
+
 };

@@ -65,6 +65,8 @@ RSTF_TASK_CLEAR_load = {
 	RSTF_TASK_TYPE = "clear";
 	RSTF_TASK_PARAMS = [_house, _spawned];
 
+	publicVariable "RSTF_TASK";
+
 	if (!_spawned) then {
 		RSTF_TASK_PARAMS = [_house, true];
 
