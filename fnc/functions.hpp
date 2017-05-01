@@ -39,7 +39,6 @@ class all
 	class start {};
 	class superRandomTime {};
 	class superRandomWeather {};
-	class switchIsland {};
 	class unitKilled {};
 	class pathString {};
 	class createCam {};
