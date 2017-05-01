@@ -16,6 +16,12 @@ class cfgFunctions
 };
 
 author = "SkaceKachna";
+
 overviewText = "Random infantry skirmish on random place on island";
+onLoadMission = "Random infantry skirmish on random place on island";
+onLoadName = "Random Skirmish";
+
 overviewPicture = "random.paa";
+loadScreen = "random.paa";
+
 briefing = 0;
