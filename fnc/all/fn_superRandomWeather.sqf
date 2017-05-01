@@ -14,12 +14,12 @@ RSTF_WEATHER_ehWind = {
 "RSTF_WEATHER_RAIN" addPublicVariableEventHandler { (_this select 1) spawn RSTF_WEATHER_ehRain };
 "RSTF_WEATHER_WIND" addPublicVariableEventHandler { (_this select 1) spawn RSTF_WEATHER_ehWind };
 "RSTF_WEATHER_SYNC" addPublicVariableEventHandler {
-	0 spawn {
+	(_this select 1) spawn {
 		skipTime -24;
 
-		RSTF_WEATHER_OVERCAST call RSTF_WEATHER_ehOvercast;
-		RSTF_WEATHER_RAIN call RSTF_WEATHER_ehRain;
-		RSTF_WEATHER_WIND call RSTF_WEATHER_ehWind;
+		(_this select 0) call RSTF_WEATHER_ehOvercast;
+		(_this select 1) call RSTF_WEATHER_ehRain;
+		(_this select 2) call RSTF_WEATHER_ehWind;
 
 		skipTime 24;
 		sleep 1;
