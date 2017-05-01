@@ -26,12 +26,10 @@ class all
 	class profileLoad {};
 	class profileReset {};
 	class profileSave {};
-	class randomElement {};
 	class randomLocation {};
 	class randomPoint {};
 	class randomPosition {};
 	class randomWeather2 {};
-	class sailorKilled {};
 	class scoreChanged {};
 	class showConfig {};
 	class showDeath {};

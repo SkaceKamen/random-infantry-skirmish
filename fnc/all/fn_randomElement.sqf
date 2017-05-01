@@ -1,1 +1,0 @@
-(_this select (_this call BIS_fnc_randomIndex));
