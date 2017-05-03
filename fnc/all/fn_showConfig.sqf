@@ -64,95 +64,22 @@ _template = '
 ];
 
 
-//Game config
-_ctrl = ["RSTF_RscDialogConfig", "scoreLimit", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetText str(RSTF_SCORE_LIMIT);
-
-_ctrl = ["RSTF_RscDialogConfig", "scorePerKill", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetText str(RSTF_SCORE_PER_KILL);
-
-_ctrl = ["RSTF_RscDialogConfig", "scorePerTask", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetText str(RSTF_SCORE_PER_TASK);
-
-_ctrl = ["RSTF_RscDialogConfig", "groupsLimit", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetText str(RSTF_LIMIT_GROUPS);
-
-_ctrl = ["RSTF_RscDialogConfig", "unitsLimit", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetText str(RSTF_LIMIT_UNITS);
-
-_ctrl = ["RSTF_RscDialogConfig", "neutralsLimit", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetText str(RSTF_NEUTRALS_GROUPS);
-
-_ctrl = ["RSTF_RscDialogConfig", "spawnTime", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetText str(RSTF_LIMIT_SPAWN);
-
-
-//Spawn config
-_ctrl = ["RSTF_RscDialogConfig", "spawnType", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
-lbClear _ctrl;
-{
-	_ctrl lbAdd _x;
-} foreach RSTF_SPAWN_TYPES;
-_ctrl lbSetCurSel RSTF_SPAWN_TYPE;
-
-_ctrl = ["RSTF_RscDialogConfig", "randomizeWeapons", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetChecked RSTF_RANDOMIZE_WEAPONS;
-
-_ctrl = ["RSTF_RscDialogConfig", "restrictWeapons", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetChecked RSTF_RANDOMIZE_WEAPONS_RESTRICT;
-
-_ctrl = ["RSTF_RscDialogConfig", "enableCustom", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetChecked RSTF_CUSTOM_EQUIPMENT;
-
-_ctrl = ["RSTF_RscDialogConfig", "changeCustom", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
+_ctrl = ["RSTF_RscDialogConfig", "weaponButton"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
-	_ctrl = ["RSTF_RscDialogConfig", "restrictWeapons", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_RANDOMIZE_WEAPONS_RESTRICT = ctrlChecked _ctrl;
-
 	call RSTF_fnc_loadWeapons;
 	call RSTF_fnc_loadClasses;
 	[] spawn RSTF_fnc_showEquip;
 	true;
 }];
 
-//Misc config
-_ctrl = ["RSTF_RscDialogConfig", "clearDeadBodies", ["controls", "otherConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlSetChecked RSTF_CLEAN;
-
-_ctrl = ["RSTF_RscDialogConfig", "weather", ["controls", "otherConfig", "controls"]] call RSTF_fnc_getCtrl;
-lbClear _ctrl;
-{
-	_ctrl lbAdd _x;
-} foreach RSTF_WEATHER_TYPES;
-_ctrl lbSetCurSel RSTF_WEATHER;
-
-_ctrl = ["RSTF_RscDialogConfig", "time", ["controls", "otherConfig", "controls"]] call RSTF_fnc_getCtrl;
-lbClear _ctrl;
-{
-	_ctrl lbAdd _x;
-} foreach RSTF_TIME_TYPES;
-_ctrl lbSetCurSel RSTF_TIME;
-
-
-/*_ctrl = ["RSTF_RscDialogConfig", "switchIsland", ["controls", "otherConfig", "controls"]] call RSTF_fnc_getCtrl;
+_ctrl = ["RSTF_RscDialogConfig", "configButton"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
-	//'Altis' spawn RSTF_fnc_switchIsland;
-	[] spawn RSTF_fnc_mapsShow;
-}];*/
-
-_ctrl = ["RSTF_RscDialogConfig", "reset", ["controls", "otherConfig", "controls"]] call RSTF_fnc_getCtrl;
-_ctrl ctrlAddEventHandler ["ButtonClick", {
-	[] spawn {
-		if (["Do you really want to reset all configuration to default values?", "Reset", "Yes", "No"] call BIS_fnc_GUImessage) then {
-			call RSTF_fnc_profileReset;
-			closeDialog 0;
-			sleep 0.5;
-			call RSTF_fnc_showConfig;
-		};
-	};
+	[] spawn RSTF_fnc_showAdvancedConfig;
 }];
 
-_ctrl = ["RSTF_RscDialogConfig", "start", ["controls", "otherConfig", "controls"]] call RSTF_fnc_getCtrl;
+call RSTF_fnc_updateEquipment;
+
+_ctrl = ["RSTF_RscDialogConfig", "start"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	disableSerialization;
 
@@ -166,49 +93,6 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	};
 
 	_display = findDisplay getNumber(missionConfigFile >> "RSTF_RscDialogConfig" >> "idd");
-
-	_ctrl = ["RSTF_RscDialogConfig", "scoreLimit", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_SCORE_LIMIT = parseNumber(ctrlText _ctrl);
-
-	_ctrl = ["RSTF_RscDialogConfig", "scorePerKill", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_SCORE_PER_KILL = parseNumber(ctrlText _ctrl);
-
-	_ctrl = ["RSTF_RscDialogConfig", "scorePerTask", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_SCORE_PER_TASK = parseNumber(ctrlText _ctrl);
-
-	_ctrl = ["RSTF_RscDialogConfig", "groupsLimit", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_LIMIT_GROUPS = parseNumber(ctrlText _ctrl);
-
-	_ctrl = ["RSTF_RscDialogConfig", "unitsLimit", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_LIMIT_UNITS = parseNumber(ctrlText _ctrl);
-
-	_ctrl = ["RSTF_RscDialogConfig", "neutralsLimit", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_NEUTRALS_GROUPS = parseNumber(ctrlText _ctrl);
-
-	_ctrl = ["RSTF_RscDialogConfig", "spawnTime", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_LIMIT_SPAWN = parseNumber(ctrlText _ctrl);
-
-	_ctrl = ["RSTF_RscDialogConfig", "randomizeWeapons", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_RANDOMIZE_WEAPONS = ctrlChecked _ctrl;
-
-	_ctrl = ["RSTF_RscDialogConfig", "restrictWeapons", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_RANDOMIZE_WEAPONS_RESTRICT = ctrlChecked _ctrl;
-
-	_ctrl = ["RSTF_RscDialogConfig", "spawnType", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_SPAWN_TYPE = lbCurSel _ctrl;
-
-	_ctrl = ["RSTF_RscDialogConfig", "enableCustom", ["controls", "spawnConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_CUSTOM_EQUIPMENT = ctrlChecked _ctrl;
-
-	_ctrl = ["RSTF_RscDialogConfig", "clearDeadBodies", ["controls", "otherConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_CLEAN = ctrlChecked _ctrl;
-
-	_ctrl = ["RSTF_RscDialogConfig", "weather", ["controls", "otherConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_WEATHER = lbCurSel _ctrl;
-
-	_ctrl = ["RSTF_RscDialogConfig", "time", ["controls", "otherConfig", "controls"]] call RSTF_fnc_getCtrl;
-	RSTF_TIME = lbCurSel _ctrl;
-
 	/*
 	_ctrl = _display displayCtrl getNumber(missionConfigFile >> "RSTF_RscDialogConfig" >> "controls" >> "LABEL_LOADING" >> "idc");
 	_ctrl ctrlShow true;

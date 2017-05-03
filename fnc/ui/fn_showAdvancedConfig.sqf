@@ -167,12 +167,9 @@ _yy = 0;
 
 _saveButton = ["RSTF_RscDialogAdvancedConfig", "saveButton"] call RSTF_fnc_getCtrl;
 _saveButton ctrlAddEventHandler ["ButtonClick", {
-	0 spawn {
-		call RSTF_fnc_profileSave;
-		closeDialog 0;
-		sleep 0.5;
-		call RSTF_fnc_showConfig;
-	}
+	call RSTF_fnc_profileSave;
+	call RSTF_fnc_updateEquipment;
+	closeDialog 0;
 }];
 
 _resetButton = ["RSTF_RscDialogAdvancedConfig", "resetButton"] call RSTF_fnc_getCtrl;

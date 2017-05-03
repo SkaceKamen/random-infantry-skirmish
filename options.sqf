@@ -26,6 +26,11 @@ RSTF_RANDOMIZE_WEAPONS = true;
 //Randomize only weapons from origin faction
 RSTF_RANDOMIZE_WEAPONS_RESTRICT = false;
 
+RSTF_PLAYER_PRIMARY = "";
+RSTF_PLAYER_SECONDARY = "";
+RSTF_PLAYER_ATTACHMENTS = [];
+RSTF_CUSTOM_EQUIPMENT = true;
+
 //Tanks per side
 RSTF_LIMIT_TANKS = 0;
 //Armed cars per side
