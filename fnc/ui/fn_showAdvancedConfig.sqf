@@ -47,8 +47,9 @@ RSTF_categoryChanged = {
 	// Clear previous options
 	{
 		_ctrl = _x select 0;
-		_type = _x select 1;
-		_name = _x select 2;
+		_label = _x select 1;
+		_type = _x select 2;
+		_name = _x select 3;
 
 		if (_type == "checkbox") then {
 			missionNamespace setVariable [_name, cbChecked _ctrl];
@@ -65,7 +66,9 @@ RSTF_categoryChanged = {
 		publicVariable _name;
 
 		ctrlDelete _ctrl;
+		ctrlDelete _label;
 		_ctrl ctrlCommit 0;
+		_label ctrlCommit 0;
 	} foreach RSTF_advancedConfig_lastOptions;
 
 	RSTF_advancedConfig_lastOptions = [];
@@ -77,15 +80,15 @@ RSTF_categoryChanged = {
 	_xx = _padding;
 	{
 		if (count(_x) > 0) then {
-			_value = missionNamespace getVariable [_x select 0, ""];
+			_name = _x select 0;
+			_value = missionNamespace getVariable [_name, ""];
 
-			_ctrl = _display ctrlCreate ["RscText", _idc, _optionsContainer];
-			_ctrl ctrlSetText ((_x select 1) + ":");
-			_ctrl ctrlSetTooltip (_x select 2);
-			_ctrl ctrlSetPosition [_xx, _yy + 0.025 - 0.037/2, RSTF_ADV_OPS_W * 0.4, 0.037];
-			_ctrl ctrlCommit 0.1;
+			_label = _display ctrlCreate ["RscText", _idc, _optionsContainer];
+			_label ctrlSetText ((_x select 1) + ":");
+			_label ctrlSetTooltip (_x select 2);
+			_label ctrlSetPosition [_xx, _yy + 0.025 - 0.037/2, RSTF_ADV_OPS_W * 0.4, 0.037];
+			_label ctrlCommit 0.1;
 
-			RSTF_advancedConfig_lastOptions pushBack _ctrl;
 			_idc = _idc + 1;
 
 			_ctrlType = "RscEdit";
@@ -136,7 +139,7 @@ RSTF_categoryChanged = {
 				}];
 			};
 
-			RSTF_advancedConfig_lastOptions pushBack _ctrl;
+			RSTF_advancedConfig_lastOptions pushBack [_ctrl, _label, _type, _name];
 			_idc = _idc + 1;
 		};
 		_yy = _yy + 0.08;
@@ -166,4 +169,16 @@ _saveButton = ["RSTF_RscDialogAdvancedConfig", "saveButton"] call RSTF_fnc_getCt
 _saveButton ctrlAddEventHandler ["ButtonClick", {
 	0 spawn RSTF_fnc_profileSave;
 	closeDialog 0;
+}];
+
+_resetButton = ["RSTF_RscDialogAdvancedConfig", "resetButton"] call RSTF_fnc_getCtrl;
+_resetButton ctrlAddEventHandler ["ButtonClick", {
+	0 spawn {
+		if (["Do you really want to reset all configuration to default values?", "Reset", "Yes", "No"] call BIS_fnc_GUImessage) then {
+			call RSTF_fnc_profileReset;
+			closeDialog 0;
+			sleep 0.5;
+			call RSTF_fnc_showAdvancedConfig;
+		};
+	};
 }];
