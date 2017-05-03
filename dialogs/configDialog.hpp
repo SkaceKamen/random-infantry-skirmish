@@ -182,7 +182,7 @@ class RSTF_RscDialogConfig
 			y = RSTF_CONFIG_Y + RSTF_CONFIG_H + RSTF_SUBCONFIG_M;
 			w = RSTF_CONFIG_WEAPON_W * 0.4;
 			h = RSTF_CONFIG_START_H;
-			text = "Weapon";
+			text = "Equipment";
 		};
 
 		class weaponText: RscText
