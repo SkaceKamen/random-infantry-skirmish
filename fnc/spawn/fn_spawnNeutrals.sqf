@@ -1,3 +1,8 @@
+_neutrals_side = resistance;
+if (RSTF_NEUTRALS_EAST) then {
+	_neutrals_side = east;
+};
+
 // Try to categorize static weapons
 _vehicles = RSTF_VEHICLES select SIDE_NEUTRAL;
 _statics = _vehicles select RSTF_VEHICLE_STATIC;

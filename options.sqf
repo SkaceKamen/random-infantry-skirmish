@@ -26,6 +26,11 @@ RSTF_RANDOMIZE_WEAPONS = true;
 //Randomize only weapons from origin faction
 RSTF_RANDOMIZE_WEAPONS_RESTRICT = false;
 
+RSTF_PLAYER_PRIMARY = "";
+RSTF_PLAYER_SECONDARY = "";
+RSTF_PLAYER_ATTACHMENTS = [];
+RSTF_CUSTOM_EQUIPMENT = true;
+
 //Tanks per side
 RSTF_LIMIT_TANKS = 0;
 //Armed cars per side
@@ -44,13 +49,16 @@ RSTF_LIMIT_COMMANDO_SIZE = 5;
 //Max commando count
 RSTF_LIMIT_COMMANDO = 5;
 
-//Number of neutral groups in location
+// Number of neutral groups in location
 RSTF_NEUTRALS_GROUPS = 5;
-//Radius of neutrals placement
+// Radius of neutrals placement
 RSTF_NEUTRALS_RADIUS = 500;
-//Number of units in neutral group
+// Number of units in neutral group
 RSTF_NEUTRALS_UNITS_MIN = 1;
 RSTF_NEUTRALS_UNITS_MAX = 5;
+
+// Should neutrals be friendly with east
+RSTF_NEUTRALS_EAST = false;
 
 //Number of civilian units
 RSTF_CIVILANS_UNITS_MIN = 10;

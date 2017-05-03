@@ -1,6 +1,8 @@
 #include "dialogs\base.hpp"
+#include "dialogs\extended.hpp"
 #include "dialogs\titles.hpp"
 #include "dialogs\configDialog.hpp"
+#include "dialogs\advancedConfigDialog.hpp"
 #include "dialogs\factionsDialog.hpp"
 #include "dialogs\deathDialog.hpp"
 #include "dialogs\equipDialog.hpp"
