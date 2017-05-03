@@ -121,7 +121,8 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_PLAYER_SECONDARY",
 	"RSTF_PLAYER_ATTACHMENTS",
 	"RSTF_WEATHER",
-	"RSTF_TIME"
+	"RSTF_TIME",
+	"RSTF_NEUTRALS_EAST"
 	//"RSTF_SELECTED_WORLD"
 ];
 
@@ -172,3 +173,33 @@ RSTF_KILL_OCCURED = [];
 
 // This is used when respawning
 PLAYER_SIDE = side(player);
+
+RSTF_CHARS_NUMBERS = (toArray "0123456789");
+RSTF_ADVANCED_LASTOPTIONS = [];
+RSTF_CONFIG_VALUES = [
+	["Game", [
+		["RSTF_SCORE_LIMIT", "Score to win", "One side wins after reaching this limit.", "number"],
+		["RSTF_SCORE_PER_KILL", "Score per kill", "Score you get for killing soldier.", "number"],
+		["RSTF_SCORE_PER_TASK", "Score per task", "Score you get for completing task.", "number"],
+		[],
+		["RSTF_LIMIT_GROUPS", "Groups per side", "Number of groups spawned for each side.", "number"],
+		["RSTF_LIMIT_UNITS", "Units per group", "Number of soldiers in single group.", "number"],
+		[],
+		["RSTF_LIMIT_SPAWN", "Wave spawn time", "Interval in seconds in which reinforcements are spawned", "number"]
+	]],
+	["Spawning", [
+		["RSTF_SPAWN_TYPE", "Spawn to", "How to select unit to spawn to. Closest - unit closest to your death, Group - unit in your group, Random - random unit", "select", RSTF_SPAWN_TYPES],
+		["RSTF_RANDOMIZE_WEAPONS", "Randomize weapons", "Each soldier will be given random weapon.", "checkbox"],
+		["RSTF_RANDOMIZE_WEAPONS_RESTRICT", "Restrict weapons to sides", "When weapons are randomized, only use weapons that origins from unit faction. (Useful for mods).", "checkbox"],
+		["RSTF_CUSTOM_EQUIPMENT", "Enable custom equipment", "Enable player to customize his equipment, which will be used when switching to soldier.", "checkbox"]
+	]],
+	["Neutrals", [
+		["RSTF_NEUTRALS_GROUPS", "Neutral groups", "Maximum number of neutral groups spawned.", "number"],
+		["RSTF_NEUTRALS_EAST", "Friendly with enemies", "Should neutrals be same side as enemies.", "checkbox"]
+	]],
+	["Other", [
+		["RSTF_CLEAN", "Clear dead bodies", "Dead bodies will be destroyed after 3 minutes. This helps performance.", "checkbox"],
+		["RSTF_WEATHER", "Weather", "Mission weather.", "select", RSTF_WEATHER_TYPES],
+		["RSTF_TIME", "Daytime", "Mission daytime.", "select", RSTF_TIME_TYPES]
+	]]
+];

@@ -17,7 +17,7 @@ createVehicleCrew _vehicle;
 	_x setVariable ["RSTF_vehicle", _vehicle];
 	_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 	if (_boat) then {
-		_x addEventHandler ["Killed", RSTF_fnc_sailorKilled];
+		// _x addEventHandler ["Killed", RSTF_fnc_sailorKilled];
 	};
 } foreach crew _vehicle;
 
