@@ -1,2 +1,2 @@
 #define USER_BG_RGB "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])"
-#define TITLE_BG_RGBA USER_BG_COLOR,0.8
+#define TITLE_BG_RGBA USER_BG_RGB,0.8
