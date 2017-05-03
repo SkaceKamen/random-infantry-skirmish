@@ -8,8 +8,7 @@ _factionsCheck = '
 	true;
 ';
 _limitCheck = '
-	_ctrl = ["RSTF_RscDialogConfig", "%1", ["controls", "gameConfig", "controls"]] call RSTF_fnc_getCtrl;
-	_limit = parseNumber(ctrlText _ctrl);
+	_limit = %1;
 	if (_limit <= 0) exitWith {
 		"%2 must be bigger than 0."
 	};
@@ -17,9 +16,9 @@ _limitCheck = '
 ';
 
 _validation = [
-	compile(format[_limitCheck, "scoreLimit", "Score limit"]),
-	compile(format[_limitCheck, "groupsLimit", "Groups count"]),
-	compile(format[_limitCheck, "unitsLimit", "Unit count"]),
+	compile(format[_limitCheck, "RSTF_SCORE_LIMIT", "Score limit"]),
+	compile(format[_limitCheck, "RSTF_LIMIT_GROUPS", "Groups count"]),
+	compile(format[_limitCheck, "RSTF_LIMIT_UNITS", "Unit count"]),
 	compile(format[_factionsCheck, FRIENDLY_FACTIONS, "Friendly side"]),
 	compile(format[_factionsCheck, NEUTRAL_FACTIONS, "Netural side"]),
 	compile(format[_factionsCheck, ENEMY_FACTIONS, "Enemy side"])
