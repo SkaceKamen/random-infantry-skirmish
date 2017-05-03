@@ -62,6 +62,7 @@ class ui
 
 	class UI_addMessage {};
 	class UI_start {};
+	class showAdvancedConfig {};
 };
 
 class net
