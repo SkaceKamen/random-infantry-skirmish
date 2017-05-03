@@ -1,5 +1,3 @@
-#include "fw.inc"
-
 params [["_root", ""], ["_player", false]];
 
 //Make sure we can spawn everything
