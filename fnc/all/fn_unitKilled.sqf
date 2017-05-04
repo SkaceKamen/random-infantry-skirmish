@@ -22,6 +22,11 @@ if (_index != -1) then {
 	} else {
 		_score = _score + RSTF_SCORE_PER_KILL;
 	};
+
+	if (_index == SIDE_ENEMY) then {
+		_score = _score * RSTF_ENEMY_ADVANTAGE_SCORE;
+	};
+
 	RSTF_SCORE set [_index, _score];
 	
 	[] spawn RSTF_fnc_scoreChanged;
