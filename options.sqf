@@ -82,3 +82,10 @@ RSTF_CLEAN_INTERVAL = 3*60;
 //Random weather and time
 RSTF_WEATHER = 0;
 RSTF_TIME = 13;
+
+// How much more groups will enemy have
+RSTF_ENEMY_ADVANTAGE_GROUPS = 0;
+// How much more units prer groups will enemy have
+RSTF_ENEMY_ADVANTAGE_UNITS = 0;
+// Enemy score multiplier
+RSTF_ENEMY_ADVANTAGE_SCORE = 1;

@@ -122,7 +122,10 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_PLAYER_ATTACHMENTS",
 	"RSTF_WEATHER",
 	"RSTF_TIME",
-	"RSTF_NEUTRALS_EAST"
+	"RSTF_NEUTRALS_EAST",
+	"RSTF_ENEMY_ADVANTAGE_GROUPS",
+	"RSTF_ENEMY_ADVANTAGE_UNITS",
+	"RSTF_ENEMY_ADVANTAGE_SCORE"
 	//"RSTF_SELECTED_WORLD"
 ];
 
@@ -175,6 +178,8 @@ RSTF_KILL_OCCURED = [];
 PLAYER_SIDE = side(player);
 
 RSTF_CHARS_NUMBERS = (toArray "0123456789");
+RSTF_CHARS_FLOAT = (toArray "0123456789.");
+
 RSTF_ADVANCED_LASTOPTIONS = [];
 RSTF_CONFIG_VALUES = [
 	["Game", [
@@ -197,9 +202,21 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_NEUTRALS_GROUPS", "Neutral groups", "Maximum number of neutral groups spawned.", "number"],
 		["RSTF_NEUTRALS_EAST", "Friendly with enemies", "Should neutrals be same side as enemies.", "checkbox"]
 	]],
+	["Enemy", [
+		["RSTF_ENEMY_ADVANTAGE_GROUPS", "Groups advantage", "Enemy will have this much more groups.", "number"],
+		["RSTF_ENEMY_ADVANTAGE_UNITS", "Units advantage", "Enemy groups will have this much more units.", "number"],
+		["RSTF_ENEMY_ADVANTAGE_SCORE", "Score multiplier", "Enemy score will be multiplied by this.", "float"]
+	]],
 	["Other", [
 		["RSTF_CLEAN", "Clear dead bodies", "Dead bodies will be destroyed after 3 minutes. This helps performance.", "checkbox"],
 		["RSTF_WEATHER", "Weather", "Mission weather.", "select", RSTF_WEATHER_TYPES],
 		["RSTF_TIME", "Daytime", "Mission daytime.", "select", RSTF_TIME_TYPES]
 	]]
 ];
+
+// How much more groups will enemy have
+RSTF_ENEMY_ADVANTAGE_GROUPS = 0;
+// How much more units prer groups will enemy have
+RSTF_ENEMY_ADVANTAGE_UNITS = 0;
+// Enemy score multiplier
+RSTF_ENEMY_ADVANTAGE_SCORE = 1;

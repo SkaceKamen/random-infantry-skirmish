@@ -24,7 +24,12 @@ while{true} do {
 					
 			_groups = _x;
 			if (count(_groups) == 0) then {
-				for[{_i = 0},{_i < RSTF_LIMIT_GROUPS},{_i = _i + 1}] do {
+				_groups_advantage = 0;
+				if (_side == east) then {
+					_groups_advantage = RSTF_ENEMY_ADVANTAGE_GROUPS;
+				};
+
+				for[{_i = 0},{_i < RSTF_LIMIT_GROUPS + _groups_advantage},{_i = _i + 1}] do {
 					_group = creategroup _side;
 					deleteWaypoint [_group, 0];
 					_wp = _group addWaypoint [_point,50];
@@ -35,6 +40,11 @@ while{true} do {
 				publicVariable "RSTF_GROUPS";
 			};
 			
+			_units_advantage = 0;
+			if (_side == east) then {
+				_units_advantage = RSTF_ENEMY_ADVANTAGE_UNITS;
+			};
+
 			{
 				_group = _x;
 				
@@ -49,7 +59,7 @@ while{true} do {
 						_vehicle = [_group, _index, 3] call RSTF_fnc_createRandomVehicle;
 					};
 				} else {
-					if (count(units(_x)) < RSTF_LIMIT_UNITS) then {
+					if (count(units(_x)) < RSTF_LIMIT_UNITS + _units_advantage) then {
 						for[{_i = count(units(_x)); _k = 0},{_i < RSTF_LIMIT_UNITS && _k < 5},{_i = _i + 1; _k = _k + 1}] do {
 							[_x, _index] call RSTF_fnc_createRandomUnit;
 						};
