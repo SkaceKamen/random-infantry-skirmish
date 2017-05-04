@@ -65,6 +65,7 @@ class ui
 	class showAdvancedConfig {};
 	class showAdvancedOptions {};
 	class updateEquipment {};
+	class filterInput {};
 };
 
 class net

@@ -14,6 +14,7 @@ _options = (RSTF_CONFIG_VALUES select _this) select 1;
 	_type = _x select 2;
 	_name = _x select 3;
 
+	// Save value of option
 	if (_type == "checkbox") then {
 		missionNamespace setVariable [_name, cbChecked _ctrl];
 	};
@@ -26,8 +27,10 @@ _options = (RSTF_CONFIG_VALUES select _this) select 1;
 		missionNamespace setVariable [_name, lbCurSel(_ctrl)];
 	};
 
+	// Publish option
 	publicVariable _name;
 
+	// Remove option
 	ctrlDelete _ctrl;
 	ctrlDelete _label;
 	_ctrl ctrlCommit 0;
@@ -42,10 +45,13 @@ _idc = 2000;
 _yy = _padding;
 _xx = _padding;
 {
+	// Empty array is separator
 	if (count(_x) > 0) then {
+		// Load variable name and value
 		_name = _x select 0;
 		_value = missionNamespace getVariable [_name, ""];
 
+		// Add label
 		_label = _display ctrlCreate ["RscText", _idc, _optionsContainer];
 		_label ctrlSetText ((_x select 1) + ":");
 		_label ctrlSetTooltip (_x select 2);
@@ -54,6 +60,7 @@ _xx = _padding;
 
 		_idc = _idc + 1;
 
+		// Decide control used for input
 		_ctrlType = "RscEdit";
 		_type = _x select 3;
 		switch (_type) do {
@@ -61,10 +68,12 @@ _xx = _padding;
 			case "select": { _ctrlType = "RscCombo"; };
 		};
 
+		// Build input control
 		_ctrl = _display ctrlCreate [_ctrlType, _idc, _optionsContainer];
 		_ctrl ctrlSetText str(_value);
 		_ctrl ctrlSetTooltip (_x select 2);
 		
+		// Checkbox have fixed size and diferent input
 		if (_type == "checkbox") then {
 			_ctrl ctrlSetPosition [_xx + _width * 0.5, _yy + 0.005, 0.04, 0.04 * safeZoneW / safeZoneH];
 
@@ -77,6 +86,7 @@ _xx = _padding;
 
 		_ctrl ctrlCommit 0.1;
 
+		// Add values to combo box
 		if (_type == "select") then {
 			_selectOptions = _x select 4;
 			{
@@ -87,23 +97,24 @@ _xx = _padding;
 			} foreach _selectOptions;
 		};
 
+		// Add input filtering for numbers
 		if (_type == "number") then {
 			_ctrl ctrlAddEventHandler ["Char", {
-				_handled = (RSTF_CHARS_NUMBERS find (_this select 1)) == -1;
-				if (_handled) then {
-					_this spawn {
-						sleep 0.1;
-						_updated = toString((toArray (ctrlText (_this select 0))) select { RSTF_CHARS_NUMBERS find _x >= 0 });
-						(_this select 0) ctrlSetText _updated;
-					};
-				};
-
-				_handled;
+				[_this select 0, _this select 1, "NUMBERS"] call RSTF_fnc_filterInput;
 			}];
 		};
 
+		// Add input filtering for floats
+		if (_type == "float") then {
+			_ctrl ctrlAddEventHandler ["Char", {
+				[_this select 0, _this select 1, "FLOAT"] call RSTF_fnc_filterInput;
+			}];
+		};
+
+		// Save created option for later manipulation
 		RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name];
 		_idc = _idc + 1;
 	};
+
 	_yy = _yy + 0.08;
 } foreach _options;
