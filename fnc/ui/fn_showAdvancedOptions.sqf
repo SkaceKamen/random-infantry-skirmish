@@ -7,34 +7,15 @@ _optionsContainer = ["RSTF_RscDialogAdvancedConfig", "optionsContainer"] call RS
 
 _options = (RSTF_CONFIG_VALUES select _this) select 1;
 
-// Clear previous options
+// Save previously displayed options
+call RSTF_fnc_saveAdvancedOptions;
+
+// Remove previous options
 {
-	_ctrl = _x select 0;
-	_label = _x select 1;
-	_type = _x select 2;
-	_name = _x select 3;
-
-	// Save value of option
-	if (_type == "checkbox") then {
-		missionNamespace setVariable [_name, cbChecked _ctrl];
-	};
-
-	if (_type == "number") then {
-		missionNamespace setVariable [_name, parseNumber(ctrlText(_ctrl))];
-	};
-
-	if (_type == "select") then {
-		missionNamespace setVariable [_name, lbCurSel(_ctrl)];
-	};
-
-	// Publish option
-	publicVariable _name;
-
-	// Remove option
-	ctrlDelete _ctrl;
-	ctrlDelete _label;
-	_ctrl ctrlCommit 0;
-	_label ctrlCommit 0;
+	ctrlDelete (_x select 0);
+	ctrlDelete (_x select 1);
+	(_x select 0) ctrlCommit 0;
+	(_x select 1) ctrlCommit 0;
 } foreach RSTF_ADVANCED_LASTOPTIONS;
 
 RSTF_ADVANCED_LASTOPTIONS = [];
@@ -67,6 +48,8 @@ _xx = _padding;
 			case "checkbox": { _ctrlType = "RscCheckBox"; };
 			case "select": { _ctrlType = "RscCombo"; };
 		};
+
+		diag_log text(format["OPTIONS: %1 (%2) is %3", _name, _type, _value]);
 
 		// Build input control
 		_ctrl = _display ctrlCreate [_ctrlType, _idc, _optionsContainer];

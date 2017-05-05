@@ -30,6 +30,8 @@ _yy = 0;
 
 _saveButton = ["RSTF_RscDialogAdvancedConfig", "saveButton"] call RSTF_fnc_getCtrl;
 _saveButton ctrlAddEventHandler ["ButtonClick", {
+	call RSTF_fnc_saveAdvancedOptions;
+	RSTF_ADVANCED_LASTOPTIONS = [];
 	call RSTF_fnc_profileSave;
 	call RSTF_fnc_updateEquipment;
 	closeDialog 0;
@@ -39,6 +41,7 @@ _resetButton = ["RSTF_RscDialogAdvancedConfig", "resetButton"] call RSTF_fnc_get
 _resetButton ctrlAddEventHandler ["ButtonClick", {
 	0 spawn {
 		if (["Do you really want to reset all configuration to default values?", "Reset", "Yes", "No"] call BIS_fnc_GUImessage) then {
+			RSTF_ADVANCED_LASTOPTIONS = [];
 			call RSTF_fnc_profileReset;
 			closeDialog 0;
 			sleep 0.5;

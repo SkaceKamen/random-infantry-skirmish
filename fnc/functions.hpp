@@ -64,6 +64,7 @@ class ui
 	class UI_start {};
 	class showAdvancedConfig {};
 	class showAdvancedOptions {};
+	class saveAdvancedOptions {};
 	class updateEquipment {};
 	class filterInput {};
 };
