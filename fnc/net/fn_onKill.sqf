@@ -18,11 +18,11 @@ private _side = _this select 2;
 if (_killer == player) then {
 	if (_side != side(player)) then {
 		if (_side == civilian) then {
-			["Civilan kill -500", 5] call RSTF_fnc_UI_AddMessage;
+			["-500 Civilian kill", 5] call RSTF_fnc_UI_AddMessage;
 		} else {
-			[format["Kill +%1", RSTF_SCORE_PER_KILL], 5] call RSTF_fnc_UI_AddMessage;
+			[format["+%1 Kill", RSTF_SCORE_PER_KILL], 5] call RSTF_fnc_UI_AddMessage;
 		};
 	} else {
-		[format["Team kill -%1", RSTF_SCORE_PER_TEAMKILL], 5] call RSTF_fnc_UI_AddMessage;
+		[format["%1 Teamkill", RSTF_SCORE_PER_TEAMKILL], 5] call RSTF_fnc_UI_AddMessage;
 	};
 };
