@@ -24,8 +24,8 @@ while {RSTF_WATER} do {
 		//Load spawn locations
 		//INDEX is side index
 		RSTF_SPAWNS = [
-			[(RSTF_POINT select 0) + cos(_direction) * _distance,(RSTF_POINT select 1) + sin(_direction) * _distance, 0],
-			[(RSTF_POINT select 0) + cos(180 + _direction) * _distance,(RSTF_POINT select 1) + sin(180 + _direction) * _distance, 0],
+			[(RSTF_POINT select 0) + sin(_direction) * _distance,(RSTF_POINT select 1) + cos(_direction) * _distance, 0],
+			[(RSTF_POINT select 0) + sin(180 + _direction) * _distance,(RSTF_POINT select 1) + cos(180 + _direction) * _distance, 0],
 			[0,0,0] //For netural defenders
 		];
 		

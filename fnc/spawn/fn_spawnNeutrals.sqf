@@ -75,7 +75,7 @@ for[{_i = 0},{_i < RSTF_NEUTRALS_GROUPS},{_i = _i + 1}] do {
 		_pos1 = ATLtoASL(_position vectorAdd [0, 0, 1.5]);
 		for [{_d = 0},{_d < 360},{_d = _d + 1}] do {
 			_pos2 = _pos1 vectorAdd [
-				cos(_d) * 2, sin(_d) * 2, 0
+				sin(_d) * 2, cos(_d) * 2, 0
 			];
 			if (!(lineIntersects [_pos1, _pos2])) then {
 				_pos3 = _pos2 vectorAdd [0, 0, 5];

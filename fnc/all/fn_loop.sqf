@@ -17,9 +17,9 @@ while{true} do {
 				
 			_point = RSTF_POINT;
 			if (_index == 0) then {
-				_point = [(RSTF_POINT select 0) + cos(180+RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),(RSTF_POINT select 1) + sin(180+RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5)];
+				_point = [(RSTF_POINT select 0) + sin(180+RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),(RSTF_POINT select 1) + cos(180+RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5)];
 			} else {
-				_point = [(RSTF_POINT select 0) + cos(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),(RSTF_POINT select 1) + sin(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5)];
+				_point = [(RSTF_POINT select 0) + sin(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),(RSTF_POINT select 1) + cos(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5)];
 			};
 					
 			_groups = _x;
