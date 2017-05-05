@@ -18,11 +18,19 @@ while{true} do {
 			// Rather than attacking center of battle, try to attack enemy spawn
 			_point = RSTF_POINT;
 			if (_index == 0) then {
-				_point = [(RSTF_POINT select 0) + sin(180+RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),(RSTF_POINT select 1) + cos(180+RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5)];
+				_point = RSTF_POINT vectorAdd [
+					sin(180 + RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
+					cos(180 + RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
+					0
+				];
 			} else {
-				_point = [(RSTF_POINT select 0) + sin(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),(RSTF_POINT select 1) + cos(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5)];
+				_point = RSTF_POINT vectorAdd [
+					sin(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
+					cos(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
+					0
+				];
 			};
-				
+			
 			// Create groups if needed
 			_groups = _x;
 			if (count(_groups) == 0) then {
@@ -35,7 +43,7 @@ while{true} do {
 				for[{_i = 0},{_i < RSTF_LIMIT_GROUPS + _groups_advantage},{_i = _i + 1}] do {
 					_group = creategroup _side;
 					deleteWaypoint [_group, 0];
-					_wp = _group addWaypoint [_point,50];
+					_wp = _group addWaypoint [_point, 50];
 					_wp setWaypointType "SAD";
 					_groups set [_i, _group];
 				};
@@ -55,7 +63,7 @@ while{true} do {
 				// Delete and recreate waypoint
 				// This sometimes helps with stuck units
 				deleteWaypoint [_group, 0];
-				_wp = _group addWaypoint [_point,50];
+				_wp = _group addWaypoint [_point, 50];
 				_wp setWaypointType "SAD";
 
 				if (count(units(_x)) < RSTF_LIMIT_UNITS + _units_advantage) then {
