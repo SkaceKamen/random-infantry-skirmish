@@ -63,12 +63,8 @@ if (!isDedicated) then {
 	0 spawn RSTF_fnc_onStarted;
 };
 
+// Wait for intro to finish playing
 sleep 2;
-
-// Marks unspawned players
-{
-	RSTF_ASSIGNED_UNITS pushBack [_x, objNull];
-} foreach allPlayers;
 
 // Start game loop
 [] spawn RSTF_fnc_loop;
