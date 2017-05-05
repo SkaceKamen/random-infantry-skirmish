@@ -11,20 +11,21 @@ if (count(RSTF_POINT) == 0) then {
 };
 
 // Create helper marker
+/*
 _marker = createMarker ["TARGET", RSTF_POINT];
 _marker setMarkerShape "ICON";
 _marker setMarkerType "mil_objective";
+*/
 
 // Helper markers for spawns
 {
 	_marker = createMarker ["SPAWN " + str(_foreachIndex), _x];
 	_marker setMarkerShape "ICON";
 	_marker setMarkerType "mil_ambush";
-	_marker setMarkerText "Spawn";
-	_marker setMarkerDir (_x direction RSTF_POINT);
+	_marker setMarkerDir ((_x getDir RSTF_POINT) - 90);
 
 	if (_foreachIndex == SIDE_ENEMY) then {
-		_marker setMarkerColor [1, 0, 0];
+		_marker setMarkerColor "ColorRed";
 	};
 } foreach RSTF_SPAWNS;
 
