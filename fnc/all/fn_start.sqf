@@ -42,9 +42,11 @@ _marker setMarkerType "mil_objective";
 call RSTF_fnc_spawnNeutrals;
 
 // Spawn spawns
-{
-	[_foreachIndex, _x] call RSTF_fnc_spawnSpawnDefenses;
-} foreach RSTF_SPAWNS;
+if (RSTF_SPAWN_TRANSPORTS) then {
+	{
+		[_foreachIndex, _x] call RSTF_fnc_spawnSpawnDefenses;
+	} foreach RSTF_SPAWNS;
+};
 
 // Hide camera border
 waitUntil { time > 0 };

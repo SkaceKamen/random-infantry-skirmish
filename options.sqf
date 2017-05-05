@@ -89,3 +89,6 @@ RSTF_ENEMY_ADVANTAGE_GROUPS = 0;
 RSTF_ENEMY_ADVANTAGE_UNITS = 0;
 // Enemy score multiplier
 RSTF_ENEMY_ADVANTAGE_SCORE = 1;
+
+// Should spawn have transport vehicles
+RSTF_SPAWN_TRANSPORTS = true;
