@@ -28,7 +28,7 @@ RSTF_DEATH_BODY = _body;
 _display = _dialogName call RSTF_fnc_getDisplay;
 _display displayAddEventHandler ["unload", {
 	systemChat str(_this select 1);
-	if (_this select 1 == 0) then {
+	if (_this select 1 != 1) then {
 		RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer
 	};
 }];
@@ -36,7 +36,6 @@ _display displayAddEventHandler ["unload", {
 _ctrl = [_dialogName, "spawn"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	closeDialog 0;
-	RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer;
 }];
 
 _ctrl = [_dialogName, "equip"] call RSTF_fnc_getCtrl;
