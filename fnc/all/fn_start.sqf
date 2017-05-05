@@ -26,6 +26,8 @@ _marker setMarkerType "mil_objective";
 
 	if (_foreachIndex == SIDE_ENEMY) then {
 		_marker setMarkerColor "ColorRed";
+	} else {
+		_marker setMarkerColor "ColorBlue";
 	};
 } foreach RSTF_SPAWNS;
 
