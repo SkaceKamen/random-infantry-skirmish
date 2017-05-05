@@ -76,7 +76,7 @@ RSTF_TASK_CLEAR_load = {
 			_house = _this select 0;
 			waitUntil {({ alive _x } count (_house select 1)) == 0};
 
-			call RSTF_TASKS_TASK_completed;
+			["House cleared"] call RSTF_TASKS_TASK_completed;
 		};
 	};
 };

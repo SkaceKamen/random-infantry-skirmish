@@ -48,8 +48,8 @@ RSTF_TASK_KVEH_load = {
 
 		[_vehicle] spawn {
 			_vehicle = _this select 0;
-			waitUntil { !alive(_vehicle) || count(crew(_vehicle)) == 0 };
-			call RSTF_TASKS_TASK_completed;
+			waitUntil { !alive(_vehicle) || count(crew(_vehicle) select { alive _x }) == 0 };
+			"Vehicle destroyed" call RSTF_TASKS_TASK_completed;
 		};
 	};
 
