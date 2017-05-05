@@ -32,14 +32,12 @@ _unit setSkill random(1);
 // This is initial spawn
 {
 	_player = _x;
-	// systemChat str([_player, player getVariable ["ASSIGNED", true]]);
 	if (!(_player getVariable ["ASSIGNED", true]) and side(_player) == side(_unit)) exitWith {
 		_player setVariable ["ASSIGNED", true, true];
 		
 		RSTF_ASSIGNED_UNITS set [0, _player];
 		RSTF_ASSIGNED_UNITS set [1, _unit];
 
-		systemChat str(RSTF_ASSIGNED_UNITS);
 		publicVariable "RSTF_ASSIGNED_UNITS";
 
 		if (!isDedicated && _player == player) then {
