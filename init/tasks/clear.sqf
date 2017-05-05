@@ -59,7 +59,9 @@ RSTF_TASK_CLEAR_load = {
 		side(player), "CLEAR" + str(getPos(_house select 0)),
 		["Clear this house, because ... I don't know why", "Clear house at " + str(mapGridPosition(getPos(_house select 0))),""],
 		getPos(_house select 0),
-		"ASSIGNED"
+		"ASSIGNED",
+		0, true,
+		"attack"
 	] call BIS_fnc_taskCreate;
 
 	RSTF_TASK_TYPE = "clear";
