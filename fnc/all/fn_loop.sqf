@@ -14,16 +14,19 @@ while{true} do {
 			if (_index == 1) then {
 				_side = west;
 			};
-				
+			
+			// Rather than attacking center of battle, try to attack enemy spawn
 			_point = RSTF_POINT;
 			if (_index == 0) then {
 				_point = [(RSTF_POINT select 0) + sin(180+RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),(RSTF_POINT select 1) + cos(180+RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5)];
 			} else {
 				_point = [(RSTF_POINT select 0) + sin(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),(RSTF_POINT select 1) + cos(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5)];
 			};
-					
+				
+			// Create groups if needed
 			_groups = _x;
 			if (count(_groups) == 0) then {
+				// Enemy can have groups advantage
 				_groups_advantage = 0;
 				if (_side == east) then {
 					_groups_advantage = RSTF_ENEMY_ADVANTAGE_GROUPS;
@@ -40,6 +43,7 @@ while{true} do {
 				publicVariable "RSTF_GROUPS";
 			};
 			
+			// Enemy can have units advantage
 			_units_advantage = 0;
 			if (_side == east) then {
 				_units_advantage = RSTF_ENEMY_ADVANTAGE_UNITS;
@@ -48,21 +52,15 @@ while{true} do {
 			{
 				_group = _x;
 				
+				// Delete and recreate waypoint
+				// This sometimes helps with stuck units
 				deleteWaypoint [_group, 0];
 				_wp = _group addWaypoint [_point,50];
 				_wp setWaypointType "SAD";
 
-				//Spawn water units if we're in water
-				if (RSTF_WATER) then {
-					_vehicle = _group call RSTF_fnc_groupVehicle;
-					if (isNull(_vehicle)) then {
-						_vehicle = [_group, _index, 3] call RSTF_fnc_createRandomVehicle;
-					};
-				} else {
-					if (count(units(_x)) < RSTF_LIMIT_UNITS + _units_advantage) then {
-						for[{_i = count(units(_x)); _k = 0},{_i < RSTF_LIMIT_UNITS && _k < 5},{_i = _i + 1; _k = _k + 1}] do {
-							[_x, _index] call RSTF_fnc_createRandomUnit;
-						};
+				if (count(units(_x)) < RSTF_LIMIT_UNITS + _units_advantage) then {
+					for[{_i = count(units(_x)); _k = 0},{_i < RSTF_LIMIT_UNITS && _k < 5},{_i = _i + 1; _k = _k + 1}] do {
+						[_x, _index] call RSTF_fnc_createRandomUnit;
 					};
 				};
 			} foreach _groups;
