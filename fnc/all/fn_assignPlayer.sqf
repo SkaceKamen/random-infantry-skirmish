@@ -16,77 +16,16 @@ RSTF_CAM camCommit 1;
 waitUntil { camCommitted RSTF_CAM; };
 
 if (alive(_unit)) then {
-	if (RSTF_CUSTOM_EQUIPMENT) then {
-		// Use custom weapon, if selected
-		_weapon = RSTF_PLAYER_PRIMARY;
-		if (_weapon == "") then {
-			_weapon = primaryWeapon(_unit);
+	if (RSTF_CUSTOM_EQUIPMENT && count(RSTF_PLAYER_EQUIPMENT) > 0) then {
+		_data = missionNamespace getvariable ["bis_fnc_saveInventory_data",[]];
+		_nameID = _data find "RSTF_PLAYER_EQUIPMENT";
+		if (_nameID < 0) then {
+			_nameID = count _data;
+			_data set [_nameID, "RSTF_PLAYER_EQUIPMENT"];
 		};
-
-		// Remove primary weapon and its ammo
-		if (primaryWeapon(_unit) != "") then {
-			_mgzs = getArray(configFile >> "cfgWeapons" >> primaryWeapon(_unit) >> "magazines");
-			{
-				_unit removeMagazines _x;
-			} foreach _mgzs;
-			_unit removeWeapon primaryWeapon(_unit);
-		};
-
-		// Remove secondary weapon and its ammo
-		if (secondaryWeapon(_unit) != "") then {
-			_mgzs = getArray(configFile >> "cfgWeapons" >> secondaryWeapon(_unit) >> "magazines");
-			{
-				_unit removeMagazines _x;
-			} foreach _mgzs;
-			_unit removeWeapon secondaryWeapon(_unit);
-		};
-
-		// Add secondary if selected
-		if (RSTF_PLAYER_SECONDARY != "") then {
-			if (RSTF_PLAYER_SECONDARY == "grenades") then {
-				_unit addMagazines ["HandGrenade", round(random(3))];
-			} else {
-				_launcher = RSTF_PLAYER_SECONDARY;
-				_mgzs = getArray(configFile >> "cfgWeapons" >> _launcher >> "magazines");
-				_type = getNumber(configFile >> "cfgWeapons" >> _launcher >> "type");
-
-				_magazine = _mgzs select 0;
-				_need = 2;
-				if (_type == 2) then {
-					_need = 5 max (20/getNumber(configFile >> "cfgMagazines" >> _magazine >> "count"));
-				};
-
-				_unit addMagazines [_magazine, 2];
-				_unit addWeapon _launcher;
-			};
-		};
-
-		// Add primary if any
-		if (_weapon != "") then {
-			_mgzs = getArray(configFile >> "cfgWeapons" >> _weapon >> "magazines");
-			_magazine = _mgzs select 0;
-			_weaponConfig = configFile >> "cfgWeapons" >> _weapon;
-			_muzzles = getArray(_weaponConfig >> "muzzles");
-			if (count(_muzzles) > 1) then {
-				{
-					if (_x != "this") then {
-						_magazines = getArray(_weaponConfig >> _x >> "magazines");
-						if (count(_magazines) > 0) then {
-							_unit addMagazines [_magazines select 0, 5];
-						};
-					};
-				} foreach _muzzles;
-			};
-
-			_need = 5 max (200/getNumber(configFile >> "cfgMagazines" >> _magazine >> "count"));
-			_unit addMagazines [_magazine, _need];
-			_unit addWeapon _weapon;
-			_unit selectWeapon _weapon;
-
-			{
-				_unit addWeaponItem [_weapon, _x select 0];
-			} foreach RSTF_PLAYER_ATTACHMENTS;
-		};
+		_data set [_nameID + 1, RSTF_PLAYER_EQUIPMENT];
+		bis_fnc_saveInventory_data = _data;
+		[_unit, [missionNamespace, "RSTF_PLAYER_EQUIPMENT"]] call BIS_fnc_loadInventory;
 	};
 
 	selectPlayer _unit;

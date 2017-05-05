@@ -10,15 +10,4 @@ if (PLAYER_SIDE == west) then {
 	_side = SIDE_FRIENDLY;
 };
 
-if (isNull(RSTF_CAM)) then {
-	RSTF_CAM = "camera" camCreate getPos(_unit);
-};
-
-RSTF_CAM camSetPos getPos(_unit);
-RSTF_CAM camSetTarget _unit;
-RSTF_CAM cameraEffect ["internal", "back"];
-RSTF_CAM camCommit 0;
-RSTF_CAM camSetRelPos [10, 0, 50];
-RSTF_CAM camCommit 2;
-
 [_side, _this select 1, _unit] call RSTF_fnc_showDeath;

@@ -66,9 +66,8 @@ _template = '
 
 _ctrl = ["RSTF_RscDialogConfig", "weaponButton"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
-	call RSTF_fnc_loadWeapons;
-	call RSTF_fnc_loadClasses;
-	[] spawn RSTF_fnc_showEquip;
+	closeDialog 0;
+	[false] spawn RSTF_fnc_showEquip;
 	true;
 }];
 

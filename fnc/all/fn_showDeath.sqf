@@ -2,6 +2,18 @@ _side = _this select 0;
 _killer = _this select 1;
 _body = _this select 2;
 
+
+if (isNull(RSTF_CAM)) then {
+	RSTF_CAM = "camera" camCreate getPos(_body);
+};
+
+RSTF_CAM camSetPos getPos(_body);
+RSTF_CAM camSetTarget _body;
+RSTF_CAM cameraEffect ["internal", "back"];
+RSTF_CAM camCommit 0;
+RSTF_CAM camSetRelPos [10, 0, 50];
+RSTF_CAM camCommit 2;
+
 _dialogName = "RSTF_RscDeathDialog";
 _ok = createDialog _dialogName;
 if (!_ok) exitWith {
@@ -15,18 +27,23 @@ RSTF_DEATH_BODY = _body;
 
 _display = _dialogName call RSTF_fnc_getDisplay;
 _display displayAddEventHandler ["unload", {
-	RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer
+	systemChat str(_this select 1);
+	if (_this select 1 == 0) then {
+		RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer
+	};
 }];
 
 _ctrl = [_dialogName, "spawn"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	closeDialog 0;
+	RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer;
 }];
 
 _ctrl = [_dialogName, "equip"] call RSTF_fnc_getCtrl;
 _ctrl ctrlShow RSTF_CUSTOM_EQUIPMENT;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
-	[getPos(RSTF_CAM), camTarget(RSTF_CAM)] spawn RSTF_fnc_showEquip;
+	closeDialog 1;
+	[true, [RSTF_DEATH_SIDE, RSTF_DEATH_KILLER, RSTF_DEATH_BODY]] spawn RSTF_fnc_showEquip;
 	true;
 }];
 
