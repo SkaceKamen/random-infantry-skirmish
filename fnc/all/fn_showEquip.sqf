@@ -297,6 +297,10 @@ _ctrl = ["RSTF_RscDialogEquip", "buttonDeattach"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", RSTF_equipAttachmentAdd];
 
 _ctrl = ["RSTF_RscDialogEquip", "buttonBack"] call RSTF_fnc_getCtrl;
-_ctrl ctrlAddEventHandler ["ButtonClick", { closeDialog 0; call RSTF_fnc_updateEquipment; }];
+_ctrl ctrlAddEventHandler ["ButtonClick", {
+	closeDialog 0;
+	call RSTF_fnc_profileSave;
+	if (dialog) then { call RSTF_fnc_updateEquipment; };
+}];
 
 call RSTF_refreshEquippedAttachments;
