@@ -198,7 +198,7 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_RANDOMIZE_WEAPONS_RESTRICT", "Restrict weapons to sides", "When weapons are randomized, only use weapons that origins from unit faction. (Useful for mods).", "checkbox"],
 		["RSTF_CUSTOM_EQUIPMENT", "Enable custom equipment", "Enable player to customize his equipment, which will be used when switching to soldier.", "checkbox"],
 		[],
-		["RSTF_SPAWN_TRANSPORTS", "Place transport vehicles at spawn", "Tries to spawn transport vehicles at side spawns to cover unit spawning.", "checkbox"]
+		["RSTF_SPAWN_TRANSPORTS", "Vehicles at spawn", "Tries to spawn transport vehicles at side spawns to cover unit spawning.", "checkbox"]
 	]],
 	["Neutrals", [
 		["RSTF_NEUTRALS_GROUPS", "Neutral groups", "Maximum number of neutral groups spawned.", "number"],
