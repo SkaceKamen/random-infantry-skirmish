@@ -205,6 +205,10 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_ENEMY_ADVANTAGE_UNITS", "Units advantage", "Enemy groups will have this much more units.", "number"],
 		["RSTF_ENEMY_ADVANTAGE_SCORE", "Score multiplier", "Enemy score will be multiplied by this.", "float"]
 	]],
+	["Map", [
+		["RSTF_MAP_VOTE", "Allow map selection", "System will allow player(s) to select map.", "checkbox"],
+		["RSTF_MAP_VOTE_COUNT", "Number of maps to pick", "Number of maps that will be proposed to player(s). 0 for unlimited", "number"]
+	]],
 	["Other", [
 		["RSTF_CLEAN", "Clear dead bodies", "Dead bodies will be destroyed after 3 minutes. This helps performance.", "checkbox"],
 		["RSTF_WEATHER", "Weather", "Mission weather.", "select", RSTF_WEATHER_TYPES],

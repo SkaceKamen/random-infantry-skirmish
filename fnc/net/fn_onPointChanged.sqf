@@ -15,7 +15,6 @@ RSTF_CAM camCommit 0;
 
 [
 	[
-		[text(RSTF_LOCATION), "%1<br />"],
-		[format["%1:%2", date select 3, date select 4],"<t align = 'center' shadow = '1' size = '0.7'>%1</t><br/>"]
+		["Battle for " + text(RSTF_LOCATION), "%1<br />"]
 	]
 ] call BIS_fnc_typeText;

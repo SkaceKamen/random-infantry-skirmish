@@ -1,10 +1,19 @@
+private _skip = param [0, []];
+private _attempts = 0;
 
-_attempts = 0;
 RSTF_WATER = true;
+RSTF_POINT = [];
+RSTF_SPAWNS = [];
 
-while {RSTF_WATER} do {
+while { RSTF_WATER } do {
 	//Load random location
-	_center = ["NameCityCapital","NameCity","NameVillage"] call RSTF_fnc_randomLocation;
+	_tries = 0;
+	_center = [];
+	while { _tries < 100 } do {
+		_center = ["NameCityCapital","NameCity","NameVillage"] call RSTF_fnc_randomLocation;
+		if (!(_center in _skip)) exitWith {};
+		_tries = _tries + 1;
+	};
 
 	//Direction and distance between two spanws
 	_direction = random(360);
@@ -17,7 +26,7 @@ while {RSTF_WATER} do {
 	//RSTF_POINT = markerPos "TestCenter";
 	RSTF_POINT set [2, 0];
 
-	//Now find usable spanws
+	//Now find usable spawns
 	RSTF_WATER = true;
 	_tries = 0;
 	while { _tries < 5 } do {

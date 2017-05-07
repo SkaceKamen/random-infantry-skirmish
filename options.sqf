@@ -90,3 +90,8 @@ RSTF_ENEMY_ADVANTAGE_SCORE = 1;
 
 // Should spawn have transport vehicles
 RSTF_SPAWN_TRANSPORTS = true;
+
+// Allow voting/selecting battle position
+RSTF_MAP_VOTE = true;
+// Number of proposed positions, 0 for unlimited
+RSTF_MAP_VOTE_COUNT = 10;

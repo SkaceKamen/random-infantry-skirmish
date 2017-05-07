@@ -2,6 +2,7 @@ class all
 {
 	file = "fnc\all";
 
+	class assignPoint {};
 	class addPlayerScore {};
 	class assignPlayer {};
 	class countTurrets {};
@@ -34,6 +35,7 @@ class all
 	class unitKilled {};
 	class pathString {};
 	class createCam {};
+	class pickRandomPoints {};
 };
 
 class spawn
@@ -62,6 +64,7 @@ class ui
 	class showEquip {};
 	class showFactions {};
 	class showWaiting {};
+	class showBattleSelection {};
 	class factionsUpdate {};
 	class configUpdateFactions {};
 	class configValidate {};
