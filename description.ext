@@ -5,9 +5,8 @@
 #include "dialogs\advancedConfigDialog.hpp"
 #include "dialogs\factionsDialog.hpp"
 #include "dialogs\deathDialog.hpp"
-#include "dialogs\equipDialog.hpp"
+#include "dialogs\battleSelectionDialog.hpp"
 #include "dialogs\waitingDialog.hpp"
-// #include "dialogs\mapsDialog.hpp"
 
 class cfgFunctions
 {
