@@ -4,11 +4,8 @@ class all
 
 	class addPlayerScore {};
 	class assignPlayer {};
-	class configUpdateFactions {};
-	class configValidate {};
 	class countTurrets {};
 	class equipSoldier {};
-	class factionsUpdate {};
 	class getAttachments {};
 	class getCtrl {};
 	class getDisplay {};
@@ -31,11 +28,6 @@ class all
 	class randomPosition {};
 	class randomWeather2 {};
 	class scoreChanged {};
-	class showConfig {};
-	class showDeath {};
-	class showEquip {};
-	class showFactions {};
-	class showWaiting {};
 	class start {};
 	class superRandomTime {};
 	class superRandomWeather {};
@@ -65,6 +57,14 @@ class ui
 	class showAdvancedConfig {};
 	class showAdvancedOptions {};
 	class saveAdvancedOptions {};
+	class showConfig {};
+	class showDeath {};
+	class showEquip {};
+	class showFactions {};
+	class showWaiting {};
+	class factionsUpdate {};
+	class configUpdateFactions {};
+	class configValidate {};
 	class updateEquipment {};
 	class filterInput {};
 };
