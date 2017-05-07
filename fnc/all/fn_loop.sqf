@@ -40,12 +40,8 @@ while{true} do {
 					_groups_advantage = RSTF_ENEMY_ADVANTAGE_GROUPS;
 				};
 
-				for[{_i = 0},{_i < RSTF_LIMIT_GROUPS + _groups_advantage},{_i = _i + 1}] do {
-					_group = creategroup _side;
-					deleteWaypoint [_group, 0];
-					_wp = _group addWaypoint [_point, 50];
-					_wp setWaypointType "SAD";
-					_groups set [_i, _group];
+				for [{_i = 0},{_i < RSTF_LIMIT_GROUPS + _groups_advantage},{_i = _i + 1}] do {
+					_groups set [_i, creategroup _side];
 				};
 
 				publicVariable "RSTF_GROUPS";
@@ -60,10 +56,17 @@ while{true} do {
 			{
 				_group = _x;
 				
+				_dis = selectRandom([-1,1]) * random(RSTF_DISTANCE * 0.4);
+				_wppoint = _point vectorAdd [
+					sin(RSTF_DIRECTION + 90) * _dis,
+					cos(RSTF_DIRECTION + 90) * _dis,
+					0
+				];
+
 				// Delete and recreate waypoint
 				// This sometimes helps with stuck units
 				deleteWaypoint [_group, 0];
-				_wp = _group addWaypoint [_point, 50];
+				_wp = _group addWaypoint [_wppoint, 50];
 				_wp setWaypointType "SAD";
 
 				if (count(units(_x)) < RSTF_LIMIT_UNITS + _units_advantage) then {
