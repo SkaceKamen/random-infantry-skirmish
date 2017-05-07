@@ -30,24 +30,30 @@ class RSTF_RscDialogBattleSelection
     movingEnable = false;
     class controlsBackground
     {
-		class battlesContainer: RscStatic
-		{
-			x = RSTF_BTL_LIST_X;
-			y = RSTF_BTL_LIST_Y;
-			w = RSTF_BTL_LIST_W;
-			h = RSTF_BTL_LIST_H;
-			colorBackground[] = { 0, 0, 0, 0.8 };
-		};
 	};
 	class controls
 	{
 		class map: RscMapControl
 		{
 			idc = 1;
-			x = RSTF_BTL_X;
+			/*x = RSTF_BTL_X;
 			y = SafeZoneY;
 			w = RSTF_BTL_W;
-			h = SafeZoneH - RSTF_BTL_H - RSTF_BTL_M;
+			h = SafeZoneH - RSTF_BTL_H - RSTF_BTL_M;*/
+			x = SafeZoneX;
+			y = SafeZoneY;
+			w = SafeZoneW;
+			h = SafeZoneH;
+		};
+
+		class battlesContainer: RscStatic
+		{
+			idc = 7;
+			x = RSTF_BTL_LIST_X;
+			y = RSTF_BTL_LIST_Y;
+			w = RSTF_BTL_LIST_W;
+			h = RSTF_BTL_LIST_H;
+			colorBackground[] = { 0, 0, 0, 0.8 };
 		};
 
 		class mainTitle: RscStatic
@@ -79,7 +85,7 @@ class RSTF_RscDialogBattleSelection
 			y = RSTF_BTL_BTS_Y;
 			w = RSTF_BTL_VIEWBUTTON_W;
 			h = RSTF_BTL_BTS_H;
-			text = "Map";
+			text = "2D Map";
 		};
 
 		class buttonVote: RscButton
