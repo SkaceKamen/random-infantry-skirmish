@@ -20,8 +20,7 @@
 #define RSTF_BTL_BTS_Y (RSTF_BTL_LIST_Y + RSTF_BTL_LIST_H + RSTF_BTL_M)
 
 #define RSTF_BTL_VIEWBUTTON_W (RSTF_BTL_BTS_W * 0.2)
-#define RSTF_BTL_3DBUTTON_X (RSTF_BTL_BTS_X)
-#define RSTF_BTL_2DBUTTON_X (RSTF_BTL_BTS_X + RSTF_BTL_VIEWBUTTON_W + RSTF_BTL_M)
+#define RSTF_BTL_2DBUTTON_X (RSTF_BTL_BTS_X)
 #define RSTF_BTL_VOTEBUTTON_X (RSTF_BTL_BTS_X + RSTF_BTL_BTS_W - RSTF_BTL_VIEWBUTTON_W)
 
 class RSTF_RscDialogBattleSelection
@@ -42,9 +41,18 @@ class RSTF_RscDialogBattleSelection
 	};
 	class controls
 	{
-		class mainTitle: RscStatic
+		class map: RscMapControl
 		{
 			idc = 1;
+			x = RSTF_BTL_X;
+			y = SafeZoneY;
+			w = RSTF_BTL_W;
+			h = SafeZoneH - RSTF_BTL_H - RSTF_BTL_M;
+		};
+
+		class mainTitle: RscStatic
+		{
+			idc = 2;
 			x = RSTF_BTL_X;
 			y = RSTF_BTL_Y;
 			w = RSTF_BTL_W;
@@ -55,7 +63,7 @@ class RSTF_RscDialogBattleSelection
 
 		class battles: RscListNBox
 		{
-			idc = 2;
+			idc = 3;
 			x = RSTF_BTL_LIST_X + RSTF_BTL_P;
 			y = RSTF_BTL_LIST_Y + RSTF_BTL_P;
 			w = RSTF_BTL_LIST_W - RSTF_BTL_P*2;
@@ -64,29 +72,19 @@ class RSTF_RscDialogBattleSelection
 			columns[] = { 0, 0.2, 0.9 };
 		};
 
-		class button3D: RscButton
+		class buttonMap: RscButton
 		{
-			idc = 3;
-			x = RSTF_BTL_3DBUTTON_X;
-			y = RSTF_BTL_BTS_Y;
-			w = RSTF_BTL_VIEWBUTTON_W;
-			h = RSTF_BTL_BTS_H;
-			text = "3D";
-		};
-
-		class button2D: RscButton
-		{
-			idc = 4;
+			idc = 5;
 			x = RSTF_BTL_2DBUTTON_X;
 			y = RSTF_BTL_BTS_Y;
 			w = RSTF_BTL_VIEWBUTTON_W;
 			h = RSTF_BTL_BTS_H;
-			text = "2D";
+			text = "Map";
 		};
 
 		class buttonVote: RscButton
 		{
-			idc = 5;
+			idc = 6;
 			x = RSTF_BTL_VOTEBUTTON_X;
 			y = RSTF_BTL_BTS_Y;
 			w = RSTF_BTL_VIEWBUTTON_W;

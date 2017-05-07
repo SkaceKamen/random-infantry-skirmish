@@ -36,6 +36,7 @@ class all
 	class pathString {};
 	class createCam {};
 	class pickRandomPoints {};
+	class createPointMarkers {};
 };
 
 class spawn
