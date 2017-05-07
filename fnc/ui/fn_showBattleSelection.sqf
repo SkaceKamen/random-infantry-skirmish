@@ -4,12 +4,26 @@ if (!_ok) exitWith {
 	systemChat "Failed to open dialog.";
 };
 
+private _display = _dialogName call RSTF_fnc_getDisplay;
+_display displayAddEventHandler ["Unload", {
+	{
+		deleteMarker _x;
+	} foreach RSTF_BS_MARKERS;
+	RSTF_BS_MARKERS = [];
+}];
+
 private _ctrlBattles = [_dialogName, "battles"] call RSTF_fnc_getCtrl;
 private _ctrlMap = [_dialogName, "map"] call RSTF_fnc_getCtrl;
 private _ctrlMapButton = [_dialogName, "buttonMap"] call RSTF_fnc_getCtrl;
 private _ctrlVote = [_dialogName, "buttonVote"] call RSTF_fnc_getCtrl;
+private _ctrlTitle = [_dialogName, "mainTitle"] call RSTF_fnc_getCtrl;
 
 RSTF_BS_MARKERS = [];
+
+if (!isMultiplayer) then {
+	_ctrlTitle ctrlSetText "Select map";
+	_ctrlVote ctrlSetText "Select";
+};
 
 _ctrlMap ctrlShow false;
 _ctrlMap ctrlEnable false;
@@ -45,7 +59,7 @@ _ctrlBattles ctrlAddEventHandler ["LBSelChanged", {
 			deleteMarker _x;
 		} foreach RSTF_BS_MARKERS;
 
-		RSTF_BS_MARKERS = [_position, _place select 1] call RSTF_fnc_createPointMarkers;
+		RSTF_BS_MARKERS = [_position, _place select 1, true] call RSTF_fnc_createPointMarkers;
 	};
 }];
 
@@ -53,4 +67,19 @@ _ctrlMapButton ctrlAddEventHandler ["ButtonClick", {
 	_ctrlMap = ["RSTF_RscDialogBattleSelection", "map"] call RSTF_fnc_getCtrl;
 	_ctrlMap ctrlShow !(ctrlShown _ctrlMap);
 	_ctrlMap ctrlCommit 0;
+}];
+
+_ctrlVote ctrlAddEventHandler ["ButtonClick", {
+	_ctrlBattles = ["RSTF_RscDialogBattleSelection", "battles"] call RSTF_fnc_getCtrl;
+	_selected = lnbCurSelRow _ctrlBattles;
+	
+	if (_selected >= 0) then {
+		closeDialog 0;
+
+		_place = RSTF_POINTS select _selected;
+		if (!isMultiplayer) then {
+			_place call RSTF_fnc_assignPoint;
+			0 spawn RSTF_fnc_start;
+		};
+	};
 }];
