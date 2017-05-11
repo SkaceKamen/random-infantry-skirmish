@@ -326,6 +326,9 @@ class RscCombo
 
 class RscMapControl
 {
+	deletable = 0;
+	fade = 0;
+	access = 0;
 	type = 101;
 	idc = 51;
 	style = 48;
@@ -356,8 +359,8 @@ class RscMapControl
 	colorMainRoadsFill[] = { 1,0.6,0.4,1 };
 	colorGrid[] = { 0.1,0.1,0.1,0.6 };
 	colorGridMap[] = { 0.1,0.1,0.1,0.6 };
-	stickX[] = { 0.2 };
-	stickY[] = { 0.2 };
+	stickX[] = { 0.2, };
+	stickY[] = { 0.2, };
 	moveOnEdges = 1;
 	x = "SafeZoneXAbs";
 	y = "SafeZoneY + 1.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
@@ -380,7 +383,9 @@ class RscMapControl
 	maxSatelliteAlpha = 0.85;
 	alphaFadeStartScale = 2;
 	alphaFadeEndScale = 2;
-	fontLabel = "PuristaMedium";
+	colorTrails[] = { 0.84,0.76,0.65,0.15 };
+	colorTrailsFill[] = { 0.84,0.76,0.65,0.65 };
+	fontLabel = "RobotoCondensed";
 	sizeExLabel = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 	fontGrid = "TahomaB";
 	sizeExGrid = 0.02;
@@ -388,11 +393,15 @@ class RscMapControl
 	sizeExUnits = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 	fontNames = "EtelkaNarrowMediumPro";
 	sizeExNames = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8) * 2";
-	fontInfo = "PuristaMedium";
+	fontInfo = "RobotoCondensed";
 	sizeExInfo = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 	fontLevel = "TahomaB";
 	sizeExLevel = 0.02;
 	text = "#(argb,8,8,3)color(1,1,1,1)";
+	idcMarkerColor = -1;
+	idcMarkerIcon = -1;
+	textureComboBoxColor = "#(argb,8,8,3)color(1,1,1,1)";
+	showMarkers = 1;
 	class Legend
 	{
 		colorBackground[] = { 1,1,1,0.5 };
@@ -401,7 +410,7 @@ class RscMapControl
 		y = "SafeZoneY + safezoneH - 4.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		w = "10 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 		h = "3.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-		font = "PuristaMedium";
+		font = "RobotoCondensed";
 		sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 	};
 	class ActiveMarker
@@ -412,7 +421,7 @@ class RscMapControl
 	class Command
 	{
 		color[] = { 1,1,1,1 };
-		icon = "\A3\ui_f\data\map\mapcontrol\waypoint_ca.paa";
+		icon = "\a3\ui_f\data\map\mapcontrol\waypoint_ca.paa";
 		size = 18;
 		importance = 1;
 		coefMin = 1;
@@ -420,6 +429,12 @@ class RscMapControl
 	};
 	class Task
 	{
+		taskNone = "#(argb,8,8,3)color(0,0,0,0)";
+		taskCreated = "#(argb,8,8,3)color(0,0,0,1)";
+		taskAssigned = "#(argb,8,8,3)color(1,1,1,1)";
+		taskSucceeded = "#(argb,8,8,3)color(0,1,0,1)";
+		taskFailed = "#(argb,8,8,3)color(1,0,0,1)";
+		taskCanceled = "#(argb,8,8,3)color(1,0.5,0,1)";
 		colorCreated[] = { 1,1,1,1 };
 		colorCanceled[] = { 0.7,0.7,0.7,1 };
 		colorDone[] = { 0.7,1,0.3,1 };
@@ -437,9 +452,9 @@ class RscMapControl
 	};
 	class CustomMark
 	{
-		color[] = { 0,0,0,1 };
-		icon = "\A3\ui_f\data\map\mapcontrol\custommark_ca.paa";
-		size = 24;
+		color[] = { 1,1,1,1 };
+		icon = "\a3\ui_f\data\map\mapcontrol\custommark_ca.paa";
+		size = 18;
 		importance = 1;
 		coefMin = 1;
 		coefMax = 1;
@@ -588,6 +603,14 @@ class RscMapControl
 		coefMin = 0.85;
 		coefMax = 1;
 	};
+	class LineMarker
+	{
+		textureComboBoxColor = "#(argb,8,8,3)color(1,1,1,1)";
+		lineWidthThin = 0.008;
+		lineWidthThick = 0.014;
+		lineDistanceMin = 3e-005;
+		lineLengthMin = 5;
+	};
 	class Transmitter
 	{
 		color[] = { 1,1,1,1 };
@@ -635,21 +658,21 @@ class RscMapControl
 	};
 	class Waypoint
 	{
-		color[] = { 0,0,0,1 };
-		size = 24;
+		color[] = { 1,1,1,1 };
 		importance = 1;
 		coefMin = 1;
 		coefMax = 1;
-		icon = "\A3\ui_f\data\map\mapcontrol\waypoint_ca.paa";
+		icon = "\a3\ui_f\data\map\mapcontrol\waypoint_ca.paa";
+		size = 18;
 	};
 	class WaypointCompleted
 	{
-		color[] = { 0,0,0,1 };
-		size = 24;
+		color[] = { 1,1,1,1 };
 		importance = 1;
 		coefMin = 1;
 		coefMax = 1;
-		icon = "\A3\ui_f\data\map\mapcontrol\waypointCompleted_ca.paa";
+		icon = "\a3\ui_f\data\map\mapcontrol\waypointcompleted_ca.paa";
+		size = 18;
 	};
 	class power
 	{
@@ -687,16 +710,17 @@ class RscMapControl
 		coefMax = 1;
 		color[] = { 1,1,1,1 };
 	};
-	class shipwreck
+	class Shipwreck
 	{
-		icon = "\A3\ui_f\data\map\mapcontrol\shipwreck_CA.paa";
+		icon = "\A3\ui_f\data\map\mapcontrol\Shipwreck_CA.paa";
 		size = 24;
 		importance = 1;
 		coefMin = 0.85;
 		coefMax = 1;
-		color[] = { 1,1,1,1 };
+		color[] = { 0,0,0,1 };
 	};
 };
+
 
 class RscShortcutButton
 {
