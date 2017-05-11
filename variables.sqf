@@ -207,7 +207,8 @@ RSTF_CONFIG_VALUES = [
 	]],
 	["Map", [
 		["RSTF_MAP_VOTE", "Allow map selection", "System will allow player(s) to select map.", "checkbox"],
-		["RSTF_MAP_VOTE_COUNT", "Number of maps to pick", "Number of maps that will be proposed to player(s). 0 for unlimited", "number"]
+		["RSTF_MAP_VOTE_COUNT", "Number of maps to pick", "Number of maps that will be proposed to player(s). 0 for unlimited", "number"],
+		["RSTF_MAP_VOTE_TIMEOUT", "Vote timeout (secs)", "Time in seconds to wait for votes (only in multiplayer).", "number"]
 	]],
 	["Other", [
 		["RSTF_CLEAN", "Clear dead bodies", "Dead bodies will be destroyed after 3 minutes. This helps performance.", "checkbox"],
@@ -216,9 +217,5 @@ RSTF_CONFIG_VALUES = [
 	]]
 ];
 
-// How much more groups will enemy have
-RSTF_ENEMY_ADVANTAGE_GROUPS = 0;
-// How much more units prer groups will enemy have
-RSTF_ENEMY_ADVANTAGE_UNITS = 0;
-// Enemy score multiplier
-RSTF_ENEMY_ADVANTAGE_SCORE = 1;
+RSTF_POINTS = [];
+RSTF_POINT_VOTES = [];

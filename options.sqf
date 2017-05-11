@@ -95,3 +95,5 @@ RSTF_SPAWN_TRANSPORTS = true;
 RSTF_MAP_VOTE = true;
 // Number of proposed positions, 0 for unlimited
 RSTF_MAP_VOTE_COUNT = 10;
+// Time in seconds to wait for votes
+RSTF_MAP_VOTE_TIMEOUT = 10;
