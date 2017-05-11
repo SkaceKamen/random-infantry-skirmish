@@ -14,7 +14,7 @@ if (isServer && isMultiplayer) then {
 		RSTF_VOTES_TIMEOUT = RSTF_MAP_VOTE_TIMEOUT;
 		while { RSTF_VOTES_TIMEOUT >= 0 } do {
 			publicVariable "RSTF_VOTES_TIMEOUT";
-			if (!isDedicated) then { 0 spawn RSTF_fnc_updateVoteTimeout; };
+			if (!isDedicated) then { 0 call RSTF_fnc_updateVoteTimeout; };
 			
 			_voted = 0;
 			{
