@@ -17,18 +17,21 @@ private _ctrlMap = [_dialogName, "map"] call RSTF_fnc_getCtrl;
 private _ctrlMapButton = [_dialogName, "buttonMap"] call RSTF_fnc_getCtrl;
 private _ctrlVote = [_dialogName, "buttonVote"] call RSTF_fnc_getCtrl;
 private _ctrlTitle = [_dialogName, "mainTitle"] call RSTF_fnc_getCtrl;
+private _ctrlTimeout = [_dialogName, "timeout"] call RSTF_fnc_getCtrl;
 
 RSTF_BS_MARKERS = [];
-
 
 if (!isMultiplayer) then {
 	_ctrlTitle ctrlSetText "Select map";
 	_ctrlVote ctrlSetText "Select";
+	_ctrlTimeout ctrlShow false;
+	_ctrlTimeout ctrlCommit 0;
 };
 
 _ctrlMap ctrlShow false;
 _ctrlMap ctrlEnable false;
 _ctrlMap ctrlCommit 0;
+
 
 call RSTF_fnc_updateBattles;
 

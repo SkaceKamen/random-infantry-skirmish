@@ -54,6 +54,10 @@
 	0 spawn RSTF_fnc_updateBattles;
 };
 
+"RSTF_VOTES_TIMEOUT" addPublicVariableEventHandler {
+	0 spawn RSTF_fnc_updateVoteTimeout;
+};
+
 if (count(RSTF_POINT) > 0) then {
 	0 spawn RSTF_fnc_onPointChanged;
 };

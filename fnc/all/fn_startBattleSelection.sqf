@@ -11,8 +11,11 @@ if (isServer && isMultiplayer) then {
 
 	// This manages voting on server
 	0 spawn {
-		_timeout = RSTF_MAP_VOTE_TIMEOUT;
-		while { _timeout >= 0 } do {
+		RSTF_VOTES_TIMEOUT = RSTF_MAP_VOTE_TIMEOUT;
+		while { RSTF_VOTES_TIMEOUT >= 0 } do {
+			publicVariable "RSTF_VOTES_TIMEOUT";
+			if (!isDedicated) then { 0 spawn RSTF_fnc_updateVoteTimeout; };
+			
 			_voted = 0;
 			{
 				_voted = _voted + _x;
@@ -20,7 +23,7 @@ if (isServer && isMultiplayer) then {
 
 			if (_voted == count(allPlayers)) exitWith {};
 
-			_timeout = _timeout - 1;
+			RSTF_VOTES_TIMEOUT = RSTF_VOTES_TIMEOUT - 1;
 			sleep 1;
 		};
 

@@ -97,5 +97,16 @@ class RSTF_RscDialogBattleSelection
 			h = RSTF_BTL_BTS_H;
 			text = "Vote";
 		};
+
+		class timeout: RscStatic
+		{
+			idc = 7;
+			x = RSTF_BTL_VOTEBUTTON_X + RSTF_BTL_VIEWBUTTON_W + RSTF_BTL_M;
+			y = RSTF_BTL_BTS_Y;
+			w = RSTF_BTL_W - RSTF_BTL_VIEWBUTTON_W * 2 - RSTF_BTL_M * 2;
+			h = RSTF_BTL_BTS_H;
+			colorBackground[] = { TITLE_BG_RGBA };
+			text = "";
+		};
 	};
 };

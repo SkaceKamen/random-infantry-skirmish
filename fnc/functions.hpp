@@ -73,6 +73,7 @@ class ui
 	class updateEquipment {};
 	class filterInput {};
 	class updateBattles {};
+	class updateVoteTimeout {};
 };
 
 class net
