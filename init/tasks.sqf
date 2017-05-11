@@ -75,7 +75,6 @@ RSTF_TASKS_clear = {
 
 	publicVariable "RSTF_TASK";
 
-	diag_log text("TASKS: Task completed. Starting new task.");
-	call RSTF_TASKS_start;
-
+	// diag_log text("TASKS: Task completed. Starting new task.");
+	// call RSTF_TASKS_start;
 };

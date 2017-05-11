@@ -4,7 +4,7 @@ _spawnVehicles = 0;
 _cars = 0;
 _tanks = 0;
 
-while{true} do {
+while { true } do {
 	if (_spawn == 0) then {
 		_spawn = RSTF_LIMIT_SPAWN;
 		
@@ -83,7 +83,7 @@ while{true} do {
 	};
 	
 	if (isServer && RSTF_TASK == "") then {
-		0 spawn RSTF_TASKS_start;
+		0 call RSTF_TASKS_start;
 	};
 	
 	sleep 1;
