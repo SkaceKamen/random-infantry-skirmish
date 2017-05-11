@@ -44,6 +44,16 @@
 	0 spawn RSTF_fnc_onScore;
 };
 
+// List of possible battles
+"RSTF_POINTS" addPublicVariableEventHandler {
+	0 spawn RSTF_fnc_showBattleSelection;
+};
+
+// Current vote count
+"RSTF_POINT_VOTES" addPublicVariableEventHandler {
+	0 spawn RSTF_fnc_updateBattles;
+};
+
 if (count(RSTF_POINT) > 0) then {
 	0 spawn RSTF_fnc_onPointChanged;
 };

@@ -20,6 +20,7 @@ private _ctrlTitle = [_dialogName, "mainTitle"] call RSTF_fnc_getCtrl;
 
 RSTF_BS_MARKERS = [];
 
+
 if (!isMultiplayer) then {
 	_ctrlTitle ctrlSetText "Select map";
 	_ctrlVote ctrlSetText "Select";
@@ -29,9 +30,7 @@ _ctrlMap ctrlShow false;
 _ctrlMap ctrlEnable false;
 _ctrlMap ctrlCommit 0;
 
-{
-	_ctrlBattles lnbAddRow ["Battle of " + text(_x select 0)];
-} foreach RSTF_POINTS;
+call RSTF_fnc_updateBattles;
 
 _ctrlBattles ctrlAddEventHandler ["LBSelChanged", {
 	_ctrl = _this select 0;
@@ -77,9 +76,21 @@ _ctrlVote ctrlAddEventHandler ["ButtonClick", {
 		closeDialog 0;
 
 		_place = RSTF_POINTS select _selected;
+		
 		if (!isMultiplayer) then {
 			_place call RSTF_fnc_assignPoint;
 			0 spawn RSTF_fnc_start;
+		} else {
+			// RSTF_POINT_VOTES set [_selected, (RSTF_POINT_VOTES select _selected) + 1];
+			// publicVariable "RSTF_POINT_VOTES";
+			if (isServer) then {
+				RSTF_POINT_VOTES set [_selected, (RSTF_POINT_VOTES select _selected) + 1];
+				publicVariable "RSTF_POINT_VOTES";
+				call RSTF_fnc_updateBattles;
+			} else {
+				RSTF_POINT_VOTE = _selected;
+				publicVariable "RSTF_POINT_VOTE";
+			};
 		};
 	};
 }];

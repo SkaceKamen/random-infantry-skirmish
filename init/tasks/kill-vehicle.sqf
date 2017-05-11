@@ -40,9 +40,13 @@ RSTF_TASK_KVEH_load = {
 		createvehiclecrew(_vehicle);
 		crew(_vehicle) joinSilent _group;
 
-		_wp = _group addWaypoint [RSTF_POINT, 5];
-		_wp setWaypointType "SAD";
-		_wp setWaypointSpeed "LIMITED";
+		{
+			_x setVariable ["SPAWNED_SIDE", side(_group), true];
+			_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
+		} foreach units(_group);
+
+		_wp = _group addWaypoint [RSTF_POINT, 50];
+		_wp setWaypointType "MOVE";
 
 		_vehicle limitSpeed 10;
 
@@ -55,7 +59,7 @@ RSTF_TASK_KVEH_load = {
 
 	RSTF_TASK = [
 		side(player), "KILL" + str(_vehicle),
-		["Enemy IFV is supporing their advance, destroy it.", "Destroy enemy IFV",""],
+		["Enemy IFV is supporting their advance, destroy it.", "Destroy enemy IFV",""],
 		_vehicle,
 		"ASSIGNED",
 		0, true,

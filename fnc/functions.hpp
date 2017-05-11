@@ -2,6 +2,7 @@ class all
 {
 	file = "fnc\all";
 
+	class startBattleSelection {};
 	class assignPoint {};
 	class addPlayerScore {};
 	class assignPlayer {};
@@ -71,6 +72,7 @@ class ui
 	class configValidate {};
 	class updateEquipment {};
 	class filterInput {};
+	class updateBattles {};
 };
 
 class net

@@ -87,6 +87,12 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 		RSTF_POINTS = 1 call RSTF_fnc_pickRandomPoints;
 	};
 
+	// Fill votes array
+	RSTF_POINT_VOTES = [];
+	{
+		RSTF_POINT_VOTES pushBack 0;
+	} foreach RSTF_POINTS;
+
 	// Stop if no battle was found
 	if (count(RSTF_POINTS) == 0) exitWith {
 		[parseText("No suitable location found on this map."), "Configuration error"] spawn BIS_fnc_GUImessage;
@@ -97,7 +103,7 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 
 	// Show voting or start if voting is disabled
 	if (RSTF_MAP_VOTE) then {
-		0 spawn RSTF_fnc_showBattleSelection;
+		0 spawn RSTF_fnc_startBattleSelection;
 	} else {
 		(RSTF_POINTS select 0) call RSTF_fnc_assignPoint;
 		0 spawn RSTF_fnc_start;

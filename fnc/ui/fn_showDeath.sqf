@@ -27,7 +27,6 @@ RSTF_DEATH_BODY = _body;
 
 _display = _dialogName call RSTF_fnc_getDisplay;
 _display displayAddEventHandler ["unload", {
-	systemChat str(_this select 1);
 	if (_this select 1 != 1) then {
 		RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer
 	};
@@ -54,10 +53,17 @@ if (isNull(_killer)) then {
 	_ctrl = [_dialogName, "distance"] call RSTF_fnc_getCtrl;
 	_ctrl ctrlShow false;
 } else {
+	_isMan = getNumber(configFile >> "cfgVehicles" >> typeof(_killer) >> "isMan");
 	_distance = _killer distance _body;
 	_weapon = currentWeapon(_killer);
 	_name = getText(configFile >> "cfgWeapons" >> _weapon >> "displayName");
-	_image = getText(configFile >> "cfgWeapons" >> _weapon >> "picture");
+	_image = "";
+
+	if (vehicle(_killer) == _killer && _isMan == 1) then {
+		_image = getText(configFile >> "cfgWeapons" >> _weapon >> "picture");
+	} else {
+		_image = getText(configFile >> "cfgVehicles" >> typeOf(vehicle(_killer)) >> "picture");
+	};
 	
 	_ctrl = [_dialogName, "weaponName"] call RSTF_fnc_getCtrl;
 	_ctrl ctrlSetText "By " + _name;
