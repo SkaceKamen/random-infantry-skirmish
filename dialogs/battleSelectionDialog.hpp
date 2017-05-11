@@ -75,7 +75,7 @@ class RSTF_RscDialogBattleSelection
 			w = RSTF_BTL_LIST_W - RSTF_BTL_P*2;
 			h = RSTF_BTL_LIST_H - RSTF_BTL_P*2;
 
-			columns[] = { 0, 0.2, 0.9 };
+			columns[] = { 0, 0.9 };
 		};
 
 		class buttonMap: RscButton
