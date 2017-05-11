@@ -37,7 +37,7 @@ _xx = _padding;
 		_label ctrlSetText ((_x select 1) + ":");
 		_label ctrlSetTooltip (_x select 2);
 		_label ctrlSetPosition [_xx, _yy + 0.025 - 0.037/2, RSTF_ADV_OPS_W * 0.4, 0.037];
-		_label ctrlCommit 0.1;
+		_label ctrlCommit 0;
 
 		_idc = _idc + 1;
 
@@ -67,7 +67,7 @@ _xx = _padding;
 			_ctrl ctrlSetPosition [_xx + _width * 0.5, _yy, _width * 0.5, 0.05];
 		};
 
-		_ctrl ctrlCommit 0.1;
+		_ctrl ctrlCommit 0;
 
 		// Add values to combo box
 		if (_type == "select") then {
