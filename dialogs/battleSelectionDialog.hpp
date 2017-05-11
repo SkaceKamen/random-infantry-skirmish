@@ -36,10 +36,6 @@ class RSTF_RscDialogBattleSelection
 		class map: RscMapControl
 		{
 			idc = 1;
-			/*x = RSTF_BTL_X;
-			y = SafeZoneY;
-			w = RSTF_BTL_W;
-			h = SafeZoneH - RSTF_BTL_H - RSTF_BTL_M;*/
 			x = SafeZoneX;
 			y = SafeZoneY;
 			w = SafeZoneW;
@@ -100,8 +96,8 @@ class RSTF_RscDialogBattleSelection
 
 		class timeout: RscStatic
 		{
-			idc = 7;
-			x = RSTF_BTL_VOTEBUTTON_X + RSTF_BTL_VIEWBUTTON_W + RSTF_BTL_M;
+			idc = 8;
+			x = RSTF_BTL_BTS_X + RSTF_BTL_VIEWBUTTON_W + RSTF_BTL_M;
 			y = RSTF_BTL_BTS_Y;
 			w = RSTF_BTL_W - RSTF_BTL_VIEWBUTTON_W * 2 - RSTF_BTL_M * 2;
 			h = RSTF_BTL_BTS_H;
