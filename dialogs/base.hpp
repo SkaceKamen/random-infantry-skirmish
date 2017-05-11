@@ -359,8 +359,8 @@ class RscMapControl
 	colorMainRoadsFill[] = { 1,0.6,0.4,1 };
 	colorGrid[] = { 0.1,0.1,0.1,0.6 };
 	colorGridMap[] = { 0.1,0.1,0.1,0.6 };
-	stickX[] = { 0.2, };
-	stickY[] = { 0.2, };
+	stickX[] = { 0.2 };
+	stickY[] = { 0.2 };
 	moveOnEdges = 1;
 	x = "SafeZoneXAbs";
 	y = "SafeZoneY + 1.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
