@@ -5,12 +5,6 @@
 	Assigns client specific event handlers.
 */
 
-{
-	_x addPublicVariableEventHandler {
-		systemChat format["%1 changed to %2", _this select 0, _this select 1];
-	};
-} foreach allVariables missionNamespace;
-
 // Location of battle
 "RSTF_POINT" addPublicVariableEventHandler {
 	RSTF_POINT = _this select 1;
