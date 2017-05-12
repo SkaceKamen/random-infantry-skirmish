@@ -5,6 +5,14 @@ if (!_ok) exitWith {
 	"Waiting on host to finish configuration." call BIS_fnc_titleText;
 };
 
+if (isNull(RSTF_CAM)) then {
+	call RSTF_fnc_createCam;
+};
+
+RSTF_CAM camSetTarget RSTF_CAM_TARGET;
+RSTF_CAM camSetRelPos [3, 3, 2];
+RSTF_CAM camCommit 0;
+
 /*
 0 spawn {
 	RSTF_LOADER = creategroup civilian;
