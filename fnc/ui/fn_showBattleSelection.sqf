@@ -31,9 +31,6 @@ _ctrlMap ctrlShow false;
 _ctrlMap ctrlEnable false;
 _ctrlMap ctrlCommit 0;
 
-
-call RSTF_fnc_updateBattles;
-
 _ctrlBattles ctrlAddEventHandler ["LBSelChanged", {
 	_ctrl = _this select 0;
 	_selected = _this select 1;
@@ -63,6 +60,8 @@ _ctrlBattles ctrlAddEventHandler ["LBSelChanged", {
 		RSTF_BS_MARKERS = [_position, _place select 1, true] call RSTF_fnc_createPointMarkers;
 	};
 }];
+
+call RSTF_fnc_updateBattles;
 
 _ctrlMapButton ctrlAddEventHandler ["ButtonClick", {
 	_ctrlMap = ["RSTF_RscDialogBattleSelection", "map"] call RSTF_fnc_getCtrl;
