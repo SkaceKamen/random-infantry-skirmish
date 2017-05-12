@@ -5,7 +5,7 @@
 	Called when actual game starts.
 */
 
-closeDialog 1;
+closeDialog 0;
 
 // Start UI features
 [] spawn RSTF_fnc_UI_Start;

@@ -19,6 +19,8 @@ if (isServer && isMultiplayer) then {
 			sleep 1;
 		};
 
+		closeDialog 0;
+
 		_max = [];
 		_maxCount = -1;
 		{
