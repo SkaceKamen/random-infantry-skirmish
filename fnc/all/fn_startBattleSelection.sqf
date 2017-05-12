@@ -11,8 +11,8 @@ if (isServer && isMultiplayer) then {
 				_voted = _voted + _x;
 			} foreach RSTF_POINT_VOTES;
 
-			if (_voted == count(allPlayers)) exitWith {
-				diag_log text("VOTING: All players voted. Selecting battle.");
+			if (_voted == count(call BIS_fnc_listPlayers)) exitWith {
+				diag_log text(format["VOTING: All players voted (%1 / %2). Selecting battle.", _voted, count(allPlayers)]);
 			};
 
 			RSTF_VOTES_TIMEOUT = RSTF_VOTES_TIMEOUT - 1;
