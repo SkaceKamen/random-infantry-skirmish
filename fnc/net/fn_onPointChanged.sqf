@@ -5,6 +5,8 @@
 	Called when RSTF_POINT was changed
 */
 
+closeDialog 0;
+
 if (isNull(RSTF_CAM)) then {
 	call RSTF_fnc_createCam;
 };
