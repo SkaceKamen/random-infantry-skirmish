@@ -1,10 +1,9 @@
 private _dialogName = "RSTF_RscDialogBattleSelection";
-private _ok = createDialog _dialogName;
-if (!_ok) exitWith {
-	systemChat "Failed to open dialog.";
+private _display = [_dialogName] call RSTF_fnc_spawnDialog;
+if (typeName(_display) == typeName(false) && { !_display }) exitWith {
+	false;
 };
 
-private _display = _dialogName call RSTF_fnc_getDisplay;
 _display displayAddEventHandler ["Unload", {
 	{
 		deleteMarker _x;

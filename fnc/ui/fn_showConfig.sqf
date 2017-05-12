@@ -7,13 +7,10 @@ RSTF_CAM camCommit 0;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
 
-_ok = createDialog "RSTF_RscDialogConfig";
-if (!_ok) exitWith {
-	systemChat "Fatal error. Couldn't create config dialog.";
+_display = ["RSTF_RscDialogConfig"] call RSTF_fnc_spawnDialog;
+if (typeName(_display) == typeName(false) && { !_display }) then {
 	call RSTF_fnc_start;
 };
-
-_display = findDisplay getNumber(missionConfigFile >> "RSTF_RscDialogConfig" >> "idd");
 
 RSTF_FACTIONS = [];
 _root = configFile >> "cfgFactionClasses";

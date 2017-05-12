@@ -74,6 +74,7 @@ class ui
 	class filterInput {};
 	class updateBattles {};
 	class updateVoteTimeout {};
+	class spawnDialog {};
 };
 
 class net
@@ -81,6 +82,9 @@ class net
 	file = "fnc\net";
 
 	class clientStart {};
+	class clientEvents {};
+	class serverStart {};
+	class serverEvents {};
 	class onStarted {};
 	class onPointChanged {};
 	class onKill {};
