@@ -1,14 +1,4 @@
 if (isServer && isMultiplayer) then {
-	// This receives votes from clients
-	"RSTF_POINT_VOTE" addPublicVariableEventHandler {
-		_this spawn {
-			_index = _this select 1;
-			RSTF_POINT_VOTES set [_index, (RSTF_POINT_VOTES select _index) + 1];
-			publicVariable "RSTF_POINT_VOTES";
-			call RSTF_fnc_updateBattles;
-		};
-	};
-
 	// This manages voting on server
 	0 spawn {
 		RSTF_VOTES_TIMEOUT = RSTF_MAP_VOTE_TIMEOUT;
@@ -21,7 +11,9 @@ if (isServer && isMultiplayer) then {
 				_voted = _voted + _x;
 			} foreach RSTF_POINT_VOTES;
 
-			if (_voted == count(allPlayers)) exitWith {};
+			if (_voted == count(allPlayers)) exitWith {
+				diag_log text("VOTING: All players voted. Selecting battle.");
+			};
 
 			RSTF_VOTES_TIMEOUT = RSTF_VOTES_TIMEOUT - 1;
 			sleep 1;
@@ -46,6 +38,9 @@ if (isServer && isMultiplayer) then {
 		(selectRandom(_max)) call RSTF_fnc_assignPoint;
 		0 spawn RSTF_fnc_start;
 	};
+
+	publicVariable "RSTF_POINT_VOTES";
+	publicVariable "RSTF_POINTS";
 };
 
 if (!isDedicated) then {
