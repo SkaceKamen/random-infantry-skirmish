@@ -1,9 +1,10 @@
 disableSerialization;
 
-RSTF_CAM = "camera" camCreate RSTF_CAM_TARGET;
+if (isNull(RSTF_CAM)) then {
+	call RSTF_fnc_createCam;
+};
+
 RSTF_CAM camSetTarget RSTF_CAM_TARGET;
-RSTF_CAM cameraEffect ["internal", "back"];
-RSTF_CAM camCommit 0;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
 
@@ -96,7 +97,7 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	};
 
 	// Close config dialog
-	closeDialog 1;
+	closeDialog 0;
 
 	// Show voting or start if voting is disabled
 	if (RSTF_MAP_VOTE) then {

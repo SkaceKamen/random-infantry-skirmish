@@ -12,10 +12,12 @@ _display = _className call RSTF_fnc_getDisplay;
 if (_persistent) then {
 	_display setVariable ["displayParams", _this];
 	_display displayAddEventHandler ["Unload", {
-		((_this select 0) getVariable "displayParams") spawn {
-			"Display closed. It will be reopened in 5 seconds." call BIS_fnc_titleText;
-			sleep 5;
-			_this call RSTF_fnc_spawnDialog;
+		if (_this select 1 != 0) then {
+			((_this select 0) getVariable "displayParams") spawn {
+				"Display closed. It will be reopened in 5 seconds." call BIS_fnc_titleText;
+				sleep 5;
+				_this call RSTF_fnc_spawnDialog;
+			};
 		};
 	}];
 };
