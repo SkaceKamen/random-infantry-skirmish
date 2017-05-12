@@ -3,8 +3,6 @@ private _position = param [0];
 private _spawns = param [1];
 private _local = param [2, false];
 
-diag_log(["MARKERS", _spawns]);
-
 {
 	if (_foreachIndex != SIDE_NEUTRAL) then {
 		_direction = _x getDir _position;
