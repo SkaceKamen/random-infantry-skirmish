@@ -71,20 +71,24 @@ _ctrlMapButton ctrlAddEventHandler ["ButtonClick", {
 }];
 
 _ctrlVote ctrlAddEventHandler ["ButtonClick", {
+	_ctrlVote = _this select 0;
 	_ctrlBattles = ["RSTF_RscDialogBattleSelection", "battles"] call RSTF_fnc_getCtrl;
 	_selected = lnbCurSelRow _ctrlBattles;
 	
 	if (_selected >= 0) then {
-		closeDialog 0;
-
 		_place = RSTF_POINTS select _selected;
 		
+		// Switch to point immediately if SP
 		if (!isMultiplayer) then {
+			closeDialog 0;
 			_place call RSTF_fnc_assignPoint;
 			0 spawn RSTF_fnc_start;
 		} else {
-			// RSTF_POINT_VOTES set [_selected, (RSTF_POINT_VOTES select _selected) + 1];
-			// publicVariable "RSTF_POINT_VOTES";
+			// Disable voting button
+			_ctrlVote ctrlEnable false;
+			_ctrlVote ctrlCommit 0;
+
+			// Broadcast option if necessary
 			if (isServer) then {
 				RSTF_POINT_VOTES set [_selected, (RSTF_POINT_VOTES select _selected) + 1];
 				publicVariable "RSTF_POINT_VOTES";
