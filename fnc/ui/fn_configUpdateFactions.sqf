@@ -14,7 +14,7 @@ _list = _updated;
 _ctrl = ["RSTF_RscDialogConfig", "factions", ["controls", _ctrl, "controls"]] call RSTF_fnc_getCtrl;
 lnbClear _ctrl;
 {
-	_name = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "displayName") + " (" + _x + ")";
+	_name = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "displayName");
 	_icon = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "icon");
 
 	_ctrl lnbAddRow [_name];
