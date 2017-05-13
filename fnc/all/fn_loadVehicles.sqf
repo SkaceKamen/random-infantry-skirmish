@@ -59,7 +59,7 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 			} foreach _wp;
 
 			if (_land) then {
-				if (_transport >= 2 && !_weaponized) then {
+				if (_transport >= 2) then {
 					_transports pushBack configName(_c);
 				};
 
