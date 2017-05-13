@@ -47,6 +47,7 @@ _display displayAddEventHandler ["unload", {
 
 _ctrl = ["RSTF_RscDialogFactions", "close"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
+	call RSTF_fnc_profileSave;
 	closeDialog 0;
 }];
 
@@ -66,8 +67,8 @@ if (_row >= 0) then {
 
 _template_tree = '_ctrl = ["RSTF_RscDialogFactions", "%1"] call RSTF_fnc_getCtrl;
 _path = tvCurSel _ctrl;
-if (count(_path) == %3) then {
-	_class = _ctrl tvData _path;
+_class = _ctrl tvData _path;
+if (_class != "") then {
 	_index = %2 find _class;
 	_text = ((_ctrl tvText _path) splitString "\[BANNED\] ") joinString "";
 	
@@ -132,14 +133,27 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 	
 	_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
 	_path = tvCurSel _ctrl;
-	if (count(_path) == 3) then {
+	if (count(_path) == 3 || count(_path) == 2) then {
 		_class = _ctrl tvData _path;
-		_position = RSTF_CAM_SPAWN;
-		RSTF_FACTIONS_SOLDIER = RSTF_FACTIONS_GROUP createUnit [_class, _position, [], 0, "NONE"];
-		RSTF_FACTIONS_SOLDIER setpos _position;
-		RSTF_FACTIONS_SOLDIER enableSimulation false;
-		RSTF_CAM camSetRelPos [0, 3, 1.5];
-		RSTF_CAM camCommit 0.1;
+		if (_class != "") then {
+			_position = RSTF_CAM_SPAWN;
+			_isMan = getNumber(configFile >> "cfgVehicles" >> _class >> "isMan");
+			
+			if (_isMan != 0) then {
+				RSTF_FACTIONS_SOLDIER = RSTF_FACTIONS_GROUP createUnit [_class, _position, [], 0, "CAN_COLLIDE"];
+				RSTF_FACTIONS_SOLDIER setpos _position;
+				RSTF_FACTIONS_SOLDIER enableSimulation false;
+				RSTF_CAM camSetRelPos [0, 3, 1.5];
+				RSTF_CAM camCommit 0.1;
+			} else {
+				RSTF_FACTIONS_SOLDIER = createVehicle [_class, _position, [], 0, "CAN_COLLIDE"];
+				RSTF_FACTIONS_SOLDIER setDir 45;
+				RSTF_FACTIONS_SOLDIER setpos _position;
+				RSTF_FACTIONS_SOLDIER enableSimulation false;
+				RSTF_CAM camSetRelPos [0, 10, 5];
+				RSTF_CAM camCommit 0.1;
+			};
+		};
 	};
 }];
 

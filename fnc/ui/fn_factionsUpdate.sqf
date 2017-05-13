@@ -102,6 +102,27 @@ _roots = call AMAP_create;
 	[_ctrl, _path] call _expandCache;
 } foreach _soldiers;
 
+_vehicle_types = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
+{
+	_name = RSTF_VEHICLES_NAMES select _foreachIndex;
+	_vehicles = _vehicle_types select _foreachIndex;
+	_path = [_ctrl tvAdd [[], _name]];
+
+	{
+		_banned = "";
+		if (_x in RSTF_SOLDIERS_BANNED) then {
+			_banned = "[BANNED] ";
+		};
+
+		_subpath = _path + [ _ctrl tvAdd [_path, _banned + getText(configFile >> "cfgVehicles" >> _x >> "displayName")] ];
+		_ctrl tvSetData [_subpath, _x];
+		_ctrl tvSetPicture [_subpath, getText(configFile >> "cfgVehicles" >> _x >> "icon")];
+		if (_banned != "") then {
+			_subpath tvSetPictureColor [_path, [0,0,0,1]];
+		};
+	} foreach _vehicles;
+} foreach RSTF_VEHICLES_TYPES;
+
 //_ctrl tvSetCurSel _sel;
 
 _ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;

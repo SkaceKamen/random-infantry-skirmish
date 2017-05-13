@@ -19,7 +19,7 @@ private _classes = configFile >> "CfgVehicles";
 //Load men and vehicles for each faction
 for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 	_c = _classes select _i;
-	if (isClass(_c)) then {
+	if (isClass(_c) && { _ignore_bans || !(configName(_c) in RSTF_SOLDIERS_BANNED) }) then {
 		_scope = getNumber(_c >> "scope");
 		_man = getNumber(_c >> "isMan");
 		_faction = getText(_c >> "faction");
