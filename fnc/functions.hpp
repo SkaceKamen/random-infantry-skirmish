@@ -38,6 +38,7 @@ class all
 	class createCam {};
 	class pickRandomPoints {};
 	class createPointMarkers {};
+	class randomSpawn {};
 };
 
 class spawn

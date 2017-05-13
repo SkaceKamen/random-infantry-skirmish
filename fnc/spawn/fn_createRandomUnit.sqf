@@ -1,9 +1,10 @@
-private ["_group", "_index", "_unit"];
+private ["_group", "_index", "_unit", "_position"];
 	
 _group = _this select 0;
 _index = _this select 1;
+_position = [_index] call RSTF_fnc_randomSpawn;
 
-_unit = _group createUnit [_index call RSTF_fnc_getRandomSoldier, RSTF_SPAWNS select _index, [], 100, "NONE"];
+_unit = _group createUnit [_index call RSTF_fnc_getRandomSoldier, _position, [], 10, "NONE"];
 if (isNull(_unit)) then {
 	systemChat "FAILED TO SPAWN AI!";
 };

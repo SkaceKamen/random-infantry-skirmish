@@ -27,7 +27,9 @@ if (count(_transportClasses) > 0) then {
 		// Try to search for suitable position
 		_tries = 0;
 		while { _tries < 5 } do {
-			_pos = [[[_position, 100]]] call BIS_fnc_randomPos;
+			// _pos = [[[_position, 100]]] call BIS_fnc_randomPos;
+			_pos = [_side] call RSTF_fnc_randomSpawn;
+
 			_pos = _pos findEmptyPosition [10, 50, _cls];
 			_tries = _tries + 1;
 			if (count(_pos) > 0) exitWith { 0 };
