@@ -13,5 +13,5 @@ private _position = [
 	0
 ];
 
-_position vectorAdd _center;
+_position = _position vectorAdd _center;
 _position;
