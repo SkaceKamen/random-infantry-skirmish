@@ -88,7 +88,7 @@ for[{_i = 0},{_i < RSTF_NEUTRALS_GROUPS},{_i = _i + 1}] do {
 
 		// Every unit has its own group, this way they wont run off their position
 		// @TODO: Is there better way?
-		_group = creategroup resistance;
+		_group = creategroup _neutrals_side;
 		
 		// Create equipped unit
 		_unit = [_group, SIDE_NEUTRAL] call RSTF_fnc_createRandomUnit;
