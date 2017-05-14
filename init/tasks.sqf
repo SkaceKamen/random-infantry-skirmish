@@ -67,11 +67,7 @@ RSTF_TASKS_TASK_failed = {
 	if (_singular) then {
 		call RSTF_TASKS_clear;
 	} else {
-		_index = RSTF_CURRENT_TASKS find _taskId;
-		if (_index >= 0) then {
-			RSTF_CURRENT_TASKS = [RSTF_CURRENT_TASKS, _index] call BIS_fnc_removeIndex;
-		};
-		publicVariable "RSTF_CURRENT_TASKS";
+		[_taskId] call RSTF_TASKS_TASK_remove;
 	};
 };
 
@@ -90,13 +86,19 @@ RSTF_TASKS_TASK_completed = {
 	if (_singular) then {
 		call RSTF_TASKS_clear;
 	} else {
-		_index = RSTF_CURRENT_TASKS find _taskId;
+		[_taskId] call RSTF_TASKS_TASK_remove;
+	};
+};
+
+RSTF_TASKS_TASK_remove = {
+	params ["taskId"];
+
+	_index = RSTF_CURRENT_TASKS find _taskId;
 		if (_index >= 0) then {
 			RSTF_CURRENT_TASKS = [RSTF_CURRENT_TASKS, _index] call BIS_fnc_removeIndex;
 		};
 		publicVariable "RSTF_CURRENT_TASKS";
-	};
-};
+}
 
 RSTF_TASKS_clear = {
 	RSTF_TASK = "";
