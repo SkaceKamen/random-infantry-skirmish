@@ -103,7 +103,7 @@ class RSTF_RscDialogBattleSelection
 			h = RSTF_BTL_BTS_H;
 			colorBackground[] = { TITLE_BG_RGBA };
 			text = "";
-			style = ST_CENTER | ST_VCENTER;
+			style = "ST_CENTER | ST_VCENTER";
 		};
 	};
 };

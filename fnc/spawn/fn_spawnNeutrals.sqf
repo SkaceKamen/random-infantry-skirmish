@@ -213,13 +213,14 @@ if (RSTF_TASKS_EMP_ENABLED && _emplacementsCount > 0) then {
 	[_masterTask] spawn {
 		params ["_masterTask"];
 
+		sleep 5;
+
 		private _completed = false;
 		while { !_completed } do {
 			if (count(RSTF_CLEAR_EMPLACEMENTS_TASKS) > 0) then {
 				_completed = true;
 				{
-
-					if ([_x] call BIS_fnc_taskCompleted) exitWith {
+					if (!([_x] call BIS_fnc_taskCompleted)) exitWith {
 						_completed = false;
 					};
 				} foreach RSTF_CLEAR_EMPLACEMENTS_TASKS;
