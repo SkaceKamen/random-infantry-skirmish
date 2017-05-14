@@ -91,14 +91,14 @@ RSTF_TASKS_TASK_completed = {
 };
 
 RSTF_TASKS_TASK_remove = {
-	params ["taskId"];
+	private _taskId = _this select 0;
 
 	_index = RSTF_CURRENT_TASKS find _taskId;
-		if (_index >= 0) then {
-			RSTF_CURRENT_TASKS = [RSTF_CURRENT_TASKS, _index] call BIS_fnc_removeIndex;
-		};
-		publicVariable "RSTF_CURRENT_TASKS";
-}
+	if (_index >= 0) then {
+		RSTF_CURRENT_TASKS = [RSTF_CURRENT_TASKS, _index] call BIS_fnc_removeIndex;
+	};
+	publicVariable "RSTF_CURRENT_TASKS";
+};
 
 RSTF_TASKS_clear = {
 	RSTF_TASK = "";

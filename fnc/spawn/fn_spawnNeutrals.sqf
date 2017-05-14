@@ -301,11 +301,12 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 		// Wait for player to find the AA emplacement
 		waitUntil { PLAYER_SIDE knowsAbout _vehicle > 1 || !alive(_vehicle) || count(crew(_vehicle) select { alive _x }) == 0 };
 
+		// Change task type to destroy
+		[_task, _vehicle] call BIS_fnc_taskSetDestination;
+		[_task, "destroy"] call BIS_fnc_taskSetType;
+		[_task, [format["There is %1 emplacement somewhere in the AO, find and neutralize it!", _vehicleType], format["Neutralize emplacement", _vehicleType], ""]] call BIS_fnc_taskSetDescription;
+		
 		if (time - _created > 5) then {
-			// Change task type to destroy
-			[_task, _vehicle] call BIS_fnc_taskSetDestination;
-			[_task, "destroy"] call BIS_fnc_taskSetType;
-			[_task, [format["There is %1 emplacement somewhere in the AO, find and neutralize it!", _vehicleType], format["Neutralize emplacement", _vehicleType], ""]] call BIS_fnc_taskSetDescription;
 			[_task, "ASSIGNED"] spawn BIS_fnc_taskHint;
 
 			// Wait for it to be destroyed
