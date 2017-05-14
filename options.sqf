@@ -57,6 +57,8 @@ RSTF_NEUTRALS_UNITS_MAX = 5;
 
 // Should neutrals be friendly with east
 RSTF_NEUTRALS_EAST = true;
+// Should we spawn emplacements
+RSTF_NEUTRALS_EMPLACEMENTS = true;
 
 //Number of civilian units
 RSTF_CIVILANS_UNITS_MIN = 10;
@@ -102,3 +104,5 @@ RSTF_MAP_VOTE_TIMEOUT = 60;
 RSTF_TASKS_IFV_ENABLED = true;
 // Clear house task
 RSTF_TASKS_CLEAR_ENABLED = true;
+// Destroy emplacement
+RSTF_TASKS_EMP_ENABLED = true;

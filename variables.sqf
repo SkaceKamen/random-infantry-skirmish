@@ -202,7 +202,8 @@ RSTF_CONFIG_VALUES = [
 	]],
 	["Neutrals", [
 		["RSTF_NEUTRALS_GROUPS", "Neutral groups", "Maximum number of neutral groups spawned.", "number"],
-		["RSTF_NEUTRALS_EAST", "Friendly with enemies", "Should neutrals be same side as enemies.", "checkbox"]
+		["RSTF_NEUTRALS_EAST", "Friendly with enemies", "Should neutrals be same side as enemies.", "checkbox"],
+		["RSTF_NEUTRALS_EMPLACEMENTS", "Allow emplacements", "Spawn neutral emplacements if possible.", "checkbox"]
 	]],
 	["Enemy", [
 		["RSTF_ENEMY_ADVANTAGE_GROUPS", "Groups advantage", "Enemy will have this much more groups.", "number"],
@@ -215,8 +216,9 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_MAP_VOTE_TIMEOUT", "Vote timeout (secs)", "Time in seconds to wait for votes (only in multiplayer).", "number"]
 	]],
 	["Tasks", [
-		["RSTF_TASKS_IFV_ENABLED", "Destroy IFV", "Allows 'Destroy IFV' task", "checkbox"],
-		["RSTF_TASKS_CLEAR_ENABLED", "Clear house", "Allows 'Clear house' task", "checkbox"]
+		["RSTF_TASKS_IFV_ENABLED", "Neutralize IFV", "Allows 'Neutralize IFV' task", "checkbox"],
+		["RSTF_TASKS_CLEAR_ENABLED", "Clear house", "Allows 'Clear house' task", "checkbox"],
+		["RSTF_TASKS_EMP_ENABLED", "Neutralize emplacement", "Allows tasks for neutralizing emplacements", "checkbox"]
 	]],
 	["Other", [
 		["RSTF_CLEAN", "Clear dead bodies", "Dead bodies will be destroyed after 3 minutes. This helps performance.", "checkbox"],
