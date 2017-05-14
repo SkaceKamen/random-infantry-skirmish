@@ -211,6 +211,10 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_MAP_VOTE_COUNT", "Number of maps to pick", "Number of maps that will be proposed to player(s). 0 for unlimited", "number"],
 		["RSTF_MAP_VOTE_TIMEOUT", "Vote timeout (secs)", "Time in seconds to wait for votes (only in multiplayer).", "number"]
 	]],
+	["Tasks", [
+		["RSTF_TASKS_IFV_ENABLED", "Destroy IFV", "Allows 'Destroy IFV' task", "checbox"],
+		["RSTF_TASKS_CLEAR_ENABLED", "Clear house", "Allows 'Clear house' task", "checbox"]
+	]],
 	["Other", [
 		["RSTF_CLEAN", "Clear dead bodies", "Dead bodies will be destroyed after 3 minutes. This helps performance.", "checkbox"],
 		["RSTF_WEATHER", "Weather", "Mission weather.", "select", RSTF_WEATHER_TYPES],

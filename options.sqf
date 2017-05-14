@@ -97,3 +97,8 @@ RSTF_MAP_VOTE = true;
 RSTF_MAP_VOTE_COUNT = 10;
 // Time in seconds to wait for votes
 RSTF_MAP_VOTE_TIMEOUT = 60;
+
+// Destroy IFV task
+RSTF_TASKS_IFV_ENABLED = true;
+// Clear house task
+RSTF_TASKS_CLEAR_ENABLED = true;
