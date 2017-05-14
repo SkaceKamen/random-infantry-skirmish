@@ -249,10 +249,10 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 	// Make position 3D
 	_position set [2, 0];
 
-	_marker = createMarker ["ASGFJHDASJHD" + str(_position), _position];
+	/*_marker = createMarker ["ASGFJHDASJHD" + str(_position), _position];
 	_marker setmarkerShape "ICON";
 	_marker setMarkerType "mil_dot";
-	_marker setMarkerText "EMPLACEMENT HERE";
+	_marker setMarkerText "EMPLACEMENT HERE";*/
 
 	// Create emplacement
 	_empType = selectRandom(_emplacements);
