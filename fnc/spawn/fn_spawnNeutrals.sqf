@@ -149,7 +149,7 @@ private _staticWeaponsAI = _staticWeapons select 2;
 private _staticWeaponsTypes = [];
 private _staticWeaponsNames = [ "AA", "AT", "AI"];
 
-private _emplacements = [ "emplacement" ];
+private _emplacements = [ "emplacement", "emplacement2" ];
 private _overrideEmplacements = [ [0, "RHS_ZU23_MSV"], [0, "RHS_ZU23_VDV"] ];
 private _statics = (RSTF_VEHICLES select SIDE_NEUTRAL) select RSTF_VEHICLE_STATIC;
 private _emplacementsCount = 5;
@@ -218,7 +218,8 @@ if (_emplacementsCount > 0) then {
 			if (count(RSTF_CLEAR_EMPLACEMENTS_TASKS) > 0) then {
 				_completed = true;
 				{
-					if ([_x] call BIS_fnc_taskState != "Succeeded") exitWith {
+
+					if ([_x] call BIS_fnc_taskCompleted) exitWith {
 						_completed = false;
 					};
 				} foreach RSTF_CLEAR_EMPLACEMENTS_TASKS;
@@ -295,22 +296,30 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 	[_vehicle, _vehicleType, _task] spawn {
 		params ["_vehicle", "_vehicleType", "_task"];
 
+		private _created = time;
+
 		// Wait for player to find the AA emplacement
 		waitUntil { PLAYER_SIDE knowsAbout _vehicle > 1 || !alive(_vehicle) || count(crew(_vehicle) select { alive _x }) == 0 };
 
-		// Change task type to destroy
-		[_task, _vehicle] call BIS_fnc_taskSetDestination;
-		[_task, "destroy"] call BIS_fnc_taskSetType;
-		[_task, [format["There is %1 emplacement somewhere in the AO, find and neutralize it!", _vehicleType], format["Neutralize emplacement", _vehicleType], ""]] call BIS_fnc_taskSetDescription;
-		[_task, "ASSIGNED"] spawn BIS_fnc_taskHint;
+		if (time - _created > 5) then {
+			// Change task type to destroy
+			[_task, _vehicle] call BIS_fnc_taskSetDestination;
+			[_task, "destroy"] call BIS_fnc_taskSetType;
+			[_task, [format["There is %1 emplacement somewhere in the AO, find and neutralize it!", _vehicleType], format["Neutralize emplacement", _vehicleType], ""]] call BIS_fnc_taskSetDescription;
+			[_task, "ASSIGNED"] spawn BIS_fnc_taskHint;
 
-		// Wait for it to be destroyed
-		waitUntil { !alive(_vehicle) || count(crew(_vehicle) select { alive _x }) == 0 };
-		[format["%1 neutralized", _vehicleType], _task] call RSTF_TASKS_TASK_completed;
+			// Wait for it to be destroyed
+			waitUntil { !alive(_vehicle) || count(crew(_vehicle) select { alive _x }) == 0 };
+			[format["%1 neutralized", _vehicleType], _task] call RSTF_TASKS_TASK_completed;
+		} else {
+			[_task, "CANCELED", false] call BIS_fnc_taskSetState;
+			[_task] call RSTF_TASKS_TASK_remove;
+		};
 	};
 
 	// Save task and send it to clients
 	RSTF_CURRENT_TASKS pushBack _task;
+	RSTF_CLEAR_EMPLACEMENTS_TASKS pushBack _task;
 };
 
 publicVariable "RSTF_CURRENT_TASKS";
