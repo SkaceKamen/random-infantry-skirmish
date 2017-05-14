@@ -155,6 +155,9 @@ RSTF_TASK = "";
 RSTF_TASK_TYPE = "";
 RSTF_TASK_PARAMS = [];
 
+// This is where list of currently active tasks is stored
+RSTF_CURRENT_TASKS = [];
+
 RSTF_CAM_SPAWN = [0,0,1000];
 RSTF_CAM_TARGET = RSTF_CAM_SPAWN vectorAdd [0,0, 1];
 

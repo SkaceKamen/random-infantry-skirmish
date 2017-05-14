@@ -54,18 +54,48 @@ RSTF_TASKS_start = {
 };
 
 RSTF_TASKS_TASK_failed = {
+	params [["_taskId", ""]];
+
+	private _singular = true;
+	if (_taskId == "") then {
+		_taskId = RSTF_TASK;
+		_singular = false;
+	};
+
 	[RSTF_TASK, "FAILED", true] call BIS_fnc_taskSetState;
 
-	call RSTF_TASKS_clear;
+	if (_singular) then {
+		call RSTF_TASKS_clear;
+	} else {
+		_index = RSTF_CURRENT_TASKS find _taskId;
+		if (_index >= 0) then {
+			RSTF_CURRENT_TASKS = [RSTF_CURRENT_TASKS, _index] call BIS_fnc_removeIndex;
+		};
+		publicVariable "RSTF_CURRENT_TASKS";
+	};
 };
 
 RSTF_TASKS_TASK_completed = {
-	params [["_task", "Task"]];
+	params [["_task", "Task"], ["_taskId", ""]];
 
-	[RSTF_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
+	private _singular = false;
+	if (_taskId == "") then {
+		_taskId = RSTF_TASK;
+		_singular = true;
+	};
+
+	[_taskId, "Succeeded", true] call BIS_fnc_taskSetState;
 	[_task, RSTF_SCORE_PER_TASK] call RSTF_fnc_addPlayerScore;
 
-	call RSTF_TASKS_clear;
+	if (_singular) then {
+		call RSTF_TASKS_clear;
+	} else {
+		_index = RSTF_CURRENT_TASKS find _taskId;
+		if (_index >= 0) then {
+			RSTF_CURRENT_TASKS = [RSTF_CURRENT_TASKS, _index] call BIS_fnc_removeIndex;
+		};
+		publicVariable "RSTF_CURRENT_TASKS";
+	};
 };
 
 RSTF_TASKS_clear = {

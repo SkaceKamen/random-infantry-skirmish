@@ -56,7 +56,7 @@ RSTF_NEUTRALS_UNITS_MIN = 1;
 RSTF_NEUTRALS_UNITS_MAX = 5;
 
 // Should neutrals be friendly with east
-RSTF_NEUTRALS_EAST = false;
+RSTF_NEUTRALS_EAST = true;
 
 //Number of civilian units
 RSTF_CIVILANS_UNITS_MIN = 10;

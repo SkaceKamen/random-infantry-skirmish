@@ -1,19 +1,19 @@
 _killed = _this select 0;
 _killer = _this select 1;
 
-//Side is forgotten shortly after dying for some reason
+// Side is forgotten shortly after dying for some reason
 _side = _killed getVariable ["SPAWNED_SIDE", civilian];
 
-//Get killer side index
+// Get killer side index
 _index = -1;
-if (side(_killer) == east) then {
+if (side(group(_killer)) == east) then {
 	_index = SIDE_ENEMY;
 };
-if (side(_killer) == west) then {
+if (side(group(_killer)) == west) then {
 	_index = SIDE_FRIENDLY;
 };
 
-//Attribute score
+// Attribute score
 if (_index != -1) then {
 	_score = (RSTF_SCORE select _index);
 	_new = _score;

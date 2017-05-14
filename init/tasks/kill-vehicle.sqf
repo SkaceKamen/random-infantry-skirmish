@@ -53,13 +53,13 @@ RSTF_TASK_KVEH_load = {
 		[_vehicle] spawn {
 			_vehicle = _this select 0;
 			waitUntil { !alive(_vehicle) || count(crew(_vehicle) select { alive _x }) == 0 };
-			"Vehicle destroyed" call RSTF_TASKS_TASK_completed;
+			["IFV neutralized"] call RSTF_TASKS_TASK_completed;
 		};
 	};
 
 	RSTF_TASK = [
 		side(player), "KILL" + str(_vehicle),
-		["Enemy IFV is supporting their advance, destroy it.", "Destroy enemy IFV",""],
+		["Enemy IFV is supporting their advance, neutralize it.", "Neutralize IFV",""],
 		_vehicle,
 		"ASSIGNED",
 		0, true,

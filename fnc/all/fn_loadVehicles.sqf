@@ -16,7 +16,7 @@ private _apcs = _vehicles select RSTF_VEHICLE_APC;
 
 private _classes = configFile >> "CfgVehicles";
 
-//Load men and vehicles for each faction
+//Load vehicles for each faction
 for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 	_c = _classes select _i;
 	if (isClass(_c) && { _ignore_bans || !(configName(_c) in RSTF_SOLDIERS_BANNED) }) then {
@@ -59,7 +59,7 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 			} foreach _wp;
 
 			if (_land) then {
-				if (_transport >= 2) then {
+				if (_transport >= 2 && !_static) then {
 					_transports pushBack configName(_c);
 				};
 

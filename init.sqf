@@ -10,6 +10,7 @@ RSTF_initScripts = [
 	// "tasks\rescue-house",
 	// "tasks\rescue-vehicle",
 	"tasks\kill-vehicle",
+	// "tasks\emplacement",
 	"start"
 ];
 

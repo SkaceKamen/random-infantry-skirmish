@@ -40,5 +40,9 @@ camDestroy RSTF_CAM;
 RSTF_CAM = objNull;
 
 if (RSTF_TASK != "") then {
-	[RSTF_TASK, "ASSIGNED", false] spawn BIS_fnc_taskSetState; 
+	[RSTF_TASK, "ASSIGNED", false] call BIS_fnc_taskSetState; 
 };
+
+{
+	[_x, ([_x] call BIS_fnc_taskState), false] call BIS_fnc_taskSetState;
+} foreach RSTF_CURRENT_TASKS;
