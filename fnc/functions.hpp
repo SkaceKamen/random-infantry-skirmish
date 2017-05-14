@@ -39,6 +39,7 @@ class all
 	class pickRandomPoints {};
 	class createPointMarkers {};
 	class randomSpawn {};
+	class spawnComposition {};
 };
 
 class spawn
