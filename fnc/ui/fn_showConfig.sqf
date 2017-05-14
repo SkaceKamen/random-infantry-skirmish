@@ -46,8 +46,14 @@ _template = '
 
 _ctrl = ["RSTF_RscDialogConfig", "weaponButton"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
-	closeDialog 0;
-	[false] spawn RSTF_fnc_showEquip;
+	0 spawn {
+		if (!RSTF_CUSTOM_EQUIPMENT) then {
+			[parseText("This equipment will be applied only if you allow custom equipment in advanced configuration"), "Warning"] call BIS_fnc_GUImessage;
+		};
+
+		closeDialog 0;
+		[false] spawn RSTF_fnc_showEquip;
+	};
 	true;
 }];
 
