@@ -29,7 +29,7 @@ RSTF_TASK_CLEAR_getHouse = {
  * Returns if this task can be started. Checks if there is any occupied house.
  */
 RSTF_TASK_CLEAR_isAvailable = {
-	(count(call RSTF_TASK_CLEAR_getHouse) > 0);
+	RSTF_TASKS_CLEAR_ENABLED && { count(call RSTF_TASK_CLEAR_getHouse) > 0 };
 };
 
 /**

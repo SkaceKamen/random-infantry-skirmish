@@ -10,7 +10,7 @@ RSTF_TASK_KVEH_getVehicles = {
  * Returns if this task can be started. Checks if there is any occupied house.
  */
 RSTF_TASK_KVEH_isAvailable = {
-	count(call RSTF_TASK_KVEH_getVehicles) > 0;
+	RSTF_TASKS_CLEAR_ENABLED && { count(call RSTF_TASK_KVEH_getVehicles) > 0 };
 };
 
 /**
