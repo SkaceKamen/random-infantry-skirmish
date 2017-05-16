@@ -1,7 +1,7 @@
 //Default factions
 FRIENDLY_FACTIONS = [ "BLU_F" ];
-NEUTRAL_FACTIONS = [ "BLU_G_F" ];
-ENEMY_FACTIONS = [ "IND_F" ];
+NEUTRAL_FACTIONS = [ "IND_C_F","IND_G_F","BLU_G_F","OPF_G_F" ];
+ENEMY_FACTIONS = [ "OPF_F" ];
 
 //List of banned weapons and soldiers
 RSTF_WEAPONS_BANNED = [];
