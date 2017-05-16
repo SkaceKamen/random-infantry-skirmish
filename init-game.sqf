@@ -26,3 +26,5 @@ if (_player) then {
 	setPlayable _unit;
 	selectPlayer _unit;
 };
+
+player allowDamage false;
