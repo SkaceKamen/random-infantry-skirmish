@@ -313,7 +313,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 
 				// Wait for it to be destroyed
 				waitUntil { !alive(_vehicle) || count(crew(_vehicle) select { alive _x }) == 0 };
-				[format["%1 neutralized", _vehicleType], _task] call RSTF_TASKS_TASK_completed;
+				[format["Emplacement neutralized", _vehicleType], _task] call RSTF_TASKS_TASK_completed;
 			} else {
 				[_task, "CANCELED", false] call BIS_fnc_taskSetState;
 				[_task] call RSTF_TASKS_TASK_remove;
