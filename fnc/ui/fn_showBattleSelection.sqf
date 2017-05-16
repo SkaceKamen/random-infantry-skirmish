@@ -1,5 +1,5 @@
 private _dialogName = "RSTF_RscDialogBattleSelection";
-private _display = [_dialogName] call RSTF_fnc_spawnDialog;
+private _display = [_dialogName, RSTF_fnc_showBattleSelection] call RSTF_fnc_spawnDialog;
 if (typeName(_display) == typeName(false) && { !_display }) exitWith {
 	false;
 };

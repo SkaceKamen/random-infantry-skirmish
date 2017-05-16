@@ -1,4 +1,4 @@
-params ["_className", ["_persistent", true]];
+params ["_className", ["_respawn", {}], ["_persistent", true]];
 
 _ok = createDialog _className;
 if (!_ok) exitWith {
@@ -14,9 +14,10 @@ if (_persistent) then {
 	_display displayAddEventHandler ["Unload", {
 		if (_this select 1 != 0) then {
 			((_this select 0) getVariable "displayParams") spawn {
+				params ["_className", ["_respawn", {}], ["_persistent", true]];
 				"Display closed. It will be reopened in 5 seconds." call BIS_fnc_titleText;
 				sleep 5;
-				_this call RSTF_fnc_spawnDialog;
+				call _respawn;
 			};
 		};
 	}];

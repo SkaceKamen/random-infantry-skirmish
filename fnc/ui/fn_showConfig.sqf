@@ -8,7 +8,7 @@ RSTF_CAM camSetTarget RSTF_CAM_TARGET;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
 
-_display = ["RSTF_RscDialogConfig"] call RSTF_fnc_spawnDialog;
+_display = ["RSTF_RscDialogConfig", RSTF_fnc_showConfig] call RSTF_fnc_spawnDialog;
 if (typeName(_display) == typeName(false) && { !_display }) then {
 	call RSTF_fnc_start;
 };
