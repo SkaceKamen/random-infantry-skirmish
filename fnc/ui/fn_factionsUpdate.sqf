@@ -114,9 +114,14 @@ _vehicle_types = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 			_banned = "[BANNED] ";
 		};
 
+		_icon = getText(configFile >> "cfgVehicles" >> _x >> "icon");
+		if (isText(ConfigFile >> "cfgVehicleIcons" >> _icon)) then {
+			_icon = getText(ConfigFile >> "cfgVehicleIcons" >> _icon);
+		};
+
 		_subpath = _path + [ _ctrl tvAdd [_path, _banned + getText(configFile >> "cfgVehicles" >> _x >> "displayName")] ];
 		_ctrl tvSetData [_subpath, _x];
-		_ctrl tvSetPicture [_subpath, getText(configFile >> "cfgVehicles" >> _x >> "icon")];
+		_ctrl tvSetPicture [_subpath, _icon];
 		if (_banned != "") then {
 			_subpath tvSetPictureColor [_path, [0,0,0,1]];
 		};
