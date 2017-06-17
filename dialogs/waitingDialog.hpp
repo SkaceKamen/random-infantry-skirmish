@@ -23,7 +23,7 @@ class RSTF_RscDialogWaiting
 				"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])",
 				0.8
 			};
-			text = "Waiting on host";
+			text = "Waiting on admin";
 			style = ST_CENTER;
 		};
 	};

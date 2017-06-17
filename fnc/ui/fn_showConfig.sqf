@@ -102,14 +102,14 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 		[parseText("No suitable location found on this map."), "Configuration error"] spawn BIS_fnc_GUImessage;
 	};
 
+	// Dispatch selected locations
+	publicVariable "RSTF_POINTS";
+	publicVariable "RSTF_POINT_VOTES";
+
 	// Close config dialog
 	closeDialog 0;
 
 	// Show voting or start if voting is disabled
-	if (RSTF_MAP_VOTE) then {
-		0 spawn RSTF_fnc_startBattleSelection;
-	} else {
-		(RSTF_POINTS select 0) call RSTF_fnc_assignPoint;
-		0 spawn RSTF_fnc_start;
-	}
+	RSTF_CONFIG_DONE = true;
+	publicVariable "RSTF_CONFIG_DONE";
 }];

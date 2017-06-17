@@ -5,6 +5,12 @@
 	Assigns client specific event handlers.
 */
 
+if (RSTF_SHOW_CONFIG != -1) then {
+	if (RSTF_SHOW_CONFIG == clientOwner) then {
+		0 spawn RSTF_fnc_showConfig;
+	};
+};
+
 // Location of battle
 "RSTF_POINT" addPublicVariableEventHandler {
 	RSTF_POINT = _this select 1;
@@ -51,4 +57,10 @@
 
 "RSTF_VOTES_TIMEOUT" addPublicVariableEventHandler {
 	0 spawn RSTF_fnc_updateVoteTimeout;
+};
+
+"RSTF_SHOW_CONFIG" addPublicVariableEventHandler {
+	if (_this select 1 == clientOwner) then {
+		0 spawn RSTF_fnc_showConfig;
+	};
 };
