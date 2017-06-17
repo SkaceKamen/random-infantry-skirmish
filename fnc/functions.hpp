@@ -52,6 +52,8 @@ class spawn
 	class spawnNeutrals {};
 	class spawnPlayer {};
 	class spawnSpawnDefenses {};
+	class spawnNeutralEmplacements {};
+	class spawnNeutralBuildings {};
 };
 
 class ui
