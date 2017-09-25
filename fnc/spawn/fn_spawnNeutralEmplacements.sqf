@@ -14,10 +14,14 @@ private _staticWeapons = [ [], [], [] ];
 private _staticWeaponsAA = _staticWeapons select 0;
 private _staticWeaponsAT = _staticWeapons select 1;
 private _staticWeaponsAI = _staticWeapons select 2;
+// List of weapon types that have at least one item
 private _staticWeaponsTypes = [];
+// Names for each weapon type index
 private _staticWeaponsNames = [ "AA", "AT", "AI"];
 
+// Contains list of possible emplacement compositions (found in compositions folder)
 private _emplacements = [ "emplacement" ];
+// List of classNames and their class (AA/AT/AI) to be overriden
 private _overrideEmplacements = [ [0, "RHS_ZU23_MSV"], [0, "RHS_ZU23_VDV"] ];
 private _statics = (RSTF_VEHICLES select SIDE_NEUTRAL) select RSTF_VEHICLE_STATIC;
 private _emplacementsCount = 5;
@@ -49,21 +53,24 @@ private _masterTask = "";
 		} foreach _staticWeapons;
 
 		if (!_exists) then {
-			_staticWeapons pushBack (_item select 1);
+			(_staticWeapons select (_item select 0)) pushBack (_item select 1);
 		};
 	};
 } foreach _overrideEmplacements;
 
+// Load list of weapon types with at least one item
 {
 	if (count(_x) > 0) then {
 		_staticWeaponsTypes pushBack _foreachIndex;
 	};
 } foreach _staticWeapons;
 
+// Don't try to place emplacements when there aren't any static weapons
 if (count(_staticWeaponsTypes) == 0 || !RSTF_NEUTRALS_EMPLACEMENTS) then {
 	_emplacementsCount = 0;
 };
 
+// Start task if enabled
 if (RSTF_TASKS_EMP_ENABLED && _emplacementsCount > 0) then {
 	_masterTask = [
 		side(player), "CLEAREMPLACEMENTS",
@@ -78,11 +85,14 @@ if (RSTF_TASKS_EMP_ENABLED && _emplacementsCount > 0) then {
 
 	RSTF_CLEAR_EMPLACEMENTS_TASKS = [];
 
+	// Completion logic
 	[_masterTask] spawn {
 		params ["_masterTask"];
 
+		// Wait until all emplacements are placed
 		sleep 5;
 
+		// Loop and check if all emplacements were cleared
 		private _completed = false;
 		while { !_completed } do {
 			if (count(RSTF_CLEAR_EMPLACEMENTS_TASKS) > 0) then {
@@ -101,6 +111,7 @@ if (RSTF_TASKS_EMP_ENABLED && _emplacementsCount > 0) then {
 	};
 };
 
+// Spawn emplacements
 for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 	// Pick vehicle class
 	private _typeIndex = selectRandom(_staticWeaponsTypes);
@@ -114,15 +125,18 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 	_position = [[[RSTF_POINT, 150]]] call BIS_fnc_randomPos;
 	_position = [_position, 0, 100, 10, 0, 0.1] call BIS_fnc_findSafePos;
 
+	// Skip if no position was found
 	if (count(_position) < 0) exitWith { false; };
 
 	// Make position 3D
 	_position set [2, 0];
 
-	/*_marker = createMarker ["ASGFJHDASJHD" + str(_position), _position];
+	/*
+	_marker = createMarker ["ASGFJHDASJHD" + str(_position), _position];
 	_marker setmarkerShape "ICON";
 	_marker setMarkerType "mil_dot";
-	_marker setMarkerText "EMPLACEMENT HERE";*/
+	_marker setMarkerText "EMPLACEMENT HERE";
+	*/
 
 	// Create emplacement
 	_empType = selectRandom(_emplacements);
@@ -175,7 +189,12 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 			[_task, _vehicle] call BIS_fnc_taskSetDestination;
 			[_task, "destroy"] call BIS_fnc_taskSetType;
 			[_task, [format["There is %1 emplacement somewhere in the AO, find and neutralize it!", _vehicleType], format["Neutralize emplacement", _vehicleType], ""]] call BIS_fnc_taskSetDescription;
-			
+
+			/*
+				If the task was completed within 5 seconds of spawning
+				the emplacement was definetly spawned at bad place so
+				just cancel the task.
+			*/
 			if (time - _created > 5) then {
 				[_task, "ASSIGNED"] spawn BIS_fnc_taskHint;
 
