@@ -2,10 +2,8 @@
  * Start or resume random side mission.
  */
 RSTF_TASKS_start = {
-	private["_found", "_task"];
-
-	_found = false;
-	_task = [];
+	private _found = false;
+	private _task = [];
 
 	diag_log text("TASKS: Searching for task");
 
