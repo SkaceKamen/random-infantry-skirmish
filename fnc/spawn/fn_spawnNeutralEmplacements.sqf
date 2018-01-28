@@ -20,7 +20,7 @@ private _staticWeaponsTypes = [];
 private _staticWeaponsNames = [ "AA", "AT", "AI"];
 
 // Contains list of possible emplacement compositions (found in compositions folder)
-private _emplacements = [ "emplacement" ];
+private _emplacements = [ "emplacement", "emplacement2" ];
 // List of classNames and their class (AA/AT/AI) to be overriden
 private _overrideEmplacements = [ [0, "RHS_ZU23_MSV"], [0, "RHS_ZU23_VDV"] ];
 private _statics = (RSTF_VEHICLES select SIDE_NEUTRAL) select RSTF_VEHICLE_STATIC;

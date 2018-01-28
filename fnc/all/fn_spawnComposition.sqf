@@ -19,15 +19,16 @@ private _directionDiff = _direction - _originalDirection;
 	private _params = _x select 3;
 	private _fuel = _params select 0;
 	private _damage = _params select 1;
-	
+
 	private _vehicle = createVehicle [_className, _vehPosition, [], 0, "CAN_COLLIDE"];
 	_vehicle setDir _vehDirection;
 	_vehicle setFuel _fuel;
 	_vehicle setDamage _damage;
+	_vehicle setPos _vehPosition;
 	clearWeaponCargo _vehicle;
 	clearMagazineCargo _vehicle;
 	clearItemCargo _vehicle;
-	
+
 	_spawned pushBack _vehicle;
 } foreach _objects;
 
