@@ -50,5 +50,16 @@ if (!isDedicated) then {
 // Wait for intro to finish playing
 sleep 2;
 
+// Load gamemode
+private _modes = call(compile(preprocessfilelinenumbers("init/modes.sqf")));
+private _mode = _modes select 1;
+
+RSTF_MODE_init = _mode select 0;
+RSTF_MODE_unitKilled = _mode select 1;
+RSTF_MODE_taskCompleted = _mode select 2;
+
+// Start gamemode
+0 spawn RSTF_MODE_init;
+
 // Start game loop
-[] spawn RSTF_fnc_loop;
+0 spawn RSTF_fnc_loop;
