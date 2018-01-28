@@ -1,10 +1,8 @@
-private ["_group", "_index", "_unit", "_position"];
-	
-_group = _this select 0;
-_index = _this select 1;
-_position = [_index] call RSTF_fnc_randomSpawn;
+private _group = _this select 0;
+private _index = _this select 1;
+private _position = [_index] call RSTF_fnc_randomSpawn;
 
-_unit = _group createUnit [_index call RSTF_fnc_getRandomSoldier, _position, [], 10, "NONE"];
+private _unit = _group createUnit [_index call RSTF_fnc_getRandomSoldier, _position, [], 10, "NONE"];
 if (isNull(_unit)) then {
 	systemChat "FAILED TO SPAWN AI!";
 };
@@ -35,7 +33,7 @@ _unit setSkill random(1);
 	_player = _x;
 	if (!(_player getVariable ["ASSIGNED", true]) and side(_player) == side(_unit)) exitWith {
 		_player setVariable ["ASSIGNED", true, true];
-		
+
 		RSTF_ASSIGNED_UNITS set [0, _player];
 		RSTF_ASSIGNED_UNITS set [1, _unit];
 
