@@ -75,6 +75,13 @@ RSTF_SCORE_PER_TASK = 200;
 //Score needed to call commando
 RSTF_SCORE_COMMANDO = 3000;
 
+// Money awarded for kill
+RSTF_MONEY_PER_KILL = 100;
+// Money awarded for task
+RSTF_MONEY_PER_TASK = 200;
+// Money per teamkill
+RSTF_MONEY_PER_TEAMKILL = -200;
+
 //Cleaning dead bodies
 RSTF_CLEAN = true;
 RSTF_CLEAN_INTERVAL = 3*60;

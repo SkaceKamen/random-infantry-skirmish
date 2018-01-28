@@ -1,5 +1,7 @@
 private  _winner = param [0];
 
+if (RSTF_ENDED) exitWith { false };
+
 RSTF_ENDED = true;
 
 if (isNull(RSTF_CAM)) then {

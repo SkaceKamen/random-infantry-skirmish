@@ -2,10 +2,22 @@
 
 RSTF_MODE_KOTH_ENABLED = false;
 
-RSTF_MODE_KOTH_SCOREINTERVAL = 10;
+RSTF_MODE_KOTH_SCORE_INTERVAL = 2;
+RSTF_MODE_KOTH_SCORE_LIMIT = 100;
 
 RSTF_MODE_KOTH_MONEY_INDEX = [];
 RSTF_MODE_KOTH_MONEY = [];
+
+RSTF_MODE_KOTH_getMoneyIndex = {
+	private _id = getPlayerUID(param [0]);
+	private _index = RSTF_MODE_KOTH_MONEY_INDEX find _id;
+	if (_index < 0) then {
+		_index = count(RSTF_MODE_KOTH_MONEY_INDEX);
+		RSTF_MODE_KOTH_MONEY_INDEX pushBack _id;
+		RSTF_MODE_KOTH_MONEY pushBack 0;
+	};
+	_index;
+};
 
 RSTF_MODE_KOTH_init = {
 	RSTF_MODE_KOTH_ENABLED = true;
@@ -24,7 +36,7 @@ RSTF_MODE_KOTH_init = {
 	_marker setMarkerSize [_radius, _radius];
 	_marker setMarkerColor RSTF_COLOR_NEUTRAL;
 
-	while { true } do {
+	while { !RSTF_ENDED } do {
 		// Count men for each side inside this point
 		private _counts = [];
 		{
@@ -87,7 +99,7 @@ RSTF_MODE_KOTH_init = {
 			], 5] remoteExec ["RSTF_fnc_UI_addGlobalMessage"];
 		} else {
 			// If enought time passed
-			if (_currentOwner != -1 && time - _last > RSTF_MODE_KOTH_SCOREINTERVAL) then {
+			if (_currentOwner != -1 && time - _last > RSTF_MODE_KOTH_SCORE_INTERVAL) then {
 				// Add point and reset timer
 				_last = time;
 				RSTF_SCORE set [_currentOwner, (RSTF_SCORE select _currentOwner) + 1];
@@ -101,6 +113,11 @@ RSTF_MODE_KOTH_init = {
 
 				// Notify clients
 				remoteExec ["RSTF_fnc_onScore"];
+
+				// End when limit is reached
+				if (RSTF_SCORE select _currentOwner > RSTF_MODE_KOTH_SCORE_LIMIT) then {
+					[_currentOwner] remoteExec ["RSTF_fnc_onEnd"];
+				};
 			};
 		};
 
@@ -120,27 +137,21 @@ RSTF_MODE_KOTH_unitKilled = {
 
 	// Dispatch message if necessary
 	if (isPlayer(_killer)) then {
-		private _id = getPlayerUID _killer;
-		private _index = RSTF_MODE_KOTH_MONEY_INDEX find _id;
-		if (_index < 0) then {
-			_index = count(RSTF_MODE_KOTH_MONEY_INDEX);
-			RSTF_MODE_KOTH_MONEY_INDEX pushBack _id;
-			RSTF_MODE_KOTH_MONEY pushBack 0;
-		};
+		private _index = _killer call RSTF_MODE_KOTH_getMoneyIndex;
 
 		if (_side != side(_killer)) then {
-			RSTF_MODE_KOTH_MONEY set [_index, (RSTF_MODE_KOTH_MONEY select _index) + RSTF_SCORE_PER_KILL];
+			RSTF_MODE_KOTH_MONEY set [_index, (RSTF_MODE_KOTH_MONEY select _index) + RSTF_MONEY_PER_KILL];
 		} else {
-			RSTF_MODE_KOTH_MONEY set [_index, 0 max ((RSTF_MODE_KOTH_MONEY select _index) - RSTF_SCORE_PER_TEAMKILL)];
+			RSTF_MODE_KOTH_MONEY set [_index, 0 max ((RSTF_MODE_KOTH_MONEY select _index) - RSTF_MONEY_PER_TEAMKILL)];
 		};
 
 		private _message = "";
 		private _distance = round(_killed distance _killer);
 
 		if (_side != side(_killer)) then {
-			_message = format["+%1$ <t color='#dddddd'>Kill</t> (%2 m)", RSTF_SCORE_PER_KILL, _distance];
+			_message = format["+%1$ <t color='#dddddd'>Kill</t> (%2 m)", RSTF_MONEY_PER_KILL, _distance];
 		} else {
-			_message = format["%1$ <t color='#dddddd'>Teamkill</t>", RSTF_SCORE_PER_TEAMKILL];
+			_message = format["%1$ <t color='#dddddd'>Teamkill</t>", RSTF_MONEY_PER_TEAMKILL];
 		};
 
 		[_message, 5] remoteExec ["RSTF_fnc_UI_AddMessage", _killer];
@@ -148,7 +159,14 @@ RSTF_MODE_KOTH_unitKilled = {
 };
 
 RSTF_MODE_KOTH_taskCompleted = {
+	private _taskName = param [0];
+	private _taskScore = param [1];
 
+	private _index = player call RSTF_MODE_KOTH_getMoneyIndex;
+
+	[format["+%2$ <t color='#dddddd'>%1</t>", _taskName, RSTF_MONEY_PER_TASK], 5] remoteExec ["RSTF_fnc_UI_addGlobalMessage"];
+
+	RSTF_MODE_KOTH_MONEY set [_index, (RSTF_MODE_KOTH_MONEY select _index) + RSTF_MONEY_PER_TASK];
 };
 
 [
