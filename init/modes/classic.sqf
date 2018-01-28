@@ -58,11 +58,12 @@ RSTF_MODE_CLASSIC_unitKilled = {
 	// Dispatch message if necessary
 	if (isPlayer(_killer)) then {
 		private _message = "";
+		private _distance = round(_killed distance _killer);
 
 		if (_side != side(_killer)) then {
-			_message = format["+%1 point <t color='#dddddd'>Kill</t>", RSTF_SCORE_PER_KILL];
+			_message = format["+%1 <t color='#dddddd'>Kill</t> (%2 m)", RSTF_SCORE_PER_KILL, _distance];
 		} else {
-			_message = format["%1 point <t color='#dddddd'>Teamkill</t>", RSTF_SCORE_PER_TEAMKILL];
+			_message = format["%1 <t color='#dddddd'>Teamkill</t>", RSTF_SCORE_PER_TEAMKILL];
 		};
 
 		[_message, 5] remoteExec ["RSTF_fnc_UI_AddMessage", _killer];
