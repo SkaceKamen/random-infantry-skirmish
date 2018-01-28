@@ -21,7 +21,7 @@ RSTF_MODE_KOTH_init = {
 	private _last = time;
 	private _marker = createMarker ["KOTH_OBJECTIVE", _center];
 	_marker setMarkerShape "ELLIPSE";
-	_marker setMarkerSize [_radius * 2, _radius * 2];
+	_marker setMarkerSize [_radius, _radius];
 	_marker setMarkerColor RSTF_COLOR_NEUTRAL;
 
 	while { true } do {
