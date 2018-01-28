@@ -51,8 +51,8 @@ if (!isDedicated) then {
 sleep 2;
 
 // Load gamemode
-private _modes = call(compile(preprocessfilelinenumbers("init/modes.sqf")));
-private _mode = _modes select 1;
+private _modes = call(compile(preprocessfilelinenumbers("init\modes.sqf")));
+private _mode = _modes select 0;
 
 RSTF_MODE_init = _mode select 0;
 RSTF_MODE_unitKilled = _mode select 1;
