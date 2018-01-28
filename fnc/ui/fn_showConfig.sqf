@@ -109,7 +109,17 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	// Close config dialog
 	closeDialog 0;
 
-	// Show voting or start if voting is disabled
-	RSTF_CONFIG_DONE = true;
-	publicVariable "RSTF_CONFIG_DONE";
+	// Start map selection if not dedicated
+	if (!isDedicated) then {
+		if (RSTF_MAP_VOTE) then {
+			0 spawn RSTF_fnc_startBattleSelection;
+		} else {
+			(RSTF_POINTS select 0) call RSTF_fnc_assignPoint;
+			0 spawn RSTF_fnc_start;
+		}
+	} else {
+		// Show voting or start if voting is disabled
+		RSTF_CONFIG_DONE = true;
+		publicVariable "RSTF_CONFIG_DONE";
+	};
 }];
