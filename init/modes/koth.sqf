@@ -1,21 +1,27 @@
 #include "..\..\scripts.inc"
 
-RSTF_MODE_KOTH_SCORE = [0, 0, 0];
+RSTF_MODE_KOTH_ENABLED = false;
+
 RSTF_MODE_KOTH_SCOREINTERVAL = 10;
 
+RSTF_MODE_KOTH_MONEY_INDEX = [];
+RSTF_MODE_KOTH_MONEY = [];
+
 RSTF_MODE_KOTH_init = {
+	RSTF_MODE_KOTH_ENABLED = true;
+
 	// Reset score
-	RSTF_MODE_KOTH_score = [0, 0, 0];
+	RSTF_SCORE = [0, 0, 0];
 
 	// Hill parameters
 	private _center = RSTF_POINT;
-	private _radius = 100;
+	private _radius = RSTF_DISTANCE * 0.6;
 
 	private _currentOwner = -1;
 	private _last = time;
 	private _marker = createMarker ["KOTH_OBJECTIVE", _center];
 	_marker setMarkerShape "ELLIPSE";
-	_marker setMarkerSize [_radius, _radius];
+	_marker setMarkerSize [_radius * 2, _radius * 2];
 	_marker setMarkerColor RSTF_COLOR_NEUTRAL;
 
 	while { true } do {
@@ -78,20 +84,23 @@ RSTF_MODE_KOTH_init = {
 				"<t color='%1'>%2</t> captured objective",
 				RSTF_SIDES_COLORS_TEXT select _currentOwner,
 				RSTF_SIDES_NAMES select _currentOwner
-			]] call RSTF_fnc_UI_addGlobalMessage;
+			], 5] remoteExec ["RSTF_fnc_UI_addGlobalMessage"];
 		} else {
 			// If enought time passed
-			if (time - _last > RSTF_MODE_KOTH_SCOREINTERVAL) then {
+			if (_currentOwner != -1 && time - _last > RSTF_MODE_KOTH_SCOREINTERVAL) then {
 				// Add point and reset timer
 				_last = time;
-				RSTF_MODE_KOTH_SCORE set [_currentOwner, (RSTF_MODE_KOTH_SCORE select _currentOwner) + 1];
+				RSTF_SCORE set [_currentOwner, (RSTF_SCORE select _currentOwner) + 1];
 
 				// Create notification
 				[format[
 					"<t color='%1'>%2</t> +1 for holding objective",
 					RSTF_SIDES_COLORS_TEXT select _currentOwner,
 					RSTF_SIDES_NAMES select _currentOwner
-				]] call RSTF_fnc_UI_addGlobalMessage;
+				], 5] remoteExec ["RSTF_fnc_UI_addGlobalMessage"];
+
+				// Notify clients
+				remoteExec ["RSTF_fnc_onScore"];
 			};
 		};
 
@@ -100,7 +109,42 @@ RSTF_MODE_KOTH_init = {
 };
 
 RSTF_MODE_KOTH_unitKilled = {
+	private _killed = param [0];
+	private _killer = param [1];
+	if (count(_this) > 2) then {
+		_killer = param [2];
+	};
 
+	// Side is forgotten shortly after dying for some reason
+	private _side = _killed getVariable ["SPAWNED_SIDE", civilian];
+
+	// Dispatch message if necessary
+	if (isPlayer(_killer)) then {
+		private _id = getPlayerUID _killer;
+		private _index = RSTF_MODE_KOTH_MONEY_INDEX find _id;
+		if (_index < 0) then {
+			_index = count(RSTF_MODE_KOTH_MONEY_INDEX);
+			RSTF_MODE_KOTH_MONEY_INDEX pushBack _id;
+			RSTF_MODE_KOTH_MONEY pushBack 0;
+		};
+
+		if (_side != side(_killer)) then {
+			RSTF_MODE_KOTH_MONEY set [_index, (RSTF_MODE_KOTH_MONEY select _index) + RSTF_SCORE_PER_KILL];
+		} else {
+			RSTF_MODE_KOTH_MONEY set [_index, 0 max ((RSTF_MODE_KOTH_MONEY select _index) - RSTF_SCORE_PER_TEAMKILL)];
+		};
+
+		private _message = "";
+		private _distance = round(_killed distance _killer);
+
+		if (_side != side(_killer)) then {
+			_message = format["+%1$ <t color='#dddddd'>Kill</t> (%2 m)", RSTF_SCORE_PER_KILL, _distance];
+		} else {
+			_message = format["%1$ <t color='#dddddd'>Teamkill</t>", RSTF_SCORE_PER_TEAMKILL];
+		};
+
+		[_message, 5] remoteExec ["RSTF_fnc_UI_AddMessage", _killer];
+	};
 };
 
 RSTF_MODE_KOTH_taskCompleted = {

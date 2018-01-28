@@ -22,10 +22,20 @@ while {true} do {
 			_i = _i - 1;
 		};
 	};
-	
+
 	_text = _text;
-	
+
 	(_display displayCtrl 1) ctrlSetStructuredText parseText(_text);
+
+	if (RSTF_MODE_KOTH_ENABLED) then {
+		_index = RSTF_MODE_KOTH_MONEY_INDEX find (getPlayerUID player);
+		_money = 0;
+		if (_index >= 0) then {
+			_money = RSTF_MODE_KOTH_MONEY select _index;
+		};
+
+		(_display displayCtrl 5) ctrlSetText format["%1$", _money];
+	};
 
 	sleep RSTF_UI_STEP;
 };
