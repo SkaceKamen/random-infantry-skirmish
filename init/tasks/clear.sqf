@@ -7,11 +7,9 @@
  * House format is [ houseObject, group occupying the house ].
  */
 RSTF_TASK_CLEAR_getHouse = {
-	private ["_index", "_house"];
+	private _house = [];
+	private _index = 0;
 
-	_house = [];
-
-	_index = 0;
 	while { _index < count(RSRF_NEUTRAL_HOUSES) } do {
 		_current = RSRF_NEUTRAL_HOUSES select _index;
 		_alive = { alive _x } count (_current select 1);
@@ -36,9 +34,7 @@ RSTF_TASK_CLEAR_isAvailable = {
  * Starts house clearing side mission.
  */
 RSTF_TASK_CLEAR_start = {
-	private ["_index", "_house"];
-
-	_house = call RSTF_TASK_CLEAR_getHouse;
+	private _house = call RSTF_TASK_CLEAR_getHouse;
 	if (count(_house) > 0) then {
 		[_house, false] call RSTF_TASK_CLEAR_load;
 	} else {
@@ -50,10 +46,8 @@ RSTF_TASK_CLEAR_start = {
  * Loads side mission params and activates mission.
  */
 RSTF_TASK_CLEAR_load = {
-	private["_house"];
-
-	_house = _this select 0;
-	_spawned = _this select 1;
+	private _house = _this select 0;
+	private _spawned = _this select 1;
 
 	RSTF_TASK = [
 		side(player), "CLEAR" + str(getPos(_house select 0)),

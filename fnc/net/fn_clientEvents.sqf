@@ -33,17 +33,6 @@ if (RSTF_SHOW_CONFIG != -1) then {
 	};
 };
 
-// UI Message about unit getting killed
-"RSTF_KILL_OCCURED" addPublicVariableEventHandler {
-	(_this select 1) spawn RSTF_fnc_onKill;
-};
-
-// Global score
-"RSTF_SCORE" addPublicVariableEventHandler {
-	RSTF_SCORE = _this select 1;
-	0 spawn RSTF_fnc_onScore;
-};
-
 // List of possible battles
 "RSTF_POINTS" addPublicVariableEventHandler {
 	closeDialog 0;

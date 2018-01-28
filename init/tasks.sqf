@@ -79,7 +79,7 @@ RSTF_TASKS_TASK_completed = {
 	};
 
 	[_taskId, "Succeeded", true] call BIS_fnc_taskSetState;
-	[_task, RSTF_SCORE_PER_TASK] call RSTF_fnc_addPlayerScore;
+	[_task, RSTF_SCORE_PER_TASK] call RSTF_MODE_taskCompleted;
 
 	if (_singular) then {
 		call RSTF_TASKS_clear;

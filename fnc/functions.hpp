@@ -4,7 +4,6 @@ class all
 
 	class startBattleSelection {};
 	class assignPoint {};
-	class addPlayerScore {};
 	class assignPlayer {};
 	class countTurrets {};
 	class equipSoldier {};
@@ -62,6 +61,8 @@ class ui
 
 	class UI_addMessage {};
 	class UI_start {};
+	class UI_addGlobalMessage {};
+
 	class showAdvancedConfig {};
 	class showAdvancedOptions {};
 	class saveAdvancedOptions {};
@@ -91,6 +92,6 @@ class net
 	class serverEvents {};
 	class onStarted {};
 	class onPointChanged {};
-	class onKill {};
 	class onScore {};
+	class onEnd {};
 };

@@ -259,3 +259,12 @@ RSTF_VOTES_TIMEOUT = 0;
 
 RSTF_SHOW_CONFIG = -1;
 RSTF_CONFIG_DONE = false;
+
+// This will be filled with selected mode function
+RSTF_MODE_init = {};
+
+// This will be filled with selected mode function
+RSTF_MODE_unitKilled = {};
+
+// This will be filled with selected mode function
+RSTF_MODE_taskCompleted = {};
