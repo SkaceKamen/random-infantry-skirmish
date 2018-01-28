@@ -13,6 +13,32 @@ RSTF_BANNED_BUILDINGS = [ "Land_Pier_F", "Land_Metal_Shed_F" ];
 // Sides in this conflict
 RSTF_SIDES = [ SIDE_ENEMY, SIDE_FRIENDLY, SIDE_NEUTRAL ];
 
+RSTF_SIDES_NAMES = [
+	"OPFOR",
+	"BLUFOR",
+	"NEUTRALS"
+];
+
+RSTF_SIDES_COLORS = [
+	"ColorRed",
+	"ColorBlue",
+	"ColorGreen"
+];
+
+RSTF_SIDES_COLORS_UI = [
+	[1, 0, 0, 0.5],
+	[0, 0, 1, 0.5],
+	[0, 1, 0, 0.5]
+];
+
+RSTF_SIDES_COLORS_TEXT = [
+	'#FF8A8A',
+	'#9B9DFF',
+	'#FF8A8A'
+];
+
+RSTF_COLOR_NEUTRAL = "ColorWhite";
+
 // Vehicle classes [ STATIC, TRANSPORT, APC ] for each side
 RSTF_VEHICLES = [ [[], [], []], [[], [], []], [[], [], []] ];
 RSTF_VEHICLE_STATIC = 0;
