@@ -17,6 +17,15 @@ _marker setMarkerShape "ICON";
 _marker setMarkerType "mil_objective";
 */
 
+
+// Load gamemode
+private _modes = call(compile(preprocessfilelinenumbers("init\modes.sqf")));
+private _mode = _modes select 1;
+
+RSTF_MODE_init = _mode select 0;
+RSTF_MODE_unitKilled = _mode select 1;
+RSTF_MODE_taskCompleted = _mode select 2;
+
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
 
@@ -49,14 +58,6 @@ if (!isDedicated) then {
 
 // Wait for intro to finish playing
 sleep 2;
-
-// Load gamemode
-private _modes = call(compile(preprocessfilelinenumbers("init\modes.sqf")));
-private _mode = _modes select 0;
-
-RSTF_MODE_init = _mode select 0;
-RSTF_MODE_unitKilled = _mode select 1;
-RSTF_MODE_taskCompleted = _mode select 2;
 
 // Start gamemode
 0 spawn RSTF_MODE_init;
