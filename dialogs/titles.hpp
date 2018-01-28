@@ -55,14 +55,14 @@ class rscTitles
 			class MoneyBar : RscStatic
 			{
 				idc = 5;
-				style = ST_CENTER | ST_VCENTER;
+				style = ST_RIGHT | ST_VCENTER;
 				shadow = false;
 				colorBackground[] = { 0, 0, 0, 0.8 };
 				color[] = { 1, 1, 1, 1 };
 
-				x = SafeZoneX + SafeZoneW - 0.2;
+				x = SafeZoneX + SafeZoneW - 0.2 - 0.05;
 				w = 0.2;
-				y = SafeZoneY + SafeZoneH - 0.05;
+				y = SafeZoneY + SafeZoneH - 0.05 - 0.05;
 				h = 0.05;
 			};
 		};
