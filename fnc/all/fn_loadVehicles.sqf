@@ -3,7 +3,7 @@ private ["_x", "_i", "_c", "_scope", "_man", "_faction"];
 private _factions = param [0];
 private _ignore_bans = param [1, false];
 
-// Initialize 
+// Initialize
 private _vehicles = [];
 
 {
@@ -13,6 +13,7 @@ private _vehicles = [];
 private _transports = _vehicles select RSTF_VEHICLE_TRANSPORT;
 private _statics = _vehicles select RSTF_VEHICLE_STATIC;
 private _apcs = _vehicles select RSTF_VEHICLE_APC;
+private _airs = _vehicles select RSTF_VEHICLE_AIR;
 
 private _classes = configFile >> "CfgVehicles";
 
@@ -26,17 +27,17 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 
 		if (_scope == 2 && _man == 0 && _faction in _factions) then {
 			_weaponized = false;
-			
+
 			// Used to identify static weapons by its base class
 			_parents = [_c, true] call BIS_fnc_returnParents;
-	
+
 			// Air vehicles need to be treated differently
 			_air = "Air" in _parents;
 			_land = "Land" in _parents;
 
 			// Load only non-AA static weapons
 			_static = "StaticWeapon" in _parents && !("StaticAAWeapon" in _parents);
-			
+
 			// Load number of soliders that can be transported by this
 			_transport = if (isNumber(_c >> "transportSoldier")) then {
 				getNumber(_c >> "transportSoldier");
@@ -70,6 +71,10 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 						_apcs pushBack configName(_c);
 					};
 				};
+			};
+
+			if (_air && _weaponized) then {
+				_airs pushBack configName(_c);
 			};
 		};
 	};

@@ -12,7 +12,7 @@ private _display = DISPLAYNAME call RSTF_fnc_getDisplay;
 private _ctrlList = [DISPLAYNAME, "VehicleSelect"] call RSTF_fnc_getCtrl;
 private _ctrlBuy = [DISPLAYNAME, "ButtonBuy"] call RSTF_fnc_getCtrl;
 
-private _vehicles = (RSTF_VEHICLES select SIDE_FRIENDLY) select RSTF_VEHICLE_APC;
+private _vehicles = RSTF_BUYABLE_VEHICLES;
 
 lnbClear _ctrlList;
 {
@@ -30,7 +30,7 @@ _ctrlBuy ctrlAddEventHandler ["ButtonClick", {
 	private _ctrlList = [DISPLAYNAME, "VehicleSelect"] call RSTF_fnc_getCtrl;
 	private _selected = lnbCurSelRow _ctrlList;
 
-	private _vehicles = (RSTF_VEHICLES select SIDE_FRIENDLY) select RSTF_VEHICLE_APC;
+	private _vehicles = RSTF_BUYABLE_VEHICLES;
 	private _index = [player] call RSTF_MODE_KOTH_getMoneyIndex;
 	private _money = RSTF_MODE_KOTH_MONEY select _index;
 
