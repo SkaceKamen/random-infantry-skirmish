@@ -31,7 +31,7 @@ if (alive(_unit)) then {
 	selectPlayer _unit;
 	[_unit] joinSilent group(_unit);
 	_unit addEventHandler ["Killed", RSTF_fnc_playerKilled];
-	_unit addAction ["Pick vehicle", RSTF_fnc_UI_showVehicleSelection];
+	_unit addAction ["Support menu", RSTF_fnc_UI_showSupport, nil, 0];
 } else {
 	[_unit, objNull] call RSTF_fnc_playerKilled;
 };
@@ -47,5 +47,3 @@ if (RSTF_TASK != "") then {
 {
 	[_x, ([_x] call BIS_fnc_taskState), false] call BIS_fnc_taskSetState;
 } foreach RSTF_CURRENT_TASKS;
-
-// 0 spawn RSTF_fnc_UI_showVehicleSelection;

@@ -39,14 +39,18 @@ _ctrlBuy ctrlAddEventHandler ["ButtonClick", {
 		private _cost = [_vehicle] call RSTF_fnc_vehicleCost;
 
 		if (_money >= _cost) then {
+			closeDialog 0;
+
 			RSTF_MODE_KOTH_MONEY set [_index, _money - _cost];
 
 			private _vehicle = createVehicle [_vehicle, RSTF_SPAWNS select SIDE_FRIENDLY, [], 50, "NONE"];
 			createVehicleCrew _vehicle;
 
-			_previous = player;
-			effectiveCommander(_vehicle) call RSTF_fnc_assignPlayer;
-			deleteVehicle _previous;
+			[_vehicle] spawn {
+				_previous = player;
+				effectiveCommander(_this select 0) call RSTF_fnc_assignPlayer;
+				deleteVehicle _previous;
+			};
 		} else {
 			["You don't have money for that.", "You're poor"] spawn BIS_fnc_guiMessage;
 		};

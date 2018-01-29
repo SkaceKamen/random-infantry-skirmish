@@ -73,6 +73,7 @@ class ui
 	class UI_addGlobalMessage {};
 
 	class UI_showVehicleSelection {};
+	class UI_showSupport {};
 
 	class showAdvancedConfig {};
 	class showAdvancedOptions {};

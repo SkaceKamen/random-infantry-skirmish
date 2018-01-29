@@ -58,7 +58,7 @@ class rscTitles
 				y = SafeZoneY + 0.01;
 				w = 0.10;
 				h = 0.05;
-				colorBackground[] = { 0, 0.77, 0, 0.9 };
+				colorBackground[] = { 0, 0, 0.77, 0.9 };
 			};
 
 			class ENScoreBar : RscStatic

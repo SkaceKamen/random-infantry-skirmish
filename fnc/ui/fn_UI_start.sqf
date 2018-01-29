@@ -19,7 +19,7 @@ while {true} do {
 	{
 		_text = "";
 		{
-			_text = (_x select 0) + "<br />";
+			_text = (_x select 0) + "<br />" + _text;
 		} foreach (_x select 1);
 		(_x select 0) ctrlSetStructuredText parseText(_text);
 	} foreach [
