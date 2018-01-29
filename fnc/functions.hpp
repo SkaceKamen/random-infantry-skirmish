@@ -39,6 +39,7 @@ class all
 	class createPointMarkers {};
 	class randomSpawn {};
 	class spawnComposition {};
+	class vehicleCost {};
 };
 
 class spawn
@@ -55,6 +56,14 @@ class spawn
 	class spawnNeutralBuildings {};
 };
 
+class utils
+{
+	file = "fnc\utils";
+
+	class weaponHasAttachment {};
+	class getWeaponAttachments {};
+};
+
 class ui
 {
 	file = "fnc\ui";
@@ -62,6 +71,8 @@ class ui
 	class UI_addMessage {};
 	class UI_start {};
 	class UI_addGlobalMessage {};
+
+	class UI_showVehicleSelection {};
 
 	class showAdvancedConfig {};
 	class showAdvancedOptions {};

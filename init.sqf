@@ -5,6 +5,7 @@ call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "options.sqf"));
 
 RSTF_initScripts = [
 	"map",
+	"modes",
 	"tasks",
 	"tasks\clear",
 	// "tasks\rescue-house",

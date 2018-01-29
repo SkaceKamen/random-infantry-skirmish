@@ -31,6 +31,7 @@ if (alive(_unit)) then {
 	selectPlayer _unit;
 	[_unit] joinSilent group(_unit);
 	_unit addEventHandler ["Killed", RSTF_fnc_playerKilled];
+	_unit addAction ["Pick vehicle", RSTF_fnc_UI_showVehicleSelection];
 } else {
 	[_unit, objNull] call RSTF_fnc_playerKilled;
 };
@@ -40,9 +41,11 @@ camDestroy RSTF_CAM;
 RSTF_CAM = objNull;
 
 if (RSTF_TASK != "") then {
-	[RSTF_TASK, "ASSIGNED", false] call BIS_fnc_taskSetState; 
+	[RSTF_TASK, "ASSIGNED", false] call BIS_fnc_taskSetState;
 };
 
 {
 	[_x, ([_x] call BIS_fnc_taskState), false] call BIS_fnc_taskSetState;
 } foreach RSTF_CURRENT_TASKS;
+
+// 0 spawn RSTF_fnc_UI_showVehicleSelection;

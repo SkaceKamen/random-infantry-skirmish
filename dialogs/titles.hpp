@@ -31,6 +31,25 @@ class rscTitles
 				};
 			};
 
+			class GlobalMessages : RscStructuredText
+			{
+				idc = 4;
+				x = SafeZoneX + SafeZoneW / 2 - 0.25;
+				y = SafeZoneY + 0.05 + 0.01 + 0.02;
+				w = 0.5;
+				h = 0.2;
+
+				size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
+
+				class Attributes
+				{
+					font = "PuristaMedium";
+					color = "#ffffff";
+					align = "center";
+					shadow = 0;
+				};
+			};
+
 			class FRScoreBar : RscStatic
 			{
 				idc = 3;

@@ -1,0 +1,4 @@
+#define RSTF_VEHDG_IDD 1010
+
+#define RSTF_VEHDG_LIST_IDC 5
+#define RSTF_VEHDG_BUY_IDC 6

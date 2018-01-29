@@ -73,8 +73,10 @@ RSTF_VEHICLE_GROUPS = [ [], [], [] ];
 //Rate of UI update
 RSTF_UI_STEP = 0.5;
 
-//List of message to show to player
+// List of message to show to player
 RSTF_UI_MESSAGES = [];
+// List of global game messages
+RSTF_UI_GLOBAL_MESSAGES = [];
 
 //Custom equipment
 RSTF_PLAYER_EQUIPMENT = [];

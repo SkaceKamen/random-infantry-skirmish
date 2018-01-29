@@ -60,4 +60,15 @@ if (RSTF_RANDOMIZE_WEAPONS) then {
 		_unit addMagazines [_mag, _need];
 		_unit addWeapon _pistol;
 	};
+
+	// If weapon is without attachments, randomly add some
+	if (!([_weapon] call RSTF_fnc_weaponHasAttachment)) then {
+		if (random(10) > 5) then {
+			private _attSlots = ([_weapon] call RSTF_fnc_getWeaponAttachments) select { count(_x select 1) > 0 };
+			{
+				_att = selectRandom(_x select 1);
+				_unit addPrimaryWeaponItem _att;
+			} foreach _attSlots;
+		};
+	};
 };

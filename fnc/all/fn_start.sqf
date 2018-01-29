@@ -19,8 +19,7 @@ _marker setMarkerType "mil_objective";
 
 
 // Load gamemode
-private _modes = call(compile(preprocessfilelinenumbers("init\modes.sqf")));
-private _mode = _modes select 1;
+private _mode = RSTF_MODES select 1;
 
 RSTF_MODE_init = _mode select 0;
 RSTF_MODE_unitKilled = _mode select 1;

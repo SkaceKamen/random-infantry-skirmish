@@ -7,6 +7,7 @@
 #include "dialogs\deathDialog.hpp"
 #include "dialogs\battleSelectionDialog.hpp"
 #include "dialogs\waitingDialog.hpp"
+#include "dialogs\vehicleDialog.hpp"
 
 class cfgFunctions
 {
