@@ -18,6 +18,8 @@ _ctrlVehicle ctrlAddEventHandler ["ButtonClick", {
 	0 spawn RSTF_fnc_UI_showVehicleSelection;
 }];
 
+player switchMove "AmovPknlMstpSrasWrflDnon_AinvPknlMstpSrasWrflDnon";
+
 /*
 _ctrlVehicle ctrlAddEventHandler ["ButtonClick", {
 	closeDialog 0;
