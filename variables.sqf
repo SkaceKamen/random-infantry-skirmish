@@ -265,6 +265,8 @@ RSTF_VOTES_TIMEOUT = 0;
 RSTF_SHOW_CONFIG = -1;
 RSTF_CONFIG_DONE = false;
 
+RSTF_REMOTE_WORK_MOVE = "AmovPknlMstpSrasWrflDnon_AinvPknlMstpSrasWrflDnon";
+
 // This will be filled with selected mode function
 RSTF_MODE_init = {};
 

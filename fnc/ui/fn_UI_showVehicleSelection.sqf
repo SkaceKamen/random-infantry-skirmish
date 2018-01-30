@@ -42,17 +42,11 @@ _ctrlBuy ctrlAddEventHandler ["ButtonClick", {
 			closeDialog 0;
 
 			RSTF_MODE_KOTH_MONEY set [_index, _money - _cost];
-
-			private _vehicle = createVehicle [_vehicle, RSTF_SPAWNS select SIDE_FRIENDLY, [], 50, "FLY"];
-			createVehicleCrew _vehicle;
-
-			[_vehicle] spawn {
-				_previous = player;
-				effectiveCommander(_this select 0) call RSTF_fnc_assignPlayer;
-				deleteVehicle _previous;
-			};
+			[_vehicle] spawn RSTF_fnc_assignVehicle;
 		} else {
 			["You don't have money for that.", "You're poor"] spawn BIS_fnc_guiMessage;
 		};
 	}
 }];
+
+player switchMove RSTF_REMOTE_WORK_MOVE;
