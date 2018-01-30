@@ -43,7 +43,7 @@ _ctrlBuy ctrlAddEventHandler ["ButtonClick", {
 
 			RSTF_MODE_KOTH_MONEY set [_index, _money - _cost];
 
-			private _vehicle = createVehicle [_vehicle, RSTF_SPAWNS select SIDE_FRIENDLY, [], 50, "NONE"];
+			private _vehicle = createVehicle [_vehicle, RSTF_SPAWNS select SIDE_FRIENDLY, [], 50, "FLY"];
 			createVehicleCrew _vehicle;
 
 			[_vehicle] spawn {
