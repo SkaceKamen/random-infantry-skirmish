@@ -82,10 +82,6 @@ RSTF_MONEY_PER_TASK = 200;
 // Money per teamkill
 RSTF_MONEY_PER_TEAMKILL = -200;
 
-//Cleaning dead bodies
-RSTF_CLEAN = true;
-RSTF_CLEAN_INTERVAL = 3*60;
-
 //Random weather and time
 RSTF_WEATHER = 0;
 RSTF_TIME = 13;
