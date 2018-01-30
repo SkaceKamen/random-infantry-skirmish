@@ -18,7 +18,7 @@ _ctrlVehicle ctrlAddEventHandler ["ButtonClick", {
 	0 spawn RSTF_fnc_UI_showVehicleSelection;
 }];
 
-player switchMove "AmovPknlMstpSrasWrflDnon_AinvPknlMstpSrasWrflDnon";
+player switchMove RSTF_REMOTE_WORK_MOVE;
 
 /*
 _ctrlVehicle ctrlAddEventHandler ["ButtonClick", {
