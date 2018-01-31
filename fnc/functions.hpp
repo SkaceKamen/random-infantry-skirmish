@@ -40,7 +40,8 @@ class all
 	class randomSpawn {};
 	class spawnComposition {};
 	class vehicleCost {};
-	class assignVehicle {};
+	class requestVehicle {};
+	class bindKeys {};
 };
 
 class spawn
