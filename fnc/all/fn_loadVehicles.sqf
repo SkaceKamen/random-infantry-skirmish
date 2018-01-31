@@ -34,6 +34,7 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 			// Air vehicles need to be treated differently
 			_air = "Air" in _parents;
 			_land = "Land" in _parents;
+			_uav = isNumber(_c >> "isUav") && { getNumber(_c >> "isUav") == 1 };
 
 			// Load only non-AA static weapons
 			_static = "StaticWeapon" in _parents && !("StaticAAWeapon" in _parents);
@@ -59,22 +60,24 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 				};
 			} foreach _wp;
 
-			if (_land) then {
-				if (_transport >= 2 && !_static) then {
-					_transports pushBack configName(_c);
-				};
+			if (!_uav) then {
+				if (_land) then {
+					if (_transport >= 2 && !_static) then {
+						_transports pushBack configName(_c);
+					};
 
-				if (_weaponized) then {
-					if (_static) then {
-						_statics pushBack configName(_c);
-					} else {
-						_apcs pushBack configName(_c);
+					if (_weaponized) then {
+						if (_static) then {
+							_statics pushBack configName(_c);
+						} else {
+							_apcs pushBack configName(_c);
+						};
 					};
 				};
-			};
 
-			if (_air && _weaponized) then {
-				_airs pushBack configName(_c);
+				if (_air && _weaponized) then {
+					_airs pushBack configName(_c);
+				};
 			};
 		};
 	};

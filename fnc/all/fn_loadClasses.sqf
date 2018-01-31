@@ -47,11 +47,15 @@ RSTF_MEN = [ [], [], [] ];
 	[SIDE_ENEMY, ENEMY_FACTIONS]
 ];
 
+// List of buyable vehicles, each item: [CATEGORY, CLASSNAME]
 RSTF_BUYABLE_VEHICLES = [];
 {
-	RSTF_BUYABLE_VEHICLES pushBack _x;
+	RSTF_BUYABLE_VEHICLES pushBack ['APC', _x];
 } foreach ((RSTF_VEHICLES select SIDE_FRIENDLY) select RSTF_VEHICLE_APC);
 
 {
-	RSTF_BUYABLE_VEHICLES pushBack _x;
+	RSTF_BUYABLE_VEHICLES pushBack ['AIR', _x];
 } foreach ((RSTF_VEHICLES select SIDE_FRIENDLY) select RSTF_VEHICLE_AIR);
+
+// Sort by price
+RSTF_BUYABLE_VEHICLES = [RSTF_BUYABLE_VEHICLES, [], { [_x select 1] call RSTF_fnc_vehicleCost }] call BIS_fnc_sortBy;
