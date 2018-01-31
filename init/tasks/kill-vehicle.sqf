@@ -10,7 +10,7 @@ RSTF_TASK_KVEH_getVehicles = {
  * Returns if this task can be started. Checks if there is any occupied house.
  */
 RSTF_TASK_KVEH_isAvailable = {
-	RSTF_TASKS_CLEAR_ENABLED && { count(call RSTF_TASK_KVEH_getVehicles) > 0 };
+	RSTF_TASKS_IFV_ENABLED && { count(call RSTF_TASK_KVEH_getVehicles) > 0 };
 };
 
 /**
@@ -33,7 +33,7 @@ RSTF_TASK_KVEH_load = {
 	if (isNull(_vehicle)) then {
 		// Pick vehicle class
 		_vehicle = selectRandom(call RSTF_TASK_KVEH_getVehicles);
-		
+
 		// Create vehicle
 		_group = createGroup east;
 		_vehicle = createVehicle [_vehicle, RSTF_SPAWNS select SIDE_ENEMY, [], 50, "NONE"];
