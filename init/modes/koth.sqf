@@ -8,6 +8,8 @@ RSTF_MODE_KOTH_SCORE_LIMIT = 100;
 RSTF_MODE_KOTH_MONEY_INDEX = [];
 RSTF_MODE_KOTH_MONEY = [];
 
+RSTF_MODE_KOTH_OWNER = -1;
+
 RSTF_MODE_KOTH_getMoneyIndex = {
 	private _id = getPlayerUID(param [0]);
 	private _index = RSTF_MODE_KOTH_MONEY_INDEX find _id;
@@ -120,6 +122,8 @@ RSTF_MODE_KOTH_init = {
 				};
 			};
 		};
+
+		RSTF_MODE_KOTH_OWNER = _currentOwner;
 
 		sleep 1;
 	};
