@@ -101,7 +101,7 @@ RSTF_MODE_KOTH_init = {
 			], 5] remoteExec ["RSTF_fnc_UI_addGlobalMessage"];
 		} else {
 			// If enought time passed
-			if (_currentOwner != -1 && time - _last > RSTF_MODE_KOTH_SCORE_INTERVAL) then {
+			if (_currentOwner != -1 && _currentOwner != SIDE_NEUTRAL && time - _last > RSTF_MODE_KOTH_SCORE_INTERVAL) then {
 				// Add point and reset timer
 				_last = time;
 				RSTF_SCORE set [_currentOwner, (RSTF_SCORE select _currentOwner) + 1];
