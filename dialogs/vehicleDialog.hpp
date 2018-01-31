@@ -33,17 +33,30 @@ class RSTF_RscVehicleDialog
 			columns[] = { 0, 0.8 };
 		};
 
+		class ButtonCancel: RscButton
+		{
+			idc = RSTF_VEHDG_CANCEL_IDC;
+
+			x = SafeZoneX + SafeZoneW / 2 - 0.4;
+			y = 0.5 + 0.005;
+
+			w = 0.10;
+			h = 0.08;
+
+			text = "Cancel";
+		};
+
 		class ButtonBuy: RscButton
 		{
 			idc = RSTF_VEHDG_BUY_IDC;
 
-			x = SafeZoneX + SafeZoneW / 2 - 0.4;
-			y = 0.5 + 0.02;
+			x = SafeZoneX + SafeZoneW / 2 + 0.4 - 0.10;
+			y = 0.5 + 0.005;
 
-			w = 0.8;
-			h = 0.05;
+			w = 0.10;
+			h = 0.08;
 
-			text = "BUY";
+			text = "Buy";
 		};
 	};
 };

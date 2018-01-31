@@ -2,3 +2,4 @@
 
 #define RSTF_VEHDG_LIST_IDC 5
 #define RSTF_VEHDG_BUY_IDC 6
+#define RSTF_VEHDG_CANCEL_IDC 7
