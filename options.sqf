@@ -109,3 +109,12 @@ RSTF_TASKS_IFV_ENABLED = true;
 RSTF_TASKS_CLEAR_ENABLED = true;
 // Destroy emplacement
 RSTF_TASKS_EMP_ENABLED = true;
+
+// Enable money system
+RSTF_MONEY_ENABLED = true;
+
+// Enable vehicles for money system
+RSTF_MONEY_VEHICLES_ENABLED = true;
+
+// From wich distance is kill considered far enought to be special
+RSTF_KILL_DISTANCE_BONUS = 100;

@@ -17,6 +17,11 @@ _ctrlMoney = _display displayCtrl RSTFUI_ARCADE_MONEY_IDC;
 _ctrlOwner ctrlShow false;
 _ctrlOwner ctrlCommit 0;
 
+// Hide/Show money if enabled
+_ctrlMoney ctrlShow RSTF_MONEY_ENABLED;
+_ctrlMoney ctrlCommit 0;
+
+// Last displayed owner of objective in KOTH
 _lastOwner = RSTF_MODE_KOTH_OWNER;
 
 while { true } do {
@@ -36,6 +41,7 @@ while { true } do {
 		[_ctrlLocalMessages, RSTF_UI_MESSAGES]
 	];
 
+	// KOTH related stuff
 	if (RSTF_MODE_KOTH_ENABLED) then {
 		if (RSTF_MODE_KOTH_OWNER != _lastOwner) then {
 			_lastOwner = RSTF_MODE_KOTH_OWNER;
@@ -53,19 +59,18 @@ while { true } do {
 				_ctrlOwner ctrlShow true;
 				_ctrlOwner ctrlSetPosition _position;
 				_ctrlOwner ctrlSetBackgroundColor _color;
-				_ctrlOwner ctrlCommit 1;
+				_ctrlOwner ctrlCommit 0.3;
 			} else {
 				_ctrlOwner ctrlShow false;
 				_ctrlOwner ctrlCommit 0;
 			};
-		};
 
-		_index = RSTF_MODE_KOTH_MONEY_INDEX find (getPlayerUID player);
-		_money = 0;
-		if (_index >= 0) then {
-			_money = RSTF_MODE_KOTH_MONEY select _index;
+			playSound "DefaultNotification";
 		};
+	};
 
+	if (RSTF_MONEY_ENABLED) then {
+		_money = [player] call RSTF_fnc_getPlayerMoney;
 		_ctrlMoney ctrlSetText format["%1$", _money];
 	};
 

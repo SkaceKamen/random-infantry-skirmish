@@ -24,6 +24,8 @@ RSTF_MODE_CLASSIC_unitKilled = {
 	// Side is forgotten shortly after dying for some reason
 	private _side = _killed getVariable ["SPAWNED_SIDE", civilian];
 
+	private _isLegit = _side != side(_killer) && _killer != _killed;
+
 	// Get killer side index
 	private _index = -1;
 	if (side(group(_killer)) == east) then {
@@ -60,10 +62,30 @@ RSTF_MODE_CLASSIC_unitKilled = {
 		private _message = "";
 		private _distance = round(_killed distance _killer);
 
-		if (_side != side(_killer)) then {
-			_message = format["+%1 <t color='#dddddd'>Kill</t> (%2 m)", RSTF_SCORE_PER_KILL, _distance];
+		if (RSTF_MONEY_ENABLED) then {
+			if (_isLegit) then {
+				[_killer, RSTF_MONEY_PER_KILL] call RSTF_fnc_addPlayerMoney;
+			} else {
+				[_killer, RSTF_MONEY_PER_TEAMKILL] call RSTF_fnc_addPlayerMoney;
+			};
+		};
+
+		if (_isLegit) then {
+			if (RSTF_MONEY_ENABLED) then {
+				_message = format["+%1 (+%2$) <t color='#dddddd'>Kill</t>", RSTF_SCORE_PER_KILL, RSTF_MONEY_PER_KILL];
+			} else {
+				_message = format["+%1 <t color='#dddddd'>Kill</t>", RSTF_SCORE_PER_KILL];
+			};
+
+			if (_distance >= RSTF_KILL_DISTANCE_BONUS) then {
+				_message = _message + format[" (%1m)", _distance];
+			};
 		} else {
-			_message = format["%1 <t color='#dddddd'>Teamkill</t>", RSTF_SCORE_PER_TEAMKILL];
+			if (RSTF_MONEY_ENABLED) then {
+				_message = format["%1 (%2$) <t color='#dddddd'>Teamkill</t>", RSTF_SCORE_PER_TEAMKILL, RSTF_MONEY_PER_TEAMKILL];
+			} else {
+				_message = format["%1 <t color='#dddddd'>Teamkill</t>", RSTF_SCORE_PER_TEAMKILL];
+			};
 		};
 
 		[_message, 5] remoteExec ["RSTFUI_fnc_addMessage", _killer];
