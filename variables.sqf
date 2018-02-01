@@ -1,3 +1,5 @@
+#include "dialogs\keys.hpp"
+
 // Indexes used for various arrays
 SIDE_ENEMY = 0;
 SIDE_FRIENDLY = 1;
@@ -274,6 +276,9 @@ RSTF_SHOW_CONFIG = -1;
 RSTF_CONFIG_DONE = false;
 
 RSTF_REMOTE_WORK_MOVE = "AmovPknlMstpSrasWrflDnon_AinvPknlMstpSrasWrflDnon";
+
+// Keys that triggers support menu
+RSTF_KEYS_DISPLAY_SUPPORT = [DIK_LWIN, DIK_RWIN];
 
 // This will be filled with selected mode function
 RSTF_MODE_init = {};

@@ -31,10 +31,6 @@ if (alive(_unit)) then {
 	selectPlayer _unit;
 	[_unit] joinSilent group(_unit);
 	_unit addEventHandler ["Killed", RSTF_fnc_playerKilled];
-
-	// _unit addAction ["Vehicle menu", RSTF_fnc_UI_showVehicleSelection, nil, 0];
-
-
 } else {
 	[_unit, objNull] call RSTF_fnc_playerKilled;
 };

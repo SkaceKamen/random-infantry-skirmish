@@ -1,6 +1,6 @@
 /*
 	Function:
-	RSTF_fnc_UI_showVehicleSelection
+	RSTFUI_fnc_showVehicleDialog
 
 	Description:
 	Shows vehicle selection ui dialog.

@@ -66,7 +66,7 @@ RSTF_MODE_CLASSIC_unitKilled = {
 			_message = format["%1 <t color='#dddddd'>Teamkill</t>", RSTF_SCORE_PER_TEAMKILL];
 		};
 
-		[_message, 5] remoteExec ["RSTF_fnc_UI_AddMessage", _killer];
+		[_message, 5] remoteExec ["RSTFUI_fnc_addMessage", _killer];
 	};
 };
 
@@ -74,7 +74,7 @@ RSTF_MODE_CLASSIC_taskCompleted = {
 	private _taskName = param [0];
 	private _taskScore = param [1];
 
-	[format["+%2 <t color='#dddddd'>%1</t>", _taskName, _taskScore], 5] remoteExec ["RSTF_fnc_UI_addGlobalMessage"];
+	[format["+%2 <t color='#dddddd'>%1</t>", _taskName, _taskScore], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
 
 	RSTF_SCORE set [SIDE_FRIENDLY, (RSTF_SCORE select SIDE_FRIENDLY) + _taskScore];
 	call RSTF_MODE_CLASSIC_scoreChanged;

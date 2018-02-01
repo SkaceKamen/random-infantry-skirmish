@@ -70,13 +70,6 @@ class ui
 {
 	file = "fnc\ui";
 
-	class UI_addMessage {};
-	class UI_start {};
-	class UI_addGlobalMessage {};
-
-	class UI_showVehicleSelection {};
-	class UI_showSupport {};
-
 	class showAdvancedConfig {};
 	class showAdvancedOptions {};
 	class saveAdvancedOptions {};

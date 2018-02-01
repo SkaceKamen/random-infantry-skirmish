@@ -98,7 +98,7 @@ RSTF_MODE_KOTH_init = {
 				"<t color='%1'>%2</t> captured objective",
 				RSTF_SIDES_COLORS_TEXT select _currentOwner,
 				RSTF_SIDES_NAMES select _currentOwner
-			], 5] remoteExec ["RSTF_fnc_UI_addGlobalMessage"];
+			], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
 		} else {
 			// If enought time passed
 			if (_currentOwner != -1 && _currentOwner != SIDE_NEUTRAL && time - _last > RSTF_MODE_KOTH_SCORE_INTERVAL) then {
@@ -111,7 +111,7 @@ RSTF_MODE_KOTH_init = {
 					"<t color='%1'>%2</t> +1 for holding objective",
 					RSTF_SIDES_COLORS_TEXT select _currentOwner,
 					RSTF_SIDES_NAMES select _currentOwner
-				], 5] remoteExec ["RSTF_fnc_UI_addGlobalMessage"];
+				], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
 
 				// Notify clients
 				remoteExec ["RSTF_fnc_onScore"];
@@ -158,7 +158,7 @@ RSTF_MODE_KOTH_unitKilled = {
 			_message = format["%1$ <t color='#dddddd'>Teamkill</t>", RSTF_MONEY_PER_TEAMKILL];
 		};
 
-		[_message, 5] remoteExec ["RSTF_fnc_UI_AddMessage", _killer];
+		[_message, 5] remoteExec ["RSTFUI_fnc_addMessage", _killer];
 	};
 };
 
@@ -168,7 +168,7 @@ RSTF_MODE_KOTH_taskCompleted = {
 
 	private _index = player call RSTF_MODE_KOTH_getMoneyIndex;
 
-	[format["+%2$ <t color='#dddddd'>%1</t>", _taskName, RSTF_MONEY_PER_TASK], 5] remoteExec ["RSTF_fnc_UI_addGlobalMessage"];
+	[format["+%2$ <t color='#dddddd'>%1</t>", _taskName, RSTF_MONEY_PER_TASK], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
 
 	RSTF_MODE_KOTH_MONEY set [_index, (RSTF_MODE_KOTH_MONEY select _index) + RSTF_MONEY_PER_TASK];
 };

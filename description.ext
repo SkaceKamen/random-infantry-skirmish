@@ -16,6 +16,11 @@ class cfgFunctions
 	{
 		#include "fnc\functions.hpp"
 	};
+
+	class RSTFUI
+	{
+		#include "fnc\ui.hpp"
+	};
 };
 
 author = "SkaceKachna";

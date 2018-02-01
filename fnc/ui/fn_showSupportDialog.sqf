@@ -15,19 +15,16 @@ private _ctrlSupport = [DISPLAYNAME, "ButtonSupport"] call RSTF_fnc_getCtrl;
 
 _ctrlVehicle ctrlAddEventHandler ["ButtonClick", {
 	closeDialog 0;
-	0 spawn RSTF_fnc_UI_showVehicleSelection;
+	0 spawn RSTFUI_fnc_showVehicleDialog;
 }];
 
 player switchMove RSTF_REMOTE_WORK_MOVE;
 
+// @TODO:
 /*
-_ctrlVehicle ctrlAddEventHandler ["ButtonClick", {
-	closeDialog 0;
-	0 spawn RSTF_fnc_UI_showVehicleSelection;
+_ctrlEquipment ctrlAddEventHandler ["ButtonClick", {
 }];
 
-_ctrlVehicle ctrlAddEventHandler ["ButtonClick", {
-	closeDialog 0;
-	0 spawn RSTF_fnc_UI_showVehicleSelection;
+_ctrlSupport ctrlAddEventHandler ["ButtonClick", {
 }];
 */

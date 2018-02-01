@@ -10,7 +10,7 @@ closeDialog 0;
 [] spawn RSTF_fnc_bindKeys;
 
 // Start UI features
-[] spawn RSTF_fnc_UI_Start;
+[] spawn RSTFUI_fnc_startOverlay;
 
 // Update score display
 [] spawn RSTF_fnc_onScore;

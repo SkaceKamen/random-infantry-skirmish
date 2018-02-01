@@ -20,11 +20,14 @@ _display displayAddEventHandler ["KeyDown", {
 	private _ctrl = param [0];
 	private _code = param [1];
 
-	if (_code == DIK_LWIN || _code == DIK_RWIN) exitWith {
+	if (_code in RSTF_KEYS_DISPLAY_SUPPORT) exitWith {
+		// Make sure there isn't any other dialog displayed
 		closeDialog 0;
 
-		0 spawn RSTF_fnc_UI_showVehicleSelection;
+		// Show vehicle selection dialog
+		0 spawn RSTFUI_fnc_showVehicleDialog;
 
+		// Notify engine that we handled this
 		true;
 	};
 
