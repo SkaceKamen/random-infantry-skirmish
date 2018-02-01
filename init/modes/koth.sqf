@@ -5,21 +5,7 @@ RSTF_MODE_KOTH_ENABLED = false;
 RSTF_MODE_KOTH_SCORE_INTERVAL = 10;
 RSTF_MODE_KOTH_SCORE_LIMIT = 100;
 
-RSTF_MODE_KOTH_MONEY_INDEX = [];
-RSTF_MODE_KOTH_MONEY = [];
-
 RSTF_MODE_KOTH_OWNER = -1;
-
-RSTF_MODE_KOTH_getMoneyIndex = {
-	private _id = getPlayerUID(param [0]);
-	private _index = RSTF_MODE_KOTH_MONEY_INDEX find _id;
-	if (_index < 0) then {
-		_index = count(RSTF_MODE_KOTH_MONEY_INDEX);
-		RSTF_MODE_KOTH_MONEY_INDEX pushBack _id;
-		RSTF_MODE_KOTH_MONEY pushBack 0;
-	};
-	_index;
-};
 
 RSTF_MODE_KOTH_init = {
 	RSTF_MODE_KOTH_ENABLED = true;
@@ -141,18 +127,16 @@ RSTF_MODE_KOTH_unitKilled = {
 
 	// Dispatch message if necessary
 	if (isPlayer(_killer)) then {
-		private _index = _killer call RSTF_MODE_KOTH_getMoneyIndex;
-
-		if (_side != side(_killer)) then {
-			RSTF_MODE_KOTH_MONEY set [_index, (RSTF_MODE_KOTH_MONEY select _index) + RSTF_MONEY_PER_KILL];
+		if (_side != side(_killer) && _killer != _killed) then {
+			[_killer, RSTF_MONEY_PER_KILL] call RSTF_fnc_addPlayerMoney;
 		} else {
-			RSTF_MODE_KOTH_MONEY set [_index, 0 max ((RSTF_MODE_KOTH_MONEY select _index) - RSTF_MONEY_PER_TEAMKILL)];
+			[_killer, RSTF_MONEY_PER_TEAMKILL] call RSTF_fnc_addPlayerMoney;
 		};
 
 		private _message = "";
 		private _distance = round(_killed distance _killer);
 
-		if (_side != side(_killer)) then {
+		if (_side != side(_killer) && _killer != _killed) then {
 			_message = format["+%1$ <t color='#dddddd'>Kill</t> (%2 m)", RSTF_MONEY_PER_KILL, _distance];
 		} else {
 			_message = format["%1$ <t color='#dddddd'>Teamkill</t>", RSTF_MONEY_PER_TEAMKILL];
@@ -166,11 +150,11 @@ RSTF_MODE_KOTH_taskCompleted = {
 	private _taskName = param [0];
 	private _taskScore = param [1];
 
-	private _index = player call RSTF_MODE_KOTH_getMoneyIndex;
-
 	[format["+%2$ <t color='#dddddd'>%1</t>", _taskName, RSTF_MONEY_PER_TASK], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
 
-	RSTF_MODE_KOTH_MONEY set [_index, (RSTF_MODE_KOTH_MONEY select _index) + RSTF_MONEY_PER_TASK];
+	{
+		[_x, RSTF_MONEY_PER_TASK] call RSTF_fnc_addPlayerMoney;
+	} foreach allPlayers;
 };
 
 [

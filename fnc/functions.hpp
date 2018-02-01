@@ -42,6 +42,14 @@ class all
 	class vehicleCost {};
 	class requestVehicle {};
 	class bindKeys {};
+
+	class getUnitMoney {};
+	class getUnitMoneyIndex {};
+	class setUnitMoney {};
+	class addUnitMoney {};
+	class getPlayerMoney {};
+	class setPlayerMoney {};
+	class addPlayerMoney {};
 };
 
 class spawn
