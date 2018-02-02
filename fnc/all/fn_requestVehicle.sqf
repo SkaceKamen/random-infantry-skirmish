@@ -19,8 +19,7 @@ private _vehicleClass = param [1];
 
 // Check money
 private _cost = [_vehicleClass] call RSTF_fnc_vehicleCost;
-private _index = [_player] call RSTF_MODE_KOTH_getMoneyIndex;
-private _money = RSTF_MODE_KOTH_MONEY select _index;
+private _money = [_player] call RSTF_fnc_getPlayerMoney;
 
 // Stop when player don't have money for this
 if (_cost > _money) exitWith {
@@ -28,10 +27,11 @@ if (_cost > _money) exitWith {
 };
 
 // Update money
-RSTF_MODE_KOTH_MONEY set [_index, _money - _cost];
+[_player, -_cost] call RSTF_fnc_addPlayerMoney;
 
 // Spawn vehicle
-private _vehicle = createVehicle [_vehicleClass, RSTF_SPAWNS select SIDE_FRIENDLY, [], 50, "FLY"];
+private _position = (RSTF_SPAWNS select SIDE_FRIENDLY) findEmptyPosition [0, 100, _vehicleClass];
+private _vehicle = createVehicle [_vehicleClass, _position, [], 0, "FLY"];
 private _direction = (RSTF_SPAWNS select SIDE_FRIENDLY) getDir RSTF_POINT;
 
 _vehicle setDir _direction;
@@ -50,40 +50,26 @@ deleteVehicle effectiveCommander(_vehicle);
 	_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 } foreach units(_group);
 
-/*
-// Camera animation
-if (isNull(RSTF_CAM)) then {
-	call RSTF_fnc_createCam;
-};
-
-waitUntil { camCommitted RSTF_CAM; };
-
-// Move camera to player
-
-RSTF_CAM camSetTarget player;
-RSTF_CAM camSetRelPos [0, -1, 0.5];
-RSTF_CAM camCommit 0;
-
-waitUntil { camCommitted RSTF_CAM; };
-
-// Move camera to target vehicle
-
-RSTF_CAM camSetTarget _vehicle;
-RSTF_CAM camSetRelPos [0, -1, 0.5];
-RSTF_CAM camCommit 1;
-
-waitUntil { camCommitted RSTF_CAM; };
-
-// Destroy camera
-
-RSTF_CAM cameraEffect ["terminate","back"];
-camDestroy RSTF_CAM;
-RSTF_CAM = objNull;
-*/
+// Creates camera animation
+[getPos(_player), _vehicle] remoteExec ["RSTF_fnc_moveCamera", _player];
 
 // Move player into vacant slot and make him leader
 [_player] joinSilent _group;
 _player moveInAny _vehicle;
 _group selectLeader _player;
+
+// If vehicle is destroyed/damaged in first 2 seconds of existence, refund the money
+[_player, _vehicle, _cost] spawn {
+	private _player = param [0];
+	private _vehicle = param [1];
+	private _cost = param [2];
+
+	sleep 2;
+
+	if (!canMove(_vehicle) || damage(_vehicle) > 0.2) then {
+		[_player, _cost] call RSTF_fnc_addPlayerMoney;
+		[format["+%1$ <t color='#dddddd'>Vehicle refund</t>", _cost], 5] remoteExec ["RSTFUI_fnc_addMessage", _player];
+	};
+};
 
 _vehicle;

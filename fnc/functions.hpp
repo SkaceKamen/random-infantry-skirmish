@@ -50,6 +50,8 @@ class all
 	class getPlayerMoney {};
 	class setPlayerMoney {};
 	class addPlayerMoney {};
+
+	class moveCamera {};
 };
 
 class spawn
