@@ -54,6 +54,8 @@ class all
 	class moveCamera {};
 
 	class aiDecideVehicle {};
+
+	class getAttackWaypoint {};
 };
 
 class spawn

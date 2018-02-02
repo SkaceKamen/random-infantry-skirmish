@@ -13,35 +13,43 @@ private _spawned = false;
 	if (_money >= _cost) exitWith {
 		[_name, -_cost] call RSTF_fnc_addUnitMoney;
 		_vehicle = [_unit, _side, _class] call RSTF_fnc_spawnBoughtVehicle;
-
 		(RSTF_AI_VEHICLES select _side) pushBack _vehicle;
 
 		_group = group(_unit);
 
-		_point = RSTF_POINT;
-		if (_side == SIDE_ENEMY) then {
-			_point = RSTF_POINT vectorAdd [
-				sin(180 + RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
-				cos(180 + RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
-				0
-			];
-		} else {
-			_point = RSTF_POINT vectorAdd [
-				sin(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
-				cos(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
-				0
-			];
+		// Remove vehicle from AI vehicles when dead
+		[_vehicle, _side] spawn {
+			_vehicle = param [0];
+			_side = param [1];
+
+			waitUntil { !canMove(_vehicle) || count(crew(_vehicle)) == 0 || !canFire(_vehicle) };
+
+			_vehicles = (RSTF_AI_VEHICLES select _side);
+			_index = _vehicles find _vehicle;
+			_vehicles = [_vehicles, _index] call BIS_fnc_removeIndex;
+			RSTF_AI_VEHICLES set [_side, _vehicles];
+
+			sleep 5;
+
+			_vehicle setDamage 1;
 		};
 
-		_dis = selectRandom([-1,1]) * random(RSTF_DISTANCE * 0.4);
-		_wppoint = _point vectorAdd [
-			sin(RSTF_DIRECTION + 90) * _dis,
-			cos(RSTF_DIRECTION + 90) * _dis,
-			0
-		];
+		// Keep pressuring vehicle to attack, because the AI is pussy mostly
+		[_vehicle, _group, _side] spawn {
+			_vehicle = param [0];
+			_group = param [1];
+			_side = param [2];
 
-		_wp = _group addWaypoint [_wppoint, 50];
-		_wp setWaypointType "SAD";
+			while { alive(_vehicle) } do {
+				deleteWaypoint [_group, 0];
+				_wp = _group addWaypoint [[_side] call RSTF_fnc_getAttackWaypoint, 10];
+				_wp setWaypointType "MOVE";
+				_wp setWaypointSpeed "LIMITED";
+				_wp setwaypointbehaviour "COMBAT";
+
+				sleep 20;
+			};
+		};
 
 		_spawned = true;
 	};
