@@ -52,6 +52,8 @@ class all
 	class addPlayerMoney {};
 
 	class moveCamera {};
+
+	class aiDecideVehicle {};
 };
 
 class spawn
@@ -66,6 +68,7 @@ class spawn
 	class spawnSpawnDefenses {};
 	class spawnNeutralEmplacements {};
 	class spawnNeutralBuildings {};
+	class spawnBoughtVehicle {};
 };
 
 class utils
@@ -74,6 +77,7 @@ class utils
 
 	class weaponHasAttachment {};
 	class getWeaponAttachments {};
+	class sideIndex {};
 };
 
 class ui

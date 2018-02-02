@@ -16,7 +16,7 @@ private _index = RSTF_MONEY_INDEX find _id;
 if (_index < 0) then {
 	_index = count(RSTF_MONEY_INDEX);
 	RSTF_MONEY_INDEX pushBack _id;
-	RSTF_MONEY pushBack 0;
+	RSTF_MONEY pushBack 3000;
 
 	if (isServer) then {
 		publicVariable "RSTF_MONEY_INDEX";

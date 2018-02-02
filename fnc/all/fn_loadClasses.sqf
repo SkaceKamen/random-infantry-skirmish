@@ -50,12 +50,16 @@ RSTF_MEN = [ [], [], [] ];
 // List of buyable vehicles, each item: [CATEGORY, CLASSNAME]
 RSTF_BUYABLE_VEHICLES = [];
 {
-	RSTF_BUYABLE_VEHICLES pushBack ['APC', _x];
-} foreach ((RSTF_VEHICLES select SIDE_FRIENDLY) select RSTF_VEHICLE_APC);
+	private _list = [];
+	{
+		_list pushBack ['APC', _x];
+	} foreach ((RSTF_VEHICLES select _x) select RSTF_VEHICLE_APC);
 
-{
-	RSTF_BUYABLE_VEHICLES pushBack ['AIR', _x];
-} foreach ((RSTF_VEHICLES select SIDE_FRIENDLY) select RSTF_VEHICLE_AIR);
+	{
+		_list pushBack ['AIR', _x];
+	} foreach ((RSTF_VEHICLES select _x) select RSTF_VEHICLE_AIR);
 
-// Sort by price
-RSTF_BUYABLE_VEHICLES = [RSTF_BUYABLE_VEHICLES, [], { [_x select 1] call RSTF_fnc_vehicleCost }] call BIS_fnc_sortBy;
+	_list = [_list, [], { [_x select 1] call RSTF_fnc_vehicleCost }] call BIS_fnc_sortBy;
+
+	RSTF_BUYABLE_VEHICLES set [_x, _list];
+} foreach RSTF_SIDES;
