@@ -24,8 +24,7 @@ private _ctrlList = [DISPLAYNAME, "VehicleSelect"] call RSTF_fnc_getCtrl;
 private _ctrlBuy = [DISPLAYNAME, "ButtonBuy"] call RSTF_fnc_getCtrl;
 
 private _vehicles = RSTF_BUYABLE_VEHICLES;
-private _index = [player] call RSTF_MODE_KOTH_getMoneyIndex;
-private _money = RSTF_MODE_KOTH_MONEY select _index;
+private _money = [player] call RSTF_fnc_getPlayerMoney;
 
 lnbClear _ctrlList;
 {
@@ -52,8 +51,7 @@ _ctrlBuy ctrlAddEventHandler ["ButtonClick", {
 	private _selected = lnbCurSelRow _ctrlList;
 
 	private _vehicles = RSTF_BUYABLE_VEHICLES;
-	private _index = [player] call RSTF_MODE_KOTH_getMoneyIndex;
-	private _money = RSTF_MODE_KOTH_MONEY select _index;
+	private _money = [player] call RSTF_fnc_getPlayerMoney;
 
 	if (_selected >= 0 && _selected < count(_vehicles)) then {
 		private _vehicle = (_vehicles select _selected) select 1;
