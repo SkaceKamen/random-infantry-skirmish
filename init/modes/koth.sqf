@@ -127,14 +127,22 @@ RSTF_MODE_KOTH_unitKilled = {
 
 	private _isLegit = _side != side(_killer) && _killer != _killed;
 
+	if (RSTF_MONEY_ENABLED) then {
+		if (isPlayer(_killer)) then {
+			if (_side != side(_killer) && _killer != _killed) then {
+				[_killer, RSTF_MONEY_PER_KILL] call RSTF_fnc_addPlayerMoney;
+			} else {
+				[_killer, RSTF_MONEY_PER_TEAMKILL] call RSTF_fnc_addPlayerMoney;
+			};
+		} else {
+			if (_side != side(_killer) && _killer != _killed) then {
+				[_killer getVariable ["ORIGINAL_NAME", name(_killer)], RSTF_MONEY_PER_KILL] call RSTF_fnc_addUnitMoney;
+			};
+		};
+	};
+
 	// Dispatch message if necessary
 	if (isPlayer(_killer)) then {
-		if (_side != side(_killer) && _killer != _killed) then {
-			[_killer, RSTF_MONEY_PER_KILL] call RSTF_fnc_addPlayerMoney;
-		} else {
-			[_killer, RSTF_MONEY_PER_TEAMKILL] call RSTF_fnc_addPlayerMoney;
-		};
-
 		private _message = "";
 		private _distance = round(_killed distance _killer);
 
