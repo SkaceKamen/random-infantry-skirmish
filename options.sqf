@@ -116,5 +116,8 @@ RSTF_MONEY_ENABLED = true;
 // Enable vehicles for money system
 RSTF_MONEY_VEHICLES_ENABLED = true;
 
+// Maximum number of AI vehicles per side
+RSTF_MONEY_VEHICLES_AI_LIMIT = 5;
+
 // From wich distance is kill considered far enought to be special
 RSTF_KILL_DISTANCE_BONUS = 100;
