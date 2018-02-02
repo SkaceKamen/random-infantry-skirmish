@@ -14,6 +14,10 @@ RSTF_BANNED_BUILDINGS = [ "Land_Pier_F", "Land_Metal_Shed_F" ];
 
 // Sides in this conflict
 RSTF_SIDES = [ SIDE_ENEMY, SIDE_FRIENDLY, SIDE_NEUTRAL ];
+RSTF_SIDES_SIDES = [];
+RSTF_SIDES_SIDES set [SIDE_ENEMY, east];
+RSTF_SIDES_SIDES set [SIDE_FRIENDLY, west];
+RSTF_SIDES_SIDES set [SIDE_NEUTRAL, resistance];
 
 RSTF_SIDES_NAMES = [
 	"OPFOR",
@@ -282,6 +286,18 @@ RSTF_REMOTE_WORK_MOVE = "AmovPknlMstpSrasWrflDnon_AinvPknlMstpSrasWrflDnon";
 
 // Keys that triggers support menu
 RSTF_KEYS_DISPLAY_SUPPORT = [DIK_LWIN, DIK_RWIN];
+
+// List of names waiting for respawn (used to index money for AI units)
+RSTF_QUEUE_NAMES = [];
+
+// List of spawned AI vehicles
+RSTF_AI_VEHICLES = [];
+
+{
+	RSTF_AI_VEHICLES set [_x, []];
+	RSTF_QUEUE_NAMES set [_x, []];
+} foreach RSTF_SIDES;
+
 
 // This will be filled with selected mode function
 RSTF_MODE_init = {};
