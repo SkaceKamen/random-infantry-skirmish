@@ -82,13 +82,14 @@ class utils
 	class getCtrl {};
 	class getDisplay {};
 	class getWeaponAttachments {};
+	class getVehicleCost {};
+	class getVehicleWeapons {};
 	class isUsableWeapon {};
 	class pathString {};
 	class pickRandomPoints {};
 	class randomPosition {};
 	class randomLocation {};
 	class sideIndex {};
-	class getVehicleCost {};
 	class weaponHasAttachment {};
 };
 
