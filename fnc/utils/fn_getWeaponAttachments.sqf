@@ -26,7 +26,12 @@ private _slots = "true" configClasses (configFile >> "cfgWeapons" >> _weapon >> 
 		};
 
 	{
-		_slot pushBackUnique configName(_x);
+		_slot pushBackUnique
+			(if (typeName(_x) == typeName("")) then {
+				_x;
+			} else {
+				configName(_x);
+			});
 	} foreach _items;
 
 	_attachments pushBack [configName(_x), _slot];
