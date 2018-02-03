@@ -30,10 +30,10 @@ lnbClear _ctrlList;
 {
 	private _category = _x select 0;
 	private _vehicle = _x select 1;
+	private _cost = _x select 2;
 	private _config = configFile >> "cfgVehicles" >> _vehicle;
 	private _displayName = getText(_config >> "displayName");
 	private _picture = getText(_config >> "picture");
-	private _cost = [_vehicle] call RSTF_fnc_getVehicleCost;
 
 	_ctrlList lnbAddRow [_displayName, format["%1$", _cost]];
 	_ctrlList lnbSetPicture [[_foreachIndex, 0], _picture];
