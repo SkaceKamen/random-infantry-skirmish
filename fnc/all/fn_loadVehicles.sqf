@@ -37,7 +37,7 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 			_uav = isNumber(_c >> "isUav") && { getNumber(_c >> "isUav") == 1 };
 
 			// Load only non-AA static weapons
-			_static = "StaticWeapon" in _parents && !("StaticAAWeapon" in _parents);
+			_static = "StaticWeapon" in _parents;
 
 			// Load number of soliders that can be transported by this
 			_transport = if (isNumber(_c >> "transportSoldier")) then {
@@ -57,7 +57,9 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 
 					if (_weaponized) then {
 						if (_static) then {
-							_statics pushBack configName(_c);
+							if (!("StaticAAWeapon" in _parents)) then {
+								_statics pushBack configName(_c);
+							};
 						} else {
 							_apcs pushBack configName(_c);
 						};

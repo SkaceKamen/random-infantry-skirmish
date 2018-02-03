@@ -316,6 +316,17 @@ RSTF_MULTIKILL_TEXTS = [
 	"UNSTOPPABLE"
 ];
 
+RTSF_USELESS_WEAPONS = [
+	"FakeWeapon", "Laserdesignator_mounted", "SmokeLauncher", "CMFlareLauncher", "TruckHorn2",
+	"rhsusf_weap_DummyLauncher", "rhsusf_weap_M257_8", "rhsusf_weap_CMFlareLauncher",
+	"rhsusf_weap_ANALQ144", "rhsusf_weap_duke", "rhsusf_weap_M259", "rhs_weap_smokegen",
+	"rhsusf_weap_ANAAQ24", "rhs_weap_DummyLauncher", "rhs_weap_902a", "rhs_weap_902b"
+];
+
+RTSF_USELESS_MAGAZINES = [
+	"60Rnd_CMFlareMagazine", "rhs_mag_fueltank_UH60", "rhs_mag_ANALQ131", "rhs_mag_fueltank_UH60MEV",
+	"RHS_LWIRCM_Magazine_MELB", "rhsusf_DIRCM_Magazine_120", "rhs_mag_smokegen", "rhsusf_mag_L8A3_8"
+];
 // This will be filled with selected mode function
 RSTF_MODE_init = {};
 
