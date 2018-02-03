@@ -103,6 +103,7 @@ RSTF_MODE_CLASSIC_taskCompleted = {
 };
 
 [
+	"Classic",
 	RSTF_MODE_CLASSIC_init,
 	RSTF_MODE_CLASSIC_unitKilled,
 	RSTF_MODE_CLASSIC_taskCompleted

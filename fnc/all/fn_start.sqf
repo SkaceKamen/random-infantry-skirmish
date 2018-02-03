@@ -19,11 +19,11 @@ _marker setMarkerType "mil_objective";
 
 
 // Load gamemode
-private _mode = RSTF_MODES select 1;
+private _mode = RSTF_MODES select RSTF_MODE_INDEX;
 
-RSTF_MODE_init = _mode select 0;
-RSTF_MODE_unitKilled = _mode select 1;
-RSTF_MODE_taskCompleted = _mode select 2;
+RSTF_MODE_init = _mode select 1;
+RSTF_MODE_unitKilled = _mode select 2;
+RSTF_MODE_taskCompleted = _mode select 3;
 
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;

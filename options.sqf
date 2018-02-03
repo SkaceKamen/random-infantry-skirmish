@@ -20,6 +20,9 @@ RSTF_SOLDIERS_BANNED = [
 //Where to spawn
 RSTF_SPAWN_TYPE = RSTF_SPAWN_CLOSEST;
 
+// Currently selected gamemode index in modes list
+RSTF_MODE_INDEX = 1;
+
 //Randomize weapons ? (turn off if you're using mod)
 RSTF_RANDOMIZE_WEAPONS = false;
 
@@ -127,3 +130,9 @@ RSTF_MULTIKILL_BONUS = 50;
 
 // Multiplier applied to AI money earning
 RSTF_AI_MONEY_MULTIPLIER = 5;
+
+// Interval in which are points awarded to side holding objective in KOTH
+RSTF_MODE_KOTH_SCORE_INTERVAL = 10;
+
+// Score limit in KOTH
+RSTF_MODE_KOTH_SCORE_LIMIT = 100;

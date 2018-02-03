@@ -167,8 +167,16 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_ENEMY_ADVANTAGE_SCORE",
 	"RSTF_TASKS_IFV_ENABLED",
 	"RSTF_TASKS_CLEAR_ENABLED",
-	"RSTF_TASKS_EMP_ENABLED"
-	//"RSTF_SELECTED_WORLD"
+	"RSTF_TASKS_EMP_ENABLED",
+	"RSTF_MODE_INDEX",
+	"RSTF_MONEY_ENABLED",
+	"RSTF_MONEY_PER_KILL",
+	"RSTF_MONEY_PER_TASK",
+	"RSTF_MONEY_VEHICLES_ENABLED",
+	"RSTF_MONEY_VEHICLES_AI_LIMIT",
+	"RSTF_AI_MONEY_MULTIPLIER",
+	"RSTF_MODE_KOTH_SCORE_INTERVAL",
+	"RSTF_MODE_KOTH_SCORE_LIMIT"
 ];
 
 // List of spawns, indexed by side
@@ -225,17 +233,28 @@ PLAYER_SIDE = side(player);
 RSTF_CHARS_NUMBERS = (toArray "0123456789");
 RSTF_CHARS_FLOAT = (toArray "0123456789.");
 
+private _modesNames = [];
+{
+	_modesNames pushBack (_x select 0);
+} foreach RSTF_MODES;
+
 RSTF_ADVANCED_LASTOPTIONS = [];
 RSTF_CONFIG_VALUES = [
 	["Game", [
-		["RSTF_SCORE_LIMIT", "Score to win", "One side wins after reaching this limit.", "number"],
-		["RSTF_SCORE_PER_KILL", "Score per kill", "Score you get for killing soldier.", "number"],
-		["RSTF_SCORE_PER_TASK", "Score per task", "Score you get for completing task.", "number"],
-		[],
+		["RSTF_MODE_INDEX", "Game mode", "Game mode dictates rules of winning.", "select", _modesNames],
 		["RSTF_LIMIT_GROUPS", "Groups per side", "Number of groups spawned for each side.", "number"],
 		["RSTF_LIMIT_UNITS", "Units per group", "Number of soldiers in single group.", "number"],
 		[],
 		["RSTF_LIMIT_SPAWN", "Wave spawn time", "Interval in seconds in which reinforcements are spawned", "number"]
+	]],
+	["KOTH", [
+		["RSTF_MODE_KOTH_SCORE_LIMIT", "Score to win", "One side wins after reaching this limit.", "number"],
+		["RSTF_MODE_KOTH_SCORE_INTERVAL", "Point award interval", "In seconds. Interval in which is point awarded to side that holds the objective.", "number"]
+	]],
+	["Classic", [
+		["RSTF_SCORE_LIMIT", "Score to win", "One side wins after reaching this limit.", "number"],
+		["RSTF_SCORE_PER_KILL", "Score per kill", "Score you get for killing soldier.", "number"],
+		["RSTF_SCORE_PER_TASK", "Score per task", "Score you get for completing task.", "number"]
 	]],
 	["Spawning", [
 		["RSTF_SPAWN_TYPE", "Spawn to", "How to select unit to spawn to. Closest - unit closest to your death, Group - unit in your group, Random - random unit", "select", RSTF_SPAWN_TYPES],
@@ -259,6 +278,16 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_MAP_VOTE", "Allow map selection", "System will allow player(s) to select map.", "checkbox"],
 		["RSTF_MAP_VOTE_COUNT", "Number of maps to pick", "Number of maps that will be proposed to player(s). 0 for unlimited", "number"],
 		["RSTF_MAP_VOTE_TIMEOUT", "Vote timeout (secs)", "Time in seconds to wait for votes (only in multiplayer).", "number"]
+	]],
+	["Money", [
+		["RSTF_MONEY_ENABLED", "Allow money system", "Allow money rewards as whole", "checkbox"],
+		["RSTF_MONEY_VEHICLES_ENABLED", "Allow buying vehicles", "Allow players and AI to buy vehicles for their money", "checkbox"],
+		["RSTF_MONEY_VEHICLES_AI_LIMIT", "Max AI vehicles per side", "Maximum number of spawned AI vehicles per side", "number"],
+		[],
+		["RSTF_MONEY_PER_KILL", "Money per kill", "Award for killing enemy", "number"],
+		["RSTF_MONEY_PER_TASK", "Money per task", "Award for completing task", "number"],
+		["RSTF_AI_MONEY_MULTIPLIER", "AI money multiplier", "AI money reward multiplier, AI usually have less kills than player, so this helps them to catch up", "number"],
+		["RSTF_MULTIKILL_BONUS", "Bonus for multikill", "Bonus money for multikills, awarded for each kill over 1", "number"]
 	]],
 	["Tasks", [
 		["RSTF_TASKS_IFV_ENABLED", "Neutralize IFV", "Allows 'Neutralize IFV' task", "checkbox"],

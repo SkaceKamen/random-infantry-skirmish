@@ -1,10 +1,6 @@
 #include "..\..\scripts.inc"
 
 RSTF_MODE_KOTH_ENABLED = false;
-
-RSTF_MODE_KOTH_SCORE_INTERVAL = 10;
-RSTF_MODE_KOTH_SCORE_LIMIT = 100;
-
 RSTF_MODE_KOTH_OWNER = -1;
 
 RSTF_MODE_KOTH_init = {
@@ -180,6 +176,7 @@ RSTF_MODE_KOTH_taskCompleted = {
 };
 
 [
+	"King of the Hill",
 	RSTF_MODE_KOTH_init,
 	RSTF_MODE_KOTH_unitKilled,
 	RSTF_MODE_KOTH_taskCompleted
