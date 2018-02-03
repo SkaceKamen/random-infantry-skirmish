@@ -11,6 +11,8 @@ if (_money < (_vehicles select 0) select 2) exitWith {
 
 _shuffled = _vehicles call BIS_fnc_arrayShuffle;
 private _spawned = false;
+private _iteration = 0;
+private _limit = 5;
 
 {
 	private _class = _x select 1;
@@ -59,6 +61,9 @@ private _spawned = false;
 
 		_spawned = true;
 	};
+
+	_iteration = _iteration + 1;
+	if (_iteration >= _limit) exitWith {};
 } foreach _shuffled;
 
 _spawned;
