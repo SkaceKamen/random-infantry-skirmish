@@ -124,3 +124,6 @@ RSTF_KILL_DISTANCE_BONUS = 100;
 
 // Bonus for each kill of multikill
 RSTF_MULTIKILL_BONUS = 50;
+
+// Multiplier applied to AI money earning
+RSTF_AI_MONEY_MULTIPLIER = 5;

@@ -136,7 +136,7 @@ RSTF_MODE_KOTH_unitKilled = {
 			};
 		} else {
 			if (_side != side(_killer) && _killer != _killed) then {
-				[_killer getVariable ["ORIGINAL_NAME", name(_killer)], RSTF_MONEY_PER_KILL] call RSTF_fnc_addUnitMoney;
+				[_killer getVariable ["ORIGINAL_NAME", name(_killer)], RSTF_MONEY_PER_KILL * RSTF_AI_MONEY_MULTIPLIER] call RSTF_fnc_addUnitMoney;
 			};
 		};
 	};
