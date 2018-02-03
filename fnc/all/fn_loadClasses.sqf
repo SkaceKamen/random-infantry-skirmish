@@ -47,21 +47,25 @@ RSTF_MEN = [ [], [], [] ];
 	[SIDE_ENEMY, ENEMY_FACTIONS]
 ];
 
-// List of buyable vehicles, each item: [CATEGORY, CLASSNAME]
+// List of buyable vehicles, each item: [CATEGORY, CLASSNAME, COST]
 RSTF_BUYABLE_VEHICLES = [];
 {
 	private _list = [];
+	private _side = _x;
 	{
-		private _vehicle = _x;
-		private _cost = [_x] call RSTF_fnc_getVehicleCost;
-		_list pushBack ['APC', _vehicle, _cost];
-	} foreach ((RSTF_VEHICLES select _x) select RSTF_VEHICLE_APC);
+		private _category = _x select 0;
+		private _categoryIndex = _x select 1;
+		private _vehicles = ((RSTF_VEHICLES select _side) select _categoryIndex);
 
-	{
-		private _vehicle = _x;
-		private _cost = [_vehicle] call RSTF_fnc_getVehicleCost;
-		_list pushBack ['AIR', _vehicle, _cost];
-	} foreach ((RSTF_VEHICLES select _x) select RSTF_VEHICLE_AIR);
+		{
+			private _vehicle = _x;
+			private _cost = [_vehicle] call RSTF_fnc_getVehicleCost;
+			_list pushBack [_category, _vehicle, _cost];
+		} foreach _vehicles;
+	} foreach [
+		['AIR', RSTF_VEHICLE_AIR],
+		['APC', RSTF_VEHICLE_APC]
+	];
 
 	_list = [_list, [], { _x select 2 }] call BIS_fnc_sortBy;
 
