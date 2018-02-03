@@ -144,7 +144,7 @@ RSTF_MODE_KOTH_unitKilled = {
 
 		if (_isLegit) then {
 			if (RSTF_MONEY_ENABLED) then {
-				_message = format["+%1$ <t color='#dddddd'>Kill</t>", RSTF_MONEY_PER_KILL];
+				_message = format["+$%1 <t color='#dddddd'>Kill</t>", RSTF_MONEY_PER_KILL];
 			} else {
 				_message = format["<t color='#dddddd'>Kill</t>"];
 			};
@@ -154,7 +154,7 @@ RSTF_MODE_KOTH_unitKilled = {
 			};
 		} else {
 			if (RSTF_MONEY_ENABLED) then {
-				_message = format["%1$ <t color='#dddddd'>Teamkill</t>", RSTF_MONEY_PER_TEAMKILL];
+				_message = format["%$1 <t color='#dddddd'>Teamkill</t>", RSTF_MONEY_PER_TEAMKILL];
 			} else {
 				_message = format["<t color='#dddddd'>Teamkill</t>"];
 			};
@@ -168,7 +168,7 @@ RSTF_MODE_KOTH_taskCompleted = {
 	private _taskName = param [0];
 	private _taskScore = param [1];
 
-	[format["+%2$ <t color='#dddddd'>%1</t>", _taskName, RSTF_MONEY_PER_TASK], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
+	[format["+$%2 <t color='#dddddd'>%1</t>", _taskName, RSTF_MONEY_PER_TASK], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
 
 	{
 		[_x, RSTF_MONEY_PER_TASK] call RSTF_fnc_addPlayerMoney;
