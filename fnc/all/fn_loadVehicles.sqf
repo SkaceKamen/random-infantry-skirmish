@@ -35,6 +35,7 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 			_air = "Air" in _parents;
 			_land = "Land" in _parents;
 			_uav = isNumber(_c >> "isUav") && { getNumber(_c >> "isUav") == 1 };
+			_arty = isNumber(_c >> "artilleryScanner") && { getNumber(_c >> "artilleryScanner") == 1 };
 
 			// Load only non-AA static weapons
 			_static = "StaticWeapon" in _parents;
@@ -49,7 +50,7 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 				_weaponized = true;
 			};
 
-			if (!_uav) then {
+			if (!_uav && !_arty) then {
 				if (_land) then {
 					if (_transport >= 2 && !_static) then {
 						_transports pushBack configName(_c);
