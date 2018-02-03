@@ -21,7 +21,7 @@ if (RSTF_MONEY_ENABLED) then {
 		private _value = _values select _foreachIndex;
 
 		// If at least 2 seconds passed since last kill, evaluate
-		if (_value > 0 && _value < time - 2) then {
+		if (_value > 0 && _value < time - 3) then {
 			// Load number of kills from different map
 			// @TODO: Use single map to improve performance?
 			private _kills = [RSTF_MULTIKILL_COUNTS, _key, 0] call AMAP_get;
