@@ -45,22 +45,6 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 			} else { 0 };
 
 			// Scan vehicle turrets to determine if there is any attack weapon
-			/*
-			if (isClass(_c >> "Turrets")) then {
-				if (_c call RSTF_fnc_countTurrets > 0) then {
-					_weaponized = true;
-				};
-			};
-
-			// Scan weapons
-			_wp = getArray(_c >> "weapons");
-			{
-				_usable = [configFile >> "cfgWeapons" >> _x, true] call RSTF_fnc_isUsableWeapon;
-				if (_x != "FakeWeapon" && _usable) then {
-					_weaponized = true;
-				};
-			} foreach _wp;
-			*/
 			if (count([configName(_c)] call RSTF_fnc_getVehicleWeapons) > 0) then {
 				_weaponized = true;
 			};
