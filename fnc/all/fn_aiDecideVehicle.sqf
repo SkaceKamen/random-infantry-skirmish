@@ -8,7 +8,7 @@ private _spawned = false;
 
 {
 	private _class = _x select 1;
-	private _cost = [_class] call RSTF_fnc_vehicleCost;
+	private _cost = [_class] call RSTF_fnc_getVehicleCost;
 
 	if (_money >= _cost) exitWith {
 		[_name, -_cost] call RSTF_fnc_addUnitMoney;

@@ -89,7 +89,7 @@ class utils
 	class randomPosition {};
 	class randomLocation {};
 	class sideIndex {};
-	class vehicleCost {};
+	class getVehicleCost {};
 	class weaponHasAttachment {};
 };
 

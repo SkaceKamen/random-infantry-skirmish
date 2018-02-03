@@ -18,7 +18,7 @@ private _player = param [0];
 private _vehicleClass = param [1];
 
 // Check money
-private _cost = [_vehicleClass] call RSTF_fnc_vehicleCost;
+private _cost = [_vehicleClass] call RSTF_fnc_getVehicleCost;
 private _money = [_player] call RSTF_fnc_getPlayerMoney;
 
 // Stop when player don't have money for this

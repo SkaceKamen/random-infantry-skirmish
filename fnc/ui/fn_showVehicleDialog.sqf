@@ -33,7 +33,7 @@ lnbClear _ctrlList;
 	private _config = configFile >> "cfgVehicles" >> _vehicle;
 	private _displayName = getText(_config >> "displayName");
 	private _picture = getText(_config >> "picture");
-	private _cost = [_vehicle] call RSTF_fnc_vehicleCost;
+	private _cost = [_vehicle] call RSTF_fnc_getVehicleCost;
 
 	_ctrlList lnbAddRow [_displayName, format["%1$", _cost]];
 	_ctrlList lnbSetPicture [[_foreachIndex, 0], _picture];
@@ -55,7 +55,7 @@ _ctrlBuy ctrlAddEventHandler ["ButtonClick", {
 
 	if (_selected >= 0 && _selected < count(_vehicles)) then {
 		private _vehicle = (_vehicles select _selected) select 1;
-		private _cost = [_vehicle] call RSTF_fnc_vehicleCost;
+		private _cost = [_vehicle] call RSTF_fnc_getVehicleCost;
 
 		if (_money >= _cost) then {
 			closeDialog 0;

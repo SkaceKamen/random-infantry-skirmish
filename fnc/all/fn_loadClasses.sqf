@@ -59,7 +59,7 @@ RSTF_BUYABLE_VEHICLES = [];
 		_list pushBack ['AIR', _x];
 	} foreach ((RSTF_VEHICLES select _x) select RSTF_VEHICLE_AIR);
 
-	_list = [_list, [], { [_x select 1] call RSTF_fnc_vehicleCost }] call BIS_fnc_sortBy;
+	_list = [_list, [], { [_x select 1] call RSTF_fnc_getVehicleCost }] call BIS_fnc_sortBy;
 
 	RSTF_BUYABLE_VEHICLES set [_x, _list];
 } foreach RSTF_SIDES;
