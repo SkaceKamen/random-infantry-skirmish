@@ -3,12 +3,18 @@ private _side = param [1];
 private _name = _unit getvariable ["ORIGINAL_NAME", name(_unit)];
 private _money = [_name] call RSTF_fnc_getUnitMoney;
 private _vehicles = RSTF_BUYABLE_VEHICLES select _side;
+
+// Don't bother if we're broke
+if (_money < (_vehicles select 0) select 2) exitWith {
+	false;
+};
+
 _shuffled = _vehicles call BIS_fnc_arrayShuffle;
 private _spawned = false;
 
 {
 	private _class = _x select 1;
-	private _cost = [_class] call RSTF_fnc_getVehicleCost;
+	private _cost = _x select 2;
 
 	if (_money >= _cost) exitWith {
 		[_name, -_cost] call RSTF_fnc_addUnitMoney;
