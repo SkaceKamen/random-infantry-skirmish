@@ -47,6 +47,17 @@ class all
 	class requestVehicle {};
 	class bindKeys {};
 
+	class moveCamera {};
+
+	class aiDecideVehicle {};
+
+	class getAttackWaypoint {};
+};
+
+class money
+{
+	file = "fnc\money";
+
 	class getUnitMoney {};
 	class getUnitMoneyIndex {};
 	class setUnitMoney {};
@@ -54,12 +65,6 @@ class all
 	class getPlayerMoney {};
 	class setPlayerMoney {};
 	class addPlayerMoney {};
-
-	class moveCamera {};
-
-	class aiDecideVehicle {};
-
-	class getAttackWaypoint {};
 };
 
 class spawn
