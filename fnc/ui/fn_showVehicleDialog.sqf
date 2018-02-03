@@ -42,7 +42,7 @@ private _yy = 0;
 	private _description = "";
 
 	{
-		_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + " (" + _x + ")<br/>";
+		_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + "<br/>";
 	} foreach _weapons;
 
 	private _ctrlBackground = _display ctrlCreate ["RSTF_VehicleDialog_VehicleContainer", -1, _ctrlList];
