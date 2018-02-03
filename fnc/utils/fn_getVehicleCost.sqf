@@ -32,7 +32,7 @@ private _car = _land && { "Car" in _parents };
 private _tank = _land && { "Tank" in _parents };
 private _crewVulnerable = getNumber(_config >> "crewVulnerable") == 1;
 private _armor = getNumber(_config >> "armor");
-private _turrets = _config call RSTF_fnc_countTurrets;
+private _turrets = count([_config] call RSTF_fnc_getVehicleWeapons);
 
 private _cost = 0;
 
