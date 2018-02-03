@@ -32,10 +32,12 @@ _unit setSkill random(1);
 
 private _names = RSTF_QUEUE_NAMES select _index;
 if (count(_names) > 0) then {
-	_unit setName ([_names] call BIS_fnc_arrayShift);
+	_name = [_names] call BIS_fnc_arrayShift;
+	_unit setVariable ["ORIGINAL_NAME", _name];
+	_unit setName _name;
+} else {
+	_unit setVariable ["ORIGINAL_NAME", name(_unit)];
 };
-
-_unit setVariable ["ORIGINAL_NAME", name(_unit)];
 
 /*
 	Possibly spawn in vehicle. Check if we're not neutral, if vehicles are enabled,

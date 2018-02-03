@@ -7,6 +7,7 @@ AMAP_create = {
 	[ [], [] ];
 };
 
+// Sets value at given index. Args: [_map, _key, _value]
 AMAP_set = {
 	private ["_amap", "_key", "_keys", "_values", "_index"];
 

@@ -121,3 +121,6 @@ RSTF_MONEY_VEHICLES_AI_LIMIT = 5;
 
 // From wich distance is kill considered far enought to be special
 RSTF_KILL_DISTANCE_BONUS = 100;
+
+// Bonus for each kill of multikill
+RSTF_MULTIKILL_BONUS = 50;

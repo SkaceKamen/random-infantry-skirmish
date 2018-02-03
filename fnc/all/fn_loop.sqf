@@ -1,8 +1,4 @@
-_spawn = 0;
-_spawnVehicles = 0;
-
-_cars = 0;
-_tanks = 0;
+private _spawn = 0;
 
 while { true } do {
 	if (_spawn == 0) then {
@@ -94,6 +90,8 @@ while { true } do {
 	if (isServer && RSTF_TASK == "") then {
 		0 call RSTF_TASKS_start;
 	};
+
+	call RSTF_fnc_loopMultikills;
 
 	sleep 1;
 };

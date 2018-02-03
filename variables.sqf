@@ -298,6 +298,23 @@ RSTF_AI_VEHICLES = [];
 	RSTF_QUEUE_NAMES set [_x, []];
 } foreach RSTF_SIDES;
 
+RSTF_NAME_POOL = call(compile(preprocessFileLineNumbers("names.sqf")));
+
+// Time of last kill for each player
+RSTF_MULTIKILL_TIMES = call AMAP_create;
+
+// Count of kills for each player
+RSTF_MULTIKILL_COUNTS = call AMAP_create;
+
+// Text for each multikill count
+RSTF_MULTIKILL_TEXTS = [
+	"Double kill",
+	"Triple kill",
+	"Multi kill",
+	"ULTRA KILL",
+	"MONSTER KILL",
+	"UNSTOPPABLE"
+];
 
 // This will be filled with selected mode function
 RSTF_MODE_init = {};
@@ -307,3 +324,4 @@ RSTF_MODE_unitKilled = {};
 
 // This will be filled with selected mode function
 RSTF_MODE_taskCompleted = {};
+

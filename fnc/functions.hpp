@@ -14,11 +14,15 @@ class all
 	class getRandomVehicle {};
 	class groupVehicle {};
 	class isUsableWeapon {};
+
 	class loadClasses {};
 	class loadSoldiers {};
 	class loadVehicles {};
 	class loadWeapons {};
+
+	class loopMultikills {};
 	class loop {};
+
 	class mapsShow {};
 	class playerKilled {};
 	class profileLoad {};
