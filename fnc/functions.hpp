@@ -64,8 +64,6 @@ class spawn
 	file = "fnc\spawn";
 
 	class createRandomUnit {};
-	class createRandomVehicle {};
-	class spawnCommando {};
 	class spawnNeutrals {};
 	class spawnPlayer {};
 	class spawnSpawnDefenses {};
