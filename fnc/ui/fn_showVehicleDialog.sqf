@@ -26,8 +26,6 @@ private _ctrlBuy = [DISPLAYNAME, "ButtonBuy"] call RSTF_fnc_getCtrl;
 private _vehicles = RSTF_BUYABLE_VEHICLES select SIDE_FRIENDLY;
 private _money = [player] call RSTF_fnc_getPlayerMoney;
 
-diag_log _vehicles;
-
 lnbClear _ctrlList;
 {
 	private _category = _x select 0;
