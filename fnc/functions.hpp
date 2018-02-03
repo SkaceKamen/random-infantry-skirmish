@@ -5,15 +5,10 @@ class all
 	class startBattleSelection {};
 	class assignPoint {};
 	class assignPlayer {};
-	class countTurrets {};
 	class equipSoldier {};
-	class getAttachments {};
-	class getCtrl {};
-	class getDisplay {};
 	class getRandomSoldier {};
 	class getRandomVehicle {};
 	class groupVehicle {};
-	class isUsableWeapon {};
 
 	class loadClasses {};
 	class loadSoldiers {};
@@ -28,22 +23,19 @@ class all
 	class profileLoad {};
 	class profileReset {};
 	class profileSave {};
-	class randomLocation {};
 	class randomPoint {};
-	class randomPosition {};
 	class randomWeather2 {};
 	class scoreChanged {};
 	class start {};
 	class superRandomTime {};
 	class superRandomWeather {};
 	class unitKilled {};
-	class pathString {};
+
 	class createCam {};
-	class pickRandomPoints {};
 	class createPointMarkers {};
 	class randomSpawn {};
 	class spawnComposition {};
-	class vehicleCost {};
+
 	class requestVehicle {};
 	class bindKeys {};
 
@@ -86,9 +78,19 @@ class utils
 {
 	file = "fnc\utils";
 
-	class weaponHasAttachment {};
+	class countTurrets {};
+	class getAttachments {};
+	class getCtrl {};
+	class getDisplay {};
 	class getWeaponAttachments {};
+	class isUsableWeapon {};
+	class pathString {};
+	class pickRandomPoints {};
+	class randomPosition {};
+	class randomLocation {};
 	class sideIndex {};
+	class vehicleCost {};
+	class weaponHasAttachment {};
 };
 
 class ui
