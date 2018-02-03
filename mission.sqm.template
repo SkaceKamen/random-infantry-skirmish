@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=73;
+		nextID=79;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14091.251,21.058691,16456.262};
-		dir[]={0.22498895,-0.1647229,-0.96042794};
-		up[]={0.037638828,0.98628485,-0.16066679};
-		aside[]={-0.97372341,-6.215414e-007,-0.22810389};
+		pos[]={14074.166,17.786839,16451.646};
+		dir[]={-0.0030744011,-0.9995234,-0.030823361};
+		up[]={-0.099202663,0.030955145,-0.99458575};
+		aside[]={-0.99506563,8.934876e-009,0.099250555};
 	};
 };
 binarizationWanted=0;
@@ -53,6 +53,15 @@ randomSeed=11268658;
 class ScenarioData
 {
 	author="Kamen";
+	overviewText="Instant infantry battle for randomly selected place on the map.";
+	overViewPicture="random.paa";
+	joinUnassigned=0;
+	class Header
+	{
+		gameType="Coop";
+		minPlayers=1;
+		maxPlayers=8;
+	};
 };
 class CustomAttributes
 {
@@ -126,7 +135,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="Random Skirmish";
+		briefingName="(SP/COOP 1-8) Random Infantry Skirmish";
 		overviewText="Random infantry skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;
