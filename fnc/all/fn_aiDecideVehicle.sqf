@@ -12,7 +12,7 @@ if (_money < (_vehicles select 0) select 2) exitWith {
 _shuffled = _vehicles call BIS_fnc_arrayShuffle;
 private _spawned = false;
 private _iteration = 0;
-private _limit = 5;
+private _limit = 1;
 
 {
 	private _class = _x select 1;
@@ -30,16 +30,20 @@ private _limit = 5;
 			_vehicle = param [0];
 			_side = param [1];
 
-			waitUntil { !canMove(_vehicle) || count(crew(_vehicle)) == 0 || !canFire(_vehicle) };
+			while { true } do {
+				if (!canMove(_vehicle) || count(crew(_vehicle)) == 0 || !canFire(_vehicle)) exitWith {
+					_vehicles = (RSTF_AI_VEHICLES select _side);
+					_index = _vehicles find _vehicle;
+					_vehicles = [_vehicles, _index] call BIS_fnc_removeIndex;
+					RSTF_AI_VEHICLES set [_side, _vehicles];
 
-			_vehicles = (RSTF_AI_VEHICLES select _side);
-			_index = _vehicles find _vehicle;
-			_vehicles = [_vehicles, _index] call BIS_fnc_removeIndex;
-			RSTF_AI_VEHICLES set [_side, _vehicles];
+					sleep 5;
 
-			sleep 5;
+					deleteVehicle _vehicle;
+				};
 
-			_vehicle setDamage 1;
+				sleep 60;
+			};
 		};
 
 		// Keep pressuring vehicle to attack, because the AI is pussy mostly
