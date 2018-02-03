@@ -17,8 +17,14 @@ private _weapon = param [0];
 private _attachments = [];
 private _slots = "true" configClasses (configFile >> "cfgWeapons" >> _weapon >> "WeaponSlotsInfo");
 {
-	private _items = configProperties [_x >> "compatibleItems", "getNumber(_x) == 1"];
 	private _slot = [];
+	private _items =
+		if (isArray(_x >> "compatibleItems")) then {
+			getArray(_x >> "compatibleItems");
+		} else {
+			configProperties [_x >> "compatibleItems", "getNumber(_x) == 1"];
+		};
+
 	{
 		_slot pushBackUnique configName(_x);
 	} foreach _items;
