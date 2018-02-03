@@ -1,4 +1,4 @@
-private ["_x", "_i", "_c", "_scope", "_man", "_faction"];
+private _i = 0;
 
 private _factions = param [0];
 private _ignore_bans = param [1, false];
@@ -19,11 +19,11 @@ private _classes = configFile >> "CfgVehicles";
 
 //Load vehicles for each faction
 for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
-	_c = _classes select _i;
+	private _c = _classes select _i;
 	if (isClass(_c) && { _ignore_bans || !(configName(_c) in RSTF_SOLDIERS_BANNED) }) then {
-		_scope = getNumber(_c >> "scope");
-		_man = getNumber(_c >> "isMan");
-		_faction = getText(_c >> "faction");
+		private _scope = getNumber(_c >> "scope");
+		private _man = getNumber(_c >> "isMan");
+		private _faction = getText(_c >> "faction");
 
 		if (_scope == 2 && _man == 0 && _faction in _factions) then {
 			_weaponized = false;
