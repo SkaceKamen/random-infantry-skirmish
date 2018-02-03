@@ -1,12 +1,12 @@
 class RSTF_RscDialogWaiting
 {
-    idd = 1050;
-    enableDisplay = true;
-    movingEnable = false;
+	idd = 1050;
+	enableDisplay = true;
+	movingEnable = false;
 
-    class controlsBackground
-    {
-		
+	class controlsBackground
+	{
+
 	};
 
 	class controls
