@@ -42,7 +42,7 @@ private _yy = 0;
 	private _description = "";
 
 	{
-		_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + "<br/>";
+		_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + " (" + _x + ")<br/>";
 	} foreach _weapons;
 
 	private _ctrlBackground = _display ctrlCreate ["RSTF_VehicleDialog_VehicleContainer", -1, _ctrlList];
@@ -63,6 +63,13 @@ private _yy = 0;
 	_ctrlName ctrlSetText _displayName;
 	_ctrlCost ctrlSetText format["$%1", _cost];
 	_ctrlDesc ctrlSetStructuredText parseText(_description);
+
+	_ctrlCost ctrlSetBackgroundColor
+		(if (_money < _cost) then {
+			[ 0.6, 0, 0, 0.5 ]
+		} else {
+			[ 0, 0.6, 0, 0.5 ]
+		});
 
 	_ctrlBuy ctrlAddEventHandler ["ButtonClick", format['
 		private _vehicles = RSTF_BUYABLE_VEHICLES select SIDE_FRIENDLY;
