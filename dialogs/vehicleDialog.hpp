@@ -5,6 +5,7 @@ class RSTF_RscVehicleDialog
 	idd = RSTF_VEHDG_IDD;
 	enableDisplay = true;
 	movingEnable = false;
+
 	class controlsBackground
 	{
 		class VehicleBack: RscStatic
@@ -15,7 +16,7 @@ class RSTF_RscVehicleDialog
 			w = 0.8;
 			h = 0.5;
 
-			colorBackground[] = { 0, 0, 0, 0.5 };
+			colorBackground[] = { 0, 0, 0, 0.8 };
 		};
 	};
 	class controls
