@@ -79,7 +79,6 @@ class utils
 	file = "fnc\utils";
 
 	class countTurrets {};
-	class getAttachments {};
 	class getCtrl {};
 	class getDisplay {};
 	class getWeaponAttachments {};
