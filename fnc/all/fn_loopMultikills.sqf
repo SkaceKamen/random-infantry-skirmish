@@ -29,7 +29,7 @@ if (RSTF_MONEY_ENABLED) then {
 			// Is it proper multikill?
 			if (_kills > 1) then {
 				// Load text based on kill count
-				private _text = RSTF_MULTIKILL_TEXTS select ((_kills - 1) min (count(RSTF_MULTIKILL_TEXTS) - 1));
+				private _text = RSTF_MULTIKILL_TEXTS select ((_kills - 2) min (count(RSTF_MULTIKILL_TEXTS) - 1));
 				// Calculate correct reward
 				private _reward = (_kills - 1) * RSTF_MULTIKILL_BONUS;
 
