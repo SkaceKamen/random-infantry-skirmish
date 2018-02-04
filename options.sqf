@@ -32,23 +32,12 @@ RSTF_RANDOMIZE_WEAPONS_RESTRICT = false;
 RSTF_PLAYER_EQUIPMENT = [];
 RSTF_CUSTOM_EQUIPMENT = true;
 
-//Tanks per side
-RSTF_LIMIT_TANKS = 0;
-//Armed cars per side
-RSTF_LIMIT_CARS = 0;
 //Groups per side
 RSTF_LIMIT_GROUPS = 5;
 //Units per gruop
 RSTF_LIMIT_UNITS = 4;
 //Time to spawn new units
 RSTF_LIMIT_SPAWN = 30;
-//Time to spawn new vehicle
-RSTF_LIMIT_SPAWN_VEHICLES = 30;
-
-//Commando size
-RSTF_LIMIT_COMMANDO_SIZE = 5;
-//Max commando count
-RSTF_LIMIT_COMMANDO = 5;
 
 // Number of neutral groups in location
 RSTF_NEUTRALS_GROUPS = 5;
@@ -62,10 +51,6 @@ RSTF_NEUTRALS_UNITS_MAX = 5;
 RSTF_NEUTRALS_EAST = true;
 // Should we spawn emplacements
 RSTF_NEUTRALS_EMPLACEMENTS = true;
-
-//Number of civilian units
-RSTF_CIVILANS_UNITS_MIN = 10;
-RSTF_CIVILANS_UNITS_MAX = 20;
 
 //Score needed to win
 RSTF_SCORE_LIMIT = 10000;
