@@ -15,7 +15,7 @@ if (_side == SIDE_ENEMY) then {
 	];
 };
 
-_dis = selectRandom([-1,1]) * random(RSTF_DISTANCE * 0.4);
+_dis = selectRandom([-1,1]) * random(RSTF_DISTANCE * 0.6);
 _point vectorAdd [
 	sin(RSTF_DIRECTION + 90) * _dis,
 	cos(RSTF_DIRECTION + 90) * _dis,
