@@ -45,14 +45,17 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 				getNumber(_c >> "transportSoldier");
 			} else { 0 };
 
+			// List of vehicle weapons
+			private _weapons = [configName(_c)] call RSTF_fnc_getVehicleWeapons;
+
 			// Scan vehicle turrets to determine if there is any attack weapon
-			if (count([configName(_c)] call RSTF_fnc_getVehicleWeapons) > 0) then {
+			if (count(_weapons) > 0) then {
 				_weaponized = true;
 			};
 
 			if (!_uav && !_arty) then {
 				if (_land) then {
-					if (_transport >= 2 && !_static) then {
+					if (_transport >= 2 && !_static && count(_weapons) <= 1) then {
 						_transports pushBack configName(_c);
 					};
 
