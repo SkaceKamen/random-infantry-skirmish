@@ -163,7 +163,7 @@ RSTF_MODE_KOTH_unitKilled = {
 			};
 		} else {
 			if (RSTF_MONEY_ENABLED) then {
-				_message = format["%$1 <t color='#dddddd'>Teamkill</t>", RSTF_MONEY_PER_TEAMKILL];
+				_message = format["-$%1 <t color='#dddddd'>Teamkill</t>", -RSTF_MONEY_PER_TEAMKILL];
 			} else {
 				_message = format["<t color='#dddddd'>Teamkill</t>"];
 			};
