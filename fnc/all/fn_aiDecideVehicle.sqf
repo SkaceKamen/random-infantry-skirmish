@@ -35,6 +35,13 @@ private _limit = 5;
 			_side = param [1];
 
 			while { true } do {
+				// Get out of useless vehicle
+				if (!canFire(_vehicle)) then {
+					{
+						unassignVehicle _x;
+					} foreach crew(_vehicle);
+				};
+
 				if (!canMove(_vehicle) || count(crew(_vehicle)) == 0 || !canFire(_vehicle)) exitWith {
 					_vehicles = (RSTF_AI_VEHICLES select _side);
 					_index = _vehicles find _vehicle;
