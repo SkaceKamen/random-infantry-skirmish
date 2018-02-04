@@ -25,6 +25,9 @@ RSTF_MODE_init = _mode select 1;
 RSTF_MODE_unitKilled = _mode select 2;
 RSTF_MODE_taskCompleted = _mode select 3;
 
+// Initialize gamemode
+0 spawn RSTF_MODE_init;
+
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
 
@@ -57,9 +60,6 @@ if (!isDedicated) then {
 
 // Wait for intro to finish playing
 sleep 2;
-
-// Start gamemode
-0 spawn RSTF_MODE_init;
 
 // Start game loop
 0 spawn RSTF_fnc_loop;

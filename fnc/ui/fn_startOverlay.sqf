@@ -14,6 +14,18 @@ _ctrlLocalMessages = _display displayCtrl RSTFUI_ARCADE_LOCAL_MESSAGES_IDC;
 _ctrlOwner = _display displayCtrl RSTFUI_ARCADE_SCORE_OWNER_IDC;
 _ctrlMoney = _display displayCtrl RSTFUI_ARCADE_MONEY_IDC;
 
+_ctrlUserCountIcon = _display displayCtrl RSTFUI_ARCADE_USER_ICON_IDC;
+_ctrlUserCountFriendly = _display displayCtrl RSTFUI_ARCADE_FRIENDLY_USER_COUNT_IDC;
+_ctrlUserCountEnemy = _display displayCtrl RSTFUI_ARCADE_ENEMY_USER_COUNT_IDC;
+
+// Hide KOTH only controls
+if (!RSTF_MODE_KOTH_ENABLED) then {
+	{
+		_x ctrlShow false;
+		_x ctrlCommit 0;
+	} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy];
+};
+
 _ctrlOwner ctrlShow false;
 _ctrlOwner ctrlCommit 0;
 
@@ -66,6 +78,11 @@ while { true } do {
 			};
 
 			playSound "DefaultNotification";
+		};
+
+		if (count(RSTF_MODE_KOTH_COUNTS) > 0) then {
+			_ctrlUserCountFriendly ctrlSetText str(RSTF_MODE_KOTH_COUNTS select SIDE_FRIENDLY);
+			_ctrlUserCountEnemy ctrlSetText str(RSTF_MODE_KOTH_COUNTS select SIDE_ENEMY);
 		};
 	};
 

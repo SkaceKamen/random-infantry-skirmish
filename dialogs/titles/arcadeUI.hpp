@@ -35,7 +35,7 @@ class ARCADE_UI
 		{
 			idc = RSTFUI_ARCADE_GLOBAL_MESSAGES_IDC;
 			x = SafeZoneX + SafeZoneW / 2 - 0.25;
-			y = SafeZoneY + 0.05 + 0.01 + 0.02;
+			y = RSTFUI_ARCADE_USER_ICON_Y + RSTFUI_ARCADE_USER_ICON_H + 0.005;
 			w = 0.5;
 			h = 0.2;
 
@@ -54,9 +54,9 @@ class ARCADE_UI
 		{
 			idc = RSTFUI_ARCADE_SCORE_OWNER_IDC;
 			x = SafeZoneX + SafeZoneW / 2 - RSTFUI_ARCADE_SCORE_W/2;
-			y = SafeZoneY + 0.01 - 0.005;
+			y = SafeZoneY + 0.01;
 			w = RSTFUI_ARCADE_SCORE_W + 0.01;
-			h = RSTFUI_ARCADE_SCORE_H + 0.01;
+			h = RSTFUI_ARCADE_SCORE_H;
 			colorBackground[] = { 0, 0, 0, 0.9 };
 		};
 
@@ -93,6 +93,53 @@ class ARCADE_UI
 			w = 0.2;
 			y = SafeZoneY + SafeZoneH - 0.05 - 0.05;
 			h = 0.05;
+		};
+
+		class UserCountIcon: RscPictureKeepAspect
+		{
+			idc = RSTFUI_ARCADE_USER_ICON_IDC;
+
+			x = RSTFUI_ARCADE_USER_ICON_X;
+			y = RSTFUI_ARCADE_USER_ICON_Y;
+
+			w = RSTFUI_ARCADE_USER_ICON_W;
+			h = RSTFUI_ARCADE_USER_ICON_H;
+
+			text = "\A3\ui_f\data\Map\Respawn\icon_limit_ca.paa";
+		};
+
+		class FRUserCount: RscStatic
+		{
+			idc = RSTFUI_ARCADE_FRIENDLY_USER_COUNT_IDC;
+
+			x = RSTFUI_ARCADE_USER_ICON_X - 0.005 - RSTFUI_ARCADE_USER_COUNT_W;
+			y = RSTFUI_ARCADE_USER_ICON_Y;
+
+			w = RSTFUI_ARCADE_USER_COUNT_W;
+			h = RSTFUI_ARCADE_USER_ICON_H;
+
+			style = ST_RIGHT | ST_VCENTER;
+
+			text = "23";
+
+			colorBackground[] = { 0, 0, 0, 0.2 };
+		};
+
+		class ENUserCount: RscStatic
+		{
+			idc = RSTFUI_ARCADE_ENEMY_USER_COUNT_IDC;
+
+			x = RSTFUI_ARCADE_USER_ICON_X + RSTFUI_ARCADE_USER_ICON_W + 0.005;
+			y = RSTFUI_ARCADE_USER_ICON_Y;
+
+			w = RSTFUI_ARCADE_USER_COUNT_W;
+			h = RSTFUI_ARCADE_USER_ICON_H;
+
+			style = ST_LEFT | ST_VCENTER;
+
+			text = "20";
+
+			colorBackground[] = { 0, 0, 0, 0.2 };
 		};
 	};
 };

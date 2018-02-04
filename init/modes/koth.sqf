@@ -2,6 +2,7 @@
 
 RSTF_MODE_KOTH_ENABLED = false;
 RSTF_MODE_KOTH_OWNER = -1;
+RSTF_MODE_KOTH_COUNTS = [];
 
 RSTF_MODE_KOTH_init = {
 	RSTF_MODE_KOTH_ENABLED = true;
@@ -46,6 +47,8 @@ RSTF_MODE_KOTH_init = {
 				_counts set [_index, (_counts select _index) + 1];
 			};
 		} foreach _nearest;
+
+		RSTF_MODE_KOTH_COUNTS = _counts;
 
 		// Now find side with most men
 		private _best = _currentOwner;
