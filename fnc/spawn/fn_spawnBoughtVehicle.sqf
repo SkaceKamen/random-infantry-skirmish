@@ -18,12 +18,28 @@ private _unit = param [0];
 private _side = param [1];
 private _vehicleClass = param [2];
 
+private _parents = [configFile >> "cfgVehicles" >> _vehicleClass, true] call BIS_fnc_returnParents;
+private _plane = "Plane" in _parents;
+private _air = "Air" in _parents;
+
+private _distance = RSTF_DISTANCE * 2;
+private _height = 0;
+
+if (_air) then {
+	_distance = 1000;
+};
+
+if (_plane) then {
+	_distance = 3000;
+	_height = 1000;
+};
+
 // Spawn vehicle
 private _direction = (RSTF_SPAWNS select _side) getDir RSTF_POINT;
 private _position = (RSTF_SPAWNS select _side) vectorAdd [
-	sin(_direction + 180) * 150,
-	cos(_direction + 180) * 150,
-	0
+	sin(_direction + 180) * _distance,
+	cos(_direction + 180) * _distance,
+	_height
 ];
 private _radius = 100;
 
@@ -31,6 +47,10 @@ private _radius = 100;
 // if (count(_position) == 0) then { _radius = 100; _position = (RSTF_SPAWNS select _side); };
 
 private _vehicle = createVehicle [_vehicleClass, _position, [], _radius, "FLY"];
+
+if (_plane) then {
+	_vehicle setPos _position;
+};
 
 _vehicle setDir _direction;
 
