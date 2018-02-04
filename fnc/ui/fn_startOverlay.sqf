@@ -61,7 +61,7 @@ while { true } do {
 				_color = RSTF_SIDES_COLORS_UI_SELECTED select _lastOwner;
 				_position = [
 					SafeZoneX + SafeZoneW / 2,
-					SafeZoneY + 0.01 - 0.005
+					SafeZoneY + 0.01
 				];
 				if (_lastOwner == SIDE_FRIENDLY) then {
 					_position set [0,
