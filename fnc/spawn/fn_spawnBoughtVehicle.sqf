@@ -1,3 +1,19 @@
+/*
+	Function:
+	RSTF_fnc_spawnBoughtVehicle
+
+	Description:
+	Spawns vehicle bought through vehicle menu or bought by AI.
+
+	Parameter(s):
+	_unit - unit that bought the vehicle [Object]
+	_side - side index that the unit is on [Number]
+	_vehicleClass - classname of vehicle to be spawned [String]
+
+	Returns:
+	Spawned vehicle [Object]
+*/
+
 private _unit = param [0];
 private _side = param [1];
 private _vehicleClass = param [2];

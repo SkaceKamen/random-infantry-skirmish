@@ -29,34 +29,13 @@ if (_cost > _money) exitWith {
 // Update money
 [_player, -_cost] call RSTF_fnc_addPlayerMoney;
 
+private _previousPosition = getPos(_player);
+
 // Spawn vehicle
-private _position = (RSTF_SPAWNS select SIDE_FRIENDLY) findEmptyPosition [0, 100, _vehicleClass];
-private _vehicle = createVehicle [_vehicleClass, _position, [], 0, "FLY"];
-private _direction = (RSTF_SPAWNS select SIDE_FRIENDLY) getDir RSTF_POINT;
+private _vehicle = [_player, SIDE_FRIENDLY, _vehicleClass] call RSTF_fnc_spawnBoughtVehicle;
 
-_vehicle setDir _direction;
-
-// Spawn vehicle crew
-createVehicleCrew _vehicle;
-
-private _group = group(effectiveCommander(_vehicle));
-
-// Remove effective commander
-deleteVehicle effectiveCommander(_vehicle);
-
-// Make sure crew works same as other soldiers
-{
-	_x setVariable ["SPAWNED_SIDE", side(_group), true];
-	_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
-} foreach units(_group);
-
-// Creates camera animation
-[getPos(_player), _vehicle] remoteExec ["RSTF_fnc_moveCamera", _player];
-
-// Move player into vacant slot and make him leader
-[_player] joinSilent _group;
-_player moveInAny _vehicle;
-_group selectLeader _player;
+// Camera animation
+[_previousPosition, _vehicle] remoteExec ["RSTF_fnc_moveCamera", _player];
 
 // If vehicle is destroyed/damaged in first 2 seconds of existence, refund the money
 [_player, _vehicle, _cost] spawn {
