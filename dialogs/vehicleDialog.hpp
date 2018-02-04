@@ -6,12 +6,16 @@ class RSTF_VehicleDialog_VehicleContainer: RscStatic
 
 	w = RSTF_VEHDG_VEH_W;
 	h = RSTF_VEHDG_VEH_H;
+
+	fade = 1;
 };
 
 class RSTF_VehicleDialog_VehicleImage: RscPictureKeepAspect
 {
 	w = RSTF_VEHDG_VEH_PIC_W;
 	h = RSTF_VEHDG_VEH_PIC_H;
+
+	fade = 1;
 };
 
 class RSTF_VehicleDialog_VehicleName: RscStatic
@@ -19,6 +23,8 @@ class RSTF_VehicleDialog_VehicleName: RscStatic
 	w = RSTF_VEHDG_VEH_TITLE_W;
 	h = RSTF_VEHDG_VEH_TITLE_H;
 	SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1) * 1.2";
+
+	fade = 1;
 };
 
 class RSTF_VehicleDialog_VehicleDesc: RscStructuredText
@@ -33,12 +39,16 @@ class RSTF_VehicleDialog_VehicleDesc: RscStructuredText
 		align = "left";
 		shadow = 0;
 	};
+
+	fade = 1;
 };
 
 class RSTF_VehicleDialog_VehicleCost: RscStatic
 {
 	w = RSTF_VEHDG_VEH_PRICE_W;
 	h = RSTF_VEHDG_VEH_PRICE_H;
+
+	fade = 1;
 };
 
 class RSTF_VehicleDialog_VehicleBuy: RscButton
@@ -46,6 +56,8 @@ class RSTF_VehicleDialog_VehicleBuy: RscButton
 	w = RSTF_VEHDG_VEH_BUY_W;
 	h = RSTF_VEHDG_VEH_BUY_H;
 	text = "BUY";
+
+	fade = 1;
 };
 
 class RSTF_RscVehicleDialog
