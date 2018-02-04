@@ -8,33 +8,37 @@ class all
 	class equipSoldier {};
 	class getRandomSoldier {};
 	class getRandomVehicle {};
-	class groupVehicle {};
 
 	class loadClasses {};
 	class loadSoldiers {};
 	class loadVehicles {};
 	class loadWeapons {};
 
-	class loopMultikills {};
-	class loop {};
-
 	class mapsShow {};
-	class playerKilled {};
+
 	class profileLoad {};
 	class profileReset {};
 	class profileSave {};
+
 	class randomPoint {};
 	class randomWeather2 {};
-	class scoreChanged {};
-	class start {};
 	class superRandomTime {};
 	class superRandomWeather {};
+
+	class start {};
+	class loopMultikills {};
+	class loop {};
+
+	class scoreChanged {};
 	class unitKilled {};
+	class playerKilled {};
 
 	class createCam {};
 	class createPointMarkers {};
-	class randomSpawn {};
 	class spawnComposition {};
+
+	class getAttackWaypoint {};
+	class randomSpawn {};
 
 	class requestVehicle {};
 	class bindKeys {};
@@ -43,7 +47,6 @@ class all
 
 	class aiDecideVehicle {};
 
-	class getAttackWaypoint {};
 };
 
 class money
