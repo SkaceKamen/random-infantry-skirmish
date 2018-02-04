@@ -11,6 +11,8 @@
 	ARRAY - each element in format [LOCATION, [SPAWN_POSITION, SPAWN_POSITION], SPAWN_DIRECTION, SPAWN_DISTANCE]
 */
 
+private _i = 0;
+
 // Limits number of results
 private _count = param [0, 0];
 
