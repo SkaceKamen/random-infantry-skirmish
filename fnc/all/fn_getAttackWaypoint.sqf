@@ -3,14 +3,14 @@ private _side = param [0];
 private _point = RSTF_POINT;
 if (_side == SIDE_ENEMY) then {
 	_point = RSTF_POINT vectorAdd [
-		sin(180 + RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
-		cos(180 + RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
+		sin(180 + RSTF_DIRECTION) * (RSTF_DISTANCE * 0.3),
+		cos(180 + RSTF_DIRECTION) * (RSTF_DISTANCE * 0.3),
 		0
 	];
 } else {
 	_point = RSTF_POINT vectorAdd [
-		sin(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
-		cos(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.5),
+		sin(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.3),
+		cos(RSTF_DIRECTION) * (RSTF_DISTANCE * 0.3),
 		0
 	];
 };
