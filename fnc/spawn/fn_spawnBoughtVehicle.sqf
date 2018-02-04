@@ -27,6 +27,7 @@ private _height = 0;
 
 if (_air) then {
 	_distance = 1000;
+	_height = 500;
 };
 
 if (_plane) then {
@@ -61,8 +62,10 @@ createVehicleCrew _vehicle;
 private _group = createGroup (RSTF_SIDES_SIDES select _side);
 units(group(effectiveCommander(_vehicle))) joinSilent _group;
 
-// Remove effective commander
-deleteVehicle effectiveCommander(_vehicle);
+if (!isNull(_unit)) then {
+	// Remove effective commander
+	deleteVehicle effectiveCommander(_vehicle);
+};
 
 // Make sure crew works same as other soldiers
 {
@@ -70,9 +73,11 @@ deleteVehicle effectiveCommander(_vehicle);
 	_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 } foreach units(_group);
 
-// Move player into vacant slot and make him leader
-[_unit] joinSilent _group;
-_unit moveInAny _vehicle;
-_group selectLeader _unit;
+if (!isNull(_unit)) then {
+	// Move player into vacant slot and make him leader
+	[_unit] joinSilent _group;
+	_unit moveInAny _vehicle;
+	_group selectLeader _unit;
+};
 
 _vehicle;
