@@ -92,6 +92,7 @@ class utils
 	class randomLocation {};
 	class sideIndex {};
 	class weaponHasAttachment {};
+	class arrayShuffle {};
 };
 
 class ui

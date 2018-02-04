@@ -137,6 +137,15 @@ RSTF_MODE_KOTH_unitKilled = {
 		};
 	};
 
+	// Award vehicle commander assist if applicable
+	if (RSTF_MONEY_ENABLED && _isLegit) then {
+		if (vehicle(_killer) != _killer && effectiveCommander(vehicle(_killer)) != _killer && isPlayer(effectiveCommander(vehicle(_killer)))) then {
+			private _commander = effectiveCommander(vehicle(_killer));
+			[_commander, RSTF_MONEY_PER_VEHICLE_COMMANDER_ASSIST] call RSTF_fnc_addPlayerMoney;
+			[format["+$%1 <t color='#dddddd'>Commander assist</t>", RSTF_MONEY_PER_VEHICLE_COMMANDER_ASSIST], 5] remoteExec ["RSTFUI_fnc_addMessage", _commander];
+		};
+	};
+
 	// Dispatch message if necessary
 	if (isPlayer(_killer)) then {
 		private _message = "";

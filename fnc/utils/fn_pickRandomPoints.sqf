@@ -19,8 +19,12 @@ private _world_anchor = getArray(configFile >> "CfgWorlds" >> worldName >> "Safe
 private _locations = nearestLocations [_world_anchor, ["NameCityCapital","NameCity","NameVillage"], 99999999];
 private _results = [];
 
+diag_log _locations;
+
 // Shuffle results to make locations random
-_locations = _locations call BIS_fnc_arrayShuffle;
+_locations = _locations call RSTF_fnc_arrayShuffle;
+
+diag_log _locations;
 
 // Pick valid locations
 for [{_i = 0}, {_i < count(_locations) && (_count == 0 || count(_results) < _count)},{_i = _i + 1}] do {
@@ -45,13 +49,13 @@ for [{_i = 0}, {_i < count(_locations) && (_count == 0 || count(_results) < _cou
 			[(_position select 0) + sin(180 + _direction) * _distance,(_position select 1) + cos(180 + _direction) * _distance, 0],
 			[0,0,0] //For netural defenders
 		];
-		
+
 		if (!surfaceIsWater(_spawns select 0) &&
 			!surfaceIsWater(_spawns select 1)) exitWith {
 			_valid = true;
 			true;
 		};
-		
+
 		_direction = _direction + 30;
 		_tries = _tries + 1;
 	};

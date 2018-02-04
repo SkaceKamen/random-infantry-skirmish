@@ -12,7 +12,7 @@ RSTF_TASK_RESCUE_createVIP = {
 		_vip = _this select 3;
 
 		_vip playMoveNow "Acts_AidlPsitMstpSsurWnonDnon_out";
-		
+
 		_wp = group(_vip) addWaypoint [RSTF_SPAWNS select SIDE_FRIENDLY, 100];
 		_wp setWaypointType "MOVE";
 		_wp setWaypointSpeed "FULL";
@@ -43,7 +43,7 @@ RSTF_TASK_RESCUE_VEHICLE_start = {
 	*/
 
 	_roads = RSTF_POINT nearRoads RSTF_NEUTRALS_RADIUS;
-	_roads = _roads call BIS_fnc_arrayShuffle;
+	_roads = _roads call RSTF_fnc_arrayShuffle;
 	_road = objNull;
 
 	{

@@ -31,13 +31,13 @@ switch(RSTF_SPAWN_TYPE) do {
 			if (alive(leader(_grp))) exitWith {
 				_spawn = leader(_grp);
 			};
-			
+
 			{
 				if (_x call _usable) exitWith {
 					_spawn = _x;
 				};
 			} foreach units(_grp);
-			
+
 			if (!isNull(_spawn)) exitWith { };
 
 			_grp = _grps select _index;
@@ -45,7 +45,7 @@ switch(RSTF_SPAWN_TYPE) do {
 		};
 	};
 	case RSTF_SPAWN_RANDOM: {
-		_grps = _grps call BIS_fnc_arrayShuffle;
+		_grps = _grps call RSTF_fnc_arrayShuffle;
 		{
 			_grp = _x;
 			{

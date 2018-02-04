@@ -84,6 +84,12 @@ RSTF_MONEY_PER_KILL = 100;
 RSTF_MONEY_PER_TASK = 200;
 // Money per teamkill
 RSTF_MONEY_PER_TEAMKILL = -200;
+// Bonus for each kill of multikill
+RSTF_MULTIKILL_BONUS = 50;
+// Money for vehicle kill as commander
+RSTF_MONEY_PER_VEHICLE_COMMANDER_ASSIST = 50;
+// Money for killing vehicle
+RSTF_MONEY_PER_VEHICLE_KILL = 500;
 
 //Random weather and time
 RSTF_WEATHER = 0;
@@ -124,9 +130,6 @@ RSTF_MONEY_VEHICLES_AI_LIMIT = 5;
 
 // From wich distance is kill considered far enought to be special
 RSTF_KILL_DISTANCE_BONUS = 100;
-
-// Bonus for each kill of multikill
-RSTF_MULTIKILL_BONUS = 50;
 
 // Multiplier applied to AI money earning
 RSTF_AI_MONEY_MULTIPLIER = 5;

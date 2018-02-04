@@ -9,7 +9,7 @@ if (_money < (_vehicles select 0) select 2) exitWith {
 	false;
 };
 
-_shuffled = _vehicles call BIS_fnc_arrayShuffle;
+_shuffled = _vehicles call RSTF_fnc_arrayShuffle;
 private _spawned = false;
 private _iteration = 0;
 private _limit = 1;
