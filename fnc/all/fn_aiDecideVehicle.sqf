@@ -12,18 +12,22 @@ if (_money < (_vehicles select 0) select 2) exitWith {
 _shuffled = _vehicles call RSTF_fnc_arrayShuffle;
 private _spawned = false;
 private _iteration = 0;
-private _limit = 1;
+private _limit = 5;
 
 {
 	private _class = _x select 1;
 	private _cost = _x select 2;
+	private _hasDriver = getNumber(configFile >> "cfgVehicles" >> _class >> "hasDriver") == 1;
 
-	if (_money >= _cost) exitWith {
+	if (_hasDriver && _money >= _cost) exitWith {
+		private _parents = [configFile >> "cfgVehicles" >> _class, true] call BIS_fnc_returnParents;
+		private _air = "Air" in _parents;
+
 		[_name, -_cost] call RSTF_fnc_addUnitMoney;
-		_vehicle = [_unit, _side, _class] call RSTF_fnc_spawnBoughtVehicle;
+		_vehicle = [objNull, _side, _class] call RSTF_fnc_spawnBoughtVehicle;
 		(RSTF_AI_VEHICLES select _side) pushBack _vehicle;
 
-		_group = group(_unit);
+		_group = group(effectiveCommander(_vehicle));
 
 		// Remove vehicle from AI vehicles when dead
 		[_vehicle, _side] spawn {
@@ -47,17 +51,22 @@ private _limit = 1;
 		};
 
 		// Keep pressuring vehicle to attack, because the AI is pussy mostly
-		[_vehicle, _group, _side] spawn {
+		[_vehicle, _group, _side, _air] spawn {
 			_vehicle = param [0];
 			_group = param [1];
 			_side = param [2];
+			_air = param [3];
 
 			while { alive(_vehicle) } do {
 				deleteWaypoint [_group, 0];
 				_wp = _group addWaypoint [[_side] call RSTF_fnc_getAttackWaypoint, 10];
-				_wp setWaypointType "MOVE";
-				_wp setWaypointSpeed "LIMITED";
-				_wp setwaypointbehaviour "COMBAT";
+				if (!_air) then {
+					_wp setWaypointType "MOVE";
+					_wp setWaypointSpeed "LIMITED";
+					_wp setwaypointbehaviour "COMBAT";
+				} else {
+					_wp setWaypointType "SAD";
+				};
 
 				sleep 20;
 			};
