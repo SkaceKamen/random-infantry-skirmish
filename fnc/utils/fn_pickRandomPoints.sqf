@@ -19,12 +19,8 @@ private _world_anchor = getArray(configFile >> "CfgWorlds" >> worldName >> "Safe
 private _locations = nearestLocations [_world_anchor, ["NameCityCapital","NameCity","NameVillage"], 99999999];
 private _results = [];
 
-diag_log _locations;
-
 // Shuffle results to make locations random
 _locations = _locations call RSTF_fnc_arrayShuffle;
-
-diag_log _locations;
 
 // Pick valid locations
 for [{_i = 0}, {_i < count(_locations) && (_count == 0 || count(_results) < _count)},{_i = _i + 1}] do {
