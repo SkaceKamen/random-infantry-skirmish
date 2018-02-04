@@ -68,7 +68,7 @@ private _limit = 5;
 				deleteWaypoint [_group, 0];
 				_wp = _group addWaypoint [[_side] call RSTF_fnc_getAttackWaypoint, 10];
 				if (!_air) then {
-					_wp setWaypointType "MOVE";
+					_wp setWaypointType "SAD";
 					_wp setWaypointSpeed "LIMITED";
 					_wp setwaypointbehaviour "COMBAT";
 				} else {
