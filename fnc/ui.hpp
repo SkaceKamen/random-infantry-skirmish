@@ -1,11 +1,14 @@
-class ui {
-	file = "fnc\ui";
+class RSTFUI
+{
+	class ui {
+		file = "fnc\ui";
 
-	class showVehicleDialog {};
-	class showSupportDialog {};
+		class showVehicleDialog {};
+		class showSupportDialog {};
 
-	class addGlobalMessage {};
-	class addMessage {};
+		class addGlobalMessage {};
+		class addMessage {};
 
-	class startOverlay {};
+		class startOverlay {};
+	};
 };
