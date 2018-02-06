@@ -36,14 +36,11 @@ private _queue = [];
 	if (_timeout < time || _force) then {
 		// Safety check, don't delete vehicle with crew in it
 		if (!(_object isKindOf "Man") && { count([_object] call RSTF_fnc_aliveCrew) > 0 }) then {
-			diag_log text(format["[RSTF] Queue vehicle again %1", _object]);
 			[_object, 30, true] call RSTFGC_fnc_attach;
 		} else {
-			diag_log text(format["[RSTF] Delete vehicle %1", _object]);
 			deleteVehicle _object;
 		};
 	} else {
-		diag_log text(format["[RSTF] Still in queue %1", _object]);
 		_queue pushBack _x;
 	};
 } foreach RSTFGC_QUEUE;
