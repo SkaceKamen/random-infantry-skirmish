@@ -81,6 +81,9 @@ if (!isNull(_unit)) then {
 	[_unit] joinSilent _group;
 	_unit moveInAny _vehicle;
 	_group selectLeader _unit;
+} else {
+	// Stop player from entering friendly AI vehicles
+	_vehicle setVehicleLock "LOCKEDPLAYER";
 };
 
 _vehicle;
