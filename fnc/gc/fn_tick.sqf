@@ -19,7 +19,7 @@ private _force = param [0, false];
 // Check vehicles, empty vehicles are enqueued
 private _tracked = [];
 {
-	if (count([_x select 0] call RSTF_fnc_aliveCrew) == 0 || !canFire(_x)) then {
+	if (count([_x] call RSTF_fnc_aliveCrew) == 0 || !canFire(_x)) then {
 		[_x, _x getVariable ["GC_delay", 30]] call RSTFGC_fnc_enqueue;
 	} else {
 		_tracked pushBack _x;
