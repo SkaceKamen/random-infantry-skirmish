@@ -7,8 +7,8 @@
 
 	Parameter(s):
 	_object - object to be watched [Object]
-	_cleanDelay - removal delay in seconds [Scalar, default 30]
-	_vehicle - is object vehicle, improves obsoleteness detection [Boolean, default true]
+	_cleanDelay - removal delay in seconds [Scalar, defaults to 30]
+	_vehicle - is object vehicle, improves obsoleteness detection [Boolean, defaults to true]
 
 	Author:
 	Jan Zípek
