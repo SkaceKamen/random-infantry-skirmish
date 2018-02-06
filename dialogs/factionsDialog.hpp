@@ -1,21 +1,4 @@
-#define RSTF_FACTIONS_LEFT_X (SafeZoneX + 0.1)
-#define RSTF_FACTIONS_LEFT_Y (SafeZoneY + 0.1)
-#define RSTF_FACTIONS_LEFT_W 0.4
-#define RSTF_FACTIONS_LEFT_H (SafeZoneY + SafeZoneH - RSTF_FACTIONS_LEFT_Y - 0.1)
-#define RSTF_FACTIONS_LEFT_PANEL_H RSTF_FACTIONS_LEFT_H
-#define RSTF_FACTIONS_LEFT_LIST_H (RSTF_FACTIONS_LEFT_PANEL_H - RSTF_SUBTITLE_H - RSTF_FACTIONS_BUTTON_H - RSTF_SUBTITLE_M*3 - RSTF_FACTIONS_CLOSE_H)
-
-#define RSTF_FACTIONS_BUTTON_W RSTF_FACTIONS_LEFT_W
-#define RSTF_FACTIONS_BUTTON_H 0.05
-
-#define RSTF_FACTIONS_CLOSE_H 0.1
-
-#define RSTF_FACTIONS_RIGHT_W 0.6
-#define RSTF_FACTIONS_RIGHT_X (SafeZoneX + SafeZoneW - 0.1 - RSTF_FACTIONS_RIGHT_W)
-#define RSTF_FACTIONS_RIGHT_Y (SafeZoneY + 0.1)
-#define RSTF_FACTIONS_RIGHT_H (SafeZoneY + SafeZoneH - RSTF_FACTIONS_RIGHT_Y - 0.1)
-#define RSTF_FACTIONS_RIGHT_PANEL_H (RSTF_FACTIONS_RIGHT_H - RSTF_SUBTITLE_M)/2
-#define RSTF_FACTIONS_RIGHT_LIST_H (RSTF_FACTIONS_RIGHT_PANEL_H - RSTF_SUBTITLE_H - RSTF_FACTIONS_BUTTON_H - RSTF_SUBTITLE_M*2)
+#include "factionsDialog.inc"
 
 class RSTF_Factions_Background : RscStatic
 {
@@ -80,7 +63,7 @@ class RSTF_RscDialogFactions
 			w = RSTF_FACTIONS_LEFT_W;
 			h = RSTF_FACTIONS_LEFT_LIST_H;
 		};
-		
+
 		class avaibleSoldiersBack : RSTF_Factions_Background
 		{
 			x = RSTF_FACTIONS_RIGHT_X;
@@ -88,7 +71,7 @@ class RSTF_RscDialogFactions
 			w = RSTF_FACTIONS_RIGHT_W;
 			h = RSTF_FACTIONS_RIGHT_LIST_H;
 		};
-		
+
 		class avaibleWeaponsBack : RSTF_Factions_Background
 		{
 			x = RSTF_FACTIONS_RIGHT_X;
@@ -101,23 +84,23 @@ class RSTF_RscDialogFactions
 	{
 		class nothing : RscStatic
 		{
-			
+
 		};
-		
+
 		class factionsTitle : RSTF_Factions_Subtitle
 		{
 			x = RSTF_FACTIONS_LEFT_X;
 			y = RSTF_FACTIONS_LEFT_Y;
 			text = "Factions";
 		};
-		
+
 		class factions : RSTF_Factions_List
 		{
 			idc = 1;
 			x = RSTF_FACTIONS_LEFT_X;
 			y = RSTF_FACTIONS_LEFT_Y + RSTF_SUBTITLE_H + RSTF_SUBTITLE_M;
 		};
-		
+
 		class toggleFaction : RSTF_Factions_Button
 		{
 			idc = 4;
@@ -125,7 +108,7 @@ class RSTF_RscDialogFactions
 			y = RSTF_FACTIONS_LEFT_Y + RSTF_FACTIONS_LEFT_LIST_H + RSTF_SUBTITLE_H + RSTF_SUBTITLE_M*2;
 			text = "Select";
 		};
-		
+
 		class avaibleSoldiersTitle : RSTF_Factions_Subtitle
 		{
 			x = RSTF_FACTIONS_RIGHT_X;
@@ -133,7 +116,7 @@ class RSTF_RscDialogFactions
 			w = RSTF_FACTIONS_RIGHT_W;
 			text = "Soldiers";
 		};
-		
+
 		class avaibleSoldiers : RSTF_Factions_Items_Tree
 		{
 			idc = 5;
@@ -142,7 +125,7 @@ class RSTF_RscDialogFactions
 			w = RSTF_FACTIONS_RIGHT_W;
 			//columns[] = { 0, 0.6, 0.8 };
 		};
-		
+
 		class banSoldier : RSTF_Factions_Button
 		{
 			idc = 6;
@@ -151,7 +134,7 @@ class RSTF_RscDialogFactions
 			w = RSTF_FACTIONS_RIGHT_W;
 			text = "Toggle ban";
 		};
-		
+
 		class avaibleWeaponsTitle : RSTF_Factions_Subtitle
 		{
 			x = RSTF_FACTIONS_RIGHT_X;
@@ -159,7 +142,7 @@ class RSTF_RscDialogFactions
 			w = RSTF_FACTIONS_RIGHT_W;
 			text = "Weapons (Only if weapons are restricted to faction weapons)";
 		};
-		
+
 		class avaibleWeapons : RSTF_Factions_Items_Tree
 		{
 			idc = 7;
@@ -168,7 +151,7 @@ class RSTF_RscDialogFactions
 			w = RSTF_FACTIONS_RIGHT_W;
 			columns[] = { 0, 0.8 };
 		};
-		
+
 		class banWeapon : RSTF_Factions_Button
 		{
 			idc = 8;
@@ -177,7 +160,27 @@ class RSTF_RscDialogFactions
 			text = "Toggle ban";
 			w = RSTF_FACTIONS_RIGHT_W;
 		};
-		
+
+		class selectRandom : RscButton
+		{
+			idc = 10;
+			x = RSTF_FACTIONS_LEFT_X;
+			y = RSTF_FACTIONS_LEFT_Y + RSTF_FACTIONS_LEFT_LIST_H + RSTF_SUBTITLE_H + RSTF_SUBTITLE_M*2 + RSTF_FACTIONS_BUTTON_H + RSTF_SUBTITLE_M;
+			w =	RSTF_FACTIONS_BUTTON_W;
+			h = RSTF_FACTIONS_BUTTON_H;
+			text = "Select random";
+		};
+
+		class clear : RscButton
+		{
+			idc = 11;
+			x = RSTF_FACTIONS_LEFT_X;
+			y = RSTF_FACTIONS_LEFT_Y + RSTF_FACTIONS_LEFT_LIST_H + RSTF_SUBTITLE_H + RSTF_SUBTITLE_M*2 + RSTF_FACTIONS_BUTTON_H * 2 + RSTF_SUBTITLE_M * 2;
+			w =	RSTF_FACTIONS_BUTTON_W;
+			h = RSTF_FACTIONS_BUTTON_H;
+			text = "Clear";
+		};
+
 		class close : RscButton
 		{
 			idc = 9;
