@@ -38,7 +38,7 @@ private _limit = 5;
 				// Get out of useless vehicle
 				if (!canFire(_vehicle)) then {
 					{
-						unassignVehicle _x;
+						[_x, _vehicle] spawn { sleep 1; unassignVehicle (_this select 0); (_this select 0) action ["Eject", _this select 1]; };
 					} foreach crew(_vehicle);
 				};
 
@@ -47,10 +47,6 @@ private _limit = 5;
 					_index = _vehicles find _vehicle;
 					_vehicles = [_vehicles, _index] call BIS_fnc_removeIndex;
 					RSTF_AI_VEHICLES set [_side, _vehicles];
-
-					sleep 5;
-
-					deleteVehicle _vehicle;
 				};
 
 				sleep 60;
