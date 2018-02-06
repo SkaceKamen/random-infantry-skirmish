@@ -16,6 +16,19 @@
 
 private _force = param [0, false];
 
+// Check vehicles, empty vehicles are enqueued
+private _tracked = [];
+{
+	if (count(crew(_x)) == 0 || !canFire(_x)) then {
+		[_x, _x getVariable ["GC_delay", 30]] call RSTFGC_fnc_enqueue;
+	} else {
+		_tracked pushBack _x;
+	};
+} foreach RSTFGC_TRACKED;
+
+RSTFGC_TRACKED = _tracked;
+
+// Process removal queue
 private _queue = [];
 {
 	if (_x select 1 < time || _force) then {

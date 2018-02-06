@@ -13,4 +13,8 @@ if (!isNil("RSTF_GC_QUEUE")) then {
 	[true] call RSTFGC_fnc_tick;
 };
 
+// List of tracked objects
+RSTFGC_TRACKED = [];
+
+// Queue of objects to be removed. Format: [OBJECT, TIME WHEN TO REMOVE]
 RSTFGC_QUEUE = [];

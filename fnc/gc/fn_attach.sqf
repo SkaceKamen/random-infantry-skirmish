@@ -22,7 +22,12 @@ _object setVariable ["GC_delay", _cleanDelay];
 _object setVariable ["GC_queued", false];
 _object setVariable ["GC_vehicle", _vehicle];
 
-_object addEventHandler ["Dammaged", RSTFGC_fnc_dammaged];
+if (_vehicle) then {
+	RSTFGC_TRACKED pushBack _object;
+
+	_object addEventHandler ["Dammaged", RSTFGC_fnc_dammaged];
+};
+
 _object addEventHandler ["Killed", RSTFGC_fnc_killed];
 
 _object;
