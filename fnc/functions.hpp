@@ -95,6 +95,7 @@ class RSTF
 		class sideIndex {};
 		class weaponHasAttachment {};
 		class arrayShuffle {};
+		class aliveCrew {};
 	};
 
 	class ui

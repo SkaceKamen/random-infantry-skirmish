@@ -74,6 +74,7 @@ if (!isNull(_unit)) then {
 {
 	_x setVariable ["SPAWNED_SIDE", side(_group), true];
 	_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
+	[_x] call RSTFGC_fnc_attach;
 } foreach units(_group);
 
 if (!isNull(_unit)) then {

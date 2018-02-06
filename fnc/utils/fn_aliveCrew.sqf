@@ -1,0 +1,1 @@
+crew(param [0]) select { alive(_x) };

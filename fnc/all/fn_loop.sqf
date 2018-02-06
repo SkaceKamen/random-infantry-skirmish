@@ -2,7 +2,7 @@ private _spawn = 0;
 private _interval = 0;
 
 while { true } do {
-	if (_interval > 60) then {
+	if (_interval > 2) then {
 		_interval = 0;
 
 		[false] call RSTFGC_fnc_tick;
