@@ -1,10 +1,8 @@
 _ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
 
 _expandCache = {
-	private ["_list", "_ex"];
-	
-	_list = [RSTF_EXPANDED, _this select 0] call AMAP_get;	
-	_ex = [];
+	private _list = [RSTF_EXPANDED, _this select 0] call AMAP_get;
+	private _ex = [];
 	{
 		_ex pushBack _x;
 		if (_list find (_ex call RSTF_fnc_pathString) != -1) then {
@@ -22,7 +20,7 @@ lnbClear _ctrl;
 	if (_x in RSTF_FACTIONS_LIST) then {
 		_selected = "SELECTED";
 	};
-	
+
 	_ctrl lnbAddRow [_name, _selected];
 	_ctrl lnbSetPicture [[_foreachIndex,0], _icon];
 	_ctrl lnbSetPictureColor [[_foreachIndex,0], [1,1,1,1]];
@@ -55,20 +53,20 @@ _roots = call AMAP_create;
 		_dlc = getText(_cfg >> "dlc");
 		_dlcIcon = getText(configFile >> "cfgMods" >> _dlc >> "logoSmall");
 	};
-		
+
 	_class = getText(_cfg >> "vehicleClass");
 	_className = getText(ConfigFile >> "cfgVehicleClasses" >> _class >> "displayName");
-	
+
 	if (isText(_cfg >> "editorSubcategory")) then {
 		_class = getText(_cfg >> "editorSubcategory");
 		_className = getText(ConfigFile >> "cfgEditorSubcategories" >> _class >> "displayName");
 	};
-	
+
 	_banned = "";
 	if (_x in RSTF_SOLDIERS_BANNED) then {
 		_banned = "[BANNED] ";
 	};
-	
+
 	_factionBranch = [_roots, _faction, []] call AMAP_get;
 	if (count(_factionBranch) == 0) then {
 		_factionBranch = [
@@ -78,14 +76,14 @@ _roots = call AMAP_create;
 		_ctrl tvSetData [[_factionBranch select 0], _faction];
 		[_roots, _faction, _factionBranch] call AMAP_set;
 	};
-	
+
 	_classBranch = [_factionBranch select 1, _class, -1] call AMAP_get;
 	if (_classBranch == -1) then {
 		_classBranch = _ctrl tvAdd [[_factionBranch select 0], _className];
 		_ctrl tvSetData [[_factionBranch select 0, _classBranch], _class];
 		[_factionBranch select 1, _class, _classBranch] call AMAP_set;
 	};
-	
+
 	_path = [_factionBranch select 0, _classBranch];
 	_branch = _ctrl tvAdd [_path, _banned + _name];
 	_path pushBack _branch;
@@ -94,11 +92,11 @@ _roots = call AMAP_create;
 	if (_dlcIcon != "") then {
 		_ctrl tvSetPictureRight [_path, _dlcIcon];
 	};
-	
+
 	if (_banned != "") then {
 		_ctrl tvSetPictureColor [_path, [0,0,0,1]];
 	};
-	
+
 	[_ctrl, _path] call _expandCache;
 } foreach _soldiers;
 
@@ -151,12 +149,12 @@ _other = _ctrl tvAdd [[], "Other"];
 		_dlc = getText(_cfg >> "dlc");
 		_dlcIcon = getText(configFile >> "cfgMods" >> _dlc >> "logoSmall");
 	};
-	
+
 	_banned = "";
 	if (_x in RSTF_WEAPONS_BANNED) then {
 		_banned = "[BANNED] ";
 	};
-	
+
 	_branch = [_roots, _type, _other] call AMAP_get;
 	_path = [_branch];
 	_path pushBack (_ctrl tvAdd [_path, _banned + _name]);
@@ -165,11 +163,11 @@ _other = _ctrl tvAdd [[], "Other"];
 	if (_dlcIcon != "") then {
 		_ctrl tvSetPictureRight [_path, _dlcIcon];
 	};
-	
+
 	if (_banned != "") then {
 		_ctrl tvSetPictureColor [_path, [0,0,0,1]];
 	};
-	
+
 	[_ctrl, _path] call _expandCache;
 } foreach _weapons;
 

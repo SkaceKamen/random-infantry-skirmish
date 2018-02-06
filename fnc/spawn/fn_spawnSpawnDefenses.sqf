@@ -1,4 +1,4 @@
-private ["_iiii"];
+private _iiii = 0;
 
 private _side = param [0];
 private _position = param [1];
@@ -23,7 +23,7 @@ if (count(_transportClasses) > 0) then {
 	for "_iiii" from 1 to _transportsCount do {
 		_cls = (selectRandom _transportClasses);
 		_pos = [];
-		
+
 		// Try to search for suitable position
 		_tries = 0;
 		while { _tries < 5 } do {
