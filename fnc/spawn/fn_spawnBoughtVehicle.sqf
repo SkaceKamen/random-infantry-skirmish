@@ -49,6 +49,9 @@ private _radius = 100;
 
 private _vehicle = createVehicle [_vehicleClass, _position, [], _radius, "FLY"];
 
+// Add to GC with 30 seconds to despawn
+[_vehicle, 30, true] call RSTFGC_fnc_attach;
+
 if (_plane) then {
 	_vehicle setPos _position;
 };

@@ -17,6 +17,8 @@ _marker setMarkerShape "ICON";
 _marker setMarkerType "mil_objective";
 */
 
+// Initialize GC
+call RSTFGC_fnc_init;
 
 // Load gamemode
 private _mode = RSTF_MODES select RSTF_MODE_INDEX;

@@ -4,10 +4,14 @@ private _position = [_index] call RSTF_fnc_randomSpawn;
 
 private _unitClass = _index call RSTF_fnc_getRandomSoldier;
 private _unit = _group createUnit [_unitClass, _position, [], 10, "NONE"];
+
 if (isNull(_unit)) exitWith {
 	diag_log text(format["ERROR: Failed to spawn %1 (group %3) at %2", _unitClass, _position, _group]);
 	systemChat format["FAILED TO SPAWN AI! Groups: %1, Units: %2", count(allGroups), count(allUnits)];
 };
+
+// Add to GC
+[_unit] call RSTFGC_fnc_attach;
 
 if (count(RSTF_SPAWN_VEHICLES select _index) > 0) then {
 	_vehicles = RSTF_SPAWN_VEHICLES select _index;
