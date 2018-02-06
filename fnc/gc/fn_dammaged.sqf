@@ -16,6 +16,6 @@
 private _object = param [0];
 private _vehicle = _object getVariable ["GC_vehicle", false];
 
-if (_vehicle && { !canMove(_vehicle) || !canFire(_vehicle) || count(crew(_vehicle)) == 0 }) then {
+if (_vehicle && { !canFire(_object) || count(crew(_object)) == 0 }) then {
 	[_object, _object getVariable ["GC_delay", 30]] call RSTFGC_fnc_enqueue;
 };

@@ -34,7 +34,7 @@ private _queue = [];
 	if (_x select 1 < time || _force) then {
 		// Safety check, don't delete vehicle with crew in it
 		if (count(crew(_x select 0)) > 0) then {
-			[_x select 0] call RSTFGC_fnc_attach;
+			[_x select 0, 30, true] call RSTFGC_fnc_attach;
 		} else {
 			deleteVehicle (_x select 0);
 		};
