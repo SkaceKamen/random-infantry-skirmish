@@ -31,17 +31,19 @@ RSTFGC_TRACKED = _tracked;
 // Process removal queue
 private _queue = [];
 {
-	if (_x select 1 < time || _force) then {
+	private _object = _x select 0;
+	private _timeout = _x select 1;
+	if (_timeout < time || _force) then {
 		// Safety check, don't delete vehicle with crew in it
-		if (!((_x select 0) isKindOf "Man") && { count([_x select 0] call RSTF_fnc_aliveCrew) > 0 }) then {
-			diag_log text(format["[RSTF] Queue vehicle again %1", _x select 0]);
-			[_x select 0, 30, true] call RSTFGC_fnc_attach;
+		if (!(_object isKindOf "Man") && { count([_object] call RSTF_fnc_aliveCrew) > 0 }) then {
+			diag_log text(format["[RSTF] Queue vehicle again %1", _object]);
+			[_object, 30, true] call RSTFGC_fnc_attach;
 		} else {
-			diag_log text(format["[RSTF] Delete vehicle %1", _x select 0]);
-			deleteVehicle (_x select 0);
+			diag_log text(format["[RSTF] Delete vehicle %1", _object]);
+			deleteVehicle _object;
 		};
 	} else {
-		diag_log text(format["[RSTF] Still in queue %1", _x select 0]);
+		diag_log text(format["[RSTF] Still in queue %1", _object]);
 		_queue pushBack _x;
 	};
 } foreach RSTFGC_QUEUE;
