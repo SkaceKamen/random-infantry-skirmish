@@ -180,6 +180,7 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_MAP_VOTE",
 	"RSTF_MAP_VOTE_COUNT",
 	"RSTF_MAP_VOTE_TIMEOUT",
+	"RSTF_MONEY_START",
 	"RSTF_MONEY_PER_TEAMKILL",
 	"RSTF_MONEY_PER_VEHICLE_COMMANDER_ASSIST",
 	"RSTF_MONEY_PER_VEHICLE_KILL",
@@ -294,6 +295,7 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_MONEY_VEHICLES_ENABLED", "Allow buying vehicles", "Allow players and AI to buy vehicles for their money", "checkbox"],
 		["RSTF_MONEY_VEHICLES_AI_LIMIT", "Max AI vehicles per side", "Maximum number of spawned AI vehicles per side", "number"],
 		[],
+		["RSTF_MONEY_START", "Starting money", "Money each unit gets at start of the mission", "number"],
 		["RSTF_MONEY_PER_KILL", "Money per kill", "Award for killing enemy", "number"],
 		["RSTF_MONEY_PER_TASK", "Money per task", "Award for completing task", "number"],
 		["RSTF_AI_MONEY_MULTIPLIER", "AI money multiplier", "AI money reward multiplier, AI usually have less kills than player, so this helps them to catch up", "number"],
@@ -317,6 +319,8 @@ RSTF_VOTES_TIMEOUT = 0;
 
 RSTF_MONEY_INDEX = [];
 RSTF_MONEY = [];
+
+RSTF_AI_VEHICLE_WISH = call AMAP_create;
 
 RSTF_SHOW_CONFIG = -1;
 RSTF_CONFIG_DONE = false;
