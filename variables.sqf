@@ -366,6 +366,10 @@ RTSF_USELESS_MAGAZINES = [
 	"60Rnd_CMFlareMagazine", "rhs_mag_fueltank_UH60", "rhs_mag_ANALQ131", "rhs_mag_fueltank_UH60MEV",
 	"RHS_LWIRCM_Magazine_MELB", "rhsusf_DIRCM_Magazine_120", "rhs_mag_smokegen", "rhsusf_mag_L8A3_8"
 ];
+
+RSTF_RESPAWN_KILLED = objNull;
+RSTF_RESPAWN_KILLER = objNull;
+
 // This will be filled with selected mode function
 RSTF_MODE_init = {};
 
@@ -374,4 +378,3 @@ RSTF_MODE_unitKilled = {};
 
 // This will be filled with selected mode function
 RSTF_MODE_taskCompleted = {};
-

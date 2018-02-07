@@ -49,6 +49,7 @@ class RSTF
 
 		class aiDecideVehicle {};
 
+		class respawn {};
 	};
 
 	class money
@@ -96,6 +97,7 @@ class RSTF
 		class weaponHasAttachment {};
 		class arrayShuffle {};
 		class aliveCrew {};
+		class log {};
 	};
 
 	class ui

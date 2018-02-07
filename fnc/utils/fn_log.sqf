@@ -1,0 +1,1 @@
+diag_log text(format["[RSTF] %1", param [0]]);

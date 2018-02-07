@@ -1,3 +1,5 @@
+["Initializing server events"] call RSTF_fnc_Log;
+
 // This receives map votes from clients
 "RSTF_POINT_VOTE" addPublicVariableEventHandler {
 	_this spawn {
@@ -10,10 +12,13 @@
 
 // Admin closed config dialog
 "RSTF_CONFIG_DONE" addPublicVariableEventHandler {
+	["Admin closed config, staring game"] call RSTF_fnc_Log;
 	_this spawn {
 		if (RSTF_MAP_VOTE) then {
+			["Starting battle selection"] call RSTF_fnc_Log;
 			0 spawn RSTF_fnc_startBattleSelection;
 		} else {
+			["Starting game without battle selection"] call RSTF_fnc_Log;
 			(RSTF_POINTS select 0) call RSTF_fnc_assignPoint;
 			0 spawn RSTF_fnc_start;
 		}

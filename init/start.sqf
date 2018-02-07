@@ -10,7 +10,9 @@ if (!isDedicated) then {
 showCinemaBorder false;
 
 if (isServer) then {
+	["Starting server scripts"] call RSTF_fnc_Log;
 	call RSTF_fnc_serverStart;
 } else {
+	["Starting client scripts"] call RSTF_fnc_Log;
 	call RSTF_fnc_clientStart;
 };

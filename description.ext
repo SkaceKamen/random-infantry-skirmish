@@ -28,3 +28,17 @@ loadScreen = "random.paa";
 
 // Don't display briefing map, it's useless in this case
 briefing = 0;
+
+respawn = "INSTANT";
+respawnTemplates[] = { "RSTF_Respawn" };
+respawnOnStart = 0;
+
+class CfgRespawnTemplates
+{
+	class RSTF_Respawn
+	{
+		onPlayerRespawn = "RSTF_fnc_respawn";
+		respawnTypes[] = { 1 };
+		respawnOnStart = 0;
+	};
+};

@@ -1,11 +1,13 @@
 if (isServer && isMultiplayer) then {
+	["Starting map tick at server"] call RSTF_fnc_Log;
+
 	// This manages voting on server
 	0 spawn {
 		RSTF_VOTES_TIMEOUT = RSTF_MAP_VOTE_TIMEOUT;
 		while { RSTF_VOTES_TIMEOUT >= 0 } do {
 			publicVariable "RSTF_VOTES_TIMEOUT";
 			if (!isDedicated) then { 0 call RSTF_fnc_updateVoteTimeout; };
-			
+
 			_voted = 0;
 			{
 				_voted = _voted + _x;
@@ -15,11 +17,17 @@ if (isServer && isMultiplayer) then {
 				diag_log text(format["VOTING: All players voted (%1 / %2). Selecting battle.", _voted, count(allPlayers)]);
 			};
 
+			[format["Timeout: %1", RSTF_VOTES_TIMEOUT]] call RSTF_fnc_Log;
+
 			RSTF_VOTES_TIMEOUT = RSTF_VOTES_TIMEOUT - 1;
 			sleep 1;
 		};
 
-		closeDialog 0;
+		["Voting ended"] call RSTF_fnc_Log;
+
+		if (hasInterface) then {
+			closeDialog 0;
+		};
 
 		_max = [];
 		_maxCount = -1;
@@ -46,5 +54,6 @@ if (isServer && isMultiplayer) then {
 };
 
 if (!isDedicated) then {
+	["Showing battle selection"] call RSTF_fnc_Log;
 	0 spawn RSTF_fnc_showBattleSelection;
 };
