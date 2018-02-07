@@ -9,19 +9,36 @@ private _turrets = "true" configClasses (_config >> "Turrets");
 	private _weapons = getArray(_turret >> "weapons");
 
 	{
-		/*
-		private _usable = [configFile >> "cfgWeapons" >> _x, true] call RSTF_fnc_isUsableWeapon;
-		if (_usable && _x != "FakeWeapon" && _x != "Laserdesignator_mounted" && _x != "SmokeLauncher") exitWith {
-			_found pushBack _x;
-		};
-		*/
 		_found pushBack _x;
 	} foreach _weapons;
 
 } foreach _turrets;
 
+private _hasPylons = isClass(_config >> "Components") && {
+	isClass(_config >> "Components" >> "TransportPylonsComponent")
+} && {
+	isClass(_config >> "Components" >> "TransportPylonsComponent" >> "pylons")
+};
+
+if (_hasPylons) then {
+	private _pylons = "true" configClasses (_config >> "Components" >> "TransportPylonsComponent" >> "pylons");
+	{
+		private _pylon = _x;
+
+		if (isText(_pylon >> "attachment")) then {
+			private _attachment = getText(_pylon >> "attachment");
+			private _mag = configFile >> "cfgMagazines" >> _attachment;
+
+			if (isClass(_mag) && { isText(_mag >> "pylonWeapon") }) then {
+				_found pushBack getText(_mag >> "pylonWeapon");
+			};
+		};
+	} foreach _pylons;
+};
+
 _found = _found select {
 	([configFile >> "cfgWeapons" >> _x, true] call RSTF_fnc_isUsableWeapon)
 		&& { _x != "FakeWeapon" && _x != "Laserdesignator_mounted" && _x != "SmokeLauncher" && _x != "CMFlareLauncher" }
 	};
+
 _found;
