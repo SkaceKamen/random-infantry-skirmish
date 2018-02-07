@@ -99,7 +99,8 @@ RSTF_MODE_KOTH_init = {
 				], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
 
 				// Notify clients
-				remoteExec ["RSTF_fnc_onScore"];
+				publicVariable "RSTF_SCORE";
+				0 remoteExec ["RSTF_fnc_onScore"];
 
 				// End when limit is reached
 				if (RSTF_SCORE select _currentOwner > RSTF_MODE_KOTH_SCORE_LIMIT) then {
@@ -109,6 +110,9 @@ RSTF_MODE_KOTH_init = {
 		};
 
 		RSTF_MODE_KOTH_OWNER = _currentOwner;
+
+		publicVariable "RSTF_MODE_KOTH_OWNER";
+		publicVariable "RSTF_MODE_KOTH_COUNTS";
 
 		sleep 1;
 	};
