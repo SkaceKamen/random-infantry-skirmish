@@ -28,7 +28,14 @@ if (alive(_unit)) then {
 		[_unit, [missionNamespace, "RSTF_PLAYER_EQUIPMENT"]] call BIS_fnc_loadInventory;
 	};
 
+	private _previous = player;
 	selectPlayer _unit;
+
+	// Remove respawned unit in multiplayer
+	if (isMultiplayer) then {
+		deleteVehicle _previous;
+	};
+
 	[_unit] joinSilent group(_unit);
 	_unit addEventHandler ["Killed", RSTF_fnc_playerKilled];
 } else {
