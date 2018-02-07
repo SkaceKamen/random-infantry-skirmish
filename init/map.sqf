@@ -26,6 +26,7 @@ AMAP_set = {
 	_values set [_index, _value];
 };
 
+// Gets value associated with key. Args: [_map, _key, _default=objNull]
 AMAP_get = {
 	private _amap = _this select 0;
 	private _key = _this select 1;
