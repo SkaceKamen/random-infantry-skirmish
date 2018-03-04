@@ -319,6 +319,11 @@ RSTF_VOTES_TIMEOUT = 0;
 
 RSTF_MONEY_INDEX = [];
 RSTF_MONEY = [];
+RSTF_AI_MONEY = [];
+
+{
+	RSTF_AI_MONEY set [_x, 0];
+} foreach RSTF_SIDES;
 
 RSTF_AI_VEHICLE_WISH = call AMAP_create;
 

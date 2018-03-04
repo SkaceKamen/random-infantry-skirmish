@@ -16,7 +16,7 @@
 private _unit = param [0];
 private _side = param [1];
 private _name = _unit getvariable ["ORIGINAL_NAME", name(_unit)];
-private _money = [_name] call RSTF_fnc_getUnitMoney;
+private _money = (RSTF_AI_MONEY select _side) + ([_name] call RSTF_fnc_getUnitMoney);
 private _vehicles = RSTF_BUYABLE_VEHICLES select _side;
 
 // Don't bother if we're broke
@@ -27,13 +27,23 @@ if (_money < (_vehicles select 0) select 2) exitWith {
 // Select our wish vehicle
 private _wish = [RSTF_AI_VEHICLE_WISH, _name, objNull] call AMAP_get;
 if (typeName(_wish) == typeName(objNull)) then {
-	_wish = selectRandom _vehicles;
+	_wish = objNull;
+
+	// 10 % chance of choosing random vehicle
+	// 90 % chance of choosing random more expensive vehicle
+	if (random 10 > 9) then {
+		_wish = selectRandom _vehicles;
+	} else {
+		_upper = floor(count(_vehicles) / 2);
+		_wish = selectRandom (_vehicles select [_upper, _upper max 1]);
+	};
+	
 	[RSTF_AI_VEHICLE_WISH, _name, _wish] call AMAP_set;
 };
 
 // Load info about our wish vehicle
 private _class = _wish select 1;
-private _cost = _wish select 2;
+private _cost = 1000;
 
 // Stop if we don't have money
 if (_money < _cost) exitWith { false };
@@ -103,11 +113,13 @@ _group = group(effectiveCommander(_vehicle));
 		deleteWaypoint [_group, 0];
 		_wp = _group addWaypoint [[_side] call RSTF_fnc_getAttackWaypoint, 10];
 
+		/*
 		if (_side == SIDE_FRIENDLY) then {
 			_m = createMarker [format["marker%1%2", time, waypointPosition _wp], waypointPosition _wp];
 			_m setMarkerShape "ICON";
 			_m setMarkerType "mil_dot";
 		};
+		*/
 
 		if (!_air) then {
 			_wp setWaypointType "SAD";
