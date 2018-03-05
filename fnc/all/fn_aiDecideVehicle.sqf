@@ -31,12 +31,12 @@ if (typeName(_wish) == typeName(objNull)) then {
 
 	// 10 % chance of choosing random vehicle
 	// 90 % chance of choosing random more expensive vehicle
-	if (random 10 > 9) then {
+	//if (random 10 > 9) then {
 		_wish = selectRandom _vehicles;
-	} else {
+	/*} else {
 		_upper = floor(count(_vehicles) / 2);
 		_wish = selectRandom (_vehicles select [_upper, _upper max 1]);
-	};
+	};*/
 	
 	[RSTF_AI_VEHICLE_WISH, _name, _wish] call AMAP_set;
 };
