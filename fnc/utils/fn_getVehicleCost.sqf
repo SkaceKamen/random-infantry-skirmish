@@ -31,18 +31,18 @@ private _turrets = count([_className] call RSTF_fnc_getVehicleWeapons);
 private _cost = 0;
 
 // AIR tax
-if (_air) then { _cost = _cost + 2000; };
+if (_air) then { _cost = _cost + 1500; };
 
 // Crew hidden tax
 if (!_crewVulnerable) then { _cost = _cost + 500; };
 
 // Armor tax
-if (_armor > 100) then { _cost = _cost + round(_armor/100) * 500; };
+if (_armor > 100) then { _cost = _cost + round(_armor/100) * 400; };
 
 // Tank tax
-if (_tank) then { _cost = _cost + 1000; };
+if (_tank) then { _cost = _cost + 800; };
 
 // Turrets tax
-_cost = _cost + _turrets * 500;
+_cost = _cost + _turrets * 300;
 
 _cost;
