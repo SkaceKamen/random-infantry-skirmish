@@ -13,4 +13,7 @@ if (isServer) then {
 	};
 };
 
-_this call RSTF_MODE_unitKilled;
+// Only call this callback on valid events
+if (!isNull(_killer) && !isNull(_killed)) then {
+	_this call RSTF_MODE_unitKilled;
+};
