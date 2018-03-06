@@ -7,12 +7,24 @@ if (isNull(RSTF_CAM)) then {
 	RSTF_CAM = "camera" camCreate getPos(_body);
 };
 
+// Move camera above player body
 RSTF_CAM camSetPos getPos(_body);
 RSTF_CAM camSetTarget _body;
 RSTF_CAM cameraEffect ["internal", "back"];
 RSTF_CAM camCommit 0;
-RSTF_CAM camSetRelPos [10, 0, 50];
-RSTF_CAM camCommit 2;
+RSTF_CAM camSetRelPos [10, 0, 20];
+RSTF_CAM camCommit 1;
+
+// Focus on killer too, if possible
+if (!isNUll(_killer)) then {
+	[_killer] spawn {
+		private _killer = param [0];
+		waitUntil { camCommitted RSTF_CAM };
+		RSTF_CAM camSetTarget _killer;
+		RSTF_CAM camSetRelPos [10, 0, 20];
+		RSTF_CAM camCommit 1;
+	};
+};
 
 _dialogName = "RSTF_RscDeathDialog";
 _ok = createDialog _dialogName;
