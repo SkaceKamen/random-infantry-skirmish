@@ -12,8 +12,8 @@ RSTF_CAM camSetPos getPos(_body);
 RSTF_CAM camSetTarget _body;
 RSTF_CAM cameraEffect ["internal", "back"];
 RSTF_CAM camCommit 0;
-RSTF_CAM camSetRelPos [10, 0, 20];
-RSTF_CAM camCommit 1;
+RSTF_CAM camSetRelPos [3, 0, 3];
+RSTF_CAM camCommit 2;
 
 // Focus on killer too, if possible
 if (!isNUll(_killer)) then {
@@ -21,8 +21,8 @@ if (!isNUll(_killer)) then {
 		private _killer = param [0];
 		waitUntil { camCommitted RSTF_CAM };
 		RSTF_CAM camSetTarget _killer;
-		RSTF_CAM camSetRelPos [10, 0, 20];
-		RSTF_CAM camCommit 1;
+		RSTF_CAM camSetRelPos [0.5, 0, 3];
+		RSTF_CAM camCommit 5;
 	};
 };
 
