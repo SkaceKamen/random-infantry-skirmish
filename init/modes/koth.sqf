@@ -103,7 +103,7 @@ RSTF_MODE_KOTH_init = {
 				0 remoteExec ["RSTF_fnc_onScore"];
 
 				// End when limit is reached
-				if (RSTF_SCORE select _currentOwner > RSTF_MODE_KOTH_SCORE_LIMIT) then {
+				if (RSTF_SCORE select _currentOwner >= RSTF_MODE_KOTH_SCORE_LIMIT) then {
 					[_currentOwner] remoteExec ["RSTF_fnc_onEnd"];
 				};
 			};
