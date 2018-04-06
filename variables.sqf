@@ -304,7 +304,7 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_MULTIKILL_BONUS", "Bonus for multikill", "Bonus money for multikills, awarded for each kill over 1", "number"]
 	]],
 	["UI", [
-		["RSTF_UI_SHOW_VEHICLE_MARKERS", "Show vehicle markers", "Show 3D markers of friendly vehicles."]
+		["RSTF_UI_SHOW_VEHICLE_MARKERS", "Show vehicle markers", "Show 3D markers of friendly vehicles.", "checkbox"]
 	]],
 	["Tasks", [
 		["RSTF_TASKS_IFV_ENABLED", "Neutralize IFV", "Allows 'Neutralize IFV' task", "checkbox"],
