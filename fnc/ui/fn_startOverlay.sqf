@@ -3,17 +3,19 @@
 disableSerialization;
 
 // Vehicle icons
-addMissionEventHandler ["Draw3D", {
-	{
-		private _pos = (getPosATLVisual _x) vectorAdd [0, 0, 4];
-		// _pos set [2, (_x modelToWorld [0,0,1.5]) select 2];
-		private _air = _x isKindOf "Air";
-		private _icon = "\a3\ui_f\data\Map\Markers\NATO\b_"
-			+ (if (_air) then { "armor" } else { "air" })
-			+ ".paa";
-		drawIcon3D [_icon, [0.5, 0.5, 1, 0.8], _pos, 0.8, 0.8, 0];
-	} foreach (RSTF_AI_VEHICLES select SIDE_FRIENDLY);
-}];
+if (RSTF_UI_SHOW_VEHICLE_MARKERS) then {
+	addMissionEventHandler ["Draw3D", {
+		{
+			private _pos = (getPosATLVisual _x) vectorAdd [0, 0, 4];
+			// _pos set [2, (_x modelToWorld [0,0,1.5]) select 2];
+			private _air = _x isKindOf "Air";
+			private _icon = "\a3\ui_f\data\Map\Markers\NATO\b_"
+				+ (if (_air) then { "armor" } else { "air" })
+				+ ".paa";
+			drawIcon3D [_icon, [0.5, 0.5, 1, 0.8], _pos, 0.8, 0.8, 0];
+		} foreach (RSTF_AI_VEHICLES select SIDE_FRIENDLY);
+	}];
+};
 
 _layer = 1586;
 _layer cutRsc ["ARCADE_UI", "PLAIN"];

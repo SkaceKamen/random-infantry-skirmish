@@ -127,3 +127,9 @@ RSTF_MODE_KOTH_SCORE_INTERVAL = 10;
 
 // Score limit in KOTH
 RSTF_MODE_KOTH_SCORE_LIMIT = 100;
+
+// Display support menu hint
+RSTF_HINT_SUPPORT_MENU = true;
+
+// Show 3D vehicle markers
+RSTF_UI_SHOW_VEHICLE_MARKERS = true;

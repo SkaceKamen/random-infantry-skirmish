@@ -187,7 +187,9 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_MULTIKILL_BONUS",
 	"RSTF_NEUTRALS_EMPLACEMENTS",
 	"RSTF_SCORE_PER_TEAMKILL",
-	"RSTF_SPAWN_TRANSPORTS"
+	"RSTF_SPAWN_TRANSPORTS",
+	"RSTF_HINT_SUPPORT_MENU",
+	"RSTF_UI_SHOW_VEHICLE_MARKERS"
 ];
 
 // List of spawns, indexed by side
@@ -300,6 +302,9 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_MONEY_PER_TASK", "Money per task", "Award for completing task", "number"],
 		["RSTF_AI_MONEY_MULTIPLIER", "AI money multiplier", "AI money reward multiplier, AI usually have less kills than player, so this helps them to catch up", "number"],
 		["RSTF_MULTIKILL_BONUS", "Bonus for multikill", "Bonus money for multikills, awarded for each kill over 1", "number"]
+	]],
+	["UI", [
+		["RSTF_UI_SHOW_VEHICLE_MARKERS", "Show vehicle markers", "Show 3D markers of friendly vehicles."]
 	]],
 	["Tasks", [
 		["RSTF_TASKS_IFV_ENABLED", "Neutralize IFV", "Allows 'Neutralize IFV' task", "checkbox"],

@@ -53,3 +53,13 @@ if (RSTF_TASK != "") then {
 {
 	[_x, ([_x] call BIS_fnc_taskState), false] call BIS_fnc_taskSetState;
 } foreach RSTF_CURRENT_TASKS;
+
+// Display support menu hint if needed
+if (RSTF_HINT_SUPPORT_MENU && RSTF_MONEY_VEHICLES_ENABLED) then {
+	// Only display this hint once, so disable it and save
+	RSTF_HINT_SUPPORT_MENU = false;
+	call RSTF_fnc_profileSave;
+
+	// Display the hint
+	hint(parseText("Press <t color='#999999'>WIN</t> key to open <t color='#999999'>vehicle shop</t>."));
+};
