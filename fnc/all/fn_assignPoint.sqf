@@ -1,5 +1,5 @@
 RSTF_LOCATION = _this select 0;
-RSTF_POINT = getPos(_this select 0);
+RSTF_POINT = (_this select 0) select 1;
 RSTF_POINT set [2, 0];
 RSTF_SPAWNS = _this select 1;
 RSTF_DIRECTION = _this select 2;

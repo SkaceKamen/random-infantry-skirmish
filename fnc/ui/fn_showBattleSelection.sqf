@@ -39,7 +39,7 @@ _ctrlBattles ctrlAddEventHandler ["LBSelChanged", {
 
 	if (_selected >= 0) then {
 		_place = RSTF_POINTS select _selected;
-		_position = getPos(_place select 0);
+		_position = (_place select 0) select 1;
 		_position set [2, 0];
 
 		if (isNull(RSTF_CAM)) then {

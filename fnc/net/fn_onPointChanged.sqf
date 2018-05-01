@@ -17,6 +17,6 @@ RSTF_CAM camCommit 0;
 
 [
 	[
-		["Battle for " + text(RSTF_LOCATION), "%1<br />"]
+		["Battle for " + (RSTF_LOCATION select 0), "%1<br />"]
 	]
 ] call BIS_fnc_typeText;

@@ -98,6 +98,7 @@ class RSTF
 		class arrayShuffle {};
 		class aliveCrew {};
 		class log {};
+		class loadPredefined {};
 	};
 
 	class ui

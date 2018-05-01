@@ -10,7 +10,7 @@ lnbClear _ctrlBattles;
 	if (!isMultiplayer) then {
 		_votes = "";
 	};
-	_ctrlBattles lnbAddRow ["Battle for " + text(_x select 0), _votes];
+	_ctrlBattles lnbAddRow ["Battle for " + ((_x select 0) select 0), _votes];
 } foreach RSTF_POINTS;
 
 if (_current >= 0) then {

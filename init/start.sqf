@@ -1,3 +1,5 @@
+RSTF_PREDEFINED_LOCATIONS = call RSTF_fnc_loadPredefined;
+
 if (!isDedicated) then {
 	player setVariable ["ASSIGNED", false, true];
 };

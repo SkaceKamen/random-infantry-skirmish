@@ -17,8 +17,25 @@ private _i = 0;
 private _count = param [0, 0];
 
 // Load all locations on map
-private _world_anchor = getArray(configFile >> "CfgWorlds" >> worldName >> "SafePositionAnchor");
-private _locations = nearestLocations [_world_anchor, ["NameCityCapital","NameCity","NameVillage"], 99999999];
+private _isPredefined = false;
+private _locations = if (count(RSTF_PREDEFINED_LOCATIONS) == 0) then {
+	private _world_anchor = getArray(configFile >> "CfgWorlds" >> worldName >> "SafePositionAnchor");
+	private _locs = nearestLocations [_world_anchor, ["NameCityCapital","NameCity","NameVillage"], 99999999];
+	{
+		_locs set [_foreachIndex, 
+			[
+				text(_x),
+				getPos(_x),
+				[100, 100],
+				0
+			]
+		];
+	} forEach _locs;
+	_locs;
+} else {
+	_isPredefined = true;
+	RSTF_PREDEFINED_LOCATIONS;
+};
 private _results = [];
 
 // Shuffle results to make locations random
@@ -32,10 +49,10 @@ for [{_i = 0}, {_i < count(_locations) && (_count == 0 || count(_results) < _cou
 	_distance = 200 + random(50);
 
 	// Save center position
-	_position = getPos(_center);
+	_position = _center select 1;
 	_position set [2, 0];
 
-	//Now find usable spawns
+	// Now find usable spawns
 	_tries = 0;
 	_spawns = [];
 	_valid = false;

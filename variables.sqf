@@ -392,3 +392,5 @@ RSTF_MODE_unitKilled = {};
 
 // This will be filled with selected mode function
 RSTF_MODE_taskCompleted = {};
+
+RSTF_PREDEFINED_LOCATIONS = [];
