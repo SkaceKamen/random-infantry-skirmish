@@ -307,7 +307,7 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_UI_SHOW_VEHICLE_MARKERS", "Show vehicle markers", "Show 3D markers of friendly vehicles.", "checkbox"]
 	]],
 	["Tasks", [
-		["RSTF_TASKS_IFV_ENABLED", "Neutralize IFV", "Allows 'Neutralize IFV' task", "checkbox"],
+		// ["RSTF_TASKS_IFV_ENABLED", "Neutralize IFV", "Allows 'Neutralize IFV' task", "checkbox"],
 		["RSTF_TASKS_CLEAR_ENABLED", "Clear house", "Allows 'Clear house' task", "checkbox"],
 		["RSTF_TASKS_EMP_ENABLED", "Neutralize emplacement", "Allows tasks for neutralizing emplacements", "checkbox"]
 	]],
