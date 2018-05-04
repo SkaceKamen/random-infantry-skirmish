@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=94;
+		nextID=81;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={9369.2256,41.539337,21531.16};
+		pos[]={5396.4976,21.569017,14645.383};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
 		aside[]={0.99999994,0,-0};
@@ -135,7 +135,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="(SP/CO-8) Random Infantry Skirmish (Altis)";
+		briefingName="(SP/CO-8) Random Infantry Skirmish (Tanoa)";
 		overviewText="Random infantry skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;
@@ -155,7 +155,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=55;
+		items=62;
 		class Item0
 		{
 			dataType="Marker";
@@ -163,6 +163,7 @@ class Mission
 			name="RSTF_FACTION_CAM";
 			type="Empty";
 			id=0;
+			atlOffset=80.224571;
 		};
 		class Item1
 		{
@@ -176,8 +177,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14090.172,16.810787,16447.982};
-						angles[]={0.0077281403,0,0.001381068};
+						position[]={5397.6563,9.6776886,14662.03};
+						angles[]={0.35026896,0,0.039979152};
 					};
 					side="West";
 					flags=6;
@@ -191,6 +192,7 @@ class Mission
 					};
 					id=2;
 					type="B_Soldier_unarmed_F";
+					atlOffset=9.5367432e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -239,6 +241,7 @@ class Mission
 			{
 			};
 			id=1;
+			atlOffset=9.5367432e-007;
 		};
 		class Item2
 		{
@@ -252,8 +255,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14088.729,16.819086,16446.58};
-						angles[]={0.0071558496,0,0.0013788101};
+						position[]={5396.2129,10.170541,14660.628};
+						angles[]={0.36663762,0,6.251195};
 					};
 					side="West";
 					flags=6;
@@ -327,8 +330,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14091.606,16.821819,16446.752};
-						angles[]={0.0071596238,0,0.001381068};
+						position[]={5399.0908,10.184587,14660.8};
+						angles[]={0.35026896,0,0.039979152};
 					};
 					side="West";
 					flags=6;
@@ -341,6 +344,7 @@ class Mission
 					};
 					id=25;
 					type="B_Soldier_unarmed_F";
+					atlOffset=9.5367432e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -389,6 +393,7 @@ class Mission
 			{
 			};
 			id=24;
+			atlOffset=9.5367432e-007;
 		};
 		class Item4
 		{
@@ -402,8 +407,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14087.487,16.82905,16444.885};
-						angles[]={0.0045281379,0,0.0039967569};
+						position[]={5394.9717,10.876632,14658.933};
+						angles[]={0.37820539,0,6.2378831};
 					};
 					side="West";
 					flags=6;
@@ -477,8 +482,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14093.141,16.845703,16444.75};
-						angles[]={0.0071596238,0,0.012974046};
+						position[]={5400.625,10.997008,14658.798};
+						angles[]={0.29023305,0,0.071875811};
 					};
 					side="West";
 					flags=6;
@@ -552,8 +557,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14088.74,16.841209,16443.307};
-						angles[]={0.0045204028,0,0.0039968039};
+						position[]={5396.2246,11.369874,14657.354};
+						angles[]={0.33131957,0,6.2378845};
 					};
 					side="West";
 					flags=6;
@@ -566,6 +571,7 @@ class Mission
 					};
 					id=44;
 					type="B_Soldier_unarmed_F";
+					atlOffset=9.5367432e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -614,6 +620,7 @@ class Mission
 			{
 			};
 			id=43;
+			atlOffset=9.5367432e-007;
 		};
 		class Item7
 		{
@@ -627,8 +634,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14091.398,16.846361,16443.283};
-						angles[]={0.0071558496,0,0.0013788101};
+						position[]={5398.8828,11.424945,14657.331};
+						angles[]={0.326543,0,0.021331646};
 					};
 					side="West";
 					flags=6;
@@ -702,8 +709,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14090.202,16.853712,16441.84};
-						angles[]={0.0045204028,0,0.0039968039};
+						position[]={5397.6865,11.896258,14655.888};
+						angles[]={0.33131957,0,0.016002094};
 					};
 					side="West";
 					flags=6;
@@ -768,596 +775,678 @@ class Mission
 		class Item9
 		{
 			dataType="Marker";
-			position[]={16642.061,1.957,16111.044};
-			name="RSTF_POSITION_9";
-			text="Anthrakia";
+			position[]={8887.7754,-1.9489746,10188.468};
+			name="RSTF_POSITION_0";
+			text="Tanouka";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=150;
-			b=150;
+			a=100;
+			b=100;
 			id=9;
-			atlOffset=-15.018575;
+			atlOffset=-21.150429;
 		};
 		class Item10
 		{
 			dataType="Marker";
-			position[]={16354.396,-3.1440001,17256.316};
-			name="RSTF_POSITION_10";
-			text="Telos";
+			position[]={9265.1123,-14.46875,8662.3896};
+			name="RSTF_POSITION_1";
+			text="Lakatoro";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
+			a=100;
+			b=100;
 			id=10;
-			atlOffset=-27.827602;
+			atlOffset=-220.64853;
 		};
 		class Item11
 		{
 			dataType="Marker";
-			position[]={14471.724,-1.252,17646.607};
-			name="RSTF_POSITION_11";
-			text="Gravia";
+			position[]={8316.9502,0,11132.2};
+			name="RSTF_POSITION_2";
+			text="Buawa";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=140;
-			b=140;
+			a=100;
+			b=100;
 			id=11;
-			atlOffset=-21.533932;
+			atlOffset=-130.29666;
 		};
 		class Item12
 		{
 			dataType="Marker";
-			position[]={18127.775,23.905117,15226.135};
-			name="RSTF_POSITION_12";
-			text="Charkia";
+			position[]={10487.6,0,10613.7};
+			name="RSTF_POSITION_3";
+			text="Imone";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
+			a=100;
+			b=100;
 			id=12;
+			atlOffset=-163.04564;
 		};
 		class Item13
 		{
 			dataType="Marker";
-			position[]={12950.1,0,15041.6};
-			name="RSTF_POSITION_13";
-			text="Stavros";
+			position[]={11014.993,0,9782.0762};
+			name="RSTF_POSITION_4";
+			text="Vagalala";
 			markerType="ELLIPSE";
 			type="ellipse";
 			a=100;
 			b=100;
 			id=13;
-			atlOffset=-28.184643;
+			atlOffset=-112.81286;
 		};
 		class Item14
 		{
 			dataType="Marker";
-			position[]={18807.402,-1.096,16615.367};
-			name="RSTF_POSITION_15";
-			text="Rodopoli";
+			position[]={8114.0698,0,11957.2};
+			name="RSTF_POSITION_5";
+			text="Galili";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=150;
-			b=150;
-			id=15;
-			atlOffset=-32.649776;
+			a=100;
+			b=100;
+			id=14;
+			atlOffset=-216.28024;
 		};
 		class Item15
 		{
 			dataType="Marker";
-			position[]={14025.587,0,18690.719};
-			name="RSTF_POSITION_16";
-			text="Athira";
+			position[]={7884.7964,-0.55371094,7726.5464};
+			name="RSTF_POSITION_6";
+			text="Lami";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=16;
-			atlOffset=-27.1362;
+			a=100;
+			b=100;
+			id=15;
+			atlOffset=-6.7920876;
 		};
 		class Item16
 		{
 			dataType="Marker";
-			position[]={16840.955,-5.1880002,12656.117};
-			name="RSTF_POSITION_17";
-			text="Pyrgos";
+			position[]={7324.687,0,7991.4351};
+			name="RSTF_POSITION_7";
+			text="Lifou";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=250;
-			b=250;
-			id=17;
-			atlOffset=-29.188;
+			a=100;
+			b=100;
+			id=16;
+			atlOffset=-2.6829958;
 		};
 		class Item17
 		{
 			dataType="Marker";
-			position[]={12385.241,0,15667.973};
-			name="RSTF_POSITION_18";
-			text="Lakka";
+			position[]={11365.376,12.270508,12312.951};
+			name="RSTF_POSITION_8";
+			text="Nasua";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=18;
-			atlOffset=-23.419888;
+			a=100;
+			b=100;
+			id=17;
+			atlOffset=-102.90381;
 		};
 		class Item18
 		{
 			dataType="Marker";
-			position[]={12505.177,0,14333.03};
-			name="RSTF_POSITION_19";
-			text="Neochori";
+			position[]={6044.9897,2.0048828,8573.5537};
+			name="RSTF_POSITION_9";
+			text="Lobaka";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=19;
-			atlOffset=-11.602568;
+			a=100;
+			b=100;
+			id=18;
+			atlOffset=-27.545143;
 		};
 		class Item19
 		{
 			dataType="Marker";
-			position[]={19408.434,1.184,13248.665};
-			name="RSTF_POSITION_22";
-			text="Dorida";
+			position[]={10360.364,2.010498,13286.938};
+			name="RSTF_POSITION_10";
+			text="Momea";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=22;
-			atlOffset=-37.832207;
+			a=100;
+			b=100;
+			id=19;
+			atlOffset=-13.543145;
 		};
 		class Item20
 		{
 			dataType="Marker";
-			position[]={11732.071,0,13687.982};
-			name="RSTF_POSITION_23";
-			text="Katalaki";
+			position[]={5784.3384,0,11197.125};
+			name="RSTF_POSITION_11";
+			text="Saint-Julien";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=120;
-			b=120;
-			id=23;
-			atlOffset=-12.659391;
+			a=100;
+			b=100;
+			id=20;
+			atlOffset=-2.8542907;
 		};
 		class Item21
 		{
 			dataType="Marker";
-			position[]={11112.6,0,14573.7};
-			name="RSTF_POSITION_25";
-			text="Alikampos";
+			position[]={10966.2,0,13183.5};
+			name="RSTF_POSITION_12";
+			text="Pénélo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=21;
+			atlOffset=-16.96311;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={9508.999,6.357842,13454.391};
+			name="RSTF_POSITION_13";
+			text="La Rochelle";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=22;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={5851.7368,7.948,10500.715};
+			name="RSTF_POSITION_14";
+			text="Georgetown (North)";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=23;
+			atlOffset=-9.2983246e-005;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={7895.2686,0,13515.032};
+			name="RSTF_POSITION_15";
+			text="Saint-Paul";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=24;
+			atlOffset=-3.3872805;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={8428.9932,11.149878,13654.062};
+			name="RSTF_POSITION_16";
+			text="Savu";
 			markerType="ELLIPSE";
 			type="ellipse";
 			a=100;
 			b=100;
 			id=25;
-			atlOffset=-42.542191;
 		};
-		class Item22
+		class Item26
 		{
 			dataType="Marker";
-			position[]={12820.243,-1.1018066,19667.668};
-			name="RSTF_POSITION_27";
-			text="Ifestiona";
+			position[]={5728.1289,-0.52978516,12291.245};
+			name="RSTF_POSITION_17";
+			text="Oua-Oué";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=26;
+			atlOffset=-26.219584;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={10876.709,-1.8554688,6312.957};
+			name="RSTF_POSITION_18";
+			text="Kotomo";
 			markerType="ELLIPSE";
 			type="ellipse";
 			a=100;
 			b=100;
 			id=27;
-			atlOffset=-46.250584;
+			atlOffset=-6.551055;
 		};
-		class Item23
+		class Item28
 		{
 			dataType="Marker";
-			position[]={14604.379,0,20782.953};
-			name="RSTF_POSITION_28";
-			text="Frini";
+			position[]={6378.5874,1.4858326,12788.827};
+			name="RSTF_POSITION_19";
+			text="Nicolet";
 			markerType="ELLIPSE";
 			type="ellipse";
 			a=100;
 			b=100;
 			id=28;
-			atlOffset=-46.701878;
 		};
-		class Item24
+		class Item29
 		{
 			dataType="Marker";
-			position[]={10986.223,-1.235,13422.622};
-			name="RSTF_POSITION_29";
-			text="Poliakko";
+			position[]={6889.9888,9.6733475,13313.32};
+			name="RSTF_POSITION_20";
+			text="Petit Nicolet";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=150;
-			b=150;
+			a=100;
+			b=100;
 			id=29;
-			atlOffset=-28.205177;
 		};
-		class Item25
+		class Item30
 		{
 			dataType="Marker";
-			position[]={20940.039,-5.0960002,16944.004};
-			name="RSTF_POSITION_30";
-			text="Paros";
+			position[]={12423.253,2.0693359,12702.42};
+			name="RSTF_POSITION_21";
+			text="Ovau";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
+			a=100;
+			b=100;
 			id=30;
-			atlOffset=-49.524342;
+			atlOffset=-2.5637231;
 		};
-		class Item26
+		class Item31
 		{
 			dataType="Marker";
-			position[]={10449.8,1.0515137,17247.576};
-			name="RSTF_POSITION_31";
-			text="Orino";
+			position[]={5080.5132,2.6793067,8666.5098};
+			name="RSTF_POSITION_22";
+			text="Regina";
 			markerType="ELLIPSE";
 			type="ellipse";
 			a=100;
 			b=100;
 			id=31;
-			atlOffset=-83.600548;
-		};
-		class Item27
-		{
-			dataType="Marker";
-			position[]={21391.305,0,16365.077};
-			name="RSTF_POSITION_32";
-			text="Kalochori";
-			markerType="ELLIPSE";
-			type="ellipse";
-			a=200;
-			b=200;
-			id=32;
-			atlOffset=-19.929001;
-		};
-		class Item28
-		{
-			dataType="Marker";
-			position[]={10639.643,0,12239.374};
-			name="RSTF_POSITION_35";
-			text="Therisa";
-			markerType="ELLIPSE";
-			type="ellipse";
-			a=150;
-			b=150;
-			id=35;
-			atlOffset=-16.322863;
-		};
-		class Item29
-		{
-			dataType="Marker";
-			position[]={10333.463,5.2059999,19058.164};
-			name="RSTF_POSITION_36";
-			text="Galati";
-			markerType="ELLIPSE";
-			type="ellipse";
-			a=150;
-			b=150;
-			id=36;
-			atlOffset=-121.16745;
-		};
-		class Item30
-		{
-			dataType="Marker";
-			position[]={9312.2451,-2.5769999,15890.555};
-			name="RSTF_POSITION_37";
-			text="Agios Dionysios";
-			markerType="ELLIPSE";
-			type="ellipse";
-			a=200;
-			b=200;
-			id=37;
-			atlOffset=-121.80016;
-		};
-		class Item31
-		{
-			dataType="Marker";
-			position[]={8645.2773,1.425,18266.229};
-			name="RSTF_POSITION_38";
-			text="Syrta";
-			markerType="ELLIPSE";
-			type="ellipse";
-			a=140;
-			b=140;
-			id=38;
-			atlOffset=-180.47054;
 		};
 		class Item32
 		{
 			dataType="Marker";
-			position[]={9032.5732,24.089365,12002.119};
-			name="RSTF_POSITION_39";
-			text="Zaros";
+			position[]={12796.576,8.2326126,7419.3867};
+			name="RSTF_POSITION_23";
+			text="Ouméré";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=250;
-			b=250;
-			id=39;
+			a=100;
+			b=100;
+			id=32;
 		};
 		class Item33
 		{
 			dataType="Marker";
-			position[]={9439.1641,1.586,20257.137};
-			name="RSTF_POSITION_40";
-			text="Abdera";
+			position[]={13294.954,0,12031.992};
+			name="RSTF_POSITION_24";
+			text="Blue Pearl industrial port";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=140;
-			b=140;
-			id=40;
-			atlOffset=-123.94946;
+			a=100;
+			b=100;
+			id=33;
+			atlOffset=-2.45;
 		};
 		class Item34
 		{
 			dataType="Marker";
-			position[]={7389.2417,0.97314453,15399.95};
-			name="RSTF_POSITION_41";
-			text="Topolia";
+			position[]={11261.6,1.9400001,5242.8208};
+			name="RSTF_POSITION_26";
+			text="Harcourt";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=35;
+		};
+		class Item35
+		{
+			dataType="Marker";
+			position[]={13963.974,2.128418,8353.6025};
+			name="RSTF_POSITION_29";
+			text="Luganville";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=38;
+			atlOffset=-3.235342;
+		};
+		class Item36
+		{
+			dataType="Marker";
+			position[]={8978.4375,9.5607157,4691.4199};
+			name="RSTF_POSITION_30";
+			text="La Foa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=39;
+		};
+		class Item37
+		{
+			dataType="Marker";
+			position[]={14264.528,5.6477051,11613.157};
+			name="RSTF_POSITION_31";
+			text="Ba";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=40;
+			atlOffset=-1.3704324;
+		};
+		class Item38
+		{
+			dataType="Marker";
+			position[]={14394.084,4.8276367,8870.0225};
+			name="RSTF_POSITION_32";
+			text="Nandai";
 			markerType="ELLIPSE";
 			type="ellipse";
 			a=100;
 			b=100;
 			id=41;
-			atlOffset=-54.695137;
+			atlOffset=-3.531477;
 		};
-		class Item35
+		class Item39
 		{
 			dataType="Marker";
-			position[]={20528.939,0,8884.5801};
-			name="RSTF_POSITION_42";
-			text="Panagia";
-			markerType="ELLIPSE";
-			type="ellipse";
-			a=200;
-			b=200;
-			id=42;
-			atlOffset=-34.964359;
-		};
-		class Item36
-		{
-			dataType="Marker";
-			position[]={23199.699,0,19986.6};
-			name="RSTF_POSITION_43";
-			text="Ioannina";
+			position[]={9379.9951,-3.4589844,4002.9888};
+			name="RSTF_POSITION_33";
+			text="Moddergat";
 			markerType="ELLIPSE";
 			type="ellipse";
 			a=100;
 			b=100;
-			id=43;
-			atlOffset=-14.254004;
+			id=42;
+			atlOffset=-8.7131767;
 		};
-		class Item37
+		class Item40
 		{
 			dataType="Marker";
-			position[]={7148.6299,3.4649999,16459.607};
-			name="RSTF_POSITION_44";
-			text="Kore";
+			position[]={3030.6018,-0.97021484,11216.894};
+			name="RSTF_POSITION_35";
+			text="Belfort";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=120;
-			b=120;
+			a=100;
+			b=100;
 			id=44;
-			atlOffset=-115.59636;
+			atlOffset=-10.519364;
 		};
-		class Item38
+		class Item41
 		{
 			dataType="Marker";
-			position[]={23908.6,0,20144.699};
-			name="RSTF_POSITION_45";
-			text="Delfinaki";
+			position[]={12381.445,4.612793,4544.1992};
+			name="RSTF_POSITION_36";
+			text="Saioko";
 			markerType="ELLIPSE";
 			type="ellipse";
 			a=100;
 			b=100;
 			id=45;
-			atlOffset=-14.068125;
-		};
-		class Item39
-		{
-			dataType="Marker";
-			position[]={21694.207,0,7556.6729};
-			name="RSTF_POSITION_46";
-			text="Feres";
-			markerType="ELLIPSE";
-			type="ellipse";
-			a=200;
-			b=200;
-			id=46;
-			atlOffset=-15.472921;
-		};
-		class Item40
-		{
-			dataType="Marker";
-			position[]={20810.096,-0.74000001,6712.2852};
-			name="RSTF_POSITION_47";
-			text="Selakano";
-			markerType="ELLIPSE";
-			type="ellipse";
-			a=200;
-			b=200;
-			id=47;
-			atlOffset=-38.521858;
-		};
-		class Item41
-		{
-			dataType="Marker";
-			position[]={14343.988,9.8470001,18934.51};
-			name="RSTF_POSITION_48";
-			text="Athira factory";
-			markerType="ELLIPSE";
-			type="ellipse";
-			a=150;
-			b=150;
-			id=79;
-			atlOffset=-27.049599;
+			atlOffset=-32.735119;
 		};
 		class Item42
 		{
 			dataType="Marker";
-			position[]={18325.844,48.226002,15533};
-			name="RSTF_POSITION_26";
-			text="Charkia storage";
+			position[]={12751.404,5.3090353,4770.7051};
+			name="RSTF_POSITION_38";
+			text="Doodstil";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=150;
-			b=150;
-			id=80;
-			atlOffset=0.00035095215;
+			a=100;
+			b=100;
+			id=47;
 		};
 		class Item43
 		{
 			dataType="Marker";
-			position[]={20239.959,50.158203,11672.09};
-			name="RSTF_POSITION_14";
-			text="Charkia";
+			position[]={2686.79,0,9280.7695};
+			name="RSTF_POSITION_39";
+			text="Sosovu";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=81;
-			atlOffset=-3.3001709;
+			a=100;
+			b=100;
+			id=48;
+			atlOffset=-4.7136726;
 		};
 		class Item44
 		{
 			dataType="Marker";
-			position[]={11393.592,-21.280001,14206.922};
-			name="RSTF_POSITION_33";
-			text="Alikampos construction";
+			position[]={3421.9966,8.3512354,6696.8691};
+			name="RSTF_POSITION_40";
+			text="Rautake";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=150;
-			b=150;
-			id=82;
-			atlOffset=-42.211617;
+			a=100;
+			b=100;
+			id=49;
 		};
 		class Item45
 		{
 			dataType="Marker";
-			position[]={6195.4429,43,16242.882};
-			name="RSTF_POSITION_49";
-			text="Kore factory";
+			position[]={5493.1079,0.57861328,4067.5999};
+			name="RSTF_POSITION_41";
+			text="Katkoula";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=120;
-			b=120;
-			id=83;
+			a=100;
+			b=100;
+			id=50;
+			atlOffset=-2.8518531;
 		};
 		class Item46
 		{
 			dataType="Marker";
-			position[]={4901.1719,-37.973999,16163.1};
-			name="RSTF_POSITION_50";
-			text="Negades";
+			position[]={2583.7502,11.157959,7331.3125};
+			name="RSTF_POSITION_42";
+			text="Balavu";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=120;
-			b=120;
-			id=84;
-			atlOffset=-115.61202;
+			a=100;
+			b=100;
+			id=51;
 		};
 		class Item47
 		{
 			dataType="Marker";
-			position[]={4590.376,183.17163,21409.783};
-			name="RSTF_POSITION_51";
-			text="Oreokastro";
+			position[]={2327.0247,1.8557129,8189.2705};
+			name="RSTF_POSITION_43";
+			text="Leqa";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=120;
-			b=120;
-			id=85;
-			atlOffset=-116.24564;
+			a=100;
+			b=100;
+			id=52;
+			atlOffset=-2.804287;
 		};
 		class Item48
 		{
 			dataType="Marker";
-			position[]={4853.957,228.14999,21925.555};
-			name="RSTF_POSITION_52";
-			text="Oreocastro castle";
+			position[]={10395.441,4.4376416,2700.9033};
+			name="RSTF_POSITION_45";
+			text="Blerick";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=120;
-			b=120;
-			id=86;
-			atlOffset=-115.27853;
+			a=100;
+			b=100;
+			id=54;
 		};
 		class Item49
 		{
 			dataType="Marker";
-			position[]={3814.958,16.337996,13704.593};
-			name="RSTF_POSITION_53";
-			text="Aggelochori";
+			position[]={12670.76,0,3284.3911};
+			name="RSTF_POSITION_46";
+			text="Port-Boisé";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=87;
+			a=100;
+			b=100;
+			id=55;
+			atlOffset=-8.4729223;
 		};
 		class Item50
 		{
 			dataType="Marker";
-			position[]={3561.3501,7.9219999,13048.225};
-			name="RSTF_POSITION_54";
-			text="Kavala";
+			position[]={1603.6793,1.8344727,8493.7266};
+			name="RSTF_POSITION_48";
+			text="Muaceba";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=88;
-			atlOffset=-0.00042629242;
+			a=100;
+			b=100;
+			id=57;
+			atlOffset=-2.2288952;
 		};
 		class Item51
 		{
 			dataType="Marker";
-			position[]={5085.9648,48.116001,11230.063};
-			name="RSTF_POSITION_55";
-			text="Panochori";
+			position[]={11605.544,0,2853.6348};
+			name="RSTF_POSITION_49";
+			text="Lijnhaven";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=89;
-			atlOffset=0.051773071;
+			a=100;
+			b=100;
+			id=58;
+			atlOffset=-9.6536303;
 		};
 		class Item52
 		{
 			dataType="Marker";
-			position[]={4166.3901,53.694,11755.421};
-			name="RSTF_POSITION_56";
-			text="Neri";
+			position[]={1856.3539,0,11976.76};
+			name="RSTF_POSITION_50";
+			text="Tuvanaka";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=150;
-			b=150;
-			id=91;
-			atlOffset=0.28164291;
+			a=100;
+			b=100;
+			id=59;
+			atlOffset=-7.4548039;
 		};
 		class Item53
 		{
 			dataType="Marker";
-			position[]={25706.172,19.610001,21336.049};
-			name="RSTF_POSITION_57";
-			text="Sofia";
+			position[]={13311.775,-13.004639,2963.6328};
+			name="RSTF_POSITION_51";
+			text="Bua Bua";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=92;
-			atlOffset=-0.74358368;
+			a=100;
+			b=100;
+			id=60;
+			atlOffset=-55.334984;
 		};
 		class Item54
 		{
 			dataType="Marker";
-			position[]={26986.244,19.872,23226.434};
-			name="RSTF_POSITION_58";
-			text="Molos";
+			position[]={983.60815,0,7654.8794};
+			name="RSTF_POSITION_53";
+			text="Tavu";
 			markerType="ELLIPSE";
 			type="ellipse";
-			a=200;
-			b=200;
-			id=93;
-			atlOffset=-0.011398315;
+			a=100;
+			b=100;
+			id=62;
+			atlOffset=-5.0945458;
+		};
+		class Item55
+		{
+			dataType="Marker";
+			position[]={12305.193,-9.173584,1852.9978};
+			name="RSTF_POSITION_54";
+			text="Taga";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=63;
+			atlOffset=-118.65963;
+		};
+		class Item56
+		{
+			dataType="Marker";
+			position[]={12954.71,3.6319098,2143.6726};
+			name="RSTF_POSITION_55";
+			text="Rereki";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=64;
+		};
+		class Item57
+		{
+			dataType="Marker";
+			position[]={2131.95,0,4589.6299};
+			name="RSTF_POSITION_56";
+			text="Cerebu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=65;
+			atlOffset=-6.6104541;
+		};
+		class Item58
+		{
+			dataType="Marker";
+			position[]={2919.5398,2.0297852,3428.7095};
+			name="RSTF_POSITION_57";
+			text="Yanukka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=66;
+			atlOffset=-16.692003;
+		};
+		class Item59
+		{
+			dataType="Marker";
+			position[]={3630.6177,-1.1096191,2189.3594};
+			name="RSTF_POSITION_58";
+			text="Lailai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=67;
+			atlOffset=-38.617363;
+		};
+		class Item60
+		{
+			dataType="Marker";
+			position[]={5638.5142,4.0279999,10014.302};
+			name="RSTF_POSITION_25";
+			text="Georgetown (South)";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=79;
+			atlOffset=0.00029802322;
+		};
+		class Item61
+		{
+			dataType="Marker";
+			position[]={12462.223,58.959,14244.879};
+			name="RSTF_POSITION_27";
+			text="Ravi-ta Hotel";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=80;
+			atlOffset=-0.00035476685;
 		};
 	};
 };
