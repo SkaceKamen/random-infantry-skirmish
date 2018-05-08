@@ -21,11 +21,12 @@ _display displayAddEventHandler ["KeyDown", {
 	private _code = param [1];
 
 	private _keys = [];
+	private _action = RSTF_POSSIBLE_KEYS select RSTF_BUY_MENU_ACTION;
 	
-	if (RSTF_BUY_MENU_ACTION == "win") then {
+	if (_action == "win") then {
 		_keys = [DIK_LWIN, DIK_RWIN];
 	} else {
-		_keys = actionKeys RSTF_BUY_MENU_ACTION;
+		_keys = actionKeys _action;
 	};
 
 	if (!dialog && { _code in _Keys }) exitWith {
