@@ -60,6 +60,8 @@ if (RSTF_HINT_SUPPORT_MENU && RSTF_MONEY_VEHICLES_ENABLED) then {
 	RSTF_HINT_SUPPORT_MENU = false;
 	call RSTF_fnc_profileSave;
 
+	_keyName = RSTF_POSSIBLE_KEYS_NAMES select RSTF_BUY_MENU_ACTION;
+
 	// Display the hint
-	hint(parseText("Press <t color='#999999'>WIN</t> key to open <t color='#999999'>vehicle shop</t>."));
+	hint(parseText(format["Press <t color='#999999'>%1</t> key to open <t color='#999999'>vehicle shop</t>.", _keyName]));
 };
