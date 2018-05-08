@@ -20,7 +20,15 @@ _display displayAddEventHandler ["KeyDown", {
 	private _ctrl = param [0];
 	private _code = param [1];
 
-	if (_code in RSTF_KEYS_DISPLAY_SUPPORT) exitWith {
+	private _keys = [];
+	
+	if (RSTF_BUY_MENU_ACTION === "win") then {
+		_keys = [DIK_LWIN, DIK_RWIN];
+	} else {
+		_keys = actionKeys RSTF_BUY_MENU_ACTION;
+	};
+
+	if (!dialog && { _code in _Keys }) exitWith {
 		// Make sure there isn't any other dialog displayed
 		closeDialog 0;
 

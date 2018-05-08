@@ -3,6 +3,7 @@ call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init\map.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init\modes.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init-game.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "variables.sqf"));
+call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "options-menu.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "options.sqf"));
 
 RSTF_initScripts = [
