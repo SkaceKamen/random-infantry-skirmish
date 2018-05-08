@@ -46,6 +46,7 @@ _display displayAddEventHandler ["unload", {
 
 _ctrl = [_dialogName, "spawn"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
+	RSTF_CAM camCommit 0;
 	closeDialog 0;
 }];
 

@@ -189,7 +189,10 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_SCORE_PER_TEAMKILL",
 	"RSTF_SPAWN_TRANSPORTS",
 	"RSTF_HINT_SUPPORT_MENU",
-	"RSTF_UI_SHOW_VEHICLE_MARKERS"
+	"RSTF_UI_SHOW_VEHICLE_MARKERS",
+	"RSTF_CLEAN",
+	"RSTF_CLEAN_INTERVAL",
+	"RSTF_CLEAN_INTERVAL_VEHICLES"
 ];
 
 // List of spawns, indexed by side
@@ -313,6 +316,8 @@ RSTF_CONFIG_VALUES = [
 	]],
 	["Other", [
 		["RSTF_CLEAN", "Clear dead bodies", "Dead bodies will be destroyed after 3 minutes. This helps performance.", "checkbox"],
+		["RSTF_CLEAN_INTERVAL", "Infantry clean interval", "After how much time should be dead bodies removed. In seconds.", "number"],
+		["RSTF_CLEAN_INTERVAL_VEHICLES", "Vehicles clean interval", "After how much time should be empty/destroyed vehicles removed. In seconds.", "number"],
 		["RSTF_WEATHER", "Weather", "Mission weather.", "select", RSTF_WEATHER_TYPES],
 		["RSTF_TIME", "Daytime", "Mission daytime.", "select", RSTF_TIME_TYPES]
 	]]

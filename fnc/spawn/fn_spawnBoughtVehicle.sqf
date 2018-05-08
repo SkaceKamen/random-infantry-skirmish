@@ -50,7 +50,9 @@ private _radius = 100;
 private _vehicle = createVehicle [_vehicleClass, _position, [], _radius, "FLY"];
 
 // Add to GC with 30 seconds to despawn
-[_vehicle, 30, true] call RSTFGC_fnc_attach;
+if (RSTF_CLEAN) then {
+	[_vehicle, RSTF_CLEAN_INTERVAL_VEHICLES, true] call RSTFGC_fnc_attach;
+};
 
 if (_plane) then {
 	_vehicle setPos _position;
@@ -74,7 +76,7 @@ if (!isNull(_unit)) then {
 {
 	_x setVariable ["SPAWNED_SIDE", side(_group), true];
 	_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
-	[_x] call RSTFGC_fnc_attach;
+	[_x, RSTF_CLEAN_INTERVAL] call RSTFGC_fnc_attach;
 } foreach units(_group);
 
 if (!isNull(_unit)) then {

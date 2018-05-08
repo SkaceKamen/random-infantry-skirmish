@@ -11,7 +11,9 @@ if (isNull(_unit)) exitWith {
 };
 
 // Add to GC
-[_unit] call RSTFGC_fnc_attach;
+if (RSTF_CLEAN) then {
+	[_unit, RSTF_CLEAN_INTERVAL] call RSTFGC_fnc_attach;
+};
 
 if (count(RSTF_SPAWN_VEHICLES select _index) > 0) then {
 	_vehicles = RSTF_SPAWN_VEHICLES select _index;

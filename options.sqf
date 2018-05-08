@@ -133,3 +133,8 @@ RSTF_HINT_SUPPORT_MENU = true;
 
 // Show 3D vehicle markers
 RSTF_UI_SHOW_VEHICLE_MARKERS = true;
+
+// Garbage collector settings
+RSTF_CLEAN = true;
+RSTF_CLEAN_INTERVAL = 3*60;
+RSTF_CLEAN_INTERVAL_VEHICLES = 3*60;
