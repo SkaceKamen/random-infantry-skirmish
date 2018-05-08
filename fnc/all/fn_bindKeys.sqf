@@ -22,7 +22,7 @@ _display displayAddEventHandler ["KeyDown", {
 
 	private _keys = [];
 	
-	if (RSTF_BUY_MENU_ACTION === "win") then {
+	if (RSTF_BUY_MENU_ACTION == "win") then {
 		_keys = [DIK_LWIN, DIK_RWIN];
 	} else {
 		_keys = actionKeys RSTF_BUY_MENU_ACTION;
