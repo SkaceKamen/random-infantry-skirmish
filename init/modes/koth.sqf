@@ -6,6 +6,7 @@ RSTF_MODE_KOTH_COUNTS = [];
 
 RSTF_MODE_KOTH_init = {
 	RSTF_MODE_KOTH_ENABLED = true;
+	publicVariable "RSTF_MODE_KOTH_ENABLED";
 
 	// Reset score
 	RSTF_SCORE = [0, 0, 0];
