@@ -22,7 +22,6 @@ class RSTF
 		class profileSave {};
 
 		class randomPoint {};
-		class randomWeather2 {};
 		class superRandomTime {};
 		class superRandomWeather {};
 
