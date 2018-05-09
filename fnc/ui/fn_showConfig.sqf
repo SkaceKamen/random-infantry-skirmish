@@ -78,7 +78,7 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 
 	// Broadcast settings
 	{
-		publicVariable ("RSTF_" + _x);
+		publicVariable _x;
 	} foreach RSTF_PROFILE_VALUES;
 
 	// Save config to profile namespace

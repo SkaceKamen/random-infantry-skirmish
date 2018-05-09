@@ -32,7 +32,7 @@ if (alive(_unit)) then {
 	selectPlayer _unit;
 
 	// Remove respawned unit in multiplayer
-	if (isMultiplayer) then {
+	if (isMultiplayer && _previous != RSTF_BACKUP_PLAYER) then {
 		deleteVehicle _previous;
 	};
 
