@@ -9,7 +9,6 @@ class RSTF
 		class assignPlayer {};
 		class equipSoldier {};
 		class getRandomSoldier {};
-		class getRandomVehicle {};
 
 		class loadClasses {};
 		class loadSoldiers {};

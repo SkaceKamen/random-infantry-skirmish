@@ -1,1 +1,0 @@
-selectRandom((RSTF_VEHICLES select (_this select 0)) select (_this select 1));
