@@ -15,13 +15,10 @@ class RSTF
 		class loadVehicles {};
 		class loadWeapons {};
 
-		class mapsShow {};
-
 		class profileLoad {};
 		class profileReset {};
 		class profileSave {};
 
-		class randomPoint {};
 		class superRandomTime {};
 		class superRandomWeather {};
 
@@ -89,8 +86,6 @@ class RSTF
 		class isUsableWeapon {};
 		class pathString {};
 		class pickRandomPoints {};
-		class randomPosition {};
-		class randomLocation {};
 		class sideIndex {};
 		class weaponHasAttachment {};
 		class arrayShuffle {};

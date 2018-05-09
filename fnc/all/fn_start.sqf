@@ -10,7 +10,7 @@ call RSTF_fnc_loadClasses;
 publicVariable "RSTF_BUYABLE_VEHICLES";
 
 if (count(RSTF_POINT) == 0) then {
-	call RSTF_fnc_randomPoint;
+	((1 call RSTF_fnc_pickRandomPoints) select 0) call RSTF_fnc_assignPoint;
 };
 
 // Create helper marker
