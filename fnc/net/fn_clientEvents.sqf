@@ -35,8 +35,10 @@ if (RSTF_SHOW_CONFIG != -1) then {
 
 // List of possible battles
 "RSTF_POINTS" addPublicVariableEventHandler {
-	closeDialog 0;
-	0 spawn RSTF_fnc_showBattleSelection;
+	0 spawn {
+		closeDialog 0;
+		0 spawn RSTF_fnc_showBattleSelection;
+	};
 };
 
 // Current vote count
