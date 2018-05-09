@@ -6,6 +6,9 @@ if (!isDedicated) then {
 call RSTF_fnc_loadWeapons;
 call RSTF_fnc_loadClasses;
 
+// Send list of available vehicles to other players
+publicVariable "RSTF_BUYABLE_VEHICLES";
+
 if (count(RSTF_POINT) == 0) then {
 	call RSTF_fnc_randomPoint;
 };
