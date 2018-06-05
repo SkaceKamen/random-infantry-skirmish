@@ -36,6 +36,24 @@ if (_plane) then {
 };
 
 // Spawn vehicle
+private _radius = 0;
+private _position = [];
+private _direction = (RSTF_SPAWNS select _side) getDir RSTF_POINT;
+while { true } do {
+	private _center = (RSTF_SPAWNS select _side) vectorAdd [
+		sin(_direction + 180) * _distance,
+		cos(_direction + 180) * _distance,
+		_height
+	];
+	_position = [_side, _center, _direction] call RSTF_fnc_randomSpawn;
+	_position = _position findEmptyPosition [0, 100, _vehicleClass];
+
+	if (count(_position) > 0 && { !(surfaceIsWater _position) }) exitWith {};
+
+	_distance = _distance - 100;
+};
+
+/*
 private _direction = (RSTF_SPAWNS select _side) getDir RSTF_POINT;
 private _position = (RSTF_SPAWNS select _side) vectorAdd [
 	sin(_direction + 180) * _distance,
@@ -43,6 +61,7 @@ private _position = (RSTF_SPAWNS select _side) vectorAdd [
 	_height
 ];
 private _radius = 100;
+*/
 
 // _position = _position findEmptyPosition [0, 100, _vehicleClass];
 // if (count(_position) == 0) then { _radius = 100; _position = (RSTF_SPAWNS select _side); };
