@@ -5,18 +5,23 @@ _unit setVariable ["USED", true, true];
 
 if (isNull(RSTF_CAM)) then {
 	call RSTF_fnc_createCam;
+	RSTF_CAM camSetPos getPos(_unit);
+	RSTF_CAM camCommit 0;
 };
 
-// In case camera is showing killer now, force it to end
-RSTF_CAM camCommit 0.1;
-waitUntil { camCommitted RSTF_CAM; };
+// This would wait for death cam to finish, but we don't want that
+// waitUntil { camCommitted RSTF_CAM; };
 
 // Move camera to new player
 RSTF_CAM camSetTarget _unit;
 RSTF_CAM camSetRelPos [0, -1, 0.5];
 RSTF_CAM camCommit 1;
 
-waitUntil { camCommitted RSTF_CAM; };
+// Sleep is more reliable and we don't want players stuck on camera animation
+sleep 1;
+// waitUntil { camCommitted RSTF_CAM; };
+
+"Camera at new unit." call RSTF_fnc_log;
 
 // Check if target unit is alive, it's possible it died before we got to it
 if (alive(_unit)) then {
@@ -59,9 +64,7 @@ if (alive(_unit)) then {
 	_unit setDamage 0;
 
 	// Hide camera
-	RSTF_CAM cameraEffect ["terminate","back"];
-	camDestroy RSTF_CAM;
-	RSTF_CAM = objNull;
+	call RSTF_fnc_destroyCam;
 
 	// Reassign main task if any
 	if (RSTF_TASK != "") then {

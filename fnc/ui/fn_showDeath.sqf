@@ -2,13 +2,14 @@ _side = _this select 0;
 _killer = _this select 1;
 _body = _this select 2;
 
+RSTF_DEATH_SHOWN = true;
 
 if (isNull(RSTF_CAM)) then {
 	RSTF_CAM = "camera" camCreate getPos(_body);
 };
 
 // Move camera above player body
-RSTF_CAM camSetPos getPos(_body);
+RSTF_CAM camSetPos (getPos(_body) vectorAdd [0, 0, 1]);
 RSTF_CAM camSetTarget _body;
 RSTF_CAM cameraEffect ["internal", "back"];
 RSTF_CAM camCommit 0;
@@ -16,19 +17,24 @@ RSTF_CAM camSetRelPos [3, 0, 3];
 RSTF_CAM camCommit 2;
 
 // Focus on killer too, if possible
-if (!isNUll(_killer)) then {
+if (!isNull(_killer)) then {
 	[_killer] spawn {
 		private _killer = param [0];
+		
 		waitUntil { camCommitted RSTF_CAM };
-		RSTF_CAM camSetTarget _killer;
-		RSTF_CAM camSetRelPos [0.5, 0, 3];
-		RSTF_CAM camCommit 5;
+
+		if (RSTF_DEATH_SHOWN) then {
+			RSTF_CAM camSetTarget _killer;
+			RSTF_CAM camSetRelPos [0.5, 0, 3];
+			RSTF_CAM camCommit 5;
+		};
 	};
 };
 
 _dialogName = "RSTF_RscDeathDialog";
 _ok = createDialog _dialogName;
 if (!_ok) exitWith {
+	RSTF_DEATH_SHOWN = false;
 	systemChat "Fatal error. Couldn't create death dialog.";
 	_side call RSTF_fnc_spawnPlayer;
 };
@@ -39,6 +45,7 @@ RSTF_DEATH_BODY = _body;
 
 _display = _dialogName call RSTF_fnc_getDisplay;
 _display displayAddEventHandler ["unload", {
+	RSTF_DEATH_SHOWN = false;
 	if (_this select 1 != 1) then {
 		RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer
 	};
@@ -46,6 +53,7 @@ _display displayAddEventHandler ["unload", {
 
 _ctrl = [_dialogName, "spawn"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
+	RSTF_DEATH_SHOWN = false;
 	RSTF_CAM camCommit 0;
 	closeDialog 0;
 }];
