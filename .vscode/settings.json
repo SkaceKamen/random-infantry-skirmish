@@ -1,3 +1,4 @@
 {
-	"debug.hideActionBar": true
+	"debug.hideActionBar": true,
+	"sqf.enableACE3": true
 }
