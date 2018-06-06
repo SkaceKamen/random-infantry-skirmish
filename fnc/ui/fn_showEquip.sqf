@@ -3,9 +3,14 @@
 private _ingame = param [0, false, [true]];
 private _params = param [1, []];
 
+private _playerIndex = 0;
+if (isMultiplayer) then {
+	_playerIndex = player find allPlayers;
+};
+
 RSTF_STANCE_RIFLE = "AidlPercMstpSrasWrflDnon_G01_player";
 
-RSTF_EQUIP_SPAWN = RSTF_CAM_SPAWN vectorAdd [0.5,0,0];
+RSTF_EQUIP_SPAWN = RSTF_CAM_SPAWN vectorAdd [0.5 + _playerIndex * 5, 0, 0];
 RSTF_EQUIP_WEAPON = (creategroup civilian) createUnit ["C_Soldier_VR_F", RSTF_EQUIP_SPAWN, [], 0, "NONE"];
 RSTF_EQUIP_WEAPON setBehaviour "COMBAT";
 RSTF_EQUIP_WEAPON setUnitPos "UP";
