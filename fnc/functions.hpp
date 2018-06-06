@@ -31,6 +31,7 @@ class RSTF
 		class playerKilled {};
 
 		class createCam {};
+		class destroyCam {};
 		class createPointMarkers {};
 		class spawnComposition {};
 

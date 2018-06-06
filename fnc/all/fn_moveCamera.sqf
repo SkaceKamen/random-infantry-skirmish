@@ -26,6 +26,4 @@ waitUntil { camCommitted RSTF_CAM; };
 
 // Destroy camera
 
-RSTF_CAM cameraEffect ["terminate","back"];
-camDestroy RSTF_CAM;
-RSTF_CAM = objNull;
+call RSTF_fnc_destroyCam;
