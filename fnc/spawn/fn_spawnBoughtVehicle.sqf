@@ -32,7 +32,7 @@ if (_air) then {
 
 if (_plane) then {
 	_distance = 3000;
-	_height = 1000;
+	_height = 500;
 };
 
 // Spawn vehicle
@@ -78,14 +78,15 @@ if (RSTF_CLEAN) then {
 	[_vehicle, RSTF_CLEAN_INTERVAL_VEHICLES, true] call RSTFGC_fnc_attach;
 };
 
-if (_plane) then {
-	_vehicle setPos _position;
-};
+// Spawn vehicle crew
+createVehicleCrew _vehicle;
 
 _vehicle setDir _direction;
 
-// Spawn vehicle crew
-createVehicleCrew _vehicle;
+if (_plane) then {
+	_vehicle setPos _position;
+	_vehicle setVelocity [100 * (sin _direction), 100 * (cos _direction), 0];
+};
 
 // Create group on correct side and assign crew to it
 private _group = createGroup (RSTF_SIDES_SIDES select _side);
