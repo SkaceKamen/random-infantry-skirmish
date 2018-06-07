@@ -46,7 +46,7 @@ for [{_i = 0}, {_i < count(_locations) && (_count == 0 || count(_results) < _cou
 	// Direction and distance between two spawns
 	_center = _locations select _i;
 	_direction = random(360);
-	_distance = 200 + random(50);
+	_distance = RSTF_SPAWN_DISTANCE_MIN + random(RSTF_SPAWN_DISTANCE_MAX - RSTF_SPAWN_DISTANCE_MIN);
 
 	// Save center position
 	_position = _center select 1;
@@ -60,8 +60,8 @@ for [{_i = 0}, {_i < count(_locations) && (_count == 0 || count(_results) < _cou
 		//Load spawn locations
 		//INDEX is side index
 		_spawns = [
-			[(_position select 0) + sin(_direction) * _distance,(_position select 1) + cos(_direction) * _distance, 0],
-			[(_position select 0) + sin(180 + _direction) * _distance,(_position select 1) + cos(180 + _direction) * _distance, 0],
+			_position vectorAdd [sin(_direction) * _distance, cos(_direction) * _distance, 0],
+			_position vectorAdd [sin(180 + _direction) * _distance, cos(180 + _direction) * _distance, 0],
 			[0,0,0] //For netural defenders
 		];
 

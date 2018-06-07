@@ -45,10 +45,15 @@ while { true } do {
 		cos(_direction + 180) * _distance,
 		_height
 	];
-	_position = [_side, _center, _direction] call RSTF_fnc_randomSpawn;
-	_position = _position findEmptyPosition [0, 100, _vehicleClass];
+	_position = [_side, _center, _direction, 300, 60, _air] call RSTF_fnc_randomSpawn;
+	
+	if (!_air) then {
+		_position = _position findEmptyPosition [0, 100, _vehicleClass];
+	} else {
+		_position set [2, _height];	
+	};
 
-	if (count(_position) > 0 && { !(surfaceIsWater _position) }) exitWith {};
+	if (count(_position) > 0 && { _air || !(surfaceIsWater _position) }) exitWith {};
 
 	_distance = _distance - 100;
 };

@@ -335,3 +335,6 @@ for [{_i = 1},{_i <= 20},{_i = _i + 1}] do {
 	RSTF_POSSIBLE_KEYS pushBack ("User" + str(_i));
 	RSTF_POSSIBLE_KEYS_NAMES pushBack ("User Action " + str(_i));
 };
+
+RSTF_SPAWN_DISTANCE_MIN = 200;
+RSTF_SPAWN_DISTANCE_MAX = 250;
