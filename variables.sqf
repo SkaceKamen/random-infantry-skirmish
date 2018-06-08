@@ -196,6 +196,11 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_BUY_MENU_ACTION"
 ];
 
+// Profile values that are specific to local player (don't broadcast them)
+RSTF_PRIVATE_PROFILE_VALUES = [
+	"RSTF_PLAYER_EQUIPMENT"
+];
+
 // List of spawns, indexed by side
 RSTF_SPAWNS = [];
 // List of vehicles that can be used for spawn, indexed by side

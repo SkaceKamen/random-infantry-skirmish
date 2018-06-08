@@ -78,7 +78,10 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 
 	// Broadcast settings
 	{
-		publicVariable _x;
+		// Skip values that should be player specific
+		if (!(_x in RSTF_PRIVATE_PROFILE_VALUES)) then {
+			publicVariable _x;
+		};
 	} foreach RSTF_PROFILE_VALUES;
 
 	// Save config to profile namespace
