@@ -11,12 +11,7 @@ if (isMultiplayer) then {
 RSTF_STANCE_RIFLE = "AidlPercMstpSrasWrflDnon_G01_player";
 
 RSTF_EQUIP_SPAWN = RSTF_CAM_SPAWN vectorAdd [0.5 + _playerIndex * 5, 0, 0];
-RSTF_EQUIP_WEAPON = (creategroup civilian) createUnit ["C_Soldier_VR_F", RSTF_EQUIP_SPAWN, [], 0, "NONE"];
-RSTF_EQUIP_WEAPON setBehaviour "COMBAT";
-RSTF_EQUIP_WEAPON setUnitPos "UP";
-RSTF_EQUIP_WEAPON setDir 270;
-// RSTF_EQUIP_WEAPON switchMove RSTF_STANCE_RIFLE;
-RSTF_EQUIP_WEAPON enableSimulation false;
+RSTF_EQUIP_WEAPON = [RSTF_EQUIP_SPAWN] call RSTF_fnc_createArsenalBackground;
 
 if (count(RSTF_PLAYER_EQUIPMENT) > 0) then {
 	_data = missionNamespace getvariable ["bis_fnc_saveInventory_data",[]];
@@ -32,6 +27,10 @@ if (count(RSTF_PLAYER_EQUIPMENT) > 0) then {
 };
 
 group(RSTF_EQUIP_WEAPON) setFormDir 270;
+
+// Close our camera
+_camPosition = getPos(RSTF_CAM);
+call RSTF_fnc_destroyCam;
 
 ["Open", [true, objNull, RSTF_EQUIP_WEAPON]] call BIS_fnc_arsenal;
 waitUntil { !isNull(uinamespace getvariable ["BIS_fnc_arsenal_cam", objnull]); };
@@ -51,6 +50,12 @@ if (_index >= 0) then {
 
 waitUntil { isNull(uinamespace getvariable ["BIS_fnc_arsenal_cam", objnull]); };
 
+// Restore our camera
+call RSTF_fnc_createCam;
+RSTF_CAM camSetPos _camPosition;
+RSTF_CAM camCommit 0;
+
+// Save player equipment
 RSTF_PLAYER_EQUIPMENT = [RSTF_EQUIP_WEAPON] call BIS_fnc_saveInventory;
 call RSTF_fnc_profileSave;
 
@@ -60,4 +65,5 @@ if (!_ingame) then {
 	_params spawn RSTF_fnc_showDeath;
 };
 
+call RSTF_fnc_destroyArsenalBackground;
 deleteVehicle RSTF_EQUIP_WEAPON;

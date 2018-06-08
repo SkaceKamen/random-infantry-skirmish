@@ -116,6 +116,9 @@ class RSTF
 		class updateBattles {};
 		class updateVoteTimeout {};
 		class spawnDialog {};
+
+		class createArsenalBackground {};
+		class destroyArsenalBackground {};
 	};
 
 	class net
