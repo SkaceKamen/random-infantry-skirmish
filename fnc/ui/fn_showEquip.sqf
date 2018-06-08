@@ -10,7 +10,7 @@ if (isMultiplayer) then {
 
 RSTF_STANCE_RIFLE = "AidlPercMstpSrasWrflDnon_G01_player";
 
-RSTF_EQUIP_SPAWN = RSTF_CAM_SPAWN vectorAdd [0.5 + _playerIndex * 5, 0, 0];
+RSTF_EQUIP_SPAWN = RSTF_CAM_SPAWN vectorAdd [0.5 + _playerIndex * 100, 0, 0];
 RSTF_EQUIP_WEAPON = [RSTF_EQUIP_SPAWN] call RSTF_fnc_createArsenalBackground;
 
 if (count(RSTF_PLAYER_EQUIPMENT) > 0) then {
