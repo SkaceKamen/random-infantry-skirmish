@@ -5,7 +5,7 @@ private _params = param [1, []];
 
 private _playerIndex = 0;
 if (isMultiplayer) then {
-	_playerIndex = player find allPlayers;
+	_playerIndex = allPlayers find player;
 };
 
 RSTF_STANCE_RIFLE = "AidlPercMstpSrasWrflDnon_G01_player";
