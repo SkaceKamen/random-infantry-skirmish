@@ -1,3 +1,6 @@
+// Load ZUI functions
+call compile(preprocessFileLineNumbers("lib\zui\zui-functions.sqf"));
+
 SCRIPTS_ROOT = "";
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init\map.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init\modes.sqf"));

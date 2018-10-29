@@ -10,5 +10,9 @@ class RSTFUI
 		class addMessage {};
 
 		class startOverlay {};
+
+		class showPresetDialog {};
+
+		class showInputDialog {};
 	};
 };

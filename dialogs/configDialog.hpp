@@ -84,15 +84,15 @@ class RSTF_RscDialogConfig
     movingEnable = true;
     class controlsBackground
     {
-		
+
 	};
 	class controls
 	{
 		class nothing : RscStatic
 		{
-			
+
 		};
-		
+
 		class sideFriendly : RSTF_Subconfig
 		{
 			class controls
@@ -164,7 +164,7 @@ class RSTF_RscDialogConfig
 				};
 			};
 		};
-				
+
 		class start : RscButton
 		{
 			idc = 500;
@@ -174,7 +174,7 @@ class RSTF_RscDialogConfig
 			h = RSTF_CONFIG_START_H;
 			text = "Start";
 		};
-		
+
 		class weaponButton : RscButton
 		{
 			idc = 501;
@@ -195,7 +195,7 @@ class RSTF_RscDialogConfig
 			colorBackground[] = { 0.2, 0.2, 0.2, 0.9 };
 			text = "Random";
 		};
-		
+
 		class configButton : RscButton
 		{
 			idc = 503;
@@ -205,6 +205,15 @@ class RSTF_RscDialogConfig
 			h = RSTF_CONFIG_START_H;
 			text = "Advanced configuration";
 		};
-		
+
+		class presetsButton : RscButton
+		{
+			idc = 504;
+			x = RSTF_CONFIG_X + RSTF_CONFIG_W - RSTF_CONFIG_START_W - RSTF_SUBCONFIG_M * 3 - RSTF_CONFIG_WEAPON_W * 1.4;
+			y = RSTF_CONFIG_Y + RSTF_CONFIG_H + RSTF_SUBCONFIG_M;
+			w = RSTF_CONFIG_WEAPON_W * 0.4;
+			h = RSTF_CONFIG_START_H;
+			text = "Presets";
+		};
 	};
 };

@@ -62,6 +62,11 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	[] spawn RSTF_fnc_showAdvancedConfig;
 }];
 
+_ctrl = ["RSTF_RscDialogConfig", "presetsButton"] call RSTF_fnc_getCtrl;
+_ctrl ctrlAddEventHandler ["ButtonClick", {
+	["RSTF_RscDialogConfig" call RSTF_fnc_getDisplay] spawn RSTFUI_fnc_showPresetDialog;
+}];
+
 call RSTF_fnc_updateEquipment;
 
 _ctrl = ["RSTF_RscDialogConfig", "start"] call RSTF_fnc_getCtrl;
