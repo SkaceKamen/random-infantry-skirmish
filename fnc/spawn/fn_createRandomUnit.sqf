@@ -50,7 +50,7 @@ if (count(_names) > 0) then {
 	if there is vehicle space and lastly if there's more than 1 unit in my group (to prevent group being autodeleted)
 */
 private _vehicular = false;
-if (count(units(_group)) > 1 && _index != SIDE_NEUTRAL && RSTF_MONEY_ENABLED && RSTF_MONEY_VEHICLES_ENABLED && count(RSTF_AI_VEHICLES select _index) < RSTF_MONEY_VEHICLES_AI_LIMIT) then {
+if ([_group, _index] call RSTF_fnc_shouldSpawnVehicle) then {
 	_vehicular = [_unit, _index] call RSTF_fnc_aiDecideVehicle;
 };
 
