@@ -40,7 +40,7 @@ if (alive(_unit)) then {
 
 	// Save previous unit, used when respawning in multiplayer
 	private _previous = player;
-	
+
 	// Move player into new unit
 	selectPlayer _unit;
 

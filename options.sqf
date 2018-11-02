@@ -52,16 +52,16 @@ RSTF_NEUTRALS_EAST = true;
 // Should we spawn emplacements
 RSTF_NEUTRALS_EMPLACEMENTS = true;
 
-//Score needed to win
+// Score needed to win
 RSTF_SCORE_LIMIT = 10000;
-//Score per single kill
+// Score per single kill
 RSTF_SCORE_PER_KILL = 100;
-RSTF_SCORE_PER_SHIP = 1000;
-//Score per teamkill
+// Score per teamkill
 RSTF_SCORE_PER_TEAMKILL = -200;
+// Score awarded for completing task
 RSTF_SCORE_PER_TASK = 200;
-//Score needed to call commando
-RSTF_SCORE_COMMANDO = 3000;
+// Score awarded for killing vehicle
+RSTF_SCORE_PER_VEHICLE = 500;
 
 // Money awarded for kill
 RSTF_MONEY_PER_KILL = 100;

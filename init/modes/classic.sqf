@@ -102,9 +102,14 @@ RSTF_MODE_CLASSIC_taskCompleted = {
 	call RSTF_MODE_CLASSIC_scoreChanged;
 };
 
+RSTF_MODE_CLASSIC_vehicleKilled = {
+
+};
+
 [
 	"Classic",
 	RSTF_MODE_CLASSIC_init,
 	RSTF_MODE_CLASSIC_unitKilled,
-	RSTF_MODE_CLASSIC_taskCompleted
+	RSTF_MODE_CLASSIC_taskCompleted,
+	RSTF_MODE_CLASSIC_vehicleKilled
 ];

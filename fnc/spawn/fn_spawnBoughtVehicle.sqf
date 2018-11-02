@@ -46,11 +46,11 @@ while { true } do {
 		_height
 	];
 	_position = [_side, _center, _direction, 300, 60, _air] call RSTF_fnc_randomSpawn;
-	
+
 	if (!_air) then {
 		_position = _position findEmptyPosition [0, 100, _vehicleClass];
 	} else {
-		_position set [2, _height];	
+		_position set [2, _height];
 	};
 
 	if (count(_position) > 0 && { _air || !(surfaceIsWater _position) }) exitWith {};
@@ -113,5 +113,8 @@ if (!isNull(_unit)) then {
 	// Stop player from entering friendly AI vehicles
 	_vehicle setVehicleLock "LOCKEDPLAYER";
 };
+
+_vehicle setVariable ["SPAWNED_SIDE", side(_group), true];
+_vehicle addEventHandler ["Killed", RSTF_fnc_vehicleKilled];
 
 _vehicle;

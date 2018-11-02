@@ -29,6 +29,7 @@ class RSTF
 		class scoreChanged {};
 		class unitKilled {};
 		class playerKilled {};
+		class vehicleKilled {};
 
 		class createCam {};
 		class destroyCam {};

@@ -329,6 +329,9 @@ RSTF_MODE_unitKilled = {};
 // This will be filled with selected mode function
 RSTF_MODE_taskCompleted = {};
 
+// This will be filled with selected mode function
+RSTF_MODE_vehicleKilled = {};
+
 RSTF_PREDEFINED_LOCATIONS = [];
 
 // List of possible actions, use RSTF_POSSIBLE_KEYS_NAMES to get action name
