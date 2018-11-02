@@ -73,6 +73,7 @@ class RSTF
 		class spawnNeutralEmplacements {};
 		class spawnNeutralBuildings {};
 		class spawnBoughtVehicle {};
+		class shouldSpawnVehicle {};
 	};
 
 	class utils
