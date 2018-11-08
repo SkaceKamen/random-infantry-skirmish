@@ -3,7 +3,7 @@ private _vehicle = param [1, false];
 
 private _centerDistance = RSTF_DISTANCE * 0.3;
 private _sideDistance = if (_vehicle) then { RSTF_DISTANCE } else { RSTF_DISTANCE * 0.6 };
-private _direction = if (_side == SIDE_ENEMY) then { 180 + RSTF_DIRECTION } else { 180 };
+private _direction = if (_side == SIDE_ENEMY) then { 180 + RSTF_DIRECTION } else { RSTF_DIRECTION };
 private _point = RSTF_POINT;
 
 _point = RSTF_POINT vectorAdd [
