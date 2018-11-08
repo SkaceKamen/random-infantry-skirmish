@@ -1,5 +1,9 @@
 private _start = 9;
 private _world_anchor = getArray(configFile >> "CfgWorlds" >> worldName >> "SafePositionAnchor");
+if (count(_world_anchor) == 0) then {
+	_world_anchor = [0, 0, 0];
+};
+
 private _locations = nearestLocations [_world_anchor, ["NameCityCapital","NameCity","NameVillage"], 99999999];
 
 private _text = "";
