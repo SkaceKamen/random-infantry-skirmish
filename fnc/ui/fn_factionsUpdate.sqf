@@ -32,9 +32,9 @@ lnbClear _ctrl;
 	};
 } foreach RSTF_FACTIONS;
 
-_list = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadSoldiers;
-_soldiers = _list select 0;
-_weapons = _list select 1;
+RSTF_FACTIONS_SOLDIERS = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadSoldiers;
+_soldiers = RSTF_FACTIONS_SOLDIERS select 0;
+_weapons = RSTF_FACTIONS_SOLDIERS select 1;
 
 _ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
 _sel = tvCurSel _ctrl;
@@ -74,22 +74,36 @@ _roots = call AMAP_create;
 			_ctrl tvAdd [[], _factionName],
 			call AMAP_create
 		];
-		_ctrl tvSetData [[_factionBranch select 0], _faction];
+
+		_ctrl tvSetData [[_factionBranch#0], 'F#' + _faction];
+		if ([_faction] call RSTF_fnc_factionsIsFactionBanned) then {
+			_ctrl tvSetText [[_factionBranch#0], "[BANNED] " + _factionName];
+			_ctrl tvSetPictureColor [[_factionBranch#0], [0,0,0,1]];
+		};
+
 		[_roots, _faction, _factionBranch] call AMAP_set;
 	};
 
 	_classBranch = [_factionBranch select 1, _class, -1] call AMAP_get;
 	if (_classBranch == -1) then {
 		_classBranch = _ctrl tvAdd [[_factionBranch select 0], _className];
-		_ctrl tvSetData [[_factionBranch select 0, _classBranch], _class];
+
+		_ctrl tvSetData [[_factionBranch#0, _classBranch], 'C#' + _faction + '/' + _class];
+		if ([_faction, _class] call RSTF_fnc_factionsIsFactionClassBanned) then {
+			_ctrl tvSetText [[_factionBranch#0, _classBranch], "[BANNED] " + _className];
+			_ctrl tvSetPictureColor [[_factionBranch#0, _classBranch], [0,0,0,1]];
+		};
+
 		[_factionBranch select 1, _class, _classBranch] call AMAP_set;
 	};
 
 	_path = [_factionBranch select 0, _classBranch];
+
 	_branch = _ctrl tvAdd [_path, _banned + _name];
 	_path pushBack _branch;
 	_ctrl tvSetData [_path, _x];
 	_ctrl tvSetPicture [_path, _icon];
+
 	if (_dlcIcon != "") then {
 		_ctrl tvSetPictureRight [_path, _dlcIcon];
 	};
@@ -101,11 +115,18 @@ _roots = call AMAP_create;
 	[_ctrl, _path] call _expandCache;
 } foreach _soldiers;
 
-_vehicle_types = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
+RSTF_FACTIONS_VEHICLES = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 {
-	_name = RSTF_VEHICLES_NAMES select _foreachIndex;
-	_vehicles = _vehicle_types select _foreachIndex;
-	_path = [_ctrl tvAdd [[], _name]];
+	private _name = RSTF_VEHICLES_NAMES select _foreachIndex;
+	private _vehicles = RSTF_FACTIONS_VEHICLES select _foreachIndex;
+	private _path = [_ctrl tvAdd [[], _name]];
+
+	_ctrl tvSetData [_path, 'V#' + str(_foreachIndex)];
+
+	if ([_foreachIndex] call RSTF_fnc_factionsIsVehicleClassBanned) then {
+		_ctrl tvSetText [_path, '[BANNED] ' + _name];
+		_ctrl tvSetPictureColor [_path, [0,0,0,1]];
+	};
 
 	{
 		_banned = "";
