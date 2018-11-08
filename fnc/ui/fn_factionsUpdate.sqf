@@ -1,14 +1,15 @@
 _ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
 
 _expandCache = {
-	private _list = [RSTF_EXPANDED, _this select 0] call AMAP_get;
+	params ["_ctrl", "_path"];
+	private _list = [RSTF_EXPANDED, _ctrl] call AMAP_get;
 	private _ex = [];
 	{
 		_ex pushBack _x;
 		if (_list find (_ex call RSTF_fnc_pathString) != -1) then {
 			_ctrl tvExpand _ex;
 		};
-	} foreach (_this select 1);
+	} foreach _path;
 };
 
 lnbClear _ctrl;
@@ -121,7 +122,7 @@ _vehicle_types = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 		_ctrl tvSetData [_subpath, _x];
 		_ctrl tvSetPicture [_subpath, _icon];
 		if (_banned != "") then {
-			_subpath tvSetPictureColor [_path, [0,0,0,1]];
+			_ctrl tvSetPictureColor [_subpath, [0,0,0,1]];
 		};
 	} foreach _vehicles;
 } foreach RSTF_VEHICLES_TYPES;
