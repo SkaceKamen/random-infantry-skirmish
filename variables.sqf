@@ -193,7 +193,9 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_CLEAN",
 	"RSTF_CLEAN_INTERVAL",
 	"RSTF_CLEAN_INTERVAL_VEHICLES",
-	"RSTF_BUY_MENU_ACTION"
+	"RSTF_BUY_MENU_ACTION",
+	"RSTF_SPAWN_DISTANCE_MIN",
+	"RSTF_SPAWN_DISTANCE_MAX"
 ];
 
 // Profile values that are specific to local player (don't broadcast them)
@@ -343,6 +345,3 @@ for [{_i = 1},{_i <= 20},{_i = _i + 1}] do {
 	RSTF_POSSIBLE_KEYS pushBack ("User" + str(_i));
 	RSTF_POSSIBLE_KEYS_NAMES pushBack ("User Action " + str(_i));
 };
-
-RSTF_SPAWN_DISTANCE_MIN = 200;
-RSTF_SPAWN_DISTANCE_MAX = 250;

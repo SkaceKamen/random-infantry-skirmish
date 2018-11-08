@@ -140,3 +140,8 @@ RSTF_CLEAN_INTERVAL = 3*60;
 RSTF_CLEAN_INTERVAL_VEHICLES = 3*60;
 
 RSTF_BUY_MENU_ACTION = 0;
+
+// Minimal infantry spawn distance in meters
+RSTF_SPAWN_DISTANCE_MIN = 200;
+// Maximal infantry spawn distance in meters
+RSTF_SPAWN_DISTANCE_MAX = 250;

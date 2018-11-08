@@ -9,6 +9,8 @@ _options = (RSTF_CONFIG_VALUES select _this) select 1;
 
 // Save previously displayed options
 call RSTF_fnc_saveAdvancedOptions;
+call RSTF_fnc_profileSave;
+call RSTF_fnc_updateEquipment;
 
 // Remove previous options
 {
@@ -30,6 +32,7 @@ _xx = _padding;
 	if (count(_x) > 0) then {
 		// Load variable name and value
 		_name = _x select 0;
+		_callback = _x param [5, -1, [-1, {}]];
 		_value = missionNamespace getVariable [_name, ""];
 
 		// Add label
@@ -55,7 +58,7 @@ _xx = _padding;
 		_ctrl = _display ctrlCreate [_ctrlType, _idc, _optionsContainer];
 		_ctrl ctrlSetText str(_value);
 		_ctrl ctrlSetTooltip (_x select 2);
-		
+
 		// Checkbox have fixed size and diferent input
 		if (_type == "checkbox") then {
 			_ctrl ctrlSetPosition [_xx + _width * 0.5, _yy + 0.005, 0.04, 0.04 * safeZoneW / safeZoneH];
@@ -95,7 +98,7 @@ _xx = _padding;
 		};
 
 		// Save created option for later manipulation
-		RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name];
+		RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name, _callback];
 		_idc = _idc + 1;
 	};
 

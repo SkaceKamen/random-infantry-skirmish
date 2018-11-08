@@ -26,7 +26,36 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_RANDOMIZE_WEAPONS_RESTRICT", "Restrict weapons to sides", "When weapons are randomized, only use weapons that origins from unit faction. (Useful for mods).", "checkbox"],
 		["RSTF_CUSTOM_EQUIPMENT", "Enable custom equipment", "Enable player to customize his equipment, which will be used when switching to soldier.", "checkbox"],
 		[],
-		["RSTF_SPAWN_TRANSPORTS", "Vehicles at spawn", "Tries to spawn transport vehicles at side spawns to cover unit spawning.", "checkbox"]
+		["RSTF_SPAWN_TRANSPORTS", "Vehicles at spawn", "Tries to spawn transport vehicles at side spawns to cover unit spawning.", "checkbox"],
+		[],
+		[
+			"RSTF_SPAWN_DISTANCE_MIN",
+			"Minimal spawn distance",
+			"Minimal spawn distance from center of battle, in meters",
+			"number",
+			nil,
+			{
+				params ["_value", "_item"];
+				if (_value > RSTF_SPAWN_DISTANCE_MAX) exitWith {
+					"Minimal spawn distance has to be less than maximal spawn distance."
+				};
+				true
+			}
+		],
+		[
+			"RSTF_SPAWN_DISTANCE_MAX",
+			"Maximal spawn distance",
+			"Maximal spawn distance from center of battle, in meters",
+			"number",
+			nil,
+			{
+				params ["_value", "_item"];
+				if (_value < RSTF_SPAWN_DISTANCE_MIN) exitWith {
+					"Maximal spawn distance has to be less than minimal spawn distance."
+				};
+				true
+			}
+		]
 	]],
 	["Neutrals", [
 		["RSTF_NEUTRALS_GROUPS", "Neutral groups", "Maximum number of neutral groups spawned.", "number"],
