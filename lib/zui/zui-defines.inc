@@ -1,8 +1,8 @@
-#define ZUI_CONTROL_ID "control"
-#define ZUI_CONTAINER_ID "container"
+#define ZUI_CONTROL_ID 1
+#define ZUI_CONTAINER_ID 2
 
-#define ZUI_LAYOUT_COLUMN "column"
-#define ZUI_LAYOUT_ROW "row"
+#define ZUI_LAYOUT_COLUMN 1
+#define ZUI_LAYOUT_ROW 2
 
 #define ZUI_L_CONFIG 0
 #define ZUI_L_CHILDREN 1
@@ -14,14 +14,14 @@
 #define ZUI_L_PARENTGROUP 7
 #define ZUI_L_OVERRIDES 8
 
-#define ZUI_SIZE_RELATIVE "relative"
-#define ZUI_SIZE_ABSOLUTE "absolute"
-#define ZUI_SIZE_TEXT "text"
-#define ZUI_SIZE_CONTAIN "contain"
-#define ZUI_SIZE_PERCENTS "percents"
+#define ZUI_SIZE_RELATIVE 1
+#define ZUI_SIZE_ABSOLUTE 2
+#define ZUI_SIZE_TEXT 3
+#define ZUI_SIZE_CONTAIN 4
+#define ZUI_SIZE_PERCENTS 5
 
-#define ZUI_POSITION_RELATIVE "relative"
-#define ZUI_POSITION_ABSOLUTE "absolute"
+#define ZUI_POSITION_RELATIVE 1
+#define ZUI_POSITION_ABSOLUTE 2
 
 #define CT_STATIC           0
 #define CT_BUTTON           1

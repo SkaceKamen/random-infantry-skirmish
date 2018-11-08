@@ -54,7 +54,7 @@ ZUI_fnc_build = {
 
 	private _config = _comp select ZUI_L_CONFIG;
 	private _children = _comp select ZUI_L_CHILDREN;
-	private _type = getText(_config >> "type");
+	private _type = getNumber(_config >> "type");
 	private _ctrl = controlNull;
 
 	_comp set [ZUI_L_DISPLAY, _display];
@@ -140,18 +140,35 @@ ZUI_fnc_parseNumberProp = {
 	_prop;
 };
 
+/*
+	Function: ZUI_fnc_getProp
+
+	Description:
+		Get component property. This functions tries to load overriden value first then it tries component config.
+
+	Parameters:
+		_comp - component data [Component]
+		_prop - prop name [String]
+		_overridable - is prop overridable [Boolean, defaults to true]
+		_default - value used when no actual value was defined [Any, defaults to objNull]
+
+	Returns:
+		The value [Any]
+*/
 ZUI_fnc_getProp = {
 	private _comp = param [0];
 	private _prop = param [1];
 	private _overridable = param [2, true];
 	private _default = param [3, objNull];
 
+	/*
 	if (_overridable) then {
 		private _index = _comp#ZUI_L_OVERRIDES#0 find _prop;
 		if (_index >= 0) exitWith {
 			_comp#ZUI_L_OVERRIDES#1#_index;
 		};
 	};
+	*/
 
 	private _value = _comp#ZUI_L_CONFIG >> _prop;
 
@@ -170,12 +187,19 @@ ZUI_fnc_getProp = {
 	_default;
 };
 
+ZUI_DBG_Prefix = '';
+
 ZUI_fnc_refresh = {
 	private _comp = param [0];
 	private _parentWidth = param [1, objNull];
 	private _parentHeight = param [2, objNull];
 	private _xPos = param [3, objNull];
 	private _yPos = param [4, objNull];
+
+	private _prefix = ZUI_DBG_Prefix + configName(_comp#ZUI_L_CONFIG) + ' ';
+
+	//private _allPoint = [_prefix + "Component"] call ZDBG_fnc_point;
+	//private _initPoint = [_prefix + "Init"] call ZDBG_fnc_point;
 
 	// Use previous values, probably called by user
 	if (typeName(_parentWidth) != typeName(0)) then {
@@ -185,16 +209,16 @@ ZUI_fnc_refresh = {
 		_yPos = _comp#ZUI_L_POS#1;
 	};
 
-	private _children = _comp select ZUI_L_CHILDREN;
-	private _ctrl = _comp select ZUI_L_CTRL;
+	private _children = _comp#ZUI_L_CHILDREN;
+	private _ctrl = _comp#ZUI_L_CTRL;
 
 	// Load component type and margin
 	private _type = [_comp, "type"] call ZUI_fnc_getProp;
 	private _layout = [_comp, "layout"] call ZUI_fnc_getProp;
-	private _margin = [[_comp, "margin", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseSizing;
+	private _margin = [_comp, "margin"] call ZUI_fnc_parseSizing;
 	private _position = [_comp, "position", true, ZUI_POSITION_RELATIVE] call ZUI_fnc_getProp;
 
-	// diag_log text(str([configName(_comp#ZUI_L_CONFIG), _xPos, _yPos, _parentWidth, _parentHeight, _margin]));
+	// diag_log text("REFRESH " + str([configName(_comp#ZUI_L_CONFIG), _xPos, _yPos, _parentWidth, _parentHeight, _margin]));
 
 	if (_position == ZUI_POSITION_ABSOLUTE) then {
 		_xPos = [_comp, "x", true, 0] call ZUI_fnc_getProp;
@@ -216,7 +240,7 @@ ZUI_fnc_refresh = {
 		_ctrl ctrlSetPosition [_xPos, _yPos, _parentWidth, _parentHeight];
 		_ctrl ctrlCommit 0;
 
-		diag_log text(format["ZUI - %1 - %2", _comp#ZUI_L_CONFIG, [_xPos, _yPos, _parentWidth, _parentHeight]]);
+		// diag_log text(format["ZUI - %1 - %2", _comp#ZUI_L_CONFIG, [_xPos, _yPos, _parentWidth, _parentHeight]]);
 	};
 
 	private _scrollable = _type == ZUI_CONTAINER_ID && { ([_comp, "scrollable", true, 0] call ZUI_fnc_getProp) == 1 };
@@ -236,11 +260,16 @@ ZUI_fnc_refresh = {
 	private _otherSizeConfigName = if (_index == 1) then { "width" } else { "height" };
 	private _otherSizeTypeConfigName = _otherSizeConfigName + "Type";
 
-	private _p = [[_comp, "padding", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseSizing;
+	private _p = [_comp, "padding"] call ZUI_fnc_parseSizing;
 	private _sizeP = [ (_p#1) + (_p#3), (_p#0) + (_p#2) ];
 
 	private _total = 0;
 	private _percentage = 0;
+
+	//_initPoint call ZDBG_fnc_end;
+
+	//private _point = [_prefix + "Children first pass"] call ZDBG_fnc_point;
+	ZUI_DBG_Prefix = ZUI_DBG_Prefix + '  ';
 
 	{
 		private _sizeType = [_x, _sizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
@@ -262,6 +291,9 @@ ZUI_fnc_refresh = {
 			};
 		};
 	} foreach _children;
+
+	//_point call ZDBG_fnc_end;
+	//_point = [_prefix + "Children second pass"] call ZDBG_fnc_point;
 
 	{
 		private _otherSizeType = [_x, _otherSizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
@@ -298,6 +330,11 @@ ZUI_fnc_refresh = {
 
 		_pos set [_index, _pos#_index + _size];
 	} foreach _children;
+
+	ZUI_DBG_Prefix = ZUI_DBG_Prefix select [0, count(ZUI_DBG_Prefix) - 2];
+
+	//_point call ZDBG_fnc_end;
+	//_allPoint call ZDBG_fnc_end;
 };
 
 ZUI_fnc_createChild = {
@@ -338,8 +375,16 @@ ZUI_fnc_setVisible = {
 };
 
 ZUI_fnc_parseSizing = {
-	private _config = param [0];
-	private _result = [];
+	private _comp = param [0];
+	private _name = param [1];
+
+	private _result = [0, 0, 0, 0];
+	{
+		private _p = [_comp, _name + _x, true, 0] call ZUI_fnc_getProp;
+		_result set [_foreachIndex, _p];
+	} foreach ["Top", "Right", "Left", "Bottom"];
+
+	private _config = [_comp, _name, true, objNull] call ZUI_fnc_getProp;
 
 	if (typeName(_config) == "ARRAY") then {
 		_result = _config;
@@ -347,8 +392,10 @@ ZUI_fnc_parseSizing = {
 			_result = [_result#0, _result#1, _result#0, _result#1];
 		};
 	} else {
-		private _p = _config;
-		_result = [ _p, _p, _p, _p ];
+		if (!(_config isEqualTo objNull)) then {
+			private _p = _config;
+			_result = [ _p, _p, _p, _p ];
+		}
 	};
 
 	[
@@ -364,7 +411,7 @@ ZUI_fnc_createDisplay = {
 	private _display = param [1, displayNull];
 
 	if (isNull(_display)) then {
-  		_display = (findDisplay 46) createDisplay "RscDisplayEmpty";
+  		_display = (findDisplay 46) createDisplay "ZUI_Empty";
 	};
 
 	_layout = [_layout] call ZUI_fnc_loadComponent;

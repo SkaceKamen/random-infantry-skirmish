@@ -107,3 +107,11 @@ class ZUI_ColumnLayout: ZUI_Container
 {
 	layout = ZUI_LAYOUT_COLUMN;
 };
+
+class ZUI_Empty
+{
+	idd = 508;
+	movingEnable = 0;
+	enableDisplay = 1;
+	enableSimulation = 1;
+};

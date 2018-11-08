@@ -14,5 +14,10 @@ class RSTFUI
 		class showPresetDialog {};
 
 		class showInputDialog {};
+
+		class showShopDialog {};
+		class shopCategoryClicked {};
+		class shopRefreshItems {};
+		class shopBuy {};
 	};
 };
