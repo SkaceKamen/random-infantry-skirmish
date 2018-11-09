@@ -182,7 +182,6 @@ if (_prefix isEqualTo "V#") exitWith {
 		};
 	} foreach RSTF_FACTIONS_VEHICLES#_index;
 	call RSTF_fnc_factionsUpdate;
-	_ctrl ctrlSetFocus true;
 };
 
 if (_prefix isEqualTo "F#") exitWith {
@@ -199,7 +198,6 @@ if (_prefix isEqualTo "F#") exitWith {
 		};
 	} foreach RSTF_FACTIONS_SOLDIERS#0;
 	call RSTF_fnc_factionsUpdate;
-	_ctrl ctrlSetFocus true;
 };
 
 if (_prefix isEqualTo "C#") exitWith {
@@ -220,7 +218,6 @@ if (_prefix isEqualTo "C#") exitWith {
 		};
 	} foreach RSTF_FACTIONS_SOLDIERS#0;
 	call RSTF_fnc_factionsUpdate;
-	_ctrl ctrlSetFocus true;
 };
 
 if (_class != "") then {
