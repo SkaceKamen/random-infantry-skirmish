@@ -48,7 +48,19 @@ while { true } do {
 	_position = [_side, _center, _direction, 300, 60, _air] call RSTF_fnc_randomSpawn;
 
 	if (!_air) then {
-		_position = _position findEmptyPosition [0, 100, _vehicleClass];
+		private _roads = _position nearRoads 100;
+		if (count(_roads) == 0) then {
+			_roads = _position nearRoads 200;
+		};
+		if (count(_roads) == 0) then {
+			_roads = _position nearRoads 300;
+		};
+
+		if (count(_roads) > 0) then {
+			_position = getPos(selectRandom(_roads));
+		} else {
+			_position = _position findEmptyPosition [0, 100, _vehicleClass];
+		};
 	} else {
 		_position set [2, _height];
 	};
