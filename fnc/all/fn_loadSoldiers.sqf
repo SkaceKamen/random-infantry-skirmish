@@ -9,13 +9,15 @@ private _weapons = [];
 private _classes = configFile >> "CfgVehicles";
 private _i = 0;
 
+_factions = _factions apply { toLower(_x) };
+
 //Load men and vehicles for each faction
 for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 	private _c = _classes select _i;
 	if (isClass(_c)) then {
 		private _scope = getNumber(_c >> "scope");
 		private _man = getNumber(_c >> "isMan");
-		private _faction = getText(_c >> "faction");
+		private _faction = toLower(getText(_c >> "faction"));
 
 		if (_scope == 2 && _man == 1 && _faction in _factions) then {
 			private _weaponized = false;

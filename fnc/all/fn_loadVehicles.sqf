@@ -17,13 +17,15 @@ private _airs = _vehicles select RSTF_VEHICLE_AIR;
 
 private _classes = configFile >> "CfgVehicles";
 
+_factions = _factions apply { toLower(_x) };
+
 //Load vehicles for each faction
 for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 	private _c = _classes select _i;
 	if (isClass(_c) && { _ignore_bans || !(configName(_c) in RSTF_SOLDIERS_BANNED) }) then {
 		private _scope = getNumber(_c >> "scope");
 		private _man = getNumber(_c >> "isMan");
-		private _faction = getText(_c >> "faction");
+		private _faction = toLower(getText(_c >> "faction"));
 
 		if (_scope == 2 && _man == 0 && _faction in _factions) then {
 			_weaponized = false;
