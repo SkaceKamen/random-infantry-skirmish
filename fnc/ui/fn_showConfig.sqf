@@ -13,6 +13,7 @@ if (typeName(_display) == typeName(false) && { !_display }) then {
 	call RSTF_fnc_start;
 };
 
+/*
 RSTF_FACTIONS = [];
 _root = configFile >> "cfgFactionClasses";
 for[{_i = 0},{_i < count(_root)},{_i = _i + 1}] do {
@@ -24,6 +25,8 @@ for[{_i = 0},{_i < count(_root)},{_i = _i + 1}] do {
 		};
 	};
 };
+*/
+RSTF_FACTIONS = call RSTF_fnc_loadFactions;
 
 call RSTF_fnc_profileLoad;
 

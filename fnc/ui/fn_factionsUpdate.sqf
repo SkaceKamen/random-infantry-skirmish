@@ -121,7 +121,7 @@ _vehicle_types = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 		_ctrl tvSetData [_subpath, _x];
 		_ctrl tvSetPicture [_subpath, _icon];
 		if (_banned != "") then {
-			_subpath tvSetPictureColor [_path, [0,0,0,1]];
+			_ctrl tvSetPictureColor [_subpath, [0,0,0,1]];
 		};
 	} foreach _vehicles;
 } foreach RSTF_VEHICLES_TYPES;

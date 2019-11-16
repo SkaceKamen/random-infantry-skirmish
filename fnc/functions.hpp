@@ -14,6 +14,7 @@ class RSTF
 		class loadSoldiers {};
 		class loadVehicles {};
 		class loadWeapons {};
+		class loadFactions {};
 
 		class profileLoad {};
 		class profileReset {};
