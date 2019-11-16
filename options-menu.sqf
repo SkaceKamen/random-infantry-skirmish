@@ -15,6 +15,10 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_MODE_KOTH_SCORE_LIMIT", "Score to win", "One side wins after reaching this limit.", "number"],
 		["RSTF_MODE_KOTH_SCORE_INTERVAL", "Point award interval", "In seconds. Interval in which is point awarded to side that holds the objective.", "number"]
 	]],
+	["Push", [
+		["RSTF_MODE_PUSH_SCORE_LIMIT", "Score to capture", "Point is captured when one side reaches this number of points", "number"],
+		["RSTF_MODE_PUSH_SCORE_INTERVAL", "Point award interval", "In seconds. Interval in which is point awarded to side that holds the objective.", "number"]
+	]],
 	["Classic", [
 		["RSTF_SCORE_LIMIT", "Score to win", "One side wins after reaching this limit.", "number"],
 		["RSTF_SCORE_PER_KILL", "Score per kill", "Score you get for killing soldier.", "number"],
@@ -26,7 +30,36 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_RANDOMIZE_WEAPONS_RESTRICT", "Restrict weapons to sides", "When weapons are randomized, only use weapons that origins from unit faction. (Useful for mods).", "checkbox"],
 		["RSTF_CUSTOM_EQUIPMENT", "Enable custom equipment", "Enable player to customize his equipment, which will be used when switching to soldier.", "checkbox"],
 		[],
-		["RSTF_SPAWN_TRANSPORTS", "Vehicles at spawn", "Tries to spawn transport vehicles at side spawns to cover unit spawning.", "checkbox"]
+		["RSTF_SPAWN_TRANSPORTS", "Vehicles at spawn", "Tries to spawn transport vehicles at side spawns to cover unit spawning.", "checkbox"],
+		[],
+		[
+			"RSTF_SPAWN_DISTANCE_MIN",
+			"Minimal spawn distance",
+			"Minimal spawn distance from center of battle, in meters",
+			"number",
+			nil,
+			{
+				params ["_value", "_item"];
+				if (_value > RSTF_SPAWN_DISTANCE_MAX) exitWith {
+					"Minimal spawn distance has to be less than maximal spawn distance."
+				};
+				true
+			}
+		],
+		[
+			"RSTF_SPAWN_DISTANCE_MAX",
+			"Maximal spawn distance",
+			"Maximal spawn distance from center of battle, in meters",
+			"number",
+			nil,
+			{
+				params ["_value", "_item"];
+				if (_value < RSTF_SPAWN_DISTANCE_MIN) exitWith {
+					"Maximal spawn distance has to be less than minimal spawn distance."
+				};
+				true
+			}
+		]
 	]],
 	["Neutrals", [
 		["RSTF_NEUTRALS_GROUPS", "Neutral groups", "Maximum number of neutral groups spawned.", "number"],

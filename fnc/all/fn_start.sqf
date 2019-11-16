@@ -29,6 +29,7 @@ private _mode = RSTF_MODES select RSTF_MODE_INDEX;
 RSTF_MODE_init = _mode select 1;
 RSTF_MODE_unitKilled = _mode select 2;
 RSTF_MODE_taskCompleted = _mode select 3;
+RSTF_MODE_vehicleKilled = _mode select 4;
 
 // Initialize gamemode
 0 spawn RSTF_MODE_init;

@@ -22,6 +22,8 @@ RSTF_FACTIONS_WEAPON_HOLDER setPos RSTF_CAM_SPAWN;
 RSTF_FACTIONS_WEAPON_HOLDER setVectorDirAndUp [[0,0,1],[0,-1,0]];
 RSTF_FACTIONS_WEAPON_HOLDER hideObject true;
 RSTF_FACTIONS_WEAPON_HOLDER enableSimulation false;
+RSTF_FACTIONS_VEHICLES = [];
+RSTF_FACTIONS_SOLDIERS = [];
 
 RSTF_EXPANDED = call AMAP_create;
 
@@ -96,9 +98,128 @@ if (_row >= 0) then {
 	call RSTF_fnc_factionsUpdate;
 };';
 
+RSTF_fnc_factionsIsFactionBanned = {
+	params ["_faction"];
+
+	if (count(RSTF_FACTIONS_SOLDIERS#0) == 0) exitWith {
+		false;
+	};
+
+	private _banned = true;
+
+	{
+		private _f = getText(configFile >> "cfgVehicles" >> _x >> "faction");
+		if (_f isEqualTo _faction && { !(_x in RSTF_SOLDIERS_BANNED) }) exitWith {
+			_banned = false;
+		};
+	} foreach RSTF_FACTIONS_SOLDIERS#0;
+
+	_banned;
+};
+
+RSTF_fnc_factionsGetVehicleClass = {
+	private _cfg = configFile >> "cfgVehicles" >> param [0, "", [""]];
+	private _class = getText(_cfg >> "vehicleClass");
+	if (isText(_cfg >> "editorSubcategory")) then {
+		_class = getText(_cfg >> "editorSubcategory");
+	};
+	_class;
+};
+
+RSTF_fnc_factionsIsFactionClassBanned = {
+	params ["_faction", "_class"];
+
+	if (count(RSTF_FACTIONS_SOLDIERS#0) == 0) exitWith {
+		false;
+	};
+
+	private _banned = true;
+
+	{
+		private _f = getText(configFile >> "cfgVehicles" >> _x >> "faction");
+		private _c = [_x] call RSTF_fnc_factionsGetVehicleClass;
+
+		if (_f isEqualTo _faction && _c isEqualTo _class && { !(_x in RSTF_SOLDIERS_BANNED) }) exitWith {
+			_banned = false;
+		};
+	} foreach RSTF_FACTIONS_SOLDIERS#0;
+
+	_banned;
+};
+
+RSTF_fnc_factionsIsVehicleClassBanned = {
+	params ["_classIndex"];
+
+	if (count(RSTF_FACTIONS_VEHICLES#_classIndex) == 0) exitWith {
+		false;
+	};
+
+	private _banned = true;
+
+	{
+		if (!(_x in RSTF_SOLDIERS_BANNED)) exitWith {
+			_banned = false;
+		};
+	} foreach RSTF_FACTIONS_VEHICLES#_classIndex;
+
+	_banned;
+};
+
+
 _template_tree = '_ctrl = ["RSTF_RscDialogFactions", "%1"] call RSTF_fnc_getCtrl;
 _path = tvCurSel _ctrl;
 _class = _ctrl tvData _path;
+_prefix = if (count(_class) > 2) then { _class select [0, 2] } else { "" };
+
+if (_prefix isEqualTo "V#") exitWith {
+	private _index = parseNumber(_class select [2]);
+	private _inverted = [_index] call RSTF_fnc_factionsIsVehicleClassBanned;
+	{
+		if (_inverted) then {
+			%2 deleteAt (%2 find _x);
+		} else {
+			%2 pushBack _x;
+		};
+	} foreach RSTF_FACTIONS_VEHICLES#_index;
+	call RSTF_fnc_factionsUpdate;
+};
+
+if (_prefix isEqualTo "F#") exitWith {
+	private _faction = _class select [2];
+	private _inverted = [_faction] call RSTF_fnc_factionsIsFactionBanned;
+	{
+		private _f = getText(configFile >> "cfgVehicles" >> _x >> "faction");
+		if (_f isEqualTo _faction && { (!_inverted && !(_x in %2)) || (_inverted && _x in %2) }) then {
+			if (_inverted) then {
+				%2 deleteAt (%2 find _x);
+			} else {
+				%2 pushBack _x;
+			};
+		};
+	} foreach RSTF_FACTIONS_SOLDIERS#0;
+	call RSTF_fnc_factionsUpdate;
+};
+
+if (_prefix isEqualTo "C#") exitWith {
+	private _data = (_class select [2]) splitString "/";
+	private _faction = _data#0;
+	private _class = _data#1;
+	private _inverted = [_faction, _class] call RSTF_fnc_factionsIsFactionClassBanned;
+
+	{
+		private _f = getText(configFile >> "cfgVehicles" >> _x >> "faction");
+		private _c = [_x] call RSTF_fnc_factionsGetVehicleClass;
+		if (_f isEqualTo _faction && _c isEqualTo _class && { (!_inverted && !(_x in %2)) || (_inverted && _x in %2) }) then {
+			if (_inverted) then {
+				%2 deleteAt (%2 find _x);
+			} else {
+				%2 pushBack _x;
+			};
+		};
+	} foreach RSTF_FACTIONS_SOLDIERS#0;
+	call RSTF_fnc_factionsUpdate;
+};
+
 if (_class != "") then {
 	_index = %2 find _class;
 	_text = ((_ctrl tvText _path) splitString "\[BANNED\] ") joinString "";
@@ -112,8 +233,6 @@ if (_class != "") then {
 		_ctrl tvSetText [_path, "[BANNED] " + _text];
 		_ctrl tvSetPictureColor [_path, [0,0,0,1]];
 	};
-
-	//call RSTF_fnc_factionsUpdate;
 };';
 
 _method = compile(format [_template_list, "factions", "RSTF_FACTIONS_LIST"]);

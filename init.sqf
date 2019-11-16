@@ -1,5 +1,7 @@
 // Load ZUI functions
 call compile(preprocessFileLineNumbers("lib\zui\zui-functions.sqf"));
+call compile(preprocessFileLineNumbers("lib\zdbg\zdbg.sqf"));
+ZDBG_Prefix = '[RSTF] ';
 
 SCRIPTS_ROOT = "";
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init\map.sqf"));
@@ -22,3 +24,7 @@ RSTF_initScripts = [
 {
 	call compile(preprocessFileLineNumbers(format["%1init\%2.sqf", SCRIPTS_ROOT, _x]));
 } foreach RSTF_initScripts;
+
+{
+	_x disableAI "ALL";
+} foreach playableUnits;

@@ -37,7 +37,7 @@ if (typeName(_wish) == typeName(objNull)) then {
 		_upper = floor(count(_vehicles) / 2);
 		_wish = selectRandom (_vehicles select [_upper, _upper max 1]);
 	};*/
-	
+
 	[RSTF_AI_VEHICLE_WISH, _name, _wish] call AMAP_set;
 };
 
@@ -111,7 +111,7 @@ _group = group(effectiveCommander(_vehicle));
 
 	while { alive(_vehicle) } do {
 		deleteWaypoint [_group, 0];
-		_wp = _group addWaypoint [[_side] call RSTF_fnc_getAttackWaypoint, 10];
+		_wp = _group addWaypoint [[_side, true] call RSTF_fnc_getAttackWaypoint, 10];
 
 		/*
 		if (_side == SIDE_FRIENDLY) then {

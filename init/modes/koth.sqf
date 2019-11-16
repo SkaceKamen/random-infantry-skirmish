@@ -192,9 +192,14 @@ RSTF_MODE_KOTH_taskCompleted = {
 	} foreach allPlayers;
 };
 
+RSTF_MODE_KOTH_vehicleKilled = {
+
+};
+
 [
 	"King of the Hill",
 	RSTF_MODE_KOTH_init,
 	RSTF_MODE_KOTH_unitKilled,
-	RSTF_MODE_KOTH_taskCompleted
+	RSTF_MODE_KOTH_taskCompleted,
+	RSTF_MODE_KOTH_vehicleKilled
 ];

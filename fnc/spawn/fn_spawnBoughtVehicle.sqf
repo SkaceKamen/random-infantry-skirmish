@@ -22,7 +22,7 @@ private _parents = [configFile >> "cfgVehicles" >> _vehicleClass, true] call BIS
 private _plane = "Plane" in _parents;
 private _air = "Air" in _parents;
 
-private _distance = RSTF_DISTANCE * 2;
+private _distance = (RSTF_SPAWN_DISTANCE_MIN + random(RSTF_SPAWN_DISTANCE_MAX - RSTF_SPAWN_DISTANCE_MIN)) + 500;
 private _height = 0;
 
 if (_air) then {
@@ -46,11 +46,23 @@ while { true } do {
 		_height
 	];
 	_position = [_side, _center, _direction, 300, 60, _air] call RSTF_fnc_randomSpawn;
-	
+
 	if (!_air) then {
-		_position = _position findEmptyPosition [0, 100, _vehicleClass];
+		private _roads = _position nearRoads 100;
+		if (count(_roads) == 0) then {
+			_roads = _position nearRoads 200;
+		};
+		if (count(_roads) == 0) then {
+			_roads = _position nearRoads 300;
+		};
+
+		if (count(_roads) > 0) then {
+			_position = getPos(selectRandom(_roads));
+		} else {
+			_position = _position findEmptyPosition [0, 100, _vehicleClass];
+		};
 	} else {
-		_position set [2, _height];	
+		_position set [2, _height];
 	};
 
 	if (count(_position) > 0 && { _air || !(surfaceIsWater _position) }) exitWith {};
@@ -113,5 +125,8 @@ if (!isNull(_unit)) then {
 	// Stop player from entering friendly AI vehicles
 	_vehicle setVehicleLock "LOCKEDPLAYER";
 };
+
+_vehicle setVariable ["SPAWNED_SIDE", side(_group), true];
+_vehicle addEventHandler ["Killed", RSTF_fnc_vehicleKilled];
 
 _vehicle;

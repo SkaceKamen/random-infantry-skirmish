@@ -52,16 +52,16 @@ RSTF_NEUTRALS_EAST = true;
 // Should we spawn emplacements
 RSTF_NEUTRALS_EMPLACEMENTS = true;
 
-//Score needed to win
+// Score needed to win
 RSTF_SCORE_LIMIT = 10000;
-//Score per single kill
+// Score per single kill
 RSTF_SCORE_PER_KILL = 100;
-RSTF_SCORE_PER_SHIP = 1000;
-//Score per teamkill
+// Score per teamkill
 RSTF_SCORE_PER_TEAMKILL = -200;
+// Score awarded for completing task
 RSTF_SCORE_PER_TASK = 200;
-//Score needed to call commando
-RSTF_SCORE_COMMANDO = 3000;
+// Score awarded for killing vehicle
+RSTF_SCORE_PER_VEHICLE = 500;
 
 // Money awarded for kill
 RSTF_MONEY_PER_KILL = 100;
@@ -140,3 +140,16 @@ RSTF_CLEAN_INTERVAL = 3*60;
 RSTF_CLEAN_INTERVAL_VEHICLES = 3*60;
 
 RSTF_BUY_MENU_ACTION = 0;
+
+// Minimal infantry spawn distance in meters
+RSTF_SPAWN_DISTANCE_MIN = 200;
+// Maximal infantry spawn distance in meters
+RSTF_SPAWN_DISTANCE_MAX = 250;
+
+RSTF_MODE_PUSH_SCORE_INTERVAL = 2;
+
+RSTF_MODE_PUSH_SCORE_LIMIT = 100;
+
+RSTF_MODE_PUSH_DISTANCE = 300;
+
+RSTF_MODE_PUSH_LIMIT = 0;

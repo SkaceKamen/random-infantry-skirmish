@@ -31,6 +31,8 @@ class RSTF_Factions_List : RscListNBox
 	w = RSTF_FACTIONS_LEFT_W;
 	h = RSTF_FACTIONS_LEFT_LIST_H;
 	columns[] = { 0, 0.6 };
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
+	rowHeight = 0.04;
 };
 
 class RSTF_Factions_Items_List : RscListNBox

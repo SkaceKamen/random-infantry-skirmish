@@ -1,24 +1,51 @@
+private _errors = [];
+
 {
-	_ctrl = _x select 0;
-	_label = _x select 1;
-	_type = _x select 2;
-	_name = _x select 3;
+	private _ctrl = _x select 0;
+	private _label = _x select 1;
+	private _type = _x select 2;
+	private _name = _x select 3;
+	private _callback = _x param [4, -1, [-1, {}]];
+	private _value = -1;
 
 	// Save value of option
 	if (_type == "checkbox") then {
-		missionNamespace setVariable [_name, cbChecked _ctrl];
+		_value = cbChecked(_ctrl);
 	};
 
 	if (_type == "number" || _type == "float") then {
-		missionNamespace setVariable [_name, parseNumber(ctrlText(_ctrl))];
+		_value = parseNumber(ctrlText(_ctrl));
 	};
 
 	if (_type == "select") then {
-		missionNamespace setVariable [_name, lbCurSel(_ctrl)];
+		_value = lbCurSel(_ctrl);
 	};
 
-	diag_log text(format["OPTIONS: %1 (%2) set to %3", _name, _type, missionNamespace getVariable _name]);
+	// Validate the value
+	private _valid = true;
+	if (!(_callback isEqualTo -1)) then {
+		private _error = [_value, _x] call _callback;
+		if (typeName(_error) == "STRING") then {
+			_valid = false;
+			_errors pushBack _error;
+		};
+	};
+
+	// Only save valid values
+	if (_valid) then {
+		missionNamespace setVariable [_name, _value];
+	};
+
+	// diag_log text(format["OPTIONS: %1 (%2) set to %3", _name, _type, missionNamespace getVariable _name]);
 
 	// Publish option
 	publicVariable _name;
 } foreach RSTF_ADVANCED_LASTOPTIONS;
+
+if (count(_errors) > 0) then {
+	private _message = "";
+	{
+		_message = _message + _x + "<br />";
+	} foreach _errors;
+	[parseText(_message), "Configuration error"] spawn BIS_fnc_GUImessage;
+};

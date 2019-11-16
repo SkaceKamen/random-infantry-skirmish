@@ -15,6 +15,7 @@
 #include "lib\zui\zui-classes.hpp"
 #include "dialogs\zui\input.hpp"
 #include "dialogs\zui\presets.hpp"
+#include "dialogs\zui\shop.hpp"
 
 class cfgFunctions
 {

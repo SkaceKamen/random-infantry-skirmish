@@ -1,3 +1,4 @@
+#include "..\..\dialogs\keys.hpp"
 /*
 	Function:
 	RSTF_fnc_bindKeys
@@ -8,8 +9,6 @@
 	Author:
 	Jan Zípek
 */
-
-#include "..\..\dialogs\keys.hpp"
 
 disableSerialization;
 
@@ -22,7 +21,7 @@ _display displayAddEventHandler ["KeyDown", {
 
 	private _keys = [];
 	private _action = RSTF_POSSIBLE_KEYS select RSTF_BUY_MENU_ACTION;
-	
+
 	if (_action == "win") then {
 		_keys = [DIK_LWIN, DIK_RWIN];
 	} else {
@@ -35,6 +34,7 @@ _display displayAddEventHandler ["KeyDown", {
 
 		// Show vehicle selection dialog
 		0 spawn RSTFUI_fnc_showVehicleDialog;
+		//0 spawn RSTFUI_fnc_showShopDialog;
 
 		// Notify engine that we handled this
 		true;

@@ -193,7 +193,13 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_CLEAN",
 	"RSTF_CLEAN_INTERVAL",
 	"RSTF_CLEAN_INTERVAL_VEHICLES",
-	"RSTF_BUY_MENU_ACTION"
+	"RSTF_BUY_MENU_ACTION",
+	"RSTF_SPAWN_DISTANCE_MIN",
+	"RSTF_SPAWN_DISTANCE_MAX",
+	"RSTF_MODE_PUSH_SCORE_INTERVAL",
+	"RSTF_MODE_PUSH_SCORE_LIMIT",
+	"RSTF_MODE_PUSH_DISTANCE",
+	"RSTF_MODE_PUSH_LIMIT"
 ];
 
 // Profile values that are specific to local player (don't broadcast them)
@@ -329,6 +335,9 @@ RSTF_MODE_unitKilled = {};
 // This will be filled with selected mode function
 RSTF_MODE_taskCompleted = {};
 
+// This will be filled with selected mode function
+RSTF_MODE_vehicleKilled = {};
+
 RSTF_PREDEFINED_LOCATIONS = [];
 
 // List of possible actions, use RSTF_POSSIBLE_KEYS_NAMES to get action name
@@ -340,6 +349,3 @@ for [{_i = 1},{_i <= 20},{_i = _i + 1}] do {
 	RSTF_POSSIBLE_KEYS pushBack ("User" + str(_i));
 	RSTF_POSSIBLE_KEYS_NAMES pushBack ("User Action " + str(_i));
 };
-
-RSTF_SPAWN_DISTANCE_MIN = 200;
-RSTF_SPAWN_DISTANCE_MAX = 250;
