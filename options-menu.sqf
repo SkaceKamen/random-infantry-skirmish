@@ -15,6 +15,10 @@ RSTF_CONFIG_VALUES = [
 		["RSTF_MODE_KOTH_SCORE_LIMIT", "Score to win", "One side wins after reaching this limit.", "number"],
 		["RSTF_MODE_KOTH_SCORE_INTERVAL", "Point award interval", "In seconds. Interval in which is point awarded to side that holds the objective.", "number"]
 	]],
+	["Push", [
+		["RSTF_MODE_PUSH_SCORE_LIMIT", "Score to capture", "Point is captured when one side reaches this number of points", "number"],
+		["RSTF_MODE_PUSH_SCORE_INTERVAL", "Point award interval", "In seconds. Interval in which is point awarded to side that holds the objective.", "number"]
+	]],
 	["Classic", [
 		["RSTF_SCORE_LIMIT", "Score to win", "One side wins after reaching this limit.", "number"],
 		["RSTF_SCORE_PER_KILL", "Score per kill", "Score you get for killing soldier.", "number"],
