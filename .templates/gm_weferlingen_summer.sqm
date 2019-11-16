@@ -1,0 +1,1407 @@
+version=53;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=1025;
+	class ItemIDProvider
+	{
+		nextID=79;
+	};
+	class MarkerIDProvider
+	{
+		nextID=1;
+	};
+	class Camera
+	{
+		pos[]={14080.392,81.695839,16444.389};
+		dir[]={0.90859038,-0.35188258,-0.22511123};
+		up[]={0.34161481,0.93601924,-0.084638514};
+		aside[]={-0.24049081,-1.7433194e-008,-0.97066462};
+	};
+};
+binarizationWanted=0;
+addons[]=
+{
+	"A3_Ui_F",
+	"A3_Characters_F"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=2;
+		class Item0
+		{
+			className="A3_Ui_F";
+			name="Arma 3 - User Interface";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+	};
+};
+randomSeed=11268658;
+class ScenarioData
+{
+	author="Kamen";
+	overviewText="Instant infantry battle for randomly selected place on the map.";
+	overViewPicture="random.paa";
+	joinUnassigned=0;
+	class Header
+	{
+		gameType="Coop";
+		minPlayers=1;
+		maxPlayers=8;
+	};
+};
+class CustomAttributes
+{
+	class Category0
+	{
+		name="Multiplayer";
+		class Attribute0
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
+					class value
+					{
+						items=1;
+						class Item0
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"STRING"
+									};
+								};
+								value="None";
+							};
+						};
+					};
+				};
+			};
+		};
+		nAttributes=1;
+	};
+	class Category1
+	{
+		name="Scenario";
+		class Attribute0
+		{
+			property="EnableDebugConsole";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=0;
+				};
+			};
+		};
+		nAttributes=1;
+	};
+};
+class Mission
+{
+	class Intel
+	{
+		briefingName="(SP/CO-8) Random Infantry Skirmish (Weferlingen)";
+		overviewText="Random infantry skirmish on random place on island";
+		resistanceWest=0;
+		startWeather=0.28999999;
+		startWind=0.099999994;
+		startWaves=0.099999994;
+		forecastWeather=0.29999998;
+		forecastWind=0.099999994;
+		forecastWaves=0.099999994;
+		forecastLightnings=0.099999994;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+	class Entities
+	{
+		items=58;
+		class Item0
+		{
+			dataType="Marker";
+			position[]={14521.83,17.889999,16065.266};
+			name="RSTF_FACTION_CAM";
+			type="Empty";
+			id=0;
+			atlOffset=-59.336327;
+		};
+		class Item1
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14090.172,76.56076,16447.982};
+						angles[]={6.2771854,0,0.0099949092};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayer=1;
+						isPlayable=1;
+					};
+					id=2;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male10ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.97000003;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1;
+		};
+		class Item2
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14088.729,76.540451,16446.58};
+						angles[]={6.2771854,0,0.0080009829};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=23;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=22;
+		};
+		class Item3
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14091.606,76.567711,16446.752};
+						angles[]={6.2771854,0,0.0099949092};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=25;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=24;
+		};
+		class Item4
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14087.487,76.520348,16444.885};
+						angles[]={6.2771854,0,0.0080009829};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=40;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=39;
+		};
+		class Item5
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14093.141,76.571045,16444.75};
+						angles[]={6.2771854,0,0.0099949092};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=42;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=41;
+		};
+		class Item6
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14088.74,76.520897,16443.307};
+						angles[]={6.2771854,0,0.0080009829};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player ";
+						isPlayable=1;
+					};
+					id=44;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=43;
+		};
+		class Item7
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14091.398,76.544823,16443.283};
+						angles[]={6.2771854,0,0.0099949092};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=46;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=45;
+		};
+		class Item8
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14090.202,76.524208,16441.84};
+						angles[]={6.2771854,0,0.0099949092};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=48;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=47;
+		};
+		class Item9
+		{
+			dataType="Marker";
+			position[]={10752.8,0,11338.1};
+			name="RSTF_POSITION_0";
+			text="DĂ¶hren";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=9;
+			atlOffset=-93.608994;
+		};
+		class Item10
+		{
+			dataType="Marker";
+			position[]={10404.875,3.328125,7675.9585};
+			name="RSTF_POSITION_1";
+			text="Grasleben";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=172.88965;
+			b=172.88965;
+			id=10;
+			atlOffset=-97.687904;
+		};
+		class Item11
+		{
+			dataType="Marker";
+			position[]={10827.1,0,12808.2};
+			name="RSTF_POSITION_2";
+			text="Mackendorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=11;
+			atlOffset=-87.379395;
+		};
+		class Item12
+		{
+			dataType="Marker";
+			position[]={6822.8398,0,10869.3};
+			name="RSTF_POSITION_3";
+			text="Querenhorst";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=12;
+			atlOffset=-105.68186;
+		};
+		class Item13
+		{
+			dataType="Marker";
+			position[]={13139.942,12.55957,8582.5342};
+			name="RSTF_POSITION_4";
+			text="Weferlingen";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=277.66504;
+			b=277.66504;
+			id=13;
+			atlOffset=-83.981873;
+		};
+		class Item14
+		{
+			dataType="Marker";
+			position[]={9093.3799,0,5763.71};
+			name="RSTF_POSITION_5";
+			text="Mariental (Horst)";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=14;
+			atlOffset=-152.44705;
+		};
+		class Item15
+		{
+			dataType="Marker";
+			position[]={7122.6401,0,13311};
+			name="RSTF_POSITION_6";
+			text="Rickensdorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=15;
+			atlOffset=-100.26041;
+		};
+		class Item16
+		{
+			dataType="Marker";
+			position[]={13262.7,0,13475};
+			name="RSTF_POSITION_7";
+			text="Saalsdorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=16;
+			atlOffset=-80.955399;
+		};
+		class Item17
+		{
+			dataType="Marker";
+			position[]={14750.3,0,11967.9};
+			name="RSTF_POSITION_8";
+			text="Seggerde";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=17;
+			atlOffset=-85.345551;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={15597.7,0,8886.79};
+			name="RSTF_POSITION_9";
+			text="Ribbenstedt";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=18;
+			atlOffset=-86.886536;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={5301.23,0,6513.79};
+			name="RSTF_POSITION_10";
+			text="Rottorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=19;
+			atlOffset=-132.85483;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={8237.4004,0,4274.3398};
+			name="RSTF_POSITION_11";
+			text="Mariental";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=20;
+			atlOffset=-136.58711;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={5778.1299,0,14132.7};
+			name="RSTF_POSITION_12";
+			text="Papenrode";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=21;
+			atlOffset=-92.618011;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={16321.6,0,9760.1504};
+			name="RSTF_POSITION_13";
+			text="Ribbensdorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=22;
+			atlOffset=-99.839088;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={13751.2,0,4628.3799};
+			name="RSTF_POSITION_14";
+			text="Walbeck";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=23;
+			atlOffset=-100.79443;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={9490.6338,0,16378.393};
+			name="RSTF_POSITION_15";
+			text="Bahrdorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=285.80664;
+			b=285.80664;
+			id=24;
+			atlOffset=-78.757729;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={16287.2,0,7220.52};
+			name="RSTF_POSITION_16";
+			text="HĂ¶dingen";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=25;
+			atlOffset=-102.69018;
+		};
+		class Item26
+		{
+			dataType="Marker";
+			position[]={3973.1101,0,13316.1};
+			name="RSTF_POSITION_17";
+			text="Gross Sisbeck";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=26;
+			atlOffset=-110.83801;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={15735.6,0,14224.6};
+			name="RSTF_POSITION_18";
+			text="Everingen";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=27;
+			atlOffset=-78.070786;
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={13726.2,0,16171.4};
+			name="RSTF_POSITION_19";
+			text="Lockstedt";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=28;
+			atlOffset=-75.762398;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={3166.53,0,12691.3};
+			name="RSTF_POSITION_20";
+			text="Klein Sisbeck";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=29;
+			atlOffset=-119.84354;
+		};
+		class Item30
+		{
+			dataType="Marker";
+			position[]={3200.5901,0,6421.8599};
+			name="RSTF_POSITION_21";
+			text="Rennau";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=30;
+			atlOffset=-116.10065;
+		};
+		class Item31
+		{
+			dataType="Marker";
+			position[]={5566.7002,0,3536.0801};
+			name="RSTF_POSITION_22";
+			text="Barmke";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=31;
+			atlOffset=-114.29299;
+		};
+		class Item32
+		{
+			dataType="Marker";
+			position[]={11167.7,0,17743.4};
+			name="RSTF_POSITION_23";
+			text="Gehrendorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=32;
+			atlOffset=-77.039398;
+		};
+		class Item33
+		{
+			dataType="Marker";
+			position[]={2177.3401,0,8260.6396};
+			name="RSTF_POSITION_24";
+			text="Ahmstorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=33;
+			atlOffset=-110.14448;
+		};
+		class Item34
+		{
+			dataType="Marker";
+			position[]={3772.8601,0,14988.8};
+			name="RSTF_POSITION_25";
+			text="Gross TwĂĽlpstedt";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=34;
+			atlOffset=-97.410927;
+		};
+		class Item35
+		{
+			dataType="Marker";
+			position[]={6847.4731,0.91064453,17521.984};
+			name="RSTF_POSITION_26";
+			text="Meinkot";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=35;
+			atlOffset=-74.494514;
+		};
+		class Item36
+		{
+			dataType="Marker";
+			position[]={17758.1,0,12167.6};
+			name="RSTF_POSITION_27";
+			text="Klinze";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=36;
+			atlOffset=-123.83698;
+		};
+		class Item37
+		{
+			dataType="Marker";
+			position[]={17166.9,0,5133};
+			name="RSTF_POSITION_28";
+			text="Eschenrode";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=37;
+			atlOffset=-119.50759;
+		};
+		class Item38
+		{
+			dataType="Marker";
+			position[]={3949.4199,0,16288.3};
+			name="RSTF_POSITION_29";
+			text="Klein TwĂĽlpstedt";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=38;
+			atlOffset=-88.206329;
+		};
+		class Item39
+		{
+			dataType="Marker";
+			position[]={15546,0,2916.9299};
+			name="RSTF_POSITION_30";
+			text="Schwanefeld";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=39;
+			atlOffset=-105.23161;
+		};
+		class Item40
+		{
+			dataType="Marker";
+			position[]={1635.42,0,13937.3};
+			name="RSTF_POSITION_31";
+			text="Volkmarsdorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=40;
+			atlOffset=-114.85329;
+		};
+		class Item41
+		{
+			dataType="Marker";
+			position[]={7553.5801,0,19252.199};
+			name="RSTF_POSITION_32";
+			text="Wahrstedt";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=41;
+			atlOffset=-70.95903;
+		};
+		class Item42
+		{
+			dataType="Marker";
+			position[]={19532.199,0,11324.3};
+			name="RSTF_POSITION_33";
+			text="Belsdorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=42;
+			atlOffset=-132.16641;
+		};
+		class Item43
+		{
+			dataType="Marker";
+			position[]={19584.5,0,8450.0498};
+			name="RSTF_POSITION_34";
+			text="Behnsdorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=43;
+			atlOffset=-136.04219;
+		};
+		class Item44
+		{
+			dataType="Marker";
+			position[]={2272.6299,0,15880.9};
+			name="RSTF_POSITION_35";
+			text="RĂĽmmer";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=44;
+			atlOffset=-82.719513;
+		};
+		class Item45
+		{
+			dataType="Marker";
+			position[]={279.42001,0,8656.96};
+			name="RSTF_POSITION_36";
+			text="Rhode";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=45;
+			atlOffset=-128.9482;
+		};
+		class Item46
+		{
+			dataType="Marker";
+			position[]={6628.5,0,687.57001};
+			name="RSTF_POSITION_37";
+			text="Emmerstedt";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=46;
+			atlOffset=-117.00997;
+		};
+		class Item47
+		{
+			dataType="Marker";
+			position[]={19022.1,0,14362.5};
+			name="RSTF_POSITION_38";
+			text="Eickendorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=47;
+			atlOffset=-82.720795;
+		};
+		class Item48
+		{
+			dataType="Marker";
+			position[]={5134.6099,0,18769.5};
+			name="RSTF_POSITION_39";
+			text="Velpke";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=48;
+			atlOffset=-82.810097;
+		};
+		class Item49
+		{
+			dataType="Marker";
+			position[]={14195.7,0,19413.1};
+			name="RSTF_POSITION_40";
+			text="BĂ¶sdorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=49;
+			atlOffset=-73.141518;
+		};
+		class Item50
+		{
+			dataType="Marker";
+			position[]={15194.5,0,588.08002};
+			name="RSTF_POSITION_41";
+			text="Beendorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=50;
+			atlOffset=-122.35098;
+		};
+		class Item51
+		{
+			dataType="Marker";
+			position[]={16999.6,0,17959.4};
+			name="RSTF_POSITION_42";
+			text="RĂ¤tzlingen";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=51;
+			atlOffset=-77.217209;
+		};
+		class Item52
+		{
+			dataType="Marker";
+			position[]={3244.25,0,1440.27};
+			name="RSTF_POSITION_43";
+			text="SĂĽpplingenburg";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=52;
+			atlOffset=-113.38567;
+		};
+		class Item53
+		{
+			dataType="Marker";
+			position[]={19897.801,0,4553.6802};
+			name="RSTF_POSITION_44";
+			text="HĂ¶rsingen";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=53;
+			atlOffset=-151.48575;
+		};
+		class Item54
+		{
+			dataType="Marker";
+			position[]={18377.699,0,17635};
+			name="RSTF_POSITION_45";
+			text="Kathendorf";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=54;
+			atlOffset=-79.340797;
+		};
+		class Item55
+		{
+			dataType="Marker";
+			position[]={474.78,0,3129.53};
+			name="RSTF_POSITION_46";
+			text="Gross Steinum";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=55;
+			atlOffset=-101.86997;
+		};
+		class Item56
+		{
+			dataType="Marker";
+			position[]={16675.801,0,353.37};
+			name="RSTF_POSITION_47";
+			text="Gross Bartensleben";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=56;
+			atlOffset=-116.54697;
+		};
+		class Item57
+		{
+			dataType="Marker";
+			position[]={18378.6,0,371.54999};
+			name="RSTF_POSITION_48";
+			text="Bartensleben";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=57;
+			atlOffset=-119.91479;
+		};
+	};
+};
