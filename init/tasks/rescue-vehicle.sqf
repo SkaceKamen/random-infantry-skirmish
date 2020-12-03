@@ -7,10 +7,9 @@ RSTF_TASK_RESCUE_createVIP = {
 
 	_vip addEventHandler ["Killed", RSTF_TASK_RESCUE_vipKilled];
 	_vip addAction ["Rescue", {
-		_vip removeAction (_this select 2);
-
 		_vip = _this select 3;
 
+		_vip removeAction (_this select 2);
 		_vip playMoveNow "Acts_AidlPsitMstpSsurWnonDnon_out";
 
 		_wp = group(_vip) addWaypoint [RSTF_SPAWNS select SIDE_FRIENDLY, 100];
