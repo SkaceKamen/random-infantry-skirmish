@@ -19,6 +19,9 @@ private _name = _unit getvariable ["ORIGINAL_NAME", name(_unit)];
 private _money = (RSTF_AI_MONEY select _side) + ([_name] call RSTF_fnc_getUnitMoney);
 private _vehicles = RSTF_BUYABLE_VEHICLES select _side;
 
+// Don't bother if there're no vehicles
+if (count _vehicles == 0) exitWith {};
+
 // Don't bother if we're broke
 if (_money < (_vehicles select 0) select 2) exitWith {
 	false;
