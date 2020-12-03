@@ -10,6 +10,8 @@ private _search = ctrlText ([RSTF_SHOP_layout, "search"] call ZUI_fnc_getControl
 // Hide items while loading
 [_itemsContainer, false] call ZUI_fnc_setVisible;
 
+private _money = [player] call RSTF_fnc_getPlayerMoney;
+
 private _row = [];
 private _index = 0;
 {
@@ -41,7 +43,14 @@ private _index = 0;
 		([_item, "image"] call ZUI_fnc_getControlById) ctrlSetText _image;
 		([_item, "price"] call ZUI_fnc_getControlById) ctrlSetText ("$" + str(_cost));
 		([_item, "info"] call ZUI_fnc_getControlById) ctrlSetStructuredText parseText(_description);
-		([_item, "buy"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", format["[%1, %2] spawn RSTFUI_fnc_shopBuy", RSTF_SHOP_lastCategory, _foreachIndex]];
+
+		if (_money >= _cost) then {
+			([_item, "buy"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", format["[%1, %2] spawn RSTFUI_fnc_shopBuy", RSTF_SHOP_lastCategory, _foreachIndex]];
+			([_item, "price"] call ZUI_fnc_getControlById) ctrlSetBackgroundColor [0.2, 0.6, 0.2, 1];
+		} else {
+			([_item, "buy"] call ZUI_fnc_getControlById) ctrlEnable false;
+			([_item, "price"] call ZUI_fnc_getControlById) ctrlSetBackgroundColor [0.3, 0, 0, 1];
+		};
 
 		_index = _index + 1;
 	};
