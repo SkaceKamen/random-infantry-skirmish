@@ -23,11 +23,13 @@ private _index = 0;
 	private _image = getText(_c >> "picture");
 
 	private _weapons = [_className] call RSTF_fnc_getVehicleWeapons;
-	private _description = "";
+	private _description = "<t size='0.75'>";
 
 	{
 		_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + "<br/>";
 	} foreach _weapons;
+
+	_description = _description + '</t>';
 
 	// Filter vehicles using search string if specified
 	if (count(_search) == 0 || { [_search, _title] call BIS_fnc_inString }) then {
