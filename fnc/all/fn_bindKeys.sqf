@@ -33,8 +33,7 @@ _display displayAddEventHandler ["KeyDown", {
 		closeDialog 0;
 
 		// Show vehicle selection dialog
-		0 spawn RSTFUI_fnc_showVehicleDialog;
-		//0 spawn RSTFUI_fnc_showShopDialog;
+		0 spawn RSTFUI_fnc_showShopDialog;
 
 		// Notify engine that we handled this
 		true;
