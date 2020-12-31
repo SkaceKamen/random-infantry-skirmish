@@ -19,13 +19,13 @@ class RSTF_Options {
 				description="Number of soldiers in single group.";
 				type="number";
 			};
-			class spacer { type = "spacer"; };
+			class spacer1 { type = "spacer"; };
 			class RSTF_LIMIT_SPAWN {
 				title="Wave spawn time";
 				description="Interval in seconds in which reinforcements are spawned";
 				type="number";
 			};
-			class spacer { type = "spacer"; };
+			class spacer2 { type = "spacer"; };
 			class RSTF_CLEAR_HISTORIC_ITEMS {
 				title="Remove modern things from map";
 				description="Simple script that will try to remove modern things from map, intended to be used with WW2 mods on modern maps.";
