@@ -86,7 +86,7 @@ class ShopDialog: ZUI_ColumnLayout
 					};
 					class input: ZUI_Edit
 					{
-						width = 0.3;
+						width = 0.5;
 						widthType = ZUI_SIZE_ABSOLUTE;
 						id = "search";
 					};
