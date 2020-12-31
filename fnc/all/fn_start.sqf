@@ -23,6 +23,11 @@ _marker setMarkerType "mil_objective";
 // Initialize GC
 call RSTFGC_fnc_init;
 
+// Clear unhistoric items if needed
+if (RSTF_CLEAR_HISTORIC_ITEMS) then {
+	[RSTF_POINT, 3000] call RSTF_fnc_clearHistoricItems;
+};
+
 // Load gamemode
 private _mode = RSTF_MODES select RSTF_MODE_INDEX;
 

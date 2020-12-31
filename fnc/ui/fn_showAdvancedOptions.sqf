@@ -2,15 +2,19 @@
 
 disableSerialization;
 
-_display = "RSTF_RscDialogAdvancedConfig" call RSTF_fnc_getDisplay;
-_optionsContainer = ["RSTF_RscDialogAdvancedConfig", "optionsContainer"] call RSTF_fnc_getCtrl;
+private _display = "RSTF_RscDialogAdvancedConfig" call RSTF_fnc_getDisplay;
+private _optionsContainer = ["RSTF_RscDialogAdvancedConfig", "optionsContainer"] call RSTF_fnc_getCtrl;
 
-_options = (RSTF_CONFIG_VALUES select _this) select 1;
+private _category = _this;
+private _options = missionConfigFile >> "RSTF_Options" >> _category;
+
+diag_log [_category, _options];
 
 // Save previously displayed options
 call RSTF_fnc_saveAdvancedOptions;
 call RSTF_fnc_profileSave;
 call RSTF_fnc_updateEquipment;
+call RSTF_fnc_updateAdvancedConfig;
 
 // Remove previous options
 {
@@ -22,42 +26,48 @@ call RSTF_fnc_updateEquipment;
 
 RSTF_ADVANCED_LASTOPTIONS = [];
 
-_padding = 0.05;
-_width = RSTF_ADV_OPS_W - _padding * 2;
-_idc = 2000;
-_yy = _padding;
-_xx = _padding;
+private _items = "true" configClasses (_options >> "Items");
+private _padding = 0.05;
+private _width = RSTF_ADV_OPS_W - _padding * 2;
+private _idc = 2000;
+private _yy = _padding;
+private _xx = _padding;
 {
-	// Empty array is separator
-	if (count(_x) > 0) then {
+	private _configItem = _x;
+	private _type = getText(_x >> "type");
+
+	if (_type != 'spacer') then {
 		// Load variable name and value
-		_name = _x select 0;
-		_callback = _x param [5, -1, [-1, {}]];
-		_value = missionNamespace getVariable [_name, ""];
+		private _name = configName(_x);
+		private _title = getText(_x >> "title");
+		private _description = getText(_x >> "description");
+		private _validator = -1;
+		private _value = missionNamespace getVariable [_name, ""];
+		
+		if (isText(_x >> "validator")) then {
+			_validator = compile(getText(_x >> "validator"));
+		};
 
 		// Add label
-		_label = _display ctrlCreate ["RscText", _idc, _optionsContainer];
-		_label ctrlSetText ((_x select 1) + ":");
-		_label ctrlSetTooltip (_x select 2);
+		private _label = _display ctrlCreate ["RscText", _idc, _optionsContainer];
+		_label ctrlSetText (_title + ":");
+		_label ctrlSetTooltip _description;
 		_label ctrlSetPosition [_xx, _yy + 0.025 - 0.037/2, RSTF_ADV_OPS_W * 0.4, 0.037];
 		_label ctrlCommit 0;
 
 		_idc = _idc + 1;
 
 		// Decide control used for input
-		_ctrlType = "RscEdit";
-		_type = _x select 3;
+		private _ctrlType = "RscEdit";
 		switch (_type) do {
 			case "checkbox": { _ctrlType = "RscCheckBox"; };
 			case "select": { _ctrlType = "RscCombo"; };
 		};
 
-		diag_log text(format["OPTIONS: %1 (%2) is %3", _name, _type, _value]);
-
 		// Build input control
-		_ctrl = _display ctrlCreate [_ctrlType, _idc, _optionsContainer];
+		private _ctrl = _display ctrlCreate [_ctrlType, _idc, _optionsContainer];
 		_ctrl ctrlSetText str(_value);
-		_ctrl ctrlSetTooltip (_x select 2);
+		_ctrl ctrlSetTooltip _description;
 
 		// Checkbox have fixed size and diferent input
 		if (_type == "checkbox") then {
@@ -74,13 +84,24 @@ _xx = _padding;
 
 		// Add values to combo box
 		if (_type == "select") then {
-			_selectOptions = _x select 4;
+			private _selectOptions = if (isArray(_x >> "options")) then { getArray(_x >> "options") } else { [] };
+			if (isText(_x >> "optionsVariable")) then {
+				_selectOptions = missionNamespace getVariable getText(_x >> "optionsVariable");
+			};
+
 			{
 				_ctrl lbAdd _x;
 				if (typeName(_value) == typeName(_foreachIndex) && { _foreachIndex == _value }) then {
 					_ctrl lbSetCurSel _foreachIndex;
 				};
 			} foreach _selectOptions;
+
+			_ctrl ctrlAddEventHandler ["LBSelChanged", {
+				0 spawn {
+					call RSTF_fnc_saveAdvancedOptions;
+					call RSTF_fnc_updateAdvancedConfig;
+				}
+			}];
 		};
 
 		// Add input filtering for numbers
@@ -98,9 +119,9 @@ _xx = _padding;
 		};
 
 		// Save created option for later manipulation
-		RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name, _callback];
+		RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name, _validator];
 		_idc = _idc + 1;
 	};
 
 	_yy = _yy + 0.08;
-} foreach _options;
+} foreach _items;

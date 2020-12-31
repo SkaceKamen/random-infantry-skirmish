@@ -96,6 +96,7 @@ class RSTF
 		class aliveCrew {};
 		class log {};
 		class loadPredefined {};
+		class clearHistoricItems {};
 	};
 
 	class ui
@@ -103,6 +104,7 @@ class RSTF
 		file = "fnc\ui";
 
 		class showAdvancedConfig {};
+		class updateAdvancedConfig {};
 		class showAdvancedOptions {};
 		class saveAdvancedOptions {};
 		class showConfig {};
