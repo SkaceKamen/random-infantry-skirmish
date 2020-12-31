@@ -216,7 +216,7 @@ ZUI_fnc_refresh = {
 		_ctrl ctrlSetPosition [_xPos, _yPos, _parentWidth, _parentHeight];
 		_ctrl ctrlCommit 0;
 
-		diag_log text(format["ZUI - %1 - %2", _comp#ZUI_L_CONFIG, [_xPos, _yPos, _parentWidth, _parentHeight]]);
+		// diag_log text(format["ZUI - %1 - %2", _comp#ZUI_L_CONFIG, [_xPos, _yPos, _parentWidth, _parentHeight]]);
 	};
 
 	private _scrollable = _type == ZUI_CONTAINER_ID && { ([_comp, "scrollable", true, 0] call ZUI_fnc_getProp) == 1 };
