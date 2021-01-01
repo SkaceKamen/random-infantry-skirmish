@@ -12,7 +12,7 @@ if (isNull(RSTF_CAM)) then {
 };
 
 RSTF_CAM camSetTarget RSTF_POINT;
-RSTF_CAM camSetRelPos [30, 30, 50];
+RSTF_CAM camSetRelPos [100, 100, 300];
 RSTF_CAM camCommit 0;
 
 [
