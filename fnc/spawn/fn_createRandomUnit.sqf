@@ -31,6 +31,16 @@ if (count(RSTF_SPAWN_VEHICLES select _index) > 0) then {
 	};
 };
 
+// DEBUG - Mark spawn location
+if (RSTF_DEBUG) then {
+	if (vehicle(_unit) == _unit) then {
+		private _marker = createMarkerLocal [str(getPos(_unit)), getPos(_unit)];
+		_marker setMarkerShape "ICON";
+		_marker setMarkerType "mil_triangle";
+		_marker setMarkerColor (RSTF_SIDES_COLORS select _index);
+	};
+};
+
 _unit setSkill random(1);
 
 [_unit] joinSilent _group;
@@ -75,5 +85,23 @@ if (!_vehicular) then {
 
 _unit setVariable ["SPAWNED_SIDE", side(_group), true];
 _unit addEventHandler ["Killed", RSTF_fnc_unitKilled];
+
+// DEBUG - Track unit position
+if (RSTF_DEBUG) then {
+	private _marker = createMarkerLocal [str(_unit), getPos(_unit)];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType "Dot";
+	_marker setMarkerColor (RSTF_SIDES_COLORS select _index);
+
+	[_unit, _marker] spawn {
+		private _unit = param [0];
+		private _marker = param [1];
+
+		while { alive(_unit) } do {
+			_marker setMarkerPos getPos(_unit);
+			sleep 1;
+		};
+	};
+};
 
 _unit;

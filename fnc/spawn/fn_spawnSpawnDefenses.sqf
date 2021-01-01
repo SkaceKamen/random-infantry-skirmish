@@ -40,6 +40,14 @@ if (count(_transportClasses) > 0) then {
 			_vehicle setVehicleLock "LOCKEDPLAYER";
 			_vehicle setDir (_direction - 10 + random(20));
 			_transports pushBack _vehicle;
+
+			// DEBUG - Track spawn defenses
+			if (RSTF_DEBUG) then {
+				private _marker = createMarkerLocal [str(_pos), _pos];
+				_marker setMarkerShape "ICON";
+				_marker setMarkerType "mil_start";
+				_marker setMarkerColor (RSTF_SIDES_COLORS select _side);
+			};
 		};
 	};
 };
