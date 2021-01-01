@@ -19,6 +19,18 @@ class RSTF_Options {
 				description="Number of soldiers in single group.";
 				type="number";
 			};
+			class RSTF_SKILL_MIN {
+				title="Minimum unit skill";
+				description="Minimum unit skill, value from 0 to 1";
+				type="float";
+				validator="_this call RSTF_VALIDATOR_SKILL_MIN";
+			};
+			class RSTF_SKILL_MAX {
+				title="Maximum unit skill";
+				description="Maximum unit skill, value from 0 to 1";
+				type="float";
+				validator="_this call RSTF_VALIDATOR_SKILL_MAX";
+			};
 			class spacer1 { type = "spacer"; };
 			class RSTF_LIMIT_SPAWN {
 				title="Wave spawn time";
@@ -27,7 +39,7 @@ class RSTF_Options {
 			};
 			class spacer2 { type = "spacer"; };
 			class RSTF_CLEAR_HISTORIC_ITEMS {
-				title="Remove modern things from map";
+				title="Clear modern things";
 				description="Simple script that will try to remove modern things from map, intended to be used with WW2 mods on modern maps.";
 				type="checkbox";
 			};
@@ -125,13 +137,13 @@ class RSTF_Options {
 				title="Minimal spawn distance";
 				description="Minimal spawn distance from center of battle, in meters";
 				type="number";
-				validation="_this call RSTF_VALIDATOR_SPAWN_DISTANCE_MIN";
+				validator="_this call RSTF_VALIDATOR_SPAWN_DISTANCE_MIN";
 			};
 			class RSTF_SPAWN_DISTANCE_MAX {
 				title="Maximal spawn distance";
 				description="Maximal spawn distance from center of battle, in meters";
 				type="number";
-				validation="_this call RSTF_VALIDATOR_SPAWN_DISTANCE_MAX";
+				validator="_this call RSTF_VALIDATOR_SPAWN_DISTANCE_MAX";
 			};
 		};
 	};

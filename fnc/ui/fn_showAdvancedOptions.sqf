@@ -8,8 +8,6 @@ private _optionsContainer = ["RSTF_RscDialogAdvancedConfig", "optionsContainer"]
 private _category = _this;
 private _options = missionConfigFile >> "RSTF_Options" >> _category;
 
-diag_log [_category, _options];
-
 // Save previously displayed options
 call RSTF_fnc_saveAdvancedOptions;
 call RSTF_fnc_profileSave;

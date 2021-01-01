@@ -41,7 +41,12 @@ if (RSTF_DEBUG) then {
 	};
 };
 
-_unit setSkill random(1);
+// Ensure the skill level is within bounds
+if (RSTF_SKILL_MIN > RSTF_SKILL_MAX) then {
+	RSTF_SKILL_MAX = RSTF_SKILL_MIN;
+};
+
+_unit setSkill (RSTF_SKILL_MIN + random(RSTF_SKILL_MAX - RSTF_SKILL_MIN));
 
 [_unit] joinSilent _group;
 [_unit, _index] call RSTF_fnc_equipSoldier;

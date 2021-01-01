@@ -205,7 +205,9 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_MODE_PUSH_SCORE_LIMIT",
 	"RSTF_MODE_PUSH_DISTANCE",
 	"RSTF_MODE_PUSH_LIMIT",
-	"RSTF_CLEAR_HISTORIC_ITEMS"
+	"RSTF_CLEAR_HISTORIC_ITEMS",
+	"RSTF_SKILL_MIN",
+	"RSTF_SKILL_MAX"
 ];
 
 // Profile values that are specific to local player (don't broadcast them)

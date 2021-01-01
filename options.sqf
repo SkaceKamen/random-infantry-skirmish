@@ -39,6 +39,11 @@ RSTF_LIMIT_UNITS = 4;
 //Time to spawn new units
 RSTF_LIMIT_SPAWN = 30;
 
+// Minimum skill
+RSTF_SKILL_MIN = 0.5;
+// Maximum skill
+RSTF_SKILL_MAX = 1;
+
 // Number of neutral groups in location
 RSTF_NEUTRALS_GROUPS = 5;
 // Radius of neutrals placement
