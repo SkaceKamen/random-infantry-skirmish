@@ -7,7 +7,7 @@ class RSTF_Options {
 				title="Game mode";
 				description="Game mode dictates rules of winning.";
 				type="select";
-				options[]={ "Classic", "King of the Hill" };
+				optionsVariable="RSTF_MODES_NAMES";
 			}
 			class RSTF_LIMIT_GROUPS {
 				title="Groups per side";
@@ -29,6 +29,7 @@ class RSTF_Options {
 			class RSTF_CLEAR_HISTORIC_ITEMS {
 				title="Remove modern things from map";
 				description="Simple script that will try to remove modern things from map, intended to be used with WW2 mods on modern maps.";
+				type="checkbox";
 			};
 		};
 	};

@@ -23,6 +23,7 @@ class RSTF
 		class superRandomTime {};
 		class superRandomWeather {};
 
+		class initializeMode {};
 		class start {};
 		class loopMultikills {};
 		class loop {};

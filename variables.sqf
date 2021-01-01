@@ -1,5 +1,7 @@
 #include "dialogs\keys.hpp"
 
+RSTF_DEBUG = true;
+
 // Indexes used for various arrays
 SIDE_ENEMY = 0;
 SIDE_FRIENDLY = 1;
@@ -103,6 +105,9 @@ RSTF_BACKUP_PLAYER = player;
 
 RSTF_ENDED = false;
 RSTF_WATER = false;
+
+RSTF_MODES = "getNumber(_x >> ""enabled"") == 1" configClasses (missionConfigFile >> "RSTF_Modes");
+RSTF_MODES_NAMES = RSTF_MODES apply { getText(_x >> "title") };
 
 RSTF_WEATHER_TYPES = [
 	"Random",

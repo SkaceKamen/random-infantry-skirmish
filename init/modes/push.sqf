@@ -1,19 +1,51 @@
 #include "..\..\scripts.inc"
 
-RSTF_MODE_KOTH_ENABLED = false;
-RSTF_MODE_KOTH_OWNER = -1;
-RSTF_MODE_KOTH_COUNTS = [];
+// TODO: Modify spawn logic:
+//  1. First wave should be spawned at the point (maybe even in buildings?) - this should happend everytime point is changed
+//  2. Rest of the waves should spawn behind the point - same distance as attackers
 
-RSTF_MODE_KOTH_init = {
-	RSTF_MODE_KOTH_ENABLED = true;
-	publicVariable "RSTF_MODE_KOTH_ENABLED";
+// TODO: Disable Neutrals globally?
+
+// TODO: Points location:
+//  - Start at edge of the town
+//  - Continue through the town
+//  - Maybe even continue futher
+//    - this would require us to spawn some defenses and buildings and stuff to make it fun
+
+RSTF_MODE_PUSH_ENABLED = false;
+RSTF_MODE_PUSH_OWNER = -1;
+RSTF_MODE_PUSH_COUNTS = [];
+RSTF_MODE_PUSH_POINTS = [];
+
+RSTF_MODE_PUSH_init = {
+	RSTF_MODE_PUSH_ENABLED = true;
+	publicVariable "RSTF_MODE_PUSH_ENABLED";
 
 	// Reset score
 	RSTF_SCORE = [0, 0, 0];
 
-	// Hill parameters
+	// Build points
 	private _center = RSTF_POINT;
-	private _radius = RSTF_DISTANCE * 0.6;
+	private _radius = RSTF_DISTANCE;
+	private _direction = RSTF_DIRECTION;
+
+	_center = _center vectorAdd [
+		cos(RSTF_DIRECTION + 180) * _radius,
+		sin(RSTF_DIRECTION + 180) * _radius,
+		0
+	];
+
+	while { count(RSTF_MODE_PUSH_POINTS) < 5 } do {
+		_direction = _direction - 10 + random 20;
+		_center = _center vectorAdd [
+			cos(_direction) * _radius * 0.3,
+			sin(_direction) * _radius * 0.3,
+			0
+		];
+
+		RSTF_MODE_PUSH_POINTS pushBack _center;
+
+	};
 
 	private _currentOwner = -1;
 	private _last = time;
@@ -49,7 +81,7 @@ RSTF_MODE_KOTH_init = {
 			};
 		} foreach _nearest;
 
-		RSTF_MODE_KOTH_COUNTS = _counts;
+		RSTF_MODE_PUSH_COUNTS = _counts;
 
 		// Now find side with most men
 		private _best = _currentOwner;
@@ -87,7 +119,7 @@ RSTF_MODE_KOTH_init = {
 			], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
 		} else {
 			// If enought time passed
-			if (_currentOwner != -1 && _currentOwner != SIDE_NEUTRAL && time - _last > RSTF_MODE_KOTH_SCORE_INTERVAL) then {
+			if (_currentOwner != -1 && _currentOwner != SIDE_NEUTRAL && time - _last > RSTF_MODE_PUSH_SCORE_INTERVAL) then {
 				// Add point and reset timer
 				_last = time;
 				RSTF_SCORE set [_currentOwner, (RSTF_SCORE select _currentOwner) + 1];
@@ -104,22 +136,22 @@ RSTF_MODE_KOTH_init = {
 				0 remoteExec ["RSTF_fnc_onScore"];
 
 				// End when limit is reached
-				if (RSTF_SCORE select _currentOwner >= RSTF_MODE_KOTH_SCORE_LIMIT) then {
+				if (RSTF_SCORE select _currentOwner >= RSTF_MODE_PUSH_SCORE_LIMIT) then {
 					[_currentOwner] remoteExec ["RSTF_fnc_onEnd"];
 				};
 			};
 		};
 
-		RSTF_MODE_KOTH_OWNER = _currentOwner;
+		RSTF_MODE_PUSH_OWNER = _currentOwner;
 
-		publicVariable "RSTF_MODE_KOTH_OWNER";
-		publicVariable "RSTF_MODE_KOTH_COUNTS";
+		publicVariable "RSTF_MODE_PUSH_OWNER";
+		publicVariable "RSTF_MODE_PUSH_COUNTS";
 
 		sleep 1;
 	};
 };
 
-RSTF_MODE_KOTH_unitKilled = {
+RSTF_MODE_PUSH_unitKilled = {
 	private _killed = param [0];
 	private _killer = param [1];
 	if (count(_this) > 2) then {
@@ -181,7 +213,7 @@ RSTF_MODE_KOTH_unitKilled = {
 	};
 };
 
-RSTF_MODE_KOTH_taskCompleted = {
+RSTF_MODE_PUSH_taskCompleted = {
 	private _taskName = param [0];
 	private _taskScore = param [1];
 
@@ -192,4 +224,6 @@ RSTF_MODE_KOTH_taskCompleted = {
 	} foreach allPlayers;
 };
 
-RSTF_MODE_KOTH_vehicleKilled = {};
+RSTF_MODE_PUSH_vehicleKilled = {
+
+};

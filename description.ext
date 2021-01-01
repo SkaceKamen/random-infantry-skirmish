@@ -17,6 +17,7 @@
 #include "dialogs\zui\presets.hpp"
 #include "dialogs\zui\shop.hpp"
 
+#include "modes.hpp"
 #include "options-menu.hpp"
 
 class cfgFunctions

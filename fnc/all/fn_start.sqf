@@ -28,16 +28,8 @@ if (RSTF_CLEAR_HISTORIC_ITEMS) then {
 	[RSTF_POINT, 3000] call RSTF_fnc_clearHistoricItems;
 };
 
-// Load gamemode
-private _mode = RSTF_MODES select RSTF_MODE_INDEX;
-
-RSTF_MODE_init = _mode select 1;
-RSTF_MODE_unitKilled = _mode select 2;
-RSTF_MODE_taskCompleted = _mode select 3;
-RSTF_MODE_vehicleKilled = _mode select 4;
-
-// Initialize gamemode
-0 spawn RSTF_MODE_init;
+// Initialize selected gamemode
+call RSTF_fnc_initializeMode;
 
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
