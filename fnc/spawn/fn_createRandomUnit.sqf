@@ -101,6 +101,8 @@ if (RSTF_DEBUG) then {
 			_marker setMarkerPos getPos(_unit);
 			sleep 1;
 		};
+
+		deleteMarker _marker;
 	};
 };
 

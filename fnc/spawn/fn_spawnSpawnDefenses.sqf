@@ -9,15 +9,7 @@ private _direction = _position getDir RSTF_POINT;
 private _transportClasses = (RSTF_VEHICLES select _side) select RSTF_VEHICLE_TRANSPORT;
 private _transports = [];
 
-private _transportsCount = 2 + random(2);
-
-/*
-diag_log text(format["Transports for %1:", _side]);
-{
-	_displayName = getText(configFile >> "cfgvehicles" >> _x >> "displayName");
-	diag_log text(format["%1 (%2)", _displayName, _x]);
-} foreach _transportClasses;
-*/
+private _transportsCount = 4 + random(2);
 
 if (count(_transportClasses) > 0) then {
 	for "_iiii" from 1 to _transportsCount do {

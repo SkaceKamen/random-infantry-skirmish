@@ -47,6 +47,13 @@ while { true } do {
 
 				for [{_i = 0},{_i < RSTF_LIMIT_GROUPS + _groups_advantage},{_i = _i + 1}] do {
 					_groups set [_i, creategroup _side];
+
+					if (RSTF_DEBUG) then {
+						private _marker = createMarkerLocal [str(_groups select _i), [0,0,0]];
+						_marker setMarkerShape "ICON";
+						_marker setMarkerType "waypoint";
+						_marker setMarkerColor (RSTF_SIDES_COLORS select _index);
+					};
 				};
 
 				publicVariable "RSTF_GROUPS";
@@ -79,6 +86,10 @@ while { true } do {
 				deleteWaypoint [_group, 0];
 				_wp = _group addWaypoint [_wppoint, 50];
 				_wp setWaypointType "SAD";
+
+				if (RSTF_DEBUG) then {
+					(str(_group)) setMarkerPos _wppoint;
+				};
 
 				private _i = 0;
 				private _k = 0;
