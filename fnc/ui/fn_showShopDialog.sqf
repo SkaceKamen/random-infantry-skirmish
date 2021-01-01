@@ -41,10 +41,16 @@ RSTF_SHOP_layout = [missionConfigFile >> "ShopDialog"] call ZUI_fnc_createDispla
 
 private _categoriesContainer = [RSTF_SHOP_layout, "categories"] call ZUI_fnc_getComponentById;
 {
-	private _cat = [_categoriesContainer, missionConfigFile >> "ShopComponents" >> "Category", false] call ZUI_fnc_createChild;
+	private _count = count(RSTF_SHOP_items#_foreachIndex);
+	if (_count > 0) then {
+		private _cat = [_categoriesContainer, missionConfigFile >> "ShopComponents" >> "Category", false] call ZUI_fnc_createChild;
+		private _titleCtrl = [_cat, 'title'] call ZUI_fnc_getControlById;
+		private _countCtrl = [_cat, 'count'] call ZUI_fnc_getControlById;
 
-	([_cat] call ZUI_fnc_control) ctrlSetText format["%1 (%2)", _x, count(RSTF_SHOP_items#_foreachIndex)];
-	([_cat] call ZUI_fnc_control) ctrlAddEventHandler ["ButtonClick", format["[%1] spawn RSTFUI_fnc_shopCategoryClicked", _foreachIndex]];
+		_titleCtrl ctrlSetText _x;
+		_titleCtrl ctrlAddEventHandler ["ButtonClick", format["[%1] spawn RSTFUI_fnc_shopCategoryClicked", _foreachIndex]];
+		_countCtrl ctrlSetText str(_count);
+	};
 } foreach _categories;
 
 [_categoriesContainer] call ZUI_fnc_refresh;

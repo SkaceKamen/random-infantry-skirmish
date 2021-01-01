@@ -49,6 +49,7 @@ class ShopDialog: ZUI_ColumnLayout
 
 				width = 0.2;
 				marginRight = SHOP_SPACING;
+				scrollable = 1;
 			};
 
 			class items: ZUI_ColumnLayout
