@@ -13,7 +13,7 @@ class RSTF_Modes
 
 	class KOTH
 	{
-		title = "KOTH";
+		title = "King of the Hill";
 		enabled = 1;
 
 		init = "RSTF_MODE_KOTH_init";
@@ -24,12 +24,23 @@ class RSTF_Modes
 
 	class Push
 	{
-		title = "PUSH";
+		title = "Push";
 		enabled = 0;
 
 		init = "RSTF_MODE_PUSH_init";
 		unitKilled = "RSTF_MODE_PUSH_unitKilled";
 		taskCompleted = "RSTF_MODE_PUSH_taskCompleted";
 		vehicleKilled = "RSTF_MODE_PUSH_vehicleKilled";
+	};
+
+	class Defense
+	{
+		title = "Defense";
+		enabled = 0;
+
+		init = "RSTF_MODE_DEF_init";
+		unitKilled = "RSTF_MODE_DEF_unitKilled";
+		taskCompleted = "RSTF_MODE_DEF_taskCompleted";
+		vehicleKilled = "RSTF_MODE_DEF_vehicleKilled";
 	};
 };
