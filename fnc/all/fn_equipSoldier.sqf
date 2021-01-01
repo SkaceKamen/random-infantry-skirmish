@@ -1,5 +1,5 @@
-_unit = _this select 0;
-_side = _this select 1;
+private _unit = param [0, nil, [objNull]];
+private _side = param [1, nil, [0]];
 
 if (RSTF_RANDOMIZE_WEAPONS) then {
 	_weapons = RSTF_WEAPONS;

@@ -1,11 +1,11 @@
 RSTF_MEN = [ [], [], [] ];
 
 {
-	_side = _x select 0;
-	_factions = _x select 1;
+	private _side = _x select 0;
+	private _factions = _x select 1;
 
-	_list = [_factions] call RSTF_fnc_loadSoldiers;
-	_vehicles = [_factions] call RSTF_fnc_loadVehicles;
+	private _list = [_factions] call RSTF_fnc_loadSoldiers;
+	private _vehicles = [_factions] call RSTF_fnc_loadVehicles;
 	RSTF_MEN set [_side, _list select 0];
 	RSTF_VEHICLES set [_side, _vehicles];
 
