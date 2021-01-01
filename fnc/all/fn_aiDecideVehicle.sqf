@@ -68,9 +68,10 @@ _vehicle allowCrewInImmobile true;
 _group = group(effectiveCommander(_vehicle));
 
 // Remove vehicle from AI vehicles when dead
-[_vehicle, _side] spawn {
+[_vehicle, _side, _air] spawn {
 	private _vehicle = param [0];
 	private _side = param [1];
+	private _air = param [2];
 
 	// Try to load all gunners
 	private _gunners = [];
@@ -95,6 +96,11 @@ _group = group(effectiveCommander(_vehicle));
 			} foreach crew(_vehicle);
 		};
 
+		// Air vehicles have limited ammo, this makes them more fun
+		if (_air) then {
+			_vehicle setVehicleAmmo 1;
+		};
+
 		sleep 60;
 	};
 
@@ -111,18 +117,22 @@ _group = group(effectiveCommander(_vehicle));
 	_group = param [1];
 	_side = param [2];
 	_air = param [3];
+	_m = "";
+
+	if (RSTF_DEBUG) then {
+		_m = createMarkerLocal [str(_vehicle), getPos(_vehicle)];
+		_m setMarkerShape "ICON";
+		_m setMarkerType "mil_box";
+		_m setMarkerColor (RSTF_SIDES_COLORS select _side);
+	};
 
 	while { alive(_vehicle) } do {
 		deleteWaypoint [_group, 0];
 		_wp = _group addWaypoint [[_side, true] call RSTF_fnc_getAttackWaypoint, 10];
 
-		/*
-		if (_side == SIDE_FRIENDLY) then {
-			_m = createMarker [format["marker%1%2", time, waypointPosition _wp], waypointPosition _wp];
-			_m setMarkerShape "ICON";
-			_m setMarkerType "mil_dot";
+		if (RSTF_DEBUG) then {
+			_m setmarkerPos (waypointPosition _wp);
 		};
-		*/
 
 		if (!_air) then {
 			_wp setWaypointType "SAD";
