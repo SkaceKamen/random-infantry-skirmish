@@ -95,7 +95,7 @@ _unit addEventHandler ["Killed", RSTF_fnc_unitKilled];
 if (RSTF_DEBUG) then {
 	private _marker = createMarkerLocal [str(_unit), getPos(_unit)];
 	_marker setMarkerShape "ICON";
-	_marker setMarkerType "Dot";
+	_marker setMarkerType "mil_dot";
 	_marker setMarkerColor (RSTF_SIDES_COLORS select _index);
 
 	[_unit, _marker] spawn {
