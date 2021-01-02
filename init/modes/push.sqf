@@ -13,16 +13,49 @@
 //    - this would require us to spawn some defenses and buildings and stuff to make it fun
 
 RSTF_MODE_PUSH_ENABLED = false;
-RSTF_MODE_PUSH_OWNER = -1;
 RSTF_MODE_PUSH_COUNTS = [];
 RSTF_MODE_PUSH_POINTS = [];
+RSTF_MODE_PUSH_POINT_INDEX = -1;
+
+RSTF_MODE_PUSH_NEXT_POINT = {
+	RSTF_MODE_PUSH_POINT_INDEX = RSTF_MODE_PUSH_POINT_INDEX + 1;
+	private _point = RSTF_MODE_PUSH_POINTS select RSTF_MODE_PUSH_POINT_INDEX;
+	"PUSH_OBJECTIVE" setMarkerPos _point;
+
+	private _direction = RSTF_DIRECTION;
+	private _distance = RSTF_SPAWN_DISTANCE_MIN + random(RSTF_SPAWN_DISTANCE_MAX - RSTF_SPAWN_DISTANCE_MIN);
+
+	// TODO: Multiplayer?
+
+	// Reset score
+	RSTF_SCORE = [0, 0, 0];
+
+	RSTF_POINT = _point;
+
+	RSTF_SPAWNS = [
+		_point,
+		_point vectorAdd [sin(180 + _direction) * _distance, cos(180 + _direction) * _distance, 0],
+		[0,0,0] //For netural defenders
+	];
+
+	// Move enemy spawn point back a bit after few seconds
+	[_point, _distance, _direction] spawn {
+		private _point = param [0];
+		private _distance = param [1];
+		private _direction = param [2];
+
+		sleep 10;
+
+		RSTF_SPAWNS set [
+			SIDE_ENEMY,
+			_point vectorAdd [sin(_direction) * _distance, cos(_direction) * _distance, 0]
+		];
+	};
+};
 
 RSTF_MODE_PUSH_init = {
 	RSTF_MODE_PUSH_ENABLED = true;
 	publicVariable "RSTF_MODE_PUSH_ENABLED";
-
-	// Reset score
-	RSTF_SCORE = [0, 0, 0];
 
 	// Build points
 	private _center = RSTF_POINT;
@@ -30,29 +63,37 @@ RSTF_MODE_PUSH_init = {
 	private _direction = RSTF_DIRECTION;
 
 	_center = _center vectorAdd [
-		cos(RSTF_DIRECTION + 180) * _radius,
-		sin(RSTF_DIRECTION + 180) * _radius,
+		sin(_direction + 180) * _radius,
+		cos(_direction + 180) * _radius,
 		0
 	];
 
 	while { count(RSTF_MODE_PUSH_POINTS) < 5 } do {
-		_direction = _direction - 10 + random 20;
+		_direction = _direction - 20 + random 40;
 		_center = _center vectorAdd [
-			cos(_direction) * _radius * 0.3,
-			sin(_direction) * _radius * 0.3,
+			sin(_direction) * _radius * 0.8,
+			cos(_direction) * _radius * 0.8,
 			0
 		];
 
-		RSTF_MODE_PUSH_POINTS pushBack _center;
+		if (RSTF_DEBUG) then {
+			private _marker = createMarkerLocal [str(_center), _center];
+			_marker setMarkerShape "ICON";
+			_marker setMarkerType "mil_warning";
+		};
 
+		RSTF_MODE_PUSH_POINTS pushBack _center;
 	};
 
+	_radius = 100;
 	private _currentOwner = -1;
 	private _last = time;
-	private _marker = createMarker ["KOTH_OBJECTIVE", _center];
+	private _marker = createMarker ["PUSH_OBJECTIVE", _center];
 	_marker setMarkerShape "ELLIPSE";
 	_marker setMarkerSize [_radius, _radius];
 	_marker setMarkerColor RSTF_COLOR_NEUTRAL;
+
+	call RSTF_MODE_PUSH_NEXT_POINT;
 
 	while { !RSTF_ENDED } do {
 		// Count men for each side inside this point
@@ -61,7 +102,7 @@ RSTF_MODE_PUSH_init = {
 			_counts set [_x, 0];
 		} foreach RSTF_SIDES;
 
-		private _nearest = nearestObjects [_center, ["Man"], _radius, true];
+		private _nearest = nearestObjects [RSTF_POINT, ["Man"], _radius, true];
 		{
 			_index = -1;
 			if (alive(_x)) then {
@@ -94,57 +135,33 @@ RSTF_MODE_PUSH_init = {
 			};
 		} foreach _counts;
 
-		// Now compare it with current owner and change accordingly
-		if (_best != _currentOwner) then {
-			// Change owner
-			_currentOwner = _best;
-
-			// Reset score timer
+		if (_best == SIDE_FRIENDLY) then {
+			// Add point and reset timer
 			_last = time;
+			RSTF_SCORE set [_best, (RSTF_SCORE select _best) + 1];
 
-			// Change flag and marker to corresponding side
-			private _color = RSTF_COLOR_NEUTRAL;
+			// Notify clients
+			publicVariable "RSTF_SCORE";
+			0 remoteExec ["RSTF_fnc_onScore"];
 
-			if (_currentOwner != -1) then {
-				_color = RSTF_SIDES_COLORS select _currentOwner;
-			};
+			// End when limit is reached
+			if (RSTF_SCORE select _best >= RSTF_MODE_PUSH_SCORE_LIMIT) then {
+				// [_currentOwner] remoteExec ["RSTF_fnc_onEnd"];
+				if (RSTF_MODE_PUSH_POINT_INDEX >= count(RSTF_MODE_PUSH_POINTS) - 1) then {
+					[SIDE_FRIENDLY] remoteExec ["RSTF_fnc_onEnd"];
+				} else {
+					// Create notification
+					[format[
+						"<t color='%1'>%2</t> captured objective, moving to next",
+						RSTF_SIDES_COLORS_TEXT select SIDE_FRIENDLY,
+						RSTF_SIDES_NAMES select _best
+					], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
 
-			_marker setMarkerColor _color;
-
-			// Create notification
-			[format[
-				"<t color='%1'>%2</t> captured objective",
-				RSTF_SIDES_COLORS_TEXT select _currentOwner,
-				RSTF_SIDES_NAMES select _currentOwner
-			], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
-		} else {
-			// If enought time passed
-			if (_currentOwner != -1 && _currentOwner != SIDE_NEUTRAL && time - _last > RSTF_MODE_PUSH_SCORE_INTERVAL) then {
-				// Add point and reset timer
-				_last = time;
-				RSTF_SCORE set [_currentOwner, (RSTF_SCORE select _currentOwner) + 1];
-
-				// Create notification
-				[format[
-					"<t color='%1'>%2</t> +1 for holding objective",
-					RSTF_SIDES_COLORS_TEXT select _currentOwner,
-					RSTF_SIDES_NAMES select _currentOwner
-				], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
-
-				// Notify clients
-				publicVariable "RSTF_SCORE";
-				0 remoteExec ["RSTF_fnc_onScore"];
-
-				// End when limit is reached
-				if (RSTF_SCORE select _currentOwner >= RSTF_MODE_PUSH_SCORE_LIMIT) then {
-					[_currentOwner] remoteExec ["RSTF_fnc_onEnd"];
+					call RSTF_MODE_PUSH_NEXT_POINT;
 				};
 			};
 		};
 
-		RSTF_MODE_PUSH_OWNER = _currentOwner;
-
-		publicVariable "RSTF_MODE_PUSH_OWNER";
 		publicVariable "RSTF_MODE_PUSH_COUNTS";
 
 		sleep 1;

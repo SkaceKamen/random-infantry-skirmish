@@ -34,12 +34,13 @@ _ctrlUserCountFriendly = _display displayCtrl RSTFUI_ARCADE_FRIENDLY_USER_COUNT_
 _ctrlUserCountEnemy = _display displayCtrl RSTFUI_ARCADE_ENEMY_USER_COUNT_IDC;
 
 // Hide KOTH only controls
-if (!RSTF_MODE_KOTH_ENABLED) then {
+if (!RSTF_MODE_KOTH_ENABLED && !RSTF_MODE_PUSH_ENABLED) then {
 	{
 		_x ctrlShow false;
 		_x ctrlCommit 0;
 	} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy];
 };
+
 _ctrlOwner ctrlShow false;
 _ctrlOwner ctrlCommit 0;
 
@@ -68,7 +69,7 @@ while { true } do {
 	];
 
 	// KOTH related stuff
-	if (RSTF_MODE_KOTH_ENABLED) then {
+	if (RSTF_MODE_KOTH_ENABLED || RSTF_MODE_PUSH_ENABLED) then {
 		if (RSTF_MODE_KOTH_OWNER != _lastOwner) then {
 			_lastOwner = RSTF_MODE_KOTH_OWNER;
 			if (_lastOwner == SIDE_FRIENDLY || _lastOwner == SIDE_ENEMY) then {
@@ -97,6 +98,11 @@ while { true } do {
 		if (count(RSTF_MODE_KOTH_COUNTS) > 0) then {
 			_ctrlUserCountFriendly ctrlSetText str(RSTF_MODE_KOTH_COUNTS select SIDE_FRIENDLY);
 			_ctrlUserCountEnemy ctrlSetText str(RSTF_MODE_KOTH_COUNTS select SIDE_ENEMY);
+		};
+
+		if (count(RSTF_MODE_PUSH_COUNTS) > 0) then {
+			_ctrlUserCountFriendly ctrlSetText str(RSTF_MODE_PUSH_COUNTS select SIDE_FRIENDLY);
+			_ctrlUserCountEnemy ctrlSetText str(RSTF_MODE_PUSH_COUNTS select SIDE_ENEMY);
 		};
 	};
 
