@@ -141,7 +141,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="(SP/CO-8) Random Infantry Skirmish (WW2: [Winter] Neaville (I44))";
+		briefingName="(SP/CO-8) RIS (WW2: [Winter] Neaville (I44))";
 		overviewText="Random infantry skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;
