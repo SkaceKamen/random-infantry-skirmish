@@ -98,6 +98,7 @@ class RSTF
 		class log {};
 		class loadPredefined {};
 		class clearHistoricItems {};
+		class getModeId {};
 	};
 
 	class ui

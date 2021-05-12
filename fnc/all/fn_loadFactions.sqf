@@ -10,15 +10,23 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 		private _man = getNumber(_c >> "isMan");
 		private _faction = getText(_c >> "faction");
 
-		if (_scope == 2 && _man == 1 && !(_faction in _factions)) then {
+		if (_scope == 2 && !(_faction in _factions)) then {
 			private _weaponized = false;
-			private _wp = getArray(_c >> "weapons");
-			{
-				private _usable = [configFile >> "cfgWeapons" >> _x, false] call RSTF_fnc_isUsableWeapon;
-				if (_x != "Throw" && _x != "Put" && _usable) exitWith {
+
+			if (_man == 1) then {
+				private _wp = getArray(_c >> "weapons");
+				{
+					private _usable = [configFile >> "cfgWeapons" >> _x, false] call RSTF_fnc_isUsableWeapon;
+					if (_x != "Throw" && _x != "Put" && _usable) exitWith {
+						_weaponized = true;
+					};
+				} foreach _wp;
+			} else {
+				private _weapons = [configName(_c)] call RSTF_fnc_getVehicleWeapons;
+				if (count(_weapons) > 0) then {
 					_weaponized = true;
 				};
-			} foreach _wp;
+			};
 
 			if (_weaponized) then {
 				_factions pushBack _faction;

@@ -25,7 +25,7 @@ class RSTF_Modes
 	class Push
 	{
 		title = "Push";
-		enabled = 0;
+		enabled = 1;
 
 		init = "RSTF_MODE_PUSH_init";
 		unitKilled = "RSTF_MODE_PUSH_unitKilled";

@@ -1,0 +1,22 @@
+ * Better intro: Add game mode and time?
+ * Better compat with ASR and VCOM AI
+  - Stop units from moving from houses
+  - Prevent units from reusing vehicles
+ * Spawn some random crates for clear building task
+ * Defense game mode
+ * Kill feed
+ * Supports
+  - Artillery
+    - needs to be limited to the point only
+    - more possible payloads?
+  - Recon
+  - Ammo drop
+  - ???
+ * Vehicles rearming?
+ * AI Vehicles
+  - Pick category first?
+  - Limit air?
+ * Display shop info permanently next to money
+ * PUSH:
+  - Defenders seem to be too powerful (have vehicles ready earlier and stuff)
+  - Less defenders? Slower spawn? More money for attackers?

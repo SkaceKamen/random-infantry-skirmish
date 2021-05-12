@@ -141,5 +141,26 @@ class ARCADE_UI
 
 			colorBackground[] = { 0, 0, 0, 0.2 };
 		};
+		
+		class PushProgressBackground : RscStatic
+		{
+			x = SafeZoneX + SafeZoneW / 2 - RSTFUI_ARCADE_PUSH_PROGRESS_W / 2;
+			y = SafeZoneY + 0.01;
+			w = RSTFUI_ARCADE_PUSH_PROGRESS_W;
+			h = RSTFUI_ARCADE_PUSH_PROGRESS_H;
+			colorBackground[] = { 0, 0, 0, 0.5 };
+		};
+
+		class PushProgressBar : RscStatic
+		{
+			idc = RSTFUI_ARCADE_PUSH_PROGRESS_IDC;
+			style = ST_VCENTER;
+			x = SafeZoneX + SafeZoneW / 2 - RSTFUI_ARCADE_PUSH_PROGRESS_W / 2;
+			y = SafeZoneY + 0.01;
+			w = 0;
+			h = RSTFUI_ARCADE_PUSH_PROGRESS_H;
+			colorBackground[] = { 0, 0, 0.77, 0.9 };
+		};
+
 	};
 };

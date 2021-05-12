@@ -29,9 +29,57 @@ _ctrlLocalMessages = _display displayCtrl RSTFUI_ARCADE_LOCAL_MESSAGES_IDC;
 _ctrlOwner = _display displayCtrl RSTFUI_ARCADE_SCORE_OWNER_IDC;
 _ctrlMoney = _display displayCtrl RSTFUI_ARCADE_MONEY_IDC;
 
+_ctrlScoreFriendly = _display displayCtrl RSTFUI_ARCADE_SCORE_F_IDC;
+_ctrlScoreEnemy = _display displayCtrl RSTFUI_ARCADE_SCORE_E_IDC;
+
 _ctrlUserCountIcon = _display displayCtrl RSTFUI_ARCADE_USER_ICON_IDC;
 _ctrlUserCountFriendly = _display displayCtrl RSTFUI_ARCADE_FRIENDLY_USER_COUNT_IDC;
 _ctrlUserCountEnemy = _display displayCtrl RSTFUI_ARCADE_ENEMY_USER_COUNT_IDC;
+
+_ctrlPushProgress = _display displayCtrl RSTFUI_ARCADE_PUSH_PROGRESS_IDC;
+
+_modeId = call RSTF_fnc_getModeId;
+
+switch (_modeId) do {
+	case "Classic": {
+		{
+			_x ctrlShow false;
+			_x ctrlCommit 0;
+		} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress];
+	};
+
+	case "KOTH": {
+		{
+			_x ctrlShow false;
+			_x ctrlCommit 0;
+		} foreach [_ctrlPushProgress];
+	};
+
+	case "Push": {
+		{
+			_x ctrlShow false;
+			_x ctrlCommit 0;
+		} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
+
+		_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
+		_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
+	};
+
+	case "Defense": {
+		{
+			_x ctrlShow false;
+			_x ctrlCommit 0;
+		} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
+	};
+};
+
+// Hide KOTH only controls
+if (!RSTF_MODE_KOTH_ENABLED && !RSTF_MODE_PUSH_ENABLED) then {
+	{
+		_x ctrlShow false;
+		_x ctrlCommit 0;
+	} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy];
+};
 
 // Hide KOTH only controls
 if (!RSTF_MODE_KOTH_ENABLED && !RSTF_MODE_PUSH_ENABLED) then {
@@ -68,28 +116,39 @@ while { true } do {
 		[_ctrlLocalMessages, RSTF_UI_MESSAGES]
 	];
 
-	// KOTH related stuff
-	if (RSTF_MODE_KOTH_ENABLED || RSTF_MODE_PUSH_ENABLED) then {
+	// Point capture related logic
+	if (_modeId == "KOTH" || _modeId == "Push" || _modeId == "Defense") then {
 		if (RSTF_MODE_KOTH_OWNER != _lastOwner) then {
 			_lastOwner = RSTF_MODE_KOTH_OWNER;
-			if (_lastOwner == SIDE_FRIENDLY || _lastOwner == SIDE_ENEMY) then {
-				_color = RSTF_SIDES_COLORS_UI_SELECTED select _lastOwner;
-				_position = [
-					SafeZoneX + SafeZoneW / 2,
-					SafeZoneY + 0.01
-				];
-				if (_lastOwner == SIDE_FRIENDLY) then {
-					_position set [0,
-						(_position select 0) - (RSTFUI_ARCADE_SCORE_W + 0.01)
+			
+			if (_modeId == "KOTH") then {
+				if (_lastOwner == SIDE_FRIENDLY || _lastOwner == SIDE_ENEMY) then {
+					_color = RSTF_SIDES_COLORS_UI_SELECTED select _lastOwner;
+					_position = [
+						SafeZoneX + SafeZoneW / 2,
+						SafeZoneY + 0.01
 					];
+					if (_lastOwner == SIDE_FRIENDLY) then {
+						_position set [0,
+							(_position select 0) - (RSTFUI_ARCADE_SCORE_W + 0.01)
+						];
+					};
+					_ctrlOwner ctrlShow true;
+					_ctrlOwner ctrlSetPosition _position;
+					_ctrlOwner ctrlSetBackgroundColor _color;
+					_ctrlOwner ctrlCommit 0.3;
+				} else {
+					_ctrlOwner ctrlShow false;
+					_ctrlOwner ctrlCommit 0;
 				};
-				_ctrlOwner ctrlShow true;
-				_ctrlOwner ctrlSetPosition _position;
-				_ctrlOwner ctrlSetBackgroundColor _color;
-				_ctrlOwner ctrlCommit 0.3;
-			} else {
-				_ctrlOwner ctrlShow false;
-				_ctrlOwner ctrlCommit 0;
+			};
+
+			if (_modeId == "Push") then {
+				if (_lastOwner == SIDE_FRIENDLY) then {
+					_ctrlPushProgress ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
+				} else {
+					_ctrlPushProgress ctrlSetBackgroundColor [0, 0, 0.9, 0.9];
+				};
 			};
 
 			playSound "DefaultNotification";

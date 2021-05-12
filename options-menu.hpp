@@ -47,7 +47,7 @@ class RSTF_Options {
 	};
 	class Classic {
 		title = "Mode";
-		visible = "RSTF_MODE_INDEX == 0";
+		visible = "(call RSTF_fnc_getModeId) == 'Classic'";
 
 		class Items {
 			class RSTF_SCORE_LIMIT {
@@ -69,7 +69,7 @@ class RSTF_Options {
 	};
 	class KOTH {
 		title = "Mode";
-		visible = "RSTF_MODE_INDEX == 1";
+		visible = "(call RSTF_fnc_getModeId) == 'KOTH'";
 
 		class Items {
 			class RSTF_MODE_KOTH_SCORE_LIMIT {
@@ -86,7 +86,7 @@ class RSTF_Options {
 	};
 	class Push {
 		title = "Mode";
-		visible = "RSTF_MODE_INDEX == 2";
+		visible = "(call RSTF_fnc_getModeId) == 'Push'";
 
 		class Items {
 			class RSTF_MODE_PUSH_SCORE_LIMIT {

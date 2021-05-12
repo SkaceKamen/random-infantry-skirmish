@@ -6,6 +6,7 @@ class RSTF_ADV_CATEGORY: RscButton
 	y = 0;
 	w = RSTF_ADV_CAT_W;
 	h = 0.1;
+	font = "RobotoCondensed";
 };
 
 class RSTF_RscDialogAdvancedConfig
