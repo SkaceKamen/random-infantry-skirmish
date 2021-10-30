@@ -116,6 +116,12 @@ class RSTF_Options {
 				type="select";
 				optionsVariable="RSTF_SPAWN_TYPES";
 			};
+			class RSTF_PLAYER_ALWAYS_LEADER {
+				title="Always set as leader";
+				description="Always set player as a leader of group of selected unit";
+				type="checkbox";
+				optionsVariable="RSTF_SPAWN_TYPES";
+			};
 			class RSTF_RANDOMIZE_WEAPONS {
 				title="Randomize weapons";
 				description="Each soldier will be given random weapon.";

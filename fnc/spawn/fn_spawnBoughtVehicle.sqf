@@ -38,7 +38,12 @@ if (_plane) then {
 // Spawn vehicle
 private _radius = 0;
 private _position = [];
-private _direction = (RSTF_SPAWNS select _side) getDir RSTF_POINT;
+private _direction = RSTF_DIRECTION;
+
+if (_side == SIDE_ENEMY) then {
+	_direction = _direction + 180;
+};
+
 while { true } do {
 	private _center = (RSTF_SPAWNS select _side) vectorAdd [
 		sin(_direction + 180) * _distance,
@@ -98,6 +103,15 @@ _vehicle setDir _direction;
 if (_plane) then {
 	_vehicle setPos _position;
 	_vehicle setVelocity [100 * (sin _direction), 100 * (cos _direction), 0];
+};
+
+
+// DEBUG - Track unit position
+if (RSTF_DEBUG) then {
+	private _marker = createMarkerLocal [str(_vehicle), getPos(_vehicle)];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType "c_car";
+	_marker setMarkerColor (RSTF_SIDES_COLORS select _side);
 };
 
 // Create group on correct side and assign crew to it

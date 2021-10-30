@@ -136,12 +136,12 @@ class ShopDialog: ZUI_ColumnLayout
 					{
 						background[] = SHOP_BACKGROUND;
 						margin[] = { 0, 0, SHOP_ITEM_SPACING, 0 };
-						height = 0.6;
+						height = 0.45;
 						heightType = ZUI_SIZE_ABSOLUTE;
 
 						class image: ZUI_Picture
 						{
-							margin = 0.05;
+							margin = 0.005;
 							text = "";
 							id = "detail_image";
 						};

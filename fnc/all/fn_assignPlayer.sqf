@@ -87,6 +87,10 @@ if (alive(_unit)) then {
 		// Display the hint
 		hint(parseText(format["Press <t color='#999999'>%1</t> key to open <t color='#999999'>vehicle shop</t>.", _keyName]));
 	};
+
+	if (RSTF_PLAYER_ALWAYS_LEADER) then {
+		group(player) selectLeader player;
+	};
 } else {
 	// Simulate killed handler
 	[_unit, objNull] call RSTF_fnc_playerKilled;
