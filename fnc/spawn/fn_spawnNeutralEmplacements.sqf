@@ -46,14 +46,10 @@ private _masterTask = "";
 	if ((_x select 1) in _statics) then {
 		_exists = false;
 		_item = _x;
-		{
-			if (_foreachIndex == _item select 0 && { (_item select 1) in _x }) exitWith {
-				_exists = true;
-			};
-		} foreach _staticWeapons;
-
-		if (!_exists) then {
-			(_staticWeapons select (_item select 0)) pushBack (_item select 1);
+		_categoryList = _staticWeapons select (_item select 0);
+		
+		if (_categoryList find (_item select 1) == -1) then {
+			_categoryList pushBack (_item select 1);
 		};
 	};
 } foreach _overrideEmplacements;

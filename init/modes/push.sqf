@@ -55,7 +55,6 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 		"attack"
 	] call BIS_fnc_taskCreate;
 
-
 	// Move enemy spawn point back a bit after few seconds
 	[_point, _distance, _direction] spawn {
 		private _point = param [0];
@@ -88,7 +87,7 @@ RSTF_MODE_PUSH_init = {
 		0
 	];
 
-	while { count(RSTF_MODE_PUSH_POINTS) < 5 } do {
+	while { count(RSTF_MODE_PUSH_POINTS) < RSTF_MODE_PUSH_POINT_COUNT } do {
 		_direction = _direction - 20 + random 40;
 		_center = _center vectorAdd [
 			sin(_direction) * _radius * 0.8,

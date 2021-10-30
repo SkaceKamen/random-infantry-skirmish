@@ -89,6 +89,11 @@ class RSTF_Options {
 		visible = "(call RSTF_fnc_getModeId) == 'Push'";
 
 		class Items {
+			class RSTF_MODE_PUSH_POINT_COUNT {
+				title="Number of points";
+				description="Number of points that you have to capture to win";
+				type="number";
+			};
 			class RSTF_MODE_PUSH_SCORE_LIMIT {
 				title="Score to capture";
 				description="Point is captured when one side reaches this number of points";
