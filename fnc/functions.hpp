@@ -99,6 +99,7 @@ class RSTF
 		class loadPredefined {};
 		class clearHistoricItems {};
 		class getModeId {};
+		class killHandler {};
 	};
 
 	class ui

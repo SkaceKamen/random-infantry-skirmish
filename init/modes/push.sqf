@@ -16,6 +16,7 @@ RSTF_MODE_PUSH_ENABLED = false;
 RSTF_MODE_PUSH_COUNTS = [];
 RSTF_MODE_PUSH_POINTS = [];
 RSTF_MODE_PUSH_POINT_INDEX = -1;
+RSTF_MODE_PUSH_TASK = "";
 
 RSTF_MODE_PUSH_NEXT_POINT = {
 	RSTF_MODE_PUSH_POINT_INDEX = RSTF_MODE_PUSH_POINT_INDEX + 1;
@@ -24,19 +25,36 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 
 	private _direction = RSTF_DIRECTION;
 	private _distance = RSTF_SPAWN_DISTANCE_MIN + random(RSTF_SPAWN_DISTANCE_MAX - RSTF_SPAWN_DISTANCE_MIN);
-
 	// TODO: Multiplayer?
 
 	// Reset score
 	RSTF_SCORE = [0, 0, 0];
 
+	// Rebuild target and spawns
 	RSTF_POINT = _point;
-
 	RSTF_SPAWNS = [
 		_point,
 		_point vectorAdd [sin(180 + _direction) * _distance, cos(180 + _direction) * _distance, 0],
 		[0,0,0] //For netural defenders
 	];
+
+	// Finish previous task
+	if (RSTF_MODE_PUSH_TASK != "") then {
+		[RSTF_MODE_PUSH_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
+	};
+
+	// Start new task
+	RSTF_MODE_PUSH_TASK = [
+		side(player),
+		"CAPTURE" + str(RSTF_MODE_PUSH_POINT_INDEX),
+		["We need to capture this point to advance", "Capture this point",""],
+		RSTF_POINT,
+		"ASSIGNED",
+		0,
+		true,
+		"attack"
+	] call BIS_fnc_taskCreate;
+
 
 	// Move enemy spawn point back a bit after few seconds
 	[_point, _distance, _direction] spawn {
@@ -148,7 +166,6 @@ RSTF_MODE_PUSH_init = {
 
 			// End when limit is reached
 			if (RSTF_SCORE select _best >= RSTF_MODE_PUSH_SCORE_LIMIT) then {
-				// [_currentOwner] remoteExec ["RSTF_fnc_onEnd"];
 				if (RSTF_MODE_PUSH_POINT_INDEX >= count(RSTF_MODE_PUSH_POINTS) - 1) then {
 					[SIDE_FRIENDLY] remoteExec ["RSTF_fnc_onEnd"];
 				} else {
@@ -171,65 +188,7 @@ RSTF_MODE_PUSH_init = {
 };
 
 RSTF_MODE_PUSH_unitKilled = {
-	private _killed = param [0];
-	private _killer = param [1];
-	if (count(_this) > 2) then {
-		_killer = param [2];
-	};
-
-	// Side is forgotten shortly after dying for some reason
-	private _side = _killed getVariable ["SPAWNED_SIDE", civilian];
-
-	private _isLegit = _side != side(_killer) && _killer != _killed;
-
-	if (RSTF_MONEY_ENABLED) then {
-		if (isPlayer(_killer)) then {
-			if (_side != side(_killer) && _killer != _killed) then {
-				[_killer, RSTF_MONEY_PER_KILL] call RSTF_fnc_addPlayerMoney;
-			} else {
-				[_killer, RSTF_MONEY_PER_TEAMKILL] call RSTF_fnc_addPlayerMoney;
-			};
-		} else {
-			if (_side != side(_killer) && _killer != _killed) then {
-				[_killer getVariable ["ORIGINAL_NAME", name(_killer)], RSTF_MONEY_PER_KILL * RSTF_AI_MONEY_MULTIPLIER] call RSTF_fnc_addUnitMoney;
-			};
-		};
-	};
-
-	// Award vehicle commander assist if applicable
-	if (RSTF_MONEY_ENABLED && _isLegit) then {
-		if (vehicle(_killer) != _killer && effectiveCommander(vehicle(_killer)) != _killer && isPlayer(effectiveCommander(vehicle(_killer)))) then {
-			private _commander = effectiveCommander(vehicle(_killer));
-			[_commander, RSTF_MONEY_PER_VEHICLE_COMMANDER_ASSIST] call RSTF_fnc_addPlayerMoney;
-			[format["+$%1 <t color='#dddddd'>Commander assist</t>", RSTF_MONEY_PER_VEHICLE_COMMANDER_ASSIST], 5] remoteExec ["RSTFUI_fnc_addMessage", _commander];
-		};
-	};
-
-	// Dispatch message if necessary
-	if (isPlayer(_killer)) then {
-		private _message = "";
-		private _distance = round(_killed distance _killer);
-
-		if (_isLegit) then {
-			if (RSTF_MONEY_ENABLED) then {
-				_message = format["+$%1 <t color='#dddddd'>Kill</t>", RSTF_MONEY_PER_KILL];
-			} else {
-				_message = format["<t color='#dddddd'>Kill</t>"];
-			};
-
-			if (_distance >= RSTF_KILL_DISTANCE_BONUS) then {
-				_message = _message + format[" (%1m)", _distance];
-			};
-		} else {
-			if (RSTF_MONEY_ENABLED) then {
-				_message = format["-$%1 <t color='#dddddd'>Teamkill</t>", -RSTF_MONEY_PER_TEAMKILL];
-			} else {
-				_message = format["<t color='#dddddd'>Teamkill</t>"];
-			};
-		};
-
-		[_message, 5] remoteExec ["RSTFUI_fnc_addMessage", _killer];
-	};
+	_this call RSTF_fnc_killHandler;
 };
 
 RSTF_MODE_PUSH_taskCompleted = {
@@ -243,6 +202,4 @@ RSTF_MODE_PUSH_taskCompleted = {
 	} foreach allPlayers;
 };
 
-RSTF_MODE_PUSH_vehicleKilled = {
-
-};
+RSTF_MODE_PUSH_vehicleKilled = {};
