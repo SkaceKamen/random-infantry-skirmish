@@ -6,6 +6,12 @@ RSTF_SHOP_lastCategory = 0;
 // Categorized list of vehicles
 RSTF_SHOP_items = [];
 
+// Currently selected item
+RSTF_SHOP_CURRENT_ITEM = [];
+
+// Currently selected item list (filtered by search)
+RSTF_SHOP_CURRENT_ITEMS = [];
+
 // Create categorized list of vehicles
 private _vehicles = RSTF_BUYABLE_VEHICLES select SIDE_FRIENDLY;
 private _categories = [ "All", "Wheeled", "Tracked", "Planes", "Helicopters", "Other" ];
@@ -36,7 +42,6 @@ private _parents = [ "*", "Car", "Tank", "Plane", "Helicopter", "*" ];
 
 /* INTIALIZATION OF DIALOG */
 
-RSTF_SHOP_CURRENT_ITEMS = [];
 RSTF_SHOP_layout = [missionConfigFile >> "ShopDialog"] call ZUI_fnc_createDisplay;
 [RSTF_SHOP_layout, "search", "KeyUp", { [RSTF_SHOP_lastCategory] call RSTFUI_fnc_shopCategoryClicked; }] call ZUI_fnc_on;
 
@@ -68,3 +73,7 @@ private _categoriesContainer = [RSTF_SHOP_layout, "categories"] call ZUI_fnc_get
 ([RSTF_SHOP_layout, "close"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", {
 	[RSTF_SHOP_layout] call ZUI_fnc_closeDisplay;
 }];
+
+// Buy selected
+([RSTF_SHOP_layout, "buy"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", { [] spawn RSTFUI_fnc_shopBuy; }];
+([RSTF_SHOP_layout, "buy"] call ZUI_fnc_getControlById) ctrlEnable false;

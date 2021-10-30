@@ -25,7 +25,6 @@ class ShopDialog: ZUI_ColumnLayout
 				widthType = ZUI_SIZE_ABSOLUTE;
 			};
 
-
 			class dialogTitle: ZUI_Text
 			{
 				text = "REQUEST VEHICLE";
@@ -49,7 +48,7 @@ class ShopDialog: ZUI_ColumnLayout
 
 		class rest: ZUI_RowLayout
 		{
-			marginTop = SHOP_SPACING;
+			margin[] = { SHOP_SPACING, 0, 0, 0 };
 
 			class categories: ZUI_ColumnLayout
 			{

@@ -6,6 +6,8 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 	private _money = [player] call RSTF_fnc_getPlayerMoney;
 
 	if (!isNil("_item")) then {
+		RSTF_SHOP_CURRENT_ITEM = _item;
+
 		// Load vehicle info
 		private _className = _item#1;
 		private _cost = _item#2;
@@ -33,7 +35,7 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 		([_layout, "price"] call ZUI_fnc_getControlById) ctrlSetText ("$" + str(_cost));
 
 		if (_money >= _cost) then {
-			([_layout, "buy"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", format["[%1] spawn RSTFUI_fnc_shopBuy", _index]];
+			([_layout, "buy"] call ZUI_fnc_getControlById) ctrlEnable true;
 			([_layout, "price"] call ZUI_fnc_getControlById) ctrlSetBackgroundColor [0.2, 0.6, 0.2, 1];
 		} else {
 			([_layout, "buy"] call ZUI_fnc_getControlById) ctrlEnable false;
