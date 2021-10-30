@@ -36,6 +36,7 @@ private _parents = [ "*", "Car", "Tank", "Plane", "Helicopter", "*" ];
 
 /* INTIALIZATION OF DIALOG */
 
+RSTF_SHOP_CURRENT_ITEMS = [];
 RSTF_SHOP_layout = [missionConfigFile >> "ShopDialog"] call ZUI_fnc_createDisplay;
 [RSTF_SHOP_layout, "search", "KeyUp", { [RSTF_SHOP_lastCategory] call RSTFUI_fnc_shopCategoryClicked; }] call ZUI_fnc_on;
 
@@ -59,3 +60,11 @@ private _categoriesContainer = [RSTF_SHOP_layout, "categories"] call ZUI_fnc_get
 
 // Display first category items
 [RSTF_SHOP_lastCategory] call RSTFUI_fnc_shopCategoryClicked;
+
+// Show item detail when selected
+([RSTF_SHOP_layout, "items"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["LBSelChanged", RSTFUI_fnc_shopItemSelected];
+
+// Close when requested
+([RSTF_SHOP_layout, "close"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", {
+	[RSTF_SHOP_layout] call ZUI_fnc_closeDisplay;
+}];

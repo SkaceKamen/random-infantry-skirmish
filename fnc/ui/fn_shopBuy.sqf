@@ -1,9 +1,8 @@
-private _category = param [0];
-private _index = param [1];
-private _vehicle = RSTF_SHOP_items#_category#_index;
+private _index = param [0];
+private _item = RSTF_SHOP_CURRENT_ITEMS#_index;
 
 private _money = [player] call RSTF_fnc_getPlayerMoney;
-private _vehicle = _vehicle select 1;
+private _vehicle = _item select 1;
 private _cost = [_vehicle] call RSTF_fnc_getVehicleCost;
 
 if (_money >= _cost) then {
