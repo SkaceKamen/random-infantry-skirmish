@@ -1,8 +1,8 @@
 private _group = _this select 0;
-private _index = _this select 1;
-private _position = [_index] call RSTF_fnc_randomSpawn;
+private _side = _this select 1;
+private _position = [_side] call RSTF_fnc_randomSpawn;
 
-private _unitClass = _index call RSTF_fnc_getRandomSoldier;
+private _unitClass = _side call RSTF_fnc_getRandomSoldier;
 private _unit = _group createUnit [_unitClass, _position, [], 10, "NONE"];
 
 if (isNull(_unit)) exitWith {
@@ -15,8 +15,8 @@ if (RSTF_CLEAN) then {
 	[_unit, RSTF_CLEAN_INTERVAL] call RSTFGC_fnc_attach;
 };
 
-if (count(RSTF_SPAWN_VEHICLES select _index) > 0) then {
-	_vehicles = RSTF_SPAWN_VEHICLES select _index;
+if (count(RSTF_SPAWN_VEHICLES select _side) > 0) then {
+	_vehicles = RSTF_SPAWN_VEHICLES select _side;
 	_candidates = [];
 	{
 		if (alive(_x) && (_x emptyPositions "CARGO") > 0) then {
@@ -37,7 +37,7 @@ if (RSTF_DEBUG) then {
 		private _marker = createMarkerLocal [str(getPos(_unit)), getPos(_unit)];
 		_marker setMarkerShape "ICON";
 		_marker setMarkerType "mil_triangle";
-		_marker setMarkerColor (RSTF_SIDES_COLORS select _index);
+		_marker setMarkerColor (RSTF_SIDES_COLORS select _side);
 	};
 };
 
@@ -49,9 +49,9 @@ if (RSTF_SKILL_MIN > RSTF_SKILL_MAX) then {
 _unit setSkill (RSTF_SKILL_MIN + random(RSTF_SKILL_MAX - RSTF_SKILL_MIN));
 
 [_unit] joinSilent _group;
-[_unit, _index] call RSTF_fnc_equipSoldier;
+[_unit, _side] call RSTF_fnc_equipSoldier;
 
-private _names = RSTF_QUEUE_NAMES select _index;
+private _names = RSTF_QUEUE_NAMES select _side;
 if (count(_names) > 0) then {
 	_name = [_names] call BIS_fnc_arrayShift;
 	_unit setVariable ["ORIGINAL_NAME", _name];
@@ -65,8 +65,8 @@ if (count(_names) > 0) then {
 	if there is vehicle space and lastly if there's more than 1 unit in my group (to prevent group being autodeleted)
 */
 private _vehicular = false;
-if ([_group, _index] call RSTF_fnc_shouldSpawnVehicle) then {
-	_vehicular = [_unit, _index] call RSTF_fnc_aiDecideVehicle;
+if ([_group, _side] call RSTF_fnc_shouldSpawnVehicle) then {
+	_vehicular = [_unit, _side] call RSTF_fnc_aiDecideVehicle;
 };
 
 if (!_vehicular) then {
@@ -96,7 +96,7 @@ if (RSTF_DEBUG) then {
 	private _marker = createMarkerLocal [str(_unit), getPos(_unit)];
 	_marker setMarkerShape "ICON";
 	_marker setMarkerType "mil_dot";
-	_marker setMarkerColor (RSTF_SIDES_COLORS select _index);
+	_marker setMarkerColor (RSTF_SIDES_COLORS select _side);
 
 	[_unit, _marker] spawn {
 		private _unit = param [0];
