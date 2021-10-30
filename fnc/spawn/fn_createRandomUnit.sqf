@@ -57,7 +57,8 @@ if (count(_names) > 0) then {
 	_unit setVariable ["ORIGINAL_NAME", _name];
 	_unit setName _name;
 } else {
-	_unit setVariable ["ORIGINAL_NAME", name(_unit)];
+	RSTF_ID_COUNTER = RSTF_ID_COUNTER + 1;
+	_unit setVariable ["ORIGINAL_NAME", str(RSTF_ID_COUNTER)];
 };
 
 /*

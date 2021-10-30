@@ -348,6 +348,8 @@ RSTF_MODE_vehicleKilled = {};
 
 RSTF_PREDEFINED_LOCATIONS = [];
 
+RSTF_ID_COUNTER = 0;
+
 // List of possible actions, use RSTF_POSSIBLE_KEYS_NAMES to get action name
 RSTF_POSSIBLE_KEYS = ["win"];
 // List of possible actions names, use RSTF_POSSIBLE_KEYS to get action

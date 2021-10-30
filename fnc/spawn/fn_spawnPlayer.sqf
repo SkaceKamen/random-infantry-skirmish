@@ -1,9 +1,7 @@
-_side = _this;
-
-_grps = RSTF_GROUPS select _side;
-_spawn = objNull;
-
-_usable = {
+private _side = _this;
+private _grps = RSTF_GROUPS select _side;
+private _spawn = objNull;
+private _usable = {
 	alive(_x) && !(_x getVariable ["USED", false])
 };
 
