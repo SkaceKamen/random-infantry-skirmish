@@ -1,6 +1,6 @@
 #include "dialogs\keys.hpp"
 
-RSTF_DEBUG = true;
+RSTF_DEBUG = false;
 
 // Indexes used for various arrays
 SIDE_ENEMY = 0;
@@ -207,7 +207,8 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_CLEAR_HISTORIC_ITEMS",
 	"RSTF_SKILL_MIN",
 	"RSTF_SKILL_MAX",
-	"RSTF_PLAYER_ALWAYS_LEADER"
+	"RSTF_PLAYER_ALWAYS_LEADER",
+	"RSTF_ENABLE_SUPPORTS"
 ];
 
 // Profile values that are specific to local player (don't broadcast them)

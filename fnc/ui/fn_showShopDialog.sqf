@@ -14,7 +14,7 @@ RSTF_SHOP_CURRENT_ITEMS = [];
 
 // Create categorized list of vehicles
 private _vehicles = RSTF_BUYABLE_VEHICLES select SIDE_FRIENDLY;
-private _categories = [ "All", "Wheeled", "Tracked", "Planes", "Helicopters", "Other" ];
+private _categories = [ "All", "Wheeled", "Tracked", "Planes", "Helicopters", "Other", "Support" ];
 private _parents = [ "*", "Car", "Tank", "Plane", "Helicopter", "*" ];
 
 {
@@ -25,6 +25,7 @@ private _parents = [ "*", "Car", "Tank", "Plane", "Helicopter", "*" ];
 	private _data = _x;
 	private _cat = _x#0;
 	private _className = _x#1;
+	private _cost = _x#2;
 	private _target = 0;
 	{
 		if (_x != '*' && { _className isKindOf _x }) then {
@@ -36,9 +37,24 @@ private _parents = [ "*", "Car", "Tank", "Plane", "Helicopter", "*" ];
 		_target = count(_categories) - 1;
 	};
 
-	(RSTF_SHOP_items#0) pushBack _data;
-	(RSTF_SHOP_items#_target) pushBack _data;
+	(RSTF_SHOP_items#0) pushBack ["VEHICLE", _className, _cost];
+	(RSTF_SHOP_items#_target) pushBack ["VEHICLE", _className, _cost];
 } foreach _vehicles;
+
+if (RSTF_ENABLE_SUPPORTS) then {
+	private _supports = "true" configClasses (missionConfigFile >> "RSTF_BUYABLE_SUPPORTS");
+
+	{
+		private _item = [
+			"SUPPORT",
+			configName(_x),
+			getNumber(_x >> "cost")
+		];
+
+		RSTF_SHOP_items#0 pushBack _item;
+		RSTF_SHOP_items#6 pushBack _item;
+	} foreach _supports;
+};
 
 /* INTIALIZATION OF DIALOG */
 

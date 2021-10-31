@@ -5,6 +5,14 @@ if (count(_this) > 2) then {
 	_killer = param [2];
 };
 
+// Possibly support kill?
+/*
+private _supportKiller = _killer getVariable ["SUPPORT_ORIGIN", objNull];
+if (!isNull(_supportKiller)) then {
+	_killer = _supportKiller;
+};
+*/
+
 // Side is forgotten shortly after dying for some reason
 private _side = _killed getVariable ["SPAWNED_SIDE", civilian];
 

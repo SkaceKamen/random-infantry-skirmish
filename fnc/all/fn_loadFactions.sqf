@@ -35,4 +35,7 @@ for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
 	};
 };
 
+// Sort factions by name
+_factions = [_factions, [], { getText(configFile >> "cfgFactionClasses" >> _x >> "displayName") }, "ASCEND"] call BIS_fnc_sortBy;
+
 _factions;

@@ -1,6 +1,6 @@
 /*
 	Function:
-	RSTF_fnc_assignVehicle
+	RSTF_fnc_requestVehicle
 
 	Description:
 	Creates specified vehicle and moves player to it as effectiveCommander.

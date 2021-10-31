@@ -168,7 +168,7 @@ class ShopDialog: ZUI_ColumnLayout
 				class actions: ZUI_RowLayout
 				{
 					heightType = ZUI_SIZE_ABSOLUTE;
-					height = 0.06;
+					height = 0.07;
 
 					class spacer: ZUI_ColumnLayout
 					{
@@ -190,8 +190,8 @@ class ShopDialog: ZUI_ColumnLayout
 					{
 						id = "buy";
 						widthType = ZUI_SIZE_ABSOLUTE;
-						width = 0.1;
-						text = "Buy";
+						width = 0.2;
+						text = "BUY";
 						margin[] = { 0, 0, 0, 0 };
 					}
 				};

@@ -160,3 +160,6 @@ RSTF_CLEAR_HISTORIC_ITEMS = false;
 
 // Always set player as a leader of squad
 RSTF_PLAYER_ALWAYS_LEADER = true;
+
+// Enable players to buy support artillery
+RSTF_ENABLE_SUPPORTS = true;

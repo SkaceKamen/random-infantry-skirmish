@@ -235,6 +235,11 @@ class RSTF_Options {
 				description="Allow players and AI to buy vehicles for their money";
 				type="checkbox";
 			};
+			class RSTF_ENABLE_SUPPORTS {
+				title="Allow buying supports";
+				description="Allow players to buy supports (artillery)";
+				type="checkbox";
+			};
 			class RSTF_MONEY_VEHICLES_AI_LIMIT {
 				title="Max AI vehicles per side";
 				description="Maximum number of spawned AI vehicles per side";

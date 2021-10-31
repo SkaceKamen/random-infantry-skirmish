@@ -16,9 +16,11 @@
 #include "dialogs\zui\input.hpp"
 #include "dialogs\zui\presets.hpp"
 #include "dialogs\zui\shop.hpp"
+#include "dialogs\zui\artillery.hpp"
 
 #include "modes.hpp"
 #include "options-menu.hpp"
+#include "supports.hpp"
 
 class cfgFunctions
 {

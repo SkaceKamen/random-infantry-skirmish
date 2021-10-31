@@ -8,25 +8,44 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 	if (!isNil("_item")) then {
 		RSTF_SHOP_CURRENT_ITEM = _item;
 
-		// Load vehicle info
+		private _type = _item#0;
 		private _className = _item#1;
 		private _cost = _item#2;
-		private _c = configFile >> "cfgVehicles" >> _className;
-		private _title = getText(_c >> "displayName");
-		private _image = getText(_c >> "picture");
 
-		if (isText(_c >> "editorPreview")) then {
-			_image = getText(_c >> "editorPreview");
+		private _title = "";
+		private _image = "";
+		private _description = "";
+		
+		if (_type == "VEHICLE") then {
+			// Load vehicle info
+			private _c = configFile >> "cfgVehicles" >> _className;
+			_title = getText(_c >> "displayName");
+			_image = getText(_c >> "picture");
+
+			if (isText(_c >> "editorPreview")) then {
+				_image = getText(_c >> "editorPreview");
+			};
+
+			private _weapons = [_className] call RSTF_fnc_getVehicleWeapons;
+			_description = "WEAPONS:<br /><t size='0.75'>";
+
+			{
+				_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + "<br/>";
+			} foreach _weapons;
+
+			_description = _description + '</t>';
 		};
 
-		private _weapons = [_className] call RSTF_fnc_getVehicleWeapons;
-		private _description = "WEAPONS:<br /><t size='0.75'>";
+		if (_type == "SUPPORT") then {
+			// Load vehicle info
+			private _c = missionConfigFile >> "RSTF_BUYABLE_SUPPORTS" >> _className;
+			_title = getText(_c >> "title");
+			_description = getText(_c >> "description");
 
-		{
-			_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + "<br/>";
-		} foreach _weapons;
-
-		_description = _description + '</t>';
+			if (isText(_c >> "picture")) then {
+				getText(_c >> "picture");
+			};
+		};
 
 		// Set shop item variables
 		([_layout, "detail_title"] call ZUI_fnc_getControlById) ctrlSetText _title;

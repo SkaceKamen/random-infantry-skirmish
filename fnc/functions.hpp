@@ -142,4 +142,12 @@ class RSTF
 		class onScore {};
 		class onEnd {};
 	};
+
+	class support
+	{
+		file = "fnc\support";
+
+		class initArtillerySupport {};
+		class startShelling {};
+	};
 };
