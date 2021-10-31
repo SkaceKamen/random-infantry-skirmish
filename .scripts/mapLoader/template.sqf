@@ -135,8 +135,8 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="(SP/CO-8) RIS (%3)";
-		overviewText="Random infantry skirmish on random place on island";
+		briefingName="Random Skirmish - %3";
+		overviewText="Random skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;
 		startWind=0.099999994;
