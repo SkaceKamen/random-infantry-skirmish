@@ -12,4 +12,4 @@
 	Money of unit [Number]
 */
 private _id = param [0];
-RSTF_MONEY select ([_id] call RSTF_fnc_getUnitMoneyIndex);
+RSTF_MONEY getOrDefault [_id, RSTF_MONEY_START];

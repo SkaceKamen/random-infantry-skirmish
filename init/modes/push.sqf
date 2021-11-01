@@ -38,6 +38,9 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 		[0,0,0] //For netural defenders
 	];
 
+	// Force-spawn enemy wave
+	[SIDE_ENEMY] call RSTF_fnc_spawnWave;
+
 	// Finish previous task
 	if (RSTF_MODE_PUSH_TASK != "") then {
 		[RSTF_MODE_PUSH_TASK, "Succeeded", true] call BIS_fnc_taskSetState;

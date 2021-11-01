@@ -28,7 +28,7 @@ if (_money < (_vehicles select 0) select 2) exitWith {
 };
 
 // Select our wish vehicle
-private _wish = [RSTF_AI_VEHICLE_WISH, _name, objNull] call AMAP_get;
+private _wish = RSTF_AI_VEHICLE_WISH getOrDefault [_name, objNull];
 if (typeName(_wish) == typeName(objNull)) then {
 	_wish = objNull;
 
@@ -41,7 +41,7 @@ if (typeName(_wish) == typeName(objNull)) then {
 		_wish = selectRandom (_vehicles select [_upper, _upper max 1]);
 	};*/
 
-	[RSTF_AI_VEHICLE_WISH, _name, _wish] call AMAP_set;
+	RSTF_AI_VEHICLE_WISH set [_name, _wish];
 };
 
 // Load info about our wish vehicle

@@ -11,9 +11,8 @@
 */
 private _id = param [0];
 private _money = param [1];
-RSTF_MONEY set [[_id] call RSTF_fnc_getUnitMoneyIndex, _money];
+RSTF_MONEY set [_id, _money];
 
 if (isServer) then {
-	publicVariable "RSTF_MONEY_INDEX";
 	publicVariable "RSTF_MONEY";
 };

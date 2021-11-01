@@ -19,7 +19,7 @@ if os.path.exists(modTargetPath):
   shutil.rmtree(modTargetPath)
 
 shutil.copytree(modSourcePath, modTargetPath)
-os.makedirs(modMissionsPath)
+# os.makedirs(modMissionsPath)
 os.makedirs(modAddonsPath)
 
 shutil.copy(os.path.join(risPath, "random.paa"), os.path.join(modBuildPath, "random.paa"))
@@ -53,8 +53,9 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
 			class RIS_%s
 			{
 				directory = "RIS\missions\RIS-Build.%s";
+                risMap = "%s";
 			};
-  """ % (island.replace('-', ''), island)
+  """ % (island.replace('-', ''), island, island)
 
 configFile = """
 class CfgPatches
@@ -74,10 +75,18 @@ class CfgPatches
 class CfgMissions
 {
 	class missions
-  {
-    class RIS_Missions
-    {
-      briefingName = "Random Infantry Skirmish";
+	{
+		/*
+		DISABLED FOR NOW
+		class RIS_Launcher
+		{
+			directory = "RIS\missions\RIS_Launcher.Altis";
+		};
+		*/
+
+		class RIS_Missions
+		{
+			briefingName = "Random Infantry Skirmish";
 			author = "SkaceKamen";
 			description = "Collection of random dynamic skirmish missions for various maps.";
 
@@ -87,9 +96,9 @@ class CfgMissions
 
 	class MPMissions
 	{
-    class RIS_Missions
-    {
-      briefingName = "Random Infantry Skirmish";
+		class RIS_Missions
+		{
+			briefingName = "Random Infantry Skirmish";
 			author = "SkaceKamen";
 			description = "Collection of random dynamic skirmish missions for various maps.";
 
@@ -102,10 +111,12 @@ class CfgMissions
 with open(modBuildConfigPath, "w") as f:
   f.write(configFile)
 
+"""
 subprocess.check_call(
 	[ADDON_BUILDER, modBuildPath, os.path.join(modAddonsPath), "-prefix=RIS", "-include=%s" % includePath],
 	stdout=subprocess.DEVNULL
 )
+"""
 
 # shutil.move(os.path.join(modAddonsPath, 'MPScenarios.pbo'), os.path.join(modAddonsPath, 'ris_missions.pbo'))
 shutil.rmtree(modBuildPath)

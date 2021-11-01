@@ -56,7 +56,6 @@ class RSTF
 		file = "fnc\money";
 
 		class getUnitMoney {};
-		class getUnitMoneyIndex {};
 		class setUnitMoney {};
 		class addUnitMoney {};
 		class getPlayerMoney {};
@@ -76,6 +75,7 @@ class RSTF
 		class spawnNeutralBuildings {};
 		class spawnBoughtVehicle {};
 		class shouldSpawnVehicle {};
+		class spawnWave {};
 	};
 
 	class utils
@@ -149,5 +149,13 @@ class RSTF
 
 		class initArtillerySupport {};
 		class startShelling {};
+	};
+
+	class ai
+	{
+		file = "fnc\ai";
+
+		class refreshSideWaypoints {};
+		class refreshGroupWaypoints {};
 	};
 };

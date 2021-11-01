@@ -1,6 +1,6 @@
 #include "dialogs\keys.hpp"
 
-RSTF_DEBUG = false;
+RSTF_DEBUG = true;
 
 // Indexes used for various arrays
 SIDE_ENEMY = 0;
@@ -276,15 +276,14 @@ RSTF_POINTS = [];
 RSTF_POINT_VOTES = [];
 RSTF_VOTES_TIMEOUT = 0;
 
-RSTF_MONEY_INDEX = [];
-RSTF_MONEY = [];
+RSTF_MONEY = createHashMap;
 RSTF_AI_MONEY = [];
 
 {
 	RSTF_AI_MONEY set [_x, 0];
 } foreach RSTF_SIDES;
 
-RSTF_AI_VEHICLE_WISH = call AMAP_create;
+RSTF_AI_VEHICLE_WISH = createHashMap;
 
 RSTF_SHOW_CONFIG = -1;
 RSTF_CONFIG_DONE = false;
@@ -305,10 +304,10 @@ RSTF_AI_VEHICLES = [];
 RSTF_NAME_POOL = call(compile(preprocessFileLineNumbers("names.sqf")));
 
 // Time of last kill for each player
-RSTF_MULTIKILL_TIMES = call AMAP_create;
+RSTF_MULTIKILL_TIMES = createHashMap;
 
 // Count of kills for each player
-RSTF_MULTIKILL_COUNTS = call AMAP_create;
+RSTF_MULTIKILL_COUNTS = createHashMap;
 
 // Text for each multikill count
 RSTF_MULTIKILL_TEXTS = [

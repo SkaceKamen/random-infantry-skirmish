@@ -2,7 +2,7 @@ _ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
 
 _expandCache = {
 	params ["_ctrl", "_path"];
-	private _list = [RSTF_EXPANDED, _ctrl] call AMAP_get;
+	private _list = RSTF_EXPANDED get _ctrl;
 	private _ex = [];
 	{
 		_ex pushBack _x;
@@ -40,7 +40,7 @@ _ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
 
-_roots = call AMAP_create;
+_roots = createHashMap;
 
 {
 	_cfg = ConfigFile >> "cfgVehicles" >> _x;
@@ -68,11 +68,11 @@ _roots = call AMAP_create;
 		_banned = "[BANNED] ";
 	};
 
-	_factionBranch = [_roots, _faction, []] call AMAP_get;
+	_factionBranch = _roots getOrDefault [_faction, []];
 	if (count(_factionBranch) == 0) then {
 		_factionBranch = [
 			_ctrl tvAdd [[], _factionName],
-			call AMAP_create
+			call createHashMap
 		];
 
 		_ctrl tvSetData [[_factionBranch#0], 'F#' + _faction];
@@ -81,10 +81,10 @@ _roots = call AMAP_create;
 			_ctrl tvSetPictureColor [[_factionBranch#0], [0,0,0,1]];
 		};
 
-		[_roots, _faction, _factionBranch] call AMAP_set;
+		_roots set [_faction, _factionBranch];
 	};
 
-	_classBranch = [_factionBranch select 1, _class, -1] call AMAP_get;
+	_classBranch = _factionBranch select 1 getOrDefault [_class, -1];
 	if (_classBranch == -1) then {
 		_classBranch = _ctrl tvAdd [[_factionBranch select 0], _className];
 
@@ -94,7 +94,7 @@ _roots = call AMAP_create;
 			_ctrl tvSetPictureColor [[_factionBranch#0, _classBranch], [0,0,0,1]];
 		};
 
-		[_factionBranch select 1, _class, _classBranch] call AMAP_set;
+		(_factionBranch select 1) set [_class, _classBranch];
 	};
 
 	_path = [_factionBranch select 0, _classBranch];
@@ -154,10 +154,10 @@ _ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
 
-_roots = call AMAP_create;
-[_roots, 1, _ctrl tvAdd [[], "Primary"]] call AMAP_set;
-[_roots, 2, _ctrl tvAdd [[], "Handguns"]] call AMAP_set;
-[_roots, 4, _ctrl tvAdd [[], "Secondary"]] call AMAP_set;
+_roots = call createHashMap;
+_roots set [1, _ctrl tvAdd [[], "Primary"]];
+_roots set [2, _ctrl tvAdd [[], "Handguns"]];
+_roots set [4, _ctrl tvAdd [[], "Secondary"]];
 
 _other = _ctrl tvAdd [[], "Other"];
 
@@ -177,7 +177,7 @@ _other = _ctrl tvAdd [[], "Other"];
 		_banned = "[BANNED] ";
 	};
 
-	_branch = [_roots, _type, _other] call AMAP_get;
+	_branch = _roots getOrDefault [_type, _other];
 	_path = [_branch];
 	_path pushBack (_ctrl tvAdd [_path, _banned + _name]);
 	_ctrl tvSetData [_path, _x];

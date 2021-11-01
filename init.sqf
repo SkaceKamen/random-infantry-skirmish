@@ -4,7 +4,6 @@ call compile(preprocessFileLineNumbers("lib\zdbg\zdbg.sqf"));
 ZDBG_Prefix = '[RSTF] ';
 
 SCRIPTS_ROOT = "";
-call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init\map.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init\modes.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init-game.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "variables.sqf"));
