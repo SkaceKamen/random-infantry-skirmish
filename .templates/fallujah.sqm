@@ -1,0 +1,3885 @@
+version=54;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=1;
+	class ItemIDProvider
+	{
+		nextID=307;
+	};
+	class MarkerIDProvider
+	{
+		nextID=1;
+	};
+	class Camera
+	{
+		pos[]={14083.045,39.067047,16442.834};
+		dir[]={-0.0030744011,-0.9995234,-0.030823361};
+		up[]={-0.099202663,0.030955145,-0.99458575};
+		aside[]={-0.99506563,8.934876e-009,0.099250555};
+	};
+};
+binarizationWanted=0;
+sourceName="mapLoader";
+addons[]=
+{
+	"A3_Ui_F",
+	"A3_Characters_F"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=2;
+		class Item0
+		{
+			className="A3_Ui_F";
+			name="Arma 3 - User Interface";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+	};
+};
+randomSeed=11268658;
+class ScenarioData
+{
+	author="Kamen";
+	overviewText="Instant infantry battle for randomly selected place on the map.";
+	overViewPicture="random.paa";
+	joinUnassigned=0;
+	class Header
+	{
+		gameType="Coop";
+		minPlayers=1;
+		maxPlayers=8;
+	};
+};
+class CustomAttributes
+{
+	class Category0
+	{
+		name="Multiplayer";
+		class Attribute0
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
+					class value
+					{
+						items=1;
+						class Item0
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"STRING"
+									};
+								};
+								value="None";
+							};
+						};
+					};
+				};
+			};
+		};
+		nAttributes=1;
+	};
+	class Category1
+	{
+		name="Scenario";
+		class Attribute0
+		{
+			property="EnableDebugConsole";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=0;
+				};
+			};
+		};
+		nAttributes=1;
+	};
+};
+class Mission
+{
+	class Intel
+	{
+		briefingName="Random Skirmish - Fallujah v1.2";
+		overviewText="Random skirmish on random place on island";
+		resistanceWest=0;
+		startWeather=0.28999999;
+		startWind=0.099999994;
+		startWaves=0.099999994;
+		forecastWeather=0.29999998;
+		forecastWind=0.099999994;
+		forecastWaves=0.099999994;
+		forecastLightnings=0.099999994;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+	class Entities
+	{
+		items=249;
+		class Item0
+		{
+			dataType="Marker";
+			position[]={14521.83,17.889999,16065.266};
+			name="RSTF_FACTION_CAM";
+			type="Empty";
+			id=0;
+			atlOffset=10.889999;
+		};
+		class Item1
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14090.172,16.810787,16447.982};
+						angles[]={0.0077281403,0,0.001381068};
+					};
+					side="West";
+					flags=2;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayer=1;
+						isPlayable=1;
+					};
+					id=2;
+					type="B_Soldier_unarmed_F";
+					atlOffset=9.8093491;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male10ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.97000003;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1;
+			atlOffset=9.8093491;
+		};
+		class Item2
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14088.729,16.819084,16446.58};
+						angles[]={0.0071558496,0,0.0013788101};
+					};
+					side="West";
+					flags=2;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=23;
+					type="B_Soldier_unarmed_F";
+					atlOffset=9.817646;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=22;
+			atlOffset=9.817646;
+		};
+		class Item3
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14091.606,16.821819,16446.752};
+						angles[]={0.0071596238,0,0.001381068};
+					};
+					side="West";
+					flags=2;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=25;
+					type="B_Soldier_unarmed_F";
+					atlOffset=9.8203812;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=24;
+			atlOffset=9.8203812;
+		};
+		class Item4
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14087.487,16.829048,16444.885};
+						angles[]={0.0045281379,0,0.0039967569};
+					};
+					side="West";
+					flags=2;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=40;
+					type="B_Soldier_unarmed_F";
+					atlOffset=9.82761;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=39;
+			atlOffset=9.82761;
+		};
+		class Item5
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14093.141,16.845703,16444.75};
+						angles[]={0.0071596238,0,0.012974046};
+					};
+					side="West";
+					flags=2;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=42;
+					type="B_Soldier_unarmed_F";
+					atlOffset=9.844265;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=41;
+			atlOffset=9.844265;
+		};
+		class Item6
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14088.74,16.841209,16443.307};
+						angles[]={0.0045204028,0,0.0039968039};
+					};
+					side="West";
+					flags=2;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player ";
+						isPlayable=1;
+					};
+					id=44;
+					type="B_Soldier_unarmed_F";
+					atlOffset=9.8397713;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=43;
+			atlOffset=9.8397713;
+		};
+		class Item7
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14091.398,16.846359,16443.283};
+						angles[]={0.0071558496,0,0.0013788101};
+					};
+					side="West";
+					flags=2;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=46;
+					type="B_Soldier_unarmed_F";
+					atlOffset=9.8449211;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=45;
+			atlOffset=9.8449211;
+		};
+		class Item8
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14090.202,16.85371,16441.84};
+						angles[]={0.0045204028,0,0.0039968039};
+					};
+					side="West";
+					flags=2;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=48;
+					type="B_Soldier_unarmed_F";
+					atlOffset=9.852272;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=47;
+			atlOffset=9.852272;
+		};
+		class Item9
+		{
+			dataType="Marker";
+			position[]={6014.5698,0,6381.3501};
+			name="RSTF_POSITION_0";
+			text="Jeghaifi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=9;
+			atlOffset=-7;
+		};
+		class Item10
+		{
+			dataType="Marker";
+			position[]={6691.4199,0,5709.5601};
+			name="RSTF_POSITION_1";
+			text="Askari";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=10;
+			atlOffset=-7;
+		};
+		class Item11
+		{
+			dataType="Marker";
+			position[]={5273.6802,0,6270.6602};
+			name="RSTF_POSITION_2";
+			text="Shurta";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=11;
+			atlOffset=-7;
+		};
+		class Item12
+		{
+			dataType="Marker";
+			position[]={5479.2202,0,5103.3101};
+			name="RSTF_POSITION_3";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=12;
+			atlOffset=-7;
+		};
+		class Item13
+		{
+			dataType="Marker";
+			position[]={5945.9199,0,4683.8101};
+			name="RSTF_POSITION_4";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=13;
+			atlOffset=-7;
+		};
+		class Item14
+		{
+			dataType="Marker";
+			position[]={4311.1201,0,6338.8701};
+			name="RSTF_POSITION_5";
+			text="Mualimeen";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=14;
+			atlOffset=-6.9900088;
+		};
+		class Item15
+		{
+			dataType="Marker";
+			position[]={4387.96,0,5428.25};
+			name="RSTF_POSITION_6";
+			text="Muhandisin";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=15;
+			atlOffset=-6.9900088;
+		};
+		class Item16
+		{
+			dataType="Marker";
+			position[]={4668.6802,0,4416.8398};
+			name="RSTF_POSITION_7";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=16;
+			atlOffset=-7.1227193;
+		};
+		class Item17
+		{
+			dataType="Marker";
+			position[]={3314.3799,0,5335.3301};
+			name="RSTF_POSITION_8";
+			text="Jolan";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=17;
+			atlOffset=-6.9900088;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={5325.2998,0,3169.46};
+			name="RSTF_POSITION_9";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=18;
+			atlOffset=-7;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={5591.6001,0,2971.24};
+			name="RSTF_POSITION_10";
+			text="Shuhada";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=19;
+			atlOffset=-7;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={3866.0801,0,3968.8701};
+			name="RSTF_POSITION_11";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=20;
+			atlOffset=-6.9907308;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={5287.5273,0,2509.6624};
+			name="RSTF_POSITION_12";
+			text="Shuhada";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=79;
+			atlOffset=-6.9900022;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={5542.0024,6.9900022,2542.3599};
+			name="RSTF_POSITION_13";
+			text="Shuhada";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=80;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={6136.248,0,2980.2258};
+			name="RSTF_POSITION_14";
+			text="Shuhada";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=81;
+			atlOffset=-7;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={5731.0801,0,2781.1958};
+			name="RSTF_POSITION_15";
+			text="Shuhada";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=82;
+			atlOffset=-7;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={6093.5986,0,3177.834};
+			name="RSTF_POSITION_16";
+			text="Shuhada";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=83;
+			atlOffset=-7;
+		};
+		class Item26
+		{
+			dataType="Marker";
+			position[]={5112.665,-0.0067987442,3142.293};
+			name="RSTF_POSITION_17";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=84;
+			atlOffset=-7;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={5139.6768,0,2913.4082};
+			name="RSTF_POSITION_18";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=85;
+			atlOffset=-7;
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={5270.4683,0,2724.3298};
+			name="RSTF_POSITION_19";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=86;
+			atlOffset=-7;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={5509.3037,0,2761.2927};
+			name="RSTF_POSITION_20";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=87;
+			atlOffset=-7;
+		};
+		class Item30
+		{
+			dataType="Marker";
+			position[]={4944.9111,-0.0092692375,2700.1624};
+			name="RSTF_POSITION_21";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=88;
+			atlOffset=-7;
+		};
+		class Item31
+		{
+			dataType="Marker";
+			position[]={4848.2393,-0.0092692375,3015.7671};
+			name="RSTF_POSITION_22";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=89;
+			atlOffset=-7;
+		};
+		class Item32
+		{
+			dataType="Marker";
+			position[]={4809.8555,0,3224.749};
+			name="RSTF_POSITION_23";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=90;
+			atlOffset=-6.9907308;
+		};
+		class Item33
+		{
+			dataType="Marker";
+			position[]={4505.6235,-0.0092692375,3112.439};
+			name="RSTF_POSITION_24";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=91;
+			atlOffset=-7;
+		};
+		class Item34
+		{
+			dataType="Marker";
+			position[]={4572.4409,-0.0092692375,2860.8081};
+			name="RSTF_POSITION_25";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=92;
+			atlOffset=-7;
+		};
+		class Item35
+		{
+			dataType="Marker";
+			position[]={4219.873,-0.0092692375,3011.5027};
+			name="RSTF_POSITION_26";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=93;
+			atlOffset=-7;
+		};
+		class Item36
+		{
+			dataType="Marker";
+			position[]={4258.2573,-0.0092692375,2793.9912};
+			name="RSTF_POSITION_27";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=94;
+			atlOffset=-7;
+		};
+		class Item37
+		{
+			dataType="Marker";
+			position[]={3956.8689,-0.0092692375,2823.8452};
+			name="RSTF_POSITION_28";
+			text="Sinai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=95;
+			atlOffset=-7;
+		};
+		class Item38
+		{
+			dataType="Marker";
+			position[]={3722.3691,0,3516.6008};
+			name="RSTF_POSITION_29";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=96;
+			atlOffset=-7.2545848;
+		};
+		class Item39
+		{
+			dataType="Marker";
+			position[]={3567.2188,0,2954.0898};
+			name="RSTF_POSITION_30";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=97;
+			atlOffset=-6.9907308;
+		};
+		class Item40
+		{
+			dataType="Marker";
+			position[]={3946.7439,0,3510.7256};
+			name="RSTF_POSITION_31";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=98;
+			atlOffset=-6.9907308;
+		};
+		class Item41
+		{
+			dataType="Marker";
+			position[]={4272.0513,0,3474.5815};
+			name="RSTF_POSITION_32";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=99;
+			atlOffset=-6.9907308;
+		};
+		class Item42
+		{
+			dataType="Marker";
+			position[]={4400.3667,0,3662.5374};
+			name="RSTF_POSITION_33";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=100;
+			atlOffset=-6.9907308;
+		};
+		class Item43
+		{
+			dataType="Marker";
+			position[]={4252.1709,0,3870.3723};
+			name="RSTF_POSITION_34";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=101;
+			atlOffset=-6.9907308;
+		};
+		class Item44
+		{
+			dataType="Marker";
+			position[]={4485.3076,0,3953.5063};
+			name="RSTF_POSITION_35";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=102;
+			atlOffset=-6.9907308;
+		};
+		class Item45
+		{
+			dataType="Marker";
+			position[]={4038.9146,0,4206.5239};
+			name="RSTF_POSITION_36";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=103;
+			atlOffset=-6.9907308;
+		};
+		class Item46
+		{
+			dataType="Marker";
+			position[]={4263.0146,0,4080.0159};
+			name="RSTF_POSITION_37";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=104;
+			atlOffset=-6.9907308;
+		};
+		class Item47
+		{
+			dataType="Marker";
+			position[]={3776.8606,0,4195.6812};
+			name="RSTF_POSITION_38";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=105;
+			atlOffset=-6.9907308;
+		};
+		class Item48
+		{
+			dataType="Marker";
+			position[]={4002.7693,0,4457.7339};
+			name="RSTF_POSITION_39";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=106;
+			atlOffset=-6.9907308;
+		};
+		class Item49
+		{
+			dataType="Marker";
+			position[]={3729.8721,0,4425.2031};
+			name="RSTF_POSITION_40";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=107;
+			atlOffset=-6.9907308;
+		};
+		class Item50
+		{
+			dataType="Marker";
+			position[]={3325.0449,0,4248.0913};
+			name="RSTF_POSITION_41";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=108;
+			atlOffset=-6.9907308;
+		};
+		class Item51
+		{
+			dataType="Marker";
+			position[]={3550.9526,0,4237.248};
+			name="RSTF_POSITION_42";
+			text="Resafa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=109;
+			atlOffset=-7.0235686;
+		};
+		class Item52
+		{
+			dataType="Marker";
+			position[]={4409.4028,-0.13198853,4392.6719};
+			name="RSTF_POSITION_43";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=110;
+			atlOffset=-7.1227193;
+		};
+		class Item53
+		{
+			dataType="Marker";
+			position[]={4593.7441,-0.13198853,4181.2227};
+			name="RSTF_POSITION_44";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=111;
+			atlOffset=-7.1227193;
+		};
+		class Item54
+		{
+			dataType="Marker";
+			position[]={4781.6992,-0.13198853,3922.7837};
+			name="RSTF_POSITION_45";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=112;
+			atlOffset=-7.1227193;
+		};
+		class Item55
+		{
+			dataType="Marker";
+			position[]={4949.7749,-0.13198853,3666.1523};
+			name="RSTF_POSITION_46";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=113;
+			atlOffset=-7.1227193;
+		};
+		class Item56
+		{
+			dataType="Marker";
+			position[]={5190.1411,-0.12271929,3770.9741};
+			name="RSTF_POSITION_47";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=114;
+			atlOffset=-7.1227193;
+		};
+		class Item57
+		{
+			dataType="Marker";
+			position[]={4994.9565,-0.13198853,4014.9541};
+			name="RSTF_POSITION_48";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=115;
+			atlOffset=-7.1227193;
+		};
+		class Item58
+		{
+			dataType="Marker";
+			position[]={4937.124,-0.13198853,4251.7061};
+			name="RSTF_POSITION_49";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=116;
+			atlOffset=-7.1227193;
+		};
+		class Item59
+		{
+			dataType="Marker";
+			position[]={4969.6543,6.9907308,4484.8433};
+			name="RSTF_POSITION_50";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=117;
+		};
+		class Item60
+		{
+			dataType="Marker";
+			position[]={4873.8701,6.9907308,4797.499};
+			name="RSTF_POSITION_51";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=118;
+		};
+		class Item61
+		{
+			dataType="Marker";
+			position[]={4622.6611,6.9907308,4654.7251};
+			name="RSTF_POSITION_52";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=119;
+		};
+		class Item62
+		{
+			dataType="Marker";
+			position[]={4656.9985,6.9907308,4902.3213};
+			name="RSTF_POSITION_53";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=120;
+		};
+		class Item63
+		{
+			dataType="Marker";
+			position[]={5210.0215,-0.12271929,4631.2314};
+			name="RSTF_POSITION_54";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=121;
+			atlOffset=-7.1227193;
+		};
+		class Item64
+		{
+			dataType="Marker";
+			position[]={5229.9014,-0.12271929,4430.625};
+			name="RSTF_POSITION_55";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=122;
+			atlOffset=-7.1227193;
+		};
+		class Item65
+		{
+			dataType="Marker";
+			position[]={5258.8179,-0.12271929,4119.7759};
+			name="RSTF_POSITION_56";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=123;
+			atlOffset=-7.1227193;
+		};
+		class Item66
+		{
+			dataType="Marker";
+			position[]={5296.7686,7,3933.6279};
+			name="RSTF_POSITION_57";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=124;
+		};
+		class Item67
+		{
+			dataType="Marker";
+			position[]={5190.1416,7,4788.4644};
+			name="RSTF_POSITION_58";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=125;
+		};
+		class Item68
+		{
+			dataType="Marker";
+			position[]={5190.1421,7,5027.0225};
+			name="RSTF_POSITION_59";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=126;
+		};
+		class Item69
+		{
+			dataType="Marker";
+			position[]={4949.7759,6.9907308,4987.2627};
+			name="RSTF_POSITION_60";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=127;
+		};
+		class Item70
+		{
+			dataType="Marker";
+			position[]={4407.5962,6.9907308,4613.1597};
+			name="RSTF_POSITION_61";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=128;
+		};
+		class Item71
+		{
+			dataType="Marker";
+			position[]={4432.8989,6.9907308,4848.104};
+			name="RSTF_POSITION_62";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=129;
+		};
+		class Item72
+		{
+			dataType="Marker";
+			position[]={4212.4121,6.9907308,4660.1489};
+			name="RSTF_POSITION_63";
+			text="Nazal Old City";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=130;
+		};
+		class Item73
+		{
+			dataType="Marker";
+			position[]={5833.7603,0,4917.2661};
+			name="RSTF_POSITION_64";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=131;
+			atlOffset=-7;
+		};
+		class Item74
+		{
+			dataType="Marker";
+			position[]={5627.7329,0,4866.6631};
+			name="RSTF_POSITION_65";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=132;
+			atlOffset=-7;
+		};
+		class Item75
+		{
+			dataType="Marker";
+			position[]={5396.4023,0,4848.5908};
+			name="RSTF_POSITION_66";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=133;
+			atlOffset=-7;
+		};
+		class Item76
+		{
+			dataType="Marker";
+			position[]={5418.0903,0,4637.1406};
+			name="RSTF_POSITION_67";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=134;
+			atlOffset=-7;
+		};
+		class Item77
+		{
+			dataType="Marker";
+			position[]={5672.9141,0,4658.8281};
+			name="RSTF_POSITION_68";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=135;
+			atlOffset=-7;
+		};
+		class Item78
+		{
+			dataType="Marker";
+			position[]={5808.458,0,4479.9092};
+			name="RSTF_POSITION_69";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=136;
+			atlOffset=-7;
+		};
+		class Item79
+		{
+			dataType="Marker";
+			position[]={5564.478,0,4389.5459};
+			name="RSTF_POSITION_70";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=137;
+			atlOffset=-7;
+		};
+		class Item80
+		{
+			dataType="Marker";
+			position[]={5472.3076,0,4197.9761};
+			name="RSTF_POSITION_71";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=138;
+			atlOffset=-7;
+		};
+		class Item81
+		{
+			dataType="Marker";
+			position[]={5801.2295,0,4154.6016};
+			name="RSTF_POSITION_72";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=139;
+			atlOffset=-7;
+		};
+		class Item82
+		{
+			dataType="Marker";
+			position[]={6036.1738,0,4210.627};
+			name="RSTF_POSITION_73";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=140;
+			atlOffset=-7;
+		};
+		class Item83
+		{
+			dataType="Marker";
+			position[]={6189.7905,0,4366.0508};
+			name="RSTF_POSITION_74";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=141;
+			atlOffset=-7;
+		};
+		class Item84
+		{
+			dataType="Marker";
+			position[]={6126.5371,0,4584.7305};
+			name="RSTF_POSITION_75";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=142;
+			atlOffset=-7;
+		};
+		class Item85
+		{
+			dataType="Marker";
+			position[]={6298.2275,0,4729.311};
+			name="RSTF_POSITION_76";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=143;
+			atlOffset=-7;
+		};
+		class Item86
+		{
+			dataType="Marker";
+			position[]={6551.2432,0,4834.1323};
+			name="RSTF_POSITION_77";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=144;
+			atlOffset=-7;
+		};
+		class Item87
+		{
+			dataType="Marker";
+			position[]={6518.7119,0,5199.1997};
+			name="RSTF_POSITION_78";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=145;
+			atlOffset=-7;
+		};
+		class Item88
+		{
+			dataType="Marker";
+			position[]={6061.4751,0,5087.1499};
+			name="RSTF_POSITION_79";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=146;
+			atlOffset=-7;
+		};
+		class Item89
+		{
+			dataType="Marker";
+			position[]={6269.3096,0,5107.0293};
+			name="RSTF_POSITION_80";
+			text="Industrial Park";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=147;
+			atlOffset=-7;
+		};
+		class Item90
+		{
+			dataType="Marker";
+			position[]={5840.9888,0,5322.0938};
+			name="RSTF_POSITION_81";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=148;
+			atlOffset=-7;
+		};
+		class Item91
+		{
+			dataType="Marker";
+			position[]={6130.1509,0,5340.166};
+			name="RSTF_POSITION_82";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=149;
+			atlOffset=-7;
+		};
+		class Item92
+		{
+			dataType="Marker";
+			position[]={6395.8184,0,5379.9258};
+			name="RSTF_POSITION_83";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=150;
+			atlOffset=-7;
+		};
+		class Item93
+		{
+			dataType="Marker";
+			position[]={6330.7568,0,5587.7607};
+			name="RSTF_POSITION_84";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=151;
+			atlOffset=-7;
+		};
+		class Item94
+		{
+			dataType="Marker";
+			position[]={6084.9688,0,5569.688};
+			name="RSTF_POSITION_85";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=152;
+			atlOffset=-7;
+		};
+		class Item95
+		{
+			dataType="Marker";
+			position[]={5799.4219,0,5524.5068};
+			name="RSTF_POSITION_86";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=153;
+			atlOffset=-7;
+		};
+		class Item96
+		{
+			dataType="Marker";
+			position[]={5886.1699,0,5730.5347};
+			name="RSTF_POSITION_87";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=154;
+			atlOffset=-7;
+		};
+		class Item97
+		{
+			dataType="Marker";
+			position[]={6189.7905,0,5781.1377};
+			name="RSTF_POSITION_88";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=155;
+			atlOffset=-7;
+		};
+		class Item98
+		{
+			dataType="Marker";
+			position[]={6412.084,0,5811.8613};
+			name="RSTF_POSITION_89";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=156;
+			atlOffset=-7;
+		};
+		class Item99
+		{
+			dataType="Marker";
+			position[]={6625.3408,0,5916.6821};
+			name="RSTF_POSITION_90";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=157;
+			atlOffset=-7;
+		};
+		class Item100
+		{
+			dataType="Marker";
+			position[]={6860.2852,0,5891.3809};
+			name="RSTF_POSITION_91";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=158;
+			atlOffset=-7;
+		};
+		class Item101
+		{
+			dataType="Marker";
+			position[]={6869.3208,0,6093.7939};
+			name="RSTF_POSITION_92";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=159;
+			atlOffset=-7;
+		};
+		class Item102
+		{
+			dataType="Marker";
+			position[]={7098.8433,0,6061.2637};
+			name="RSTF_POSITION_93";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=160;
+			atlOffset=-7;
+		};
+		class Item103
+		{
+			dataType="Marker";
+			position[]={7098.8433,0,5842.585};
+			name="RSTF_POSITION_94";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=161;
+			atlOffset=-7;
+		};
+		class Item104
+		{
+			dataType="Marker";
+			position[]={7113.3013,0,5667.2803};
+			name="RSTF_POSITION_95";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=162;
+			atlOffset=-7;
+		};
+		class Item105
+		{
+			dataType="Marker";
+			position[]={7133.1816,0,5450.4092};
+			name="RSTF_POSITION_96";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=163;
+			atlOffset=-7;
+		};
+		class Item106
+		{
+			dataType="Marker";
+			position[]={6881.9722,0,5641.9785};
+			name="RSTF_POSITION_97";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=164;
+			atlOffset=-7;
+		};
+		class Item107
+		{
+			dataType="Marker";
+			position[]={6892.8154,0,5455.8301};
+			name="RSTF_POSITION_98";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=165;
+			atlOffset=-7;
+		};
+		class Item108
+		{
+			dataType="Marker";
+			position[]={6605.4609,0,5587.7598};
+			name="RSTF_POSITION_99";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=166;
+			atlOffset=-7;
+		};
+		class Item109
+		{
+			dataType="Marker";
+			position[]={7030.167,0,6288.979};
+			name="RSTF_POSITION_100";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=167;
+			atlOffset=-7;
+		};
+		class Item110
+		{
+			dataType="Marker";
+			position[]={6970.5273,0,6520.3081};
+			name="RSTF_POSITION_101";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=168;
+			atlOffset=-7;
+		};
+		class Item111
+		{
+			dataType="Marker";
+			position[]={6739.1982,0,6496.814};
+			name="RSTF_POSITION_102";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=169;
+			atlOffset=-7;
+		};
+		class Item112
+		{
+			dataType="Marker";
+			position[]={6525.9414,0,6464.2832};
+			name="RSTF_POSITION_103";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=170;
+			atlOffset=-7;
+		};
+		class Item113
+		{
+			dataType="Marker";
+			position[]={6518.7119,0.060099125,6231.1465};
+			name="RSTF_POSITION_104";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=171;
+			atlOffset=-6.9399009;
+		};
+		class Item114
+		{
+			dataType="Marker";
+			position[]={6681.3662,0,6097.4082};
+			name="RSTF_POSITION_105";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=172;
+			atlOffset=-7;
+		};
+		class Item115
+		{
+			dataType="Marker";
+			position[]={6283.7686,0,6279.9424};
+			name="RSTF_POSITION_106";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=173;
+			atlOffset=-7;
+		};
+		class Item116
+		{
+			dataType="Marker";
+			position[]={6314.4912,0,6110.0596};
+			name="RSTF_POSITION_107";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=174;
+			atlOffset=-7;
+		};
+		class Item117
+		{
+			dataType="Marker";
+			position[]={6419.3125,0,5983.5508};
+			name="RSTF_POSITION_108";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=175;
+			atlOffset=-7;
+		};
+		class Item118
+		{
+			dataType="Marker";
+			position[]={6063.2817,0,6214.8809};
+			name="RSTF_POSITION_109";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=176;
+			atlOffset=-7;
+		};
+		class Item119
+		{
+			dataType="Marker";
+			position[]={6119.3066,0,6008.8525};
+			name="RSTF_POSITION_110";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=177;
+			atlOffset=-7;
+		};
+		class Item120
+		{
+			dataType="Marker";
+			position[]={5875.3267,0,5951.0205};
+			name="RSTF_POSITION_111";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=178;
+			atlOffset=-7;
+		};
+		class Item121
+		{
+			dataType="Marker";
+			position[]={5692.793,0,5907.6465};
+			name="RSTF_POSITION_112";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=179;
+			atlOffset=-7;
+		};
+		class Item122
+		{
+			dataType="Marker";
+			position[]={5519.2959,0,5884.1514};
+			name="RSTF_POSITION_113";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=180;
+			atlOffset=-7;
+		};
+		class Item123
+		{
+			dataType="Marker";
+			position[]={5353.0273,0,5844.3921};
+			name="RSTF_POSITION_114";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=181;
+			atlOffset=-7;
+		};
+		class Item124
+		{
+			dataType="Marker";
+			position[]={5181.3374,0,5822.7046};
+			name="RSTF_POSITION_115";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=182;
+			atlOffset=-7;
+		};
+		class Item125
+		{
+			dataType="Marker";
+			position[]={5201.2168,0,5663.666};
+			name="RSTF_POSITION_116";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=183;
+			atlOffset=-7;
+		};
+		class Item126
+		{
+			dataType="Marker";
+			position[]={5215.6748,0,5488.3604};
+			name="RSTF_POSITION_117";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=184;
+			atlOffset=-7;
+		};
+		class Item127
+		{
+			dataType="Marker";
+			position[]={5396.4009,0,5640.1714};
+			name="RSTF_POSITION_118";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=185;
+			atlOffset=-7;
+		};
+		class Item128
+		{
+			dataType="Marker";
+			position[]={5434.354,0,5450.4087};
+			name="RSTF_POSITION_119";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=186;
+			atlOffset=-7;
+		};
+		class Item129
+		{
+			dataType="Marker";
+			position[]={5443.3906,0,5298.5981};
+			name="RSTF_POSITION_120";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=187;
+			atlOffset=-7;
+		};
+		class Item130
+		{
+			dataType="Marker";
+			position[]={4868.6816,6.9900088,5188.3555};
+			name="RSTF_POSITION_121";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=188;
+		};
+		class Item131
+		{
+			dataType="Marker";
+			position[]={4904.8262,-0.009991169,5385.3472};
+			name="RSTF_POSITION_122";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=189;
+			atlOffset=-7;
+		};
+		class Item132
+		{
+			dataType="Marker";
+			position[]={4993.3818,-0.009991169,5613.0625};
+			name="RSTF_POSITION_123";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=190;
+			atlOffset=-7;
+		};
+		class Item133
+		{
+			dataType="Marker";
+			position[]={4729.522,-0.009991169,5522.6992};
+			name="RSTF_POSITION_124";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=191;
+			atlOffset=-7;
+		};
+		class Item134
+		{
+			dataType="Marker";
+			position[]={4879.5244,-0.009991169,5791.9814};
+			name="RSTF_POSITION_125";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=192;
+			atlOffset=-7;
+		};
+		class Item135
+		{
+			dataType="Marker";
+			position[]={5484.958,0,6310.6665};
+			name="RSTF_POSITION_126";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=193;
+			atlOffset=-7;
+		};
+		class Item136
+		{
+			dataType="Marker";
+			position[]={5728.938,0,6346.8115};
+			name="RSTF_POSITION_127";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=194;
+			atlOffset=-7;
+		};
+		class Item137
+		{
+			dataType="Marker";
+			position[]={5869.9048,0,6220.3027};
+			name="RSTF_POSITION_128";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=195;
+			atlOffset=-7;
+		};
+		class Item138
+		{
+			dataType="Marker";
+			position[]={5660.2627,0,6122.7109};
+			name="RSTF_POSITION_129";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=196;
+			atlOffset=-7;
+		};
+		class Item139
+		{
+			dataType="Marker";
+			position[]={5403.6309,0,6099.2163};
+			name="RSTF_POSITION_130";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=197;
+			atlOffset=-7;
+		};
+		class Item140
+		{
+			dataType="Marker";
+			position[]={6271.1177,0,6453.4399};
+			name="RSTF_POSITION_131";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=198;
+			atlOffset=-7;
+		};
+		class Item141
+		{
+			dataType="Marker";
+			position[]={5936.7734,0,6643.2031};
+			name="RSTF_POSITION_132";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=199;
+			atlOffset=-7;
+		};
+		class Item142
+		{
+			dataType="Marker";
+			position[]={5658.4551,0,6654.0469};
+			name="RSTF_POSITION_133";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=200;
+			atlOffset=-7;
+		};
+		class Item143
+		{
+			dataType="Marker";
+			position[]={5457.8491,0,6639.5889};
+			name="RSTF_POSITION_134";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=201;
+			atlOffset=-7;
+		};
+		class Item144
+		{
+			dataType="Marker";
+			position[]={5221.0977,0,6610.6729};
+			name="RSTF_POSITION_135";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=202;
+			atlOffset=-7;
+		};
+		class Item145
+		{
+			dataType="Marker";
+			position[]={5349.4136,0,6462.4766};
+			name="RSTF_POSITION_136";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=203;
+			atlOffset=-7;
+		};
+		class Item146
+		{
+			dataType="Marker";
+			position[]={5089.167,-0.009991169,6422.7168};
+			name="RSTF_POSITION_137";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=204;
+			atlOffset=-7;
+		};
+		class Item147
+		{
+			dataType="Marker";
+			position[]={5029.5273,-0.009991169,6686.5771};
+			name="RSTF_POSITION_138";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=205;
+			atlOffset=-7;
+		};
+		class Item148
+		{
+			dataType="Marker";
+			position[]={4846.9937,-0.009991169,6612.4795};
+			name="RSTF_POSITION_139";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=206;
+			atlOffset=-7;
+		};
+		class Item149
+		{
+			dataType="Marker";
+			position[]={4890.3682,-0.009991169,6410.0659};
+			name="RSTF_POSITION_140";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=207;
+			atlOffset=-7;
+		};
+		class Item150
+		{
+			dataType="Marker";
+			position[]={4903.019,-0.009991169,6204.0381};
+			name="RSTF_POSITION_141";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=208;
+			atlOffset=-7;
+		};
+		class Item151
+		{
+			dataType="Marker";
+			position[]={4955.4297,-0.009991169,5987.166};
+			name="RSTF_POSITION_142";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=209;
+			atlOffset=-7;
+		};
+		class Item152
+		{
+			dataType="Marker";
+			position[]={4659.0386,0.65527344,5992.5889};
+			name="RSTF_POSITION_143";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=210;
+			atlOffset=-6.3347354;
+		};
+		class Item153
+		{
+			dataType="Marker";
+			position[]={4650.0024,6.9900088,6205.8457};
+			name="RSTF_POSITION_144";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=211;
+		};
+		class Item154
+		{
+			dataType="Marker";
+			position[]={4716.8711,6.9900088,6413.6807};
+			name="RSTF_POSITION_145";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=212;
+		};
+		class Item155
+		{
+			dataType="Marker";
+			position[]={4650.002,6.9900088,6659.4683};
+			name="RSTF_POSITION_146";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=213;
+		};
+		class Item156
+		{
+			dataType="Marker";
+			position[]={4406.0215,6.9900088,6639.5879};
+			name="RSTF_POSITION_147";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=214;
+		};
+		class Item157
+		{
+			dataType="Marker";
+			position[]={4462.0464,6.9900088,6462.4761};
+			name="RSTF_POSITION_148";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=215;
+		};
+		class Item158
+		{
+			dataType="Marker";
+			position[]={4218.0664,6.9900088,6563.6831};
+			name="RSTF_POSITION_149";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=216;
+		};
+		class Item159
+		{
+			dataType="Marker";
+			position[]={4012.313,-0.009991169,6541.9526};
+			name="RSTF_POSITION_150";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=217;
+			atlOffset=-7;
+		};
+		class Item160
+		{
+			dataType="Marker";
+			position[]={3766.4404,-0.009991169,6502.8652};
+			name="RSTF_POSITION_151";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=218;
+			atlOffset=-7;
+		};
+		class Item161
+		{
+			dataType="Marker";
+			position[]={3501.6543,-0.009991169,6500.3438};
+			name="RSTF_POSITION_152";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=219;
+			atlOffset=-7;
+		};
+		class Item162
+		{
+			dataType="Marker";
+			position[]={3249.4775,-0.009991169,6461.2559};
+			name="RSTF_POSITION_153";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=220;
+			atlOffset=-7;
+		};
+		class Item163
+		{
+			dataType="Marker";
+			position[]={2684.6011,-0.009991169,6407.0386};
+			name="RSTF_POSITION_154";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=221;
+			atlOffset=-7;
+		};
+		class Item164
+		{
+			dataType="Marker";
+			position[]={2562.2952,-0.009991169,6210.3398};
+			name="RSTF_POSITION_155";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=222;
+			atlOffset=-7;
+		};
+		class Item165
+		{
+			dataType="Marker";
+			position[]={2668.2095,-0.009991169,6021.207};
+			name="RSTF_POSITION_156";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=223;
+			atlOffset=-7;
+		};
+		class Item166
+		{
+			dataType="Marker";
+			position[]={2684.6016,-0.009991169,5818.2041};
+			name="RSTF_POSITION_157";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=224;
+			atlOffset=-7;
+		};
+		class Item167
+		{
+			dataType="Marker";
+			position[]={2964.5178,0,5553.4185};
+			name="RSTF_POSITION_158";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=225;
+			atlOffset=-6.9800172;
+		};
+		class Item168
+		{
+			dataType="Marker";
+			position[]={2828.3423,-0.019982815,5310.0669};
+			name="RSTF_POSITION_159";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=226;
+			atlOffset=-7;
+		};
+		class Item169
+		{
+			dataType="Marker";
+			position[]={3045.2146,-0.019982815,5378.1543};
+			name="RSTF_POSITION_160";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=227;
+			atlOffset=-7;
+		};
+		class Item170
+		{
+			dataType="Marker";
+			position[]={2906.5173,-0.019982815,5125.9775};
+			name="RSTF_POSITION_161";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=228;
+			atlOffset=-7;
+		};
+		class Item171
+		{
+			dataType="Marker";
+			position[]={2941.8218,-0.0092692375,4915.4097};
+			name="RSTF_POSITION_162";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=229;
+			atlOffset=-7;
+		};
+		class Item172
+		{
+			dataType="Marker";
+			position[]={3052.7795,-0.0092692375,4704.8413};
+			name="RSTF_POSITION_163";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=230;
+			atlOffset=-7;
+		};
+		class Item173
+		{
+			dataType="Marker";
+			position[]={3135.9983,0,4509.4043};
+			name="RSTF_POSITION_164";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=231;
+			atlOffset=-6.9907308;
+		};
+		class Item174
+		{
+			dataType="Marker";
+			position[]={3357.9138,-0.0092692375,4501.8389};
+			name="RSTF_POSITION_165";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=232;
+			atlOffset=-7;
+		};
+		class Item175
+		{
+			dataType="Marker";
+			position[]={3267.1304,-0.0092692375,4685.9277};
+			name="RSTF_POSITION_166";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=233;
+			atlOffset=-7;
+		};
+		class Item176
+		{
+			dataType="Marker";
+			position[]={3453.7412,-0.0092692375,4767.8857};
+			name="RSTF_POSITION_167";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=234;
+			atlOffset=-7;
+		};
+		class Item177
+		{
+			dataType="Marker";
+			position[]={3398.2622,-0.0092692375,4928.0181};
+			name="RSTF_POSITION_168";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=235;
+			atlOffset=-7;
+		};
+		class Item178
+		{
+			dataType="Marker";
+			position[]={3371.7837,-0.009991169,5123.4546};
+			name="RSTF_POSITION_169";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=236;
+			atlOffset=-7;
+		};
+		class Item179
+		{
+			dataType="Marker";
+			position[]={3206.6079,-0.009991169,5163.8037};
+			name="RSTF_POSITION_170";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=237;
+			atlOffset=-7;
+		};
+		class Item180
+		{
+			dataType="Marker";
+			position[]={3170.042,-0.0092692375,4949.4526};
+			name="RSTF_POSITION_171";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=238;
+			atlOffset=-7;
+		};
+		class Item181
+		{
+			dataType="Marker";
+			position[]={3067.9104,6.9800172,5137.3237};
+			name="RSTF_POSITION_172";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=239;
+		};
+		class Item182
+		{
+			dataType="Marker";
+			position[]={3222.9993,-0.009991169,5477.7627};
+			name="RSTF_POSITION_173";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=240;
+			atlOffset=-7;
+		};
+		class Item183
+		{
+			dataType="Marker";
+			position[]={3142.3025,-0.019982815,5642.939};
+			name="RSTF_POSITION_174";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=241;
+			atlOffset=-7;
+		};
+		class Item184
+		{
+			dataType="Marker";
+			position[]={3048.9971,-0.009991169,5839.6362};
+			name="RSTF_POSITION_175";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=242;
+			atlOffset=-7;
+		};
+		class Item185
+		{
+			dataType="Marker";
+			position[]={2873.7341,-0.009991169,5869.8975};
+			name="RSTF_POSITION_176";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=243;
+			atlOffset=-7;
+		};
+		class Item186
+		{
+			dataType="Marker";
+			position[]={2832.125,-0.009991169,6076.6841};
+			name="RSTF_POSITION_177";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=244;
+			atlOffset=-7;
+		};
+		class Item187
+		{
+			dataType="Marker";
+			position[]={2764.0376,-0.009991169,6222.9468};
+			name="RSTF_POSITION_178";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=245;
+			atlOffset=-7;
+		};
+		class Item188
+		{
+			dataType="Marker";
+			position[]={2886.343,-0.009991169,6313.7305};
+			name="RSTF_POSITION_179";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=246;
+			atlOffset=-7;
+		};
+		class Item189
+		{
+			dataType="Marker";
+			position[]={3037.6492,-0.009991169,6111.9883};
+			name="RSTF_POSITION_180";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=247;
+			atlOffset=-7;
+		};
+		class Item190
+		{
+			dataType="Marker";
+			position[]={3154.9116,-0.009991169,6283.4692};
+			name="RSTF_POSITION_181";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=248;
+			atlOffset=-7;
+		};
+		class Item191
+		{
+			dataType="Marker";
+			position[]={3310.0002,-0.009991169,6146.0327};
+			name="RSTF_POSITION_182";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=249;
+			atlOffset=-7;
+		};
+		class Item192
+		{
+			dataType="Marker";
+			position[]={3231.8257,-0.009991169,5969.5078};
+			name="RSTF_POSITION_183";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=250;
+			atlOffset=-7;
+		};
+		class Item193
+		{
+			dataType="Marker";
+			position[]={3311.2612,-0.009991169,5762.7236};
+			name="RSTF_POSITION_184";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=251;
+			atlOffset=-7;
+		};
+		class Item194
+		{
+			dataType="Marker";
+			position[]={3491.5679,-0.009991169,5919.0732};
+			name="RSTF_POSITION_185";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=252;
+			atlOffset=-7;
+		};
+		class Item195
+		{
+			dataType="Marker";
+			position[]={3492.8291,-0.009991169,6098.1191};
+			name="RSTF_POSITION_186";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=253;
+			atlOffset=-7;
+		};
+		class Item196
+		{
+			dataType="Marker";
+			position[]={3485.2634,-0.009991169,6342.7305};
+			name="RSTF_POSITION_187";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=254;
+			atlOffset=-7;
+		};
+		class Item197
+		{
+			dataType="Marker";
+			position[]={3826.9634,-0.009991169,6328.8613};
+			name="RSTF_POSITION_188";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=255;
+			atlOffset=-7;
+		};
+		class Item198
+		{
+			dataType="Marker";
+			position[]={3700.875,-0.009991169,6161.1631};
+			name="RSTF_POSITION_189";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=256;
+			atlOffset=-7;
+		};
+		class Item199
+		{
+			dataType="Marker";
+			position[]={3716.0056,-0.009991169,5984.6387};
+			name="RSTF_POSITION_190";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=257;
+			atlOffset=-7;
+		};
+		class Item200
+		{
+			dataType="Marker";
+			position[]={3707.1792,-0.009991169,5798.0278};
+			name="RSTF_POSITION_191";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=258;
+			atlOffset=-7;
+		};
+		class Item201
+		{
+			dataType="Marker";
+			position[]={3707.1792,-0.009991169,5626.5479};
+			name="RSTF_POSITION_192";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=259;
+			atlOffset=-7;
+		};
+		class Item202
+		{
+			dataType="Marker";
+			position[]={3533.1772,-0.009991169,5751.376};
+			name="RSTF_POSITION_193";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=260;
+			atlOffset=-7;
+		};
+		class Item203
+		{
+			dataType="Marker";
+			position[]={3495.3503,-0.009991169,5601.3306};
+			name="RSTF_POSITION_194";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=261;
+			atlOffset=-7;
+		};
+		class Item204
+		{
+			dataType="Marker";
+			position[]={3336.479,-0.009991169,5581.1563};
+			name="RSTF_POSITION_195";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=262;
+			atlOffset=-7;
+		};
+		class Item205
+		{
+			dataType="Marker";
+			position[]={3768.9624,-0.009991169,5424.8057};
+			name="RSTF_POSITION_196";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=263;
+			atlOffset=-7;
+		};
+		class Item206
+		{
+			dataType="Marker";
+			position[]={3801.7454,-0.009991169,5236.9336};
+			name="RSTF_POSITION_197";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=264;
+			atlOffset=-7;
+		};
+		class Item207
+		{
+			dataType="Marker";
+			position[]={3627.7432,-0.009991169,5243.2383};
+			name="RSTF_POSITION_198";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=265;
+			atlOffset=-7;
+		};
+		class Item208
+		{
+			dataType="Marker";
+			position[]={3584.873,-0.009991169,5427.3281};
+			name="RSTF_POSITION_199";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=266;
+			atlOffset=-7;
+		};
+		class Item209
+		{
+			dataType="Marker";
+			position[]={3524.3508,-0.0092692375,5062.9316};
+			name="RSTF_POSITION_200";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=267;
+			atlOffset=-7;
+		};
+		class Item210
+		{
+			dataType="Marker";
+			position[]={3699.6138,0,5074.2798};
+			name="RSTF_POSITION_201";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=268;
+			atlOffset=-6.9907308;
+		};
+		class Item211
+		{
+			dataType="Marker";
+			position[]={3708.4395,0,4880.104};
+			name="RSTF_POSITION_202";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=269;
+			atlOffset=-6.9907308;
+		};
+		class Item212
+		{
+			dataType="Marker";
+			position[]={3612.6128,0,4554.7949};
+			name="RSTF_POSITION_203";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=270;
+			atlOffset=-6.9907308;
+		};
+		class Item213
+		{
+			dataType="Marker";
+			position[]={3819.3975,0,4709.8838};
+			name="RSTF_POSITION_204";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=271;
+			atlOffset=-6.9907308;
+		};
+		class Item214
+		{
+			dataType="Marker";
+			position[]={3982.052,0,4844.7983};
+			name="RSTF_POSITION_205";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=272;
+			atlOffset=-6.9907308;
+		};
+		class Item215
+		{
+			dataType="Marker";
+			position[]={3931.6169,0,5021.3218};
+			name="RSTF_POSITION_206";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=273;
+			atlOffset=-6.9907308;
+		};
+		class Item216
+		{
+			dataType="Marker";
+			position[]={3994.6606,-0.009991169,5288.6299};
+			name="RSTF_POSITION_207";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=274;
+			atlOffset=-7;
+		};
+		class Item217
+		{
+			dataType="Marker";
+			position[]={3960.6172,-0.009991169,5525.6763};
+			name="RSTF_POSITION_208";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=275;
+			atlOffset=-7;
+		};
+		class Item218
+		{
+			dataType="Marker";
+			position[]={3895.0513,-0.009991169,5728.6787};
+			name="RSTF_POSITION_209";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=276;
+			atlOffset=-7;
+		};
+		class Item219
+		{
+			dataType="Marker";
+			position[]={3922.7905,-0.009991169,5917.8115};
+			name="RSTF_POSITION_210";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=277;
+			atlOffset=-7;
+		};
+		class Item220
+		{
+			dataType="Marker";
+			position[]={3944.2256,-0.009991169,6133.4229};
+			name="RSTF_POSITION_211";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=278;
+			atlOffset=-7;
+		};
+		class Item221
+		{
+			dataType="Marker";
+			position[]={4060.2271,-0.009991169,6361.6431};
+			name="RSTF_POSITION_212";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=279;
+			atlOffset=-7;
+		};
+		class Item222
+		{
+			dataType="Marker";
+			position[]={4163.6196,-0.009991169,6219.1626};
+			name="RSTF_POSITION_213";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=280;
+			atlOffset=-7;
+		};
+		class Item223
+		{
+			dataType="Marker";
+			position[]={4288.4468,-0.009991169,5987.1602};
+			name="RSTF_POSITION_214";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=281;
+			atlOffset=-7;
+		};
+		class Item224
+		{
+			dataType="Marker";
+			position[]={4303.5781,-0.009991169,5760.2007};
+			name="RSTF_POSITION_215";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=282;
+			atlOffset=-7;
+		};
+		class Item225
+		{
+			dataType="Marker";
+			position[]={4284.6646,6.9900088,5563.5034};
+			name="RSTF_POSITION_216";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=283;
+		};
+		class Item226
+		{
+			dataType="Marker";
+			position[]={4288.4468,-0.009991169,5204.1504};
+			name="RSTF_POSITION_217";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=284;
+			atlOffset=-7;
+		};
+		class Item227
+		{
+			dataType="Marker";
+			position[]={4111.9233,-0.009991169,6051.4648};
+			name="RSTF_POSITION_218";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=285;
+			atlOffset=-7;
+		};
+		class Item228
+		{
+			dataType="Marker";
+			position[]={4104.3584,-0.009991169,5885.0283};
+			name="RSTF_POSITION_219";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=286;
+			atlOffset=-7;
+		};
+		class Item229
+		{
+			dataType="Marker";
+			position[]={4129.5757,-0.009991169,5682.0264};
+			name="RSTF_POSITION_220";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=287;
+			atlOffset=-7;
+		};
+		class Item230
+		{
+			dataType="Marker";
+			position[]={4137.1406,-0.009991169,5476.5015};
+			name="RSTF_POSITION_221";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=288;
+			atlOffset=-7;
+		};
+		class Item231
+		{
+			dataType="Marker";
+			position[]={4171.1846,-0.009991169,5312.5869};
+			name="RSTF_POSITION_222";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=289;
+			atlOffset=-7;
+		};
+		class Item232
+		{
+			dataType="Marker";
+			position[]={4115.7061,-0.0092692375,5108.3228};
+			name="RSTF_POSITION_223";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=290;
+			atlOffset=-7;
+		};
+		class Item233
+		{
+			dataType="Marker";
+			position[]={4287.186,0,5037.7129};
+			name="RSTF_POSITION_224";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=291;
+			atlOffset=-6.9907308;
+		};
+		class Item234
+		{
+			dataType="Marker";
+			position[]={4531.6006,-0.009991169,5487.2749};
+			name="RSTF_POSITION_225";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=292;
+			atlOffset=-7;
+		};
+		class Item235
+		{
+			dataType="Marker";
+			position[]={4493.6479,-0.009991169,5687.8809};
+			name="RSTF_POSITION_226";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=293;
+			atlOffset=-7;
+		};
+		class Item236
+		{
+			dataType="Marker";
+			position[]={4480.9971,-0.009991169,5819.8105};
+			name="RSTF_POSITION_227";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=294;
+			atlOffset=-7;
+		};
+		class Item237
+		{
+			dataType="Marker";
+			position[]={4468.3467,-0.009991169,5975.2363};
+			name="RSTF_POSITION_228";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=295;
+			atlOffset=-7;
+		};
+		class Item238
+		{
+			dataType="Marker";
+			position[]={4439.4307,-0.009991169,6103.5518};
+			name="RSTF_POSITION_229";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=296;
+			atlOffset=-7;
+		};
+		class Item239
+		{
+			dataType="Marker";
+			position[]={4779.1958,6.9900088,5322.8135};
+			name="RSTF_POSITION_230";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=297;
+		};
+		class Item240
+		{
+			dataType="Marker";
+			position[]={5035.8276,0,4760.7549};
+			name="RSTF_POSITION_231";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=298;
+			atlOffset=-6.9907308;
+		};
+		class Item241
+		{
+			dataType="Marker";
+			position[]={4214.2681,0,4341.8647};
+			name="RSTF_POSITION_232";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=299;
+			atlOffset=-6.9907308;
+		};
+		class Item242
+		{
+			dataType="Marker";
+			position[]={5752.979,0,3443.6086};
+			name="RSTF_POSITION_233";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=300;
+			atlOffset=-7;
+		};
+		class Item243
+		{
+			dataType="Marker";
+			position[]={4879.3999,-0.0099921227,2470.6489};
+			name="RSTF_POSITION_234";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=301;
+			atlOffset=-7;
+		};
+		class Item244
+		{
+			dataType="Marker";
+			position[]={6113.6318,0,2562.0137};
+			name="RSTF_POSITION_235";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=302;
+			atlOffset=-7;
+		};
+		class Item245
+		{
+			dataType="Marker";
+			position[]={3300.6855,-0.0092692375,3020.0142};
+			name="RSTF_POSITION_236";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=303;
+			atlOffset=-7;
+		};
+		class Item246
+		{
+			dataType="Marker";
+			position[]={3840.3445,-0.0092692375,2993.5352};
+			name="RSTF_POSITION_237";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=304;
+			atlOffset=-7;
+		};
+		class Item247
+		{
+			dataType="Marker";
+			position[]={3198.3691,-0.0092692375,4192.1611};
+			name="RSTF_POSITION_238";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=305;
+			atlOffset=-7;
+		};
+		class Item248
+		{
+			dataType="Marker";
+			position[]={7858.5059,0,1817.6685};
+			name="RSTF_POSITION_239";
+			text="Al-Fallujah";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=306;
+			atlOffset=-7;
+		};
+	};
+};

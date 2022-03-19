@@ -1,0 +1,2593 @@
+version=54;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=1;
+	class ItemIDProvider
+	{
+		nextID=92;
+	};
+	class MarkerIDProvider
+	{
+		nextID=1;
+	};
+	class Camera
+	{
+		pos[]={13138.836,358.63626,2097.5};
+		dir[]={0.076208256,-0.4983578,0.86361653};
+		up[]={0.043806501,0.86697072,0.49642929};
+		aside[]={0.99612963,1.5512342e-008,-0.087901771};
+	};
+};
+binarizationWanted=0;
+sourceName="mapLoader";
+addons[]=
+{
+	"A3_Ui_F",
+	"A3_Characters_F"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=2;
+		class Item0
+		{
+			className="A3_Ui_F";
+			name="Arma 3 - User Interface";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+	};
+};
+randomSeed=11268658;
+class ScenarioData
+{
+	author="Kamen";
+	overviewText="Instant infantry battle for randomly selected place on the map.";
+	overViewPicture="random.paa";
+	joinUnassigned=0;
+	class Header
+	{
+		gameType="Coop";
+		minPlayers=1;
+		maxPlayers=8;
+	};
+};
+class CustomAttributes
+{
+	class Category0
+	{
+		name="Multiplayer";
+		class Attribute0
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
+					class value
+					{
+						items=1;
+						class Item0
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"STRING"
+									};
+								};
+								value="None";
+							};
+						};
+					};
+				};
+			};
+		};
+		nAttributes=1;
+	};
+	class Category1
+	{
+		name="Scenario";
+		class Attribute0
+		{
+			property="EnableDebugConsole";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=0;
+				};
+			};
+		};
+		nAttributes=1;
+	};
+};
+class Mission
+{
+	class Intel
+	{
+		briefingName="Random Skirmish - Khe Sanh";
+		overviewText="Random skirmish on random place on island";
+		resistanceWest=0;
+		startWeather=0.28999999;
+		startWind=0.099999994;
+		startWaves=0.099999994;
+		forecastWeather=0.29999998;
+		forecastWind=0.099999994;
+		forecastWaves=0.099999994;
+		forecastLightnings=0.099999994;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+	class Entities
+	{
+		items=149;
+		class Item0
+		{
+			dataType="Marker";
+			position[]={15999.835,408.82709,18177.209};
+			name="RSTF_FACTION_CAM";
+			type="Empty";
+			id=0;
+		};
+		class Item1
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15568.177,414.6488,18559.926};
+						angles[]={0.098814316,0,0.11260752};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayer=1;
+						isPlayable=1;
+					};
+					id=2;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male10ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.97000003;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1;
+		};
+		class Item2
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15566.733,414.62384,18558.523};
+						angles[]={0.096541308,0,0.11260752};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=23;
+					type="B_Soldier_unarmed_F";
+					atlOffset=3.0517578e-005;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=22;
+			atlOffset=3.0517578e-005;
+		};
+		class Item3
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15569.611,414.93268,18558.695};
+						angles[]={0.096541308,0,0.11260752};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=25;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=24;
+		};
+		class Item4
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15565.492,414.63837,18556.828};
+						angles[]={0.096339509,0,0.12448336};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=40;
+					type="B_Soldier_unarmed_F";
+					atlOffset=3.0517578e-005;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=39;
+			atlOffset=3.0517578e-005;
+		};
+		class Item5
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15571.146,415.26373,18556.693};
+						angles[]={0.096541308,0,0.081273891};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=42;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=41;
+		};
+		class Item6
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15566.745,414.94171,18555.25};
+						angles[]={0.096339509,0,0.11280838};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player ";
+						isPlayable=1;
+					};
+					id=44;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=43;
+		};
+		class Item7
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15569.403,415.24506,18555.227};
+						angles[]={0.096339509,0,0.11280838};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=46;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=45;
+		};
+		class Item8
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15526.92,407.4043,18633.107};
+						angles[]={6.1518898,0,0.26757136};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=48;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=47;
+		};
+		class Item9
+		{
+			dataType="Marker";
+			position[]={5806.5898,0,4899.6802};
+			name="RSTF_POSITION_0";
+			text="A Ho";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=9;
+			atlOffset=-184.56116;
+		};
+		class Item10
+		{
+			dataType="Marker";
+			position[]={5856.4766,0,4516.5479};
+			name="RSTF_POSITION_1";
+			text="Lang Temp";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=10;
+			atlOffset=-168.44083;
+		};
+		class Item11
+		{
+			dataType="Marker";
+			position[]={4210.1499,0,4420.48};
+			name="RSTF_POSITION_2";
+			text="Thanh";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=11;
+			atlOffset=-252.77321;
+		};
+		class Item12
+		{
+			dataType="Marker";
+			position[]={6167.5698,0,5783.8301};
+			name="RSTF_POSITION_3";
+			text="Lukdong";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=12;
+			atlOffset=-208.19266;
+		};
+		class Item13
+		{
+			dataType="Marker";
+			position[]={6029.9902,0,4187.1099};
+			name="RSTF_POSITION_4";
+			text="An My";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=13;
+			atlOffset=-173.0462;
+		};
+		class Item14
+		{
+			dataType="Marker";
+			position[]={3813.3401,0,5779.8901};
+			name="RSTF_POSITION_5";
+			text="Pasom";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=14;
+			atlOffset=-216.83537;
+		};
+		class Item15
+		{
+			dataType="Marker";
+			position[]={6090.2002,0,6302.4399};
+			name="RSTF_POSITION_6";
+			text="Dan";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=15;
+			atlOffset=-196.82497;
+		};
+		class Item16
+		{
+			dataType="Marker";
+			position[]={4153.3789,0.85888672,6297.9028};
+			name="RSTF_POSITION_7";
+			text="A Bung";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=16;
+			atlOffset=-329.85815;
+		};
+		class Item17
+		{
+			dataType="Marker";
+			position[]={3544.75,0,5030.2798};
+			name="RSTF_POSITION_8";
+			text="A Xau";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=17;
+			atlOffset=-224.77551;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={4863.1899,0,3559.0901};
+			name="RSTF_POSITION_9";
+			text="A Coi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=18;
+			atlOffset=-29.623716;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={6274.7598,0,6450.3301};
+			name="RSTF_POSITION_10";
+			text="Pakpong";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=19;
+			atlOffset=-193.37302;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={6569.3301,0,6140.5498};
+			name="RSTF_POSITION_11";
+			text="Tavouac";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=20;
+			atlOffset=-187.52168;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={4948.9272,-8.0717773,6865.5732};
+			name="RSTF_POSITION_12";
+			text="Lang Ta Tuc";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=21;
+			atlOffset=-228.74437;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={5581.0698,0,3217.79};
+			name="RSTF_POSITION_13";
+			text="Xing Ea";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=22;
+			atlOffset=-38.19553;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={6851.4199,0,4090.78};
+			name="RSTF_POSITION_14";
+			text="Dantete";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=23;
+			atlOffset=-125.14593;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={5767.2202,0,7040.8901};
+			name="RSTF_POSITION_15";
+			text="Donxat";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=24;
+			atlOffset=-198.52936;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={6240.9102,0,3407.49};
+			name="RSTF_POSITION_16";
+			text="Xing We";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=25;
+			atlOffset=-80.108101;
+		};
+		class Item26
+		{
+			dataType="Marker";
+			position[]={3506.9275,0.57421875,6446.9561};
+			name="RSTF_POSITION_17";
+			text="Palien Khun";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=26;
+			atlOffset=-248.51927;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={6981.1499,0,6087.48};
+			name="RSTF_POSITION_18";
+			text="Xa Heng";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=27;
+			atlOffset=-190.24257;
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={6675.25,0,6621.27};
+			name="RSTF_POSITION_19";
+			text="Xom Ta Can";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=28;
+			atlOffset=-196.5004;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={2974.6309,-0.66357422,4100.7339};
+			name="RSTF_POSITION_20";
+			text="Lapoung";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=29;
+			atlOffset=-143.91275;
+		};
+		class Item30
+		{
+			dataType="Marker";
+			position[]={6842.9399,0,6951.1299};
+			name="RSTF_POSITION_21";
+			text="Pa Lo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=30;
+			atlOffset=-220.21896;
+		};
+		class Item31
+		{
+			dataType="Marker";
+			position[]={6917.3501,0,3327.9099};
+			name="RSTF_POSITION_22";
+			text="Lousalia";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=31;
+			atlOffset=-82.923325;
+		};
+		class Item32
+		{
+			dataType="Marker";
+			position[]={7686.4502,0,4944.5601};
+			name="RSTF_POSITION_23";
+			text="Donvay";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=32;
+			atlOffset=-122.82085;
+		};
+		class Item33
+		{
+			dataType="Marker";
+			position[]={2492.78,0,4505.5698};
+			name="RSTF_POSITION_24";
+			text="Ko No";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=33;
+			atlOffset=-177.71475;
+		};
+		class Item34
+		{
+			dataType="Marker";
+			position[]={7949.0498,0,4503.52};
+			name="RSTF_POSITION_25";
+			text="Tum Lang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=34;
+			atlOffset=-107.15441;
+		};
+		class Item35
+		{
+			dataType="Marker";
+			position[]={6644.9199,0,2508.03};
+			name="RSTF_POSITION_26";
+			text="Lang Bu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=35;
+			atlOffset=-40.219543;
+		};
+		class Item36
+		{
+			dataType="Marker";
+			position[]={7051.21,0,8089.29};
+			name="RSTF_POSITION_27";
+			text="Lang Giao";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=36;
+			atlOffset=-193.91666;
+		};
+		class Item37
+		{
+			dataType="Marker";
+			position[]={3386.4099,0,1993.4399};
+			name="RSTF_POSITION_28";
+			text="Lang Voi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=37;
+			atlOffset=-17.918633;
+		};
+		class Item38
+		{
+			dataType="Marker";
+			position[]={8411.1904,0,6564.9399};
+			name="RSTF_POSITION_29";
+			text="Xom Con";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=38;
+			atlOffset=-228.15919;
+		};
+		class Item39
+		{
+			dataType="Marker";
+			position[]={6354.25,0,1649.29};
+			name="RSTF_POSITION_30";
+			text="Hai Tan";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=39;
+			atlOffset=-43.356998;
+		};
+		class Item40
+		{
+			dataType="Marker";
+			position[]={8783.8203,0,4648.1602};
+			name="RSTF_POSITION_31";
+			text="Ploy";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=40;
+			atlOffset=-119.34555;
+		};
+		class Item41
+		{
+			dataType="Marker";
+			position[]={8833.1299,0,5781.8999};
+			name="RSTF_POSITION_32";
+			text="Chau Lang Chanh";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=41;
+			atlOffset=-163.96707;
+		};
+		class Item42
+		{
+			dataType="Marker";
+			position[]={8698.5098,0,3764.3899};
+			name="RSTF_POSITION_33";
+			text="Hop Tac";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=42;
+			atlOffset=-86.997475;
+		};
+		class Item43
+		{
+			dataType="Marker";
+			position[]={4213.77,0,1311.51};
+			name="RSTF_POSITION_34";
+			text="Lang Vei";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=43;
+			atlOffset=-34.511917;
+		};
+		class Item44
+		{
+			dataType="Marker";
+			position[]={1590.2759,-5.9941406,6794.1636};
+			name="RSTF_POSITION_35";
+			text="Lang Hoan Tap";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=44;
+			atlOffset=-186.13234;
+		};
+		class Item45
+		{
+			dataType="Marker";
+			position[]={8884.2803,0,3450.1499};
+			name="RSTF_POSITION_36";
+			text="Naxuak";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=45;
+			atlOffset=-63.029999;
+		};
+		class Item46
+		{
+			dataType="Marker";
+			position[]={8484.29,0,2675.8501};
+			name="RSTF_POSITION_37";
+			text="Kok";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=46;
+			atlOffset=-62.880707;
+		};
+		class Item47
+		{
+			dataType="Marker";
+			position[]={7368.1099,0,8673.5898};
+			name="RSTF_POSITION_38";
+			text="Co So";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=47;
+			atlOffset=-162.31;
+		};
+		class Item48
+		{
+			dataType="Marker";
+			position[]={1042.2,0,6254.46};
+			name="RSTF_POSITION_39";
+			text="Xi Mi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=48;
+			atlOffset=-155.56575;
+		};
+		class Item49
+		{
+			dataType="Marker";
+			position[]={1150.72,0,6789.5298};
+			name="RSTF_POSITION_40";
+			text="Xi No";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=49;
+			atlOffset=-189.23177;
+		};
+		class Item50
+		{
+			dataType="Marker";
+			position[]={6298.6699,0,946.64697};
+			name="RSTF_POSITION_41";
+			text="Hai Phuc";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=50;
+			atlOffset=-28.179821;
+		};
+		class Item51
+		{
+			dataType="Marker";
+			position[]={889.77002,0,6094.98};
+			name="RSTF_POSITION_42";
+			text="Xi So";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=51;
+			atlOffset=-149.54128;
+		};
+		class Item52
+		{
+			dataType="Marker";
+			position[]={7027.2002,0,1207.62};
+			name="RSTF_POSITION_43";
+			text="Gio Hai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=52;
+			atlOffset=-10.800255;
+		};
+		class Item53
+		{
+			dataType="Marker";
+			position[]={880.26703,0,3678.22};
+			name="RSTF_POSITION_44";
+			text="Kang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=53;
+			atlOffset=-53.985626;
+		};
+		class Item54
+		{
+			dataType="Marker";
+			position[]={2103.98,0,1786.55};
+			name="RSTF_POSITION_45";
+			text="Thongxa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=54;
+			atlOffset=-58.578053;
+		};
+		class Item55
+		{
+			dataType="Marker";
+			position[]={7782.7866,4.3037109,1408.451};
+			name="RSTF_POSITION_46";
+			text="Lang Con";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=55;
+			atlOffset=-45.723007;
+		};
+		class Item56
+		{
+			dataType="Marker";
+			position[]={5759.8599,0,374.349};
+			name="RSTF_POSITION_47";
+			text="Ba Hy";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=56;
+			atlOffset=-40.0527;
+		};
+		class Item57
+		{
+			dataType="Marker";
+			position[]={9476.7002,0,7130.4302};
+			name="RSTF_POSITION_48";
+			text="Xom Ba Tu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=57;
+			atlOffset=-209.58052;
+		};
+		class Item58
+		{
+			dataType="Marker";
+			position[]={6911.6201,0,581.81201};
+			name="RSTF_POSITION_49";
+			text="Vis Ki";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=58;
+			atlOffset=-84.460648;
+		};
+		class Item59
+		{
+			dataType="Marker";
+			position[]={6340.8799,0,9856.4004};
+			name="RSTF_POSITION_50";
+			text="Co La";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=59;
+			atlOffset=-12.371616;
+		};
+		class Item60
+		{
+			dataType="Marker";
+			position[]={7446.1499,0,9466.71};
+			name="RSTF_POSITION_51";
+			text="Phonsi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=60;
+			atlOffset=-21.766235;
+		};
+		class Item61
+		{
+			dataType="Marker";
+			position[]={3970.6899,0,256.62299};
+			name="RSTF_POSITION_52";
+			text="Salen";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=61;
+			atlOffset=-34.329708;
+		};
+		class Item62
+		{
+			dataType="Marker";
+			position[]={4905.2202,0,10216.4};
+			name="RSTF_POSITION_53";
+			text="Ap La Vien";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=62;
+			atlOffset=-21.777647;
+		};
+		class Item63
+		{
+			dataType="Marker";
+			position[]={8704.9902,0,1490.79};
+			name="RSTF_POSITION_54";
+			text="Nhi Ha";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=63;
+			atlOffset=-44.236317;
+		};
+		class Item64
+		{
+			dataType="Marker";
+			position[]={10432.7,0,4927.79};
+			name="RSTF_POSITION_55";
+			text="A Rieng";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=64;
+			atlOffset=-4.9537477;
+		};
+		class Item65
+		{
+			dataType="Marker";
+			position[]={1717.84,0,848.79999};
+			name="RSTF_POSITION_56";
+			text="Lang Ou Hi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=65;
+			atlOffset=-24.113813;
+		};
+		class Item66
+		{
+			dataType="Marker";
+			position[]={1575.09,0,9334.5801};
+			name="RSTF_POSITION_57";
+			text="Lang Ruhon";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=66;
+			atlOffset=-407.30679;
+		};
+		class Item67
+		{
+			dataType="Marker";
+			position[]={6750.5801,0,10420.5};
+			name="RSTF_POSITION_58";
+			text="Pomkhoun";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=67;
+			atlOffset=-6.3487062;
+		};
+		class Item68
+		{
+			dataType="Marker";
+			position[]={10382.3,0,6908.6802};
+			name="RSTF_POSITION_59";
+			text="Xom Bo Lu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=68;
+			atlOffset=-206.12209;
+		};
+		class Item69
+		{
+			dataType="Marker";
+			position[]={8285.7402,0,529.354};
+			name="RSTF_POSITION_60";
+			text="Rao Ha";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=69;
+			atlOffset=-25.969564;
+		};
+		class Item70
+		{
+			dataType="Marker";
+			position[]={4625.0698,0,10736.8};
+			name="RSTF_POSITION_61";
+			text="Vangkoy";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=70;
+			atlOffset=-16.58349;
+		};
+		class Item71
+		{
+			dataType="Marker";
+			position[]={10945.605,-2.7163086,3983.1587};
+			name="RSTF_POSITION_62";
+			text="Khe Sanh";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=71;
+			atlOffset=-106.0133;
+		};
+		class Item72
+		{
+			dataType="Marker";
+			position[]={9497.2969,6.4580078,1400.6399};
+			name="RSTF_POSITION_63";
+			text="Lang Huo Ha";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=72;
+			atlOffset=-19.768923;
+		};
+		class Item73
+		{
+			dataType="Marker";
+			position[]={6210.1299,0,10882.3};
+			name="RSTF_POSITION_64";
+			text="Nasano";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=73;
+			atlOffset=-3.6001902;
+		};
+		class Item74
+		{
+			dataType="Marker";
+			position[]={968.15997,0,949.57001};
+			name="RSTF_POSITION_65";
+			text="Tan Loan";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=74;
+			atlOffset=-24.041361;
+		};
+		class Item75
+		{
+			dataType="Marker";
+			position[]={7837.2798,0,10406};
+			name="RSTF_POSITION_67";
+			text="Louang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=76;
+			atlOffset=-141.9046;
+		};
+		class Item76
+		{
+			dataType="Marker";
+			position[]={4157.0029,0,11105.301};
+			name="RSTF_POSITION_68";
+			text="Sei na";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=77;
+			atlOffset=-21.603453;
+		};
+		class Item77
+		{
+			dataType="Marker";
+			position[]={7134.3301,0,10998.6};
+			name="RSTF_POSITION_70";
+			text="Doy";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=79;
+			atlOffset=-4.7551918;
+		};
+		class Item78
+		{
+			dataType="Marker";
+			position[]={9879.2148,-5.4575195,901.85248};
+			name="RSTF_POSITION_71";
+			text="An Dinh";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=80;
+			atlOffset=-57.220139;
+		};
+		class Item79
+		{
+			dataType="Marker";
+			position[]={1810.1899,0,10589.3};
+			name="RSTF_POSITION_72";
+			text="Lang Tam Ve";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=81;
+			atlOffset=-529.56842;
+		};
+		class Item80
+		{
+			dataType="Marker";
+			position[]={11440.8,0,3978.0801};
+			name="RSTF_POSITION_73";
+			text="Thuong Van";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=82;
+			atlOffset=-82.379097;
+		};
+		class Item81
+		{
+			dataType="Marker";
+			position[]={905.04999,0,272.97299};
+			name="RSTF_POSITION_74";
+			text="Sadoun";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=83;
+			atlOffset=-32.228165;
+		};
+		class Item82
+		{
+			dataType="Marker";
+			position[]={926.45001,0,10039.1};
+			name="RSTF_POSITION_75";
+			text="Ko So";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=84;
+			atlOffset=-407.23975;
+		};
+		class Item83
+		{
+			dataType="Marker";
+			position[]={11629.5,0,5205.7798};
+			name="RSTF_POSITION_76";
+			text="Nonghano";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=85;
+			atlOffset=-71.378304;
+		};
+		class Item84
+		{
+			dataType="Marker";
+			position[]={9621.2002,0,336.979};
+			name="RSTF_POSITION_77";
+			text="Bo Lieu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=86;
+			atlOffset=-60.711639;
+		};
+		class Item85
+		{
+			dataType="Marker";
+			position[]={4048.4399,0,11614.5};
+			name="RSTF_POSITION_78";
+			text="Kouthi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=87;
+			atlOffset=-20.42;
+		};
+		class Item86
+		{
+			dataType="Marker";
+			position[]={1013.22,0,10280.5};
+			name="RSTF_POSITION_79";
+			text="Xiom La Ho";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=88;
+			atlOffset=-419.84103;
+		};
+		class Item87
+		{
+			dataType="Marker";
+			position[]={6984.2402,0,11477.2};
+			name="RSTF_POSITION_80";
+			text="Nase";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=89;
+			atlOffset=-14.905201;
+		};
+		class Item88
+		{
+			dataType="Marker";
+			position[]={3823.8101,0,11622.2};
+			name="RSTF_POSITION_81";
+			text="Xom Bong";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=90;
+			atlOffset=-21.779369;
+		};
+		class Item89
+		{
+			dataType="Marker";
+			position[]={7843.98,0,11212.4};
+			name="RSTF_POSITION_82";
+			text="Nadou";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=91;
+			atlOffset=-41.383381;
+		};
+		class Item90
+		{
+			dataType="Marker";
+			position[]={383.41,0,360.25};
+			name="RSTF_POSITION_83";
+			text="Pa Ca";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=92;
+			atlOffset=-2.7880526;
+		};
+		class Item91
+		{
+			dataType="Marker";
+			position[]={1534.7,0,10927.9};
+			name="RSTF_POSITION_84";
+			text="Ban Neme";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=93;
+			atlOffset=-520.36633;
+		};
+		class Item92
+		{
+			dataType="Marker";
+			position[]={3482.45,0,11791.6};
+			name="RSTF_POSITION_85";
+			text="Kengkep";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=94;
+			atlOffset=-29.403465;
+		};
+		class Item93
+		{
+			dataType="Marker";
+			position[]={10992.456,-11.498535,1321.4576};
+			name="RSTF_POSITION_86";
+			text="Bich Nam";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=95;
+			atlOffset=-108.08885;
+		};
+		class Item94
+		{
+			dataType="Marker";
+			position[]={11766.5,0,2841.9399};
+			name="RSTF_POSITION_87";
+			text="Paxiou";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=96;
+			atlOffset=-77.636742;
+		};
+		class Item95
+		{
+			dataType="Marker";
+			position[]={12125.1,0,4361.3999};
+			name="RSTF_POSITION_88";
+			text="Nongno";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=97;
+			atlOffset=-38.540024;
+		};
+		class Item96
+		{
+			dataType="Marker";
+			position[]={460.23001,0,10425.2};
+			name="RSTF_POSITION_89";
+			text="Ko We";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=98;
+			atlOffset=-440.03577;
+		};
+		class Item97
+		{
+			dataType="Marker";
+			position[]={12559.3,0,3822.54};
+			name="RSTF_POSITION_90";
+			text="Tansoum";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=99;
+			atlOffset=-229.72293;
+		};
+		class Item98
+		{
+			dataType="Marker";
+			position[]={12058.32,-1.2226563,1896.9553};
+			name="RSTF_POSITION_91";
+			text="Ha My";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=100;
+			atlOffset=-70.277489;
+		};
+		class Item99
+		{
+			dataType="Marker";
+			position[]={9506.8301,0,11428.3};
+			name="RSTF_POSITION_92";
+			text="Cu Kty";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=101;
+			atlOffset=-192.07664;
+		};
+		class Item100
+		{
+			dataType="Marker";
+			position[]={2731.73,0,12504.2};
+			name="RSTF_POSITION_93";
+			text="Ro Ro";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=102;
+			atlOffset=-79.811485;
+		};
+		class Item101
+		{
+			dataType="Marker";
+			position[]={11915.822,-0.55810547,957.57501};
+			name="RSTF_POSITION_94";
+			text="Don Que";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=103;
+			atlOffset=-65.199371;
+		};
+		class Item102
+		{
+			dataType="Marker";
+			position[]={12628.3,0,2226.76};
+			name="RSTF_POSITION_95";
+			text="Hindam";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=104;
+			atlOffset=-189.96486;
+		};
+		class Item103
+		{
+			dataType="Marker";
+			position[]={13276.8,0,4425.9199};
+			name="RSTF_POSITION_96";
+			text="Phonsang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=105;
+			atlOffset=-458.51633;
+		};
+		class Item104
+		{
+			dataType="Marker";
+			position[]={12041.7,0,9544.21};
+			name="RSTF_POSITION_97";
+			text="Son Giang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=106;
+			atlOffset=-536.5871;
+		};
+		class Item105
+		{
+			dataType="Marker";
+			position[]={6392.27,0,13308.7};
+			name="RSTF_POSITION_98";
+			text="Liem Cong";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=107;
+			atlOffset=-292.77524;
+		};
+		class Item106
+		{
+			dataType="Marker";
+			position[]={10638.9,0,11490.1};
+			name="RSTF_POSITION_99";
+			text="Hoa Thanh";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=108;
+			atlOffset=-212.93153;
+		};
+		class Item107
+		{
+			dataType="Marker";
+			position[]={13137.675,-10.233887,2225.6167};
+			name="RSTF_POSITION_100";
+			text="Koanphan";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=109;
+			atlOffset=-264.32053;
+		};
+		class Item108
+		{
+			dataType="Marker";
+			position[]={7521.23,0,13206.5};
+			name="RSTF_POSITION_101";
+			text="Pagnouy";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=110;
+			atlOffset=-222.41087;
+		};
+		class Item109
+		{
+			dataType="Marker";
+			position[]={6413.5,0,14115.4};
+			name="RSTF_POSITION_102";
+			text="Lako";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=111;
+			atlOffset=-346.22717;
+		};
+		class Item110
+		{
+			dataType="Marker";
+			position[]={1341.0601,0,13487.9};
+			name="RSTF_POSITION_103";
+			text="A Vau";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=112;
+			atlOffset=-240.80614;
+		};
+		class Item111
+		{
+			dataType="Marker";
+			position[]={5795.6802,0,14554.1};
+			name="RSTF_POSITION_104";
+			text="Mu Ta";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=113;
+			atlOffset=-271.02368;
+		};
+		class Item112
+		{
+			dataType="Marker";
+			position[]={11991.7,0,11660.1};
+			name="RSTF_POSITION_105";
+			text="Phailom";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=114;
+			atlOffset=-85.457375;
+		};
+		class Item113
+		{
+			dataType="Marker";
+			position[]={11927.3,0,11844.2};
+			name="RSTF_POSITION_106";
+			text="Cu Yang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=115;
+			atlOffset=-18.546528;
+		};
+		class Item114
+		{
+			dataType="Marker";
+			position[]={6416.29,0,14759.3};
+			name="RSTF_POSITION_107";
+			text="Saoven";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=116;
+			atlOffset=-348.7597;
+		};
+		class Item115
+		{
+			dataType="Marker";
+			position[]={14456.1,0,8173.5498};
+			name="RSTF_POSITION_108";
+			text="Soy";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=117;
+			atlOffset=-32.009998;
+		};
+		class Item116
+		{
+			dataType="Marker";
+			position[]={14952,0,3877.8799};
+			name="RSTF_POSITION_109";
+			text="Tuan";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=118;
+			atlOffset=-32.734982;
+		};
+		class Item117
+		{
+			dataType="Marker";
+			position[]={13784.2,0,9986.9697};
+			name="RSTF_POSITION_110";
+			text="Kate";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=119;
+			atlOffset=-2.8004515;
+		};
+		class Item118
+		{
+			dataType="Marker";
+			position[]={10742.185,-1.2714844,13367.289};
+			name="RSTF_POSITION_111";
+			text="Nam Hung";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=120;
+			atlOffset=-305.35315;
+		};
+		class Item119
+		{
+			dataType="Marker";
+			position[]={14644.3,0,8064.5601};
+			name="RSTF_POSITION_112";
+			text="Son Xuan";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=121;
+			atlOffset=-32.83659;
+		};
+		class Item120
+		{
+			dataType="Marker";
+			position[]={15120.9,0,4517.1699};
+			name="RSTF_POSITION_113";
+			text="Nabo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=122;
+			atlOffset=-32;
+		};
+		class Item121
+		{
+			dataType="Marker";
+			position[]={11571.1,0,12843.1};
+			name="RSTF_POSITION_114";
+			text="Vinh Tu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=123;
+			atlOffset=-274.47617;
+		};
+		class Item122
+		{
+			dataType="Marker";
+			position[]={15059.6,0,2848.8};
+			name="RSTF_POSITION_115";
+			text="Naxok";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=124;
+			atlOffset=-56.469326;
+		};
+		class Item123
+		{
+			dataType="Marker";
+			position[]={14585.3,0,872.69};
+			name="RSTF_POSITION_116";
+			text="That";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=125;
+			atlOffset=-9.8204727;
+		};
+		class Item124
+		{
+			dataType="Marker";
+			position[]={14548.5,0,9471.8496};
+			name="RSTF_POSITION_117";
+			text="Xok";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=126;
+			atlOffset=-67.165718;
+		};
+		class Item125
+		{
+			dataType="Marker";
+			position[]={14262.9,0,10175.3};
+			name="RSTF_POSITION_118";
+			text="Napang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=127;
+			atlOffset=-129.49561;
+		};
+		class Item126
+		{
+			dataType="Marker";
+			position[]={13228.7,0,11707.9};
+			name="RSTF_POSITION_119";
+			text="Gnavet";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=128;
+			atlOffset=-203.45784;
+		};
+		class Item127
+		{
+			dataType="Marker";
+			position[]={12291.604,-27.26416,12892.217};
+			name="RSTF_POSITION_120";
+			text="Prao";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=129;
+			atlOffset=-395.31937;
+		};
+		class Item128
+		{
+			dataType="Marker";
+			position[]={1082.13,0,14984.3};
+			name="RSTF_POSITION_121";
+			text="To Rout";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=130;
+			atlOffset=-307.06506;
+		};
+		class Item129
+		{
+			dataType="Marker";
+			position[]={13440.8,0,12102.9};
+			name="RSTF_POSITION_122";
+			text="Gnavay";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=131;
+			atlOffset=-10.027302;
+		};
+		class Item130
+		{
+			dataType="Marker";
+			position[]={12879.371,0,13328.074};
+			name="RSTF_POSITION_123";
+			text="Thai Lai";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=132;
+			atlOffset=-496.29001;
+		};
+		class Item131
+		{
+			dataType="Marker";
+			position[]={14243.3,0,12440.4};
+			name="RSTF_POSITION_124";
+			text="Khoyamep";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=133;
+			atlOffset=-49.279999;
+		};
+		class Item132
+		{
+			dataType="Marker";
+			position[]={11505.3,0,14950.7};
+			name="RSTF_POSITION_125";
+			text="Avian";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=134;
+			atlOffset=-359.10999;
+		};
+		class Item133
+		{
+			dataType="Marker";
+			position[]={14051.2,0,12728.9};
+			name="RSTF_POSITION_126";
+			text="Hinlap";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=135;
+			atlOffset=-21.282793;
+		};
+		class Item134
+		{
+			dataType="Marker";
+			position[]={14721.8,0,12237.3};
+			name="RSTF_POSITION_127";
+			text="Ta lu";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=136;
+			atlOffset=-215.21692;
+		};
+		class Item135
+		{
+			dataType="Marker";
+			position[]={13159.4,0,14013.1};
+			name="RSTF_POSITION_128";
+			text="Xom Bau";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=137;
+			atlOffset=-632.03149;
+		};
+		class Item136
+		{
+			dataType="Marker";
+			position[]={10153.958,1.5678711,6450.6528};
+			name="RSTF_POSITION_66";
+			text="Khe-Sanh Combat base";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=79;
+			atlOffset=-230.05038;
+		};
+		class Item137
+		{
+			dataType="Marker";
+			position[]={9871.2969,1.5826874,6515.6416};
+			name="RSTF_POSITION_69";
+			text="Khe-Sanh Combat base";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=80;
+			atlOffset=-230.05038;
+		};
+		class Item138
+		{
+			dataType="Marker";
+			position[]={9538.1035,1.4996185,6478.2754};
+			name="RSTF_POSITION_129";
+			text="Khe-Sanh Combat base";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=81;
+			atlOffset=-230.05038;
+		};
+		class Item139
+		{
+			dataType="Marker";
+			position[]={9321.1641,229.88,6273.792};
+			name="RSTF_POSITION_130";
+			text="Khe-Sanh Combat base";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=82;
+		};
+		class Item140
+		{
+			dataType="Marker";
+			position[]={9068.9346,1.2868347,6546.7813};
+			name="RSTF_POSITION_131";
+			text="Khe-Sanh Combat base";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=83;
+			atlOffset=-230.05038;
+		};
+		class Item141
+		{
+			dataType="Marker";
+			position[]={9250.5811,1.559021,6753.3408};
+			name="RSTF_POSITION_132";
+			text="Khe-Sanh Combat base";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=84;
+			atlOffset=-230.05038;
+		};
+		class Item142
+		{
+			dataType="Marker";
+			position[]={9594.1543,1.7158203,6708.708};
+			name="RSTF_POSITION_133";
+			text="Khe-Sanh Combat base";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=85;
+			atlOffset=-229.87944;
+		};
+		class Item143
+		{
+			dataType="Marker";
+			position[]={10959.121,-3.819664,4252.752};
+			name="RSTF_POSITION_134";
+			text="Khe Sanh";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=86;
+			atlOffset=-106.0133;
+		};
+		class Item144
+		{
+			dataType="Marker";
+			position[]={10741.052,0.93558502,3873.6455};
+			name="RSTF_POSITION_135";
+			text="Khe Sanh";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=87;
+			atlOffset=-106.0133;
+		};
+		class Item145
+		{
+			dataType="Marker";
+			position[]={10538.078,-5.902771,3757.9009};
+			name="RSTF_POSITION_136";
+			text="Khe Sanh";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=88;
+			atlOffset=-106.0133;
+		};
+		class Item146
+		{
+			dataType="Marker";
+			position[]={10945.762,-18.295189,3713.3796};
+			name="RSTF_POSITION_137";
+			text="Khe Sanh";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=89;
+			atlOffset=-112.8748;
+		};
+		class Item147
+		{
+			dataType="Marker";
+			position[]={10722.601,-7.3909998,3174.145};
+			name="RSTF_POSITION_138";
+			text="Khe Sanh Camp";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=90;
+			atlOffset=-106.01301;
+		};
+		class Item148
+		{
+			dataType="Marker";
+			position[]={11211.032,3.3188477,1846.2936};
+			name="RSTF_POSITION_139";
+			text="Old French Fort";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=91;
+			atlOffset=-69.791153;
+		};
+	};
+};

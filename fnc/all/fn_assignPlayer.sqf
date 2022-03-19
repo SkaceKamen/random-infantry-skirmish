@@ -54,6 +54,9 @@ if (alive(_unit)) then {
 	_unit addEventHandler ["Killed", RSTF_fnc_playerKilled];
 
 	// ACE specific healing
+	if (!isNil("ace_medical_feedback_fnc_effectUnconscious")) then {
+		[false, 0] call ace_medical_feedback_fnc_effectUnconscious;
+	};
 	if (!isNil("ACE_medical_fnc_treatmentAdvanced_fullHealLocal")) then {
 		[objNull, player] call ACE_medical_fnc_treatmentAdvanced_fullHealLocal;
 	};
