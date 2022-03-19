@@ -24,7 +24,9 @@ RSTF_MODE_DEFEND_init = {
 
 	// Reset score
 	RSTF_SCORE = [0, 0, 0];
+};
 
+RSTF_MODE_DEFEND_startLoop = {
 	// Hill parameters
 	private _center = RSTF_POINT;
 	private _radius = RSTF_MODE_DEFEND_RADIUS;

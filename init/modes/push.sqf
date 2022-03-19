@@ -81,13 +81,16 @@ RSTF_MODE_PUSH_init = {
 	RSTF_MODE_PUSH_ENABLED = true;
 	publicVariable "RSTF_MODE_PUSH_ENABLED";
 
+	RSTF_SPAWN_TRANSPORTS = false;
+	RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS - 1;
+};
+
+RSTF_MODE_PUSH_startLoop = {
 	// Build points
 	private _center = RSTF_POINT;
 	private _radius = RSTF_DISTANCE;
 	private _direction = RSTF_DIRECTION;
 
-	RSTF_SPAWN_TRANSPORTS = false;
-	RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS - 1;
 
 	_center = _center vectorAdd [
 		sin(_direction + 180) * _radius,

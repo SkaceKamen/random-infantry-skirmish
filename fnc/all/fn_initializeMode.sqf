@@ -33,9 +33,10 @@ private _loadCallback = {
 // Assign to global variables so we don't have to do this every time we need something mode-related
 RSTF_MODE_info = _mode;
 RSTF_MODE_init = [_mode, "init"] call _loadCallback;
+RSTF_MODE_startLoop = [_mode, "startLoop"] call _loadCallback;
 RSTF_MODE_unitKilled = [_mode, "unitKilled"] call _loadCallback;
 RSTF_MODE_taskCompleted = [_mode, "taskCompleted"] call _loadCallback;
 RSTF_MODE_vehicleKilled = [_mode, "vehicleKilled"] call _loadCallback;
 
 // Initialize gamemode
-0 spawn RSTF_MODE_init;
+0 call RSTF_MODE_init;

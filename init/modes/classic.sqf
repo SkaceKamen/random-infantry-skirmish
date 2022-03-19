@@ -11,6 +11,7 @@ RSTF_MODE_CLASSIC_scoreChanged = {
 };
 
 RSTF_MODE_CLASSIC_init = {};
+RSTF_MODE_CLASSIC_startLoop = {};
 
 RSTF_MODE_CLASSIC_unitKilled = {
 	private _killed = param [0];

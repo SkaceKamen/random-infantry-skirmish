@@ -57,6 +57,9 @@ if (!isDedicated) then {
 	call RSTF_fnc_onPointChanged;
 };
 
+// Start gamemode loop
+0 spawn RSTF_MODE_startLoop;
+
 // Hide camera border
 waitUntil { time > 0 };
 showCinemaBorder false;
@@ -73,7 +76,6 @@ publicVariable "RSTF_STARTED";
 if (!isDedicated) then {
 	0 spawn RSTF_fnc_onStarted;
 };
-
 
 // Wait for intro to finish playing
 sleep 2;
