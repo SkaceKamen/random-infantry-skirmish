@@ -33,7 +33,7 @@ class ArtilleryDialog: ZUI_ColumnLayout
 				class map: ZUI_Control
 				{
 					id = "map";
-					control = "RscMapControl"
+					control = "RscMapControl";
 				};
 			};
 

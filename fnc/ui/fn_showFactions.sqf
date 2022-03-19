@@ -25,7 +25,7 @@ RSTF_FACTIONS_WEAPON_HOLDER enableSimulation false;
 RSTF_FACTIONS_VEHICLES = [];
 RSTF_FACTIONS_SOLDIERS = [];
 
-RSTF_EXPANDED = call createHashMap;
+RSTF_EXPANDED = createHashMap;
 
 _display = "RSTF_RscDialogFactions" call RSTF_fnc_getDisplay;
 _display displayAddEventHandler ["unload", {
@@ -245,7 +245,7 @@ _expand = {
 	_ctrl = _this select 0;
 	_path = (_this select 1) call RSTF_fnc_pathString;
 
-	_list = RSTF_EXPANDED get _ctrl;
+	_list = RSTF_EXPANDED get (ctrlIdc _ctrl);
 	_list pushBackUnique _path;
 };
 
@@ -253,10 +253,10 @@ _collapse = {
 	_ctrl = _this select 0;
 	_path = (_this select 1) call RSTF_fnc_pathString;
 
-	_list = RSTF_EXPANDED get _ctrl;
+	_list = RSTF_EXPANDED get (ctrlIdc _ctrl);
 	_index = _list find _path;
 	if (_index != -1) then {
-		RSTF_EXPANDED set [_ctrl, [_list, _index] call BIS_fnc_removeIndex];
+		RSTF_EXPANDED set [ctrlIdc _ctrl, [_list, _index] call BIS_fnc_removeIndex];
 	};
 };
 
@@ -265,7 +265,7 @@ _ctrl = ["RSTF_RscDialogFactions", "banSoldier"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", _method];
 _ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
 
-RSTF_EXPANDED set [_ctrl, []];
+RSTF_EXPANDED set [ctrlIdc _ctrl, []];
 _ctrl ctrlAddEventHandler ["TreeExpanded", _expand];
 _ctrl ctrlAddEventHandler ["TreeCollapsed", _collapse];
 
@@ -312,7 +312,7 @@ _ctrl = ["RSTF_RscDialogFactions", "banWeapon"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", _method];
 _ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
 
-RSTF_EXPANDED set [_ctrl, []];
+RSTF_EXPANDED set [ctrlIdc _ctrl, []];
 _ctrl ctrlAddEventHandler ["TreeExpanded", _expand];
 _ctrl ctrlAddEventHandler ["TreeCollapsed", _collapse];
 

@@ -33,5 +33,67 @@ while { true } do {
 
 	call RSTF_fnc_loopMultikills;
 
+	if (RSTF_AI_MONEY_PER_SECOND > 0) then {
+		{
+			private _groups = _x;
+			{
+				private _units = units(_x);
+				{
+					if (!isPlayer(_x)) then {
+						[_x getVariable ["ORIGINAL_NAME", name(_x)], RSTF_AI_MONEY_PER_SECOND] call RSTF_fnc_addUnitMoney;
+					};
+				} foreach _units;
+			} foreach _groups;
+		} foreach RSTF_GROUPS;
+	};
+
+	if (RSTF_DEBUG) then {
+		private _debugText = [];
+
+		private _sideCounts = [];
+		private _avgMoney = [];
+		
+		{
+			private _side = _x;
+			private _groups = RSTF_GROUPS select _side;
+			private _aliveUnits = 0;
+			private _totalMoney = 0;
+			private _moneyCount = 0;
+
+			{
+				_aliveUnits = _aliveUnits + count(units(_x));
+				{
+					private _name = _x getVariable ["ORIGINAL_NAME", -1];
+					if (!(_name isEqualTo -1)) then {
+						_totalMoney = _totalMoney + ([_name] call RSTF_fnc_getUnitMoney);
+						_moneyCount = _moneyCount + 1;
+					};
+				} forEach units(_x);
+
+			} foreach _groups;
+
+			{
+				_totalMoney = _totalMoney + ([_x] call RSTF_fnc_getUnitMoney);
+				_moneyCount = _moneyCount + 1;
+			} forEach (RSTF_QUEUE_NAMES select _x);
+
+			_sideCounts set [_x, str(_aliveUnits)];
+			if (_moneyCount > 0) then {
+				_avgMoney set [_x, str(round(_totalMoney/_moneyCount))];
+			} else {
+				_avgMoney set [_x, '-'];
+			};
+
+		} foreach [SIDE_FRIENDLY, SIDE_ENEMY];
+
+		_debugText pushBack format["Units (FR|EN): %1", _sideCounts joinString " | "];
+		_debugText pushBack "<br/>";
+		_debugText pushBack format["%1s until next spawn", _spawn];
+		_debugText pushBack "<br/>";
+		_debugText pushBack format["AVG MONEY: %1", _avgMoney joinString " | "];
+
+		hintSilent parseText(_debugText joinString "");
+	};
+
 	sleep 1;
 };

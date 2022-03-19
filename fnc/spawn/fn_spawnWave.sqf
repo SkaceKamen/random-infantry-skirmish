@@ -61,6 +61,8 @@ for [{_i = 0}, {_i < (_totalUnits - _aliveUnits)}, {_i = _i + 1}] do {
 
 		_groups pushBack _group;
 
+		[_group, _sideIndex] call RSTF_fnc_refreshGroupWaypoints;
+
 		if (RSTF_DEBUG) then {
 			private _marker = createMarkerLocal [str(_group), [0,0,0]];
 			_marker setMarkerShape "ICON";
@@ -73,6 +75,14 @@ for [{_i = 0}, {_i < (_totalUnits - _aliveUnits)}, {_i = _i + 1}] do {
 		[_group, _sideIndex] call RSTF_fnc_createRandomUnit;
 	} else {
 		_spawnQueue pushBack [_group, _sideIndex];
+	};
+};
+
+if (RSTF_DEBUG) then {
+	if (_instantSpawn) then {
+		systemChat format["[SIDE-%1] Spawned %2 units", _side, _i];
+	} else {
+		systemChat format["[SIDE-%1] Queued %2 units to spawn", _side, _i];
 	};
 };
 
@@ -89,13 +99,19 @@ if (not _instantSpawn) then {
 			_item = _queue call BIS_fnc_arrayPop;
 			_item call RSTF_fnc_createRandomUnit;
 
+			/*
 			// Refresh targets for spawned groups
 			if (_item#0 != _lastGroup) then {
 				_lastGroup = _item#0;
 				[_item#0, _sideIndex] call RSTF_fnc_refreshGroupWaypoints;
 			};
+			*/
 
 			sleep 0.1;
+		};
+
+		if (RSTF_DEBUG) then {
+			systemChat format["[SIDE-%1] Done spawning queued units", _sideIndex];
 		};
 	};
 } else {

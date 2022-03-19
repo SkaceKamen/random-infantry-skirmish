@@ -22,11 +22,6 @@ private _vehicles = RSTF_BUYABLE_VEHICLES select _side;
 // Don't bother if there're no vehicles
 if (count _vehicles == 0) exitWith {};
 
-// Don't bother if we're broke
-if (_money < (_vehicles select 0) select 2) exitWith {
-	false;
-};
-
 // Select our wish vehicle
 private _wish = RSTF_AI_VEHICLE_WISH getOrDefault [_name, objNull];
 if (typeName(_wish) == typeName(objNull)) then {
@@ -46,10 +41,17 @@ if (typeName(_wish) == typeName(objNull)) then {
 
 // Load info about our wish vehicle
 private _class = _wish select 1;
-private _cost = 1000;
+private _cost = _wish select 2;
+
+if (RSTF_DEBUG) then {
+	diag_log text(format["[RSTF] %1: My wish is %2, costing %3 and I have %4", _name, _class, _cost, _money]);
+};
 
 // Stop if we don't have money
 if (_money < _cost) exitWith { false };
+
+// Reset the wish
+RSTF_AI_VEHICLE_WISH set [_name, objNull];
 
 private _parents = [configFile >> "cfgVehicles" >> _class, true] call BIS_fnc_returnParents;
 private _air = "Air" in _parents;

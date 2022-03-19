@@ -1,8 +1,11 @@
 private _killed = param [0];
 private _killer = param [2];
 private _side = (_killed getVariable ["SPAWNED_SIDE", civilian]) call RSTF_fnc_sideIndex;
+private _name = _killed getVariable ["ORIGINAL_NAME", -1];
 
-(RSTF_QUEUE_NAMES select _side) pushBack name(_killed);
+if (!(_name isEqualTo -1)) then {
+	(RSTF_QUEUE_NAMES select _side) pushBack _name;
+};
 
 if (isServer) then {
 	if (isPlayer(_killer)) then {

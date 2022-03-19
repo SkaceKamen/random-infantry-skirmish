@@ -127,6 +127,9 @@ RSTF_KILL_DISTANCE_BONUS = 100;
 // Multiplier applied to AI money earning
 RSTF_AI_MONEY_MULTIPLIER = 5;
 
+// Money added to each AI per-side per second
+RSTF_AI_MONEY_PER_SECOND = 5;
+
 // Interval in which are points awarded to side holding objective in KOTH
 RSTF_MODE_KOTH_SCORE_INTERVAL = 10;
 

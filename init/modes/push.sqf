@@ -41,6 +41,10 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 	// Force-spawn enemy wave
 	[SIDE_ENEMY] call RSTF_fnc_spawnWave;
 
+	// Update waypoints
+	[SIDE_ENEMY] call RSTF_fnc_refreshSideWaypoints;
+	[SIDE_FRIENDLY] call RSTF_fnc_refreshSideWaypoints;
+
 	// Finish previous task
 	if (RSTF_MODE_PUSH_TASK != "") then {
 		[RSTF_MODE_PUSH_TASK, "Succeeded", true] call BIS_fnc_taskSetState;

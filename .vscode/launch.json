@@ -7,7 +7,7 @@
 			"type": "sqflint",
 			"request": "launch",
 			"name": "SQFLint",
-			"rptPath": "C:\\Users\\Kamen\\AppData\\Local\\Arma 3",
+			"rptPath": "C:\\Users\\KaKa\\AppData\\Local\\Arma 3",
 			"messageFilter": "\\[RSTF\\]"
 		}
 	]

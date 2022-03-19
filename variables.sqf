@@ -301,8 +301,6 @@ RSTF_AI_VEHICLES = [];
 	RSTF_QUEUE_NAMES set [_x, []];
 } foreach RSTF_SIDES;
 
-RSTF_NAME_POOL = call(compile(preprocessFileLineNumbers("names.sqf")));
-
 // Time of last kill for each player
 RSTF_MULTIKILL_TIMES = createHashMap;
 

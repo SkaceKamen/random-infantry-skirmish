@@ -2,7 +2,7 @@ _ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
 
 _expandCache = {
 	params ["_ctrl", "_path"];
-	private _list = RSTF_EXPANDED get _ctrl;
+	private _list = RSTF_EXPANDED get (ctrlIdc _ctrl);
 	private _ex = [];
 	{
 		_ex pushBack _x;
@@ -72,7 +72,7 @@ _roots = createHashMap;
 	if (count(_factionBranch) == 0) then {
 		_factionBranch = [
 			_ctrl tvAdd [[], _factionName],
-			call createHashMap
+			createHashMap
 		];
 
 		_ctrl tvSetData [[_factionBranch#0], 'F#' + _faction];
@@ -154,7 +154,7 @@ _ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
 
-_roots = call createHashMap;
+_roots = createHashMap;
 _roots set [1, _ctrl tvAdd [[], "Primary"]];
 _roots set [2, _ctrl tvAdd [[], "Handguns"]];
 _roots set [4, _ctrl tvAdd [[], "Secondary"]];

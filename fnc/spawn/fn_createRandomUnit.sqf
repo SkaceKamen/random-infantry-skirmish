@@ -51,6 +51,8 @@ _unit setSkill (RSTF_SKILL_MIN + random(RSTF_SKILL_MAX - RSTF_SKILL_MIN));
 [_unit] joinSilent _group;
 [_unit, _side] call RSTF_fnc_equipSoldier;
 
+// TODO: The names are not assigned properly
+
 private _names = RSTF_QUEUE_NAMES select _side;
 if (count(_names) > 0) then {
 	_name = [_names] call BIS_fnc_arrayShift;
@@ -59,6 +61,7 @@ if (count(_names) > 0) then {
 } else {
 	RSTF_ID_COUNTER = RSTF_ID_COUNTER + 1;
 	_unit setVariable ["ORIGINAL_NAME", str(RSTF_ID_COUNTER)];
+	_unit setName str(RSTF_ID_COUNTER);
 };
 
 /*

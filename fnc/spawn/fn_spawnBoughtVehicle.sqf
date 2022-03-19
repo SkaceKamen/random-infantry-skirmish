@@ -125,6 +125,7 @@ if (!isNull(_unit)) then {
 
 // Make sure crew works same as other soldiers
 {
+	// TODO: What about name? It's important for money tracking
 	_x setVariable ["SPAWNED_SIDE", side(_group), true];
 	_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 	[_x, RSTF_CLEAN_INTERVAL] call RSTFGC_fnc_attach;

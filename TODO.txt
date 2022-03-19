@@ -9,14 +9,10 @@
   - Artillery
     - needs to be limited to the point only
     - more possible payloads?
-  - Recon
-  - Ammo drop
+  - Recon?
+  - Ammo drop?
   - ???
  * Vehicles rearming?
- * AI Vehicles
-  - Pick category first?
-  - Limit air?
- * Display shop info permanently next to money
- * PUSH:
-  - Defenders seem to be too powerful (have vehicles ready earlier and stuff)
-  - Less defenders? Slower spawn? More money for attackers?
+ * Building fortifications
+ * Spawn more compositions
+ * Don't wait to die to order a vehicle?
