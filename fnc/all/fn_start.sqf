@@ -52,6 +52,8 @@ if (RSTF_SPAWN_TRANSPORTS) then {
 	} foreach RSTF_SPAWNS;
 };
 
+endLoadingScreen;
+
 // Hide camera border
 waitUntil { time > 0 };
 showCinemaBorder false;
@@ -69,7 +71,6 @@ if (!isDedicated) then {
 	0 spawn RSTF_fnc_onStarted;
 };
 
-endLoadingScreen;
 
 // Wait for intro to finish playing
 sleep 2;
