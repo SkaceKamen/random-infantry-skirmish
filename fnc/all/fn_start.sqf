@@ -2,9 +2,13 @@ if (!isDedicated) then {
 	call RSTF_fnc_onPointChanged;
 };
 
+startLoadingScreen ["Preparing battle"];
+
 // Load avaible weapons and classes
 call RSTF_fnc_loadWeapons;
 call RSTF_fnc_loadClasses;
+
+progressLoadingScreen 0.25;
 
 // Send list of available vehicles to other players
 publicVariable "RSTF_BUYABLE_VEHICLES";
@@ -23,6 +27,8 @@ _marker setMarkerType "mil_objective";
 // Initialize GC
 call RSTFGC_fnc_init;
 
+progressLoadingScreen 0.5;
+
 // Clear unhistoric items if needed
 if (RSTF_CLEAR_HISTORIC_ITEMS) then {
 	[RSTF_POINT, 3000] call RSTF_fnc_clearHistoricItems;
@@ -33,6 +39,8 @@ call RSTF_fnc_initializeMode;
 
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
+
+progressLoadingScreen 0.75;
 
 // Spawn neutral units
 call RSTF_fnc_spawnNeutrals;
@@ -60,6 +68,8 @@ publicVariable "RSTF_STARTED";
 if (!isDedicated) then {
 	0 spawn RSTF_fnc_onStarted;
 };
+
+endLoadingScreen;
 
 // Wait for intro to finish playing
 sleep 2;
