@@ -53,7 +53,7 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
 			class RIS_%s
 			{
 				directory = "RIS\missions\RIS-Build.%s";
-                risMap = "%s";
+				risMap = "%s";
 			};
   """ % (island.replace('-', ''), island, island)
 
@@ -111,12 +111,10 @@ class CfgMissions
 with open(modBuildConfigPath, "w") as f:
   f.write(configFile)
 
-"""
 subprocess.check_call(
 	[ADDON_BUILDER, modBuildPath, os.path.join(modAddonsPath), "-prefix=RIS", "-include=%s" % includePath],
 	stdout=subprocess.DEVNULL
 )
-"""
 
-# shutil.move(os.path.join(modAddonsPath, 'MPScenarios.pbo'), os.path.join(modAddonsPath, 'ris_missions.pbo'))
+#shutil.move(os.path.join(modAddonsPath, 'MPScenarios.pbo'), os.path.join(modAddonsPath, 'ris_missions.pbo'))
 shutil.rmtree(modBuildPath)

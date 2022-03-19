@@ -5,16 +5,26 @@ ENEMY_FACTIONS = [ "OPF_F" ];
 
 //List of banned weapons and soldiers
 RSTF_WEAPONS_BANNED = [];
+// TODO: Add more default banned - usually crews and pilots
 RSTF_SOLDIERS_BANNED = [
 	"B_diver_F",
 	"B_diver_exp_F",
 	"B_diver_TL_F",
+	"B_Pilot_F",
+	"B_helicrew_F",
+	"B_helipilot_F",
 	"O_diver_F",
 	"O_diver_exp_F",
 	"O_diver_TL_F",
+	"O_Pilot_F",
+	"O_helicrew_F",
+	"O_helipilot_F",
 	"I_diver_F",
 	"I_diver_exp_F",
-	"I_diver_TL_F"
+	"I_diver_TL_F",
+	"I_Pilot_F",
+	"I_helicrew_F",
+	"I_helipilot_F"
 ];
 
 //Where to spawn
