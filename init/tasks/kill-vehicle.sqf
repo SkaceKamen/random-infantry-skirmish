@@ -42,6 +42,7 @@ RSTF_TASK_KVEH_load = {
 
 		{
 			_x setVariable ["SPAWNED_SIDE", side(_group), true];
+			_x setVariable ["SPAWNED_SIDE_INDEX", SIDE_ENEMY, true];
 			_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 		} foreach units(_group);
 

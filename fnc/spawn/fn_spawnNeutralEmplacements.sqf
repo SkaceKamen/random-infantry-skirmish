@@ -155,6 +155,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 
 				{
 					_x setVariable ["SPAWNED_SIDE", side(_group), true];
+					_x setVariable ["SPAWNED_SIDE_INDEX", SIDE_NEUTRAL, true];
 					_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 				} foreach units(_group);
 			};

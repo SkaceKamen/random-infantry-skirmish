@@ -52,6 +52,10 @@ while { true } do {
 
 		private _sideCounts = [];
 		private _avgMoney = [];
+		private _queueCounts = [
+			count(RSTF_QUEUE_NAMES select SIDE_FRIENDLY),
+			count(RSTF_QUEUE_NAMES select SIDE_ENEMY)
+		];
 		
 		{
 			private _side = _x;
@@ -87,6 +91,8 @@ while { true } do {
 		} foreach [SIDE_FRIENDLY, SIDE_ENEMY];
 
 		_debugText pushBack format["Units (FR|EN): %1", _sideCounts joinString " | "];
+		_debugText pushBack "<br/>";
+		_debugText pushBack format["Queue (FR|EN): %1", _queueCounts joinString " | "];
 		_debugText pushBack "<br/>";
 		_debugText pushBack format["%1s until next spawn", _spawn];
 		_debugText pushBack "<br/>";

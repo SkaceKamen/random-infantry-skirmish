@@ -144,6 +144,7 @@ class ARCADE_UI
 		
 		class PushProgressBackground : RscStatic
 		{
+			idc = RSTFUI_ARCADE_PUSH_PROGRESS_BACKGROUND_IDC;
 			x = SafeZoneX + SafeZoneW / 2 - RSTFUI_ARCADE_PUSH_PROGRESS_W / 2;
 			y = SafeZoneY + 0.01;
 			w = RSTFUI_ARCADE_PUSH_PROGRESS_W;

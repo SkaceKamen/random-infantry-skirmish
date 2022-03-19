@@ -50,6 +50,10 @@ if (RSTF_DEBUG) then {
 // Stop if we don't have money
 if (_money < _cost) exitWith { false };
 
+if (RSTF_DEBUG) then {
+	diag_log text(format["[RSTF] %1: Spawning with %2", _name, _class]);
+};
+
 // Reset the wish
 RSTF_AI_VEHICLE_WISH set [_name, objNull];
 

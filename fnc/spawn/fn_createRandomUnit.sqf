@@ -59,6 +59,10 @@ if (count(_names) > 0) then {
 	_unit setVariable ["ORIGINAL_NAME", _name];
 	_unit setName _name;
 } else {
+	if (RSTF_DEBUG) then {
+		systemChat "[RSTF] Creating new ID";
+	};
+
 	RSTF_ID_COUNTER = RSTF_ID_COUNTER + 1;
 	_unit setVariable ["ORIGINAL_NAME", str(RSTF_ID_COUNTER)];
 	_unit setName str(RSTF_ID_COUNTER);
@@ -93,6 +97,7 @@ if (!_vehicular) then {
 };
 
 _unit setVariable ["SPAWNED_SIDE", side(_group), true];
+_unit setVariable ["SPAWNED_SIDE_INDEX", _side, true];
 _unit addEventHandler ["Killed", RSTF_fnc_unitKilled];
 
 // DEBUG - Track unit position

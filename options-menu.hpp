@@ -266,6 +266,11 @@ class RSTF_Options {
 				description="AI money reward multiplier, AI usually have less kills than player, so this helps them to catch up";
 				type="number";
 			};
+			class RSTF_AI_MONEY_PER_SECOND {
+				title="AI money per second";
+				description="Money added per second to all AI units, allows AI to catch up with player";
+				type="number";
+			};
 			class RSTF_MULTIKILL_BONUS {
 				title="Bonus for multikill";
 				description="Bonus money for multikills, awarded for each kill over 1";

@@ -21,8 +21,6 @@ RSTF_CAM camCommit 1;
 sleep 1;
 // waitUntil { camCommitted RSTF_CAM; };
 
-"Camera at new unit." call RSTF_fnc_log;
-
 // Check if target unit is alive, it's possible it died before we got to it
 if (alive(_unit)) then {
 	// Assign custom equipment if set

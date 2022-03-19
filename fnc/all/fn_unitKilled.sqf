@@ -1,9 +1,9 @@
 private _killed = param [0];
 private _killer = param [2];
-private _side = (_killed getVariable ["SPAWNED_SIDE", civilian]) call RSTF_fnc_sideIndex;
+private _side = _killed getVariable ["SPAWNED_SIDE_INDEX", -1];
 private _name = _killed getVariable ["ORIGINAL_NAME", -1];
 
-if (!(_name isEqualTo -1)) then {
+if (!(_name isEqualTo -1) && !(_side isEqualTo -1)) then {
 	(RSTF_QUEUE_NAMES select _side) pushBack _name;
 };
 

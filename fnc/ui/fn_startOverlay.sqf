@@ -37,6 +37,7 @@ _ctrlUserCountFriendly = _display displayCtrl RSTFUI_ARCADE_FRIENDLY_USER_COUNT_
 _ctrlUserCountEnemy = _display displayCtrl RSTFUI_ARCADE_ENEMY_USER_COUNT_IDC;
 
 _ctrlPushProgress = _display displayCtrl RSTFUI_ARCADE_PUSH_PROGRESS_IDC;
+_ctrlPushProgressBackground = _display displayCtrl RSTFUI_ARCADE_PUSH_PROGRESS_BACKGROUND_IDC;
 
 _modeId = call RSTF_fnc_getModeId;
 
@@ -45,14 +46,14 @@ switch (_modeId) do {
 		{
 			_x ctrlShow false;
 			_x ctrlCommit 0;
-		} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress];
+		} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground];
 	};
 
 	case "KOTH": {
 		{
 			_x ctrlShow false;
 			_x ctrlCommit 0;
-		} foreach [_ctrlPushProgress];
+		} foreach [_ctrlPushProgress, _ctrlPushProgressBackground];
 	};
 
 	case "Push": {

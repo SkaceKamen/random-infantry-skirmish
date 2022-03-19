@@ -97,7 +97,7 @@ RSTF_UI_GLOBAL_MESSAGES = [];
 
 //Custom equipment
 RSTF_PLAYER_EQUIPMENT = [];
-RSTF_CUSTOM_EQUIPMENT = true;
+RSTF_CUSTOM_EQUIPMENT = false;
 
 //Camera used for cam effects
 RSTF_CAM = objNull;

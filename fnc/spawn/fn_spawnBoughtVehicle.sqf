@@ -127,6 +127,7 @@ if (!isNull(_unit)) then {
 {
 	// TODO: What about name? It's important for money tracking
 	_x setVariable ["SPAWNED_SIDE", side(_group), true];
+	_x setVariable ["SPAWNED_SIDE_INDEX", _side, true];
 	_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 	[_x, RSTF_CLEAN_INTERVAL] call RSTFGC_fnc_attach;
 } foreach units(_group);
