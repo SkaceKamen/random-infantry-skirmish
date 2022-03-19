@@ -71,19 +71,14 @@ switch (_modeId) do {
 			_x ctrlShow false;
 			_x ctrlCommit 0;
 		} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
+
+		_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
+		_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
 	};
 };
 
 // Hide KOTH only controls
-if (!RSTF_MODE_KOTH_ENABLED && !RSTF_MODE_PUSH_ENABLED) then {
-	{
-		_x ctrlShow false;
-		_x ctrlCommit 0;
-	} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy];
-};
-
-// Hide KOTH only controls
-if (!RSTF_MODE_KOTH_ENABLED && !RSTF_MODE_PUSH_ENABLED) then {
+if (!RSTF_MODE_KOTH_ENABLED && !RSTF_MODE_PUSH_ENABLED && !RSTF_MODE_DEFEND_ENABLED) then {
 	{
 		_x ctrlShow false;
 		_x ctrlCommit 0;
@@ -141,6 +136,14 @@ while { true } do {
 				} else {
 					_ctrlOwner ctrlShow false;
 					_ctrlOwner ctrlCommit 0;
+				};
+			};
+
+			if (_modeId == "Defense") then {
+				if (_lastOwner == SIDE_ENEMY) then {
+					_ctrlPushProgress ctrlSetBackgroundColor [0.77, 0, 0, 0.9];
+				} else {
+					_ctrlPushProgress ctrlSetBackgroundColor [0.9, 0, 0, 0.9];
 				};
 			};
 
