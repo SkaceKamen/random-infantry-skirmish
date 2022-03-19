@@ -1,8 +1,6 @@
-if (!isDedicated) then {
-	call RSTF_fnc_onPointChanged;
+if (!RSTF_DEBUG) then {
+	startLoadingScreen ["Preparing battle"];
 };
-
-startLoadingScreen ["Preparing battle"];
 
 // Load avaible weapons and classes
 call RSTF_fnc_loadWeapons;
@@ -53,6 +51,11 @@ if (RSTF_SPAWN_TRANSPORTS) then {
 };
 
 endLoadingScreen;
+
+// TODO: What to do with this
+if (!isDedicated) then {
+	call RSTF_fnc_onPointChanged;
+};
 
 // Hide camera border
 waitUntil { time > 0 };

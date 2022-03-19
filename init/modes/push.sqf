@@ -86,6 +86,7 @@ RSTF_MODE_PUSH_init = {
 	private _radius = RSTF_DISTANCE;
 	private _direction = RSTF_DIRECTION;
 
+	RSTF_SPAWN_TRANSPORTS = false;
 	RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS - 1;
 
 	_center = _center vectorAdd [

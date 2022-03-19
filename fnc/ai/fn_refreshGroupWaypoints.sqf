@@ -25,7 +25,12 @@ private _wppoint = [_sideIndex, true] call RSTF_fnc_getAttackWaypoint;
 deleteWaypoint [_group, 0];
 
 private _wp = _group addWaypoint [_wppoint, 50];
-_wp setWaypointType "SAD";
+
+if (RSTF_MODE_DEFEND_ENABLED && _sideIndex == SIDE_FRIENDLY) then {
+	_wp setWaypointType "HOLD";
+} else {
+	_wp setWaypointType "SAD";
+};
 
 if (RSTF_DEBUG) then {
 	(str(_group)) setMarkerPos _wppoint;

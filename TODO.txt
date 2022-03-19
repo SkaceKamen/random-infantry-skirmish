@@ -2,14 +2,9 @@
  * Better compat with ASR and VCOM AI
   - Stop units from moving from houses
   - Prevent units from reusing vehicles
- * Remove BLUR effects when respawning
  * Spawn some random crates for clear building task
- * Defense game mode
- * Kill feed
+ * Defense game mode - YES!
  * Supports
-  - Artillery
-    - needs to be limited to the point only
-    - more possible payloads?
   - Recon?
   - Ammo drop?
   - ???

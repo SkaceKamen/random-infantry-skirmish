@@ -1,5 +1,6 @@
 private _spawn = 0;
 private _interval = 0;
+private _defendersCounter = 0;
 
 while { true } do {
 	if (_interval > 2) then {
@@ -14,8 +15,18 @@ while { true } do {
 		_spawn = RSTF_LIMIT_SPAWN;
 
 		{
-			// Spawn new wave
-			[_foreachIndex, false, true] call RSTF_fnc_spawnWave;
+			if (RSTF_MODE_DEFEND_ENABLED) then {
+				_defendersCounter = _defendersCounter + 1;
+			};
+
+			if (!RSTF_MODE_DEFEND_ENABLED || _foreachIndex == SIDE_ENEMY || _defendersCounter == 2) then {
+				// Spawn new wave
+				[_foreachIndex, false, true] call RSTF_fnc_spawnWave;
+			};
+
+			if (_defendersCounter >= 2) then {
+				_defendersCounter = 0;
+			};
 
 			// Refresh waypoints for all groups (needs to be done every once in a while to keep AI moving)
 			[_foreachIndex] call RSTF_fnc_refreshSideWaypoints;
@@ -81,11 +92,11 @@ while { true } do {
 				_moneyCount = _moneyCount + 1;
 			} forEach (RSTF_QUEUE_NAMES select _x);
 
-			_sideCounts set [_x, str(_aliveUnits)];
+			_sideCounts set [_foreachIndex, str(_aliveUnits)];
 			if (_moneyCount > 0) then {
-				_avgMoney set [_x, str(round(_totalMoney/_moneyCount))];
+				_avgMoney set [_foreachIndex, str(round(_totalMoney/_moneyCount))];
 			} else {
-				_avgMoney set [_x, '-'];
+				_avgMoney set [_foreachIndex, '-'];
 			};
 
 		} foreach [SIDE_FRIENDLY, SIDE_ENEMY];

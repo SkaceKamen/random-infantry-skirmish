@@ -38,9 +38,9 @@ class RSTF_Modes
 		title = "Defense";
 		enabled = 0;
 
-		init = "RSTF_MODE_DEF_init";
-		unitKilled = "RSTF_MODE_DEF_unitKilled";
-		taskCompleted = "RSTF_MODE_DEF_taskCompleted";
-		vehicleKilled = "RSTF_MODE_DEF_vehicleKilled";
+		init = "RSTF_MODE_DEFEND_init";
+		unitKilled = "RSTF_MODE_DEFEND_unitKilled";
+		taskCompleted = "RSTF_MODE_DEFEND_taskCompleted";
+		vehicleKilled = "RSTF_MODE_DEFEND_vehicleKilled";
 	};
 };
