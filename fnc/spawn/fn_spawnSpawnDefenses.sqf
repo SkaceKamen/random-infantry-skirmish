@@ -11,6 +11,11 @@ private _transports = [];
 
 private _transportsCount = 4 + random(2);
 
+// No transports for push mode
+if (RSTF_MODE_PUSH_ENABLED) then {
+	_transportsCount = 0;
+};
+
 if (count(_transportClasses) > 0) then {
 	for "_iiii" from 1 to _transportsCount do {
 		_cls = (selectRandom _transportClasses);
