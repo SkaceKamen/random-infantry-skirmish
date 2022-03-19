@@ -3,7 +3,7 @@ private _position = param [0];
 private _spawns = param [1];
 private _local = param [2, false];
 
-if (RSTF_MODE_DEFEND_ENABLED || RSTF_MODE_INDEX == 3) then {
+if (RSTF_MODE_DEFEND_ENABLED || (call RSTF_fnc_getModeId) == 'Defense') then {
 	for [{ _d = 0 }, { _d < 360 }, { _d = _d + 50 }] do {
 		private _distance = RSTF_MODE_DEFEND_RADIUS + 150 + random(50);
 		private _direction = _d + random(8);
