@@ -104,6 +104,11 @@ class RSTF_Options {
 				description="In seconds. Interval in which is point awarded to side that holds the objective.";
 				type="number";
 			};
+			class RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT {
+				title="Number of defensive emplacements";
+				description="Number of defensive emplacements spawned, only works when faction has suitable static emplacements.";
+				type="number";
+			};
 		};
 	};
 	class Defense {

@@ -167,6 +167,8 @@ RSTF_SPAWN_DISTANCE_MAX = 250;
 RSTF_MODE_PUSH_SCORE_INTERVAL = 2;
 RSTF_MODE_PUSH_SCORE_LIMIT = 20;
 RSTF_MODE_PUSH_POINT_COUNT = 5;
+// Number of defensive emplacements spawned per point
+RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT = 0;
 
 // Remove un-historical items from map
 RSTF_CLEAR_HISTORIC_ITEMS = false;
