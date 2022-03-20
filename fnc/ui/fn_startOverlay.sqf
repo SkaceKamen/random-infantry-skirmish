@@ -39,6 +39,8 @@ _ctrlUserCountEnemy = _display displayCtrl RSTFUI_ARCADE_ENEMY_USER_COUNT_IDC;
 _ctrlPushProgress = _display displayCtrl RSTFUI_ARCADE_PUSH_PROGRESS_IDC;
 _ctrlPushProgressBackground = _display displayCtrl RSTFUI_ARCADE_PUSH_PROGRESS_BACKGROUND_IDC;
 
+_ctrlDefenseProgress = _display displayCtrl RSTFUI_ARCADE_DEFENSE_PROGRESS_IDC;
+
 _modeId = call RSTF_fnc_getModeId;
 
 switch (_modeId) do {
@@ -166,6 +168,10 @@ while { true } do {
 		if (count(RSTF_MODE_PUSH_COUNTS) > 0) then {
 			_ctrlUserCountFriendly ctrlSetText str(RSTF_MODE_PUSH_COUNTS select SIDE_FRIENDLY);
 			_ctrlUserCountEnemy ctrlSetText str(RSTF_MODE_PUSH_COUNTS select SIDE_ENEMY);
+		};
+
+		if (_modeId == "Defense") then {
+			_ctrlDefenseProgress ctrlSetText format["%1m left", ceil((RSTF_MODE_DEFEND_DURATION - time)/60)];
 		};
 	};
 

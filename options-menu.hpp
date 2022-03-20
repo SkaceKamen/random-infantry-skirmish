@@ -106,6 +106,33 @@ class RSTF_Options {
 			};
 		};
 	};
+	class Defense {
+		title = "Mode";
+		visible = "(call RSTF_fnc_getModeId) == 'Defense'";
+
+		class Items {
+			class RSTF_MODE_DEFEND_DURATION {
+				title="Duration";
+				description="Number of seconds that the point has to be defended to win the battle.";
+				type="number";
+			};
+			class RSTF_MODE_DEFEND_RADIUS {
+				title="Defended point radius";
+				description="Capture radius of the defended point";
+				type="number";
+			};
+			class RSTF_MODE_DEFEND_SCORE_LIMIT {
+				title="Score to capture";
+				description="Point is lost when attackers reach this score";
+				type="number";
+			};
+			class RSTF_MODE_DEFEND_SCORE_INTERVAL {
+				title="Point award interval";
+				description="In seconds. Interval in which is point awarded to attackers when they have majority on the objective.";
+				type="number";
+			};
+		};
+	};
 	class Spawning {
 		title = "Spawning";
 

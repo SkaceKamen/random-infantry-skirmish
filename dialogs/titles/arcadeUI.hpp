@@ -163,5 +163,14 @@ class ARCADE_UI
 			colorBackground[] = { 0, 0, 0.77, 0.9 };
 		};
 
+		class DefenseProgress : RscStatic
+		{
+			idc = RSTFUI_ARCADE_DEFENSE_PROGRESS_IDC;
+			x = SafeZoneX + SafeZoneW / 2 - RSTFUI_ARCADE_PUSH_PROGRESS_W / 2;
+			y = SafeZoneY + 0.01;
+			w = RSTFUI_ARCADE_PUSH_PROGRESS_W;
+			h = RSTFUI_ARCADE_PUSH_PROGRESS_H;
+			style = ST_CENTER | ST_VCENTER;
+		};
 	};
 };

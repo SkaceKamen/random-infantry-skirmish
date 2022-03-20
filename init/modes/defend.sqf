@@ -105,6 +105,10 @@ RSTF_MODE_DEFEND_startLoop = {
 			};
 		};
 
+		if (time > RSTF_MODE_DEFEND_DURATION) then {
+			[SIDE_FRIENDLY] remoteExec ["RSTF_fnc_onEnd"];
+		};
+
 		publicVariable "RSTF_MODE_PUSH_COUNTS";
 
 		sleep 1;
