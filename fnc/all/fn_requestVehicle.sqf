@@ -37,18 +37,6 @@ private _vehicle = [_player, SIDE_FRIENDLY, _vehicleClass] call RSTF_fnc_spawnBo
 // Camera animation
 [_previousPosition, _vehicle] remoteExec ["RSTF_fnc_moveCamera", _player];
 
-// If vehicle is destroyed/damaged in first 2 seconds of existence, refund the money
-[_player, _vehicle, _cost] spawn {
-	private _player = param [0];
-	private _vehicle = param [1];
-	private _cost = param [2];
-
-	sleep 2;
-
-	if (!canMove(_vehicle) || damage(_vehicle) > 0.2) then {
-		[_player, _cost] call RSTF_fnc_addPlayerMoney;
-		[format["+%1$ <t color='#dddddd'>Vehicle refund</t>", _cost], 5] remoteExec ["RSTFUI_fnc_addMessage", _player];
-	};
-};
+[_player, objNull, _vehicle, _cost] call RSTF_fnc_attachVehicleRefundCheck;
 
 _vehicle;

@@ -49,6 +49,7 @@ class RSTF
 		class aiDecideVehicle {};
 
 		class respawn {};
+		class attachVehicleRefundCheck {};
 	};
 
 	class money
@@ -76,6 +77,7 @@ class RSTF
 		class spawnBoughtVehicle {};
 		class shouldSpawnVehicle {};
 		class spawnWave {};
+		class spawnAiVehicle {};
 	};
 
 	class utils

@@ -5,10 +5,10 @@
  * Spawn some random crates for clear building task
  * Defense game mode - YES!
  * Supports
-  - Recon?
-  - Ammo drop?
-  - ???
- * Vehicles rearming?
+  - Rearm & Refuel support drop
+  - Equipment support drop
  * Building fortifications
  * Spawn more compositions
- * Don't wait to die to order a vehicle?
+ * PUSH MODE: Spawn enemy units in houses (reuse neutrals spawning script) (OPTIONAL?)
+ * PUSH MODE: Add statics for defenders (OPTIONAL)
+ * PUSH MODE: Add bunkers and stuff (OPTIONAL)
