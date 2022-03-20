@@ -10,5 +10,4 @@
  * Building fortifications
  * Spawn more compositions
  * PUSH MODE: Spawn enemy units in houses (reuse neutrals spawning script) (OPTIONAL?)
- * PUSH MODE: Add statics for defenders (OPTIONAL)
- * PUSH MODE: Add bunkers and stuff (OPTIONAL)
+ * ANY MODE: Fortified houses?
