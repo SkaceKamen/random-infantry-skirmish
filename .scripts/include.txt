@@ -1,1 +1,1 @@
-*.p3d;*.paa;*.sqm;*.sqf;*.hpp;*.ext;*.inc
+*.p3d;*.paa;*.sqm;*.sqf;*.hpp;*.ext;*.inc;*.sqe

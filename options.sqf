@@ -138,7 +138,7 @@ RSTF_KILL_DISTANCE_BONUS = 100;
 RSTF_AI_MONEY_MULTIPLIER = 5;
 
 // Money added to each AI per-side per second
-RSTF_AI_MONEY_PER_SECOND = 5;
+RSTF_AI_MONEY_PER_SECOND = 2;
 
 // Interval in which are points awarded to side holding objective in KOTH
 RSTF_MODE_KOTH_SCORE_INTERVAL = 10;
@@ -168,7 +168,7 @@ RSTF_MODE_PUSH_SCORE_INTERVAL = 2;
 RSTF_MODE_PUSH_SCORE_LIMIT = 20;
 RSTF_MODE_PUSH_POINT_COUNT = 5;
 // Number of defensive emplacements spawned per point
-RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT = 0;
+RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT = 5;
 
 // Remove un-historical items from map
 RSTF_CLEAR_HISTORIC_ITEMS = false;
