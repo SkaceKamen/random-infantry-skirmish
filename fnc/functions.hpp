@@ -78,6 +78,8 @@ class RSTF
 		class shouldSpawnVehicle {};
 		class spawnWave {};
 		class spawnAiVehicle {};
+		class spawnComposition2 {};
+		class spawnDefenceEmplacements {};
 	};
 
 	class utils

@@ -20,7 +20,10 @@ RSTF_MODE_PUSH_TASK = "";
 
 RSTF_MODE_PUSH_NEXT_POINT = {
 	RSTF_MODE_PUSH_POINT_INDEX = RSTF_MODE_PUSH_POINT_INDEX + 1;
-	private _point = RSTF_MODE_PUSH_POINTS select RSTF_MODE_PUSH_POINT_INDEX;
+	private _nextPoint = RSTF_MODE_PUSH_POINTS select RSTF_MODE_PUSH_POINT_INDEX;
+	private _point = _nextPoint#0;
+	private _direction = _nextPoint#1;
+
 	"PUSH_OBJECTIVE" setMarkerPos _point;
 
 	private _direction = RSTF_DIRECTION;
@@ -32,6 +35,7 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 
 	// Rebuild target and spawns
 	RSTF_POINT = _point;
+	RSTF_DIRECTION = _direction;
 	RSTF_SPAWNS = [
 		_point,
 		_point vectorAdd [sin(180 + _direction) * _distance, cos(180 + _direction) * _distance, 0],
@@ -91,7 +95,6 @@ RSTF_MODE_PUSH_startLoop = {
 	private _radius = RSTF_DISTANCE;
 	private _direction = RSTF_DIRECTION;
 
-
 	_center = _center vectorAdd [
 		sin(_direction + 180) * _radius,
 		cos(_direction + 180) * _radius,
@@ -112,7 +115,11 @@ RSTF_MODE_PUSH_startLoop = {
 			_marker setMarkerType "mil_warning";
 		};
 
-		RSTF_MODE_PUSH_POINTS pushBack _center;
+		RSTF_MODE_PUSH_POINTS pushBack [_center, _direction];
+
+		if (count(RSTF_MODE_PUSH_POINTS) > 1) then {
+			[5, _center, _direction] call RSTF_fnc_spawnDefenceEmplacements;
+		};
 	};
 
 	_radius = 100;

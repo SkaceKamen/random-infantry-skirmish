@@ -1,0 +1,38 @@
+version=54;
+center[]={14569.693,17.946171,16127.316};
+class items
+{
+	items=2;
+	class Item0
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={-0.067382813,0.96563148,-0.088867188};
+			angles[]={0,3.1415927,0};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=432;
+		type="Land_BagBunker_Small_F";
+	};
+	class Item1
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={0.064453125,1.6604671,0.086914063};
+			angles[]={-0,0,0.0012918708};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=433;
+		type="O_HMG_01_high_F";
+	};
+};

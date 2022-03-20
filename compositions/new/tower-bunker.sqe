@@ -1,0 +1,52 @@
+version=54;
+center[]={14561.805,17.93,16114.48};
+class items
+{
+	items=3;
+	class Item0
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={-0.15820313,2.2100239,-0.5859375};
+			angles[]={-0,3.1415927,0};
+		};
+		side="Empty";
+		flags=5;
+		class Attributes
+		{
+		};
+		id=440;
+		type="Land_BagBunker_Tower_F";
+	};
+	class Item1
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={0.090820313,1.6602898,0.453125};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=441;
+		type="O_HMG_01_high_F";
+	};
+	class Item2
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={0.064453125,4.4402905,0.12890625};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=442;
+		type="O_HMG_01_high_F";
+	};
+};

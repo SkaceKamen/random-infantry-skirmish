@@ -21,6 +21,7 @@
 #include "modes.hpp"
 #include "options-menu.hpp"
 #include "supports.hpp"
+#include "compositions.hpp"
 
 class cfgFunctions
 {

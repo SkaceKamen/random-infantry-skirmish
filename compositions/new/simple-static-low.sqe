@@ -1,0 +1,162 @@
+version=54;
+center[]={14589.395,17.979166,16140.256};
+class items
+{
+	items=5;
+	class Item0
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={2.6826172,0.42014503,-0.079101563};
+			angles[]={-0,4.6538339,0};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+			disableSimulation=1;
+		};
+		id=166;
+		type="Land_BagFence_Round_F";
+	};
+	class Item1
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={-1.7412109,0.42014503,-0.084960938};
+			angles[]={-0,1.611729,0};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+			disableSimulation=1;
+		};
+		id=167;
+		type="Land_BagFence_Round_F";
+	};
+	class Item2
+	{
+		dataType="Layer";
+		name="Improvised Bunker 06";
+		class Entities
+		{
+			items=2;
+			class Item0
+			{
+				dataType="Object";
+				class PositionInfo
+				{
+					position[]={-1.0742188,0.21004295,-1.703125};
+					angles[]={6.2818484,1.9819196,0.0013372133};
+				};
+				side="Empty";
+				flags=4;
+				class Attributes
+				{
+					createAsSimpleObject=1;
+					disableSimulation=1;
+				};
+				id=428;
+				type="VirtualReammoBox_small_F";
+				class CustomAttributes
+				{
+					class Attribute0
+					{
+						property="allowDamage";
+						expression="_this allowdamage _value;";
+						class Value
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"BOOL"
+									};
+								};
+								value=0;
+							};
+						};
+					};
+					nAttributes=1;
+				};
+			};
+			class Item1
+			{
+				dataType="Object";
+				class PositionInfo
+				{
+					position[]={-1.2646484,0.010223389,1.3046875};
+					angles[]={6.069859,5.4646926,-0};
+				};
+				side="Empty";
+				flags=5;
+				class Attributes
+				{
+					disableSimulation=1;
+				};
+				id=431;
+				type="Land_WoodenWall_04_s_end_v2_F";
+				class CustomAttributes
+				{
+					class Attribute0
+					{
+						property="allowDamage";
+						expression="_this allowdamage _value;";
+						class Value
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"BOOL"
+									};
+								};
+								value=0;
+							};
+						};
+					};
+					nAttributes=1;
+				};
+			};
+		};
+		id=363;
+		atlOffset=-0.00040626526;
+	};
+	class Item3
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={0.67089844,0.00083351135,-0.13476563};
+		};
+		side="Empty";
+		flags=5;
+		class Attributes
+		{
+		};
+		id=364;
+		type="Land_DirtPatch_05_F";
+	};
+	class Item4
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={0.703125,1.2346535,0.73242188};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=161;
+		type="I_HMG_02_F";
+	};
+};
