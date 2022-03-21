@@ -49,6 +49,15 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
       'overviewPicture = "RIS\\random.paa";'
     ))
 
+  with open(os.path.join(modMissionPath, 'variables.sqf'), 'r') as f:
+    variablesSqf = f.read()
+	
+  with open(os.path.join(modMissionPath, 'variables.sqf'), 'w') as f:
+    variablesSqf = f.write(variablesSqf.replace(
+      'RSTF_DEBUG = true;',
+      'RSTF_DEBUG = false;'
+    ))
+
   missionsConfig += """
 			class RIS_%s
 			{
