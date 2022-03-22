@@ -44,9 +44,6 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   if (island != "vt7"):
     continue
 
-  print(island)
-  print(previewPath)
-
   if os.path.exists(missionPath):
     shutil.rmtree(missionPath)
 
@@ -61,13 +58,10 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
     variablesSqf = f.read()
 
   if os.path.exists(previewPath):
-    previewImage = Image.open(previewPath).convert('RGBA').resize((512, 512))
     previewTitle = missionTitle.split(' - ')[1]
-
-    img = Image.alpha_composite(
-      previewImage,
-      logoOverlay
-    )
+    img = Image.open(previewPath).convert('RGBA').resize((512, 512))
+    img.alpha_composite(Image.new('RGBA', (512,512), (0, 0, 0, 80)))
+    img.alpha_composite(logoOverlay)
 
     draw = ImageDraw.Draw(img)
     size = 70
