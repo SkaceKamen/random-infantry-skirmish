@@ -1,0 +1,28 @@
+Fast paced almost instant battle mission. Pick random place on the island, pick your gear and fight!
+Now with KoTH style mode.
+
+[b] Note: [/b] Press [WIN] to open vehicle buying dialog.
+
+[h1] Main features [/h1]
+[list]
+ [*] Fast paced battles for villages/cities around the island
+ [*] Supports [b]any mod[/b] with correctly configured factions
+ [*] Highly configurable, most of the rules can be changed, disabled
+[/list]
+
+[h1] Lastest update [/h1]
+[list]
+ [*] Added possibility to buy vehicles (can be turned off)
+ [*] Added possibility for AI to buy vehicles too (can be turned off)
+ [*] Added KOTH style game mode (game mode can be switched back to classic)
+ [*] Each supported island now has it's own workshop item, with custom locations
+ [*] Hopefully fixed support for dedicated servers
+ [*] Fixed ALT-view issues in COOP
+[/list]
+
+[h1] Note for dedicated servers [/h1]
+Since this mission relies on UI dialog, where user can configure his experience, dedicated server requires [b]admin[/b] to configure and start the mission.
+
+[h1] Where to report issues / suggest changes [/h1]
+Please direct all requests and issues to the source code repository:
+https://github.com/SkaceKamen/random-infantry-skirmish/issues
