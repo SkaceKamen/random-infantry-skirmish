@@ -7,7 +7,8 @@ import json
 import time
 import sys
 import re
-from PIL import Image, ImageFont, ImageDraw
+from PIL import Image
+from utils import buildPreview
 
 ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools\\AddonBuilder\\AddonBuilder.exe'
 PUBLISHER = "c:\\Users\\KaKa\\source\\repos\\A3MissionPublisher\\A3MissionPublisher\\bin\\x64\\Release\\net6.0\\A3MissionPublisher.exe"
@@ -16,14 +17,14 @@ risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
 includePath = os.path.join(os.path.dirname(__file__), "include.txt")
 resultsPath = os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Addons")
+dataPath = os.path.join(os.path.dirname(__file__), "data")
 workshopDataPath = os.path.join(resultsPath, "workshopItem.json")
-descriptionPath = os.path.join(os.path.dirname(__file__), "info", "description.txt")
-changelogPath = os.path.join(os.path.dirname(__file__), "info", "changelog.txt")
+descriptionPath = os.path.join(dataPath, "info", "description.txt")
+changelogPath = os.path.join(dataPath, "info", "changelog.txt")
 idsPath = os.path.join(os.path.dirname(__file__), 'ids.json')
-previewsPath = os.path.join(os.path.dirname(__file__), "images")
-logoOverlayPath = os.path.join(os.path.dirname(__file__), "info", "logo-overlay.png")
+previewsPath = os.path.join(dataPath, "images")
+logoOverlayPath = os.path.join(dataPath, "info", "logo-overlay.png")
 previewTempPath = os.path.abspath(os.path.join(resultsPath, "preview.png"))
-previewFont = r'c:\Windows\Fonts\seguibl.ttf'
 
 ids = {}
 
@@ -41,7 +42,7 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   missionTitle = "Random Skirmish - %s" % island
   uploadPreview = False
 
-  if (island != "vt7"):
+  if (island != "isladuala3"):
     continue
 
   if os.path.exists(missionPath):
@@ -58,26 +59,10 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
     variablesSqf = f.read()
 
   if os.path.exists(previewPath):
-    previewTitle = missionTitle.split(' - ')[1]
-    img = Image.open(previewPath).convert('RGBA').resize((512, 512))
-    img.alpha_composite(Image.new('RGBA', (512,512), (0, 0, 0, 80)))
-    img.alpha_composite(logoOverlay)
+    title = missionTitle.split(' - ')[1]
 
-    draw = ImageDraw.Draw(img)
-    size = 70
-    font = None
-    while True and size > 10:
-      font = ImageFont.truetype(previewFont, size)
-      w, h = font.getsize(previewTitle)
-
-      if w > 500:
-        size -= 10
-      else:
-        break
-    
-    draw.text((256, 350), previewTitle, anchor="mt", font = font, fill=(255,255,255,200), align ="center") 
-
-    img.save(previewTempPath)
+    previewImage = buildPreview(Image.open(previewPath), logoOverlay, title)
+    previewImage.save(previewTempPath)
 
     uploadPreview = True
     sys.exit(1)

@@ -7,7 +7,8 @@ ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
-modSourcePath = os.path.join(os.path.dirname(__file__), "mod")
+dataPath = os.path.join(os.path.dirname(__file__), "data")
+modSourcePath = os.path.join(dataPath, "mod")
 modTargetPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "@RIS"))
 modAddonsPath = os.path.join(modTargetPath, "AddOns")
 modBuildPath = os.path.join(modTargetPath, "ris-missions")

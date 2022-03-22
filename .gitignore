@@ -1,3 +1,5 @@
 mission.sqm
 .scripts/ids.json
 .scripts/changelog.txt
+
+*.pyc
