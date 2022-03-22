@@ -167,27 +167,30 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 
 	// Make position 3D
 	_position set [2, 0];
-
 	_usedPositions pushBack _position;
 
+	// Create emplacement
+	_empType = selectRandom(_emplacements);
+	_spawned = [_empType, _position, _direction + 180 - 5 + random(5)] call RSTF_fnc_spawnComposition2;
+
+	
 	if (RSTF_DEBUG) then {
 		diag_log text("[RSTF] Spawning defense at " + str(_position));
 
 		_marker = createMarker ["DEFENSE" + str(_position), _position];
 		_marker setmarkerShape "ICON";
 		_marker setMarkerType "loc_Ruin";
-		_marker setMarkerColor "RED";
+		_marker setMarkerColor "ColorRed";
+		_marker setMarkerText _empType;
 	};
-
-	// Create emplacement
-	_empType = selectRandom(_emplacements);
-	_spawned = [_empType, _position, _direction + 180 - 5 + random(5)] call RSTF_fnc_spawnComposition2;
 
 	// Replace weapon placeholder with actual weapon
 	{
 		private _isHighStatic = typeOf(_x) == "O_HMG_01_high_F";
 		private _isLowStatic = typeOf(_x) == "I_HMG_02_F";
 		private _isStatic = _isHighStatic || _isLowStatic;
+		private _description = _x getVariable ["_SPAWN_DESCRIPTION", ""];
+		private _isSoldier = typeof(_x) == "Sign_Arrow_Direction_Blue_F";
 
 		if (_isStatic) then {
 			// Pick vehicle class
@@ -221,9 +224,51 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 
 				{
 					_x setVariable ["SPAWNED_SIDE", side(_group), true];
-					_x setVariable ["SPAWNED_SIDE_INDEX", SIDE_NEUTRAL, true];
+					_x setVariable ["SPAWNED_SIDE_INDEX", SIDE_ENEMY, true];
 					_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 				} foreach units(_group);
+			} else {
+				_isSoldier = true;
+
+				if (_isLowStatic) then {
+					_description = "LOW";
+				};
+			}
+		};
+
+		if (_isSoldier) then {
+			private _unitClass = SIDE_ENEMY call RSTF_fnc_getRandomSoldier;
+			private _group = createGroup east;
+			private _unit = _group createUnit [_unitClass, [0,0,500], [], 0, "NONE"];
+
+			_unit setVariable ["SPAWNED_SIDE", side(_group), true];
+			_unit setVariable ["SPAWNED_SIDE_INDEX", SIDE_ENEMY, true];
+			_unit addEventHandler ["Killed", RSTF_fnc_unitKilled];
+
+			_pos = getPosWorld(_x);
+			_dir = vectorDir(_x);
+			_up = vectorUp(_x);
+
+			// Move out of the way and replace it!
+			_x setPos [0,0,1000];
+			deleteVehicle(_x);
+
+			_unit enableSimulationGlobal false;
+			_unit setPosWorld _pos;
+			_unit setVectorDirAndUp [_dir, _up];
+			_unit enableSimulationGlobal true;
+			_unit disableAI "MOVE";
+
+			if (_description == "HIGH") then {
+				_unit setUnitPos "UP";
+			};
+
+			if (_description == "MID") then {
+				_unit setUnitPos "MIDDLE";
+			};
+
+			if (_description == "LOW") then {
+				_unit setUnitPos "DOWN";
 			};
 		};
 	} foreach _spawned;

@@ -65,6 +65,7 @@ _spawnObject = {
 	private _angles = if (isArray (_config >> "PositionInfo" >> "angles")) then { getArray(_config >> "PositionInfo" >> "angles"); } else { [0,0,0] };
 	private _isSimpleObject = getNumber(_config >> "Attributes" >> "createAsSimpleObject") == 1;
 	private _disableSimulation = getNumber(_config >> "Attributes" >> "disableSimulation") == 1;
+	private _description = getText(_config >> "Attributes" >> "description");
 	private _atlOffset = 0; //getNumber(_config >> "atlOffset");
 
 	private _veh = objNull;
@@ -107,6 +108,7 @@ _spawnObject = {
 	_veh setPosWorld _newPosition;
 	_veh setVectorDirAndUp [ _dir, _up ];
 	_veh enableSimulation !_disableSimulation;
+	_veh setVariable ["_SPAWN_DESCRIPTION", _description];
 
 	// diag_log text("[RSTF] Spawned " + _type + " at " + str(_newPosition));
 
