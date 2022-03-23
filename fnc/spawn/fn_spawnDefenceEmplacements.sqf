@@ -235,6 +235,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 			private _unitClass = SIDE_ENEMY call RSTF_fnc_getRandomSoldier;
 			private _group = createGroup east;
 			private _unit = _group createUnit [_unitClass, [0,0,500], [], 0, "NONE"];
+			[_unit] joinSilent _group;
 
 			_unit setVariable ["SPAWNED_SIDE", side(_group), true];
 			_unit setVariable ["SPAWNED_SIDE_INDEX", SIDE_ENEMY, true];

@@ -58,7 +58,7 @@ if (!isDedicated) then {
 };
 
 // Start gamemode loop
-0 spawn RSTF_MODE_startLoop;
+call RSTF_MODE_startLoop;
 
 // Hide camera border
 waitUntil { time > 0 };

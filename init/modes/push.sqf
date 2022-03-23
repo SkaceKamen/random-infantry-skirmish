@@ -128,85 +128,90 @@ RSTF_MODE_PUSH_startLoop = {
 		};
 	};
 
-	_radius = 100;
-	private _currentOwner = -1;
-	private _last = time;
 	private _marker = createMarker ["PUSH_OBJECTIVE", _center];
 	_marker setMarkerShape "ELLIPSE";
-	_marker setMarkerSize [_radius, _radius];
+	_marker setMarkerSize [100, 100];
 	_marker setMarkerColor RSTF_COLOR_NEUTRAL;
+
 
 	call RSTF_MODE_PUSH_NEXT_POINT;
 
-	while { !RSTF_ENDED } do {
-		// Count men for each side inside this point
-		private _counts = [];
-		{
-			_counts set [_x, 0];
-		} foreach RSTF_SIDES;
+	0 spawn {
+		private _center = RSTF_POINT;
+		private _radius = 100;
+		private _currentOwner = -1;
+		private _last = time;
 
-		private _nearest = nearestObjects [RSTF_POINT, ["Man"], _radius, true];
-		{
-			_index = -1;
-			if (alive(_x)) then {
-				if (side(_x) == west) then {
-					_index = SIDE_FRIENDLY;
+		while { !RSTF_ENDED } do {
+			// Count men for each side inside this point
+			private _counts = [];
+			{
+				_counts set [_x, 0];
+			} foreach RSTF_SIDES;
+
+			private _nearest = nearestObjects [RSTF_POINT, ["Man"], _radius, true];
+			{
+				_index = -1;
+				if (alive(_x)) then {
+					if (side(_x) == west) then {
+						_index = SIDE_FRIENDLY;
+					};
+					if (side(_x) == east) then {
+						_index = SIDE_ENEMY;
+					};
+					if (side(_x) == resistance) then {
+						_index = SIDE_NEUTRAL;
+					};
 				};
-				if (side(_x) == east) then {
-					_index = SIDE_ENEMY;
+
+				if (_index >= 0) then {
+					_counts set [_index, (_counts select _index) + 1];
 				};
-				if (side(_x) == resistance) then {
-					_index = SIDE_NEUTRAL;
+			} foreach _nearest;
+
+			RSTF_MODE_PUSH_COUNTS = _counts;
+
+			// Now find side with most men
+			private _best = _currentOwner;
+			private _bestCount = 0;
+
+			{
+				if (_x > _bestCount) then {
+					_best = _foreachIndex;
+					_bestCount = _x;
+				};
+			} foreach _counts;
+
+			if (_best == SIDE_FRIENDLY) then {
+				// Add point and reset timer
+				_last = time;
+				RSTF_SCORE set [_best, (RSTF_SCORE select _best) + 1];
+
+				// Notify clients
+				publicVariable "RSTF_SCORE";
+				0 remoteExec ["RSTF_fnc_onScore"];
+
+				// End when limit is reached
+				if (RSTF_SCORE select _best >= RSTF_MODE_PUSH_SCORE_LIMIT) then {
+					if (RSTF_MODE_PUSH_POINT_INDEX >= count(RSTF_MODE_PUSH_POINTS) - 1) then {
+						[SIDE_FRIENDLY] remoteExec ["RSTF_fnc_onEnd"];
+					} else {
+						// Create notification
+						[format[
+							"<t color='%1'>%2</t> captured objective, moving to next",
+							RSTF_SIDES_COLORS_TEXT select SIDE_FRIENDLY,
+							RSTF_SIDES_NAMES select _best
+						], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
+
+						call RSTF_MODE_PUSH_NEXT_POINT;
+					};
 				};
 			};
 
-			if (_index >= 0) then {
-				_counts set [_index, (_counts select _index) + 1];
-			};
-		} foreach _nearest;
+			publicVariable "RSTF_MODE_PUSH_COUNTS";
 
-		RSTF_MODE_PUSH_COUNTS = _counts;
-
-		// Now find side with most men
-		private _best = _currentOwner;
-		private _bestCount = 0;
-
-		{
-			if (_x > _bestCount) then {
-				_best = _foreachIndex;
-				_bestCount = _x;
-			};
-		} foreach _counts;
-
-		if (_best == SIDE_FRIENDLY) then {
-			// Add point and reset timer
-			_last = time;
-			RSTF_SCORE set [_best, (RSTF_SCORE select _best) + 1];
-
-			// Notify clients
-			publicVariable "RSTF_SCORE";
-			0 remoteExec ["RSTF_fnc_onScore"];
-
-			// End when limit is reached
-			if (RSTF_SCORE select _best >= RSTF_MODE_PUSH_SCORE_LIMIT) then {
-				if (RSTF_MODE_PUSH_POINT_INDEX >= count(RSTF_MODE_PUSH_POINTS) - 1) then {
-					[SIDE_FRIENDLY] remoteExec ["RSTF_fnc_onEnd"];
-				} else {
-					// Create notification
-					[format[
-						"<t color='%1'>%2</t> captured objective, moving to next",
-						RSTF_SIDES_COLORS_TEXT select SIDE_FRIENDLY,
-						RSTF_SIDES_NAMES select _best
-					], 5] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
-
-					call RSTF_MODE_PUSH_NEXT_POINT;
-				};
-			};
+			sleep 1;
 		};
-
-		publicVariable "RSTF_MODE_PUSH_COUNTS";
-
-		sleep 1;
 	};
 };
 

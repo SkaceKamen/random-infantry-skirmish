@@ -2,6 +2,20 @@ private _group = _this select 0;
 private _side = _this select 1;
 private _position = [_side] call RSTF_fnc_randomSpawn;
 
+// Try to spawn next to our group, but only if they're inside spawn
+if (!RSTF_MODE_DEFEND_ENABLED) then {
+	private _width = 300;
+	private _height = 60;
+	private _direction = RSTF_DIRECTION;
+	private _spawn = RSTF_SPAWNS select _side;
+	
+	{
+		if (getPos(_x) inArea [_spawn, _width, _height, _direction, true]) exitWith {
+			_position = getPos(_x);
+		};
+	} forEach units(_group);
+};
+
 private _unitClass = _side call RSTF_fnc_getRandomSoldier;
 private _unit = _group createUnit [_unitClass, _position, [], 10, "NONE"];
 
