@@ -1,4 +1,4 @@
 class MudMg {
-	categories[] = {"PushDefense"};
+	tags[] = {"PushDefense"};
 	#include "mud-mg.sqe"
 };

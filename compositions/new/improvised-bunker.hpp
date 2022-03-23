@@ -1,4 +1,4 @@
 class ImprovisedBunker {
-	categories[] = {"PushDefense"};
+	tags[] = {"PushDefense"};
 	#include "improvised-bunker.sqe"
 };

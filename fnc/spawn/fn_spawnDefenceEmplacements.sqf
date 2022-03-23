@@ -11,30 +11,33 @@
 	_direction - direction of advance of enemy [Number]
 */
 
+#define STATIC_LOW 0
+#define STATIC_HIGH 1
+#define CATEGORY_AA 0
+#define CATEGORY_AI 1
+#define CATEGORY_AT 2
+
 private _emplacementsCount = param [0];
 private _center = param [1];
 private _direction = param [2];
 
-// 0 - AA, 1 - AT, 2 - AI
-private _staticWeaponsHigh = [ [], [], [] ];
-private _staticWeaponsLow = [ [], [], [] ];
-private _staticWeaponsHighAA = _staticWeaponsHigh#0;
-private _staticWeaponsHighAT = _staticWeaponsHigh#1;
-private _staticWeaponsHighAI = _staticWeaponsHigh#2;
-private _staticWeaponsLowAA = _staticWeaponsLow#0;
-private _staticWeaponsLowAT = _staticWeaponsLow#1;
-private _staticWeaponsLowAI = _staticWeaponsLow#2;
-// List of weapon types that have at least one item
-private _staticWeaponsTypesHigh = [];
-private _staticWeaponsTypesLow = [];
+private _additionalStatics = [
+	["RHS_ZU23_MSV", STATIC_HIGH, CATEGORY_AA],
+	["RHS_ZU23_VDV", STATIC_HIGH, CATEGORY_AA]
+];
+
+// Fist index - SIZE_LOW/SIZE_HIGH, Second index - CATEGORY_AA/CATEGORY_AI/CATEGORY_AT
+private _staticWeapons = [
+	[[], [], []],
+	[[], [], []]
+];
+private _availableStaticWeaponTypes = [[], []];
+
 // Names for each weapon type index
 private _staticWeaponsNames = [ "AA", "AT", "AI"];
 
 // Contains list of possible emplacement compositions (found in compositions folder)
-private _emplacements = ("true" configClasses (missionConfigFile >> "RSTF_Compositions")) apply { configName _x; };
-// List of classNames and their class (AA/AT/AI) to be overriden
-private _overrideEmplacementsHigh = [ [0, "RHS_ZU23_MSV"], [0, "RHS_ZU23_VDV"] ];
-private _overrideEmplacementsLow = [];
+private _emplacements = [["PushDefense"]] call RSTF_fnc_getEmplacements;
 
 private _statics = (RSTF_VEHICLES select SIDE_ENEMY) select RSTF_VEHICLE_STATIC;
 
@@ -43,88 +46,76 @@ private _statics = (RSTF_VEHICLES select SIDE_ENEMY) select RSTF_VEHICLE_STATIC;
 	private _threat = getArray(configFile >> "cfgVehicles" >> _x >> "threat");
 	private _veh = _x createVehicle [0, 0, 100];
 	private _pos = ASLToATL(eyePos(_veh));
-	private _isHigh = _pos select 2 > 1.2;
+	private _bbox = 0 boundingBox _veh;
+	private _diameter = _bbox select 2;
+	/*
+	private _p1 = _bbox select 0;
+	private _p2 = _bbox select 1;
+	private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
+	private _maxLength = abs ((_p2 select 1) - (_p1 select 1));
+	private _maxHeight = abs ((_p2 select 2) - (_p1 select 2));
+	*/
 
-	deleteVehicle _veh;
+	if (_diameter < 4) then {
+		private _isHigh = _pos select 2 > 1.2;
+		deleteVehicle _veh;
 
-	if (_threat select 2 >= 0.75) then {
-		if (_isHigh) then {
-			_staticWeaponsHighAA pushBack _x;
-		} else {
-			_staticWeaponsLowAA pushBack _x;
+		private _heightIndex = if (_isHigh) then { STATIC_HIGH } else { STATIC_LOW };
+		private _staticsList = _staticWeapons#_heightIndex;
+
+		if (_threat select 2 >= 0.75) then {
+			(_staticsList#CATEGORY_AA) pushBack _x;
 		};
-	};
-	if (_threat select 1 >= 0.75) then {
-		if (_isHigh) then {
-			_staticWeaponsHighAT pushBack _x;
-		} else {
-			_staticWeaponsLowAT pushBack _x;
+		if (_threat select 1 >= 0.75) then {
+			(_staticsList#CATEGORY_AT) pushBack _x;
 		};
-	};
-	if (_threat select 0 >= 0.75) then {
-		if (_isHigh) then {
-			_staticWeaponsHighAI pushBack _x;
-		} else {
-			_staticWeaponsLowAI pushBack _x;
+		if (_threat select 0 >= 0.75) then {
+			(_staticsList#CATEGORY_AI) pushBack _x;
 		};
+	} else {
+		diag_log text(format["[RSTF] %1 is too big: %2m", _x, _diameter]);
 	};
 } foreach _statics;
 
 // Add predefined static weapons if possible
 {
-	if ((_x select 1) in _statics) then {
-		_exists = false;
-		_item = _x;
-		_categoryList = _staticWeaponsHigh select (_item select 0);
-		
-		if (_categoryList find (_item select 1) == -1) then {
-			_categoryList pushBack (_item select 1);
+	private _item = _x#0;
+	private _height = _x#1;
+	private _category = _x#2;
+
+	if (isClass(configFile >> "cfgVehicles" >> _item)) then {
+		private _list = (_staticWeapons#_height)#_category;
+
+		if (!(_item in _list)) then {
+			_list pushBack _item;
 		};
 	};
-} foreach _overrideEmplacementsHigh;
+} forEach _additionalStatics;
 
-// Add predefined static weapons if possible
 {
-	if ((_x select 1) in _statics) then {
-		_exists = false;
-		_item = _x;
-		_categoryList = _staticWeaponsLow select (_item select 0);
-		
-		if (_categoryList find (_item select 1) == -1) then {
-			_categoryList pushBack (_item select 1);
-		};
-	};
-} foreach _overrideEmplacementsLow;
-
+	diag_log text(format["[RSTF] %1: %2", _x#0, str(_staticWeapons select (_x#1))]);
+} forEach [["LOW", STATIC_LOW], ["HIGH", STATIC_HIGH]];
 
 // Load list of weapon types with at least one item
 {
-	if (count(_x) > 0) then {
-		_staticWeaponsTypesHigh pushBack _foreachIndex;
-	};
-} foreach _staticWeaponsHigh;
+	private _height = _foreachIndex;
 
-// Load list of weapon types with at least one item
-{
-	if (count(_x) > 0) then {
-		_staticWeaponsTypesLow pushBack _foreachIndex;
-	};
-} foreach _staticWeaponsLow;
+	{
+		private _category = _foreachIndex;
 
-// Don't try to place emplacements when there aren't any static weapons
-if (count(_staticWeaponsTypesHigh) == 0 && count(_staticWeaponsTypesLow) == 0) then {
-	diag_log text("[RSTF] No static weapons found for defences");
-	_emplacementsCount = 0;
-};
+		if (count(_x) > 0) then {
+			(_availableStaticWeaponTypes#_height) pushBack _category;
+		};
+	} foreach _x;
+} foreach _staticWeapons;
 
-
+// Keep list of spawned defenses so we don't spawn emplacements too close to each other
 private _usedPositions = [];
 
 // Spawn emplacements
 private _i = 0;
 for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 	// Pick position
-	// _position = [[[RSTF_POINT, 150]]] call BIS_fnc_randomPos;
 	private _position = [];
 	private _tries = 0;
 
@@ -171,9 +162,8 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 
 	// Create emplacement
 	_empType = selectRandom(_emplacements);
-	_spawned = [_empType, _position, _direction + 180 - 5 + random(5)] call RSTF_fnc_spawnComposition2;
+	_spawned = [configName(_empType), _position, _direction + 180 - 5 + random(5)] call RSTF_fnc_spawnComposition2;
 
-	
 	if (RSTF_DEBUG) then {
 		diag_log text("[RSTF] Spawning defense at " + str(_position));
 
@@ -181,7 +171,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 		_marker setmarkerShape "ICON";
 		_marker setMarkerType "loc_Ruin";
 		_marker setMarkerColor "ColorRed";
-		_marker setMarkerText _empType;
+		_marker setMarkerText configName(_empType);
 	};
 
 	// Replace weapon placeholder with actual weapon
@@ -192,10 +182,13 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 		private _description = _x getVariable ["_SPAWN_DESCRIPTION", ""];
 		private _isSoldier = typeof(_x) == "Sign_Arrow_Direction_Blue_F";
 
+
 		if (_isStatic) then {
+			private _staticIndex = if (_isHighStatic) then { STATIC_HIGH } else { STATIC_LOW };
+
 			// Pick vehicle class
-			private _typeIndex = if (_isLowStatic) then { selectRandom(_staticWeaponsTypesLow); } else { selectRandom(_staticWeaponsTypesHigh); };
-			private _weapons = if (_isLowStatic) then { _staticWeaponsLow } else { _staticWeaponsHigh };
+			private _typeIndex = selectRandom(_availableStaticWeaponTypes#_staticIndex);
+			private _weapons = _staticWeapons#_staticIndex;
 
 			_pos = getPosWorld(_x);
 			_dir = vectorDir(_x);
@@ -205,7 +198,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 			_x setPos [0,0,1000];
 			deleteVehicle(_x);
 
-			if (count(_weapons select _typeIndex) > 0) then {
+			if (count(_availableStaticWeaponTypes#_staticIndex) > 0) then {
 				// Pick vehicle
 				private _vehicle = selectRandom(_weapons select _typeIndex);
 				private _vehicleType = _staticWeaponsNames select _typeIndex;
@@ -228,6 +221,8 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 					_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 				} foreach units(_group);
 			} else {
+				diag_log text(format["[RSTF] No suitable static found for class %1, spawning soldier instead", _staticIndex]);
+
 				_isSoldier = true;
 
 				if (_isLowStatic) then {

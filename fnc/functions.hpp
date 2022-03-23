@@ -128,6 +128,7 @@ class RSTF
 		class updateBattles {};
 		class updateVoteTimeout {};
 		class spawnDialog {};
+		class showModeSelector {};
 
 		class createArsenalBackground {};
 		class destroyArsenalBackground {};
@@ -161,5 +162,12 @@ class RSTF
 
 		class refreshSideWaypoints {};
 		class refreshGroupWaypoints {};
+	};
+
+	class config
+	{
+		file = "fnc\config";
+
+		class getEmplacements {};
 	};
 };

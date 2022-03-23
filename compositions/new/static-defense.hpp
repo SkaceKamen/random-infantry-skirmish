@@ -1,4 +1,4 @@
 class StaticDefense {
-	categories[] = {"PushDefense"};
+	tags[] = {"PushDefense"};
 	#include "static-defense.sqe"
 };

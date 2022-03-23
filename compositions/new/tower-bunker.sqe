@@ -1,15 +1,15 @@
 version=54;
-center[]={14561.805,17.93,16114.48};
+center[]={14561.653,17.93,16114.324};
 class items
 {
-	items=3;
+	items=4;
 	class Item0
 	{
 		dataType="Object";
 		class PositionInfo
 		{
-			position[]={-0.15820313,2.2100239,-0.5859375};
-			angles[]={-0,3.1415927,0};
+			position[]={-0.0068359375,2.2100239,-0.4296875};
+			angles[]={0,3.1415927,0};
 		};
 		side="Empty";
 		flags=5;
@@ -24,29 +24,48 @@ class items
 		dataType="Object";
 		class PositionInfo
 		{
-			position[]={0.090820313,1.6602898,0.453125};
+			position[]={0.21582031,4.4402905,0.28515625};
 		};
 		side="Empty";
-		flags=4;
 		class Attributes
 		{
 		};
-		id=441;
+		id=442;
 		type="O_HMG_01_high_F";
+		atlOffset=2.7799988;
 	};
 	class Item2
 	{
 		dataType="Object";
 		class PositionInfo
 		{
-			position[]={0.064453125,4.4402905,0.12890625};
+			position[]={-0.828125,0.058088303,-0.7578125};
+			angles[]={0,5.8997154,-0};
 		};
 		side="Empty";
 		flags=4;
 		class Attributes
 		{
+			description="HIGH";
 		};
-		id=442;
-		type="O_HMG_01_high_F";
+		id=4131;
+		type="Sign_Arrow_Direction_Blue_F";
+	};
+	class Item3
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={0.62109375,0.058088303,0.90429688};
+			angles[]={0,0.422279,-0};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+			description="HIGH";
+		};
+		id=4132;
+		type="Sign_Arrow_Direction_Blue_F";
 	};
 };

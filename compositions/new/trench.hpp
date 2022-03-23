@@ -1,4 +1,4 @@
 class Trench {
-	categories[] = {"PushDefense"};
+	tags[] = {"PushDefense"};
 	#include "trench.sqe"
 };

@@ -7,7 +7,8 @@ if (RSTF_SKIP_CONFIG) then {
 } else {
 	if (hasInterface) then {
 		["Showing config screen"] call RSTF_fnc_Log;
-		call RSTF_fnc_showConfig;
+		// call RSTF_fnc_showConfig;
+		call RSTF_fnc_showModeSelector;
 	} else {
 		["Waiting for admin to config mission"] call RSTF_fnc_Log;
 	};

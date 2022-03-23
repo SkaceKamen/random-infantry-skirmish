@@ -1,4 +1,4 @@
 class Bunker {
-	categories[] = {"PushDefense"};
+	tags[] = {"PushDefense"};
 	#include "bunker.sqe"
 };

@@ -17,6 +17,7 @@
 #include "dialogs\zui\presets.hpp"
 #include "dialogs\zui\shop.hpp"
 #include "dialogs\zui\artillery.hpp"
+#include "dialogs\zui\modeSelector.hpp"
 
 #include "modes.hpp"
 #include "options-menu.hpp"
