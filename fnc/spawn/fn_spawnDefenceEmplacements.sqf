@@ -83,7 +83,7 @@ private _statics = (RSTF_VEHICLES select SIDE_ENEMY) select RSTF_VEHICLE_STATIC;
 	private _height = _x#1;
 	private _category = _x#2;
 
-	if (isClass(configFile >> "cfgVehicles" >> _item)) then {
+	if (isClass(configFile >> "cfgVehicles" >> _item) && { _item in _statics }) then {
 		private _list = (_staticWeapons#_height)#_category;
 
 		if (!(_item in _list)) then {
