@@ -45,7 +45,10 @@ private _statics = (RSTF_VEHICLES select SIDE_ENEMY) select RSTF_VEHICLE_STATIC;
 {
 	private _threat = getArray(configFile >> "cfgVehicles" >> _x >> "threat");
 	private _veh = _x createVehicle [0, 0, 100];
-	private _pos = ASLToATL(eyePos(_veh));
+	_veh enableSimulation false;
+	_veh setPosASL [0, 0, 100];
+
+	private _pos = eyePos(_veh);
 	private _bbox = 0 boundingBox _veh;
 	private _diameter = _bbox select 2;
 	/*
@@ -57,9 +60,8 @@ private _statics = (RSTF_VEHICLES select SIDE_ENEMY) select RSTF_VEHICLE_STATIC;
 	*/
 
 	if (_diameter < 4) then {
-		private _isHigh = _pos select 2 > 1.2;
+		private _isHigh = _pos select 2 > 100.75;
 		deleteVehicle _veh;
-
 		private _heightIndex = if (_isHigh) then { STATIC_HIGH } else { STATIC_LOW };
 		private _staticsList = _staticWeapons#_heightIndex;
 
