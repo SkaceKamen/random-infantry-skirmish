@@ -1,5 +1,5 @@
 version=54;
-center[]={14645.032,17.820549,16208.132};
+center[]={14645.03,17.820549,16208.132};
 class items
 {
 	items=2;
@@ -15,8 +15,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={1.2109375,0.42791557,-1.7246094};
-					angles[]={0,4.7222452,-0};
+					position[]={1.2128906,0.42791557,-1.7246094};
+					angles[]={0,4.7222452,0};
 				};
 				side="Empty";
 				flags=5;
@@ -33,8 +33,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={1.2246094,1.5958366,-1.6816406};
-					angles[]={0,4.7230749,-0};
+					position[]={1.2265625,1.5958366,-1.6816406};
+					angles[]={0,4.7230749,0};
 				};
 				side="Empty";
 				flags=1;
@@ -51,8 +51,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-0.81054688,0.42791557,-1.7128906};
-					angles[]={0,4.7112789,-0};
+					position[]={-0.80859375,0.42791557,-1.7128906};
+					angles[]={0,4.7112789,0};
 				};
 				side="Empty";
 				flags=5;
@@ -69,8 +69,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-0.017578125,0.42791557,1.9833984};
-					angles[]={0,4.6846962,-0};
+					position[]={-0.015625,0.42791557,1.9833984};
+					angles[]={0,4.6846962,0};
 				};
 				side="Empty";
 				flags=5;
@@ -87,8 +87,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={2.25,0.42791557,1.9150391};
-					angles[]={0,6.2469931,-0};
+					position[]={2.2519531,0.42791557,1.9150391};
+					angles[]={0,6.2469931,0};
 				};
 				side="Empty";
 				flags=5;
@@ -105,8 +105,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={2.2412109,1.5669994,1.8984375};
-					angles[]={0,6.2611628,-0};
+					position[]={2.2431641,1.5669994,1.8984375};
+					angles[]={0,6.2611628,0};
 				};
 				side="Empty";
 				flags=1;
@@ -144,8 +144,8 @@ class items
 										dataType="Object";
 										class PositionInfo
 										{
-											position[]={3.1914063,0.42267418,1.4570313};
-											angles[]={0,4.9094596,-0};
+											position[]={3.1933594,0.42267418,1.4570313};
+											angles[]={0,4.9094596,0};
 										};
 										side="Empty";
 										flags=4;
@@ -155,15 +155,15 @@ class items
 										};
 										id=2929;
 										type="MetalBarrel_burning_F";
-										atlOffset=-0.22569847;
+										atlOffset=-0.22570038;
 									};
 									class Item1
 									{
 										dataType="Object";
 										class PositionInfo
 										{
-											position[]={3.2060547,0.21013641,2.2919922};
-											angles[]={0,1.5580778,-0};
+											position[]={3.2080078,0.21013641,2.2919922};
+											angles[]={0,1.5580778,0};
 										};
 										side="Empty";
 										flags=4;
@@ -181,8 +181,8 @@ class items
 										dataType="Object";
 										class PositionInfo
 										{
-											position[]={3.1708984,0.2161274,3.1591797};
-											angles[]={0,6.1557817,-0};
+											position[]={3.1728516,0.2161274,3.1591797};
+											angles[]={0,6.1557817,0};
 										};
 										side="Empty";
 										flags=4;
@@ -200,8 +200,8 @@ class items
 										dataType="Object";
 										class PositionInfo
 										{
-											position[]={3.5029297,0.21064568,-1.1005859};
-											angles[]={0,3.5272987,-0};
+											position[]={3.5048828,0.21064568,-1.1005859};
+											angles[]={0,3.5272987,0};
 										};
 										side="Empty";
 										flags=4;
@@ -219,8 +219,8 @@ class items
 										dataType="Object";
 										class PositionInfo
 										{
-											position[]={-0.99804688,0.21013641,-0.90820313};
-											angles[]={0,0.016236721,-0};
+											position[]={-0.99609375,0.21013641,-0.90820313};
+											angles[]={0,0.016236721,0};
 										};
 										side="Empty";
 										flags=4;
@@ -235,22 +235,22 @@ class items
 									};
 								};
 								id=2928;
-								atlOffset=-0.1976738;
+								atlOffset=-0.22848511;
 							};
 						};
 						id=2927;
-						atlOffset=-0.1976738;
+						atlOffset=-0.22848511;
 					};
 				};
 				id=2926;
-				atlOffset=-0.1976738;
+				atlOffset=-0.22848511;
 			};
 			class Item7
 			{
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={0.059570313,2.0426903,-0.3359375};
+					position[]={0.061523438,2.0426903,-0.3359375};
 					angles[]={4.7115097,0.00056742353,0.010989992};
 				};
 				side="Empty";
@@ -268,8 +268,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={1.2226563,0.98081589,-1.7001953};
-					angles[]={0,4.7222452,-0};
+					position[]={1.2246094,0.98081589,-1.7001953};
+					angles[]={0,4.7222452,0};
 				};
 				side="Empty";
 				flags=1;
@@ -286,8 +286,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={2.2617188,0.97132301,1.8955078};
-					angles[]={0,6.2561316,-0};
+					position[]={2.2636719,0.97132301,1.8955078};
+					angles[]={0,6.2561316,0};
 				};
 				side="Empty";
 				flags=1;
@@ -304,8 +304,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-2.1552734,0.85169792,-0.36230469};
-					angles[]={0,6.25981,-0};
+					position[]={-2.1533203,0.85169792,-0.36230469};
+					angles[]={0,6.25981,0};
 				};
 				side="Empty";
 				flags=5;
@@ -322,7 +322,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={0.80957031,0.9741497,1.8095703};
+					position[]={0.81152344,0.9741497,1.8095703};
 					angles[]={4.714221,3.1363571,6.2568164};
 				};
 				side="Empty";
@@ -339,7 +339,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-1.1503906,0.9741497,1.7519531};
+					position[]={-1.1484375,0.9741497,1.7519531};
 					angles[]={4.714221,3.1363571,6.2568164};
 				};
 				side="Empty";
@@ -356,8 +356,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={1.3740234,1.5348377,1.5751953};
-					angles[]={0,3.1211555,-0};
+					position[]={1.3759766,1.5348377,1.5751953};
+					angles[]={0,3.1211555,0};
 				};
 				side="Empty";
 				flags=4;
@@ -374,8 +374,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-1.4609375,1.5185623,1.6318359};
-					angles[]={0,6.272645,-0};
+					position[]={-1.4589844,1.5185623,1.6318359};
+					angles[]={0,6.272645,0};
 				};
 				side="Empty";
 				class Attributes
@@ -391,8 +391,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={1.3388672,1.9344425,1.4208984};
-					angles[]={0,3.1570406,-0};
+					position[]={1.3408203,1.9344425,1.4208984};
+					angles[]={0,3.1570406,0};
 				};
 				side="Empty";
 				class Attributes
@@ -408,8 +408,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-0.13769531,0.84023476,2.2636719};
-					angles[]={0,3.1138303,-0};
+					position[]={-0.13574219,0.84023476,2.2646484};
+					angles[]={0,3.1138303,0};
 				};
 				side="Empty";
 				flags=4;
@@ -425,8 +425,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-1.4775391,1.9326344,1.4541016};
-					angles[]={0,3.1570406,-0};
+					position[]={-1.4755859,1.9326344,1.4541016};
+					angles[]={0,3.1570406,0};
 				};
 				side="Empty";
 				class Attributes
@@ -442,8 +442,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-2.1962891,0.32245445,1.8378906};
-					angles[]={0,4.59056,-0};
+					position[]={-2.1943359,0.32245445,1.8378906};
+					angles[]={0,4.59056,0};
 				};
 				side="Empty";
 				flags=4;
@@ -474,8 +474,8 @@ class items
 								dataType="Object";
 								class PositionInfo
 								{
-									position[]={-1.4384766,0.10549164,-0.54296875};
-									angles[]={0,0.18199104,-0};
+									position[]={-1.4365234,0.10549164,-0.54296875};
+									angles[]={0,0.18199104,0};
 								};
 								side="Empty";
 								flags=4;
@@ -516,7 +516,7 @@ class items
 								dataType="Object";
 								class PositionInfo
 								{
-									position[]={-1.4404297,0.1059761,-0.23339844};
+									position[]={-1.4384766,0.1059761,-0.23339844};
 									angles[]={0.0025209268,0.84278488,0.0067403615};
 								};
 								side="Empty";
@@ -559,7 +559,7 @@ class items
 					};
 				};
 				id=2941;
-				atlOffset=0.34188843;
+				atlOffset=115.67535;
 			};
 			class Item20
 			{
@@ -594,8 +594,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={-1.8544922,2.0188732,-2.1035156};
-													angles[]={0,4.624464,-0};
+													position[]={-1.8525391,2.0188732,-2.1035156};
+													angles[]={0,4.624464,0};
 												};
 												side="Empty";
 												class Attributes
@@ -612,8 +612,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={-0.2421875,2.0435772,-2.15625};
-													angles[]={0,4.624464,-0};
+													position[]={-0.24023438,2.0435772,-2.15625};
+													angles[]={0,4.624464,0};
 												};
 												side="Empty";
 												class Attributes
@@ -630,8 +630,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={0.26367188,2.043478,-2.1416016};
-													angles[]={0,1.4866691,-0};
+													position[]={0.265625,2.043478,-2.1416016};
+													angles[]={0,1.4866691,0};
 												};
 												side="Empty";
 												class Attributes
@@ -648,8 +648,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={-1.2802734,0.93319702,-2.1298828};
-													angles[]={0,4.624464,-0};
+													position[]={-1.2783203,0.93319702,-2.1298828};
+													angles[]={0,4.624464,0};
 												};
 												side="Empty";
 												flags=4;
@@ -666,8 +666,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={-0.98730469,0.93319702,-1.8066406};
-													angles[]={0,4.624464,-0};
+													position[]={-0.98535156,0.93319702,-1.8066406};
+													angles[]={0,4.624464,0};
 												};
 												side="Empty";
 												flags=4;
@@ -684,8 +684,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={-1.3398438,0.93319702,-1.7128906};
-													angles[]={0,4.624464,-0};
+													position[]={-1.3378906,0.93319702,-1.7128906};
+													angles[]={0,4.624464,0};
 												};
 												side="Empty";
 												flags=4;
@@ -702,8 +702,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={-0.78320313,0.93319702,-1.9658203};
-													angles[]={0,0.039161619,-0};
+													position[]={-0.78125,0.93319702,-1.9658203};
+													angles[]={0,0.039161619,0};
 												};
 												side="Empty";
 												flags=4;
@@ -720,8 +720,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={-0.75585938,0.93319702,-1.4960938};
-													angles[]={0,0.023084098,-0};
+													position[]={-0.75390625,0.93319702,-1.4960938};
+													angles[]={0,0.023084098,0};
 												};
 												side="Empty";
 												flags=4;
@@ -738,8 +738,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={-1.109375,0.93319702,-1.4863281};
-													angles[]={0,0.023084098,-0};
+													position[]={-1.1074219,0.93319702,-1.4853516};
+													angles[]={0,0.023084098,0};
 												};
 												side="Empty";
 												flags=4;
@@ -756,8 +756,8 @@ class items
 												dataType="Object";
 												class PositionInfo
 												{
-													position[]={-1.4482422,0.93319702,-1.4667969};
-													angles[]={0,0.023084098,-0};
+													position[]={-1.4462891,0.93319702,-1.4667969};
+													angles[]={0,0.023084098,0};
 												};
 												side="Empty";
 												flags=4;
@@ -804,8 +804,8 @@ class items
 								dataType="Object";
 								class PositionInfo
 								{
-									position[]={-0.27539063,0.00019836426,1.0517578};
-									angles[]={0,6.2325191,-0};
+									position[]={-0.2734375,0.00019836426,1.0517578};
+									angles[]={0,6.2325191,0};
 								};
 								side="Empty";
 								flags=4;
@@ -819,19 +819,19 @@ class items
 							};
 						};
 						id=2917;
-						atlOffset=0.089775085;
+						atlOffset=-0.22925186;
 					};
 				};
 				id=2915;
-				atlOffset=0.045059204;
+				atlOffset=-0.22925186;
 			};
 			class Item22
 			{
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-2.1728516,0.42791557,-0.34960938};
-					angles[]={0,3.1207526,-0};
+					position[]={-2.1708984,0.42791557,-0.34960938};
+					angles[]={0,3.1207526,0};
 				};
 				side="Empty";
 				flags=5;
@@ -848,8 +848,8 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-2.1435547,1.5290127,-0.35351563};
-					angles[]={0,3.1207526,-0};
+					position[]={-2.1416016,1.5290127,-0.35351563};
+					angles[]={0,3.1207526,0};
 				};
 				side="Empty";
 				flags=1;
@@ -863,14 +863,14 @@ class items
 			};
 		};
 		id=2949;
-		atlOffset=0.54330254;
+		atlOffset=-10.482184;
 	};
 	class Item1
 	{
 		dataType="Object";
 		class PositionInfo
 		{
-			position[]={0.26660156,1.6633263,0.06640625};
+			position[]={0.26855469,1.6633263,0.06640625};
 			angles[]={6.2818236,6.2640705,0.0013113464};
 		};
 		side="Empty";
@@ -880,6 +880,6 @@ class items
 		};
 		id=2950;
 		type="O_HMG_01_high_F";
-		atlOffset=-0.22641373;
+		atlOffset=-0.22641563;
 	};
 };

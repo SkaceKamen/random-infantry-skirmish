@@ -190,15 +190,15 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 			private _typeIndex = selectRandom(_availableStaticWeaponTypes#_staticIndex);
 			private _weapons = _staticWeapons#_staticIndex;
 
-			_pos = getPosWorld(_x);
-			_dir = vectorDir(_x);
-			_up = vectorUp(_x);
-			
-			// Move out of the way and replace it!
-			_x setPos [0,0,1000];
-			deleteVehicle(_x);
-
 			if (count(_availableStaticWeaponTypes#_staticIndex) > 0) then {
+				_pos = getPosWorld(_x);
+				_dir = vectorDir(_x);
+				_up = vectorUp(_x);
+				
+				// Move out of the way and replace it!
+				_x setPos [0,0,1000];
+				deleteVehicle(_x);
+
 				// Pick vehicle
 				private _vehicle = selectRandom(_weapons select _typeIndex);
 				private _vehicleType = _staticWeaponsNames select _typeIndex;
