@@ -22,8 +22,8 @@ private _center = param [1];
 private _direction = param [2];
 
 private _additionalStatics = [
-	["RHS_ZU23_MSV", STATIC_HIGH, CATEGORY_AA],
-	["RHS_ZU23_VDV", STATIC_HIGH, CATEGORY_AA]
+	//["RHS_ZU23_MSV", STATIC_HIGH, CATEGORY_AA],
+	//["RHS_ZU23_VDV", STATIC_HIGH, CATEGORY_AA]
 ];
 
 // Fist index - SIZE_LOW/SIZE_HIGH, Second index - CATEGORY_AA/CATEGORY_AI/CATEGORY_AT
