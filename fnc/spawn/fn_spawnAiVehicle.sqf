@@ -47,7 +47,11 @@ private _group = group(effectiveCommander(_vehicle));
 	// Wait until vehicle is useless
 	while { true } do {
 		// Get out of useless vehicle
-		if (!canFire(_vehicle) || { _hasGunner && { count(_gunners select { alive _x }) == 0 } } || { count(crew(_vehicle)) == 0 }) exitWith {
+		if (!canFire(_vehicle)
+			|| { _hasGunner && { count(_gunners select { alive _x }) == 0 } }
+			|| { count(crew(_vehicle)) == 0 }
+			|| { !canMove(_vehicle) && _vehicle distance RSTF_POINT > 300 }
+		) exitWith {
 			{
 				[_x, _vehicle] spawn {
 					sleep 1;
