@@ -54,17 +54,26 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 		[RSTF_MODE_PUSH_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
 	};
 
-	// Start new task
-	RSTF_MODE_PUSH_TASK = [
-		side(player),
-		"CAPTURE" + str(RSTF_MODE_PUSH_POINT_INDEX),
-		["We need to capture this point to advance", "Capture this point",""],
-		RSTF_POINT,
-		"ASSIGNED",
-		0,
-		true,
-		"attack"
-	] call BIS_fnc_taskCreate;
+
+	0 spawn {
+		if (RSTF_MODE_PUSH_POINT_INDEX == 0) then {
+			sleep 10;
+		};
+
+		private _pointLetter = toString [65 + (RSTF_MODE_PUSH_POINT_INDEX % 26)];
+
+		// Start new task
+		RSTF_MODE_PUSH_TASK = [
+			side(player),
+			"CAPTURE" + str(RSTF_MODE_PUSH_POINT_INDEX),
+			["We need to capture this point to advance", "Capture point " + _pointLetter,""],
+			RSTF_POINT,
+			"ASSIGNED",
+			0,
+			true,
+			"attack"
+		] call BIS_fnc_taskCreate;
+	};
 
 	// Move enemy spawn point back a bit after few seconds
 	[_point, _distance, _direction] spawn {

@@ -264,7 +264,7 @@ class RSTF_Options {
 			};
 			class RSTF_MONEY_VEHICLES_ENABLED {
 				title="Allow buying vehicles";
-				description="Allow players and AI to buy vehicles for their money";
+				description="Allow players to buy vehicles for their money";
 				type="checkbox";
 			};
 			class RSTF_ENABLE_SUPPORTS {
@@ -307,6 +307,23 @@ class RSTF_Options {
 				title="Bonus for multikill";
 				description="Bonus money for multikills, awarded for each kill over 1";
 				type="number";
+			};
+		};
+	};
+	class Vehicles {
+		title = "Vehicles";
+
+		class Items {
+			class RSTF_AI_VEHICLES_ENABLED {
+				title="Allow AI Vehicles";
+				description="Allow AI to buy vehicles for their money";
+				type="checkbox";
+			};
+
+			class RSTF_SPAWN_VEHICLES_UNLOCKED {
+				title="Unlock AI vehicles";
+				description="Allow players to enter AI vehicles";
+				type="checkbox";
 			};
 		};
 	};

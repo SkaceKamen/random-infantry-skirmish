@@ -138,8 +138,10 @@ if (!isNull(_unit)) then {
 	_unit moveInAny _vehicle;
 	_group selectLeader _unit;
 } else {
-	// Stop player from entering friendly AI vehicles
-	_vehicle setVehicleLock "LOCKEDPLAYER";
+	if (!RSTF_SPAWN_VEHICLES_UNLOCKED) then {
+		// Stop player from entering friendly AI vehicles
+		_vehicle setVehicleLock "LOCKEDPLAYER";
+	};
 };
 
 _vehicle setVariable ["SPAWNED_SIDE", side(_group), true];

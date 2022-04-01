@@ -11,3 +11,7 @@
  * Spawn more compositions
  * PUSH MODE: Spawn enemy units in houses (reuse neutrals spawning script) (OPTIONAL?)
  * ANY MODE: Fortified houses?
+ * Air/Land vehicles ratio
+ * Normal/AT soldiers ratio
+ * PUSH MODE: Maybe put first point a bit back?
+ * GENERAL: First spawn closer, other further away?
