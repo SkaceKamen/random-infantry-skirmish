@@ -160,15 +160,17 @@ RSTF_CLEAN_INTERVAL_VEHICLES = 3*60;
 RSTF_BUY_MENU_ACTION = 0;
 
 // Minimal infantry spawn distance in meters
-RSTF_SPAWN_DISTANCE_MIN = 200;
+RSTF_SPAWN_DISTANCE_MIN = 350;
 // Maximal infantry spawn distance in meters
-RSTF_SPAWN_DISTANCE_MAX = 250;
+RSTF_SPAWN_DISTANCE_MAX = 400;
 
 RSTF_MODE_PUSH_SCORE_INTERVAL = 2;
 RSTF_MODE_PUSH_SCORE_LIMIT = 20;
 RSTF_MODE_PUSH_POINT_COUNT = 5;
 // Number of defensive emplacements spawned per point
 RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT = 5;
+// Spawn emplacements on the first point
+RSTF_MODE_PUSH_FIRST_POINT_EMPLACEMENTS = true;
 
 // Remove un-historical items from map
 RSTF_CLEAR_HISTORIC_ITEMS = false;
@@ -189,3 +191,6 @@ RSTF_SPAWN_VEHICLES_UNLOCKED = false;
 
 // Enable AI vehicles
 RSTF_AI_VEHICLES_ENABLED = true;
+
+// Skip initial mode select screen
+RSTF_SKIP_MODE_SELECT = false;

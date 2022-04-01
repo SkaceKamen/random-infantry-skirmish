@@ -30,16 +30,43 @@ class ModeSelectorDialog: ZUI_ColumnLayout
 		
 			class spacer1: ZUI_ColumnLayout {};
 
-			class items: ZUI_ColumnLayout
+			class container: ZUI_ColumnLayout
 			{
-				id = "items";
 				widthType = ZUI_SIZE_ABSOLUTE;
 				width = 0.6;
-				heightType = ZUI_SIZE_ABSOLUTE;
-				height = 0.5;
+
+				class items: ZUI_ColumnLayout
+				{
+					id = "items";
+				};
+
+				class skipText: ZUI_RowLayout
+				{
+					heightType = ZUI_SIZE_ABSOLUTE;
+					height = "0.04 * safeZoneW / safeZoneH";
+
+					class spacer: ZUI_ColumnLayout {};
+
+					class skipNextTime: ZUI_Control
+					{
+						control = "RscCheckBox";
+						id = "skipNextTime";
+
+						widthType = ZUI_SIZE_ABSOLUTE;
+						width = 0.04;
+					};
+
+					class label: ZUI_Text
+					{
+						text = "Don't show again";
+						widthType = ZUI_SIZE_TEXT;
+					};
+				};
+
+				class spacer: ZUI_ColumnLayout {};
 			};
 
 			class spacer2: ZUI_ColumnLayout {};
-		}
+		};
 	};
 };

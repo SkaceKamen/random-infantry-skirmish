@@ -43,17 +43,24 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 	];
 
 	// Force-spawn enemy wave
-	[SIDE_ENEMY] call RSTF_fnc_spawnWave;
+	RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS - 1;
+	[SIDE_ENEMY, true] call RSTF_fnc_spawnWave;
+	RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS + 1;
 
 	// Update waypoints
 	[SIDE_ENEMY] call RSTF_fnc_refreshSideWaypoints;
 	[SIDE_FRIENDLY] call RSTF_fnc_refreshSideWaypoints;
 
+	// Move enemy spawn point back
+	RSTF_SPAWNS set [
+		SIDE_ENEMY,
+		_point vectorAdd [sin(_direction) * _distance, cos(_direction) * _distance, 0]
+	];
+
 	// Finish previous task
 	if (RSTF_MODE_PUSH_TASK != "") then {
 		[RSTF_MODE_PUSH_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
 	};
-
 
 	0 spawn {
 		if (RSTF_MODE_PUSH_POINT_INDEX == 0) then {
@@ -73,20 +80,6 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 			true,
 			"attack"
 		] call BIS_fnc_taskCreate;
-	};
-
-	// Move enemy spawn point back a bit after few seconds
-	[_point, _distance, _direction] spawn {
-		private _point = param [0];
-		private _distance = param [1];
-		private _direction = param [2];
-
-		sleep 10;
-
-		RSTF_SPAWNS set [
-			SIDE_ENEMY,
-			_point vectorAdd [sin(_direction) * _distance, cos(_direction) * _distance, 0]
-		];
 	};
 };
 
@@ -132,8 +125,8 @@ RSTF_MODE_PUSH_startLoop = {
 
 		RSTF_MODE_PUSH_POINTS pushBack [_center, _direction];
 
-		if (count(RSTF_MODE_PUSH_POINTS) > 1) then {
-			[5, _center, _direction] call RSTF_fnc_spawnDefenceEmplacements;
+		if (RSTF_MODE_PUSH_FIRST_POINT_EMPLACEMENTS || count(RSTF_MODE_PUSH_POINTS) > 1) then {
+			[RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT, _center, _direction] call RSTF_fnc_spawnDefenceEmplacements;
 		};
 	};
 
@@ -141,7 +134,6 @@ RSTF_MODE_PUSH_startLoop = {
 	_marker setMarkerShape "ELLIPSE";
 	_marker setMarkerSize [100, 100];
 	_marker setMarkerColor RSTF_COLOR_NEUTRAL;
-
 
 	call RSTF_MODE_PUSH_NEXT_POINT;
 

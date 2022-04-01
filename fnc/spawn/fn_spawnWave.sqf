@@ -115,7 +115,7 @@ if (not _instantSpawn) then {
 		};
 	};
 } else {
-	[_side] call RSTF_fnc_refreshSideWaypoints;
+	[_sideIndex] call RSTF_fnc_refreshSideWaypoints;
 };
 
 if (not _skipPublish) then {

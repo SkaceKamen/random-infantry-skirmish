@@ -1,3 +1,10 @@
+
+call RSTF_fnc_profileLoad;
+
+if (RSTF_SKIP_MODE_SELECT) exitWith {
+	0 spawn RSTF_fnc_showConfig
+};
+
 if (isNull(RSTF_CAM)) then {
 	call RSTF_fnc_createCam;
 };
@@ -29,7 +36,14 @@ _display displayAddEventHandler ["Unload", {
 	private _descriptionCtrl = [_cat, 'description'] call ZUI_fnc_getControlById;
 
 	_titleCtrl ctrlSetText _title;
-	_titleCtrl ctrlAddEventHandler ["ButtonClick", format["[RSTF_MODE_SELECTOR_layout] call ZUI_fnc_closeDisplay; RSTF_MODE_INDEX = %1; 0 spawn RSTF_fnc_showConfig", _foreachIndex]];
+	_titleCtrl ctrlAddEventHandler ["ButtonClick", format["
+		[RSTF_MODE_SELECTOR_layout] call ZUI_fnc_closeDisplay;
+		RSTF_MODE_INDEX = %1;
+		RSTF_SKIP_MODE_SELECT = cbChecked ( [RSTF_MODE_SELECTOR_layout, ""skipNextTime""] call ZUI_fnc_getControlById);
+		0 spawn RSTF_fnc_profileSave;
+
+		0 spawn RSTF_fnc_showConfig;
+	", _foreachIndex]];
 	_descriptionCtrl ctrlSetStructuredText parseText(_description);
 } forEach RSTF_MODES;
 

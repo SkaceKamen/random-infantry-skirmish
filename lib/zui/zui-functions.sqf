@@ -243,6 +243,8 @@ ZUI_fnc_refresh = {
 	private _percentage = 0;
 
 	{
+		private _otherSizeType = [_x, _otherSizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
+		private _otherSize = [[_x, _otherSizeConfigName, true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
 		private _sizeType = [_x, _sizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
 		private _size = [[_x, _sizeConfigName, true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
 

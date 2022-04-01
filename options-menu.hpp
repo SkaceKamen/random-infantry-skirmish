@@ -263,7 +263,7 @@ class RSTF_Options {
 				type="checkbox";
 			};
 			class RSTF_MONEY_VEHICLES_ENABLED {
-				title="Allow buying vehicles";
+				title="Allow buying vehicles by players";
 				description="Allow players to buy vehicles for their money";
 				type="checkbox";
 			};
@@ -271,11 +271,6 @@ class RSTF_Options {
 				title="Allow buying supports";
 				description="Allow players to buy supports (artillery)";
 				type="checkbox";
-			};
-			class RSTF_MONEY_VEHICLES_AI_LIMIT {
-				title="Max AI vehicles per side";
-				description="Maximum number of spawned AI vehicles per side";
-				type="number";
 			};
 			class spacer1 { type = "spacer"; };
 			class RSTF_MONEY_START {
@@ -324,6 +319,12 @@ class RSTF_Options {
 				title="Unlock AI vehicles";
 				description="Allow players to enter AI vehicles";
 				type="checkbox";
+			};
+
+			class RSTF_MONEY_VEHICLES_AI_LIMIT {
+				title="Max AI vehicles per side";
+				description="Maximum number of spawned AI vehicles per side";
+				type="number";
 			};
 		};
 	};
@@ -399,6 +400,11 @@ class RSTF_Options {
 				description="Mission daytime.";
 				type="select";
 				optionsVariable="RSTF_TIME_TYPES";
+			};
+			class RSTF_SKIP_MODE_SELECT {
+				title="Skip mode selection";
+				description="Skip mode selection screen when starting mission";
+				type="checkbox";
 			};
 		};
 	};

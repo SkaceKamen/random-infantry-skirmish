@@ -1,6 +1,8 @@
 class Mode: ZUI_ColumnLayout
 {
-	margin = 0.01;
+	margin[] = { 0.01, 0, 0, 0 };
+	height = 0.17;
+	heightType = ZUI_SIZE_ABSOLUTE;
 
 	class Title: ZUI_Button
 	{
