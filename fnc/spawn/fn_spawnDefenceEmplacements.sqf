@@ -222,6 +222,19 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 					_x setVariable ["SPAWNED_SIDE_INDEX", SIDE_ENEMY, true];
 					_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 				} foreach units(_group);
+
+				// In case the static gets destroyed (incorrectly placed), remove it
+				[_spawned, crew(_spawned)] spawn {
+					params ["_spawned", "_spawnedCrew"]
+
+					sleep 10;
+					if (damage _spawned > 0.5) then {
+						deleteVehicle _spawned;
+						{
+							deleteVehicle _x;
+						} forEach _spawnedCrew;
+					};
+				};
 			} else {
 				diag_log text(format["[RSTF] No suitable static found for class %1, spawning soldier instead", _staticIndex]);
 

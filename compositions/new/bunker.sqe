@@ -1,5 +1,5 @@
 version=54;
-center[]={14569.693,17.946171,16127.316};
+center[]={14569.693,17.946171,16127.14};
 class items
 {
 	items=2;
@@ -8,7 +8,7 @@ class items
 		dataType="Object";
 		class PositionInfo
 		{
-			position[]={-0.067382813,0.96563148,-0.088867188};
+			position[]={-0.067382813,0.96563148,0.087890625};
 			angles[]={0,3.1415927,0};
 		};
 		side="Empty";
@@ -24,8 +24,8 @@ class items
 		dataType="Object";
 		class PositionInfo
 		{
-			position[]={0.064453125,1.6604671,0.086914063};
-			angles[]={-0,0,0.0012918708};
+			position[]={0.064453125,1.6604671,-0.087890625};
+			angles[]={0,0,0.0012918708};
 		};
 		side="Empty";
 		flags=4;
