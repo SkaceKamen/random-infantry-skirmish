@@ -225,7 +225,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 
 				// In case the static gets destroyed (incorrectly placed), remove it
 				[_spawned, crew(_spawned)] spawn {
-					params ["_spawned", "_spawnedCrew"]
+					params ["_spawned", "_spawnedCrew"];
 
 					sleep 10;
 					if (damage _spawned > 0.5) then {
