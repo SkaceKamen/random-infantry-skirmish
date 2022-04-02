@@ -27,9 +27,19 @@ _display displayAddEventHandler ["Unload", {
 	};
 }];
 
+// Sort modes using their "order" string
+/*
+private _modes = [];
 {
-	private _title = getText(_x >> "title");
-	private _description = getText(_x >> "description");
+	_modes pushBack [_x, _foreachIndex, getNumber(_x >> "order")];
+} forEach RSTF_MODES;
+*/
+_modes = [RSTF_MODES, [], { getNumber(_x >> "order") }] call BIS_fnc_sortBy;
+
+{
+	private _mode = _x;
+	private _title = getText(_mode >> "title");
+	private _description = getText(_mode >> "description");
 
 	private _cat = [_itemsContainer, missionConfigFile >> "ModeSelectorComponents" >> "Mode", false] call ZUI_fnc_createChild;
 	private _titleCtrl = [_cat, 'title'] call ZUI_fnc_getControlById;
@@ -38,13 +48,13 @@ _display displayAddEventHandler ["Unload", {
 	_titleCtrl ctrlSetText _title;
 	_titleCtrl ctrlAddEventHandler ["ButtonClick", format["
 		[RSTF_MODE_SELECTOR_layout] call ZUI_fnc_closeDisplay;
-		RSTF_MODE_INDEX = %1;
+		RSTF_MODE_SELECTED = %1;
 		RSTF_SKIP_MODE_SELECT = cbChecked ( [RSTF_MODE_SELECTOR_layout, ""skipNextTime""] call ZUI_fnc_getControlById);
 		0 spawn RSTF_fnc_profileSave;
 
 		0 spawn RSTF_fnc_showConfig;
-	", _foreachIndex]];
+	", _mode]];
 	_descriptionCtrl ctrlSetStructuredText parseText(_description);
-} forEach RSTF_MODES;
+} forEach _modes;
 
 [_itemsContainer] call ZUI_fnc_refresh;

@@ -1,5 +1,5 @@
 // Load gamemode
-private _mode = RSTF_MODES select RSTF_MODE_INDEX;
+private _mode = missionConfigFile >> "RSTF_Modes" >> RSTF_MODE_SELECTED;
 
 // Checks if handler was properly defined
 private _loadCallback = {

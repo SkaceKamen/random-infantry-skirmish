@@ -6,6 +6,8 @@ private _errors = [];
 	private _type = _x select 2;
 	private _name = _x select 3;
 	private _callback = _x param [4, -1, [-1, {}]];
+	private _config = _x select 5;
+
 	private _value = -1;
 
 	// Save value of option
@@ -18,7 +20,12 @@ private _errors = [];
 	};
 
 	if (_type == "select") then {
-		_value = lbCurSel(_ctrl);
+		private _index = lbCurSel(_ctrl);
+		_value = _ctrl lbData _index;
+
+		if (!isText(_config >> "optionType") || { getText(_config >> "optionType") != "string" }) then {
+			_value = parseNumber(_value);
+		};
 	};
 
 	// Validate the value

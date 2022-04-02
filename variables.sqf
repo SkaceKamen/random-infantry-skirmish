@@ -107,7 +107,8 @@ RSTF_ENDED = false;
 RSTF_WATER = false;
 
 RSTF_MODES = "getNumber(_x >> ""enabled"") == 1" configClasses (missionConfigFile >> "RSTF_Modes");
-RSTF_MODES_NAMES = RSTF_MODES apply { getText(_x >> "title") };
+RSTF_MODES = [RSTF_MODES, [], { getNumber(_x >> "order") }] call BIS_fnc_sortBy;
+RSTF_MODES_OPTIONS = RSTF_MODES apply { [configName(_x), getText(_x >> "title")] };
 
 RSTF_WEATHER_TYPES = [
 	"Random",
@@ -173,7 +174,7 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_TASKS_IFV_ENABLED",
 	"RSTF_TASKS_CLEAR_ENABLED",
 	"RSTF_TASKS_EMP_ENABLED",
-	"RSTF_MODE_INDEX",
+	"RSTF_MODE_SELECTED",
 	"RSTF_MONEY_ENABLED",
 	"RSTF_MONEY_PER_KILL",
 	"RSTF_MONEY_PER_TASK",

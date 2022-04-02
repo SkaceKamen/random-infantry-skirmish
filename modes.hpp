@@ -5,6 +5,7 @@ class RSTF_Modes
 		title = "Classic";
 		description = "Score-based team deathmatch, where first one that reaches specific number of points wins."
 		enabled = 1;
+		order = 2;
 
 		init = "RSTF_MODE_CLASSIC_init";
 		startLoop = "RSTF_MODE_CLASSIC_startLoop";
@@ -18,6 +19,7 @@ class RSTF_Modes
 		title = "King of the Hill";
 		description = "Side with more units in the predefined capture point receives points, side which reaches specified number of points wins.";
 		enabled = 1;
+		order = 1;
 
 		init = "RSTF_MODE_KOTH_init";
 		startLoop = "RSTF_MODE_KOTH_startLoop";
@@ -31,6 +33,7 @@ class RSTF_Modes
 		title = "Push";
 		description = "Capture a series of fortified points.";
 		enabled = 1;
+		order = 0;
 
 		init = "RSTF_MODE_PUSH_init";
 		startLoop = "RSTF_MODE_PUSH_startLoop";

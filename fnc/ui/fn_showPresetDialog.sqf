@@ -56,7 +56,7 @@ RSTF_Presets_RefreshInfo = {
 				case "ENEMY_FACTIONS": { _enemy = _value; };
 				case "FRIENDLY_FACTIONS": { _friendly = _value; };
 				case "NEUTRAL_FACTIONS": { _neutrals = _value; };
-				case "RSTF_MODE_INDEX": { _mode = _value; };
+				case "RSTF_MODE_SELECTED": { _mode = _value; };
 			};
 		} foreach (_preset select 1);
 

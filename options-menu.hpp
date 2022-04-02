@@ -3,11 +3,12 @@ class RSTF_Options {
 		title = "General";
 
 		class Items {
-			class RSTF_MODE_INDEX {
+			class RSTF_MODE_SELECTED {
 				title="Game mode";
 				description="Game mode dictates rules of winning.";
 				type="select";
-				optionsVariable="RSTF_MODES_NAMES";
+				optionsVariable="RSTF_MODES_OPTIONS";
+				optionType="string";
 			}
 			class RSTF_LIMIT_GROUPS {
 				title="Groups per side";

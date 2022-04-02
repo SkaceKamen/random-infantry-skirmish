@@ -88,8 +88,18 @@ private _xx = _padding;
 			};
 
 			{
-				_ctrl lbAdd _x;
-				if (typeName(_value) == typeName(_foreachIndex) && { _foreachIndex == _value }) then {
+				private _itemValue = _foreachIndex;
+				private _itemLabel = _x;
+
+				if (typeName(_x) == typeName([])) then {
+					_itemValue = _x#0;
+					_itemLabel = _x#1;
+				};
+
+				_ctrl lbAdd _itemLabel;
+				_ctrl lbSetData [_foreachIndex, if (typeName(_itemValue) != typeName("")) then { str(_itemValue) } else { _itemValue }];
+
+				if (typeName(_value) == typeName(_itemValue) && { _itemValue == _value }) then {
 					_ctrl lbSetCurSel _foreachIndex;
 				};
 			} foreach _selectOptions;
@@ -117,7 +127,7 @@ private _xx = _padding;
 		};
 
 		// Save created option for later manipulation
-		RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name, _validator];
+		RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name, _validator, _x];
 		_idc = _idc + 1;
 	};
 

@@ -30,8 +30,8 @@ RSTF_SOLDIERS_BANNED = [
 //Where to spawn
 RSTF_SPAWN_TYPE = RSTF_SPAWN_CLOSEST;
 
-// Currently selected gamemode index in modes list
-RSTF_MODE_INDEX = 1;
+// Currently selected gamemode in modes list
+RSTF_MODE_SELECTED = "Push";
 
 //Randomize weapons ? (turn off if you're using mod)
 RSTF_RANDOMIZE_WEAPONS = false;
