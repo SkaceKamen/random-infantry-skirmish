@@ -38,7 +38,7 @@ if (_hasPylons) then {
 
 _found = _found select {
 	([configFile >> "cfgWeapons" >> _x, true] call RSTF_fnc_isUsableWeapon)
-		&& { _x != "FakeWeapon" && _x != "Laserdesignator_mounted" && _x != "SmokeLauncher" && _x != "CMFlareLauncher" }
+		&& { _x != "FakeWeapon" && _x != "Laserdesignator_mounted" && _x != "SmokeLauncher" && _x != "CMFlareLauncher" && _x != "rhs_weap_CMDispenser_ASO2" }
 	};
 
 _found;

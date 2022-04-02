@@ -10,21 +10,390 @@ RSTF_SOLDIERS_BANNED = [
 	"B_diver_F",
 	"B_diver_exp_F",
 	"B_diver_TL_F",
-	"B_Pilot_F",
-	"B_helicrew_F",
-	"B_helipilot_F",
 	"O_diver_F",
 	"O_diver_exp_F",
 	"O_diver_TL_F",
-	"O_Pilot_F",
-	"O_helicrew_F",
-	"O_helipilot_F",
 	"I_diver_F",
 	"I_diver_exp_F",
 	"I_diver_TL_F",
-	"I_Pilot_F",
-	"I_helicrew_F",
-	"I_helipilot_F"
+	"B_Helipilot_F", // helicopter pilot 
+	"B_crew_F", // crewman 
+	//"B_officer_F", // officer 
+	"B_Pilot_F", // pilot 
+	"B_helicrew_F", // helicopter crew 
+	"B_diver_F", // assault diver 
+	"B_diver_TL_F", // diver team leader 
+	"B_diver_exp_F", // diver explosive specialist 
+	"C_man_pilot_F", // pilot 
+	//"I_G_officer_F", // officer 
+	//"B_G_officer_F", // officer 
+	//"O_G_officer_F", // officer 
+	"I_crew_F", // crewman 
+	"I_helipilot_F", // helicopter pilot 
+	"I_pilot_F", // pilot 
+	"I_helicrew_F", // helicopter crew 
+	//"I_officer_F", // officer 
+	"I_diver_F", // assault diver 
+	"I_diver_exp_F", // diver explosive specialist 
+	"I_diver_TL_F", // diver team leader 
+	//"O_officer_F", // officer 
+	"O_helipilot_F", // helicopter pilot 
+	"O_crew_F", // crewman 
+	"O_Pilot_F", // pilot 
+	"O_helicrew_F", // helicopter crew 
+	"O_diver_F", // assault diver 
+	"O_diver_TL_F", // diver team leader 
+	"O_diver_exp_F", // diver explosive specialist 
+	"C_Driver_1_F", // driver (fuel) 
+	"I_C_Pilot_F", // pilot 
+	"I_C_Helipilot_F", // helicopter pilot 
+	"B_T_Crew_F", // crewman 
+	"B_T_Helicrew_F", // helicopter crew 
+	"B_T_Helipilot_F", // helicopter pilot 
+	//"B_T_Officer_F", // officer 
+	"B_T_Pilot_F", // pilot 
+	"B_T_Diver_F", // assault diver 
+	"B_T_Diver_Exp_F", // diver explosive specialist 
+	"B_T_Diver_TL_F", // diver team leader 
+	"O_T_Crew_F", // crewman 
+	"O_T_Helicrew_F", // helicopter crew 
+	"O_T_Helipilot_F", // helicopter pilot 
+	//"O_T_Officer_F", // officer 
+	"O_T_Pilot_F", // pilot 
+	"O_T_Diver_F", // assault diver 
+	"O_T_Diver_Exp_F", // diver explosive specialist 
+	"O_T_Diver_TL_F", // diver team leader 
+	"B_Deck_Crew_F", // deck crew 
+	"B_Fighter_Pilot_F", // fighter pilot 
+	"O_Fighter_Pilot_F", // fighter pilot 
+	"I_Fighter_Pilot_F", // fighter pilot 
+	"C_IDAP_Pilot_01_F", // pilot 
+	"B_W_Crew_F", // crewman 
+	"B_W_Helicrew_F", // helicopter crew 
+	"B_W_Helipilot_F", // helicopter pilot 
+	//"B_W_Officer_F", // officer 
+	//"I_E_Officer_F", // officer 
+	"I_E_Soldier_MP_F", // military police officer 
+	"I_E_Crew_F", // crewman 
+	"I_E_Helipilot_F", // helicopter pilot 
+	"I_E_Helicrew_F", // helicopter crew 
+	"B_Officer_Parade_F", // officer (parade dress) 
+	"B_Officer_Parade_Veteran_F", // officer (veteran, parade dress) 
+	"I_Officer_Parade_F", // officer (parade dress) 
+	"I_Officer_Parade_Veteran_F", // officer (veteran, parade dress) 
+	"I_E_Officer_Parade_F", // officer (parade dress) 
+	"I_E_Officer_Parade_Veteran_F", // officer (veteran, parade dress) 
+	"O_Officer_Parade_F", // officer (parade dress) 
+	"O_Officer_Parade_Veteran_F", // officer (veteran, parade dress) 
+	"rhs_msv_officer_armored", // officer (armored) 
+	"rhs_msv_officer", // officer 
+	"rhs_msv_driver_armored", // driver (armored) 
+	"rhs_msv_driver", // driver 
+	"rhs_msv_crew", // crew 
+	"rhs_msv_armoredcrew", // crew (armored) 
+	"rhs_msv_combatcrew", // crew (combat) 
+	"rhs_msv_crew_commander", // crew commander 
+	"rhs_pilot", // pilot 
+	"rhs_pilot_tan", // pilot (tan) 
+	"rhs_pilot_combat_heli", // pilot (combat helicopter) 
+	"rhs_pilot_transport_heli", // pilot (transport) 
+	"rhs_msv_emr_officer_armored", // officer (armored) 
+	"rhs_msv_emr_officer", // officer 
+	"rhs_msv_emr_driver_armored", // driver (armored) 
+	"rhs_msv_emr_driver", // driver 
+	"rhs_msv_emr_crew", // crew 
+	"rhs_msv_emr_armoredcrew", // crew (armored) 
+	"rhs_msv_emr_combatcrew", // crew (combat) 
+	"rhs_msv_emr_crew_commander", // crew commander 
+	"rhs_vdv_officer_armored", // officer (armored) 
+	"rhs_vdv_officer", // officer 
+	"rhs_vdv_driver_armored", // driver (armored) 
+	"rhs_vdv_driver", // driver 
+	"rhs_vdv_crew", // crew 
+	"rhs_vdv_armoredcrew", // crew (armored) 
+	"rhs_vdv_combatcrew", // crew (combat) 
+	"rhs_vdv_crew_commander", // crew commander 
+	"rhs_vdv_des_officer_armored", // officer (armored) 
+	"rhs_vdv_des_officer", // officer 
+	"rhs_vdv_des_driver_armored", // driver (armored) 
+	"rhs_vdv_des_driver", // driver 
+	"rhs_vdv_des_crew", // crew 
+	"rhs_vdv_des_armoredcrew", // crew (armored) 
+	"rhs_vdv_des_combatcrew", // crew (combat) 
+	"rhs_vdv_des_crew_commander", // crew commander 
+	"rhs_vdv_flora_officer_armored", // officer (armored) 
+	"rhs_vdv_flora_officer", // officer 
+	"rhs_vdv_flora_driver_armored", // driver (armored) 
+	"rhs_vdv_flora_driver", // driver 
+	"rhs_vdv_flora_crew", // crew 
+	"rhs_vdv_flora_crew_commander", // crew commander 
+	"rhs_vdv_flora_armoredcrew", // crew (armored) 
+	"rhs_vdv_flora_combatcrew", // crew (combat) 
+	"rhs_vdv_mflora_officer_armored", // officer (armored) 
+	"rhs_vdv_mflora_officer", // officer 
+	"rhs_vdv_mflora_driver_armored", // driver (armored) 
+	"rhs_vdv_mflora_driver", // driver 
+	"rhs_vdv_mflora_crew", // crew 
+	"rhs_vdv_mflora_crew_commander", // crew commander 
+	"rhs_vdv_mflora_armoredcrew", // crew (armored) 
+	"rhs_vdv_mflora_combatcrew", // crew (combat) 
+	"rhs_vdv_recon_officer_armored", // officer (armored) 
+	"rhs_vdv_recon_officer", // officer 
+	"rhs_vmf_emr_officer_armored", // officer (armored) 
+	"rhs_vmf_emr_officer", // officer 
+	"rhs_vmf_emr_driver_armored", // driver (armored) 
+	"rhs_vmf_emr_driver", // driver 
+	"rhs_vmf_emr_crew", // crew 
+	"rhs_vmf_emr_crew_commander", // crew commander 
+	"rhs_vmf_emr_armoredcrew", // crew (armored) 
+	"rhs_vmf_emr_combatcrew", // crew (combat) 
+	"rhs_vmf_flora_officer_armored", // officer (armored) 
+	"rhs_vmf_flora_officer", // officer 
+	"rhs_vmf_flora_driver_armored", // driver (armored) 
+	"rhs_vmf_flora_driver", // driver 
+	"rhs_vmf_flora_crew", // crew 
+	"rhs_vmf_flora_crew_commander", // crew commander 
+	"rhs_vmf_flora_armoredcrew", // crew (armored) 
+	"rhs_vmf_flora_combatcrew", // crew (combat) 
+	"rhs_vmf_recon_officer_armored", // officer (armored) 
+	"rhs_vmf_recon_officer", // officer 
+	"rhs_rva_crew", // driver 
+	"rhs_rva_crew_armored", // driver (armored) 
+	"rhs_rva_crew_officer", // officer 
+	"rhs_rva_crew_officer_armored", // officer (armored) 
+	"rhsusf_army_ocp_officer", // officer 
+	"rhsusf_army_ocp_fso", // fire support officer 
+	"rhsusf_army_ocp_crewman", // crew 
+	"rhsusf_army_ocp_combatcrewman", // crew (combat) 
+	"rhsusf_army_ocp_driver", // driver 
+	"rhsusf_army_ocp_driver_armored", // driver (armored) 
+	"rhsusf_army_ocp_helipilot", // helicopter pilot 
+	"rhsusf_army_ocp_ah64_pilot", // ah-64 pilot 
+	"rhsusf_army_ocp_helicrew", // helicopter crew 
+	"rhsusf_army_ucp_officer", // officer 
+	"rhsusf_army_ucp_fso", // fire support officer 
+	"rhsusf_army_ucp_crewman", // crew 
+	"rhsusf_army_ucp_combatcrewman", // crew (combat) 
+	"rhsusf_army_ucp_driver", // driver 
+	"rhsusf_army_ucp_driver_armored", // driver (armored) 
+	"rhsusf_army_ucp_helipilot", // helicopter pilot 
+	"rhsusf_army_ucp_ah64_pilot", // ah-64 pilot 
+	"rhsusf_army_ucp_helicrew", // helicopter crew 
+	"rhsusf_usmc_marpat_wd_officer", // officer 
+	"rhsusf_usmc_marpat_wd_fso", // fire support officer 
+	"rhsusf_usmc_marpat_wd_crewman", // crew 
+	"rhsusf_usmc_marpat_wd_combatcrewman", // crew (combat) 
+	"rhsusf_usmc_marpat_wd_driver", // driver 
+	"rhsusf_usmc_marpat_wd_helipilot", // helicopter pilot 
+	"rhsusf_usmc_marpat_wd_helicrew", // helicopter crew 
+	"rhsusf_usmc_marpat_d_officer", // officer 
+	"rhsusf_usmc_marpat_d_fso", // fire support officer 
+	"rhsusf_usmc_marpat_d_crewman", // crew 
+	"rhsusf_usmc_marpat_d_combatcrewman", // crew (combat) 
+	"rhsusf_usmc_marpat_d_driver", // driver 
+	"rhsusf_usmc_marpat_d_helipilot", // helicopter pilot 
+	"rhsusf_usmc_marpat_d_helicrew", // helicopter crew 
+	"rhsusf_usmc_lar_marpat_wd_crewman", // crew 
+	"rhsusf_usmc_lar_marpat_wd_combatcrewman", // crew (combat) 
+	"rhsusf_usmc_lar_marpat_wd_machinegunner", // crew (m240b) 
+	"rhsusf_usmc_lar_marpat_d_crewman", // crew 
+	"rhsusf_usmc_lar_marpat_d_combatcrewman", // crew (combat) 
+	"rhsusf_usmc_lar_marpat_d_machinegunner", // crew (m240b) 
+	"rhsusf_usmc_recon_marpat_wd_officer", // officer 
+	"rhsusf_usmc_recon_marpat_d_officer", // officer 
+	"rhsusf_socom_swcc_crewman", // crew 
+	"rhsusf_socom_swcc_officer", // officer 
+	"rhsusf_airforce_jetpilot", // jet pilot 
+	"rhsusf_airforce_pilot", // pilot 
+	"rhsgref_cdf_ngd_officer", // officer 
+	"rhsgref_cdf_ngd_crew", // crew 
+	"rhsgref_cdf_reg_officer", // officer 
+	"rhsgref_cdf_reg_crew", // crew 
+	"rhsgref_cdf_reg_crew_commander", // crew commander 
+	"rhsgref_cdf_air_pilot", // pilot 
+	"rhsgref_cdf_para_officer", // officer 
+	"rhsgref_cdf_para_crew", // crew 
+	"rhsgref_cdf_b_ngd_officer", // officer 
+	"rhsgref_cdf_b_ngd_crew", // crew 
+	"rhsgref_cdf_b_reg_officer", // officer 
+	"rhsgref_cdf_b_reg_crew", // crew 
+	"rhsgref_cdf_b_reg_crew_commander", // crew commander 
+	"rhsgref_cdf_b_air_pilot", // pilot 
+	"rhsgref_cdf_b_para_officer", // officer 
+	"rhsgref_cdf_b_para_crew", // crew 
+	"rhsgref_cdf_un_officer", // officer 
+	"rhsgref_cdf_un_crew", // crew 
+	"rhsgref_cdf_un_pilot", // pilot 
+	"rhsgref_nat_crew", // crew 
+	"rhsgref_nat_pmil_crew", // crew 
+	"rhsgref_ins_squadleader", // officer 
+	"rhsgref_ins_crew", // crew 
+	"rhsgref_ins_pilot", // pilot 
+	"rhsgref_ins_g_squadleader", // officer 
+	"rhsgref_ins_g_crew", // crew 
+	"rhsgref_ins_g_pilot", // pilot 
+	"rhsgref_hidf_crewman", // crew 
+	"rhsgref_hidf_helipilot", // helicopter pilot 
+	"rhsgref_hidf_boat_driver", // driver (boat) 
+	"rhsgref_tla_crew", // crewman 
+	"rhsgref_tla_g_crew", // crewman 
+	"rhssaf_airforce_pilot_transport_heli", // pilot (helicopter) 
+	"rhssaf_airforce_pilot_mig29", // mig-29 pilot 
+	"rhssaf_airforce_o_pilot_transport_heli", // pilot (helicopter) 
+	"rhssaf_airforce_o_pilot_mig29", // mig-29 pilot 
+	"rhssaf_army_m10_digital_crew", // crewman (light) 
+	"rhssaf_army_m10_digital_crew_armored", // crewman (armored) 
+	"rhssaf_army_m10_digital_crew_armored_nco", // crew commander (armored) 
+	"rhssaf_army_m10_digital_officer", // officer 
+	"rhssaf_army_o_m10_digital_crew", // crewman (light) 
+	"rhssaf_army_o_m10_digital_crew_armored", // crewman (armored) 
+	"rhssaf_army_o_m10_digital_officer", // officer 
+	"rhssaf_army_m93_oakleaf_summer_crew", // crewman (light) 
+	"rhssaf_army_m93_oakleaf_summer_officer", // officer 
+	"rhssaf_army_o_m93_oakleaf_summer_crew", // crewman (light) 
+	"rhssaf_army_o_m93_oakleaf_summer_officer", // officer 
+	"rhssaf_army_m10_para_crew", // crewman (light) 
+	"rhssaf_army_m10_para_officer", // officer 
+	"rhssaf_army_o_m10_para_crew", // crewman (light) 
+	"rhssaf_army_o_m10_para_officer", // officer 
+	"rhssaf_un_m10_digital_desert_crew", // crewman (light) 
+	"rhssaf_un_m10_digital_desert_officer", // officer 
+	"rhssaf_un_m10_digital_crew", // crewman (light) 
+	"rhssaf_un_m10_digital_officer", // officer 
+	"CUP_B_BAF_Soldier_Crew_DPM", // crewman 
+	"CUP_B_BAF_Soldier_DeckCrew_DPM", // deck crew 
+	"CUP_B_BAF_Soldier_FighterPilot_DPM", // fighter pilot 
+	"CUP_B_BAF_Soldier_Helicrew_DPM", // helicopter crew 
+	"CUP_B_BAF_Soldier_Helipilot_DPM", // helicopter pilot 
+	"CUP_B_BAF_Soldier_Officer_DPM", // officer 
+	"CUP_B_BAF_Soldier_Pilot_DPM", // pilot 
+	"CUP_B_BAF_Soldier_Diver_DPM", // diver (woodland) 
+	"CUP_B_BAF_Soldier_Crew_DDPM", // crewman 
+	"CUP_B_BAF_Soldier_DeckCrew_DDPM", // deck crew 
+	"CUP_B_BAF_Soldier_FighterPilot_DDPM", // fighter pilot 
+	"CUP_B_BAF_Soldier_Helicrew_DDPM", // helicopter crew 
+	"CUP_B_BAF_Soldier_Helipilot_DDPM", // helicopter pilot 
+	"CUP_B_BAF_Soldier_Officer_DDPM", // officer 
+	"CUP_B_BAF_Soldier_Pilot_DDPM", // pilot 
+	"CUP_B_BAF_Soldier_Diver_DDPM", // diver (desert) 
+	"CUP_B_BAF_Soldier_Crew_MTP", // crewman 
+	"CUP_B_BAF_Soldier_DeckCrew_MTP", // deck crew 
+	"CUP_B_BAF_Soldier_FighterPilot_MTP", // fighter pilot 
+	"CUP_B_BAF_Soldier_Helicrew_MTP", // helicopter crew 
+	"CUP_B_BAF_Soldier_Helipilot_MTP", // helicopter pilot 
+	"CUP_B_BAF_Soldier_Officer_MTP", // officer 
+	"CUP_B_BAF_Soldier_Pilot_MTP", // pilot 
+	"CUP_B_BAF_Soldier_Diver_MTP", // assault diver 
+	"CUP_B_GER_Crew", // crewman 
+	"CUP_B_GER_HPilot", // helicopter pilot 
+	"CUP_B_GER_Fleck_Crew", // crewman 
+	"CUP_B_GER_Fleck_HPilot", // helicopter pilot 
+	"CUP_I_GUE_Crew", // crewman 
+	"CUP_I_GUE_Pilot", // pilot 
+	"CUP_I_PMC_Crew", // tactical driver 
+	"CUP_I_PMC_Pilot", // tactical pilot 
+	"CUP_I_PMC_Winter_Crew", // tactical driver 
+	"CUP_I_PMC_Winter_Pilot", // tactical pilot 
+	"CUP_O_RU_Pilot", // pilot 
+	"CUP_O_RU_Crew", // crewman 
+	"CUP_O_RU_Officer", // officer 
+	"CUP_O_RU_Pilot_EMR", // pilot 
+	"CUP_O_RU_Crew_EMR", // crewman 
+	"CUP_O_RU_Officer_EMR", // officer 
+	"CUP_O_RU_Pilot_VDV", // pilot 
+	"CUP_O_RU_Crew_VDV", // crewman 
+	"CUP_O_RU_Officer_VDV", // officer 
+	"CUP_O_RU_Pilot_VDV_EMR", // pilot 
+	"CUP_O_RU_Crew_VDV_EMR", // crewman 
+	"CUP_O_RU_Officer_VDV_EMR", // officer 
+	"CUP_O_RUS_Commander", // spetsnaz officer 
+	"CUP_O_RUS_Commander_Autumn", // spetsnaz officer 
+	"CUP_O_RU_Pilot_M_EMR", // pilot 
+	"CUP_O_RU_Pilot_VDV_M_EMR", // pilot 
+	"CUP_O_RU_Officer_M_EMR_V2", // officer 
+	"CUP_O_RU_Soldier_Crew_M_EMR_V2", // crewman 
+	"CUP_O_RU_Officer_M_VDV_EMR_V2", // officer 
+	"CUP_O_RU_Soldier_Crew_M_VDV_EMR_V2", // crewman 
+	"CUP_O_RU_Officer_M_BeigeDigital", // officer 
+	"CUP_O_RU_Soldier_Crew_M_BeigeDigital", // crewman 
+	"CUP_O_TK_Officer", // officer 
+	"CUP_O_TK_Crew", // crewman 
+	"CUP_O_TK_Pilot", // pilot 
+	"CUP_B_USMC_Officer", // officer 
+	"CUP_B_USMC_Pilot", // pilot 
+	"CUP_B_USMC_Crew", // crewman 
+	"CUP_B_USNavy_LHD_Crew_Blue", // lhd crew (blue) 
+	"CUP_B_USNavy_LHD_Crew_Brown", // lhd crew (brown) 
+	"CUP_B_USNavy_LHD_Crew_Green", // lhd crew (green) 
+	"CUP_B_USNavy_LHD_Crew_Red", // lhd crew (red) 
+	"CUP_B_USNavy_LHD_Crew_Violet", // lhd crew (violet) 
+	"CUP_B_USNavy_LHD_Crew_White", // lhd crew (white) 
+	"CUP_B_USNavy_LHD_Crew_Yellow", // lhd crew (yellow) 
+	"CUP_B_USMC_Officer_des", // officer 
+	"CUP_B_USMC_Pilot_des", // pilot 
+	"CUP_B_USMC_Crew_des", // crewman 
+	"CUP_B_USMC_Crewman_FROG_WDL", // crewman 
+	"CUP_B_USMC_Officer_FROG_WDL", // officer 
+	"CUP_B_USMC_Crewman_FROG_DES", // crewman 
+	"CUP_B_USMC_Officer_FROG_DES", // officer 
+	"CUP_C_C_Pilot_01", // pilot 
+	"CUP_C_R_Pilot_01", // pilot 
+	"CUP_B_CZ_Crew_DES", // crewman 
+	"CUP_B_CZ_Officer_DES", // officer 
+	"CUP_B_CZ_Pilot_DES", // pilot 
+	"CUP_B_CZ_Crew_WDL", // crewman 
+	"CUP_B_CZ_Officer_WDL", // officer 
+	"CUP_B_CZ_Pilot_WDL", // pilot 
+	"CUP_B_CDF_Officer_MNT", // officer 
+	"CUP_B_CDF_Pilot_MNT", // pilot 
+	"CUP_B_CDF_Crew_MNT", // crewman 
+	"CUP_B_CDF_Officer_DST", // officer 
+	"CUP_B_CDF_Pilot_DST", // pilot 
+	"CUP_B_CDF_Crew_DST", // crewman 
+	"CUP_B_CDF_Officer_FST", // officer 
+	"CUP_B_CDF_Pilot_FST", // pilot 
+	"CUP_B_CDF_Crew_FST", // crewman 
+	"CUP_B_CDF_Officer_SNW", // officer 
+	"CUP_B_CDF_Pilot_SNW", // pilot 
+	"CUP_B_CDF_Crew_SNW", // crewman 
+	"CUP_I_UN_CDF_Officer_MNT", // officer 
+	"CUP_I_UN_CDF_Pilot_MNT", // pilot 
+	"CUP_I_UN_CDF_Crew_MNT", // crewman 
+	"CUP_I_UN_CDF_Officer_DST", // officer 
+	"CUP_I_UN_CDF_Pilot_DST", // pilot 
+	"CUP_I_UN_CDF_Crew_DST", // crewman 
+	"CUP_I_UN_CDF_Officer_FST", // officer 
+	"CUP_I_UN_CDF_Pilot_FST", // pilot 
+	"CUP_I_UN_CDF_Crew_FST", // crewman 
+	"CUP_O_INS_Officer", // officer 
+	"CUP_O_INS_Crew", // crewman 
+	"CUP_O_INS_Pilot", // pilot 
+	"CUP_I_RACS_Officer", // officer 
+	"CUP_I_RACS_Crew", // crewman 
+	"CUP_I_RACS_Pilot", // pilot 
+	"CUP_I_RACS_Officer_Urban", // officer 
+	"CUP_I_RACS_Officer_wdl", // officer 
+	"CUP_I_RACS_Officer_Mech", // officer 
+	"CUP_O_sla_Officer", // officer 
+	"CUP_O_sla_Crew", // crewman 
+	"CUP_O_sla_Pilot", // pilot 
+	"CUP_O_sla_Officer_militia", // militia officer 
+	"CUP_O_sla_Officer_urban", // officer 
+	"CUP_O_sla_Officer_desert", // officer 
+	"CUP_B_US_Officer_UCP", // officer 
+	"CUP_B_US_Crew_UCP", // crewman 
+	"CUP_B_US_Officer_OCP", // officer 
+	"CUP_B_US_Crew_OCP", // crewman 
+	"CUP_B_US_Officer_OEFCP", // officer 
+	"CUP_B_US_Crew_OEFCP", // crewman 
+	"CUP_B_US_Pilot", // pilot 
+	"CUP_B_US_Pilot_Light", // pilot (unarmed) 
+	"CUP_B_HIL_Officer_Res", // officer 
+	"CUP_B_HIL_Officer", // officer 
+	"CUP_B_HIL_Crew", // crewman 
+	"CUP_B_HIL_Pilot", // pilot 
+	"CUP_B_HIL_Diver_MP5_SF", // diver (mp5) 
+	"CUP_B_HIL_Diver_MP7_SF" // diver (mp7)"
 ];
 
 //Where to spawn

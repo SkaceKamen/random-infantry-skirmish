@@ -13,6 +13,9 @@ from utils import buildPreview
 ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools\\AddonBuilder\\AddonBuilder.exe'
 PUBLISHER = "c:\\Users\\KaKa\\source\\repos\\A3MissionPublisher\\A3MissionPublisher\\bin\\x64\\Release\\net6.0\\A3MissionPublisher.exe"
 
+SKIP_PUBLISH = True;
+SKIP_PUBLISHED = False;
+
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
 includePath = os.path.join(os.path.dirname(__file__), "include.txt")
@@ -43,11 +46,16 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   uploadPreview = False
   existingId = ids[island] if island in ids else 0
 
-  if (island != "vt7"):
-    print("Skip " + island)
+  if SKIP_PUBLISHED and existingId != 0:
+    print("Skip %s because it was already published" % island)
     continue
 
-  print("Build " + island)
+  if SKIP_PUBLISH:
+    print("Build %s" % island)
+  else:
+    print("Build & Publish %s" % island)
+
+  print(" Assembling mission...")
 
   if os.path.exists(missionPath):
     shutil.rmtree(missionPath)
@@ -61,6 +69,15 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
 
   with open(os.path.join(missionPath, 'variables.sqf'), 'r') as f:
     variablesSqf = f.read()
+
+  with open(os.path.join(missionPath, 'variables.sqf'), 'w') as f:
+    f.write(variablesSqf.replace(
+      'RSTF_DEBUG = true;',
+      'RSTF_DEBUG = false;'
+    ))
+
+  if SKIP_PUBLISH:
+    continue
 
   if existingId == 0 and os.path.exists(previewPath):
     title = missionTitle.split(' - ')[1]
@@ -77,17 +94,15 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
 	timepacked="%s";
 };
 """ % str(round(time.time())))
-  
-  with open(os.path.join(missionPath, 'variables.sqf'), 'w') as f:
-    variablesSqf = f.write(variablesSqf.replace(
-      'RSTF_DEBUG = true;',
-      'RSTF_DEBUG = false;'
-    ))
 
-    subprocess.check_call(
-      [ADDON_BUILDER, missionPath, resultsPath, "-include=%s" % includePath],
-      stdout=subprocess.DEVNULL
-    )
+  print(" Building pbo...")
+
+  subprocess.check_call(
+    [ADDON_BUILDER, missionPath, resultsPath, "-include=%s" % includePath],
+    stdout=subprocess.DEVNULL
+  )
+
+  print(" Publishing...")
 
   with open(workshopDataPath, 'w') as f:
     json.dump({
@@ -114,8 +129,6 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
 
     with open(idsPath, "w") as f:
       json.dump(ids, f, indent=2)
-
-  sys.exit(1)
 
 
 

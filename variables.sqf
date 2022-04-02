@@ -1,6 +1,6 @@
 #include "dialogs\keys.hpp"
 
-RSTF_DEBUG = true;
+RSTF_DEBUG = false;
 
 // Indexes used for various arrays
 SIDE_ENEMY = 0;
