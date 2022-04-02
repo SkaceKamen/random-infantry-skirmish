@@ -48,12 +48,12 @@ _modes = [RSTF_MODES, [], { getNumber(_x >> "order") }] call BIS_fnc_sortBy;
 	_titleCtrl ctrlSetText _title;
 	_titleCtrl ctrlAddEventHandler ["ButtonClick", format["
 		[RSTF_MODE_SELECTOR_layout] call ZUI_fnc_closeDisplay;
-		RSTF_MODE_SELECTED = %1;
+		RSTF_MODE_SELECTED = ""%1"";
 		RSTF_SKIP_MODE_SELECT = cbChecked ( [RSTF_MODE_SELECTOR_layout, ""skipNextTime""] call ZUI_fnc_getControlById);
 		0 spawn RSTF_fnc_profileSave;
 
 		0 spawn RSTF_fnc_showConfig;
-	", _mode]];
+	", configName(_mode)]];
 	_descriptionCtrl ctrlSetStructuredText parseText(_description);
 } forEach _modes;
 
