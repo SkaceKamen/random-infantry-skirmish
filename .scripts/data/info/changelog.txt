@@ -1,1 +1,16 @@
-Test release
+[list]
+ [*] PUSH - added defensive bunkers to each point
+ [list]
+  [*] Configurable, you can choose how many to spawn or 0 to disable
+ [/list]
+ [*] New options:
+ [list]
+  [*] Spawn AI vehicles - you can now enable/disable AI vehicles independent on players
+  [*] Unlock AI vehicles - you can now make AI vehicles unlocked so players can re-use them when they're abandoned
+ [/list]
+ [*] Added new Mode selection screen
+ [*] Unit groups now spawn together
+ [*] Stuck AI vehicles should now get re-spawned more reliably
+ [*] Fixed issues with AI vehicles not spawning properly sometimes
+ [*] Some internal optimizations and smaller fixes
+[/list]

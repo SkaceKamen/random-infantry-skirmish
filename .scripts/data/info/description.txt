@@ -1,28 +1,42 @@
-Fast paced almost instant battle mission. Pick random place on the island, pick your gear and fight!
-Now with KoTH style mode.
+Immediately jump into random infantry skirmish on random place on the map. You can choose any faction, any weapon and any vehicles and just start fighting.
 
-[b] Note: [/b] Press [WIN] to open vehicle buying dialog.
-
-[h1] Main features [/h1]
+[h1]Main features[/h1]
 [list]
- [*] Fast paced battles for villages/cities around the island
- [*] Supports [b]any mod[/b] with correctly configured factions
- [*] Highly configurable, most of the rules can be changed, disabled
+  [*] [b]Fast paced[/b], dynamically generated firefight with infantry and land/air vehicles
+  [*] Compatible with [b]any mod[/b] that has proper units definitions
+  [*] Fully customizable, set your own rules, select your gear, pick location, pick factions
+  [*] 3 game modes: [b]Push[/b], [b]King of the Hill[/b] and [b]Team Deathmatch[/b]
 [/list]
 
-[h1] Lastest update [/h1]
+[h1]Game modes[/h1]
 [list]
- [*] Added possibility to buy vehicles (can be turned off)
- [*] Added possibility for AI to buy vehicles too (can be turned off)
- [*] Added KOTH style game mode (game mode can be switched back to classic)
- [*] Each supported island now has it's own workshop item, with custom locations
- [*] Hopefully fixed support for dedicated servers
- [*] Fixed ALT-view issues in COOP
+ [*] [b]Push[/b] - attack sequence of points, one after another
+ [*] [b]King of the Hill[/b] - team that has more units in specified area gets points over time, the team that reaches point limit first wins
+ [*] [b]Team Deathmatch[/b] - get points for killing enemy units, the team that reaches point limit first wins
 [/list]
 
-[h1] Note for dedicated servers [/h1]
-Since this mission relies on UI dialog, where user can configure his experience, dedicated server requires [b]admin[/b] to configure and start the mission.
+[h2]Latest update[/h2]
+[h3]2022-04-02[/h3]
+[list]
+ [*] PUSH - added defensive bunkers to each point
+ [list]
+  [*] Configurable, you can choose how many to spawn or 0 to disable
+ [/list]
+ [*] New options:
+ [list]
+  [*] Spawn AI vehicles - you can now enable/disable AI vehicles independent on players
+  [*] Unlock AI vehicles - you can now make AI vehicles unlocked so players can re-use them when they're abandoned
+ [/list]
+ [*] Added new Mode selection screen
+ [*] Unit groups now spawn together
+ [*] Stuck AI vehicles should now get re-spawned more reliably
+ [*] Fixed issues with AI vehicles not spawning properly sometimes
+ [*] Some internal optimizations and smaller fixes
+[/list]
 
-[h1] Where to report issues / suggest changes [/h1]
+[h2]No support dedicated servers[/h2]
+Since this mission relies on UI dialog, where user can configure his experience, dedicated server requires admin to configure and start the mission.
+
+[h1]Where to report issues / suggest changes[/h1]
 Please direct all requests and issues to the source code repository:
 https://github.com/SkaceKamen/random-infantry-skirmish/issues

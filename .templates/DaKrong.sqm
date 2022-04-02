@@ -135,7 +135,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="Random Skirmish - Da Krong, Quang Tri Vietnam";
+		briefingName="RIS - Da Krong, Quang Tri Vietnam";
 		overviewText="Random skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;

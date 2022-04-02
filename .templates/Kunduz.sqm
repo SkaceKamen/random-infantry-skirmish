@@ -136,7 +136,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="Random Skirmish - Kunduz, Afghanistan";
+		briefingName="RIS - Kunduz, Afghanistan";
 		overviewText="Random skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;

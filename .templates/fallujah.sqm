@@ -136,7 +136,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="Random Skirmish - Fallujah v1.2";
+		briefingName="RIS - Fallujah v1.2";
 		overviewText="Random skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;
