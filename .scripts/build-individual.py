@@ -39,11 +39,15 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   missionPath = missionsPath % island
   resultPath = os.path.abspath(os.path.join(resultsPath, "RIS-Build.%s.pbo" % island))
   previewPath = os.path.join(previewsPath, "%s.jpg" % island)
-  missionTitle = "Random Skirmish - %s" % island
+  missionTitle = "RIS - %s" % island
   uploadPreview = False
+  existingId = ids[island] if island in ids else 0
 
-  if (island != "isladuala3"):
+  if (island != "vt7"):
+    print("Skip " + island)
     continue
+
+  print("Build " + island)
 
   if os.path.exists(missionPath):
     shutil.rmtree(missionPath)
@@ -58,14 +62,13 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   with open(os.path.join(missionPath, 'variables.sqf'), 'r') as f:
     variablesSqf = f.read()
 
-  if os.path.exists(previewPath):
+  if existingId == 0 and os.path.exists(previewPath):
     title = missionTitle.split(' - ')[1]
 
     previewImage = buildPreview(Image.open(previewPath), logoOverlay, title)
     previewImage.save(previewTempPath)
 
     uploadPreview = True
-    sys.exit(1)
 
   with open(os.path.join(missionPath, 'config.cpp'), 'w') as f:
     f.write("""class cfgMods
@@ -88,7 +91,7 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
 
   with open(workshopDataPath, 'w') as f:
     json.dump({
-      "id": ids[island] if island in ids else 0,
+      "id": existingId,
 	    "tags": ["multiplayer","singleplayer","infantry","coop","vehicles","scenario","dependency","air","altis" if island == 'Altis' else 'othermap',"tag review"],
       "title": missionTitle,
       "descriptionFile": descriptionPath,

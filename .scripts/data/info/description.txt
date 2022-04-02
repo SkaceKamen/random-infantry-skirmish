@@ -6,11 +6,12 @@ Immediately jump into random infantry skirmish on random place on the map. You c
   [*] Compatible with [b]any mod[/b] that has proper units definitions
   [*] Fully customizable, set your own rules, select your gear, pick location, pick factions
   [*] 3 game modes: [b]Push[/b], [b]King of the Hill[/b] and [b]Team Deathmatch[/b]
+  [*] Supports [b]Singleplayer[/b] and [b]COOP[/b] (up to 8 players)
 [/list]
 
 [h1]Game modes[/h1]
 [list]
- [*] [b]Push[/b] - attack sequence of points, one after another
+ [*] [b]Push[/b] - attack and capture sequence of points, one after another while defenders put fierce resistence
  [*] [b]King of the Hill[/b] - team that has more units in specified area gets points over time, the team that reaches point limit first wins
  [*] [b]Team Deathmatch[/b] - get points for killing enemy units, the team that reaches point limit first wins
 [/list]
