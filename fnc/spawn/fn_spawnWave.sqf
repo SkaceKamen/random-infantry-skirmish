@@ -72,9 +72,9 @@ for [{_i = 0}, {_i < (_totalUnits - _aliveUnits)}, {_i = _i + 1}] do {
 	};
 
 	if (_instantSpawn) then {
-		[_group, _sideIndex] call RSTF_fnc_createRandomUnit;
+		[_group, _sideIndex, true] call RSTF_fnc_createRandomUnit;
 	} else {
-		_spawnQueue pushBack [_group, _sideIndex];
+		_spawnQueue pushBack [_group, _sideIndex, true];
 	};
 };
 

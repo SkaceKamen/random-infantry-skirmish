@@ -120,7 +120,7 @@ RSTF_MODE_PUSH_startLoop = {
 		if (RSTF_DEBUG) then {
 			private _marker = createMarkerLocal [str(_center), _center];
 			_marker setMarkerShape "ICON";
-			_marker setMarkerType "mil_warning";
+			_marker setMarkerType "mil_flag";
 		};
 
 		RSTF_MODE_PUSH_POINTS pushBack [_center, _direction];

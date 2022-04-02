@@ -1,5 +1,22 @@
-private _group = _this select 0;
-private _side = _this select 1;
+/*
+	Function:
+	RSTF_fnc_createRandomUnit
+
+	Description:
+	Spawns a random unit
+
+	Parameters:
+	_group - group [Group]
+	_side - side index [Number]
+	_checkMovement - check if unit moves, kill if not, default false [Boolean]
+
+	Returns:
+	Spawned unit [Object]
+*/
+
+private _group = param [0];
+private _side = param [1];
+private _checkMovement = param [2, false];
 private _position = [_side] call RSTF_fnc_randomSpawn;
 
 // Try to spawn next to our group, but only if they're inside spawn
@@ -109,6 +126,44 @@ if (!_vehicular) then {
 _unit setVariable ["SPAWNED_SIDE", side(_group), true];
 _unit setVariable ["SPAWNED_SIDE_INDEX", _side, true];
 _unit addEventHandler ["Killed", RSTF_fnc_unitKilled];
+
+if (_checkMovement) then {
+	// Check every minute if unit has moved more than 1 meter, kill it if not
+	[_unit, _side] spawn {
+		private _unit = param [0];
+		private _side = param [1];
+		private _pos = getPos(_unit);
+		private _moved = 0;
+		private _time = 0;
+
+		while { alive _unit && !isPlayer(_unit) } do {
+			private _newPos = getPos(_unit);
+			_moved = _moved + (_newPos distance _pos);
+			_pos = _newPos;
+			_time = _time + 10;
+			
+			if (_time >= 60 && _moved < 2 && _pos distance RSTF_POINT > 150) exitWith {
+				_unit setDamage 1;
+				
+				if (RSTF_DEBUG) then {
+					systemChat "Killed a unit because it wasn't moving!";
+
+					private _marker = createMarkerLocal [str(getPos(_unit)), getPos(_unit)];
+					_marker setMarkerShape "ICON";
+					_marker setMarkerType "KIA";
+					_marker setMarkerColor (RSTF_SIDES_COLORS select _side);
+				};
+			};
+
+			if (_time >= 60) then {
+				_time = 0;
+				_moved = 0;
+			};
+
+			sleep 10;
+		};
+	};
+};
 
 // DEBUG - Track unit position
 if (RSTF_DEBUG) then {
