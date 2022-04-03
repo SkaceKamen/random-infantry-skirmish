@@ -13,6 +13,7 @@ RSTF_CAM camSetTarget RSTF_CAM_TARGET;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
 
+/*
 0 spawn {
 	RSTF_LOADERS = [];
 
@@ -49,3 +50,4 @@ RSTF_CAM camCommit 0;
 		sleep 0.1;
 	};
 };
+*/
