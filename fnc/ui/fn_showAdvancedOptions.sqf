@@ -5,12 +5,17 @@ disableSerialization;
 private _display = "RSTF_RscDialogAdvancedConfig" call RSTF_fnc_getDisplay;
 private _optionsContainer = ["RSTF_RscDialogAdvancedConfig", "optionsContainer"] call RSTF_fnc_getCtrl;
 
-private _category = _this;
+private _category = param [0];
+private _firstLoad = param [1, false];
+
 private _options = missionConfigFile >> "RSTF_Options" >> _category;
 
 // Save previously displayed options
-call RSTF_fnc_saveAdvancedOptions;
-call RSTF_fnc_profileSave;
+if (not _firstLoad) then {
+	call RSTF_fnc_saveAdvancedOptions;
+	call RSTF_fnc_profileSave;
+};
+
 call RSTF_fnc_updateEquipment;
 call RSTF_fnc_updateAdvancedConfig;
 

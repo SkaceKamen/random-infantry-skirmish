@@ -1,7 +1,7 @@
-#define RSTF_ADV_X (SafeZoneX + 0.8)
-#define RSTF_ADV_Y (SafeZoneY + 0.3)
-#define RSTF_ADV_W (SafeZoneW - 1.6)
-#define RSTF_ADV_H (SafeZoneH - 0.6)
+#define RSTF_ADV_W 1.1
+#define RSTF_ADV_H 1
+#define RSTF_ADV_X ((SafeZoneX + SafeZoneW/2) - RSTF_ADV_W/2)
+#define RSTF_ADV_Y ((SafeZoneY + SafeZoneH/2) - RSTF_ADV_H/2)
 
 #define RSTF_ADV_M 0.005
 

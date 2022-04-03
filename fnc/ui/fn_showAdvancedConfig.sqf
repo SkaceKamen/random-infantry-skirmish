@@ -33,4 +33,4 @@ _resetButton ctrlAddEventHandler ["ButtonClick", {
 
 private _config = missionConfigFile >> "RSTF_Options";
 private _categories = "true" configClasses _config;
-(configName(_categories select 0)) spawn RSTF_fnc_showAdvancedOptions;
+[configName(_categories select 0), true] spawn RSTF_fnc_showAdvancedOptions;

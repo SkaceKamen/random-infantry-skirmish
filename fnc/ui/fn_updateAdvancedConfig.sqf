@@ -24,13 +24,13 @@ private _yy = 0;
 	if (_visible) then {
 		private _ctrl = _display ctrlCreate ["RscButton", _idc, _categoriesContainer];
 		_ctrl ctrlSetText _title;
-		_ctrl ctrlSetPosition [0, _yy, RSTF_ADV_CAT_W - 0.005, 0.09];
+		_ctrl ctrlSetPosition [0, _yy, RSTF_ADV_CAT_W - 0.005, 0.08];
 		_ctrl ctrlCommit 0;
-		_ctrl ctrlAddEventHandler ["ButtonClick", format["""%1"" spawn RSTF_fnc_showAdvancedOptions", _category]];
+		_ctrl ctrlAddEventHandler ["ButtonClick", format["[""%1""] spawn RSTF_fnc_showAdvancedOptions", _category]];
 
 		RSTF_ADVANCED_LASTCATEGORIES pushBack _ctrl;
 
 		_idc = _idc + 1;
-		_yy = _yy + 0.095;
+		_yy = _yy + 0.085;
 	};
 } foreach _categories;
