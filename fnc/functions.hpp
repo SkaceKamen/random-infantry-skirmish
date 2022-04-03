@@ -129,6 +129,8 @@ class RSTF
 		class updateVoteTimeout {};
 		class spawnDialog {};
 		class showModeSelector {};
+		class customSelectorShow {};
+		class customSelectorPick {};
 
 		class createArsenalBackground {};
 		class destroyArsenalBackground {};

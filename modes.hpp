@@ -3,7 +3,7 @@ class RSTF_Modes
 	class Classic
 	{
 		title = "Classic";
-		description = "Score-based team deathmatch, where first one that reaches specific number of points wins."
+		description = "Score-based team deathmatch, where first one that reaches specific number of points wins.";
 		enabled = 1;
 		order = 2;
 
@@ -45,7 +45,7 @@ class RSTF_Modes
 	class Defense
 	{
 		title = "Defense";
-		description = "Hold capture point for predefined amount of time agains never ending waves of enemies."
+		description = "Hold capture point for predefined amount of time agains never ending waves of enemies.";
 		enabled = 0;
 
 		init = "RSTF_MODE_DEFEND_init";

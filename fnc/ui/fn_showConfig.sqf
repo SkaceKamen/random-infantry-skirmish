@@ -89,11 +89,18 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 		RSTF_POINTS = 1 call RSTF_fnc_pickRandomPoints;
 	};
 
+	RSTF_CUSTOM_POINT = (RSTF_POINTS#0)#0#1;
+	RSTF_CUSTOM_POINT_SPAWNS = (RSTF_POINTS#0)#1;
+	RSTF_CUSTOM_DIRECTION = (RSTF_POINTS#0)#2;
+	RSTF_CUSTOM_DISTANCE = (RSTF_POINTS#0)#3;
+
 	// Fill votes array
 	RSTF_POINT_VOTES = [];
 	{
 		RSTF_POINT_VOTES pushBack 0;
 	} foreach RSTF_POINTS;
+
+	RSTF_POINT_VOTES pushBack 0 ;
 
 	// Stop if no battle was found
 	if (count(RSTF_POINTS) == 0) exitWith {

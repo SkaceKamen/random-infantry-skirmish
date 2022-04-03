@@ -61,7 +61,7 @@ ZUI_fnc_build = {
 
 	if (_type == ZUI_CONTROL_ID) then {
 		private _class = getText(_config >> "control");
-		_ctrl = _display ctrlCreate [_class, -1, _parent];
+		_ctrl = _display ctrlCreate [_class, -2, _parent];
 
 		[_ctrl, _config] call ZUI_fnc_applyControlProps;
 
@@ -69,11 +69,11 @@ ZUI_fnc_build = {
 
 	if (_type == ZUI_CONTAINER_ID) then {
 		if (isNumber(_config >> "scrollable") && { getNumber(_config >> "scrollable") == 1 }) then {
-			_ctrl = _display ctrlCreate ["RscControlsGroup", -1, _parent];
+			_ctrl = _display ctrlCreate ["RscControlsGroup", -2, _parent];
 			_parent = _ctrl;
 		} else {
 			if (isArray(_config >> "background")) then {
-				_ctrl = _display ctrlCreate ["RscBackground", -1, _parent];
+				_ctrl = _display ctrlCreate ["RscBackground", -2, _parent];
 				[_ctrl, _config] call ZUI_fnc_applyControlProps;
 			};
 		};
@@ -194,11 +194,11 @@ ZUI_fnc_refresh = {
 	private _margin = [[_comp, "margin", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseSizing;
 	private _position = [_comp, "position", true, ZUI_POSITION_RELATIVE] call ZUI_fnc_getProp;
 
-	// diag_log text(str([configName(_comp#ZUI_L_CONFIG), _xPos, _yPos, _parentWidth, _parentHeight, _margin]));
+	// diag_log text("[RSTF] " + str([configName(_comp#ZUI_L_CONFIG), _xPos, _yPos, _parentWidth, _parentHeight, _margin]));
 
 	if (_position == ZUI_POSITION_ABSOLUTE) then {
-		_xPos = [_comp, "x", true, 0] call ZUI_fnc_getProp;
-		_yPos = [_comp, "y", true, 0] call ZUI_fnc_getProp;
+		_xPos = [[_comp, "x", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
+		_yPos = [[_comp, "y", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
 	};
 
 	// Save the component values (could be used later when refreshing only part of the tree)
@@ -213,10 +213,14 @@ ZUI_fnc_refresh = {
 
 	// When we have control, apply its position and size
 	if (!isNull(_ctrl)) then {
-		_ctrl ctrlSetPosition [_xPos, _yPos, _parentWidth, _parentHeight];
-		_ctrl ctrlCommit 0;
+		if (ctrlType _ctrl == 100) then {
+			_ctrl ctrlMapSetPosition [_xPos, _yPos, _parentWidth, _parentHeight];
+		} else {
+			_ctrl ctrlSetPosition [_xPos, _yPos, _parentWidth, _parentHeight];
+			_ctrl ctrlCommit 0;
+		};
 		
-		// diag_log text(format["ZUI - %1 - %2", _comp#ZUI_L_CONFIG, [[safeZoneX, safeZoneY, safeZoneW, safeZoneH], _xPos, _yPos, _parentWidth, _parentHeight]]);
+		// diag_log text(format["[RSTF] ZUI - %1 - %2", _comp#ZUI_L_CONFIG, [[safeZoneX, safeZoneY, safeZoneW, safeZoneH], _xPos, _yPos, _parentWidth, _parentHeight]]);
 	};
 
 	private _scrollable = _type == ZUI_CONTAINER_ID && { ([_comp, "scrollable", true, 0] call ZUI_fnc_getProp) == 1 };
@@ -247,20 +251,23 @@ ZUI_fnc_refresh = {
 		private _otherSize = [[_x, _otherSizeConfigName, true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
 		private _sizeType = [_x, _sizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
 		private _size = [[_x, _sizeConfigName, true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
+		private _positionType = [_x, "position", true, ZUI_POSITION_RELATIVE] call ZUI_fnc_getProp;
 
-		switch (_sizeType) do {
-			case ZUI_SIZE_ABSOLUTE: {
-				_parentSize = _parentSize - _size;
-			};
-			case ZUI_SIZE_TEXT: {
-				_size = if (_index == 1) then { ctrlTextHeight (_x#ZUI_L_CTRL) } else { ctrlTextWidth (_x#ZUI_L_CTRL) };
-				_parentSize = _parentSize - _size;
-			};
-			case ZUI_SIZE_PERCENTS: {
-				_percentage = _percentage + _size;
-			};
-			default {
-				_total = _total + _size;
+		if (_positionType != ZUI_POSITION_ABSOLUTE) then {
+			switch (_sizeType) do {
+				case ZUI_SIZE_ABSOLUTE: {
+					_parentSize = _parentSize - _size;
+				};
+				case ZUI_SIZE_TEXT: {
+					_size = if (_index == 1) then { ctrlTextHeight (_x#ZUI_L_CTRL) } else { ctrlTextWidth (_x#ZUI_L_CTRL) };
+					_parentSize = _parentSize - _size;
+				};
+				case ZUI_SIZE_PERCENTS: {
+					_percentage = _percentage + _size;
+				};
+				default {
+					_total = _total + _size;
+				};
 			};
 		};
 	} foreach _children;
@@ -270,6 +277,7 @@ ZUI_fnc_refresh = {
 		private _otherSize = [[_x, _otherSizeConfigName, true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
 		private _sizeType = [_x, _sizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
 		private _size = [[_x, _sizeConfigName, true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
+		private _positionType = [_x, "position", true, ZUI_POSITION_RELATIVE] call ZUI_fnc_getProp;
 
 		switch (_sizeType) do {
 			case ZUI_SIZE_ABSOLUTE: {};
@@ -298,7 +306,9 @@ ZUI_fnc_refresh = {
 
 		_params call ZUI_fnc_refresh;
 
-		_pos set [_index, _pos#_index + _size];
+		if (_positionType != ZUI_POSITION_ABSOLUTE) then {
+			_pos set [_index, _pos#_index + _size];
+		};
 	} foreach _children;
 };
 

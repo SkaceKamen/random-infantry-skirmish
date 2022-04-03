@@ -9,6 +9,7 @@ SIDE_NEUTRAL = 2;
 
 // Center point
 RSTF_POINT = [];
+RSTF_DIRECTION = 0;
 RSTF_LOCATION = locationNull;
 
 // Building that shouldn't be populated
@@ -368,3 +369,10 @@ for [{_i = 1},{_i <= 20},{_i = _i + 1}] do {
 	RSTF_POSSIBLE_KEYS pushBack ("User" + str(_i));
 	RSTF_POSSIBLE_KEYS_NAMES pushBack ("User Action " + str(_i));
 };
+
+RSTF_CUSTOM_POINT = [0,0,0];
+RSTF_CUSTOM_DIRECTION = 0;
+RSTF_CUSTOM_POINT_SPAWNS = [[0,0,0],[0,0,0],[0,0,0]];
+RSTF_CUSTOM_DISTANCE = 300;
+
+RSTF_BATTLE_SELECTION_INDEX = -1;

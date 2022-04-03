@@ -14,7 +14,7 @@ if (isServer && isMultiplayer) then {
 			} foreach RSTF_POINT_VOTES;
 
 			if (_voted == count(call BIS_fnc_listPlayers)) exitWith {
-				diag_log text(format["VOTING: All players voted (%1 / %2). Selecting battle.", _voted, count(allPlayers)]);
+				[format["[RSTF] VOTING: All players voted (%1 / %2). Selecting battle.", _voted, count(call BIS_fnc_listPlayers)]] call RSTF_fnc_log;
 			};
 
 			[format["Timeout: %1", RSTF_VOTES_TIMEOUT]] call RSTF_fnc_Log;
@@ -32,12 +32,19 @@ if (isServer && isMultiplayer) then {
 		_max = [];
 		_maxCount = -1;
 		{
+			_place = [];
+			if (_foreachIndex == count(RSTF_POINTS)) then {
+				_place = [["Custom", RSTF_CUSTOM_POINT], RSTF_CUSTOM_POINT_SPAWNS, RSTF_CUSTOM_DIRECTION, RSTF_CUSTOM_DISTANCE];
+			} else {
+				_place = RSTF_POINTS select _foreachIndex;
+			};
+
 			if (_x > _maxCount) then {
-				_max = [RSTF_POINTS select _foreachIndex];
+				_max = [_place];
 				_maxCount = _x;
 			};
 			if (_x == _maxCount) then {
-				_max pushBack (RSTF_POINTS select _foreachIndex);
+				_max pushBack (_place);
 			};
 		} foreach RSTF_POINT_VOTES;
 

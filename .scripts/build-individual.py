@@ -15,7 +15,7 @@ PUBLISHER = "c:\\Users\\KaKa\\source\\repos\\A3MissionPublisher\\A3MissionPublis
 
 SKIP_PUBLISH = False
 SKIP_PUBLISHED = False
-ONLY_PUBLISH = ["stozec", "zargabad", "fallujah", "WL_Rosche", "lythium"]
+ONLY_PUBLISH = [] #["Enoch"]
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
@@ -47,10 +47,8 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   uploadPreview = False
   existingId = ids[island] if island in ids else 0
 
-  """
-  if not island in ONLY_PUBLISH:
+  if len(ONLY_PUBLISH) > 0 and not island in ONLY_PUBLISH:
     continue
-  """
 
   if SKIP_PUBLISHED and existingId != 0:
     print("Skip %s because it was already published" % island)

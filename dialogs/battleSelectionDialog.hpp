@@ -84,6 +84,7 @@ class RSTF_RscDialogBattleSelection
 			text = "2D Map";
 		};
 
+
 		class buttonVote: RscButton
 		{
 			idc = 6;
@@ -99,11 +100,21 @@ class RSTF_RscDialogBattleSelection
 			idc = 8;
 			x = RSTF_BTL_BTS_X + RSTF_BTL_VIEWBUTTON_W + RSTF_BTL_M;
 			y = RSTF_BTL_BTS_Y;
-			w = RSTF_BTL_W - RSTF_BTL_VIEWBUTTON_W * 2 - RSTF_BTL_M * 2;
+			w = RSTF_BTL_W - RSTF_BTL_VIEWBUTTON_W * 3 - RSTF_BTL_M * 3;
 			h = RSTF_BTL_BTS_H;
 			colorBackground[] = { TITLE_BG_RGBA };
 			text = "";
 			style = "ST_CENTER | ST_VCENTER";
+		};
+
+		class buttonEdit: RscButton
+		{
+			idc = 9;
+			x = RSTF_BTL_VOTEBUTTON_X - RSTF_BTL_VIEWBUTTON_W - RSTF_BTL_M;
+			y = RSTF_BTL_BTS_Y;
+			w = RSTF_BTL_VIEWBUTTON_W;
+			h = RSTF_BTL_BTS_H;
+			text = "Edit";
 		};
 	};
 };

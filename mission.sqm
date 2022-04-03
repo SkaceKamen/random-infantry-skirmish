@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1796;
+		nextID=2003;
 	};
 	class Camera
 	{
-		pos[]={14619.87,51.207157,16146.234};
-		dir[]={-0.74985844,-0.48007843,0.45523295};
-		up[]={-0.41037434,0.87722558,0.24913493};
-		aside[]={0.51894629,-1.4901161e-008,0.8548069};
+		pos[]={14621.398,51.061901,16145.43};
+		dir[]={0.68426192,-0.5862537,0.43369612};
+		up[]={0.4951703,0.81012756,0.31384683};
+		aside[]={0.53534305,0,-0.84463483};
 	};
 };
 binarizationWanted=0;
@@ -312,6 +312,7 @@ class ScenarioData
 	author="Kamen";
 	overviewText="Instant infantry battle for randomly selected place on the map.";
 	overViewPicture="random.paa";
+	briefing=0;
 	joinUnassigned=0;
 	class Header
 	{
@@ -2901,7 +2902,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={14569.626,18.911802,16127.228};
+				position[]={14563.42,18.890612,16094.393};
 				angles[]={0,3.1415927,0};
 			};
 			side="Empty";
