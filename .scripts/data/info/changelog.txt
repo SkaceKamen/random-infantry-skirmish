@@ -1,5 +1,3 @@
 [list]
-  [*] Added support for custom locations
-  [*] Fixed configuration being corrupted when closing advanced config using ESC button
-  [*] Fixed configuration not working properly on smaller screens
+  [*] Fixed players drowning on some worlds
 [/list]
