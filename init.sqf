@@ -26,4 +26,7 @@ RSTF_initScripts = [
 
 {
 	_x disableAI "ALL";
-} foreach playableUnits;
+	_x allowDamage false;
+	_x enableSimulationGlobal false;
+} foreach allUnits;
+
