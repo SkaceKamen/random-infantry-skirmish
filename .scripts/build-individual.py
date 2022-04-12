@@ -15,7 +15,7 @@ PUBLISHER = "c:\\Users\\KaKa\\source\\repos\\A3MissionPublisher\\A3MissionPublis
 
 SKIP_PUBLISH = False
 SKIP_PUBLISHED = False
-ONLY_PUBLISH = [] #["Enoch"]
+ONLY_PUBLISH = ["Malden","stozec","Takistan"]
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
@@ -119,20 +119,35 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
       "contentFile": resultPath
     }, f, indent = 2)
 
-  output = subprocess.check_output(
-    [PUBLISHER, workshopDataPath]
-  ).decode('utf-8').strip()
+  tries = 0
 
-  print(output)
+  while True:
+    output = subprocess.check_output(
+      [PUBLISHER, workshopDataPath]
+    ).decode('utf-8').strip()
 
-  match = re.search("ID = ([0-9]+)", output)
+    print("  " + "\n  ".join(output.split('\n')))
 
-  if match:
-    newId = int(match[1])
-    ids[island] = newId
+    if "RESULT = k_EResultTooManyPending" in output:
+      tries += 1
 
-    with open(idsPath, "w") as f:
-      json.dump(ids, f, indent=2)
+      if tries > 10:
+        print(" !! PUBLISH WAS NOT SUCCESSFULL")
+        break
+
+      print(" ... Waiting one second before trying again")
+      time.sleep(1)
+    else:
+      match = re.search("ID = ([0-9]+)", output)
+
+      if match:
+        newId = int(match[1])
+        ids[island] = newId
+
+        with open(idsPath, "w") as f:
+          json.dump(ids, f, indent=2)
+
+      break
 
 
 
