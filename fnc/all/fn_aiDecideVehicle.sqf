@@ -20,7 +20,7 @@ private _money = (RSTF_AI_MONEY select _side) + ([_name] call RSTF_fnc_getUnitMo
 private _vehicles = RSTF_BUYABLE_VEHICLES select _side;
 
 // Don't bother if there're no vehicles
-if (count _vehicles == 0) exitWith {};
+if (count _vehicles == 0) exitWith { false };
 
 // Select our wish vehicle
 private _wish = RSTF_AI_VEHICLE_WISH getOrDefault [_name, objNull];
