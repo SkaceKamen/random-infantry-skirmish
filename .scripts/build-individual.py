@@ -36,6 +36,13 @@ if os.path.exists(idsPath):
   with open(idsPath, 'r') as f:
     ids = json.load(f)
 
+def removeSteamDebug(dbg):
+  return re.sub(
+    'Setting breakpad minidump AppID = [0-9]+\nSteam_SetMinidumpSteamID:  Caching Steam ID:  [0-9]+ \[API loaded no\]',
+    '',
+    str(dbg).replace('\r', '')
+  )
+
 logoOverlay = Image.open(logoOverlayPath)
 
 for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
@@ -101,10 +108,14 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
 
   print(" Building pbo...")
 
-  subprocess.check_call(
+  output = subprocess.run(
     [ADDON_BUILDER, missionPath, resultsPath, "-include=%s" % includePath],
-    stdout=subprocess.DEVNULL
+    stdout=subprocess.DEVNULL, stderr=subprocess.PIPE
   )
+
+  if output.returncode != 0:
+    print(removeSteamDebug(output.stderr.decode('utf-8').strip()))
+    raise Exception("PBO Builder returned non-zero code")
 
   print(" Publishing...")
 
@@ -122,9 +133,10 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   tries = 0
 
   while True:
-    output = subprocess.check_output(
-      [PUBLISHER, workshopDataPath]
-    ).decode('utf-8').strip()
+    output = removeSteamDebug(subprocess.check_output(
+      [PUBLISHER, workshopDataPath],
+      stderr=subprocess.STDOUT
+    ).decode('utf-8').strip())
 
     print("  " + "\n  ".join(output.split('\n')))
 
