@@ -23,23 +23,20 @@ switch(RSTF_SPAWN_TYPE) do {
 		} foreach _grps;
 	};
 	case RSTF_SPAWN_GROUP: {
-		_grp = RSTF_DEATH_GROUP;
-		_index = 0;
-		while { _index < count(_grps) } do {
-			if (alive(leader(_grp))) exitWith {
-				_spawn = leader(_grp);
+		if (alive(leader(RSTF_DEATH_GROUP))) then {
+			_spawn = leader(RSTF_DEATH_GROUP);
+		} else {
+			_index = 0;
+			while { _index < count(_grps) } do {
+				private _grp = _grps select _index;
+				{
+					if (_x call _usable) exitWith {
+						_spawn = _x;
+					};
+				} foreach units(_grp);
+
+				_index = _index + 1;
 			};
-
-			{
-				if (_x call _usable) exitWith {
-					_spawn = _x;
-				};
-			} foreach units(_grp);
-
-			if (!isNull(_spawn)) exitWith { };
-
-			_grp = _grps select _index;
-			_index = _index + 1;
 		};
 	};
 	case RSTF_SPAWN_RANDOM: {
