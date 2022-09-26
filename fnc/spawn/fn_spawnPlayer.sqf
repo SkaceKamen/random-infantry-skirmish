@@ -34,7 +34,7 @@ switch(RSTF_SPAWN_TYPE) do {
 						_spawn = _x;
 					};
 				} foreach units(_grp);
-
+				if (!isNull(_spawn)) exitWith { };
 				_index = _index + 1;
 			};
 		};
