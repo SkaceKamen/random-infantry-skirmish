@@ -26,7 +26,7 @@ switch(RSTF_SPAWN_TYPE) do {
 		_grp = RSTF_DEATH_GROUP;
 		_index = 0;
 		while { _index < count(_grps) } do {
-			if (alive(leader(_grp))) exitWith {
+			if (leader(_grp) call _usable) exitWith {
 				_spawn = leader(_grp);
 			};
 
