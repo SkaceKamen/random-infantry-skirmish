@@ -43,56 +43,70 @@ _ctrlDefenseProgress = _display displayCtrl RSTFUI_ARCADE_DEFENSE_PROGRESS_IDC;
 
 _modeId = call RSTF_fnc_getModeId;
 
-switch (_modeId) do {
-	case "Classic": {
-		{
-			_x ctrlShow false;
-			_x ctrlCommit 0;
-		} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground];
-	};
-
-	case "KOTH": {
-		{
-			_x ctrlShow false;
-			_x ctrlCommit 0;
-		} foreach [_ctrlPushProgress, _ctrlPushProgressBackground];
-	};
-
-	case "Push": {
-		{
-			_x ctrlShow false;
-			_x ctrlCommit 0;
-		} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
-
-		_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
-		_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
-	};
-
-	case "Defense": {
-		{
-			_x ctrlShow false;
-			_x ctrlCommit 0;
-		} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
-
-		_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
-		_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
-	};
-};
-
-// Hide KOTH only controls
-if (!RSTF_MODE_KOTH_ENABLED && !RSTF_MODE_PUSH_ENABLED && !RSTF_MODE_DEFEND_ENABLED) then {
+if (!RSTF_UI_SHOW_GAMEMODE_SCORE) then {
 	{
 		_x ctrlShow false;
 		_x ctrlCommit 0;
-	} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy];
+	} foreach [
+		_ctrlScoreFriendly, _ctrlScoreEnemy, _ctrlGlobalMessages,
+		_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground
+	];
+} else {
+	switch (_modeId) do {
+		case "Classic": {
+			{
+				_x ctrlShow false;
+				_x ctrlCommit 0;
+			} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground];
+		};
+
+		case "KOTH": {
+			{
+				_x ctrlShow false;
+				_x ctrlCommit 0;
+			} foreach [_ctrlPushProgress, _ctrlPushProgressBackground];
+		};
+
+		case "Push": {
+			{
+				_x ctrlShow false;
+				_x ctrlCommit 0;
+			} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
+
+			_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
+			_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
+		};
+
+		case "Defense": {
+			{
+				_x ctrlShow false;
+				_x ctrlCommit 0;
+			} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
+
+			_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
+			_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
+		};
+	};
+
+	// Hide KOTH only controls
+	if (!RSTF_MODE_KOTH_ENABLED && !RSTF_MODE_PUSH_ENABLED && !RSTF_MODE_DEFEND_ENABLED) then {
+		{
+			_x ctrlShow false;
+			_x ctrlCommit 0;
+		} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy];
+	};
 };
 
 _ctrlOwner ctrlShow false;
 _ctrlOwner ctrlCommit 0;
 
 // Hide/Show money if enabled
-_ctrlMoney ctrlShow RSTF_MONEY_ENABLED;
+_ctrlMoney ctrlShow (RSTF_MONEY_ENABLED && RSTF_UI_SHOW_PLAYER_MONEY);
 _ctrlMoney ctrlCommit 0;
+
+// Hide/Show player messages
+_ctrlLocalMessages ctrlShow RSTF_UI_SHOW_PLAYER_FEED;
+_ctrlLocalMessages ctrlCommit 0;
 
 // Last displayed owner of objective in KOTH
 _lastOwner = RSTF_MODE_KOTH_OWNER;
@@ -161,13 +175,49 @@ while { true } do {
 		};
 
 		if (count(RSTF_MODE_KOTH_COUNTS) > 0) then {
-			_ctrlUserCountFriendly ctrlSetText str(RSTF_MODE_KOTH_COUNTS select SIDE_FRIENDLY);
-			_ctrlUserCountEnemy ctrlSetText str(RSTF_MODE_KOTH_COUNTS select SIDE_ENEMY);
+			_countFriendly = RSTF_MODE_KOTH_COUNTS select SIDE_FRIENDLY;
+			_countEnemy = RSTF_MODE_KOTH_COUNTS select SIDE_ENEMY;
+			_countFriendlyStr = str(_countFriendly);
+			_countEnemyStr = str(_countEnemy);
+
+			if (!RSTF_UI_SHOW_GAMEMODE_UNIT_COUNT) then {
+				_countFriendlyStr = "";
+				_countEnemyStr = "";
+				
+				if (_countFriendly > _countEnemy) then {
+					_countFriendlyStr = "+";
+				};
+
+				if (_countFriendly < _countEnemy) then {
+					_countEnemyStr = "+";
+				};
+			};
+
+			_ctrlUserCountFriendly ctrlSetText _countFriendlyStr;
+			_ctrlUserCountEnemy ctrlSetText _countEnemyStr;
 		};
 
 		if (count(RSTF_MODE_PUSH_COUNTS) > 0) then {
-			_ctrlUserCountFriendly ctrlSetText str(RSTF_MODE_PUSH_COUNTS select SIDE_FRIENDLY);
-			_ctrlUserCountEnemy ctrlSetText str(RSTF_MODE_PUSH_COUNTS select SIDE_ENEMY);
+			_countFriendly = RSTF_MODE_PUSH_COUNTS select SIDE_FRIENDLY;
+			_countEnemy = RSTF_MODE_PUSH_COUNTS select SIDE_ENEMY;
+			_countFriendlyStr = str(_countFriendly);
+			_countEnemyStr = str(_countEnemy);
+
+			if (!RSTF_UI_SHOW_GAMEMODE_UNIT_COUNT) then {
+				_countFriendlyStr = "";
+				_countEnemyStr = "";
+				
+				if (_countFriendly > _countEnemy) then {
+					_countFriendlyStr = "+";
+				};
+
+				if (_countFriendly < _countEnemy) then {
+					_countEnemyStr = "+";
+				};
+			};
+
+			_ctrlUserCountFriendly ctrlSetText _countFriendlyStr;
+			_ctrlUserCountEnemy ctrlSetText _countEnemyStr;
 		};
 
 		if (_modeId == "Defense") then {

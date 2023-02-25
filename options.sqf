@@ -521,6 +521,18 @@ RSTF_HINT_SUPPORT_MENU = true;
 // Show 3D vehicle markers
 RSTF_UI_SHOW_VEHICLE_MARKERS = true;
 
+// Show player feed
+RSTF_UI_SHOW_PLAYER_FEED = true;
+
+// Show player money
+RSTF_UI_SHOW_PLAYER_MONEY = true;
+
+// Show gamemode info
+RSTF_UI_SHOW_GAMEMODE_SCORE = true;
+
+// Show unit capture count in game mode if there's any
+RSTF_UI_SHOW_GAMEMODE_UNIT_COUNT = true;
+
 // Garbage collector settings
 RSTF_CLEAN = true;
 RSTF_CLEAN_INTERVAL = 3*60;

@@ -333,9 +333,33 @@ class RSTF_Options {
 		title = "UI";
 
 		class Items {
+			class RSTF_UI_SHOW_PLAYER_FEED {
+				title="Show player feed";
+				description="Show messages when player score changes.";
+				type="checkbox";
+			};
+
+			class RSTF_UI_SHOW_PLAYER_MONEY {
+				title="Show player money";
+				description="Show current player money.";
+				type="checkbox";
+			};
+
 			class RSTF_UI_SHOW_VEHICLE_MARKERS {
 				title="Show vehicle markers";
 				description="Show 3D markers of friendly vehicles.";
+				type="checkbox";
+			};
+
+			class RSTF_UI_SHOW_GAMEMODE_SCORE {
+				title="Show game mode info";
+				description="Show current state of game mode, such team points in KoTH.";
+				type="checkbox";
+			};
+
+			class RSTF_UI_SHOW_GAMEMODE_UNIT_COUNT {
+				title="Show game mode unit count";
+				description="Show exact unit count when showing capture state.";
 				type="checkbox";
 			};
 		};
