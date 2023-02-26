@@ -57,4 +57,4 @@ _modes = [RSTF_MODES, [], { getNumber(_x >> "order") }] call BIS_fnc_sortBy;
 	_descriptionCtrl ctrlSetStructuredText parseText(_description);
 } forEach _modes;
 
-[_itemsContainer] call ZUI_fnc_refresh;
+[RSTF_MODE_SELECTOR_layout, safeZoneW, safeZoneH, safeZoneX, safeZoneY] call ZUI_fnc_refresh;

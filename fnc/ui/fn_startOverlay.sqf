@@ -77,6 +77,16 @@ if (!RSTF_UI_SHOW_GAMEMODE_SCORE) then {
 			_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
 		};
 
+		case "PushDefense": {
+			{
+				_x ctrlShow false;
+				_x ctrlCommit 0;
+			} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
+
+			_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
+			_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
+		};
+
 		case "Defense": {
 			{
 				_x ctrlShow false;
@@ -129,7 +139,7 @@ while { true } do {
 	];
 
 	// Point capture related logic
-	if (_modeId == "KOTH" || _modeId == "Push" || _modeId == "Defense") then {
+	if (_modeId == "KOTH" || _modeId == "Push" || _modeId == "PushDefense" || _modeId == "Defense") then {
 		if (RSTF_MODE_KOTH_OWNER != _lastOwner) then {
 			_lastOwner = RSTF_MODE_KOTH_OWNER;
 			
@@ -163,7 +173,7 @@ while { true } do {
 				};
 			};
 
-			if (_modeId == "Push") then {
+			if (_modeId == "Push" || _modeId == "PushDefense") then {
 				if (_lastOwner == SIDE_FRIENDLY) then {
 					_ctrlPushProgress ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
 				} else {

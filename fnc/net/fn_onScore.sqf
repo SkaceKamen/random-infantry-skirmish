@@ -16,7 +16,7 @@ if (_modeId == "Classic" || _modeId == "KOTH") then {
 	};
 };
 
-if (_modeId == "Push" || _modeId == "Defense") then {
+if (_modeId == "Push" || _modeId == "PushDefense"|| _modeId == "Defense") then {
 	private _progress = (RSTF_SCORE select 0) max (RSTF_SCORE select 1);
 	private _ctrlPushProgress = _display displayCtrl RSTFUI_ARCADE_PUSH_PROGRESS_IDC;
 	_ctrlPushProgress ctrlSetPositionW ((_progress / RSTF_MODE_PUSH_SCORE_LIMIT) * RSTFUI_ARCADE_PUSH_PROGRESS_W);

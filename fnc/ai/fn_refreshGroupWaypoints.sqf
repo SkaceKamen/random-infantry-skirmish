@@ -26,7 +26,7 @@ deleteWaypoint [_group, 0];
 
 private _wp = _group addWaypoint [_wppoint, 50];
 
-if (RSTF_MODE_DEFEND_ENABLED && _sideIndex == SIDE_FRIENDLY) then {
+if ((RSTF_MODE_DEFEND_ENABLED || (RSTF_MODE_PUSH_ENABLED && RSTF_MODE_DEFENDERS_SIDE == SIDE_FRIENDLY)) && _sideIndex == SIDE_FRIENDLY) then {
 	_wp setWaypointType "HOLD";
 } else {
 	_wp setWaypointType "SAD";

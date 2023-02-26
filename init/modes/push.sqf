@@ -18,6 +18,9 @@ RSTF_MODE_PUSH_POINTS = [];
 RSTF_MODE_PUSH_POINT_INDEX = -1;
 RSTF_MODE_PUSH_TASK = "";
 
+RSTF_MODE_DEFENDERS_SIDE = 0;
+RSTF_MODE_ATTACKERS_SIDE = 1;
+
 RSTF_MODE_PUSH_NEXT_POINT = {
 	RSTF_MODE_PUSH_POINT_INDEX = RSTF_MODE_PUSH_POINT_INDEX + 1;
 	private _nextPoint = RSTF_MODE_PUSH_POINTS select RSTF_MODE_PUSH_POINT_INDEX;
@@ -26,7 +29,7 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 
 	"PUSH_OBJECTIVE" setMarkerPos _point;
 
-	private _direction = RSTF_DIRECTION;
+	// private _direction = RSTF_DIRECTION;
 	private _distance = RSTF_SPAWN_DISTANCE_MIN + random(RSTF_SPAWN_DISTANCE_MAX - RSTF_SPAWN_DISTANCE_MIN);
 	// TODO: Multiplayer?
 
@@ -36,24 +39,38 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 	// Rebuild target and spawns
 	RSTF_POINT = _point;
 	RSTF_DIRECTION = _direction;
+
+	if (RSTF_MODE_DEFENDERS_SIDE == SIDE_FRIENDLY) then {
+		RSTF_DIRECTION = RSTF_DIRECTION + 180;
+	};
+
 	RSTF_SPAWNS = [
-		_point,
-		_point vectorAdd [sin(180 + _direction) * _distance, cos(180 + _direction) * _distance, 0],
-		[0,0,0] //For netural defenders
+		[0,0,0],
+		[0,0,0],
+		[0,0,0]
 	];
 
+	RSTF_SPAWNS set [RSTF_MODE_DEFENDERS_SIDE, _point];
+	RSTF_SPAWNS set [RSTF_MODE_ATTACKERS_SIDE, _point vectorAdd [sin(180 + _direction) * _distance, cos(180 + _direction) * _distance, 0]];
+
 	// Force-spawn enemy wave
-	RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS - 1;
-	[SIDE_ENEMY, true] call RSTF_fnc_spawnWave;
-	RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS + 1;
+	if (RSTF_MODE_DEFENDERS_SIDE == SIDE_ENEMY) then {
+		RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS - 1;
+	};
+
+	[RSTF_MODE_DEFENDERS_SIDE, true] call RSTF_fnc_spawnWave;
+
+	if (RSTF_MODE_DEFENDERS_SIDE == SIDE_ENEMY) then {
+		RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS + 1;
+	};
 
 	// Update waypoints
-	[SIDE_ENEMY] call RSTF_fnc_refreshSideWaypoints;
-	[SIDE_FRIENDLY] call RSTF_fnc_refreshSideWaypoints;
+	[RSTF_MODE_DEFENDERS_SIDE] call RSTF_fnc_refreshSideWaypoints;
+	[RSTF_MODE_ATTACKERS_SIDE] call RSTF_fnc_refreshSideWaypoints;
 
 	// Move enemy spawn point back
 	RSTF_SPAWNS set [
-		SIDE_ENEMY,
+		RSTF_MODE_DEFENDERS_SIDE,
 		_point vectorAdd [sin(_direction) * _distance, cos(_direction) * _distance, 0]
 	];
 
@@ -70,17 +87,37 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 		private _pointLetter = toString [65 + (RSTF_MODE_PUSH_POINT_INDEX % 26)];
 
 		// Start new task
-		RSTF_MODE_PUSH_TASK = [
-			side(player),
-			"CAPTURE" + str(RSTF_MODE_PUSH_POINT_INDEX),
-			["We need to capture this point to advance", "Capture point " + _pointLetter,""],
-			RSTF_POINT,
-			"ASSIGNED",
-			0,
-			true,
-			"attack"
-		] call BIS_fnc_taskCreate;
+		if (RSTF_MODE_DEFENDERS_SIDE == SIDE_ENEMY) then {
+			RSTF_MODE_PUSH_TASK = [
+				side(player),
+				"CAPTURE" + str(RSTF_MODE_PUSH_POINT_INDEX),
+				["We need to capture this point to advance", "Capture point " + _pointLetter,""],
+				RSTF_POINT,
+				"ASSIGNED",
+				0,
+				true,
+				"attack"
+			] call BIS_fnc_taskCreate;
+		} else {
+			RSTF_MODE_PUSH_TASK = [
+				side(player),
+				"DEFEND" + str(RSTF_MODE_PUSH_POINT_INDEX),
+				["Defend this point to prevent enemies advance", "Defend point " + _pointLetter,""],
+				RSTF_POINT,
+				"ASSIGNED",
+				0,
+				true,
+				"defend"
+			] call BIS_fnc_taskCreate;
+		};
 	};
+};
+
+RSTF_MODE_PUSH_initDefense = {
+	RSTF_MODE_DEFENDERS_SIDE = SIDE_FRIENDLY;
+	RSTF_MODE_ATTACKERS_SIDE = SIDE_ENEMY;
+
+	call RSTF_MODE_PUSH_init;
 };
 
 RSTF_MODE_PUSH_init = {
@@ -103,6 +140,11 @@ RSTF_MODE_PUSH_startLoop = {
 	private _radius = RSTF_DISTANCE;
 	private _direction = RSTF_DIRECTION;
 
+
+	if (RSTF_MODE_DEFENDERS_SIDE == SIDE_FRIENDLY) then {
+		_direction = _direction + 180;
+	};
+	
 	_center = _center vectorAdd [
 		sin(_direction + 180) * _radius,
 		cos(_direction + 180) * _radius,
@@ -126,7 +168,7 @@ RSTF_MODE_PUSH_startLoop = {
 		RSTF_MODE_PUSH_POINTS pushBack [_center, _direction];
 
 		if (RSTF_MODE_PUSH_FIRST_POINT_EMPLACEMENTS || count(RSTF_MODE_PUSH_POINTS) > 1) then {
-			[RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT, _center, _direction] call RSTF_fnc_spawnDefenceEmplacements;
+			[RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT, _center, _direction, RSTF_MODE_DEFENDERS_SIDE] call RSTF_fnc_spawnDefenceEmplacements;
 		};
 	};
 
@@ -183,7 +225,7 @@ RSTF_MODE_PUSH_startLoop = {
 				};
 			} foreach _counts;
 
-			if (_best == SIDE_FRIENDLY) then {
+			if (_best == RSTF_MODE_ATTACKERS_SIDE) then {
 				// Add point and reset timer
 				_last = time;
 				RSTF_SCORE set [_best, (RSTF_SCORE select _best) + 1];

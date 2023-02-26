@@ -9,7 +9,7 @@ class ModeSelectorComponents
 
 class ModeSelectorDialog: ZUI_ColumnLayout
 {
-	margin = 0.2;
+	margin = 0.1;
 
 	class container: ZUI_ColumnLayout
 	{
@@ -62,8 +62,6 @@ class ModeSelectorDialog: ZUI_ColumnLayout
 						widthType = ZUI_SIZE_TEXT;
 					};
 				};
-
-				class spacer: ZUI_ColumnLayout {};
 			};
 
 			class spacer2: ZUI_ColumnLayout {};

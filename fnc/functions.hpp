@@ -96,6 +96,7 @@ class RSTF
 		class pathString {};
 		class pickRandomPoints {};
 		class sideIndex {};
+		class indexSide {};
 		class weaponHasAttachment {};
 		class arrayShuffle {};
 		class aliveCrew {};

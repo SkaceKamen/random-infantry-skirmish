@@ -9,6 +9,7 @@
 	_emplacementsCount - number of emplacements to spawn [Number]
 	_center - point to use for spawning [Position]
 	_direction - direction of advance of enemy [Number]
+	_sideIndex - side to spawn [Number]
 */
 
 #define STATIC_LOW 0
@@ -20,6 +21,8 @@
 private _emplacementsCount = param [0];
 private _center = param [1];
 private _direction = param [2];
+private _sideIndex = param [3, SIDE_ENEMY];
+private _side = [_sideIndex] call RSTF_fnc_indexSide;
 
 private _additionalStatics = [
 	//["RHS_ZU23_MSV", STATIC_HIGH, CATEGORY_AA],
@@ -39,7 +42,7 @@ private _staticWeaponsNames = [ "AA", "AT", "AI"];
 // Contains list of possible emplacement compositions (found in compositions folder)
 private _emplacements = [["PushDefense"]] call RSTF_fnc_getEmplacements;
 
-private _statics = (RSTF_VEHICLES select SIDE_ENEMY) select RSTF_VEHICLE_STATIC;
+private _statics = (RSTF_VEHICLES select _sideIndex) select RSTF_VEHICLE_STATIC;
 
 // Try to load static weapons from config
 {
@@ -172,7 +175,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 		_marker = createMarker ["DEFENSE" + str(_position), _position];
 		_marker setmarkerShape "ICON";
 		_marker setMarkerType "loc_Ruin";
-		_marker setMarkerColor "ColorRed";
+		_marker setMarkerColor (RSTF_SIDES_COLORS select _sideIndex);
 		_marker setMarkerText configName(_empType);
 	};
 
@@ -206,7 +209,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 				private _vehicleType = _staticWeaponsNames select _typeIndex;
 
 				// Create vehicle
-				_group = createGroup east;
+				_group = createGroup _side;
 
 				private _spawned = createVehicle [_vehicle, [0,0,500], [], 0, "CAN_COLLIDE"];
 				_spawned enableSimulationGlobal false;
@@ -219,7 +222,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 
 				{
 					_x setVariable ["SPAWNED_SIDE", side(_group), true];
-					_x setVariable ["SPAWNED_SIDE_INDEX", SIDE_ENEMY, true];
+					_x setVariable ["SPAWNED_SIDE_INDEX", _side, true];
 					_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
 				} foreach units(_group);
 
@@ -247,13 +250,13 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 		};
 
 		if (_isSoldier) then {
-			private _unitClass = SIDE_ENEMY call RSTF_fnc_getRandomSoldier;
-			private _group = createGroup east;
+			private _unitClass = _sideIndex call RSTF_fnc_getRandomSoldier;
+			private _group = createGroup _side;
 			private _unit = _group createUnit [_unitClass, [0,0,500], [], 0, "NONE"];
 			[_unit] joinSilent _group;
 
 			_unit setVariable ["SPAWNED_SIDE", side(_group), true];
-			_unit setVariable ["SPAWNED_SIDE_INDEX", SIDE_ENEMY, true];
+			_unit setVariable ["SPAWNED_SIDE_INDEX", _sideIndex, true];
 			_unit addEventHandler ["Killed", RSTF_fnc_unitKilled];
 
 			_pos = getPosWorld(_x);
