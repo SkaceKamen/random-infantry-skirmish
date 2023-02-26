@@ -17,22 +17,10 @@ Immediately jump into random infantry skirmish on random place on the map. You c
 [/list]
 
 [h2]Latest update[/h2]
-[h3]2022-04-02[/h3]
+[h3]2023-02-26[/h3]
 [list]
- [*] PUSH - added defensive bunkers to each point
- [list]
-  [*] Configurable, you can choose how many to spawn or 0 to disable
- [/list]
- [*] New options:
- [list]
-  [*] Spawn AI vehicles - you can now enable/disable AI vehicles independent on players
-  [*] Unlock AI vehicles - you can now make AI vehicles unlocked so players can re-use them when they're abandoned
- [/list]
- [*] Added new Mode selection screen
- [*] Unit groups now spawn together
- [*] Stuck AI vehicles should now get re-spawned more reliably
- [*] Fixed issues with AI vehicles not spawning properly sometimes
- [*] Some internal optimizations and smaller fixes
+  [*] New game modes: Push - Defense and Defense
+  [*] Tons of new maps
 [/list]
 
 [h2]No support dedicated servers[/h2]

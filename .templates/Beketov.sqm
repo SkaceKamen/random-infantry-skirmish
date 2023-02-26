@@ -1,0 +1,1685 @@
+version=54;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=1;
+	class ItemIDProvider
+	{
+		nextID=101;
+	};
+	class MarkerIDProvider
+	{
+		nextID=1;
+	};
+	class Camera
+	{
+		pos[]={22652.236,30.374022,25675.434};
+		dir[]={-0.0030738923,-0.9995234,-0.030823415};
+		up[]={-0.099186167,0.030955145,-0.99458748};
+		aside[]={-0.99506736,8.934876e-009,0.099234059};
+	};
+};
+binarizationWanted=0;
+sourceName="mapLoader";
+addons[]=
+{
+	"A3_Ui_F",
+	"A3_Characters_F"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=2;
+		class Item0
+		{
+			className="A3_Ui_F";
+			name="Arma 3 - User Interface";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+	};
+};
+randomSeed=11268658;
+class ScenarioData
+{
+	author="Kamen";
+	overviewText="Instant infantry battle for randomly selected place on the map.";
+	overViewPicture="random.paa";
+	joinUnassigned=0;
+	class Header
+	{
+		gameType="Coop";
+		minPlayers=1;
+		maxPlayers=8;
+	};
+};
+class CustomAttributes
+{
+	class Category0
+	{
+		name="Multiplayer";
+		class Attribute0
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					singleType="ARRAY";
+					class value
+					{
+						items=1;
+						class Item0
+						{
+							class data
+							{
+								singleType="STRING";
+								value="None";
+							};
+						};
+					};
+				};
+			};
+		};
+		nAttributes=1;
+	};
+	class Category1
+	{
+		name="Scenario";
+		class Attribute0
+		{
+			property="EnableDebugConsole";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					singleType="SCALAR";
+					value=0;
+				};
+			};
+		};
+		nAttributes=1;
+	};
+};
+class Mission
+{
+	class Intel
+	{
+		briefingName="RIS - Beketov";
+		overviewText="Random skirmish on random place on island";
+		resistanceWest=0;
+		startWeather=0.28999999;
+		startWind=0.099999994;
+		startWaves=0.099999994;
+		forecastWeather=0.29999998;
+		forecastWind=0.099999994;
+		forecastWaves=0.099999994;
+		forecastLightnings=0.099999994;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+	class Entities
+	{
+		items=89;
+		class Item0
+		{
+			dataType="Marker";
+			position[]={23091.09,30.436058,25297.842};
+			name="RSTF_FACTION_CAM";
+			type="Empty";
+			id=0;
+		};
+		class Item1
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22659.43,29.949276,25680.559};
+						angles[]={6.2707653,0,0.010923813};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayer=1;
+						isPlayable=1;
+					};
+					id=2;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male10ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.97000003;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1;
+		};
+		class Item2
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22657.988,29.915295,25679.156};
+						angles[]={6.2698622,0,0.010923813};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=23;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=22;
+		};
+		class Item3
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22660.865,29.949995,25679.328};
+						angles[]={6.2700973,0,0.011855354};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=25;
+					type="B_Soldier_unarmed_F";
+					atlOffset=-1.9073486e-006;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=24;
+			atlOffset=-1.9073486e-006;
+		};
+		class Item4
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22656.746,29.879105,25677.461};
+						angles[]={6.2698622,0,0.010923813};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=40;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=39;
+		};
+		class Item5
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22662.398,29.941889,25677.326};
+						angles[]={6.2698622,0,0.012089349};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=42;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=41;
+		};
+		class Item6
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22658,29.871794,25675.883};
+						angles[]={6.2698622,0,0.010923813};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player ";
+						isPlayable=1;
+					};
+					id=44;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=43;
+		};
+		class Item7
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22660.656,29.901255,25675.859};
+						angles[]={6.2698622,0,0.012089349};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=46;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=45;
+		};
+		class Item8
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22659.461,29.868189,25674.416};
+						angles[]={6.2698622,0,0.010923813};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this allowDamage false;";
+						description="Player";
+						isPlayable=1;
+					};
+					id=48;
+					type="B_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male11ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=47;
+		};
+		class Item9
+		{
+			dataType="Marker";
+			position[]={3624.5281,0,4714.9707};
+			name="RSTF_POSITION_0";
+			text="Malaevo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=9;
+			atlOffset=-21.387003;
+		};
+		class Item10
+		{
+			dataType="Marker";
+			position[]={4522.6196,1.1835938,5410.4414};
+			name="RSTF_POSITION_1";
+			text="Shpagino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=10;
+			atlOffset=-11.05676;
+		};
+		class Item11
+		{
+			dataType="Marker";
+			position[]={661,0,4371};
+			name="RSTF_POSITION_2";
+			text="Troitsa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=11;
+			atlOffset=-14.145593;
+		};
+		class Item12
+		{
+			dataType="Marker";
+			position[]={6404.5,0,3185.7};
+			name="RSTF_POSITION_3";
+			text="Kaldykovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=12;
+			atlOffset=-29.904633;
+		};
+		class Item13
+		{
+			dataType="Marker";
+			position[]={683.17297,0,4929.29};
+			name="RSTF_POSITION_4";
+			text="Monakhovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=13;
+			atlOffset=-22.186995;
+		};
+		class Item14
+		{
+			dataType="Marker";
+			position[]={2570.082,0.51660156,7236.0947};
+			name="RSTF_POSITION_5";
+			text="Malye Kuptsy";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=14;
+			atlOffset=-38.287605;
+		};
+		class Item15
+		{
+			dataType="Marker";
+			position[]={3553.7561,36.401073,7529.9326};
+			name="RSTF_POSITION_6";
+			text="Kuzhadon";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=15;
+		};
+		class Item16
+		{
+			dataType="Marker";
+			position[]={6256.7051,0,6824.3882};
+			name="RSTF_POSITION_7";
+			text="Bolshie Kuptsy";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=16;
+			atlOffset=-18.427546;
+		};
+		class Item17
+		{
+			dataType="Marker";
+			position[]={7891.7773,1.4658203,4268.2686};
+			name="RSTF_POSITION_8";
+			text="2nd district";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=17;
+			atlOffset=-41.531338;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={2209.7649,1.8232422,7945.2969};
+			name="RSTF_POSITION_9";
+			text="Shagrenevo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=18;
+			atlOffset=-30.424816;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={7742,0,5436};
+			name="RSTF_POSITION_10";
+			text="Mira ave.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=19;
+			atlOffset=-42.357895;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={5882.5977,-7.9599609,7795.0723};
+			name="RSTF_POSITION_11";
+			text="Armanikha";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=20;
+			atlOffset=-30.606182;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={8191.8174,1.1503906,3998.2126};
+			name="RSTF_POSITION_12";
+			text="Kroopskoy st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=21;
+			atlOffset=-31.184578;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={7956,0,5632};
+			name="RSTF_POSITION_13";
+			text="Nekrasova st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=22;
+			atlOffset=-15.932622;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={8522.8242,-0.85546875,3801.625};
+			name="RSTF_POSITION_14";
+			text="Generala Lopatova st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=23;
+			atlOffset=-29.72789;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={8402,0,5098};
+			name="RSTF_POSITION_15";
+			text="Lenina st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=24;
+			atlOffset=-6.8658047;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={8429.7676,3.2783203,4867.1655};
+			name="RSTF_POSITION_16";
+			text="BEKETOV";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=25;
+			atlOffset=-7.5446768;
+		};
+		class Item26
+		{
+			dataType="Marker";
+			position[]={8105.1084,2.0048828,6380.8687};
+			name="RSTF_POSITION_17";
+			text="Skotinino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=26;
+			atlOffset=-8.8296003;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={647.16772,0,8796.1865};
+			name="RSTF_POSITION_18";
+			text="Zaitsevo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=27;
+			atlOffset=-12.92865;
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={9094.7012,-3.7382813,5640.1689};
+			name="RSTF_POSITION_19";
+			text="3rd district";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=28;
+			atlOffset=-10.411652;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={9166.3398,0,7200.5801};
+			name="RSTF_POSITION_20";
+			text="Veremeevo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=29;
+			atlOffset=-13.13775;
+		};
+		class Item30
+		{
+			dataType="Marker";
+			position[]={2337.9146,0.640625,10968.591};
+			name="RSTF_POSITION_21";
+			text="Zhukovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=30;
+			atlOffset=-30.704378;
+		};
+		class Item31
+		{
+			dataType="Marker";
+			position[]={11262.647,0.98144531,439.3078};
+			name="RSTF_POSITION_22";
+			text="Tarasovka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=31;
+			atlOffset=-23.840103;
+		};
+		class Item32
+		{
+			dataType="Marker";
+			position[]={5049.1812,2.2724609,12363.821};
+			name="RSTF_POSITION_23";
+			text="Polshishkino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=32;
+			atlOffset=-16.693718;
+		};
+		class Item33
+		{
+			dataType="Marker";
+			position[]={12427.342,1.3232422,7430.3906};
+			name="RSTF_POSITION_24";
+			text="Gavrilovka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=33;
+			atlOffset=-25.508625;
+		};
+		class Item34
+		{
+			dataType="Marker";
+			position[]={11428.883,1.9384766,9757.751};
+			name="RSTF_POSITION_25";
+			text="Sevastianovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=34;
+			atlOffset=-19.287079;
+		};
+		class Item35
+		{
+			dataType="Marker";
+			position[]={10091.391,29.725403,11320.271};
+			name="RSTF_POSITION_26";
+			text="Karabatovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=35;
+		};
+		class Item36
+		{
+			dataType="Marker";
+			position[]={4347.5713,3.0576172,13936.254};
+			name="RSTF_POSITION_27";
+			text="Gumnishi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=36;
+			atlOffset=-23.626257;
+		};
+		class Item37
+		{
+			dataType="Marker";
+			position[]={13527,0,6107};
+			name="RSTF_POSITION_28";
+			text="Groznovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=37;
+			atlOffset=-27.303606;
+		};
+		class Item38
+		{
+			dataType="Marker";
+			position[]={10858.727,-2.7451172,11363.885};
+			name="RSTF_POSITION_29";
+			text="Kozlovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=38;
+			atlOffset=-41.977943;
+		};
+		class Item39
+		{
+			dataType="Marker";
+			position[]={1424.9967,-3.375,14493.911};
+			name="RSTF_POSITION_30";
+			text="Polivanovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=39;
+			atlOffset=-23.194286;
+		};
+		class Item40
+		{
+			dataType="Marker";
+			position[]={4189.6816,0.89941406,15193.049};
+			name="RSTF_POSITION_31";
+			text="Shalaevo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=40;
+			atlOffset=-12.856108;
+		};
+		class Item41
+		{
+			dataType="Marker";
+			position[]={750.71912,0,14780.51};
+			name="RSTF_POSITION_32";
+			text="Galkino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=41;
+			atlOffset=-13.741732;
+		};
+		class Item42
+		{
+			dataType="Marker";
+			position[]={12050.969,0,11295.6};
+			name="RSTF_POSITION_33";
+			text="Siukha";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=42;
+			atlOffset=-21.357738;
+		};
+		class Item43
+		{
+			dataType="Marker";
+			position[]={3051.3894,0.83398438,15396.924};
+			name="RSTF_POSITION_34";
+			text="Kon'kovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=43;
+			atlOffset=-24.724058;
+		};
+		class Item44
+		{
+			dataType="Marker";
+			position[]={15304.876,1.3447266,1081.7456};
+			name="RSTF_POSITION_35";
+			text="Karavayki";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=44;
+			atlOffset=-33.229881;
+		};
+		class Item45
+		{
+			dataType="Marker";
+			position[]={13066.284,-2.6875,11252.372};
+			name="RSTF_POSITION_36";
+			text="Yarovoe";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=45;
+			atlOffset=-41.442451;
+		};
+		class Item46
+		{
+			dataType="Marker";
+			position[]={6262.1416,0,15805.843};
+			name="RSTF_POSITION_37";
+			text="Polevaya st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=46;
+			atlOffset=-36.932995;
+		};
+		class Item47
+		{
+			dataType="Marker";
+			position[]={5641,0,16027};
+			name="RSTF_POSITION_38";
+			text="Centralnaya st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=47;
+			atlOffset=-27.182718;
+		};
+		class Item48
+		{
+			dataType="Marker";
+			position[]={6035.2529,-0.88378906,15995.189};
+			name="RSTF_POSITION_39";
+			text="KRASNYE SELTSY";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=48;
+			atlOffset=-36.425907;
+		};
+		class Item49
+		{
+			dataType="Marker";
+			position[]={16134.357,0,2280.2205};
+			name="RSTF_POSITION_40";
+			text="Vizovino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=49;
+			atlOffset=-29.675365;
+		};
+		class Item50
+		{
+			dataType="Marker";
+			position[]={6248.5107,1.6025391,16196.267};
+			name="RSTF_POSITION_41";
+			text="Michurina st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=50;
+			atlOffset=-34.624367;
+		};
+		class Item51
+		{
+			dataType="Marker";
+			position[]={3008.1467,1.1728516,16745.096};
+			name="RSTF_POSITION_42";
+			text="Kulibino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=51;
+			atlOffset=-27.239943;
+		};
+		class Item52
+		{
+			dataType="Marker";
+			position[]={16272.911,0,7214.6963};
+			name="RSTF_POSITION_43";
+			text="Dorogino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=52;
+			atlOffset=-42.738419;
+		};
+		class Item53
+		{
+			dataType="Marker";
+			position[]={16777.857,0.88867188,2837.9382};
+			name="RSTF_POSITION_44";
+			text="Pyr'evo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=53;
+			atlOffset=-27.074875;
+		};
+		class Item54
+		{
+			dataType="Marker";
+			position[]={17072.436,-2.3632813,1975.8704};
+			name="RSTF_POSITION_45";
+			text="Omooteeschi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=54;
+			atlOffset=-28.788509;
+		};
+		class Item55
+		{
+			dataType="Marker";
+			position[]={6671.7661,3.6503906,17508.66};
+			name="RSTF_POSITION_46";
+			text="Zhuzhelka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=55;
+			atlOffset=-30.791237;
+		};
+		class Item56
+		{
+			dataType="Marker";
+			position[]={5285.2207,0,18884.195};
+			name="RSTF_POSITION_47";
+			text="Sentsy";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=56;
+			atlOffset=-33.371956;
+		};
+		class Item57
+		{
+			dataType="Marker";
+			position[]={5107.1455,1.9433594,19295.58};
+			name="RSTF_POSITION_48";
+			text="Ksenino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=57;
+			atlOffset=-40.776222;
+		};
+		class Item58
+		{
+			dataType="Marker";
+			position[]={19404,0,3254};
+			name="RSTF_POSITION_49";
+			text="Naleskino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=58;
+			atlOffset=-19.621481;
+		};
+		class Item59
+		{
+			dataType="Marker";
+			position[]={16133.254,0,14659.837};
+			name="RSTF_POSITION_50";
+			text="Maloe Vorontsovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=59;
+			atlOffset=-11.993126;
+		};
+		class Item60
+		{
+			dataType="Marker";
+			position[]={20078.051,1.4814453,6259.168};
+			name="RSTF_POSITION_51";
+			text="Kliuchishi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=60;
+			atlOffset=-40.202717;
+		};
+		class Item61
+		{
+			dataType="Marker";
+			position[]={19953.648,6.0664063,7390.1299};
+			name="RSTF_POSITION_52";
+			text="Imeni Parizhskoy Kommuny";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=61;
+			atlOffset=-40.593754;
+		};
+		class Item62
+		{
+			dataType="Marker";
+			position[]={16082.253,-11.236328,15200.686};
+			name="RSTF_POSITION_53";
+			text="Verhnee Vorontsovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=62;
+			atlOffset=-37.850159;
+		};
+		class Item63
+		{
+			dataType="Marker";
+			position[]={18159.518,-2.3037109,13642.968};
+			name="RSTF_POSITION_54";
+			text="Studenets";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=63;
+			atlOffset=-15.12337;
+		};
+		class Item64
+		{
+			dataType="Marker";
+			position[]={13499.815,-1.2177734,19286.984};
+			name="RSTF_POSITION_55";
+			text="Dubionki";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=64;
+			atlOffset=-26.476894;
+		};
+		class Item65
+		{
+			dataType="Marker";
+			position[]={19338,0,14029};
+			name="RSTF_POSITION_56";
+			text="Oblepikhino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=65;
+			atlOffset=-21.079634;
+		};
+		class Item66
+		{
+			dataType="Marker";
+			position[]={14651,0,20188};
+			name="RSTF_POSITION_57";
+			text="Belokamenka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=66;
+			atlOffset=-26.180958;
+		};
+		class Item67
+		{
+			dataType="Marker";
+			position[]={17690.023,2.3808594,17766.994};
+			name="RSTF_POSITION_58";
+			text="Arshavino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=67;
+			atlOffset=-30.531696;
+		};
+		class Item68
+		{
+			dataType="Marker";
+			position[]={13692.751,25.233976,19032.797};
+			name="RSTF_POSITION_59";
+			text="Dubionki";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=79;
+		};
+		class Item69
+		{
+			dataType="Marker";
+			position[]={17499.742,-2.9237995,17063.172};
+			name="RSTF_POSITION_60";
+			text="Arshavino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=80;
+			atlOffset=-30.531696;
+		};
+		class Item70
+		{
+			dataType="Marker";
+			position[]={11985.904,4.8105469,11590.649};
+			name="RSTF_POSITION_61";
+			text="Siukha";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=82;
+			atlOffset=-21.217611;
+		};
+		class Item71
+		{
+			dataType="Marker";
+			position[]={9060.1719,36.430977,11347.068};
+			name="RSTF_POSITION_62";
+			text="Karabatovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=83;
+			atlOffset=2.3764458;
+		};
+		class Item72
+		{
+			dataType="Marker";
+			position[]={9458.6904,33.778439,11242.451};
+			name="RSTF_POSITION_63";
+			text="Karabatovo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=84;
+		};
+		class Item73
+		{
+			dataType="Marker";
+			position[]={13052.963,3.7792969,7020.0674};
+			name="RSTF_POSITION_64";
+			text="Gavrilovka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=85;
+			atlOffset=-25.449722;
+		};
+		class Item74
+		{
+			dataType="Marker";
+			position[]={12224.295,23.745483,7254.0635};
+			name="RSTF_POSITION_65";
+			text="Gavrilovka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=86;
+		};
+		class Item75
+		{
+			dataType="Marker";
+			position[]={11165.146,10.894662,7468.7095};
+			name="RSTF_POSITION_66";
+			text="Gavrilovka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=87;
+		};
+		class Item76
+		{
+			dataType="Marker";
+			position[]={5619.9487,30.543566,7765.5078};
+			name="RSTF_POSITION_67";
+			text="Armanikha";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=88;
+		};
+		class Item77
+		{
+			dataType="Marker";
+			position[]={3315.4214,42.355095,7776.2393};
+			name="RSTF_POSITION_68";
+			text="Kuzhadon";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=89;
+		};
+		class Item78
+		{
+			dataType="Marker";
+			position[]={3897.9517,34.023811,7637.5415};
+			name="RSTF_POSITION_69";
+			text="Kuzhadon";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=90;
+		};
+		class Item79
+		{
+			dataType="Marker";
+			position[]={4930.5532,0,12565.617};
+			name="RSTF_POSITION_70";
+			text="Polshishkino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=91;
+			atlOffset=-17.913309;
+		};
+		class Item80
+		{
+			dataType="Marker";
+			position[]={3935.8374,2.2939453,15223.872};
+			name="RSTF_POSITION_71";
+			text="Shalaevo";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=92;
+			atlOffset=-12.382813;
+		};
+		class Item81
+		{
+			dataType="Marker";
+			position[]={3264.8196,22.813759,16432.295};
+			name="RSTF_POSITION_72";
+			text="Kulibino";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=93;
+		};
+		class Item82
+		{
+			dataType="Marker";
+			position[]={6453.8271,-2.507658,17658.781};
+			name="RSTF_POSITION_73";
+			text="Zhuzhelka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=94;
+			atlOffset=-32.862198;
+		};
+		class Item83
+		{
+			dataType="Marker";
+			position[]={8473.9375,18.580021,4316.9536};
+			name="RSTF_POSITION_74";
+			text="Kroopskoy st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=95;
+		};
+		class Item84
+		{
+			dataType="Marker";
+			position[]={9502.7822,3.8056641,4330.3721};
+			name="RSTF_POSITION_75";
+			text="Kroopskoy st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=96;
+			atlOffset=-31.184803;
+		};
+		class Item85
+		{
+			dataType="Marker";
+			position[]={7738.0928,39.448593,5010.3027};
+			name="RSTF_POSITION_76";
+			text="Mira ave.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=97;
+		};
+		class Item86
+		{
+			dataType="Marker";
+			position[]={8151.8667,-2.6740141,5415.1309};
+			name="RSTF_POSITION_77";
+			text="Nekrasova st.";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=98;
+			atlOffset=-18.714943;
+		};
+		class Item87
+		{
+			dataType="Marker";
+			position[]={8791.54,5.7119808,5419.606};
+			name="RSTF_POSITION_78";
+			text="3rd district";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=99;
+		};
+		class Item88
+		{
+			dataType="Marker";
+			position[]={8896.6602,-1.5209732,5081.873};
+			name="RSTF_POSITION_79";
+			text="3rd district";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=100;
+			atlOffset=-10.527313;
+		};
+	};
+};

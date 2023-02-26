@@ -1,3 +1,6 @@
 [list]
-  [*] Fixed issues with factions without vehicles
+  [*] Fixed UI not working properly when using save/load system
+  [*] Fixed some group spawning issues in COOP
+  [*] Add two new gamemodes: Defense and Push - Defense
+  [*] Tons of new maps
 [/list]
