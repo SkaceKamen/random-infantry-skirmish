@@ -58,8 +58,8 @@ class RSTF_Modes
 
 	class Defense
 	{
-		title = "Defense";
-		description = "Hold area for predefined amount of time agains never ending waves of enemies.";
+		title = "Defense - BETA";
+		description = "Hold area for predefined amount of time agains never ending waves of enemies. This game mode is in BETA stage and could be unablanced.";
 		enabled = 1;
 		order = 3;
 
