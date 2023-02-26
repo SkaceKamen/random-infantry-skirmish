@@ -21,6 +21,7 @@ Immediately jump into random infantry skirmish on random place on the map. You c
 [list]
   [*] New game modes: Push - Defense and Defense
   [*] Tons of new maps
+  [*] Added more UI options
 [/list]
 
 [h2]No support dedicated servers[/h2]

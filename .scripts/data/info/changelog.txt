@@ -2,5 +2,6 @@
   [*] Fixed UI not working properly when using save/load system
   [*] Fixed some group spawning issues in COOP
   [*] Add two new gamemodes: Defense and Push - Defense
+  [*] Added more UI options
   [*] Tons of new maps
 [/list]
