@@ -54,6 +54,9 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   uploadPreview = False
   existingId = ids[island] if island in ids else 0
 
+  if not os.path.exists(previewPath):
+    previewPath = os.path.join(previewsPath, "%s.jpg" % 'unknown')
+
   if len(ONLY_PUBLISH) > 0 and not island in ONLY_PUBLISH:
     continue
 
