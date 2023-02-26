@@ -30,3 +30,10 @@ RSTF_initScripts = [
 	_x enableSimulationGlobal false;
 } foreach allUnits;
 
+addMissionEventHandler ["Loaded", {
+	// Start UI features
+	[] spawn RSTFUI_fnc_startOverlay;
+
+	// Update score display
+	[] spawn RSTF_fnc_onScore;
+}];
