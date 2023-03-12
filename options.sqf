@@ -575,3 +575,9 @@ RSTF_AI_VEHICLES_ENABLED = true;
 
 // Skip initial mode select screen
 RSTF_SKIP_MODE_SELECT = false;
+
+// Reuse existing groups when respawning units
+RSTF_SPAWN_REUSE_GROUPS = true;
+
+// Spawn near leader of the group when reusing existing groups
+RSTF_SPAWN_AT_OWN_GROUP = true;

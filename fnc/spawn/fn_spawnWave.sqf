@@ -45,31 +45,72 @@ private _aliveUnits = 0;
 	_aliveUnits = _aliveUnits + count(units(_x));
 } foreach _groups;
 
+private _groupsCounts = createHashMap;
+{
+	_groupsCounts set [_foreachIndex, count(units(_x))];
+} forEach _groups;
+
+private _pickNextGroup = {
+	private _group = param [0];
+	private _groupsInfo = param [1];
+	private _sideIndex = param [2];
+	private _side = param [3];
+	private _unitsPerGroup = param [4];
+	private _index = param [5];
+
+	private _groups = _groupsInfo param [0];
+	private _groupsCounts = _groupsInfo param [1];
+
+	// Try to use existing group
+	private _resultGroup = grpNull;
+	if (RSTF_SPAWN_REUSE_GROUPS) then {
+		{
+			if (_groupsCounts get _foreachIndex < _unitsPerGroup) exitWith {
+				_resultGroup = _x;
+			};
+		} foreach _groups;
+	} else {
+		if (!isNull(_group) && _index % _unitsPerGroup != 0) exitWith {
+			_resultGroup = _group;
+		};
+	};
+
+	if (!isNull(_resultGroup)) exitWith {
+		_resultGroup;
+	};
+
+	// Create new group
+	private _group = createGroup [_side, true];
+	_groups pushBack _group;
+	_groupsCounts set [count(_groups) - 1, 0];
+	[_group, _sideIndex] call RSTF_fnc_refreshGroupWaypoints;
+
+	if (RSTF_DEBUG) then {
+		private _marker = createMarkerLocal [str(_group), [0,0,0]];
+		_marker setMarkerShape "ICON";
+		_marker setMarkerType "waypoint";
+		_marker setMarkerColor (RSTF_SIDES_COLORS select _sideIndex);
+	};
+
+	_group;
+};
+
 // Spawn new units (Limit spawn count?)
 private _group = grpNull;
 private _i = 0;
 private _spawnQueue = [];
 for [{_i = 0}, {_i < (_totalUnits - _aliveUnits)}, {_i = _i + 1}] do {
-	if (_i % _unitsPerGroup == 0 || isNull(_group)) then {
-		_group = createGroup [_side, true];
-		if (isNull(_group)) exitWith {
-			diag_log text(format["Failed to create %1 group, too many groups?", _side]);
-			diag_log text(format["Groups: %1", count(_groups)]);
+	_group = [_group, [_groups, _groupsCounts], _sideIndex, _side, _unitsPerGroup, _i] call _pickNextGroup;
 
-			systemChat format["Failed to create %1 group, too many groups?", _side];
-		};
+	if (isNull(_group)) exitWith {
+		diag_log text(format["Failed to create %1 group, too many groups?", _side]);
+		diag_log text(format["Groups: %1", count(_groups)]);
 
-		_groups pushBack _group;
-
-		[_group, _sideIndex] call RSTF_fnc_refreshGroupWaypoints;
-
-		if (RSTF_DEBUG) then {
-			private _marker = createMarkerLocal [str(_group), [0,0,0]];
-			_marker setMarkerShape "ICON";
-			_marker setMarkerType "waypoint";
-			_marker setMarkerColor (RSTF_SIDES_COLORS select _sideIndex);
-		};
+		systemChat format["Failed to create %1 group, too many groups?", _side];
 	};
+
+	_groupIndex = _groups find _group;
+	_groupsCounts set [_groupIndex, (_groupsCounts get _groupIndex) + 1];
 
 	if (_instantSpawn) then {
 		[_group, _sideIndex, true] call RSTF_fnc_createRandomUnit;
