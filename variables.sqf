@@ -1,6 +1,6 @@
 #include "dialogs\keys.hpp"
 
-RSTF_DEBUG = false;
+RSTF_DEBUG = true;
 
 // Indexes used for various arrays
 SIDE_ENEMY = 0;
@@ -224,7 +224,9 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_UI_SHOW_PLAYER_FEED",
 	"RSTF_UI_SHOW_PLAYER_MONEY",
 	"RSTF_UI_SHOW_GAMEMODE_SCORE",
-	"RSTF_UI_SHOW_GAMEMODE_UNIT_COUNT"
+	"RSTF_UI_SHOW_GAMEMODE_UNIT_COUNT",
+	"RSTF_SPAWN_REUSE_GROUPS",
+	"RSTF_SPAWN_AT_OWN_GROUP"
 ];
 
 // Profile values that are specific to local player (don't broadcast them)
