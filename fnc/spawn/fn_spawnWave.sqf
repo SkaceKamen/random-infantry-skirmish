@@ -42,30 +42,24 @@ if (_side == east) then {
 private _totalUnits = _unitsPerGroup * _groupsPerSide;
 private _aliveUnits = 0;
 {
-	_aliveUnits = _aliveUnits + count(units(_x));
+	private _count = count(units(_x));
+	_aliveUnits = _aliveUnits + _count;
+	_x setVariable ["RSTF_UNITS_COUNT", _count];
 } foreach _groups;
-
-private _groupsCounts = createHashMap;
-{
-	_groupsCounts set [_foreachIndex, count(units(_x))];
-} forEach _groups;
 
 private _pickNextGroup = {
 	private _group = param [0];
-	private _groupsInfo = param [1];
+	private _groups = param [1];
 	private _sideIndex = param [2];
 	private _side = param [3];
 	private _unitsPerGroup = param [4];
 	private _index = param [5];
 
-	private _groups = _groupsInfo param [0];
-	private _groupsCounts = _groupsInfo param [1];
-
 	// Try to use existing group
 	private _resultGroup = grpNull;
 	if (RSTF_SPAWN_REUSE_GROUPS) then {
 		{
-			if (_groupsCounts get _foreachIndex < _unitsPerGroup) exitWith {
+			if (_x getVariable ["RSTF_UNITS_COUNT", 0] < _unitsPerGroup) exitWith {
 				_resultGroup = _x;
 			};
 		} foreach _groups;
@@ -81,8 +75,8 @@ private _pickNextGroup = {
 
 	// Create new group
 	private _group = createGroup [_side, true];
+	_group setVariable ["RSTF_UNITS_COUNT", 0];
 	_groups pushBack _group;
-	_groupsCounts set [count(_groups) - 1, 0];
 	[_group, _sideIndex] call RSTF_fnc_refreshGroupWaypoints;
 
 	if (RSTF_DEBUG) then {
@@ -100,7 +94,7 @@ private _group = grpNull;
 private _i = 0;
 private _spawnQueue = [];
 for [{_i = 0}, {_i < (_totalUnits - _aliveUnits)}, {_i = _i + 1}] do {
-	_group = [_group, [_groups, _groupsCounts], _sideIndex, _side, _unitsPerGroup, _i] call _pickNextGroup;
+	_group = [_group, _groups, _sideIndex, _side, _unitsPerGroup, _i] call _pickNextGroup;
 
 	if (isNull(_group)) exitWith {
 		diag_log text(format["Failed to create %1 group, too many groups?", _side]);
@@ -109,8 +103,7 @@ for [{_i = 0}, {_i < (_totalUnits - _aliveUnits)}, {_i = _i + 1}] do {
 		systemChat format["Failed to create %1 group, too many groups?", _side];
 	};
 
-	_groupIndex = _groups find _group;
-	_groupsCounts set [_groupIndex, (_groupsCounts get _groupIndex) + 1];
+	_group setVariable ["RSTF_UNITS_COUNT", (_group getVariable ["RSTF_UNITS_COUNT", 0]) + 1];
 
 	if (_instantSpawn) then {
 		[_group, _sideIndex, true] call RSTF_fnc_createRandomUnit;
