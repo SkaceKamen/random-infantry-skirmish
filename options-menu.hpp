@@ -38,6 +38,16 @@ class RSTF_Options {
 				description="Interval in seconds in which reinforcements are spawned";
 				type="number";
 			};
+			class RSTF_SPAWN_REUSE_GROUPS {
+				title="Reuse existing groups when spawning";
+				description="Don't create new groups when spawning new units, reuse existing ones. Can cause AI issues";
+				type="checkbox";
+			};
+			class RSTF_SPAWN_AT_OWN_GROUP {
+				title="Spawn new units near group";
+				description="Spawn new units near group when there's no enemy near";
+				type="checkbox";
+			};
 			class spacer2 { type = "spacer"; };
 			class RSTF_CLEAR_HISTORIC_ITEMS {
 				title="Clear modern things";
