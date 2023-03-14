@@ -173,11 +173,19 @@ while { true } do {
 				};
 			};
 
-			if (_modeId == "Push" || _modeId == "PushDefense") then {
+			if (_modeId == "Push") then {
 				if (_lastOwner == SIDE_FRIENDLY) then {
 					_ctrlPushProgress ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
 				} else {
 					_ctrlPushProgress ctrlSetBackgroundColor [0, 0, 0.9, 0.9];
+				};
+			};
+
+			if (_modeId == "PushDefense") then {
+				if (_lastOwner == SIDE_ENEMY) then {
+					_ctrlPushProgress ctrlSetBackgroundColor [0.77, 0, 0, 0.9];
+				} else {
+					_ctrlPushProgress ctrlSetBackgroundColor [0.9, 0, 0, 0.9];
 				};
 			};
 

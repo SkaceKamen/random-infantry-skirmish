@@ -76,7 +76,11 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 
 	// Finish previous task
 	if (RSTF_MODE_PUSH_TASK != "") then {
-		[RSTF_MODE_PUSH_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
+		if (RSTF_MODE_DEFENDERS_SIDE == SIDE_ENEMY) then {
+			[RSTF_MODE_PUSH_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
+		} else {
+			[RSTF_MODE_PUSH_TASK, "FAILED", true] call BIS_fnc_taskSetState;
+		};
 	};
 
 	0 spawn {
