@@ -15,7 +15,7 @@ PUBLISHER = "c:\\Users\\KaKa\\source\\repos\\A3MissionPublisher\\A3MissionPublis
 
 SKIP_PUBLISH = False
 SKIP_PUBLISHED = False
-ONLY_PUBLISH = ["Malden","stozec","Takistan"]
+ONLY_PUBLISH = []
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
