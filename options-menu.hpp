@@ -97,7 +97,7 @@ class RSTF_Options {
 	};
 	class Push {
 		title = "Mode";
-		visible = "(call RSTF_fnc_getModeId) == 'Push'";
+		visible = "(call RSTF_fnc_getModeId) == 'Push' || (call RSTF_fnc_getModeId) == 'PushDefense'";
 
 		class Items {
 			class RSTF_MODE_PUSH_POINT_COUNT {
@@ -118,6 +118,11 @@ class RSTF_Options {
 			class RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT {
 				title="Number of defensive emplacements";
 				description="Number of defensive emplacements spawned, only works when faction has suitable static emplacements.";
+				type="number";
+			};
+			class RSTF_MODE_PUSH_DEFENDERS_DISADVANTAGE {
+				title="Defenders group disadvantage";
+				description="Defenders will have this much less groups.";
 				type="number";
 			};
 		};

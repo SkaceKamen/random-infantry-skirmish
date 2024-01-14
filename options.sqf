@@ -552,6 +552,8 @@ RSTF_MODE_PUSH_POINT_COUNT = 5;
 RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT = 5;
 // Spawn emplacements on the first point
 RSTF_MODE_PUSH_FIRST_POINT_EMPLACEMENTS = true;
+// Defenders will have this much less groups
+RSTF_MODE_PUSH_DEFENDERS_DISADVANTAGE = 1;
 
 // Remove un-historical items from map
 RSTF_CLEAR_HISTORIC_ITEMS = false;
@@ -577,7 +579,7 @@ RSTF_AI_VEHICLES_ENABLED = true;
 RSTF_SKIP_MODE_SELECT = false;
 
 // Reuse existing groups when respawning units
-RSTF_SPAWN_REUSE_GROUPS = true;
+RSTF_SPAWN_REUSE_GROUPS = false;
 
 // Spawn near leader of the group when reusing existing groups
 RSTF_SPAWN_AT_OWN_GROUP = true;

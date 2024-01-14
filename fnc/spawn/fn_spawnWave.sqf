@@ -36,6 +36,10 @@ if (_side == east) then {
 private _groupsPerSide = RSTF_LIMIT_GROUPS;
 if (_side == east) then {
 	_groupsPerSide = _groupsPerSide + RSTF_ENEMY_ADVANTAGE_GROUPS;
+
+	if (RSTF_MODE_PUSH_ENABLED && RSTF_MODE_DEFENDERS_SIDE == _sideIndex) then {
+		_groupsPerSide = _groupsPerSide - RSTF_MODE_PUSH_DEFENDERS_DISADVANTAGE;
+	};
 };
 
 // Calculate unit counts for this side
@@ -57,7 +61,7 @@ private _pickNextGroup = {
 
 	// Try to use existing group
 	private _resultGroup = grpNull;
-	if (RSTF_SPAWN_REUSE_GROUPS) then {
+	if (RSTF_SPAWN_REUSE_GROUPS || RSTF_SPAWN_AT_OWN_GROUP) then {
 		{
 			if (_x getVariable ["RSTF_UNITS_COUNT", 0] < _unitsPerGroup) exitWith {
 				_resultGroup = _x;

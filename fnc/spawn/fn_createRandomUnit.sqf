@@ -19,7 +19,7 @@ private _side = param [1];
 private _checkMovement = param [2, false];
 private _position = [];
 
-if (RSTF_SPAWN_REUSE_GROUPS && RSTF_SPAWN_AT_OWN_GROUP) then {
+if (RSTF_SPAWN_AT_OWN_GROUP) then {
 	_position = [_group, _side] call RSTF_fnc_getGroupSpawnPosition;
 } else {
 	_position = [_side] call RSTF_fnc_randomSpawn;

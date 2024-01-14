@@ -21,6 +21,8 @@ RSTF_MODE_PUSH_TASK = "";
 RSTF_MODE_DEFENDERS_SIDE = 0;
 RSTF_MODE_ATTACKERS_SIDE = 1;
 
+RSTF_MODE_DISTANCE_KILL_TIMEOUT = 20;
+
 RSTF_MODE_PUSH_NEXT_POINT = {
 	RSTF_MODE_PUSH_POINT_INDEX = RSTF_MODE_PUSH_POINT_INDEX + 1;
 	private _nextPoint = RSTF_MODE_PUSH_POINTS select RSTF_MODE_PUSH_POINT_INDEX;
@@ -134,8 +136,6 @@ RSTF_MODE_PUSH_init = {
 	RSTF_TASKS_IFV_ENABLED = false;
 	RSTF_TASKS_CLEAR_ENABLED = false;
 	RSTF_TASKS_EMP_ENABLED = false;
-
-	// RSTF_ENEMY_ADVANTAGE_GROUPS = RSTF_ENEMY_ADVANTAGE_GROUPS - 1;
 };
 
 RSTF_MODE_PUSH_startLoop = {
@@ -260,6 +260,38 @@ RSTF_MODE_PUSH_startLoop = {
 			sleep 1;
 		};
 	};
+
+
+	// Kill AI that are too far away from the objective (usually happens when point is pushed)
+	0 spawn {
+		private _killDistance = RSTF_SPAWN_DISTANCE_MAX + 50;
+
+		while { !RSTF_ENDED } do {
+			{
+				{
+					{
+						if (!isPlayer(_x) && alive(_x) && vehicle(_x) == _x) then {
+							private _distance = _x distance RSTF_POINT;
+							if (_distance > _killDistance) then {
+								private _killTimeout = _x getVariable ["RSTF_KILL_TIMEOUT", 0];
+								if (_killTimeout < RSTF_MODE_DISTANCE_KILL_TIMEOUT) then {
+									_x setVariable ["RSTF_KILL_TIMEOUT", _killTimeout + 5];
+								} else {
+									if (RSTF_DEBUG) then {
+										systemChat format["Killing %1 because its too far (%2 m)", name _x, _distance];
+									};
+
+									_x setDamage 1;
+								};
+							};
+						};
+					} foreach units(_x);
+				} foreach _x;
+			} forEach RSTF_GROUPS;
+
+			sleep 5;
+		};
+	}
 };
 
 RSTF_MODE_PUSH_unitKilled = {
