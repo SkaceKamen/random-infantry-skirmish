@@ -1,3 +1,5 @@
+#include "../../dialogs.inc"
+
 class Mode: ZUI_ColumnLayout
 {
 	margin[] = { 0.01, 0, 0, 0 };
@@ -13,11 +15,16 @@ class Mode: ZUI_ColumnLayout
 		heightType = ZUI_SIZE_ABSOLUTE;
 	};
 
-	class Description: ZUI_StructuredText
+	class Background: ZUI_RowLayout
 	{
-		margin[] = { 0.005, 0, 0, 0 };
-		id = "description";
 		background[] = { 0, 0, 0, 0.8 };
-		height = 1;
+		
+		class Description: ZUI_StructuredText
+		{
+			margin = 0.005;
+			id = "description";
+			height = 1;
+			textSize = GUI_TEXT_SIZE_SMALL;
+		};
 	};
 };

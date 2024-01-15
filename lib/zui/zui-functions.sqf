@@ -130,6 +130,14 @@ ZUI_fnc_applyControlProps = {
 			_ctrl lnbAddColumn _x;
 		} foreach getArray(_config >> "columns");
 	};
+
+	if (isNumber(_config >> "textSize")) then {
+		_ctrl ctrlSetFontHeight getNumber(_config >> "textSize");
+	};
+
+	if (isText(_config >> "textSize")) then {
+		_ctrl ctrlSetFontHeight (call compile(getText(_config >> "textSize")));
+	};
 };
 
 ZUI_fnc_parseNumberProp = {
@@ -194,7 +202,8 @@ ZUI_fnc_refresh = {
 	private _margin = [[_comp, "margin", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseSizing;
 	private _position = [_comp, "position", true, ZUI_POSITION_RELATIVE] call ZUI_fnc_getProp;
 
-	// diag_log text("[RSTF] " + str([configName(_comp#ZUI_L_CONFIG), _xPos, _yPos, _parentWidth, _parentHeight, _margin]));
+	//diag_log text("[RSTF] " + str([configName(_comp#ZUI_L_CONFIG), _xPos, _yPos, _parentWidth, _parentHeight, _margin]));
+
 
 	if (_position == ZUI_POSITION_ABSOLUTE) then {
 		_xPos = [[_comp, "x", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;

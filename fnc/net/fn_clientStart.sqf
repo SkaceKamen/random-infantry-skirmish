@@ -12,7 +12,8 @@ if (count(RSTF_POINT) > 0) then {
 
 if (!RSTF_STARTED) then {
 	if (call BIS_fnc_admin > 0) then {
-		0 spawn RSTF_fnc_showModeSelector;
+		//0 spawn RSTF_fnc_showModeSelector;
+		0 spawn RSTF_fnc_showChangelog;
 	} else {
 		0 spawn RSTF_fnc_showWaiting;
 	};
