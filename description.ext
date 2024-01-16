@@ -1,3 +1,4 @@
+#include "dialogs\theme.hpp"
 #include "dialogs\base.hpp"
 #include "dialogs\extended.hpp"
 #include "dialogs\titles.hpp"
@@ -19,6 +20,7 @@
 #include "dialogs\zui\artillery.hpp"
 #include "dialogs\zui\modeSelector.hpp"
 #include "dialogs\zui\customSelector.hpp"
+#include "dialogs\zui\mainConfig.hpp"
 
 #include "modes.hpp"
 #include "options-menu.hpp"

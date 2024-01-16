@@ -130,6 +130,18 @@ ZUI_fnc_applyControlProps = {
 			_ctrl lnbAddColumn _x;
 		} foreach getArray(_config >> "columns");
 	};
+
+	if (isNumber(_config >> "textSize")) then {
+		_ctrl ctrlSetFontHeight getNumber(_config >> "textSize");
+	};
+
+	if (isText(_config >> "textSize")) then {
+		_ctrl ctrlSetFontHeight (call compile(getText(_config >> "textSize")));
+	};
+
+	if (isText(_config >> "font")) then {
+		_ctrl ctrlSetFont getText(_config >> "font");
+	};
 };
 
 ZUI_fnc_parseNumberProp = {

@@ -8,7 +8,8 @@ RSTF_CAM camSetTarget RSTF_CAM_TARGET;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
 
-_display = ["RSTF_RscDialogConfig", RSTF_fnc_showConfig] call RSTF_fnc_spawnDialog;
+RSTF_MAIN_CONFIG_layout = [missionConfigFile >> "MainConfigDialog"] call ZUI_fnc_createDisplay;
+private _display = [RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display;
 if (typeName(_display) == typeName(false) && { !_display }) then {
 	call RSTF_fnc_start;
 };
@@ -17,7 +18,7 @@ RSTF_FACTIONS = call RSTF_fnc_loadFactions;
 
 call RSTF_fnc_profileLoad;
 
-_template = '
+private _template = '
 	[%2, {
 		%2 = _this;
 		["%1", %2] call RSTF_fnc_configUpdateFactions;
@@ -25,16 +26,17 @@ _template = '
 ';
 
 {
-	_ctrl = ["RSTF_RscDialogConfig", "edit", ["controls", _x select 0, "controls"]] call RSTF_fnc_getCtrl;
+	private _buttonName = (_x select 0) + "Edit";
+	private _ctrl = [RSTF_MAIN_CONFIG_layout, _buttonName] call ZUI_fnc_getControlById;
 	_ctrl ctrlAddEventHandler ["ButtonClick", compile(format[_template,_x select 0,_x select 1])];
 	call compile format['["%1", %2] call RSTF_fnc_configUpdateFactions',_x select 0,_x select 1];
 } foreach [
-	["sideFriendly", "FRIENDLY_FACTIONS"],
-	["sideNeutral", "NEUTRAL_FACTIONS"],
-	["sideEnemy", "ENEMY_FACTIONS"]
+	["friendly", "FRIENDLY_FACTIONS"],
+	["neutral", "NEUTRAL_FACTIONS"],
+	["enemy", "ENEMY_FACTIONS"]
 ];
 
-_ctrl = ["RSTF_RscDialogConfig", "weaponButton"] call RSTF_fnc_getCtrl;
+private _ctrl = [RSTF_MAIN_CONFIG_layout, "pickEquipment"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	0 spawn {
 		if (!RSTF_CUSTOM_EQUIPMENT) then {
@@ -47,19 +49,19 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	true;
 }];
 
-_ctrl = ["RSTF_RscDialogConfig", "configButton"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_MAIN_CONFIG_layout, "editConfig"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
-	[] spawn RSTF_fnc_showAdvancedConfig;
+	[[RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display] spawn RSTF_fnc_showAdvancedConfig;
 }];
 
-_ctrl = ["RSTF_RscDialogConfig", "presetsButton"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_MAIN_CONFIG_layout, "showPresets"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
-	["RSTF_RscDialogConfig" call RSTF_fnc_getDisplay] spawn RSTFUI_fnc_showPresetDialog;
+	[[RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display] spawn RSTFUI_fnc_showPresetDialog;
 }];
 
 call RSTF_fnc_updateEquipment;
 
-_ctrl = ["RSTF_RscDialogConfig", "start"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_MAIN_CONFIG_layout, "start"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	// Validate settings
 	_errors = call RSTF_fnc_configValidate;
@@ -126,3 +128,5 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	RSTF_CONFIG_DONE = true;
 	publicVariable "RSTF_CONFIG_DONE";
 }];
+
+call RSTF_fnc_updateMainConfigScreen;
