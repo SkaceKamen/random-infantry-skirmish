@@ -57,7 +57,7 @@ class RSTF_BUYABLE_SUPPORTS
 	class InfantryAmmo
 	{
 		title = "Infantry ammo drop";
-		description = "Drops infantry ammo crate";
+		description = "Drops an infantry ammo crate";
 		picture = "\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa";
 		cost = 500;
 		execute = "[_this#1] call RSTF_fnc_initSupplyDrop";
@@ -66,7 +66,7 @@ class RSTF_BUYABLE_SUPPORTS
 	class ArsenalBox
 	{
 		title = "Arsenal box";
-		description = "Drops infantry ammo crate";
+		description = "Drops an Arsenal box which allows you to change your equipment";
 		picture = "\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa";
 		cost = 1500;
 		execute = "[_this#1] call RSTF_fnc_initSupplyDrop";
@@ -75,7 +75,7 @@ class RSTF_BUYABLE_SUPPORTS
 	class VehicleAmmo
 	{
 		title = "Vehicle ammo drop";
-		description = "Drops vehicle ammo crate";
+		description = "Drops a vehicle ammo crate";
 		picture = "\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa";
 		cost = 2000;
 		execute = "[_this#1] call RSTF_fnc_initSupplyDrop";
