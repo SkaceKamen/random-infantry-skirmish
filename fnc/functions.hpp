@@ -50,6 +50,8 @@ class RSTF
 
 		class respawn {};
 		class attachVehicleRefundCheck {};
+
+		class getLastChangelog {};
 	};
 
 	class money
@@ -139,6 +141,7 @@ class RSTF
 		class createArsenalBackground {};
 		class destroyArsenalBackground {};
 
+		class showChangelog {};
 		class updateMainConfigScreen {};
 	};
 

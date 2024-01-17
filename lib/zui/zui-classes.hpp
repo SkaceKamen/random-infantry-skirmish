@@ -52,26 +52,31 @@ class ZUI_Button: ZUI_Control
 	control = "RscButton";
 	font = "PuristaLight";
 	background[] = { 0, 0, 0, 0.8 };
+	shadow = 0;
 };
 
 class ZUI_Static: ZUI_Control
 {
 	control = "RscText";
+	shadow = 0;
 };
 
 class ZUI_Text: ZUI_Control
 {
 	control = "RscText";
+	shadow = 0;
 };
 
 class ZUI_TextCenter: ZUI_Control
 {
 	control = "RscTextCenter";
+	shadow = 0;
 };
 
 class ZUI_TextRight: ZUI_Control
 {
 	control = "RscTextRight";
+	shadow = 0;
 };
 
 class ZUI_Listview: ZUI_Control
@@ -92,6 +97,7 @@ class ZUI_Picture: ZUI_Control
 class ZUI_StructuredText: ZUI_Control
 {
 	control = "RscStructuredText";
+	shadow = 0;
 };
 
 class ZUI_Container: ZUI_Component

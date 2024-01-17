@@ -16,6 +16,7 @@
 #include "dialogs\zui\artillery.hpp"
 #include "dialogs\zui\modeSelector.hpp"
 #include "dialogs\zui\customSelector.hpp"
+#include "dialogs\zui\changelog.hpp"
 #include "dialogs\zui\mainConfig.hpp"
 #include "dialogs\zui\factionSelector.hpp"
 

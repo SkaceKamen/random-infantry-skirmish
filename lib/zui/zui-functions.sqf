@@ -63,10 +63,6 @@ ZUI_fnc_build = {
 		private _class = getText(_config >> "control");
 		_ctrl = _display ctrlCreate [_class, -2, _parent];
 
-		if (_class == "RscText" || _class == "RscButton" || _class == "RscStructuredText") then {
-			_ctrl ctrlSetShadow 0;
-		};
-
 		[_ctrl, _config] call ZUI_fnc_applyControlProps;
 
 	};
@@ -150,6 +146,10 @@ ZUI_fnc_applyControlProps = {
 	if (isText(_config >> "fontSecondary")) then {
 		_ctrl ctrlSetFontSecondary getText(_config >> "fontSecondary");
 	};
+
+	if (isNumber(_config >> "shadow")) then {
+		_ctrl ctrlSetShadow getNumber(_config >> "shadow");
+	};
 };
 
 ZUI_fnc_parseNumberProp = {
@@ -214,7 +214,8 @@ ZUI_fnc_refresh = {
 	private _margin = [[_comp, "margin", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseSizing;
 	private _position = [_comp, "position", true, ZUI_POSITION_RELATIVE] call ZUI_fnc_getProp;
 
-	// diag_log text("[RSTF] " + str([configName(_comp#ZUI_L_CONFIG), _xPos, _yPos, _parentWidth, _parentHeight, _margin]));
+	//diag_log text("[RSTF] " + str([configName(_comp#ZUI_L_CONFIG), _xPos, _yPos, _parentWidth, _parentHeight, _margin]));
+
 
 	if (_position == ZUI_POSITION_ABSOLUTE) then {
 		_xPos = [[_comp, "x", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
@@ -281,6 +282,7 @@ ZUI_fnc_refresh = {
 				case ZUI_SIZE_TEXT: {
 					_size = if (_index == 1) then { ctrlTextHeight (_x#ZUI_L_CTRL) } else { ctrlTextWidth (_x#ZUI_L_CTRL) };
 					_parentSize = _parentSize - _size;
+					diag_log _size;
 				};
 				case ZUI_SIZE_PERCENTS: {
 					_percentage = _percentage + _size;
@@ -303,6 +305,7 @@ ZUI_fnc_refresh = {
 			case ZUI_SIZE_ABSOLUTE: {};
 			case ZUI_SIZE_TEXT: {
 				_size = if (_index == 1) then { ctrlTextHeight (_x#ZUI_L_CTRL) } else { ctrlTextWidth (_x#ZUI_L_CTRL) };
+				diag_log _size;
 			};
 			case ZUI_SIZE_PERCENTS: {
 				_size = _size * _parentSize;
