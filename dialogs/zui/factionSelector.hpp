@@ -85,7 +85,6 @@ class FactionSelectorDialog: ZUI_RowLayout
 				id = "unitsTree";
 				font = GUI_TITLE_FONT;
 				textSize = GUI_TEXT_SIZE_SMALL;
-				margin = GUI_SPACING;
 			};
 		};
 
@@ -116,7 +115,6 @@ class FactionSelectorDialog: ZUI_RowLayout
 				id = "weaponsTree";
 				font = GUI_TITLE_FONT;
 				textSize = GUI_TEXT_SIZE_SMALL;
-				margin = GUI_SPACING;
 			};
 		};
 
