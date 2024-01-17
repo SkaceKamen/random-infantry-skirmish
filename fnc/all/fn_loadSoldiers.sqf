@@ -46,16 +46,13 @@ private _classes = objNull;
 					private _usable = [configFile >> "cfgWeapons" >> _x, false] call RSTF_fnc_isUsableWeapon;
 					if (_x != "Throw" && _x != "Put" && _usable) then {
 						_weaponized = true;
-						if ((_ignore_bans || !(_x in RSTF_WEAPONS_BANNED))) then {
-							_localWeapons pushBackUnique _x;
-						};
+						_localWeapons pushBackUnique _x;
+
 					};
 				} foreach _wp;
 
 				if (_weaponized) then {
-					if (_ignore_bans || !(configName(_c) in RSTF_SOLDIERS_BANNED)) then {
-						_localSoldiers pushBack configName(_c);
-					};
+					_localSoldiers pushBack configName(_c);
 				};
 			};
 		};
