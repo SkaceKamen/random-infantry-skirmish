@@ -32,7 +32,7 @@ class ChangelogDialog: ZUI_ColumnLayout
 					class bodyContainer: ZUI_ColumnLayout
 					{
 						scrollable = 1;
-						margin[] = { 0, GUI_SPACING*4, 0, 0 };
+						margin[] = { GUI_SPACING*3, 0, GUI_SPACING*3, 0 };
 
 						class text: ZUI_StructuredText
 						{
