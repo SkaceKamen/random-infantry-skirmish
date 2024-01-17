@@ -80,6 +80,7 @@ class RSTF
 		class spawnAiVehicle {};
 		class spawnComposition2 {};
 		class spawnDefenceEmplacements {};
+		class getGroupSpawnPosition {};
 	};
 
 	class utils

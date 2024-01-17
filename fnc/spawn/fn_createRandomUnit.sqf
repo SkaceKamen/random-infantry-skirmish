@@ -17,7 +17,13 @@
 private _group = param [0];
 private _side = param [1];
 private _checkMovement = param [2, false];
-private _position = [_side] call RSTF_fnc_randomSpawn;
+private _position = [];
+
+if (RSTF_SPAWN_AT_OWN_GROUP) then {
+	_position = [_group, _side] call RSTF_fnc_getGroupSpawnPosition;
+} else {
+	_position = [_side] call RSTF_fnc_randomSpawn;
+};
 
 // Try to spawn next to our group, but only if they're inside spawn
 if (!RSTF_MODE_DEFEND_ENABLED) then {

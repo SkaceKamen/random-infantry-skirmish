@@ -38,6 +38,16 @@ class RSTF_Options {
 				description="Interval in seconds in which reinforcements are spawned";
 				type="number";
 			};
+			class RSTF_SPAWN_REUSE_GROUPS {
+				title="Reuse existing groups when spawning";
+				description="Don't create new groups when spawning new units, reuse existing ones. Can cause AI issues";
+				type="checkbox";
+			};
+			class RSTF_SPAWN_AT_OWN_GROUP {
+				title="Spawn new units near group";
+				description="Spawn new units near group when there's no enemy near";
+				type="checkbox";
+			};
 			class spacer2 { type = "spacer"; };
 			class RSTF_CLEAR_HISTORIC_ITEMS {
 				title="Clear modern things";
@@ -87,7 +97,7 @@ class RSTF_Options {
 	};
 	class Push {
 		title = "Mode";
-		visible = "(call RSTF_fnc_getModeId) == 'Push'";
+		visible = "(call RSTF_fnc_getModeId) == 'Push' || (call RSTF_fnc_getModeId) == 'PushDefense'";
 
 		class Items {
 			class RSTF_MODE_PUSH_POINT_COUNT {
@@ -108,6 +118,11 @@ class RSTF_Options {
 			class RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT {
 				title="Number of defensive emplacements";
 				description="Number of defensive emplacements spawned, only works when faction has suitable static emplacements.";
+				type="number";
+			};
+			class RSTF_MODE_PUSH_DEFENDERS_DISADVANTAGE {
+				title="Defenders group disadvantage";
+				description="Defenders will have this much less groups.";
 				type="number";
 			};
 		};
