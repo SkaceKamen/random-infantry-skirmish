@@ -22,7 +22,14 @@ lnbClear _ctrl;
 		_selected = "[X]";
 	};
 
-	_ctrl lnbAddRow [_selected, _name];
+	private _units = [[_x], true] call RSTF_fnc_loadSoldiers;
+	private _vehicles = [[_x], true] call RSTF_fnc_loadVehicles;
+	private _vehiclesCount = 0;
+	{
+		_vehiclesCount = _vehiclesCount + count(_x);
+	} foreach _vehicles;
+
+	_ctrl lnbAddRow [_selected, _name, format["%1 units, %2 vehicles", count(_units#0), _vehiclesCount]];
 	_ctrl lnbSetPicture [[_foreachIndex,1], _icon];
 	_ctrl lnbSetPictureColor [[_foreachIndex,1], [1,1,1,1]];
 	_ctrl lnbSetData [[_foreachIndex, 0], _x];
@@ -37,6 +44,8 @@ lnbClear _ctrl;
 RSTF_FACTIONS_SOLDIERS = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadSoldiers;
 _soldiers = RSTF_FACTIONS_SOLDIERS select 0;
 _weapons = RSTF_FACTIONS_SOLDIERS select 1;
+
+diag_log RSTF_FACTIONS_SOLDIERS;
 
 _ctrl = [RSTF_FACTIONS_CONFIG_layout, "unitsTree"] call ZUI_fnc_getControlById;
 _sel = tvCurSel _ctrl;

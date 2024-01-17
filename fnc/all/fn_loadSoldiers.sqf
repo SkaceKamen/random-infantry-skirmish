@@ -7,38 +7,62 @@ private _soldiers = [];
 private _weapons = [];
 
 private _classes = configFile >> "CfgVehicles";
-private _i = 0;
 
-_factions = _factions apply { toLower(_x) };
+{
+	private _faction = _x;
+	private _factionLower = toLower(_faction);
 
-//Load men and vehicles for each faction
-for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
-	private _c = _classes select _i;
-	if (isClass(_c)) then {
-		private _scope = getNumber(_c >> "scope");
-		private _man = getNumber(_c >> "isMan");
-		private _faction = toLower(getText(_c >> "faction"));
+	if (!isClass(configFile >> "CfgFactionClasses" >> _faction)) then {
+		diag_log text("[RSTF] " + _faction + " is not a valid faction");
+		continue;
+	};
 
-		if (_scope == 2 && _man == 1 && _faction in _factions) then {
-			private _weaponized = false;
-			private _wp = getArray(_c >> "weapons");
-			{
-				private _usable = [configFile >> "cfgWeapons" >> _x, false] call RSTF_fnc_isUsableWeapon;
-				if (_x != "Throw" && _x != "Put" && _usable) then {
-					_weaponized = true;
-					if (!(_x in _weapons) && (_ignore_bans || !(_x in RSTF_WEAPONS_BANNED))) then {
-						_weapons set [count(_weapons), _x];
+	if (_factionLower in RSTF_FACTIONS_SOLDIERS_CACHE) then {
+		private _cached = RSTF_FACTIONS_SOLDIERS_CACHE get _factionLower;
+		_soldiers = _soldiers + _cached#0;
+		_weapons = _weapons + _cached#1;
+		continue;
+	};
+
+	private _localSoldiers = [];
+	private _localWeapons = [];
+
+	private _i = 0;
+	// Load men and vehicles for each faction
+	for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
+		private _c = _classes select _i;
+		if (isClass(_c)) then {
+			private _scope = getNumber(_c >> "scope");
+			private _man = getNumber(_c >> "isMan");
+			private _itemFaction = toLower(getText(_c >> "faction"));
+
+			if (_scope == 2 && _man == 1 && _itemFaction == _factionLower) then {
+				private _weaponized = false;
+				private _wp = getArray(_c >> "weapons");
+				{
+					private _usable = [configFile >> "cfgWeapons" >> _x, false] call RSTF_fnc_isUsableWeapon;
+					if (_x != "Throw" && _x != "Put" && _usable) then {
+						_weaponized = true;
+						if (!(_x in _weapons) && (_ignore_bans || !(_x in RSTF_WEAPONS_BANNED))) then {
+							_localWeapons pushBack _x;
+						};
 					};
-				};
-			} foreach _wp;
+				} foreach _wp;
 
-			if (_weaponized) then {
-				if (_ignore_bans || !(configName(_c) in RSTF_SOLDIERS_BANNED)) then {
-					_soldiers set [count(_soldiers), configName(_c)];
+				if (_weaponized) then {
+					if (_ignore_bans || !(configName(_c) in RSTF_SOLDIERS_BANNED)) then {
+						_localSoldiers pushBack configName(_c);
+					};
 				};
 			};
 		};
 	};
-};
+	
+	RSTF_FACTIONS_SOLDIERS_CACHE set [_factionLower, [_localSoldiers, _localWeapons]];
+
+	_soldiers = _soldiers + _localSoldiers;
+	_weapons = _weapons + _localWeapons;
+
+} foreach _factions;
 
 [_soldiers, _weapons];
