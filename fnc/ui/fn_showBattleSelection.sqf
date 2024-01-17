@@ -23,7 +23,7 @@ RSTF_BS_MARKERS = [];
 
 if (!isMultiplayer) then {
 	_ctrlTitle ctrlSetText "Select map";
-	_ctrlVote ctrlSetText "Select";
+	_ctrlVote ctrlSetText "SELECT";
 	_ctrlTimeout ctrlShow false;
 	_ctrlTimeout ctrlCommit 0;
 };
