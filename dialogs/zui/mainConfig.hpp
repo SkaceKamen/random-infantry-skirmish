@@ -56,7 +56,7 @@ class MainConfigDialog: ZUI_ColumnLayout
 					class FriendlyFactions : FactionConfig
 					{
 						margin[] = { 0, GUI_SPACING, 0, 0 };
-						class Title: Title { text = "Friendly factions" };
+						class Title: Title { text = "Friendly factions"; };
 						class List: List { class List: List { id = "friendlyList"; }; };
 						class Edit: Edit { id = "friendlyEdit"; };
 					};
@@ -64,7 +64,7 @@ class MainConfigDialog: ZUI_ColumnLayout
 					class EnemyFactions : FactionConfig
 					{
 						margin[] = { 0, GUI_SPACING, 0, 0 };
-						class Title: Title { text = "Enemy factions" };
+						class Title: Title { text = "Enemy factions"; };
 						class List: List { class List: List { id = "enemyList"; }; };
 						class Edit: Edit { id = "enemyEdit"; };
 					};
@@ -73,7 +73,7 @@ class MainConfigDialog: ZUI_ColumnLayout
 					{
 						margin[] = { 0, GUI_SPACING*2, 0, 0 };
 						id = "neutrals";
-						class Title: Title { text = "Neutral factions" };
+						class Title: Title { text = "Neutral factions"; };
 						class List: List {
 							class List: List { id = "neutralList"; };
 							/*class NotUsed: ZUI_TextCenter
@@ -140,7 +140,7 @@ class MainConfigDialog: ZUI_ColumnLayout
 
 				class PickEquipment: ZUI_Button
 				{
-					id = "pickEquipment"
+					id = "pickEquipment";
 					text = "PICK EQUIPMENT";
 					margin[] = { 0, GUI_SPACING, 0, 0 };
 				};
