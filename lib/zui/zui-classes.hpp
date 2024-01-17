@@ -51,6 +51,7 @@ class ZUI_Button: ZUI_Control
 {
 	control = "RscButton";
 	font = "PuristaLight";
+	background[] = { 0, 0, 0, 0.8 };
 };
 
 class ZUI_Static: ZUI_Control

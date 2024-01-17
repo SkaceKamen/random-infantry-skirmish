@@ -4,6 +4,21 @@ private _neutralsList = [RSTF_MAIN_CONFIG_layout, "neutralList"] call ZUI_fnc_ge
 private _neutralsButton = [RSTF_MAIN_CONFIG_layout, "neutralEdit"] call ZUI_fnc_getControlById;
 _neutralsButton ctrlEnable (call RSTF_fnc_doesModeSupportNeutrals);
 
+if (call RSTF_fnc_doesModeSupportNeutrals) then {
+	_neutralsButton ctrlSetTooltip "";
+} else {
+	_neutralsButton ctrlSetTooltip "This game mode doesn't support neutrals";
+};
+
+private _equipmentButton = [RSTF_MAIN_CONFIG_layout, "pickEquipment"] call ZUI_fnc_getControlById;
+_equipmentButton ctrlEnable RSTF_CUSTOM_EQUIPMENT;
+
+if (RSTF_CUSTOM_EQUIPMENT) then {
+	_equipmentButton ctrlSetTooltip "";
+} else {
+	_equipmentButton ctrlSetTooltip "You need to enable custom equipment in configuration";
+};
+
 call RSTF_fnc_updateEquipment;
 
 private _ctrl = [RSTF_MAIN_CONFIG_layout, "basicConfigList"] call ZUI_fnc_getControlById;

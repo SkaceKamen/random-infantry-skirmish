@@ -39,9 +39,14 @@ private _template = '
 
 {
 	private _buttonName = (_x select 0) + "Edit";
+	private _listName = (_x select 0) + "List";
+
 	private _ctrl = [RSTF_MAIN_CONFIG_layout, _buttonName] call ZUI_fnc_getControlById;
 	_ctrl ctrlAddEventHandler ["ButtonClick", compile(format[_template,_x select 0,_x select 1])];
 	call compile format['["%1", %2] call RSTF_fnc_configUpdateFactions',_x select 0,_x select 1];
+	
+	_ctrl = [RSTF_MAIN_CONFIG_layout, _listName] call ZUI_fnc_getControlById;
+	_ctrl ctrlEnable false;
 } foreach [
 	["friendly", "FRIENDLY_FACTIONS"],
 	["neutral", "NEUTRAL_FACTIONS"],

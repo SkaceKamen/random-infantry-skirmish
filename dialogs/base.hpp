@@ -113,16 +113,17 @@ class RscText
 	h = 0.037;
 	w = 0.3;
 	style = 0;
-	shadow = 1;
+	shadow = 0;
 	colorShadow[] = { 0,0,0,0.5 };
-	font = "PuristaMedium";
-	SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	font = "RobotoCondensed";
+	SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	linespacing = 1;
 };
 
 class RscStatic: RscText
 {
-	shadow = false;
+	shadow = 0;
+	font = GUI_STANDARD_FONT;
 };
 
 class RscButton
@@ -131,7 +132,7 @@ class RscButton
 	text = "";
 	colorText[] = { 1,1,1,1 };
 	colorDisabled[] = { 0.4,0.4,0.4,1 };
-	colorBackground[] = { 0, 0, 0, 1 };
+	colorBackground[] = GUI_BUTTON_BG;
 	colorBackgroundDisabled[] = { 0.95,0.95,0.95,1 };
 	colorBackgroundActive[] = { "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])",1 };
 	colorFocused[] = { "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])",1 };
@@ -146,13 +147,13 @@ class RscButton
 	y = 0;
 	w = 0.095589;
 	h = 0.039216;
-	shadow = 2;
-	font = "PuristaMedium";
-	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-	offsetX = 0.003;
-	offsetY = 0.003;
-	offsetPressedX = 0.002;
-	offsetPressedY = 0.002;
+	shadow = 0;
+	font = GUI_BUTTON_FONT;
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	offsetX = 0;
+	offsetY = 0;
+	offsetPressedX = 0;
+	offsetPressedY = 0;
 	borderSize = 0;
 };
 class RscPicture

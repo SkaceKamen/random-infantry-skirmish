@@ -1,6 +1,6 @@
 class Mode: ZUI_ColumnLayout
 {
-	margin[] = { 0.01, 0, 0, 0 };
+	margin[] = { GUI_SPACING * 2, 0, 0, 0 };
 	height = 0.17;
 	heightType = ZUI_SIZE_ABSOLUTE;
 
@@ -11,12 +11,13 @@ class Mode: ZUI_ColumnLayout
 		widthType = ZUI_SIZE_PERCENTS;
 		height = 0.05;
 		heightType = ZUI_SIZE_ABSOLUTE;
+		margin[] = { 0, 0, GUI_SPACING, 0 };
 	};
 
 	class Wrapper: ZUI_RowLayout
 	{
 		height = 1;
-		background[] = { 0, 0, 0, 0.8 };
+		background[] = GUI_BODY_BG;
 		padding[] = { 0.005, 0, 0, 0 };
 
 		class Description: ZUI_StructuredText
