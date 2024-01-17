@@ -1,4 +1,4 @@
-_ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "factionsList"] call ZUI_fnc_getControlById;
 
 _expandCache = {
 	params ["_ctrl", "_path"];
@@ -16,19 +16,36 @@ lnbClear _ctrl;
 {
 	_name = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "displayName");
 	_icon = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "icon");
-	_selected = "";
+	_selected = false;
 
 	if (_x in RSTF_FACTIONS_LIST) then {
-		_selected = "SELECTED";
+		_selected = true;
 	};
 
-	_ctrl lnbAddRow [_name, _selected];
-	_ctrl lnbSetPicture [[_foreachIndex,0], _icon];
-	_ctrl lnbSetPictureColor [[_foreachIndex,0], [1,1,1,1]];
-	_ctrl lnbSetData [[_foreachIndex, 0], _x];
+	private _checkIcon = if (_selected) then { "CheckBox_checked_ca.paa" } else { "CheckBox_unchecked_ca.paa" };
 
-	if (_selected == "") then {
-		_ctrl lnbSetColor [[_foreachIndex, 0], [0.8,0.8,0.8,1]];
+	private _units = [[_x], true] call RSTF_fnc_loadSoldiers;
+	private _vehicles = [[_x], true] call RSTF_fnc_loadVehicles;
+	private _vehiclesCount = 0;
+	{
+		_vehiclesCount = _vehiclesCount + count(_x);
+	} foreach _vehicles;
+
+	_ctrl lnbAddRow ["", _name, format["%1 inf", count(_units#0)], format["%1 veh", _vehiclesCount]];
+	_ctrl lnbSetPicture [[_foreachIndex,0], "\A3\ui_f\data\gui\RscCommon\RscCheckBox\" + _checkIcon];
+	_ctrl lnbSetPicture [[_foreachIndex,1], _icon];
+	_ctrl lnbSetPictureColor [[_foreachIndex,1], [1,1,1,1]];
+	_ctrl lnbSetData [[_foreachIndex, 0], _x];
+	_ctrl lnbSetTooltip [[_foreachIndex, 0], _x];
+	_ctrl lnbSetColor [[_foreachIndex, 2], [0.8,0.8,0.8,1]];
+	_ctrl lnbSetColor [[_foreachIndex, 3], [0.8,0.8,0.8,1]];
+
+	if (!_selected) then {
+		_ctrl lnbSetPictureColor [[_foreachIndex, 0], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetPictureColor [[_foreachIndex , 1], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetColor [[_foreachIndex, 1], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetColor [[_foreachIndex, 2], [0.6,0.6,0.6,1]];
+		_ctrl lnbSetColor [[_foreachIndex, 3], [0.6,0.6,0.6,1]];
 	};
 } foreach RSTF_FACTIONS;
 
@@ -36,7 +53,9 @@ RSTF_FACTIONS_SOLDIERS = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadSoldiers;
 _soldiers = RSTF_FACTIONS_SOLDIERS select 0;
 _weapons = RSTF_FACTIONS_SOLDIERS select 1;
 
-_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
+diag_log RSTF_FACTIONS_SOLDIERS;
+
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "unitsTree"] call ZUI_fnc_getControlById;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
 
@@ -117,6 +136,7 @@ _roots = createHashMap;
 
 RSTF_FACTIONS_VEHICLES = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 {
+	private _typeIndex = _foreachIndex;
 	private _name = RSTF_VEHICLES_NAMES select _foreachIndex;
 	private _vehicles = RSTF_FACTIONS_VEHICLES select _foreachIndex;
 	private _path = [_ctrl tvAdd [[], _name]];
@@ -139,18 +159,29 @@ RSTF_FACTIONS_VEHICLES = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 			_icon = getText(ConfigFile >> "cfgVehicleIcons" >> _icon);
 		};
 
+		private _faction = getText(configFile >> "cfgVehicles" >> _x >> "faction");
+		private _factionIcon = getText(ConfigFile >> "cfgFactionClasses" >> _faction >> "icon");
+
 		_subpath = _path + [ _ctrl tvAdd [_path, _banned + getText(configFile >> "cfgVehicles" >> _x >> "displayName")] ];
 		_ctrl tvSetData [_subpath, _x];
 		_ctrl tvSetPicture [_subpath, _icon];
+		_ctrl tvSetPictureRight [_subpath, _factionIcon];
+
+		if (_typeIndex > 1) then {
+			_ctrl tvSetTooltip [_subpath, format["%1\nIngame cost: $%2", _x, [_x] call RSTF_fnc_getVehicleCost]];
+		};
+
 		if (_banned != "") then {
 			_ctrl tvSetPictureColor [_subpath, [0,0,0,1]];
+			_ctrl tvSetPictureRightColor [_subpath, [0,0,0,1]];
 		};
 	} foreach _vehicles;
 } foreach RSTF_VEHICLES_TYPES;
 
 //_ctrl tvSetCurSel _sel;
 
-_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
+
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "weaponsTree"] call ZUI_fnc_getControlById;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
 
@@ -182,6 +213,7 @@ _other = _ctrl tvAdd [[], "Other"];
 	_path pushBack (_ctrl tvAdd [_path, _banned + _name]);
 	_ctrl tvSetData [_path, _x];
 	_ctrl tvSetPicture [_path, _icon];
+	_ctrl tvSetTooltip [_path, _x];
 	if (_dlcIcon != "") then {
 		_ctrl tvSetPictureRight [_path, _dlcIcon];
 	};
@@ -192,5 +224,6 @@ _other = _ctrl tvAdd [[], "Other"];
 
 	[_ctrl, _path] call _expandCache;
 } foreach _weapons;
+
 
 //_ctrl tvSetCurSel _sel;

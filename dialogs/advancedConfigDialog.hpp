@@ -6,7 +6,13 @@ class RSTF_ADV_CATEGORY: RscButton
 	y = 0;
 	w = RSTF_ADV_CAT_W;
 	h = 0.1;
-	font = "RobotoCondensed";
+	font = GUI_BUTTON_FONT;
+	colorBackground[] = { 0, 0, 0, 0.8 };
+};
+
+class RSTF_ADV_LABEL: RscText
+{
+	shadow = 0;
 };
 
 class RSTF_RscDialogAdvancedConfig
@@ -36,6 +42,7 @@ class RSTF_RscDialogAdvancedConfig
 			h = RSTF_ADV_TITLE_H;
 			colorBackground[] = { TITLE_BG_RGBA };
 			text = "Advanced configuration";
+			font = GUI_TITLE_FONT;
 		};
 
 		class categoriesContainer: RscControlsGroup
@@ -63,7 +70,7 @@ class RSTF_RscDialogAdvancedConfig
 			h = RSTF_ADV_BUTTON_H;
 			x = RSTF_ADV_SAVE_X;
 			y = RSTF_ADV_BUTTON_Y;
-			text = "Save";
+			text = "SAVE";
 		};
 
 		class resetButton: RscButton
@@ -73,7 +80,7 @@ class RSTF_RscDialogAdvancedConfig
 			h = RSTF_ADV_BUTTON_H;
 			x = RSTF_ADV_REST_X;
 			y = RSTF_ADV_BUTTON_Y;
-			text = "Reset";
+			text = "RESET";
 		};
 	};
 };

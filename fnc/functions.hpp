@@ -106,6 +106,7 @@ class RSTF
 		class clearHistoricItems {};
 		class getModeId {};
 		class killHandler {};
+		class doesModeSupportNeutrals {};
 	};
 
 	class ui
@@ -130,12 +131,15 @@ class RSTF
 		class updateBattles {};
 		class updateVoteTimeout {};
 		class spawnDialog {};
+		class spawnZUIDialog {};
 		class showModeSelector {};
 		class customSelectorShow {};
 		class customSelectorPick {};
 
 		class createArsenalBackground {};
 		class destroyArsenalBackground {};
+
+		class updateMainConfigScreen {};
 	};
 
 	class net
