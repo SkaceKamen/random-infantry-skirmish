@@ -1,5 +1,3 @@
-#include "../dialogs.inc"
-
 class ChangelogDialog: ZUI_ColumnLayout
 {
 	margin = 0.1;

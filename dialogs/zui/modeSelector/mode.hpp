@@ -1,5 +1,3 @@
-#include "../../dialogs.inc"
-
 class Mode: ZUI_ColumnLayout
 {
 	margin[] = { GUI_SPACING * 2, 0, 0, 0 };
