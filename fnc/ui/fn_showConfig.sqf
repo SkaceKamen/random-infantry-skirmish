@@ -4,10 +4,6 @@ if (isNull(RSTF_CAM)) then {
 	call RSTF_fnc_createCam;
 };
 
-if (true) exitWith {
-	call RSTF_fnc_start;
-};
-
 RSTF_CAM camSetTarget RSTF_CAM_TARGET;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
