@@ -53,4 +53,31 @@ class RSTF_BUYABLE_SUPPORTS
 		cost = 2500;
 		execute = "[_this#1, 'R_230mm_Cluster', 10, 60, [1,1.5], [30,40]] call RSTF_fnc_initArtillerySupport";
 	};
+
+	class InfantryAmmo
+	{
+		title = "Infantry ammo drop";
+		description = "Drops infantry ammo crate";
+		picture = "\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa";
+		cost = 500;
+		execute = "[_this#1] call RSTF_fnc_initSupplyDrop";
+	};
+
+	class ArsenalBox
+	{
+		title = "Arsenal box";
+		description = "Drops infantry ammo crate";
+		picture = "\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa";
+		cost = 1500;
+		execute = "[_this#1] call RSTF_fnc_initSupplyDrop";
+	};
+
+	class VehicleAmmo
+	{
+		title = "Vehicle ammo drop";
+		description = "Drops vehicle ammo crate";
+		picture = "\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa";
+		cost = 2000;
+		execute = "[_this#1] call RSTF_fnc_initSupplyDrop";
+	};
 };
