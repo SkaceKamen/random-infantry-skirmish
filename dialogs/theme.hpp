@@ -13,3 +13,14 @@
 #define GUI_TITLE_BG { "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])" }
 #define GUI_BODY_BG { 0, 0, 0, 0.7 }
 #define GUI_SPACING 0.005
+
+
+
+class ZTitle: ZUI_Static
+{
+	background[] = GUI_TITLE_BG;
+	font = GUI_TITLE_FONT;
+	textSize = GUI_TEXT_SIZE_MEDIUM;
+	height = 0.05;
+	heightType = ZUI_SIZE_ABSOLUTE;
+}

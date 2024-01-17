@@ -1,3 +1,4 @@
+#include "lib\zui\zui-classes.hpp"
 #include "dialogs\theme.hpp"
 #include "dialogs\base.hpp"
 #include "dialogs\extended.hpp"
@@ -13,7 +14,6 @@
 
 #define ZUI_DIALOG_MARGIN 0.005
 
-#include "lib\zui\zui-classes.hpp"
 #include "dialogs\zui\input.hpp"
 #include "dialogs\zui\presets.hpp"
 #include "dialogs\zui\shop.hpp"
@@ -21,6 +21,7 @@
 #include "dialogs\zui\modeSelector.hpp"
 #include "dialogs\zui\customSelector.hpp"
 #include "dialogs\zui\mainConfig.hpp"
+#include "dialogs\zui\factionSelector.hpp"
 
 #include "modes.hpp"
 #include "options-menu.hpp"

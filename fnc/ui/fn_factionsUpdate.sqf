@@ -1,4 +1,4 @@
-_ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "factionsList"] call ZUI_fnc_getControlById;
 
 _expandCache = {
 	params ["_ctrl", "_path"];
@@ -36,7 +36,7 @@ RSTF_FACTIONS_SOLDIERS = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadSoldiers;
 _soldiers = RSTF_FACTIONS_SOLDIERS select 0;
 _weapons = RSTF_FACTIONS_SOLDIERS select 1;
 
-_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "unitsTree"] call ZUI_fnc_getControlById;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
 
@@ -150,6 +150,7 @@ RSTF_FACTIONS_VEHICLES = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 
 //_ctrl tvSetCurSel _sel;
 
+/*
 _ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
@@ -192,5 +193,6 @@ _other = _ctrl tvAdd [[], "Other"];
 
 	[_ctrl, _path] call _expandCache;
 } foreach _weapons;
+*/
 
 //_ctrl tvSetCurSel _sel;
