@@ -131,6 +131,7 @@ _roots = createHashMap;
 
 RSTF_FACTIONS_VEHICLES = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 {
+	private _typeIndex = _foreachIndex;
 	private _name = RSTF_VEHICLES_NAMES select _foreachIndex;
 	private _vehicles = RSTF_FACTIONS_VEHICLES select _foreachIndex;
 	private _path = [_ctrl tvAdd [[], _name]];
@@ -160,6 +161,11 @@ RSTF_FACTIONS_VEHICLES = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 		_ctrl tvSetData [_subpath, _x];
 		_ctrl tvSetPicture [_subpath, _icon];
 		_ctrl tvSetPictureRight [_subpath, _factionIcon];
+
+		if (_typeIndex > 1) then {
+			_ctrl tvSetTooltip [_subpath, format["%1\nIngame cost: $%2", _x, [_x] call RSTF_fnc_getVehicleCost]];
+		};
+
 		if (_banned != "") then {
 			_ctrl tvSetPictureColor [_subpath, [0,0,0,1]];
 			_ctrl tvSetPictureRightColor [_subpath, [0,0,0,1]];

@@ -63,7 +63,7 @@ class FactionSelectorDialog: ZUI_RowLayout
 		};
 	};
 
-	class spacer: ZUI_RowLayout {};
+	class spacer: ZUI_ColumnLayout {};
 
 	class RightPanel: ZUI_ColumnLayout
 	{
