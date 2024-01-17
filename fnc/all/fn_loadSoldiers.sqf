@@ -43,8 +43,8 @@ private _classes = configFile >> "CfgVehicles";
 					private _usable = [configFile >> "cfgWeapons" >> _x, false] call RSTF_fnc_isUsableWeapon;
 					if (_x != "Throw" && _x != "Put" && _usable) then {
 						_weaponized = true;
-						if (!(_x in _weapons) && (_ignore_bans || !(_x in RSTF_WEAPONS_BANNED))) then {
-							_localWeapons pushBack _x;
+						if ((_ignore_bans || !(_x in RSTF_WEAPONS_BANNED))) then {
+							_localWeapons pushBackUnique _x;
 						};
 					};
 				} foreach _wp;
@@ -65,4 +65,17 @@ private _classes = configFile >> "CfgVehicles";
 
 } foreach _factions;
 
-[_soldiers, _weapons];
+// Deduplicate array
+private _resultWeapons = [];
+{
+	_resultWeapons pushBackUnique _x;
+} foreach _weapons;
+
+private _resultSoldiers = _soldiers;
+
+if (!_ignore_bans) then {
+	_resultSoldiers = _resultSoldiers select { !(_x in RSTF_SOLDIERS_BANNED) };
+	_resultWeapons = _resultWeapons select { !(_x in RSTF_WEAPONS_BANNED) };
+};
+
+[_soldiers, _resultWeapons];

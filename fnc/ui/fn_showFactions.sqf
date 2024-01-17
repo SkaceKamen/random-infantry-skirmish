@@ -312,11 +312,11 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 	};
 }];
 
-/*
-_method = compile(format [_template_tree, "avaibleWeapons", "RSTF_WEAPONS_BANNED", 2]);
-_ctrl = ["RSTF_RscDialogFactions", "banWeapon"] call RSTF_fnc_getCtrl;
+
+_method = compile(format [_template_tree, "weaponsTree", "RSTF_WEAPONS_BANNED", 2]);
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "weaponBanToggle"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", _method];
-_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "weaponsTree"] call ZUI_fnc_getControlById;
 
 RSTF_EXPANDED set [ctrlIdc _ctrl, []];
 _ctrl ctrlAddEventHandler ["TreeExpanded", _expand];
@@ -334,7 +334,7 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 		RSTF_FACTIONS_WEAPON = objNull;
 	};
 
-	_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
+	_ctrl = [RSTF_FACTIONS_CONFIG_layout, "weaponsTree"] call ZUI_fnc_getControlById;
 	_path = tvCurSel _ctrl;
 	if (count(_path) == 2) then {
 		_class = _ctrl tvData _path;
@@ -349,6 +349,6 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 		RSTF_CAM camCommit 0.1;
 	};
 }];
-*/
+
 
 call RSTF_fnc_factionsUpdate;

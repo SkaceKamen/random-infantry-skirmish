@@ -34,13 +34,13 @@ lnbClear _ctrl;
 	_ctrl lnbSetPictureColor [[_foreachIndex,1], [1,1,1,1]];
 	_ctrl lnbSetData [[_foreachIndex, 0], _x];
 	_ctrl lnbSetTooltip [[_foreachIndex, 0], _x];
-
-	_ctrl lnbSetColor [[_foreachIndex, 1], [0.8,0.8,0.8,1]];
+	_ctrl lnbSetColor [[_foreachIndex, 2], [0.8,0.8,0.8,1]];
 
 	if (_selected == "[  ]") then {
 		_ctrl lnbSetColor [[_foreachIndex, 0], [0.7,0.7,0.7,1]];
-		_ctrl lnbSetColor [[_foreachIndex, 1], [0.6,0.6,0.6,1]];
-		_ctrl lnbSetPictureColor [[_foreachIndex,1], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetColor [[_foreachIndex, 1], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetColor [[_foreachIndex, 2], [0.6,0.6,0.6,1]];
+		_ctrl lnbSetPictureColor [[_foreachIndex , 1], [0.7,0.7,0.7,1]];
 	};
 } foreach RSTF_FACTIONS;
 
@@ -169,8 +169,8 @@ RSTF_FACTIONS_VEHICLES = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 
 //_ctrl tvSetCurSel _sel;
 
-/*
-_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
+
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "weaponsTree"] call ZUI_fnc_getControlById;
 _sel = tvCurSel _ctrl;
 tvClear _ctrl;
 
@@ -202,6 +202,7 @@ _other = _ctrl tvAdd [[], "Other"];
 	_path pushBack (_ctrl tvAdd [_path, _banned + _name]);
 	_ctrl tvSetData [_path, _x];
 	_ctrl tvSetPicture [_path, _icon];
+	_ctrl tvSetTooltip [_path, _x];
 	if (_dlcIcon != "") then {
 		_ctrl tvSetPictureRight [_path, _dlcIcon];
 	};
@@ -212,6 +213,6 @@ _other = _ctrl tvAdd [[], "Other"];
 
 	[_ctrl, _path] call _expandCache;
 } foreach _weapons;
-*/
+
 
 //_ctrl tvSetCurSel _sel;

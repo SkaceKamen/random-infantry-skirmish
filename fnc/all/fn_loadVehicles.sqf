@@ -113,4 +113,10 @@ private _classes = configFile >> "CfgVehicles";
 
 } forEach _factions;
 
+if (!_ignore_bans) then {
+	{
+		_vehicles set [_x, _vehicles#_x select { !(_x in RSTF_SOLDIERS_BANNED) } ];
+	} foreach RSTF_VEHICLES_TYPES;
+};
+
 _vehicles;

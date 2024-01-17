@@ -72,7 +72,7 @@ class FactionSelectorDialog: ZUI_RowLayout
 
 		class Title: ZTitle
 		{
-			text = "Loaded units";
+			text = "Active units";
 		};
 
 		class ListWrapper: ZUI_ColumnLayout
@@ -93,6 +93,37 @@ class FactionSelectorDialog: ZUI_RowLayout
 		{
 			text = "TOGGLE BAN";
 			id = "unitBanToggle";
+			height = 0.05;
+			heightType = ZUI_SIZE_ABSOLUTE;
+			margin[] = { GUI_SPACING, 0, 0, 0 };
+		};
+
+		class Title2: ZTitle
+		{
+			text = "Active weapons";
+			margin[] = { GUI_SPACING, 0, 0, 0 };
+		};
+
+		class WeaponsListWrapper: ZUI_ColumnLayout
+		{
+			background[] = GUI_BODY_BG;
+			height = 0.4;
+			heightType = ZUI_SIZE_ABSOLUTE;
+
+			class List: ZUI_Listview
+			{
+				control = "RscTree";
+				id = "weaponsTree";
+				font = GUI_TITLE_FONT;
+				textSize = GUI_TEXT_SIZE_SMALL;
+				margin = GUI_SPACING;
+			};
+		};
+
+		class WeaponsBanToggle: ZUI_Button
+		{
+			text = "TOGGLE BAN";
+			id = "weaponBanToggle";
 			height = 0.05;
 			heightType = ZUI_SIZE_ABSOLUTE;
 			margin[] = { GUI_SPACING, 0, 0, 0 };
