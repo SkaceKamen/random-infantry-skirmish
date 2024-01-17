@@ -29,14 +29,17 @@ lnbClear _ctrl;
 		_vehiclesCount = _vehiclesCount + count(_x);
 	} foreach _vehicles;
 
-	_ctrl lnbAddRow [_selected, _name, format["%1 units, %2 vehicles", count(_units#0), _vehiclesCount]];
+	_ctrl lnbAddRow [_selected, _name, format["%1 inf, %2 veh", count(_units#0), _vehiclesCount]];
 	_ctrl lnbSetPicture [[_foreachIndex,1], _icon];
 	_ctrl lnbSetPictureColor [[_foreachIndex,1], [1,1,1,1]];
 	_ctrl lnbSetData [[_foreachIndex, 0], _x];
+	_ctrl lnbSetTooltip [[_foreachIndex, 0], _x];
+
+	_ctrl lnbSetColor [[_foreachIndex, 1], [0.8,0.8,0.8,1]];
 
 	if (_selected == "[  ]") then {
 		_ctrl lnbSetColor [[_foreachIndex, 0], [0.7,0.7,0.7,1]];
-		_ctrl lnbSetColor [[_foreachIndex, 1], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetColor [[_foreachIndex, 1], [0.6,0.6,0.6,1]];
 		_ctrl lnbSetPictureColor [[_foreachIndex,1], [0.7,0.7,0.7,1]];
 	};
 } foreach RSTF_FACTIONS;
@@ -150,11 +153,16 @@ RSTF_FACTIONS_VEHICLES = [RSTF_FACTIONS_LIST, true] call RSTF_fnc_loadVehicles;
 			_icon = getText(ConfigFile >> "cfgVehicleIcons" >> _icon);
 		};
 
+		private _faction = getText(configFile >> "cfgVehicles" >> _x >> "faction");
+		private _factionIcon = getText(ConfigFile >> "cfgFactionClasses" >> _faction >> "icon");
+
 		_subpath = _path + [ _ctrl tvAdd [_path, _banned + getText(configFile >> "cfgVehicles" >> _x >> "displayName")] ];
 		_ctrl tvSetData [_subpath, _x];
 		_ctrl tvSetPicture [_subpath, _icon];
+		_ctrl tvSetPictureRight [_subpath, _factionIcon];
 		if (_banned != "") then {
 			_ctrl tvSetPictureColor [_subpath, [0,0,0,1]];
+			_ctrl tvSetPictureRightColor [_subpath, [0,0,0,1]];
 		};
 	} foreach _vehicles;
 } foreach RSTF_VEHICLES_TYPES;

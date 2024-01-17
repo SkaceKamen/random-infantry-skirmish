@@ -4,7 +4,7 @@ class FactionSelectorDialog: ZUI_RowLayout
 
 	class LeftPanel: ZUI_ColumnLayout
 	{
-		width = 0.4;
+		width = 0.45;
 		widthType = ZUI_SIZE_ABSOLUTE;
 
 		class Title: ZTitle
@@ -57,7 +57,7 @@ class FactionSelectorDialog: ZUI_RowLayout
 		{
 			text = "SAVE AND BACK";
 			id = "save";
-			height = 0.07;
+			height = 0.09;
 			heightType = ZUI_SIZE_ABSOLUTE;
 			margin[] = { GUI_SPACING * 4, 0, 0, 0 };
 		};
