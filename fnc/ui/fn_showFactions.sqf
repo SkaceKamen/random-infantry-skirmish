@@ -4,13 +4,11 @@ waitUntil { time > 0 };
 
 showCinemaBorder false;
 
-_ok = createDialog "RSTF_RscDialogFactions";
-if (!_ok) exitWith {
-	systemChat "Fatal error. Couldn't create factions dialog.";
-};
+private _parent = param [0, displayNull];
+_parent createDisplay "RSTF_RscDialogFactions";
 
-_list = _this select 0;
-_event = _this select 1;
+_list = _this select 1;
+_event = _this select 2;
 
 RSTF_FACTIONS_LIST = _list;
 RSTF_FACTIONS_EVENT = _event;
@@ -81,7 +79,7 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 _ctrl = ["RSTF_RscDialogFactions", "close"] call RSTF_fnc_getCtrl;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	call RSTF_fnc_profileSave;
-	closeDialog 0;
+	("RSTF_RscDialogFactions" call RSTF_fnc_getDisplay) closeDisplay 0;
 }];
 
 _template_list = '_ctrl = ["RSTF_RscDialogFactions", "%1"] call RSTF_fnc_getCtrl;

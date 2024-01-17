@@ -63,6 +63,10 @@ ZUI_fnc_build = {
 		private _class = getText(_config >> "control");
 		_ctrl = _display ctrlCreate [_class, -2, _parent];
 
+		if (_class == "RscText" || _class == "RscButton" || _class == "RscStructuredText") then {
+			_ctrl ctrlSetShadow 0;
+		};
+
 		[_ctrl, _config] call ZUI_fnc_applyControlProps;
 
 	};
@@ -141,6 +145,10 @@ ZUI_fnc_applyControlProps = {
 
 	if (isText(_config >> "font")) then {
 		_ctrl ctrlSetFont getText(_config >> "font");
+	};
+
+	if (isText(_config >> "fontSecondary")) then {
+		_ctrl ctrlSetFontSecondary getText(_config >> "fontSecondary");
 	};
 };
 

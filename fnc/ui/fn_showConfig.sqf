@@ -19,7 +19,7 @@ RSTF_FACTIONS = call RSTF_fnc_loadFactions;
 call RSTF_fnc_profileLoad;
 
 private _template = '
-	[%2, {
+	[[RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display, %2, {
 		%2 = _this;
 		["%1", %2] call RSTF_fnc_configUpdateFactions;
 	}] spawn RSTF_fnc_showFactions;

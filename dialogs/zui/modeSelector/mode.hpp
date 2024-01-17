@@ -13,11 +13,18 @@ class Mode: ZUI_ColumnLayout
 		heightType = ZUI_SIZE_ABSOLUTE;
 	};
 
-	class Description: ZUI_StructuredText
+	class Wrapper: ZUI_RowLayout
 	{
-		margin[] = { 0.005, 0, 0, 0 };
-		id = "description";
-		background[] = { 0, 0, 0, 0.8 };
 		height = 1;
+		background[] = { 0, 0, 0, 0.8 };
+		padding[] = { 0.005, 0, 0, 0 };
+
+		class Description: ZUI_StructuredText
+		{
+			margin[] = { 0, 0, 0, 0 };
+			id = "description";
+			textSize = GUI_TEXT_SIZE_SMALL;
+			font = GUI_STANDARD_FONT;
+		};
 	};
 };

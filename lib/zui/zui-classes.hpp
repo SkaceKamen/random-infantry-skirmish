@@ -50,6 +50,7 @@ class ZUI_Control: ZUI_Component
 class ZUI_Button: ZUI_Control
 {
 	control = "RscButton";
+	font = "PuristaLight";
 };
 
 class ZUI_Static: ZUI_Control
