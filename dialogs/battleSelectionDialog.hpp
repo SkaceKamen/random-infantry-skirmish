@@ -81,7 +81,7 @@ class RSTF_RscDialogBattleSelection
 			y = RSTF_BTL_BTS_Y;
 			w = RSTF_BTL_VIEWBUTTON_W;
 			h = RSTF_BTL_BTS_H;
-			text = "2D Map";
+			text = "2D MAP";
 		};
 
 
@@ -92,7 +92,7 @@ class RSTF_RscDialogBattleSelection
 			y = RSTF_BTL_BTS_Y;
 			w = RSTF_BTL_VIEWBUTTON_W;
 			h = RSTF_BTL_BTS_H;
-			text = "Vote";
+			text = "VOTE";
 		};
 
 		class timeout: RscStatic
@@ -114,7 +114,7 @@ class RSTF_RscDialogBattleSelection
 			y = RSTF_BTL_BTS_Y;
 			w = RSTF_BTL_VIEWBUTTON_W;
 			h = RSTF_BTL_BTS_H;
-			text = "Edit";
+			text = "EDIT";
 		};
 	};
 };

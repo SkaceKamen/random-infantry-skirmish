@@ -1,7 +1,7 @@
-_ctrl = _this select 0;
-_list = _this select 1;
+private _name = _this select 0;
+private _list = _this select 1;
 
-_updated = [];
+private _updated = [];
 {
 	if (RSTF_FACTIONS find _x != -1) then {
 		_updated pushBack _x;
@@ -11,7 +11,7 @@ _updated = [];
 
 _list = _updated;
 
-_ctrl = ["RSTF_RscDialogConfig", "factions", ["controls", _ctrl, "controls"]] call RSTF_fnc_getCtrl;
+private _ctrl = [RSTF_MAIN_CONFIG_layout, _name + "List"] call ZUI_fnc_getControlById;
 lnbClear _ctrl;
 {
 	_name = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "displayName");
