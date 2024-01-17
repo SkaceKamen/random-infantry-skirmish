@@ -19,9 +19,9 @@ class FactionSelectorDialog: ZUI_RowLayout
 			class List: ZUI_Listview
 			{
 				id = "factionsList";
-				columns[] = { 0, 0.6 };
+				columns[] = { 0, 0.1, 0.6 };
 				font = GUI_TITLE_FONT;
-				textSize = GUI_TEXT_SIZE_MEDIUM;
+				textSize = GUI_TEXT_SIZE_SMALL;
 				margin = GUI_SPACING;
 			};
 		};

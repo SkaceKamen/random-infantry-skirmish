@@ -16,19 +16,21 @@ lnbClear _ctrl;
 {
 	_name = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "displayName");
 	_icon = getText(ConfigFile >> "cfgFactionClasses" >> _x >> "icon");
-	_selected = "";
+	_selected = "[  ]";
 
 	if (_x in RSTF_FACTIONS_LIST) then {
-		_selected = "SELECTED";
+		_selected = "[X]";
 	};
 
-	_ctrl lnbAddRow [_name, _selected];
-	_ctrl lnbSetPicture [[_foreachIndex,0], _icon];
-	_ctrl lnbSetPictureColor [[_foreachIndex,0], [1,1,1,1]];
+	_ctrl lnbAddRow [_selected, _name];
+	_ctrl lnbSetPicture [[_foreachIndex,1], _icon];
+	_ctrl lnbSetPictureColor [[_foreachIndex,1], [1,1,1,1]];
 	_ctrl lnbSetData [[_foreachIndex, 0], _x];
 
-	if (_selected == "") then {
-		_ctrl lnbSetColor [[_foreachIndex, 0], [0.8,0.8,0.8,1]];
+	if (_selected == "[  ]") then {
+		_ctrl lnbSetColor [[_foreachIndex, 0], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetColor [[_foreachIndex, 1], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetPictureColor [[_foreachIndex,1], [0.7,0.7,0.7,1]];
 	};
 } foreach RSTF_FACTIONS;
 

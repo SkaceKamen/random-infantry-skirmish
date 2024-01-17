@@ -75,7 +75,7 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	};
 }];
 
-_ctrl = [RSTF_FACTIONS_CONFIG_layout, "factionClear"] call ZUI_fnc_getControlById;
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "factionsClear"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	RSTF_FACTIONS_LIST = [];
 	call RSTF_fnc_factionsUpdate;

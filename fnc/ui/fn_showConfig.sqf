@@ -114,7 +114,7 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	publicVariable "RSTF_POINT_VOTES";
 
 	// Close config dialog
-	closeDialog 0;
+	([RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display) closeDisplay 0;
 
 	// Start map selection if not dedicated
 	if (RSTF_MAP_VOTE) then {
