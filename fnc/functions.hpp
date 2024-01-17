@@ -165,6 +165,9 @@ class RSTF
 
 		class initArtillerySupport {};
 		class startShelling {};
+		class initSupplyDrop {};
+		class performSupplyDrop {};
+		class rearmInfantry {};
 	};
 
 	class ai
