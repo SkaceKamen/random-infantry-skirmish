@@ -70,7 +70,7 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 		{
 			_message = _message + _x + "<br />";
 		} foreach _errors;
-		[parseText(_message), "Configuration error"] spawn BIS_fnc_GUImessage;
+		[parseText(_message), "Configuration error", true, false, [RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display] spawn BIS_fnc_GUImessage;
 	};
 
 	// Broadcast settings
