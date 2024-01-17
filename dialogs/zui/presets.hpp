@@ -46,7 +46,7 @@ class PresetsDialog: ZUI_RowLayout
 			class add: ZUI_Button
 			{
 				id = "saveAs";
-				text = "Save as";
+				text = "SAVE AS";
 				tooltip = "Save current settings as new preset";
 				margin[] = { 0, ZUI_DIALOG_MARGIN * 3, 0, 0 };
 			};
@@ -54,14 +54,14 @@ class PresetsDialog: ZUI_RowLayout
 			class load: ZUI_Button
 			{
 				id = "load";
-				text = "Load";
+				text = "LOAD";
 				tooltip = "Load selected preset";
 			};
 
 			class replace: ZUI_Button
 			{
 				id = "replace";
-				text = "Replace";
+				text = "REPLACE";
 				tooltip = "Replace selected preset with current settings";
 				margin[] = { 0, 0, 0, ZUI_DIALOG_MARGIN };
 			};
@@ -69,7 +69,7 @@ class PresetsDialog: ZUI_RowLayout
 			class delete: ZUI_Button
 			{
 				id = "delete";
-				text = "Delete";
+				text = "DELETE";
 				tooltip = "Remove selected preset";
 				margin[] = { 0, 0, 0, ZUI_DIALOG_MARGIN };
 			};
@@ -77,7 +77,7 @@ class PresetsDialog: ZUI_RowLayout
 			class close: ZUI_Button
 			{
 				id = "close";
-				text = "Close";
+				text = "CLOSE";
 				margin[] = { 0, 0, 0, ZUI_DIALOG_MARGIN * 3 };
 			};
 		};

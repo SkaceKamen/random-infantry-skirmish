@@ -1,6 +1,6 @@
 #include "dialogs\keys.hpp"
 
-RSTF_DEBUG = false;
+RSTF_DEBUG = true;
 
 // Indexes used for various arrays
 SIDE_ENEMY = 0;
@@ -380,3 +380,6 @@ RSTF_CUSTOM_POINT_SPAWNS = [[0,0,0],[0,0,0],[0,0,0]];
 RSTF_CUSTOM_DISTANCE = 300;
 
 RSTF_BATTLE_SELECTION_INDEX = -1;
+
+RSTF_FACTIONS_SOLDIERS_CACHE = createHashMap;
+RSTF_FACTIONS_VEHICLES_CACHE = createHashMap;

@@ -11,11 +11,11 @@ from PIL import Image
 from utils import buildPreview
 
 ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools\\AddonBuilder\\AddonBuilder.exe'
-PUBLISHER = "c:\\Users\\KaKa\\source\\repos\\A3MissionPublisher\\A3MissionPublisher\\bin\\x64\\Release\\net6.0\\A3MissionPublisher.exe"
+PUBLISHER = "c:\\Users\\menxm\\source\\repos\\A3MissionPublisher\\A3MissionPublisher\\bin\\x64\\Release\\net6.0\\A3MissionPublisher.exe"
 
 SKIP_PUBLISH = False
-SKIP_PUBLISHED = False
-ONLY_PUBLISH = []
+SKIP_PUBLISHED = True
+ONLY_PUBLISH = ["SPE_Normandy"]
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))

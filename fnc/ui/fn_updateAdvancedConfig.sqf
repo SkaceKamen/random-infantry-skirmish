@@ -22,7 +22,7 @@ private _yy = 0;
 	};
 
 	if (_visible) then {
-		private _ctrl = _display ctrlCreate ["RscButton", _idc, _categoriesContainer];
+		private _ctrl = _display ctrlCreate ["RSTF_ADV_CATEGORY", _idc, _categoriesContainer];
 		_ctrl ctrlSetText _title;
 		_ctrl ctrlSetPosition [0, _yy, RSTF_ADV_CAT_W - 0.005, 0.08];
 		_ctrl ctrlCommit 0;

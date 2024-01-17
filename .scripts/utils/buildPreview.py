@@ -15,7 +15,9 @@ def buildPreview(backgroundImage: Image, overlayImage: Image, text: str):
 
 	while True and size > 10:
 		font = ImageFont.truetype(PREVIEW_FONT, size)
-		w, h = font.getsize_multiline(text)
+		left, top, right, bottom = font.getbbox(text)
+		w = right - left
+		h = bottom - top
 
 		if w > 500:
 			size -= 10
