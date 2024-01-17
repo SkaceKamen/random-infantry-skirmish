@@ -1,4 +1,4 @@
-#define SHOP_BACKGROUND { 0, 0, 0, 0.7 }
+#define SHOP_BACKGROUND { 0, 0, 0, 0.85 }
 #define SHOP_SPACING 0.005
 #define SHOP_ITEM_SPACING 0.005
 

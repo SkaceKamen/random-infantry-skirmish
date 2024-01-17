@@ -62,6 +62,12 @@ private _index = 0;
 
 			_itemsContainer lnbSetTextRight [[_index, 2], "$" + str(_cost) + "   "];
 
+			if (_money >= _cost) then {
+				_itemsContainer lnbSetColorRight [[_index, 2], [0.6, 0.9, 0.6, 1]];
+			} else {
+				_itemsContainer lnbSetColorRight [[_index, 2], [0.9, 0.6, 0.6, 1]];
+			};
+
 			_index = _index + 1;
 			RSTF_SHOP_CURRENT_ITEMS pushBack _x;
 		};
