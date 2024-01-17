@@ -6,7 +6,7 @@ if (count(_this) > 1) then {
 private _soldiers = [];
 private _weapons = [];
 
-private _classes = configFile >> "CfgVehicles";
+private _classes = objNull;
 
 {
 	private _faction = _x;
@@ -24,13 +24,16 @@ private _classes = configFile >> "CfgVehicles";
 		continue;
 	};
 
+	if (isNull(_classes)) then {
+		_classes = "getNumber(_x >> 'scope') == 2 && getNumber(_x >> 'isMan') == 1" configClasses (configFile >> "CfgVehicles");
+	};
+
 	private _localSoldiers = [];
 	private _localWeapons = [];
 
-	private _i = 0;
 	// Load men and vehicles for each faction
-	for [{_i = 0},{_i < count(_classes)},{_i = _i + 1}] do {
-		private _c = _classes select _i;
+	{
+		private _c = _x;
 		if (isClass(_c)) then {
 			private _scope = getNumber(_c >> "scope");
 			private _man = getNumber(_c >> "isMan");
@@ -56,7 +59,7 @@ private _classes = configFile >> "CfgVehicles";
 				};
 			};
 		};
-	};
+	} forEach _classes;
 	
 	RSTF_FACTIONS_SOLDIERS_CACHE set [_factionLower, [_localSoldiers, _localWeapons]];
 
