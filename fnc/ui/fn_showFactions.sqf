@@ -4,13 +4,10 @@ waitUntil { time > 0 };
 
 showCinemaBorder false;
 
-_ok = createDialog "RSTF_RscDialogFactions";
-if (!_ok) exitWith {
-	systemChat "Fatal error. Couldn't create factions dialog.";
-};
+private _parent = param [0, displayNull];
 
-_list = _this select 0;
-_event = _this select 1;
+_list = _this select 1;
+_event = _this select 2;
 
 RSTF_FACTIONS_LIST = _list;
 RSTF_FACTIONS_EVENT = _event;
@@ -27,7 +24,13 @@ RSTF_FACTIONS_SOLDIERS = [];
 
 RSTF_EXPANDED = createHashMap;
 
-_display = "RSTF_RscDialogFactions" call RSTF_fnc_getDisplay;
+if (!isNull(_parent)) then {
+	_parent = _parent createDisplay "RscDisplayEmpty";
+};
+
+RSTF_FACTIONS_CONFIG_layout = [missionConfigFile >> "FactionSelectorDialog", _parent] call ZUI_fnc_createDisplay;
+
+private _display = [RSTF_FACTIONS_CONFIG_layout] call ZUI_fnc_display;
 _display displayAddEventHandler ["unload", {
 	if (!isNull(RSTF_FACTIONS_SOLDIER)) then {
 		deleteVehicle RSTF_FACTIONS_SOLDIER;
@@ -47,7 +50,7 @@ _display displayAddEventHandler ["unload", {
 	RSTF_FACTIONS_LIST call RSTF_FACTIONS_EVENT;
 }];
 
-_ctrl = ["RSTF_RscDialogFactions", "selectRandom"] call RSTF_fnc_getCtrl;
+private _ctrl = [RSTF_FACTIONS_CONFIG_layout, "factionSelectRandom"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	// Build list of already used factions
 	private _used = [];
@@ -72,31 +75,18 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	};
 }];
 
-_ctrl = ["RSTF_RscDialogFactions", "clear"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "factionsClear"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	RSTF_FACTIONS_LIST = [];
 	call RSTF_fnc_factionsUpdate;
 }];
 
-_ctrl = ["RSTF_RscDialogFactions", "close"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "save"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	call RSTF_fnc_profileSave;
-	closeDialog 0;
+	([RSTF_FACTIONS_CONFIG_layout] call ZUI_fnc_display) closeDisplay 0;
 }];
 
-_template_list = '_ctrl = ["RSTF_RscDialogFactions", "%1"] call RSTF_fnc_getCtrl;
-_row = lnbCurSelRow _ctrl;
-if (_row >= 0) then {
-	_class = _ctrl lnbData [_row, 0];
-	_index = %2 find _class;
-	if (_index >= 0) then {
-		%2 = [%2, _index] call BIS_fnc_removeIndex;
-	} else {
-		%2 set [count(%2), _class];
-	};
-
-	call RSTF_fnc_factionsUpdate;
-};';
 
 RSTF_fnc_factionsIsFactionBanned = {
 	params ["_faction"];
@@ -166,7 +156,7 @@ RSTF_fnc_factionsIsVehicleClassBanned = {
 };
 
 
-_template_tree = '_ctrl = ["RSTF_RscDialogFactions", "%1"] call RSTF_fnc_getCtrl;
+_template_tree = 'private _ctrl = [RSTF_FACTIONS_CONFIG_layout, "%1"] call ZUI_fnc_getControlById;
 _path = tvCurSel _ctrl;
 _class = _ctrl tvData _path;
 _prefix = if (count(_class) > 2) then { _class select [0, 2] } else { "" };
@@ -235,11 +225,26 @@ if (_class != "") then {
 	};
 };';
 
-_method = compile(format [_template_list, "factions", "RSTF_FACTIONS_LIST"]);
-_ctrl = ["RSTF_RscDialogFactions", "toggleFaction"] call RSTF_fnc_getCtrl;
-_ctrl ctrlAddEventHandler ["ButtonClick", _method];
-_ctrl = ["RSTF_RscDialogFactions", "factions"] call RSTF_fnc_getCtrl;
-_ctrl ctrlAddEventHandler ["LBDblClick", _method];
+private _toggleFaction = {
+	private _ctrl = [RSTF_FACTIONS_CONFIG_layout, "factionsList"] call ZUI_fnc_getControlById;
+	_row = lnbCurSelRow _ctrl;
+	if (_row >= 0) then {
+		_class = _ctrl lnbData [_row, 0];
+		_index = RSTF_FACTIONS_LIST find _class;
+		if (_index >= 0) then {
+			RSTF_FACTIONS_LIST = [RSTF_FACTIONS_LIST, _index] call BIS_fnc_removeIndex;
+		} else {
+			RSTF_FACTIONS_LIST set [count(RSTF_FACTIONS_LIST), _class];
+		};
+
+		call RSTF_fnc_factionsUpdate;
+	};
+};
+
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "factionSelectToggle"] call ZUI_fnc_getControlById;
+_ctrl ctrlAddEventHandler ["ButtonClick", _toggleFaction];
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "factionsList"] call ZUI_fnc_getControlById;
+_ctrl ctrlAddEventHandler ["LBDblClick", _toggleFaction];
 
 _expand = {
 	_ctrl = _this select 0;
@@ -260,10 +265,10 @@ _collapse = {
 	};
 };
 
-_method = compile(format [_template_tree, "avaibleSoldiers", "RSTF_SOLDIERS_BANNED", 3]);
-_ctrl = ["RSTF_RscDialogFactions", "banSoldier"] call RSTF_fnc_getCtrl;
+_method = compile(format [_template_tree, "unitsTree", "RSTF_SOLDIERS_BANNED", 3]);
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "unitBanToggle"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", _method];
-_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "unitsTree"] call ZUI_fnc_getControlById;
 
 RSTF_EXPANDED set [ctrlIdc _ctrl, []];
 _ctrl ctrlAddEventHandler ["TreeExpanded", _expand];
@@ -281,7 +286,7 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 		RSTF_FACTIONS_WEAPON = objNull;
 	};
 
-	_ctrl = ["RSTF_RscDialogFactions", "avaibleSoldiers"] call RSTF_fnc_getCtrl;
+	_ctrl = [RSTF_FACTIONS_CONFIG_layout, "unitsTree"] call ZUI_fnc_getControlById;
 	_path = tvCurSel _ctrl;
 	if (count(_path) == 3 || count(_path) == 2) then {
 		_class = _ctrl tvData _path;
@@ -307,10 +312,11 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 	};
 }];
 
-_method = compile(format [_template_tree, "avaibleWeapons", "RSTF_WEAPONS_BANNED", 2]);
-_ctrl = ["RSTF_RscDialogFactions", "banWeapon"] call RSTF_fnc_getCtrl;
+
+_method = compile(format [_template_tree, "weaponsTree", "RSTF_WEAPONS_BANNED", 2]);
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "weaponBanToggle"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", _method];
-_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_FACTIONS_CONFIG_layout, "weaponsTree"] call ZUI_fnc_getControlById;
 
 RSTF_EXPANDED set [ctrlIdc _ctrl, []];
 _ctrl ctrlAddEventHandler ["TreeExpanded", _expand];
@@ -328,7 +334,7 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 		RSTF_FACTIONS_WEAPON = objNull;
 	};
 
-	_ctrl = ["RSTF_RscDialogFactions", "avaibleWeapons"] call RSTF_fnc_getCtrl;
+	_ctrl = [RSTF_FACTIONS_CONFIG_layout, "weaponsTree"] call ZUI_fnc_getControlById;
 	_path = tvCurSel _ctrl;
 	if (count(_path) == 2) then {
 		_class = _ctrl tvData _path;
@@ -343,5 +349,6 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 		RSTF_CAM camCommit 0.1;
 	};
 }];
+
 
 call RSTF_fnc_factionsUpdate;

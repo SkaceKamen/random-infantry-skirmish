@@ -6,6 +6,7 @@ class RSTF_Modes
 		description = "Score-based team deathmatch, where first one that reaches specific number of points wins.";
 		enabled = 1;
 		order = 4;
+		hasNeutralFaction = 1;
 
 		init = "RSTF_MODE_CLASSIC_init";
 		startLoop = "RSTF_MODE_CLASSIC_startLoop";
@@ -20,6 +21,7 @@ class RSTF_Modes
 		description = "Side with more units in the predefined capture point receives points, side which reaches specified number of points wins.";
 		enabled = 1;
 		order = 2;
+		hasNeutralFaction = 1;
 
 		init = "RSTF_MODE_KOTH_init";
 		startLoop = "RSTF_MODE_KOTH_startLoop";
@@ -34,6 +36,7 @@ class RSTF_Modes
 		description = "Capture a series of fortified points.";
 		enabled = 1;
 		order = 0;
+		hasNeutralFaction = 0;
 
 		init = "RSTF_MODE_PUSH_init";
 		startLoop = "RSTF_MODE_PUSH_startLoop";
@@ -48,6 +51,7 @@ class RSTF_Modes
 		description = "Defend a series of fortified points.";
 		enabled = 1;
 		order = 1;
+		hasNeutralFaction = 0;
 
 		init = "RSTF_MODE_PUSH_initDefense";
 		startLoop = "RSTF_MODE_PUSH_startLoop";
@@ -62,6 +66,7 @@ class RSTF_Modes
 		description = "Hold area for predefined amount of time agains never ending waves of enemies. This game mode is in BETA stage and could be unablanced.";
 		enabled = 1;
 		order = 3;
+		hasNeutralFaction = 0;
 
 		init = "RSTF_MODE_DEFEND_init";
 		startLoop = "RSTF_MODE_DEFEND_startLoop";

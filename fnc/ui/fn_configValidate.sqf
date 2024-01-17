@@ -20,9 +20,12 @@ _validation = [
 	compile(format[_limitCheck, "RSTF_LIMIT_GROUPS", "Groups count"]),
 	compile(format[_limitCheck, "RSTF_LIMIT_UNITS", "Unit count"]),
 	compile(format[_factionsCheck, FRIENDLY_FACTIONS, "Friendly side"]),
-	compile(format[_factionsCheck, NEUTRAL_FACTIONS, "Netural side"]),
 	compile(format[_factionsCheck, ENEMY_FACTIONS, "Enemy side"])
 ];
+
+if (call RSTF_fnc_doesModeSupportNeutrals) then {
+	_validation pushBack compile(format[_factionsCheck, NEUTRAL_FACTIONS, "Netural side"]);
+};
 
 _errors = [];
 {

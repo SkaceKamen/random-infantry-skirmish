@@ -52,7 +52,7 @@ private _xx = _padding;
 		};
 
 		// Add label
-		private _label = _display ctrlCreate ["RscText", _idc, _optionsContainer];
+		private _label = _display ctrlCreate ["RSTF_ADV_LABEL", _idc, _optionsContainer];
 		_label ctrlSetText (_title + ":");
 		_label ctrlSetTooltip _description;
 		_label ctrlSetPosition [_xx, _yy + 0.025 - 0.037/2, RSTF_ADV_OPS_W * 0.4, 0.037];
@@ -136,5 +136,5 @@ private _xx = _padding;
 		_idc = _idc + 1;
 	};
 
-	_yy = _yy + 0.08;
+	_yy = _yy + 0.07;
 } foreach _items;
