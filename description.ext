@@ -1,6 +1,7 @@
 #include "lib\zui\zui-classes.hpp"
 #include "dialogs\theme.hpp"
 #include "dialogs\base.hpp"
+#include "dialogs\components.hpp"
 #include "dialogs\titles.hpp"
 #include "dialogs\advancedConfigDialog.hpp"
 #include "dialogs\deathDialog.hpp"
