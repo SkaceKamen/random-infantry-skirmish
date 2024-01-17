@@ -63,10 +63,6 @@ ZUI_fnc_build = {
 		private _class = getText(_config >> "control");
 		_ctrl = _display ctrlCreate [_class, -2, _parent];
 
-		if (_class == "RscText" || _class == "RscButton" || _class == "RscStructuredText") then {
-			_ctrl ctrlSetShadow 0;
-		};
-
 		[_ctrl, _config] call ZUI_fnc_applyControlProps;
 
 	};
@@ -149,6 +145,10 @@ ZUI_fnc_applyControlProps = {
 
 	if (isText(_config >> "fontSecondary")) then {
 		_ctrl ctrlSetFontSecondary getText(_config >> "fontSecondary");
+	};
+
+	if (isNumber(_config >> "shadow")) then {
+		_ctrl ctrlSetShadow getNumber(_config >> "shadow");
 	};
 };
 
@@ -282,6 +282,7 @@ ZUI_fnc_refresh = {
 				case ZUI_SIZE_TEXT: {
 					_size = if (_index == 1) then { ctrlTextHeight (_x#ZUI_L_CTRL) } else { ctrlTextWidth (_x#ZUI_L_CTRL) };
 					_parentSize = _parentSize - _size;
+					diag_log _size;
 				};
 				case ZUI_SIZE_PERCENTS: {
 					_percentage = _percentage + _size;
@@ -304,6 +305,7 @@ ZUI_fnc_refresh = {
 			case ZUI_SIZE_ABSOLUTE: {};
 			case ZUI_SIZE_TEXT: {
 				_size = if (_index == 1) then { ctrlTextHeight (_x#ZUI_L_CTRL) } else { ctrlTextWidth (_x#ZUI_L_CTRL) };
+				diag_log _size;
 			};
 			case ZUI_SIZE_PERCENTS: {
 				_size = _size * _parentSize;

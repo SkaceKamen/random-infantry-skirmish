@@ -3,9 +3,9 @@ private _changelogId = _changelog select 0;
 private _changelogText = _changelog select 1;
 private _lastAccepted = profileNamespace getVariable ["RSTF_LAST_CHANGELOG_SEEN", 0];
 
-/*if (_lastAccepted >= _changelogId) exitWith {
+if (_lastAccepted >= _changelogId) exitWith {
 	0 spawn RSTF_fnc_showModeSelector;
-};*/
+};
 
 if (isNull(RSTF_CAM)) then {
 	call RSTF_fnc_createCam;
@@ -26,6 +26,8 @@ private _confirmButton = [RSTF_CHANGELOG_layout, 'confirm'] call ZUI_fnc_getCont
 private _bodyText = [RSTF_CHANGELOG_layout, 'text'] call ZUI_fnc_getControlById;
 
 _bodyText ctrlSetStructuredText parseText(_changelogText);
+[RSTF_CHANGELOG_layout] call ZUI_fnc_refresh;
+
 _confirmButton ctrlAddEventHandler ["ButtonClick", {
 	private _changelog = call RSTF_fnc_getLastChangelog;
 	profileNamespace setVariable ["RSTF_LAST_CHANGELOG_SEEN", _changelog select 0];
