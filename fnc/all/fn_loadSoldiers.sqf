@@ -78,4 +78,4 @@ if (!_ignore_bans) then {
 	_resultWeapons = _resultWeapons select { !(_x in RSTF_WEAPONS_BANNED) };
 };
 
-[_soldiers, _resultWeapons];
+[_resultSoldiers, _resultWeapons];

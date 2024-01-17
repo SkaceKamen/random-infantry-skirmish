@@ -8,7 +8,12 @@ RSTF_CAM camSetTarget RSTF_CAM_TARGET;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
 
-RSTF_MAIN_CONFIG_layout = [missionConfigFile >> "MainConfigDialog"] call ZUI_fnc_createDisplay;
+RSTF_MAIN_CONFIG_layout = [
+	missionConfigFile >> "MainConfigDialog",
+	displayNull,
+	RSTF_fnc_showConfig
+] call RSTF_fnc_spawnZUIDialog;
+
 private _display = [RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display;
 if (typeName(_display) == typeName(false) && { !_display }) then {
 	call RSTF_fnc_start;

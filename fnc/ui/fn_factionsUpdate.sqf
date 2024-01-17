@@ -31,19 +31,21 @@ lnbClear _ctrl;
 		_vehiclesCount = _vehiclesCount + count(_x);
 	} foreach _vehicles;
 
-	_ctrl lnbAddRow ["", _name, format["%1 inf, %2 veh", count(_units#0), _vehiclesCount]];
+	_ctrl lnbAddRow ["", _name, format["%1 inf", count(_units#0)], format["%1 veh", _vehiclesCount]];
 	_ctrl lnbSetPicture [[_foreachIndex,0], "\A3\ui_f\data\gui\RscCommon\RscCheckBox\" + _checkIcon];
 	_ctrl lnbSetPicture [[_foreachIndex,1], _icon];
 	_ctrl lnbSetPictureColor [[_foreachIndex,1], [1,1,1,1]];
 	_ctrl lnbSetData [[_foreachIndex, 0], _x];
 	_ctrl lnbSetTooltip [[_foreachIndex, 0], _x];
 	_ctrl lnbSetColor [[_foreachIndex, 2], [0.8,0.8,0.8,1]];
+	_ctrl lnbSetColor [[_foreachIndex, 3], [0.8,0.8,0.8,1]];
 
 	if (!_selected) then {
 		_ctrl lnbSetPictureColor [[_foreachIndex, 0], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetPictureColor [[_foreachIndex , 1], [0.7,0.7,0.7,1]];
 		_ctrl lnbSetColor [[_foreachIndex, 1], [0.7,0.7,0.7,1]];
 		_ctrl lnbSetColor [[_foreachIndex, 2], [0.6,0.6,0.6,1]];
-		_ctrl lnbSetPictureColor [[_foreachIndex , 1], [0.7,0.7,0.7,1]];
+		_ctrl lnbSetColor [[_foreachIndex, 3], [0.6,0.6,0.6,1]];
 	};
 } foreach RSTF_FACTIONS;
 

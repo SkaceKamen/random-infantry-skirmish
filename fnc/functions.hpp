@@ -130,6 +130,7 @@ class RSTF
 		class updateBattles {};
 		class updateVoteTimeout {};
 		class spawnDialog {};
+		class spawnZUIDialog {};
 		class showModeSelector {};
 		class customSelectorShow {};
 		class customSelectorPick {};
