@@ -111,6 +111,7 @@ class RSTF
 		class getModeId {};
 		class killHandler {};
 		class doesModeSupportNeutrals {};
+		class getObjectiveDistance {};
 	};
 
 	class ui

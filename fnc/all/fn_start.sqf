@@ -86,3 +86,11 @@ sleep 2;
 
 // Start game loop
 0 spawn RSTF_fnc_loop;
+
+for [{_i = 0},{_i < 100},{_i = _i + 1}] do {
+	private _pos = RSTF_POINT vectorAdd [-100 + random 200, -100 + random 200, 0];
+	private _marker = createMarker ["TEST" + str(_i), _pos];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType "mil_objective";
+	_marker setMarkerText str([_pos] call RSTF_fnc_getObjectiveDistance);
+};
