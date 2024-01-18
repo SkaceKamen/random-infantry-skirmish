@@ -47,9 +47,23 @@ switch (call RSTF_fnc_getModeId) do {
 	};
 };
 
+private _dateTime = "";
+private _date = [];
+if (RSTF_USE_DEFAULT_DATE) then {
+	private _worldStartDate = call RSTF_fnc_getWorldStartDate;
+	_date set [0, _worldStartDate#0];
+	_date set [1, _worldStartDate#1];
+	_date set [2, _worldStartDate#2];
+} else {
+	_date set [0, RSTF_DATE_YEAR];
+	_date set [1, RSTF_DATE_MONTH];
+	_date set [2, RSTF_DATE_DAY];
+};
+
+_dateTime = format["%1-%2-%3 %4", _date#0, _date#1, _date#2, if (RSTF_TIME == 0) then { "Random"} else { RSTF_TIME_TYPES#RSTF_TIME }];
 
 _ctrl lnbAddRow ["Equipment", if (RSTF_CUSTOM_EQUIPMENT) then { "Custom" } else { "Predefined" }];
-_ctrl lnbAddRow ["Time", if (RSTF_TIME == 0) then { "Random"} else { RSTF_TIME_TYPES#RSTF_TIME }];
+_ctrl lnbAddRow ["Date", _dateTime];
 _ctrl lnbAddRow ["Weather", if (RSTF_WEATHER == 0) then { "Random" } else { RSTF_WEATHER_TYPES#RSTF_WEATHER }];
 _ctrl lnbAddRow ["Groups per side", str(RSTF_LIMIT_GROUPS)];
 _ctrl lnbAddRow ["Units per group", str(RSTF_LIMIT_UNITS)];

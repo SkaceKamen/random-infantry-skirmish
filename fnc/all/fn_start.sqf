@@ -58,6 +58,21 @@ showCinemaBorder false;
 // Time
 call RSTF_fnc_superRandomTime;
 
+// Date
+private _currentDate = date;
+if (RSTF_USE_DEFAULT_DATE) then {
+	private _worldStartDate = call RSTF_fnc_getWorldStartDate;
+	_currentDate set [0, _worldStartDate#0];
+	_currentDate set [1, _worldStartDate#1];
+	_currentDate set [2, _worldStartDate#2];
+	setDate _currentDate;
+} else {
+	_currentDate set [0, RSTF_DATE_YEAR];
+	_currentDate set [1, RSTF_DATE_MONTH];
+	_currentDate set [2, RSTF_DATE_DAY];
+	setDate _currentDate;
+};
+
 // Weather
 [] spawn RSTF_fnc_superRandomWeather;
 

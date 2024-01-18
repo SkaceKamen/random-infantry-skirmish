@@ -226,7 +226,11 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_UI_SHOW_GAMEMODE_SCORE",
 	"RSTF_UI_SHOW_GAMEMODE_UNIT_COUNT",
 	"RSTF_SPAWN_AT_OWN_GROUP",
-	"RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE"
+	"RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE",
+	"RSTF_DATE_YEAR",
+	"RSTF_DATE_MONTH",
+	"RSTF_DATE_DAY",
+	"RSTF_USE_DEFAULT_DATE"
 ];
 
 // Profile values that are specific to local player (don't broadcast them)
@@ -388,3 +392,18 @@ RSTF_FACTIONS_SOLDIERS_CACHE = createHashMap;
 RSTF_FACTIONS_VEHICLES_CACHE = createHashMap;
 
 RSTF_MOVEMENT_CHECK_UNITS = [];
+
+RSTF_AVAILABLE_YEARS = [];
+for [{_i = 0}, { _i < 1000 }, {_i = _i + 1}] do {
+	RSTF_AVAILABLE_YEARS pushBack [1500 + _i, str(1500 + _i)];
+};
+
+RSTF_AVAILABLE_MONTHS = [];
+for [{_i = 1}, { _i <= 12 }, {_i = _i + 1}] do {
+	RSTF_AVAILABLE_MONTHS pushBack str(_i);
+};
+
+RSTF_AVAILABLE_DAYS = [];
+for [{_i = 1}, { _i <= 31 }, {_i = _i + 1}] do {
+	RSTF_AVAILABLE_DAYS pushBack str(_i);
+};

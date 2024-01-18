@@ -112,6 +112,7 @@ class RSTF
 		class killHandler {};
 		class doesModeSupportNeutrals {};
 		class getObjectiveDistance {};
+		class getWorldStartDate {};
 	};
 
 	class ui

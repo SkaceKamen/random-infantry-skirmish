@@ -435,12 +435,37 @@ class RSTF_Options {
 				type="select";
 				optionsVariable="RSTF_WEATHER_TYPES";
 			};
+			class spacer3 { type = "spacer"; };
 			class RSTF_TIME {
 				title="Daytime";
 				description="Mission daytime.";
 				type="select";
 				optionsVariable="RSTF_TIME_TYPES";
 			};
+			class RSTF_USE_DEFAULT_DATE {
+				title="Load date from world";
+				description="Use default date for the world.";
+				type="checkbox";
+			};
+			class RSTF_DATE_YEAR {
+				title="Year";
+				description="";
+				type="select";
+				optionsVariable="RSTF_AVAILABLE_YEARS";
+			};
+			class RSTF_DATE_MONTH {
+				title="Month";
+				description="";
+				type="select";
+				optionsVariable="RSTF_AVAILABLE_MONTHS";
+			};
+			class RSTF_DATE_DAY {
+				title="Day";
+				description="";
+				type="select";
+				optionsVariable="RSTF_AVAILABLE_DAYS";
+			};
+			class spacer4 { type = "spacer"; };
 			class RSTF_SKIP_MODE_SELECT {
 				title="Skip mode selection";
 				description="Skip mode selection screen when starting mission";

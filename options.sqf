@@ -583,3 +583,10 @@ RSTF_SPAWN_REUSE_GROUPS = false;
 
 // Spawn near leader of the group when reusing existing groups
 RSTF_SPAWN_AT_OWN_GROUP = true;
+
+RSTF_DATE_YEAR = (date select 0);
+RSTF_DATE_MONTH = (date select 1) - 1;
+RSTF_DATE_DAY = (date select 2) - 1;
+
+// Load default date from world config
+RSTF_USE_DEFAULT_DATE = true;
