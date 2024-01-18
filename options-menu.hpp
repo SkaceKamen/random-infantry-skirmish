@@ -120,9 +120,9 @@ class RSTF_Options {
 				description="Number of defensive emplacements spawned, only works when faction has suitable static emplacements.";
 				type="number";
 			};
-			class RSTF_MODE_PUSH_DEFENDERS_DISADVANTAGE {
-				title="Defenders group disadvantage";
-				description="Defenders will have this much less groups.";
+			class RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE {
+				title="Attackers group advantage";
+				description="Attackers will have this much more groups.";
 				type="number";
 			};
 		};
