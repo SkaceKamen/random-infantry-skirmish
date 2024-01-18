@@ -134,41 +134,7 @@ _unit setVariable ["SPAWNED_SIDE_INDEX", _side, true];
 _unit addEventHandler ["Killed", RSTF_fnc_unitKilled];
 
 if (_checkMovement) then {
-	// Check every minute if unit has moved more than 1 meter, kill it if not
-	[_unit, _side] spawn {
-		private _unit = param [0];
-		private _side = param [1];
-		private _pos = getPos(_unit);
-		private _moved = 0;
-		private _time = 0;
-
-		while { alive _unit && !isPlayer(_unit) } do {
-			private _newPos = getPos(_unit);
-			_moved = _moved + (_newPos distance _pos);
-			_pos = _newPos;
-			_time = _time + 10;
-			
-			if (_time >= 60 && _moved < 2 && _pos distance RSTF_POINT > 150) exitWith {
-				_unit setDamage 1;
-				
-				if (RSTF_DEBUG) then {
-					systemChat "Killed a unit because it wasn't moving!";
-
-					private _marker = createMarkerLocal [str(getPos(_unit)), getPos(_unit)];
-					_marker setMarkerShape "ICON";
-					_marker setMarkerType "KIA";
-					_marker setMarkerColor (RSTF_SIDES_COLORS select _side);
-				};
-			};
-
-			if (_time >= 60) then {
-				_time = 0;
-				_moved = 0;
-			};
-
-			sleep 10;
-		};
-	};
+	RSTF_MOVEMENT_CHECK_UNITS pushBack _unit;
 };
 
 // DEBUG - Track unit position

@@ -1,6 +1,6 @@
-if (!RSTF_DEBUG) then {
+//if (!RSTF_DEBUG) then {
 	startLoadingScreen ["Preparing battle"];
-};
+//};
 
 // Load avaible weapons and classes
 call RSTF_fnc_loadWeapons;
@@ -24,6 +24,9 @@ _marker setMarkerType "mil_objective";
 
 // Initialize GC
 call RSTFGC_fnc_init;
+
+// Checks if AI units aren't stuck somewhere
+call RSTF_fnc_startMovementCheckLoop;
 
 progressLoadingScreen 0.5;
 
@@ -69,6 +72,7 @@ call RSTF_fnc_superRandomTime;
 
 // Weather
 [] spawn RSTF_fnc_superRandomWeather;
+
 
 // Tell players we started
 RSTF_STARTED = true;

@@ -52,6 +52,8 @@ class RSTF
 		class attachVehicleRefundCheck {};
 
 		class getLastChangelog {};
+
+		class startMovementCheckLoop {};
 	};
 
 	class money

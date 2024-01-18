@@ -36,10 +36,10 @@ if (_side == east) then {
 private _groupsPerSide = RSTF_LIMIT_GROUPS;
 if (_side == east) then {
 	_groupsPerSide = _groupsPerSide + RSTF_ENEMY_ADVANTAGE_GROUPS;
+};
 
-	if (RSTF_MODE_PUSH_ENABLED && RSTF_MODE_ATTACKERS_SIDE == _sideIndex) then {
-		_groupsPerSide = _groupsPerSide + RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE;
-	};
+if (RSTF_MODE_PUSH_ENABLED && RSTF_MODE_ATTACKERS_SIDE == _sideIndex) then {
+	_groupsPerSide = _groupsPerSide + RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE;
 };
 
 // Calculate unit counts for this side
