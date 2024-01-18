@@ -1,12 +1,6 @@
-//if (!RSTF_DEBUG) then {
-	startLoadingScreen ["Preparing battle"];
-//};
-
 // Load avaible weapons and classes
 call RSTF_fnc_loadWeapons;
 call RSTF_fnc_loadClasses;
-
-progressLoadingScreen 0.25;
 
 // Send list of available vehicles to other players
 publicVariable "RSTF_BUYABLE_VEHICLES";
@@ -28,8 +22,6 @@ call RSTFGC_fnc_init;
 // Checks if AI units aren't stuck somewhere
 call RSTF_fnc_startMovementCheckLoop;
 
-progressLoadingScreen 0.5;
-
 // Clear unhistoric items if needed
 if (RSTF_CLEAR_HISTORIC_ITEMS) then {
 	[RSTF_POINT, 3000] call RSTF_fnc_clearHistoricItems;
@@ -41,8 +33,6 @@ call RSTF_fnc_initializeMode;
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
 
-progressLoadingScreen 0.75;
-
 // Spawn neutral units
 call RSTF_fnc_spawnNeutrals;
 
@@ -52,8 +42,6 @@ if (RSTF_SPAWN_TRANSPORTS) then {
 		[_foreachIndex, _x] call RSTF_fnc_spawnSpawnDefenses;
 	} foreach RSTF_SPAWNS;
 };
-
-endLoadingScreen;
 
 // TODO: What to do with this
 if (!isDedicated) then {
@@ -86,3 +74,22 @@ sleep 2;
 
 // Start game loop
 0 spawn RSTF_fnc_loop;
+
+/*
+TEST OF: RSTF_fnc_getObjectiveDistance
+private _line = createMarker ["LINE", RSTF_POINT];
+_line setMarkerShape "RECTANGLE";
+_line setMarkerSize [0.2, 200];
+_line setMarkerColor "ColorRed";
+_line setMarkerDir RSTF_DIRECTION + 90;
+
+for [{_i = 0},{_i < 100},{_i = _i + 1}] do {
+	private _pos = RSTF_POINT vectorAdd [-100 + random 200, -100 + random 200, 0];
+	private _marker = createMarker ["TEST" + str(_i), _pos];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType "mil_dot";
+	_marker setMarkerSize [0.2, 0.2];
+	_marker setMarkerText str([_pos] call RSTF_fnc_getObjectiveDistance);
+	_marker setMarkerShadow false;
+};
+*/

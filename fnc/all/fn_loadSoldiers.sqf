@@ -24,7 +24,7 @@ private _classes = objNull;
 		continue;
 	};
 
-	if (isNull(_classes)) then {
+	if (typeName _classes == typeName objNull) then {
 		_classes = "getNumber(_x >> 'scope') == 2 && getNumber(_x >> 'isMan') == 1" configClasses (configFile >> "CfgVehicles");
 	};
 
