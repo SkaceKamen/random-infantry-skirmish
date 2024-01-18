@@ -552,8 +552,8 @@ RSTF_MODE_PUSH_POINT_COUNT = 5;
 RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT = 5;
 // Spawn emplacements on the first point
 RSTF_MODE_PUSH_FIRST_POINT_EMPLACEMENTS = true;
-// Defenders will have this much less groups
-RSTF_MODE_PUSH_DEFENDERS_DISADVANTAGE = 1;
+// Attackers will have this much more groups
+RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE = 1;
 
 // Remove un-historical items from map
 RSTF_CLEAR_HISTORIC_ITEMS = false;

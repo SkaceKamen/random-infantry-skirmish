@@ -52,6 +52,8 @@ class RSTF
 		class attachVehicleRefundCheck {};
 
 		class getLastChangelog {};
+
+		class startMovementCheckLoop {};
 	};
 
 	class money
@@ -109,6 +111,7 @@ class RSTF
 		class getModeId {};
 		class killHandler {};
 		class doesModeSupportNeutrals {};
+		class getObjectiveDistance {};
 	};
 
 	class ui

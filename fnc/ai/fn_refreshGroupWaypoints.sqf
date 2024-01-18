@@ -24,14 +24,61 @@ private _wppoint = [_sideIndex, true] call RSTF_fnc_getAttackWaypoint;
 // This sometimes helps with stuck units
 deleteWaypoint [_group, 0];
 
-private _wp = _group addWaypoint [_wppoint, 50];
+private _wp = _group addWaypoint [_wppoint, 10];
+private _order = "SAD";
+private _speed = "NORMAL";
+private _dbg = "";
 
-if ((RSTF_MODE_DEFEND_ENABLED || (RSTF_MODE_PUSH_ENABLED && RSTF_MODE_DEFENDERS_SIDE == SIDE_FRIENDLY)) && _sideIndex == SIDE_FRIENDLY) then {
-	_wp setWaypointType "HOLD";
-} else {
-	_wp setWaypointType "SAD";
+if (!isNull(leader(_group))) then {
+	private _groupLeaderPos = getPos(leader(_group));
+
+	switch (call RSTF_fnc_getModeId) do {
+		case "PushDefense";
+		case "Push": {
+			private _objectiveDistance = [_groupLeaderPos] call RSTF_fnc_getObjectiveDistance;
+			_dbg = str(_objectiveDistance);
+
+			if (_sideIndex == RSTF_MODE_ATTACKERS_SIDE) then {
+				if (_objectiveDistance > 50) then {
+					_order = "MOVE";
+					_speed = "FULL";
+				};
+			} else {
+				if (_objectiveDistance > 30) then {
+					_order = "MOVE";
+					_speed = "FULL";
+				} else {
+					_order = "HOLD";
+				}
+			}
+		};
+
+		case "KOTH": {
+			private _distance = _groupLeaderPos distance2D RSTF_POINT;
+
+			if (_distance > RSTF_DISTANCE * 0.6) then {
+				_order = "MOVE";
+				_speed = "FULL";
+			};
+		};
+
+		case "Defense": {
+			private _distance = _groupLeaderPos distance2D RSTF_POINT;
+
+			if (_sideIndex == SIDE_FRIENDLY) then {
+				_order = "HOLD";
+			} else {
+				if (_distance >RSTF_MODE_DEFEND_RADIUS) then {
+					_order = "MOVE";
+					_speed = "FULL";
+				};
+			};
+		};
+	};
 };
+
 
 if (RSTF_DEBUG) then {
 	(str(_group)) setMarkerPos _wppoint;
+	(str(_group)) setMarkerText (_order + "," + _speed + "," + _dbg);
 };
