@@ -10,7 +10,7 @@ class ShopComponents
 
 class ShopDialog: ZUI_ColumnLayout
 {
-	margin = 0.2;
+	margin[] = { 0.2, 0.6, 0.2, 0.6 };
 
 	class container: ZUI_ColumnLayout
 	{
@@ -28,13 +28,9 @@ class ShopDialog: ZUI_ColumnLayout
 			class dialogTitle: ZUI_Text
 			{
 				text = "REQUEST VEHICLE";
-				background[] = {
-					"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])",
-					"(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])",
-					"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])",
-					"(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
-				};
+				background[] = GUI_TITLE_BG;
 				margin[] = { 0, SHOP_SPACING, 0, 0 };
+				font = GUI_TITLE_FONT;
 			};
 
 			class close: ZUI_Button
@@ -122,18 +118,16 @@ class ShopDialog: ZUI_ColumnLayout
 
 			class detail: ZUI_ColumnLayout
 			{
-				width = 0.4;
+				width = 0.5;
 				margin[] = { 0, 0, 0, SHOP_SPACING };
 
 				class detailInfo: ZUI_ColumnLayout
 				{
-					margin[] = { 0, 0, SHOP_ITEM_SPACING, 0 };
-
 					class imageContainer: ZUI_RowLayout
 					{
 						background[] = SHOP_BACKGROUND;
 						margin[] = { 0, 0, GUI_SPACING, 0 };
-						height = 0.45;
+						height = 0.4;
 						heightType = ZUI_SIZE_ABSOLUTE;
 
 						class image: ZUI_Picture
@@ -173,15 +167,38 @@ class ShopDialog: ZUI_ColumnLayout
 						};
 					};
 				};
+				
+				class actionsAi: ZUI_RowLayout
+				{
+					heightType = ZUI_SIZE_ABSOLUTE;
+					height = 0.07;
+
+					class price: ZUI_TextRight
+					{
+						id = "priceAi";
+						text = "";
+						background[] = SHOP_BACKGROUND;
+						margin[] = { 0, GUI_SPACING, 0, 0 };
+					}
+
+					class buyButton: ZUI_Button
+					{
+						id = "buyAi";
+						text = "BUY AS AI";
+						margin[] = { 0, 0, 0, 0 };
+						tooltip = "Vehicle will be spawned with AI crew that will support your team";
+					}
+				};
 
 				class crewSelection: ZUI_RowLayout
 				{
 					heightType = ZUI_SIZE_ABSOLUTE;
-					height = 0.06;
-					margin[] = { 0, 0, GUI_SPACING, 0 };
+					height = 0.08;
+					margin[] = { GUI_SPACING * 4, 0, GUI_SPACING, 0 };
 
-					class crewLabel: ZUI_Text
+					class crewLabel: ZUI_TextRight
 					{
+						id = "crewLabel";
 						text = "Spawn as:";
 						width = 0.17;
 						widthType = ZUI_SIZE_ABSOLUTE;
@@ -201,17 +218,9 @@ class ShopDialog: ZUI_ColumnLayout
 					heightType = ZUI_SIZE_ABSOLUTE;
 					height = 0.07;
 
-					class spacer: ZUI_ColumnLayout
-					{
-						background[] = SHOP_BACKGROUND;
-						margin[] = { 0, GUI_SPACING, 0, 0 };
-					}
-
 					class price: ZUI_TextRight
 					{
 						id = "price";
-						widthType = ZUI_SIZE_ABSOLUTE;
-						width = 0.2;
 						text = "";
 						background[] = SHOP_BACKGROUND;
 						margin[] = { 0, GUI_SPACING, 0, 0 };
@@ -220,9 +229,7 @@ class ShopDialog: ZUI_ColumnLayout
 					class buyButton: ZUI_Button
 					{
 						id = "buy";
-						widthType = ZUI_SIZE_ABSOLUTE;
-						width = 0.2;
-						text = "BUY";
+						text = "BUY FOR ME";
 						margin[] = { 0, 0, 0, 0 };
 					}
 				};

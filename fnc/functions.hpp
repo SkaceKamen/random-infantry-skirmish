@@ -42,6 +42,7 @@ class RSTF
 		class randomSpawn {};
 
 		class requestVehicle {};
+		class requestAiVehicle {};
 		class bindKeys {};
 
 		class moveCamera {};

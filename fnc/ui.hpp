@@ -16,6 +16,7 @@ class RSTFUI
 		class shopCategoryClicked {};
 		class shopRefreshItems {};
 		class shopBuy {};
+		class shopBuyForAi {};
 		class shopItemSelected {};
 	};
 };

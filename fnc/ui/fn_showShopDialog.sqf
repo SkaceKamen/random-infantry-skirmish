@@ -74,6 +74,8 @@ private _currentRow = 0;
 	};
 } foreach _categories;
 
+_categoriesContainer lnbSetCurSelRow 0;
+
 _categoriesContainer ctrlAddEventHandler ["LBSelChanged", {
 	params ["_control", "_selectedIndex"];
 		systemChat str(_selectedIndex);
@@ -101,3 +103,5 @@ _categoriesContainer ctrlAddEventHandler ["LBSelChanged", {
 // Buy selected
 ([RSTF_SHOP_layout, "buy"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", { [] spawn RSTFUI_fnc_shopBuy; }];
 ([RSTF_SHOP_layout, "buy"] call ZUI_fnc_getControlById) ctrlEnable false;
+([RSTF_SHOP_layout, "buyAi"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", { [] spawn RSTFUI_fnc_shopBuyForAi; }];
+([RSTF_SHOP_layout, "buyAi"] call ZUI_fnc_getControlById) ctrlEnable false;
