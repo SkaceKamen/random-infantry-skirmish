@@ -363,6 +363,27 @@ class RSTF_Options {
 				type="number";
 				disabled="!RSTF_AI_VEHICLES_ENABLED";
 			};
+
+			class RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS {
+				title="Limit vehicles per class";
+				description="Limit how many vehicles can spawn per-class. Global limit will be applied too.";
+				type="checkbox";
+				disabled="!RSTF_AI_VEHICLES_ENABLED";
+			};
+
+			class RSTF_MONEY_VEHICLES_AI_AIR_LIMIT {
+				title="Max air AI vehicles per side";
+				description="Maximum number of spawned air AI vehicles per side. Global limit will be applied too.";
+				type="number";
+				disabled="!RSTF_AI_VEHICLES_ENABLED || !RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS";
+			};
+
+			class RSTF_MONEY_VEHICLES_AI_LAND_LIMIT {
+				title="Max land AI vehicles per side";
+				description="Maximum number of spawned land AI vehicles per side. Global limit will be applied too.";
+				type="number";
+				disabled="!RSTF_AI_VEHICLES_ENABLED || !RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS";
+			};
 		};
 	};
 	class UI {

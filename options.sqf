@@ -496,6 +496,12 @@ RSTF_MONEY_VEHICLES_ENABLED = true;
 
 // Maximum number of AI vehicles per side
 RSTF_MONEY_VEHICLES_AI_LIMIT = 5;
+// Apply limits per vehicle class
+RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS = false;
+// Maximum number of air AI vehicles per side
+RSTF_MONEY_VEHICLES_AI_AIR_LIMIT = RSTF_MONEY_VEHICLES_AI_LIMIT;
+// Maximum number of land AI vehicles per side
+RSTF_MONEY_VEHICLES_AI_LAND_LIMIT = RSTF_MONEY_VEHICLES_AI_LIMIT;
 
 // Money at start
 RSTF_MONEY_START = 0;
