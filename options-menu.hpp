@@ -294,6 +294,7 @@ class RSTF_Options {
 				title="Allow buying supports";
 				description="Allow players to buy supports (artillery)";
 				type="checkbox";
+				disabled="!RSTF_MONEY_ENABLED";
 			};
 
 			SPACER;
