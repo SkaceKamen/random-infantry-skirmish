@@ -47,10 +47,16 @@ class RSTF_Options {
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
 			};
+			class RSTF_ENEMY_ADVANTAGE_SCORE {
+				title="Enemy score multiplier";
+				description="Enemy score will be multiplied by this.";
+				type="float";
+				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+			};
 
 			// Push
 			class RSTF_MODE_PUSH_POINT_COUNT {
-				title="Number of points";
+				title="Points to capture";
 				description="Number of points that you have to capture to win";
 				type="number";
 				visible = IS_PUSH;
@@ -209,6 +215,7 @@ class RSTF_Options {
 	};
 	class Neutrals {
 		title = "Neutrals";
+		visible = "call RSTF_fnc_doesModeSupportNeutrals";
 
 		class Items {
 			class RSTF_NEUTRALS_GROUPS {
@@ -241,11 +248,6 @@ class RSTF_Options {
 				title="Units advantage";
 				description="Enemy groups will have this much more units.";
 				type="number";
-			};
-			class RSTF_ENEMY_ADVANTAGE_SCORE {
-				title="Score multiplier";
-				description="Enemy score will be multiplied by this.";
-				type="float";
 			};
 		};
 	};
