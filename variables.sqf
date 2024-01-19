@@ -410,3 +410,6 @@ RSTF_AVAILABLE_DAYS = [];
 for [{_i = 1}, { _i <= 31 }, {_i = _i + 1}] do {
 	RSTF_AVAILABLE_DAYS pushBack str(_i);
 };
+
+// Current player side index
+RSTF_CURRENT_SIDE_INDEX = SIDE_FRIENDLY;

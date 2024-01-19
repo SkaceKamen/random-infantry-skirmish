@@ -63,6 +63,16 @@ class RSTF_RscDialogAdvancedConfig
 			y = RSTF_ADV_CNT_Y;
 			w = RSTF_ADV_OPS_W;
 			h = RSTF_ADV_CNT_H;
+
+			class controls
+			{
+				class spacer: RscText
+				{
+					idc = 6;
+					w = RSTF_ADV_OPS_W;
+					h = 0.04;
+				};
+			};
 		};
 
 		class saveButton: RscButton

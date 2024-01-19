@@ -46,3 +46,9 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 		_yy = _yy + 0.06;
 	};
 } foreach RSTF_ADVANCED_LASTOPTIONS;
+
+private _display = "RSTF_RscDialogAdvancedConfig" call RSTF_fnc_getDisplay;
+private _spacerCtrl = _display displayCtrl 6;
+
+_spacerCtrl ctrlSetPosition [0, _yy, RSTF_ADV_OPS_W, 0.06];
+_spacerCtrl ctrlCommit 0;

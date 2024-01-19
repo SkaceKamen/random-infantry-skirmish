@@ -113,34 +113,6 @@ class RSTF_Options {
 			};
 
 			SPACER;
-
-			class RSTF_LIMIT_GROUPS {
-				title="Groups per side";
-				description="Number of groups spawned for each side.";
-				type="number";
-			}
-			class RSTF_LIMIT_UNITS {
-				title="Units per group";
-				description="Number of soldiers in single group.";
-				type="number";
-			};
-			class RSTF_LIMIT_SPAWN {
-				title="Wave spawn time";
-				description="Interval in seconds in which reinforcements are spawned";
-				type="number";
-			};
-			class RSTF_SPAWN_REUSE_GROUPS {
-				title="Reuse existing groups when spawning";
-				description="Don't create new groups when spawning new units, reuse existing ones. Can cause AI issues";
-				type="checkbox";
-			};
-			class RSTF_SPAWN_AT_OWN_GROUP {
-				title="Spawn new units near group";
-				description="Spawn new units near group when there's no enemy near";
-				type="checkbox";
-			};
-
-			SPACER;
 			
 			class RSTF_SKILL_MIN {
 				title="Minimum unit skill";
@@ -161,32 +133,73 @@ class RSTF_Options {
 		title = "Spawning";
 
 		class Items {
+			class RSTF_LIMIT_GROUPS {
+				title="Groups per side";
+				description="Number of groups spawned for each side.";
+				type="number";
+			};
+			class RSTF_ENEMY_ADVANTAGE_GROUPS {
+				title="Enemy groups advantage";
+				description="Enemy will have this much more groups.";
+				type="number";
+			};
+			class RSTF_LIMIT_UNITS {
+				title="Units per group";
+				description="Number of soldiers in single group.";
+				type="number";
+			};
+			class RSTF_ENEMY_ADVANTAGE_UNITS {
+				title="Enemy units advantage";
+				description="Enemy groups will have this much more units.";
+				type="number";
+			};
+			class RSTF_LIMIT_SPAWN {
+				title="Wave spawn time";
+				description="Interval in seconds in which reinforcements are spawned";
+				type="number";
+			};
+			class RSTF_SPAWN_REUSE_GROUPS {
+				title="Reuse existing groups when spawning";
+				description="Don't create new groups when spawning new units, reuse existing ones. Can cause AI issues";
+				type="checkbox";
+			};
+			class RSTF_SPAWN_AT_OWN_GROUP {
+				title="Spawn new units near group";
+				description="Spawn new units near group when there's no enemy near";
+				type="checkbox";
+			};
+
+			SPACER;
+
 			class RSTF_SPAWN_TYPE {
-				title="Spawn to";
+				title="Respawn player to";
 				description="How to select unit to spawn to. Closest - unit closest to your death, Group - unit in your group, Random - random unit";
 				type="select";
 				optionsVariable="RSTF_SPAWN_TYPES";
 			};
 			class RSTF_PLAYER_ALWAYS_LEADER {
-				title="Always set as leader";
+				title="Always set player as leader";
 				description="Always set player as a leader of group of selected unit";
 				type="checkbox";
 				optionsVariable="RSTF_SPAWN_TYPES";
 			};
 			class RSTF_RANDOMIZE_WEAPONS {
-				title="Randomize weapons";
+				title="Randomize player weapons";
 				description="Each soldier will be given random weapon.";
 				type="checkbox";
+				disabled="RSTF_CUSTOM_EQUIPMENT";
 			};
 			class RSTF_RANDOMIZE_WEAPONS_RESTRICT {
 				title="Restrict weapons to sides";
 				description="When weapons are randomized, only use weapons that origins from unit faction. (Useful for mods).";
 				type="checkbox";
+				disabled="!RSTF_RANDOMIZE_WEAPONS";
 			};
 			class RSTF_CUSTOM_EQUIPMENT {
 				title="Enable custom equipment";
 				description="Enable player to customize his equipment, which will be used when switching to soldier.";
 				type="checkbox";
+				disabled="RSTF_RANDOMIZE_WEAPONS";
 			};
 
 			SPACER;
@@ -232,22 +245,6 @@ class RSTF_Options {
 				title="Allow emplacements";
 				description="Spawn neutral emplacements if possible.";
 				type="checkbox";
-			};
-		};
-	};
-	class Enemy {
-		title = "Enemy";
-
-		class Items {
-			class RSTF_ENEMY_ADVANTAGE_GROUPS {
-				title="Groups advantage";
-				description="Enemy will have this much more groups.";
-				type="number";
-			};
-			class RSTF_ENEMY_ADVANTAGE_UNITS {
-				title="Units advantage";
-				description="Enemy groups will have this much more units.";
-				type="number";
 			};
 		};
 	};
@@ -423,6 +420,7 @@ class RSTF_Options {
 	};
 	class Tasks {
 		title = "Tasks";
+		visible = "(call RSTF_fnc_getModeId) == 'Classic' || (call RSTF_fnc_getModeId) == 'KOTH'";
 
 		class Items {
 			/*
