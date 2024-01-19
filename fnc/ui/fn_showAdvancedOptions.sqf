@@ -142,6 +142,13 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 		}];
 	};
 
+	if (_type == "number" || _type == "float") then {
+		_ctrl ctrlAddEventHandler ["EditChanged", {
+			call RSTF_fnc_saveAdvancedOptions;
+			call RSTF_fnc_updateAdvancedConfig;
+		}];
+	};
+
 	// Save created option for later manipulation
 	RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name, _validator, _x];
 	_idc = _idc + 1;
