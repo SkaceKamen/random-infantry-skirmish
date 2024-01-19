@@ -1,6 +1,6 @@
 #define SHOP_BACKGROUND { 0, 0, 0, 0.85 }
-#define SHOP_SPACING 0.005
-#define SHOP_ITEM_SPACING 0.005
+#define SHOP_SPACING GUI_SPACING
+#define SHOP_ITEM_SPACING GUI_SPACING
 
 class ShopComponents
 {
@@ -50,14 +50,19 @@ class ShopDialog: ZUI_ColumnLayout
 		{
 			margin[] = { SHOP_SPACING, 0, 0, 0 };
 
-			class categories: ZUI_ColumnLayout
+			class categories: ZUI_RowLayout
 			{
-				id = "categories";
 				background[] = SHOP_BACKGROUND;
 
 				width = 0.2;
 				margin[] = { 0, SHOP_SPACING, 0, 0 };
-				scrollable = 1;
+				padding = SHOP_SPACING;
+
+				class categoriesItems: ZUI_Listview
+				{
+					id = "categories";
+					columns[] = { 0, 0.8 };
+				};
 			};
 
 			class items: ZUI_ColumnLayout
@@ -68,26 +73,10 @@ class ShopDialog: ZUI_ColumnLayout
 					heightType = ZUI_SIZE_ABSOLUTE;
 					height = 0.06;
 
-					class moneyLabel: ZUI_Text
-					{
-						text = "Money:";
-						width = 0.12;
-						widthType = ZUI_SIZE_ABSOLUTE;
-					};
-					class money: ZUI_Text
-					{
-						width = 0.3;
-						widthType = ZUI_SIZE_ABSOLUTE;
-						id = "money";
-						text = "$1000";
-					};
-
-					class spacer: ZUI_RowLayout {};
-
 					class label: ZUI_Static
 					{
 						text = "Search:";
-						width = 0.14;
+						width = 0.1;
 						widthType = ZUI_SIZE_ABSOLUTE;
 					};
 					class input: ZUI_Edit
@@ -95,6 +84,24 @@ class ShopDialog: ZUI_ColumnLayout
 						width = 0.5;
 						widthType = ZUI_SIZE_ABSOLUTE;
 						id = "search";
+						margin[] = { GUI_SPACING, 0, GUI_SPACING, 0 };
+					};
+
+					class spacer: ZUI_RowLayout {};
+
+					class moneyLabel: ZUI_TextRight
+					{
+						text = "Your money:";
+						width = 0.15;
+						widthType = ZUI_SIZE_ABSOLUTE;
+					};
+					class money: ZUI_TextRight
+					{
+						width = 0.15;
+						widthType = ZUI_SIZE_ABSOLUTE;
+						id = "money";
+						text = "$1000";
+						margin[] = { 0, GUI_SPACING*4, 0, 0 };
 					};
 				};
 
@@ -118,16 +125,6 @@ class ShopDialog: ZUI_ColumnLayout
 				width = 0.4;
 				margin[] = { 0, 0, 0, SHOP_SPACING };
 
-				class detailTitle: ZUI_Text
-				{
-					background[] = SHOP_BACKGROUND;
-					text = "";
-					heightType = ZUI_SIZE_ABSOLUTE;
-					height = 0.06;
-					margin[] = { 0, 0, SHOP_ITEM_SPACING, 0 };
-					id = "detail_title";
-				};
-
 				class detailInfo: ZUI_ColumnLayout
 				{
 					margin[] = { 0, 0, SHOP_ITEM_SPACING, 0 };
@@ -135,7 +132,7 @@ class ShopDialog: ZUI_ColumnLayout
 					class imageContainer: ZUI_RowLayout
 					{
 						background[] = SHOP_BACKGROUND;
-						margin[] = { 0, 0, SHOP_ITEM_SPACING, 0 };
+						margin[] = { 0, 0, GUI_SPACING, 0 };
 						height = 0.45;
 						heightType = ZUI_SIZE_ABSOLUTE;
 
@@ -147,10 +144,22 @@ class ShopDialog: ZUI_ColumnLayout
 						};
 					};
 
+					class detailTitle: ZUI_TextCenter
+					{
+						background[] = SHOP_BACKGROUND;
+						text = "";
+						heightType = ZUI_SIZE_ABSOLUTE;
+						height = 0.07;
+						margin[] = { 0, 0, GUI_SPACING, 0 };
+						id = "detail_title";
+						textSize = GUI_TEXT_SIZE_LARGE;
+					};
+
 					class infoContainer: ZUI_RowLayout
 					{
 						background[] = SHOP_BACKGROUND;
 						padding = 0.01;
+						margin[] = { 0, 0, GUI_SPACING, 0 };
 
 						class infoContainer: ZUI_ColumnLayout
 						{
@@ -173,7 +182,7 @@ class ShopDialog: ZUI_ColumnLayout
 					class spacer: ZUI_ColumnLayout
 					{
 						background[] = SHOP_BACKGROUND;
-						margin[] = { 0, SHOP_ITEM_SPACING, 0, 0 };
+						margin[] = { 0, GUI_SPACING, 0, 0 };
 					}
 
 					class price: ZUI_TextRight
@@ -183,7 +192,7 @@ class ShopDialog: ZUI_ColumnLayout
 						width = 0.2;
 						text = "";
 						background[] = SHOP_BACKGROUND;
-						margin[] = { 0, SHOP_ITEM_SPACING, 0, 0 };
+						margin[] = { 0, GUI_SPACING, 0, 0 };
 					}
 
 					class buyButton: ZUI_Button

@@ -61,21 +61,29 @@ if (RSTF_ENABLE_SUPPORTS) then {
 RSTF_SHOP_layout = [missionConfigFile >> "ShopDialog"] call ZUI_fnc_createDisplay;
 [RSTF_SHOP_layout, "search", "KeyUp", { [RSTF_SHOP_lastCategory] call RSTFUI_fnc_shopCategoryClicked; }] call ZUI_fnc_on;
 
-private _categoriesContainer = [RSTF_SHOP_layout, "categories"] call ZUI_fnc_getComponentById;
+private _categoriesContainer = [RSTF_SHOP_layout, "categories"] call ZUI_fnc_getControlById;
+private _currentRow = 0;
+
 {
 	private _count = count(RSTF_SHOP_items#_foreachIndex);
 	if (_count > 0) then {
-		private _cat = [_categoriesContainer, missionConfigFile >> "ShopComponents" >> "Category", false] call ZUI_fnc_createChild;
-		private _titleCtrl = [_cat, 'title'] call ZUI_fnc_getControlById;
-		private _countCtrl = [_cat, 'count'] call ZUI_fnc_getControlById;
-
-		_titleCtrl ctrlSetText _x;
-		_titleCtrl ctrlAddEventHandler ["ButtonClick", format["[%1] spawn RSTFUI_fnc_shopCategoryClicked", _foreachIndex]];
-		_countCtrl ctrlSetText str(_count);
+		_categoriesContainer lnbAddRow [_x, ""];
+		_categoriesContainer lnbSetTextRight [[_currentRow, 1], str(_count)];
+		_categoriesContainer lnbSetData [[_currentRow, 0], str(_foreachIndex)];
+		_currentRow = _currentRow + 1;
 	};
 } foreach _categories;
 
-[_categoriesContainer] call ZUI_fnc_refresh;
+_categoriesContainer ctrlAddEventHandler ["LBSelChanged", {
+	params ["_control", "_selectedIndex"];
+		systemChat str(_selectedIndex);
+		systemChat str(_control lnbData [_selectedIndex, 0]);
+
+	private _index = parseNumber(_control lnbData [_selectedIndex, 0]);
+	systemChat str(_index);
+	[_index] spawn RSTFUI_fnc_shopCategoryClicked
+}];
+
 
 ([RSTF_SHOP_layout, "money"] call ZUI_fnc_getControlById) ctrlSetText ("$" + str([player] call RSTF_fnc_getPlayerMoney));
 

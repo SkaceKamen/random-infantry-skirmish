@@ -7,7 +7,7 @@ private _search = ctrlText ([RSTF_SHOP_layout, "search"] call ZUI_fnc_getControl
 
 private _money = [player] call RSTF_fnc_getPlayerMoney;
 
-_itemsContainer lnbSetColumnsPos [0, 0.6, 0.8];
+_itemsContainer lnbSetColumnsPos [0, 0.05, 0.6, 0.8];
 lnbClear _itemsContainer;
 _itemsContainer lnbSetCurSelRow -1;
 
@@ -30,15 +30,15 @@ private _index = 0;
 
 		// Filter vehicles using search string if specified
 		if (count(_search) == 0 || { [_search, _title] call BIS_fnc_inString }) then {
-			_itemsContainer lnbAddRow [_title, _faction, ""];
+			_itemsContainer lnbAddRow ["", _title, _faction, ""];
 			_itemsContainer lnbSetPicture [[_index, 0], _image];
-			_itemsContainer lnbSetPicture [[_index, 1], _factionIcon];
-			_itemsContainer lnbSetTextRight [[_index, 2], "$" + str(_cost) + "   "];
+			_itemsContainer lnbSetPicture [[_index, 2], _factionIcon];
+			_itemsContainer lnbSetTextRight [[_index, 3], "$" + str(_cost) + "   "];
 
 			if (_money >= _cost) then {
-				_itemsContainer lnbSetColorRight [[_index, 2], [0.6, 0.9, 0.6, 1]];
+				_itemsContainer lnbSetColorRight [[_index, 3], [0.6, 0.9, 0.6, 1]];
 			} else {
-				_itemsContainer lnbSetColorRight [[_index, 2], [0.9, 0.6, 0.6, 1]];
+				_itemsContainer lnbSetColorRight [[_index, 3], [0.9, 0.6, 0.6, 1]];
 			};
 
 			_index = _index + 1;
@@ -55,17 +55,17 @@ private _index = 0;
 		};
 
 		if (count(_search) == 0 || { [_search, _title] call BIS_fnc_inString }) then {
-			_itemsContainer lnbAddRow [_title, "", ""];
+			_itemsContainer lnbAddRow ["", _title, "", ""];
 			if (_image != "") then {
 				_itemsContainer lnbSetPicture [[_index, 0], _image];
 			};
 
-			_itemsContainer lnbSetTextRight [[_index, 2], "$" + str(_cost) + "   "];
+			_itemsContainer lnbSetTextRight [[_index, 3], "$" + str(_cost) + "   "];
 
 			if (_money >= _cost) then {
-				_itemsContainer lnbSetColorRight [[_index, 2], [0.6, 0.9, 0.6, 1]];
+				_itemsContainer lnbSetColorRight [[_index, 3], [0.6, 0.9, 0.6, 1]];
 			} else {
-				_itemsContainer lnbSetColorRight [[_index, 2], [0.9, 0.6, 0.6, 1]];
+				_itemsContainer lnbSetColorRight [[_index, 3], [0.9, 0.6, 0.6, 1]];
 			};
 
 			_index = _index + 1;

@@ -1,7 +1,7 @@
 class Category: ZUI_RowLayout
 {
 	margin = 0.001;
-	height = 0.15;
+	height = 0.10;
 	heightType = ZUI_SIZE_ABSOLUTE;
 
 	class Title: ZUI_Button

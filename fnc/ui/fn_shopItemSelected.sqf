@@ -27,13 +27,31 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 			};
 
 			private _weapons = [_className] call RSTF_fnc_getVehicleWeapons;
-			_description = "WEAPONS:<br /><t size='0.75'>";
+			
+			private _crew = [];
+			private _toScan = ("true" configClasses (_c >> "Turrets"));
+			while { count(_toScan) > 0 } do {
+				private _item = _toScan call BIS_fnc_arrayPop;
+
+				if (!(getNumber (_item >> "showAsCargo") > 0)) then {
+					_crew pushBack getText(_item >> "gunnerName");
+				};
+
+				if (isClass (_item >> "Turrets")) then {
+					_toScan = _toScan + ("true" configClasses (_item >> "Turrets"));
+				};
+			};
+
+			if (getNumber (_c >> "hasDriver") > 0) then {
+				_crew pushBack "Driver";
+			};
+
+			_description = _description + "<t size='1.2'>CREW</t><br />" + (_crew joinString "<br />") + "<br />";
+			_description = _description + "<t size='1.2'>WEAPONS</t><br />";
 
 			{
 				_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + "<br/>";
 			} foreach _weapons;
-
-			_description = _description + '</t>';
 		};
 
 		if (_type == "SUPPORT") then {
