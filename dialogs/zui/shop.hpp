@@ -174,6 +174,28 @@ class ShopDialog: ZUI_ColumnLayout
 					};
 				};
 
+				class crewSelection: ZUI_RowLayout
+				{
+					heightType = ZUI_SIZE_ABSOLUTE;
+					height = 0.06;
+					margin[] = { 0, 0, GUI_SPACING, 0 };
+
+					class crewLabel: ZUI_Text
+					{
+						text = "Spawn as:";
+						width = 0.17;
+						widthType = ZUI_SIZE_ABSOLUTE;
+						background[] = SHOP_BACKGROUND;
+						margin[] = { 0, GUI_SPACING, 0, 0 };
+					};
+
+					class crewSelect: ZUI_Control
+					{
+						id = "crewList";
+						control = "RscCombo";
+					};
+				};
+
 				class actions: ZUI_RowLayout
 				{
 					heightType = ZUI_SIZE_ABSOLUTE;

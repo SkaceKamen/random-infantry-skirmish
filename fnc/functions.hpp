@@ -113,6 +113,7 @@ class RSTF
 		class doesModeSupportNeutrals {};
 		class getObjectiveDistance {};
 		class getWorldStartDate {};
+		class getVehicleClassCrew {};
 	};
 
 	class ui

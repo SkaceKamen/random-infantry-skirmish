@@ -150,5 +150,6 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	RSTF_CONFIG_DONE = true;
 	publicVariable "RSTF_CONFIG_DONE";
 }];
+ctrlSetFocus _ctrl;
 
 call RSTF_fnc_updateMainConfigScreen;
