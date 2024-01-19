@@ -34,3 +34,5 @@ private _yy = 0;
 		_yy = _yy + 0.085;
 	};
 } foreach _categories;
+
+call RSTF_fnc_updateAdvancedOptions;
