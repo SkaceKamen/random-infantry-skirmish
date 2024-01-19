@@ -1,3 +1,6 @@
+#define IS_PUSH "(call RSTF_fnc_getModeId) == 'Push' || (call RSTF_fnc_getModeId) == 'PushDefense'"
+#define SPACER class spacer2##__LINE__ { type = "spacer"; }
+
 class RSTF_Options {
 	class General {
 		title = "General";
@@ -9,7 +12,108 @@ class RSTF_Options {
 				type="select";
 				optionsVariable="RSTF_MODES_OPTIONS";
 				optionType="string";
-			}
+			};
+
+			// KOTH
+			class RSTF_MODE_KOTH_SCORE_LIMIT {
+				title="Score to win";
+				description="One side wins after reaching this limit.";
+				type="number";
+				visible = "(call RSTF_fnc_getModeId) == 'KOTH'";
+			};
+			class RSTF_MODE_KOTH_SCORE_INTERVAL {
+				title="Point award interval";
+				description="In seconds. Interval in which is point awarded to side that holds the objective.";
+				type="number";
+				visible = "(call RSTF_fnc_getModeId) == 'KOTH'";
+			};
+
+			// Classic
+			class RSTF_SCORE_LIMIT {
+				title="Score to win";
+				description="One side wins after reaching this limit.";
+				type="number";
+				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+			};
+			class RSTF_SCORE_PER_KILL {
+				title="Score per kill";
+				description="Score you get for killing soldier.";
+				type="number";
+				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+			};
+			class RSTF_SCORE_PER_TASK {
+				title="Score per task";
+				description="Score you get for completing task.";
+				type="number";
+				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+			};
+			class RSTF_ENEMY_ADVANTAGE_SCORE {
+				title="Enemy score multiplier";
+				description="Enemy score will be multiplied by this.";
+				type="float";
+				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+			};
+
+			// Push
+			class RSTF_MODE_PUSH_POINT_COUNT {
+				title="Points to capture";
+				description="Number of points that you have to capture to win";
+				type="number";
+				visible = IS_PUSH;
+			};
+			class RSTF_MODE_PUSH_SCORE_LIMIT {
+				title="Score to capture";
+				description="Point is captured when one side reaches this number of points";
+				type="number";
+				visible = IS_PUSH;
+			};
+			class RSTF_MODE_PUSH_SCORE_INTERVAL {
+				title="Point award interval";
+				description="In seconds. Interval in which is point awarded to side that holds the objective.";
+				type="number";
+				visible = IS_PUSH;
+			};
+			class RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT {
+				title="Number of defensive emplacements";
+				description="Number of defensive emplacements spawned, only works when faction has suitable static emplacements.";
+				type="number";
+				visible = IS_PUSH;
+			};
+			class RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE {
+				title="Attackers group advantage";
+				description="Attackers will have this much more groups.";
+				type="number";
+				visible = IS_PUSH;
+			};
+
+			// Defense
+			class RSTF_MODE_DEFEND_DURATION {
+				title="Duration";
+				description="Number of seconds that the point has to be defended to win the battle.";
+				type="number";
+				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
+			};
+			class RSTF_MODE_DEFEND_RADIUS {
+				title="Defended point radius";
+				description="Capture radius of the defended point";
+				type="number";
+				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
+			};
+			class RSTF_MODE_DEFEND_SCORE_LIMIT {
+				title="Score to capture";
+				description="Point is lost when attackers reach this score";
+				type="number";
+				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
+			};
+			class RSTF_MODE_DEFEND_SCORE_INTERVAL {
+				title="Point award interval";
+				description="In seconds. Interval in which is point awarded to attackers when they have majority on the objective.";
+				type="number";
+				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
+			};
+
+			SPACER;
+
 			class RSTF_LIMIT_GROUPS {
 				title="Groups per side";
 				description="Number of groups spawned for each side.";
@@ -20,19 +124,6 @@ class RSTF_Options {
 				description="Number of soldiers in single group.";
 				type="number";
 			};
-			class RSTF_SKILL_MIN {
-				title="Minimum unit skill";
-				description="Minimum unit skill, value from 0 to 1";
-				type="float";
-				validator="_this call RSTF_VALIDATOR_SKILL_MIN";
-			};
-			class RSTF_SKILL_MAX {
-				title="Maximum unit skill";
-				description="Maximum unit skill, value from 0 to 1";
-				type="float";
-				validator="_this call RSTF_VALIDATOR_SKILL_MAX";
-			};
-			class spacer1 { type = "spacer"; };
 			class RSTF_LIMIT_SPAWN {
 				title="Wave spawn time";
 				description="Interval in seconds in which reinforcements are spawned";
@@ -48,112 +139,24 @@ class RSTF_Options {
 				description="Spawn new units near group when there's no enemy near";
 				type="checkbox";
 			};
-			class spacer2 { type = "spacer"; };
-			class RSTF_CLEAR_HISTORIC_ITEMS {
-				title="Clear modern things";
-				description="Simple script that will try to remove modern things from map, intended to be used with WW2 mods on modern maps.";
-				type="checkbox";
-			};
-		};
-	};
-	class Classic {
-		title = "Mode";
-		visible = "(call RSTF_fnc_getModeId) == 'Classic'";
 
-		class Items {
-			class RSTF_SCORE_LIMIT {
-				title="Score to win";
-				description="One side wins after reaching this limit.";
-				type="number";
+			SPACER;
+			
+			class RSTF_SKILL_MIN {
+				title="Minimum unit skill";
+				description="Minimum unit skill, value from 0 to 1";
+				type="float";
+				validator="_this call RSTF_VALIDATOR_SKILL_MIN";
 			};
-			class RSTF_SCORE_PER_KILL {
-				title="Score per kill";
-				description="Score you get for killing soldier.";
-				type="number";
-			};
-			class RSTF_SCORE_PER_TASK {
-				title="Score per task";
-				description="Score you get for completing task.";
-				type="number";
+			class RSTF_SKILL_MAX {
+				title="Maximum unit skill";
+				description="Maximum unit skill, value from 0 to 1";
+				type="float";
+				validator="_this call RSTF_VALIDATOR_SKILL_MAX";
 			};
 		};
 	};
-	class KOTH {
-		title = "Mode";
-		visible = "(call RSTF_fnc_getModeId) == 'KOTH'";
 
-		class Items {
-			class RSTF_MODE_KOTH_SCORE_LIMIT {
-				title="Score to win";
-				description="One side wins after reaching this limit.";
-				type="number";
-			};
-			class RSTF_MODE_KOTH_SCORE_INTERVAL {
-				title="Point award interval";
-				description="In seconds. Interval in which is point awarded to side that holds the objective.";
-				type="number";
-			};
-		};
-	};
-	class Push {
-		title = "Mode";
-		visible = "(call RSTF_fnc_getModeId) == 'Push' || (call RSTF_fnc_getModeId) == 'PushDefense'";
-
-		class Items {
-			class RSTF_MODE_PUSH_POINT_COUNT {
-				title="Number of points";
-				description="Number of points that you have to capture to win";
-				type="number";
-			};
-			class RSTF_MODE_PUSH_SCORE_LIMIT {
-				title="Score to capture";
-				description="Point is captured when one side reaches this number of points";
-				type="number";
-			};
-			class RSTF_MODE_PUSH_SCORE_INTERVAL {
-				title="Point award interval";
-				description="In seconds. Interval in which is point awarded to side that holds the objective.";
-				type="number";
-			};
-			class RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT {
-				title="Number of defensive emplacements";
-				description="Number of defensive emplacements spawned, only works when faction has suitable static emplacements.";
-				type="number";
-			};
-			class RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE {
-				title="Attackers group advantage";
-				description="Attackers will have this much more groups.";
-				type="number";
-			};
-		};
-	};
-	class Defense {
-		title = "Mode";
-		visible = "(call RSTF_fnc_getModeId) == 'Defense'";
-
-		class Items {
-			class RSTF_MODE_DEFEND_DURATION {
-				title="Duration";
-				description="Number of seconds that the point has to be defended to win the battle.";
-				type="number";
-			};
-			class RSTF_MODE_DEFEND_RADIUS {
-				title="Defended point radius";
-				description="Capture radius of the defended point";
-				type="number";
-			};
-			class RSTF_MODE_DEFEND_SCORE_LIMIT {
-				title="Score to capture";
-				description="Point is lost when attackers reach this score";
-				type="number";
-			};
-			class RSTF_MODE_DEFEND_SCORE_INTERVAL {
-				title="Point award interval";
-				description="In seconds. Interval in which is point awarded to attackers when they have majority on the objective.";
-				type="number";
-			};
-		};
-	};
 	class Spawning {
 		title = "Spawning";
 
@@ -185,13 +188,17 @@ class RSTF_Options {
 				description="Enable player to customize his equipment, which will be used when switching to soldier.";
 				type="checkbox";
 			};
-			class spacer1 { type = "spacer"; };
+
+			SPACER;
+
 			class RSTF_SPAWN_TRANSPORTS {
 				title="Vehicles at spawn";
 				description="Tries to spawn transport vehicles at side spawns to cover unit spawning.";
 				type="checkbox";
 			};
-			class spacer2 { type = "spacer"; };
+
+			SPACER;
+
 			class RSTF_SPAWN_DISTANCE_MIN {
 				title="Minimal spawn distance";
 				description="Minimal spawn distance from center of battle, in meters";
@@ -208,6 +215,7 @@ class RSTF_Options {
 	};
 	class Neutrals {
 		title = "Neutrals";
+		visible = "call RSTF_fnc_doesModeSupportNeutrals";
 
 		class Items {
 			class RSTF_NEUTRALS_GROUPS {
@@ -241,11 +249,6 @@ class RSTF_Options {
 				description="Enemy groups will have this much more units.";
 				type="number";
 			};
-			class RSTF_ENEMY_ADVANTAGE_SCORE {
-				title="Score multiplier";
-				description="Enemy score will be multiplied by this.";
-				type="float";
-			};
 		};
 	};
 	class Map {
@@ -278,46 +281,62 @@ class RSTF_Options {
 				description="Allow money rewards as whole";
 				type="checkbox";
 			};
+
+			SPACER;
+
 			class RSTF_MONEY_VEHICLES_ENABLED {
 				title="Allow buying vehicles by players";
 				description="Allow players to buy vehicles for their money";
 				type="checkbox";
+				disabled="!RSTF_MONEY_ENABLED";
 			};
 			class RSTF_ENABLE_SUPPORTS {
 				title="Allow buying supports";
 				description="Allow players to buy supports (artillery)";
 				type="checkbox";
+				disabled="!RSTF_MONEY_ENABLED";
 			};
-			class spacer1 { type = "spacer"; };
+
+			SPACER;
+
 			class RSTF_MONEY_START {
 				title="Starting money";
 				description="Money each unit gets at start of the mission";
 				type="number";
+				disabled="!RSTF_MONEY_ENABLED";
 			};
 			class RSTF_MONEY_PER_KILL {
 				title="Money per kill";
 				description="Award for killing enemy";
 				type="number";
-			};
-			class RSTF_MONEY_PER_TASK {
-				title="Money per task";
-				description="Award for completing task";
-				type="number";
-			};
-			class RSTF_AI_MONEY_MULTIPLIER {
-				title="AI money multiplier";
-				description="AI money reward multiplier, AI usually have less kills than player, so this helps them to catch up";
-				type="number";
-			};
-			class RSTF_AI_MONEY_PER_SECOND {
-				title="AI money per second";
-				description="Money added per second to all AI units, allows AI to catch up with player";
-				type="number";
+				disabled="!RSTF_MONEY_ENABLED";
 			};
 			class RSTF_MULTIKILL_BONUS {
 				title="Bonus for multikill";
 				description="Bonus money for multikills, awarded for each kill over 1";
 				type="number";
+				disabled="!RSTF_MONEY_ENABLED";
+			};
+			class RSTF_MONEY_PER_TASK {
+				title="Money per task";
+				description="Award for completing task";
+				type="number";
+				disabled="!RSTF_MONEY_ENABLED";
+			};
+
+			SPACER;
+			
+			class RSTF_AI_MONEY_MULTIPLIER {
+				title="AI money multiplier";
+				description="AI money reward multiplier, AI usually have less kills than player, so this helps them to catch up";
+				type="number";
+				disabled="!RSTF_MONEY_ENABLED";
+			};
+			class RSTF_AI_MONEY_PER_SECOND {
+				title="AI money per second";
+				description="Money added per second to all AI units, allows AI to catch up with player";
+				type="number";
+				disabled="!RSTF_MONEY_ENABLED";
 			};
 		};
 	};
@@ -332,15 +351,17 @@ class RSTF_Options {
 			};
 
 			class RSTF_SPAWN_VEHICLES_UNLOCKED {
-				title="Unlock AI vehicles";
+				title="Allow players to access AI vehicles";
 				description="Allow players to enter AI vehicles";
 				type="checkbox";
+				disabled="!RSTF_AI_VEHICLES_ENABLED";
 			};
 
 			class RSTF_MONEY_VEHICLES_AI_LIMIT {
 				title="Max AI vehicles per side";
 				description="Maximum number of spawned AI vehicles per side";
 				type="number";
+				disabled="!RSTF_AI_VEHICLES_ENABLED";
 			};
 		};
 	};
@@ -395,6 +416,7 @@ class RSTF_Options {
 				description="Allows 'Clear house' task";
 				type="checkbox";
 			};
+
 			class RSTF_TASKS_EMP_ENABLED {
 				title="Neutralize emplacement";
 				description="Allows tasks for neutralizing emplacements";
@@ -412,7 +434,17 @@ class RSTF_Options {
 				type="select";
 				optionsVariable="RSTF_POSSIBLE_KEYS_NAMES";
 			};
-			class spacer1 { type = "spacer"; };
+		
+			SPACER;
+
+			class RSTF_CLEAR_HISTORIC_ITEMS {
+				title="Clear modern things";
+				description="Simple script that will try to remove modern things from map, intended to be used with WW2 mods on modern maps.";
+				type="checkbox";
+			};
+
+			SPACER;
+
 			class RSTF_CLEAN {
 				title="Clear dead bodies";
 				description="Dead bodies will be destroyed after 3 minutes. This helps performance.";
@@ -428,19 +460,53 @@ class RSTF_Options {
 				description="After how much time should be empty/destroyed vehicles removed. In seconds.";
 				type="number";
 			};
-			class spacer2 { type = "spacer"; };
+
+			SPACER;
+
 			class RSTF_WEATHER {
 				title="Weather";
 				description="Mission weather.";
 				type="select";
 				optionsVariable="RSTF_WEATHER_TYPES";
 			};
+
+			SPACER;
+
 			class RSTF_TIME {
 				title="Daytime";
 				description="Mission daytime.";
 				type="select";
 				optionsVariable="RSTF_TIME_TYPES";
 			};
+			class RSTF_USE_DEFAULT_DATE {
+				title="Load date from world";
+				description="Use default date for the world.";
+				type="checkbox";
+			};
+			class RSTF_DATE_YEAR {
+				title="Year";
+				description="";
+				type="select";
+				optionsVariable="RSTF_AVAILABLE_YEARS";
+				disabled="RSTF_USE_DEFAULT_DATE";
+			};
+			class RSTF_DATE_MONTH {
+				title="Month";
+				description="";
+				type="select";
+				optionsVariable="RSTF_AVAILABLE_MONTHS";
+				disabled="RSTF_USE_DEFAULT_DATE";
+			};
+			class RSTF_DATE_DAY {
+				title="Day";
+				description="";
+				type="select";
+				optionsVariable="RSTF_AVAILABLE_DAYS";
+				disabled="RSTF_USE_DEFAULT_DATE";
+			};
+
+			SPACER;
+
 			class RSTF_SKIP_MODE_SELECT {
 				title="Skip mode selection";
 				description="Skip mode selection screen when starting mission";

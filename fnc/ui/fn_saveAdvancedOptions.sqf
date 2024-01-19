@@ -10,6 +10,10 @@ private _errors = [];
 
 	private _value = -1;
 
+	if (_type == 'spacer') then {
+		continue;
+	};
+
 	// Save value of option
 	if (_type == "checkbox") then {
 		_value = cbChecked(_ctrl);

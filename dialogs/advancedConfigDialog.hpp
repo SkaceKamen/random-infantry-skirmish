@@ -10,9 +10,11 @@ class RSTF_ADV_CATEGORY: RscButton
 	colorBackground[] = { 0, 0, 0, 0.8 };
 };
 
-class RSTF_ADV_LABEL: RscText
+class RSTF_ADV_LABEL: RscTextRight
 {
 	shadow = 0;
+	font = GUI_STANDARD_FONT;
+	sizeEx = GUI_TEXT_SIZE_SMALL;
 };
 
 class RSTF_RscDialogAdvancedConfig

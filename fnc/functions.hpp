@@ -112,6 +112,7 @@ class RSTF
 		class killHandler {};
 		class doesModeSupportNeutrals {};
 		class getObjectiveDistance {};
+		class getWorldStartDate {};
 	};
 
 	class ui
@@ -121,6 +122,8 @@ class RSTF
 		class showAdvancedConfig {};
 		class updateAdvancedConfig {};
 		class showAdvancedOptions {};
+		class updateAdvancedOptions {};
+
 		class saveAdvancedOptions {};
 		class showConfig {};
 		class showDeath {};

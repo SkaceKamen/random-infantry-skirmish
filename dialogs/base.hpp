@@ -278,7 +278,7 @@ class RscListNBox
 	idcRight = -1;
 	style = 16;
 	shadow = 0;
-	font = "PuristaMedium";
+	font = GUI_STANDARD_FONT;
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	color[] = { 0.95,0.95,0.95,1 };
 	colorDisabled[] = { 1,1,1,0.25 };
@@ -314,7 +314,7 @@ class RscCombo
 	wholeHeight = 0.45;
 	colorActive[] = { 1,0,0,1 };
 	colorDisabled[] = { 1,1,1,0.25 };
-	font = "PuristaMedium";
+	font = GUI_STANDARD_FONT;
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	tooltipColorText[] = { 1,1,1,1 };
 	tooltipColorBox[] = { 1,1,1,1 };
