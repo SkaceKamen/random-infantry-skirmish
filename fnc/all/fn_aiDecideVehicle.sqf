@@ -50,15 +50,29 @@ if (RSTF_DEBUG) then {
 // Stop if we don't have money
 if (_money < _cost) exitWith { false };
 
+// Check ai count limits
+private _parents = [configFile >> "cfgVehicles" >> _class, true] call BIS_fnc_returnParents;
+private _air = "Air" in _parents;
+private _overflow = false;
+
+if (RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS) then {
+	if (_air) then {
+		private _airVehicles = count((RSTF_AI_VEHICLES#_side) select { _x isKindOf "Air" });
+		_overflow = (_airVehicles >= RSTF_MONEY_VEHICLES_AI_AIR_LIMIT);
+	} else {
+		private _groundVehicles = count((RSTF_AI_VEHICLES#_side) select { !(_x isKindOf "Air") });
+		_overflow = _groundVehicles >= RSTF_MONEY_VEHICLES_AI_LAND_LIMIT;
+	};
+};
+
+if (_overflow) exitWith { false };
+
 if (RSTF_DEBUG) then {
 	diag_log text(format["[RSTF] %1: Spawning with %2", _name, _class]);
 };
 
 // Reset the wish
 RSTF_AI_VEHICLE_WISH set [_name, objNull];
-
-private _parents = [configFile >> "cfgVehicles" >> _class, true] call BIS_fnc_returnParents;
-private _air = "Air" in _parents;
 
 // Remove money from unit
 [_name, -_cost] call RSTF_fnc_addUnitMoney;
