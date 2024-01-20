@@ -36,17 +36,6 @@ if (alive(_unit)) then {
 		[_unit, [missionNamespace, "RSTF_PLAYER_EQUIPMENT"]] call BIS_fnc_loadInventory;
 	};
 
-	// Save previous unit, used when respawning in multiplayer
-	private _previous = player;
-
-	// Move player into new unit
-	selectPlayer _unit;
-
-	// Remove respawned unit in multiplayer
-	if (isMultiplayer && _previous != RSTF_BACKUP_PLAYER) then {
-		deleteVehicle _previous;
-	};
-
 	// Make sure unit has correct side
 	[_unit] joinSilent group(_unit);
 
@@ -63,6 +52,17 @@ if (alive(_unit)) then {
 
 	// Heal unit
 	_unit setDamage 0;
+	
+	// Save previous unit, used when respawning in multiplayer
+	private _previous = player;
+
+	// Move player into new unit
+	selectPlayer _unit;
+
+	// Remove respawned unit in multiplayer
+	if (isMultiplayer && _previous != RSTF_BACKUP_PLAYER) then {
+		deleteVehicle _previous;
+	};
 
 	// Hide camera
 	call RSTF_fnc_destroyCam;

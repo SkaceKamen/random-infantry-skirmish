@@ -1,6 +1,14 @@
 private _clientId = param [0];
 
-// Resync all variables
+// Sync options
+{
+	// Skip values that should be player specific
+	if (!(_x in RSTF_PRIVATE_PROFILE_VALUES)) then {
+		publicVariable _x;
+	};
+} foreach RSTF_PROFILE_VALUES;
+
+// Re-sync all variables
 publicVariable "RSTF_LOCATION";
 publicVariable "RSTF_SPAWNS";
 publicVariable "RSTF_DIRECTION";
@@ -18,10 +26,6 @@ publicVariable "RSTF_POINTS";
 
 publicVariable "RSTF_MONEY";
 publicVariable "RSTF_STARTED";
-
-{
-	publicVariable _x;
-} foreach RSTF_PROFILE_VALUES;
 
 // Resync weather
 //publicVariable "RSTF_WEATHER_OVERCAST";

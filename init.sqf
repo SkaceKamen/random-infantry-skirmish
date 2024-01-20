@@ -1,3 +1,5 @@
+waitUntil { not isNull player };
+
 // Load ZUI functions
 call compile(preprocessFileLineNumbers("lib\zui\zui-functions.sqf"));
 call compile(preprocessFileLineNumbers("lib\zdbg\zdbg.sqf"));
