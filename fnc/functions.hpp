@@ -115,6 +115,8 @@ class RSTF
 		class getObjectiveDistance {};
 		class getWorldStartDate {};
 		class getVehicleClassCrew {};
+		class getVehicleClassSkins {};
+		class getVehicleClassComponents {};
 	};
 
 	class ui
@@ -151,6 +153,8 @@ class RSTF
 
 		class showChangelog {};
 		class updateMainConfigScreen {};
+
+		class showVehicleConfiguration {};
 	};
 
 	class net

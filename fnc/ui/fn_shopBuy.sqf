@@ -22,7 +22,8 @@ if (count(_item) > 0) then {
 			};
 
 			// Ask server to spawn our vehicle
-			[player, _className, _crewParam] remoteExec ["RSTF_fnc_requestVehicle", 2];
+			// [player, _className, _crewParam] remoteExec ["RSTF_fnc_requestVehicle", 2];
+			[_className] spawn RSTF_fnc_showVehicleConfiguration;
 		} else {
 			private _execute = getText(missionConfigFile >> "RSTF_BUYABLE_SUPPORTS" >> _className >> "execute");
 			_item spawn (compile(_execute));

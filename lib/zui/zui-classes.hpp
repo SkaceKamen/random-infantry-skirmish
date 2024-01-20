@@ -94,6 +94,11 @@ class ZUI_Picture: ZUI_Control
 	control = "RscPictureKeepAspect";
 };
 
+class ZUI_Combo: ZUI_Control
+{
+	control = "RscCombo";
+};
+
 class ZUI_StructuredText: ZUI_Control
 {
 	control = "RscStructuredText";

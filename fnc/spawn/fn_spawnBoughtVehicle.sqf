@@ -10,6 +10,8 @@
 	_side - side index that the unit is on [Number]
 	_vehicleClass - classname of vehicle to be spawned [String]
 	_crewParam - where to place player [Array]
+	_camouflage - camouflage to be applied to the vehicle [STRING]
+	_components - components to be applied to the vehicle [ARRAY]
 
 	Returns:
 	Spawned vehicle [Object]
@@ -19,6 +21,8 @@ private _unit = param [0];
 private _side = param [1];
 private _vehicleClass = param [2];
 private _crewParam = param [3];
+private _camouflage = param [4, false];
+private _components = param [5, false];
 
 private _parents = [configFile >> "cfgVehicles" >> _vehicleClass, true] call BIS_fnc_returnParents;
 private _plane = "Plane" in _parents;
@@ -92,6 +96,27 @@ private _radius = 100;
 
 private _vehicle = createVehicle [_vehicleClass, _position, [], _radius, "FLY"];
 
+if (typeName(_camouflage) != typeName(false) || typeName(_components) != typeName(false)) then {
+	private _componentsArg = _components;
+	private _camouflageArg = _camouflage;
+	
+	if (typeName(_components) != typeName(false)) then {
+		_componentsArg = [];
+		{
+			_componentsArg pushBack _x;
+			_componentsArg pushBack 1;
+		} forEach _components;
+	};
+
+	if (typeName(_camouflage) != typeName(false)) then {
+		_camouflageArg = [_camouflage, 1];
+	};
+
+	systemChat str([_camouflageArg, _componentsArg]);
+
+	[_vehicle, _camouflageArg, _componentsArg] call BIS_fnc_initVehicle;
+};
+
 // Add to GC with 30 seconds to despawn
 if (RSTF_CLEAN) then {
 	[_vehicle, RSTF_CLEAN_INTERVAL_VEHICLES, true] call RSTFGC_fnc_attach;
@@ -118,8 +143,6 @@ if (RSTF_DEBUG) then {
 
 // Pick who will be the player
 private _unitToReplace = effectiveCommander(_vehicle);
-
-systemChat str(_crewParam);
 
 switch (_crewParam#1) do {
 	case "driver": {

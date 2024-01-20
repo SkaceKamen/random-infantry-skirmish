@@ -152,17 +152,20 @@ class ShopDialog: ZUI_ColumnLayout
 					class infoContainer: ZUI_RowLayout
 					{
 						background[] = SHOP_BACKGROUND;
-						padding = 0.01;
 						margin[] = { 0, 0, GUI_SPACING, 0 };
 
 						class infoContainer: ZUI_ColumnLayout
 						{
 							scrollable = 1;
+							padding = GUI_SPACING;
+
 							class info: ZUI_StructuredText
 							{
 								text = "";
 								id = "detail_info";
-								// heightType = ZUI_SIZE_TEXT;
+								textSize = GUI_TEXT_SIZE_SMALL;
+								font = GUI_STANDARD_FONT;
+								heightType = ZUI_SIZE_TEXT;
 							};
 						};
 					};
@@ -171,7 +174,8 @@ class ShopDialog: ZUI_ColumnLayout
 				class actionsAi: ZUI_RowLayout
 				{
 					heightType = ZUI_SIZE_ABSOLUTE;
-					height = 0.07;
+					height = 0.05;
+					margin[] = SPACING_BOTTOM;
 
 					class price: ZUI_TextRight
 					{
@@ -188,29 +192,6 @@ class ShopDialog: ZUI_ColumnLayout
 						margin[] = { 0, 0, 0, 0 };
 						tooltip = "Vehicle will be spawned with AI crew that will support your team";
 					}
-				};
-
-				class crewSelection: ZUI_RowLayout
-				{
-					heightType = ZUI_SIZE_ABSOLUTE;
-					height = 0.08;
-					margin[] = { GUI_SPACING * 4, 0, GUI_SPACING, 0 };
-
-					class crewLabel: ZUI_TextRight
-					{
-						id = "crewLabel";
-						text = "Spawn as:";
-						width = 0.17;
-						widthType = ZUI_SIZE_ABSOLUTE;
-						background[] = SHOP_BACKGROUND;
-						margin[] = { 0, GUI_SPACING, 0, 0 };
-					};
-
-					class crewSelect: ZUI_Control
-					{
-						id = "crewList";
-						control = "RscCombo";
-					};
 				};
 
 				class actions: ZUI_RowLayout

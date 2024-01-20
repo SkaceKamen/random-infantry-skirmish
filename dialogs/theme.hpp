@@ -19,6 +19,13 @@
 #define USER_BG_RGB "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])"
 #define TITLE_BG_RGBA USER_BG_RGB,0.8
 
+#define SPACER_COMPONENT class spacer##__LINE__ : ZUI_RowLayout {}
+
+#define SPACING_TOP { GUI_SPACING * 1, 0, 0, 0 }
+#define SPACING_RIGHT { 0, GUI_SPACING * 1, 0, 0 }
+#define SPACING_BOTTOM { 0, 0, GUI_SPACING * 1, 0 }
+#define SPACING_LEFT { 0, 0, 0, GUI_SPACING * 1 }
+
 class ZTitle: ZUI_Static
 {
 	background[] = GUI_TITLE_BG;

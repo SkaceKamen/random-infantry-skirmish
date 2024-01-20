@@ -5,9 +5,6 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 	private _item = RSTF_SHOP_CURRENT_ITEMS select _index;
 	private _layout = RSTF_SHOP_layout;
 	private _money = [player] call RSTF_fnc_getPlayerMoney;
-	private _crewLabelCtrl = ([_layout, "crewLabel"] call ZUI_fnc_getControlById);
-	private _crewListCtrl = ([_layout, "crewList"] call ZUI_fnc_getControlById);
-	lbClear _crewListCtrl;
 
 	private _priceAiCtrl = ([_layout, "priceAi"] call ZUI_fnc_getControlById);
 	private _buyAiCtrl = ([_layout, "buyAi"] call ZUI_fnc_getControlById);
@@ -44,14 +41,8 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 				_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + "<br/>";
 			} foreach _weapons;
 
-			_crewListCtrl lbAdd "Effective commander";
-
-			{
-				_crewListCtrl lbAdd (_x#0);
-			} foreach _crew;
-
-			_crewListCtrl lbSetCurSel 0;
-			_crewListCtrl ctrlEnable true;
+			_description = _description + "<t size='1.2'>SKINS</t><br />";
+			_description = _description + ((([_className] call RSTF_fnc_getVehicleClassSkins) apply { _x#1 }) joinString "<br />");
 
 			_priceAiCtrl ctrlSetText ("$" + str(_aiCost));
 			if (_money >= _aiCost) then {
@@ -75,21 +66,17 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 		};
 
 		if (_type != "VEHICLE" || !RSTF_ENABLE_AI_SUPPORT_VEHICLES) then {
-			_crewLabelCtrl ctrlShow false;
-			_crewListCtrl ctrlShow false;
 			_priceAiCtrl ctrlShow false;
 			_buyAiCtrl ctrlShow false;
 		} else {
 			_priceAiCtrl ctrlShow true;
 			_buyAiCtrl ctrlShow true;
-			_crewLabelCtrl ctrlShow true;
-			_crewListCtrl ctrlShow true;
 		};
 
 		// Set shop item variables
 		([_layout, "detail_title"] call ZUI_fnc_getControlById) ctrlSetText _title;
 		([_layout, "detail_image"] call ZUI_fnc_getControlById) ctrlSetText _image;
-		([_layout, "detail_info"] call ZUI_fnc_getControlById) ctrlSetStructuredText parseText(_description);
+		([_layout, "detail_info"] call ZUI_fnc_getControlById) ctrlSetStructuredText parseText(_description + "<br /> ");
 
 		([_layout, "price"] call ZUI_fnc_getControlById) ctrlSetText ("$" + str(_cost));
 		if (_money >= _cost) then {
@@ -102,7 +89,7 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 
 		_priceAiCtrl ctrlCommit 0;
 		_buyAiCtrl ctrlCommit 0;
-		_crewLabelCtrl ctrlCommit 0;
-		_crewListCtrl ctrlCommit 0;
 	};
+
+	[RSTF_SHOP_layout] call ZUI_fnc_refresh;
 };
