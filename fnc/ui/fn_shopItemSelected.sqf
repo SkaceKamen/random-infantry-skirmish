@@ -1,9 +1,13 @@
 private _index = param [1];
 
+
 if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 	private _item = RSTF_SHOP_CURRENT_ITEMS select _index;
 	private _layout = RSTF_SHOP_layout;
 	private _money = [player] call RSTF_fnc_getPlayerMoney;
+
+	private _priceAiCtrl = ([_layout, "priceAi"] call ZUI_fnc_getControlById);
+	private _buyAiCtrl = ([_layout, "buyAi"] call ZUI_fnc_getControlById);
 
 	if (!isNil("_item")) then {
 		RSTF_SHOP_CURRENT_ITEM = _item;
@@ -11,6 +15,7 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 		private _type = _item#0;
 		private _className = _item#1;
 		private _cost = _item#2;
+		private _aiCost = _cost * RSTF_AI_VEHICLE_SUPPORT_COST_MULTIPLIER;
 
 		private _title = "";
 		private _image = "";
@@ -28,30 +33,25 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 
 			private _weapons = [_className] call RSTF_fnc_getVehicleWeapons;
 			
-			private _crew = [];
-			private _toScan = ("true" configClasses (_c >> "Turrets"));
-			while { count(_toScan) > 0 } do {
-				private _item = _toScan call BIS_fnc_arrayPop;
-
-				if (!(getNumber (_item >> "showAsCargo") > 0)) then {
-					_crew pushBack getText(_item >> "gunnerName");
-				};
-
-				if (isClass (_item >> "Turrets")) then {
-					_toScan = _toScan + ("true" configClasses (_item >> "Turrets"));
-				};
-			};
-
-			if (getNumber (_c >> "hasDriver") > 0) then {
-				_crew pushBack "Driver";
-			};
-
-			_description = _description + "<t size='1.2'>CREW</t><br />" + (_crew joinString "<br />") + "<br />";
+			private _crew = ([_className] call RSTF_fnc_getVehicleClassCrew);
+			_description = _description + "<t size='1.2'>CREW</t><br />" + ((_crew apply { _x#0 }) joinString "<br />") + "<br />";
 			_description = _description + "<t size='1.2'>WEAPONS</t><br />";
 
 			{
 				_description = _description + getText(configFile >> "cfgWeapons" >> _x >> "displayName") + "<br/>";
 			} foreach _weapons;
+
+			_description = _description + "<t size='1.2'>SKINS</t><br />";
+			_description = _description + ((([_className] call RSTF_fnc_getVehicleClassSkins) apply { _x#1 }) joinString "<br />");
+
+			_priceAiCtrl ctrlSetText ("$" + str(_aiCost));
+			if (_money >= _aiCost) then {
+				_buyAiCtrl ctrlEnable true;
+				_priceAiCtrl ctrlSetBackgroundColor [0.1, 0.5, 0.1, 1];
+			} else {
+				_buyAiCtrl ctrlEnable false;
+				_priceAiCtrl ctrlSetBackgroundColor [0.3, 0, 0, 1];
+			};
 		};
 
 		if (_type == "SUPPORT") then {
@@ -65,18 +65,31 @@ if (_index >= 0 && _index < count(RSTF_SHOP_CURRENT_ITEMS)) then {
 			};
 		};
 
+		if (_type != "VEHICLE" || !RSTF_ENABLE_AI_SUPPORT_VEHICLES) then {
+			_priceAiCtrl ctrlShow false;
+			_buyAiCtrl ctrlShow false;
+		} else {
+			_priceAiCtrl ctrlShow true;
+			_buyAiCtrl ctrlShow true;
+		};
+
 		// Set shop item variables
 		([_layout, "detail_title"] call ZUI_fnc_getControlById) ctrlSetText _title;
 		([_layout, "detail_image"] call ZUI_fnc_getControlById) ctrlSetText _image;
-		([_layout, "detail_info"] call ZUI_fnc_getControlById) ctrlSetStructuredText parseText(_description);
-		([_layout, "price"] call ZUI_fnc_getControlById) ctrlSetText ("$" + str(_cost));
+		([_layout, "detail_info"] call ZUI_fnc_getControlById) ctrlSetStructuredText parseText(_description + "<br /> ");
 
+		([_layout, "price"] call ZUI_fnc_getControlById) ctrlSetText ("$" + str(_cost));
 		if (_money >= _cost) then {
 			([_layout, "buy"] call ZUI_fnc_getControlById) ctrlEnable true;
-			([_layout, "price"] call ZUI_fnc_getControlById) ctrlSetBackgroundColor [0.2, 0.6, 0.2, 1];
+			([_layout, "price"] call ZUI_fnc_getControlById) ctrlSetBackgroundColor [0.1, 0.5, 0.1, 1];
 		} else {
 			([_layout, "buy"] call ZUI_fnc_getControlById) ctrlEnable false;
 			([_layout, "price"] call ZUI_fnc_getControlById) ctrlSetBackgroundColor [0.3, 0, 0, 1];
 		};
+
+		_priceAiCtrl ctrlCommit 0;
+		_buyAiCtrl ctrlCommit 0;
 	};
+
+	[RSTF_SHOP_layout] call ZUI_fnc_refresh;
 };

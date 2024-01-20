@@ -596,3 +596,10 @@ RSTF_DATE_DAY = (date select 2) - 1;
 
 // Load default date from world config
 RSTF_USE_DEFAULT_DATE = true;
+
+// Enable players to buy AI support vehicles
+RSTF_ENABLE_AI_SUPPORT_VEHICLES = true;
+// Vehicle cost multiplier when buying as AI support
+RSTF_AI_VEHICLE_SUPPORT_COST_MULTIPLIER = 0.75;
+
+RSTF_VEHICLE_COST_MULTIPLIER = 1;

@@ -42,6 +42,7 @@ class RSTF
 		class randomSpawn {};
 
 		class requestVehicle {};
+		class requestAiVehicle {};
 		class bindKeys {};
 
 		class moveCamera {};
@@ -113,6 +114,9 @@ class RSTF
 		class doesModeSupportNeutrals {};
 		class getObjectiveDistance {};
 		class getWorldStartDate {};
+		class getVehicleClassCrew {};
+		class getVehicleClassSkins {};
+		class getVehicleClassComponents {};
 	};
 
 	class ui
@@ -149,6 +153,8 @@ class RSTF
 
 		class showChangelog {};
 		class updateMainConfigScreen {};
+
+		class showVehicleConfiguration {};
 	};
 
 	class net

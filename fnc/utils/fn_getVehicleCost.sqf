@@ -45,4 +45,4 @@ if (_tank) then { _cost = _cost + 800; };
 // Turrets tax
 _cost = _cost + _turrets * 300;
 
-_cost;
+_cost * RSTF_VEHICLE_COST_MULTIPLIER;

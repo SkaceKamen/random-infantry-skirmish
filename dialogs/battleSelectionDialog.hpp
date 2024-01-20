@@ -3,8 +3,8 @@
 #define RSTF_BTL_X (SafeZoneX + SafeZoneW/2 - RSTF_BTL_W/2)
 #define RSTF_BTL_Y (SafeZoneY + SafeZoneH - RSTF_BTL_H)
 
-#define RSTF_BTL_P 0.02
-#define RSTF_BTL_M 0.01
+#define RSTF_BTL_P 0.005
+#define RSTF_BTL_M 0.005
 
 #define RSTF_BTL_TITLE_H 0.05
 

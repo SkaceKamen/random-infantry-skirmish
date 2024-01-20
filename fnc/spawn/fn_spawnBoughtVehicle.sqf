@@ -9,6 +9,9 @@
 	_unit - unit that bought the vehicle [Object]
 	_side - side index that the unit is on [Number]
 	_vehicleClass - classname of vehicle to be spawned [String]
+	_crewParam - where to place player [Array]
+	_camouflage - camouflage to be applied to the vehicle [STRING]
+	_components - components to be applied to the vehicle [ARRAY]
 
 	Returns:
 	Spawned vehicle [Object]
@@ -17,6 +20,9 @@
 private _unit = param [0];
 private _side = param [1];
 private _vehicleClass = param [2];
+private _crewParam = param [3];
+private _camouflage = param [4, false];
+private _components = param [5, false];
 
 private _parents = [configFile >> "cfgVehicles" >> _vehicleClass, true] call BIS_fnc_returnParents;
 private _plane = "Plane" in _parents;
@@ -90,6 +96,27 @@ private _radius = 100;
 
 private _vehicle = createVehicle [_vehicleClass, _position, [], _radius, "FLY"];
 
+if (typeName(_camouflage) != typeName(false) || typeName(_components) != typeName(false)) then {
+	private _componentsArg = _components;
+	private _camouflageArg = _camouflage;
+	
+	if (typeName(_components) != typeName(false)) then {
+		_componentsArg = [];
+		{
+			_componentsArg pushBack _x;
+			_componentsArg pushBack 1;
+		} forEach _components;
+	};
+
+	if (typeName(_camouflage) != typeName(false)) then {
+		_camouflageArg = [_camouflage, 1];
+	};
+
+	systemChat str([_camouflageArg, _componentsArg]);
+
+	[_vehicle, _camouflageArg, _componentsArg] call BIS_fnc_initVehicle;
+};
+
 // Add to GC with 30 seconds to despawn
 if (RSTF_CLEAN) then {
 	[_vehicle, RSTF_CLEAN_INTERVAL_VEHICLES, true] call RSTFGC_fnc_attach;
@@ -114,13 +141,25 @@ if (RSTF_DEBUG) then {
 	_marker setMarkerColor (RSTF_SIDES_COLORS select _side);
 };
 
+// Pick who will be the player
+private _unitToReplace = effectiveCommander(_vehicle);
+
+switch (_crewParam#1) do {
+	case "driver": {
+		_unitToReplace = driver _vehicle;
+	};
+	case "turret": {
+		_unitToReplace = _vehicle turretUnit (_crewParam#2);
+	};
+};
+
 // Create group on correct side and assign crew to it
 private _group = createGroup (RSTF_SIDES_SIDES select _side);
-units(group(effectiveCommander(_vehicle))) joinSilent _group;
+units(group(_unitToReplace)) joinSilent _group;
 
 if (!isNull(_unit)) then {
 	// Remove effective commander
-	deleteVehicle effectiveCommander(_vehicle);
+	deleteVehicle _unitToReplace;
 };
 
 // Make sure crew works same as other soldiers
@@ -137,6 +176,7 @@ if (!isNull(_unit)) then {
 	[_unit] joinSilent _group;
 	_unit moveInAny _vehicle;
 	_group selectLeader _unit;
+	_vehicle setEffectiveCommander _unit;
 } else {
 	if (!RSTF_SPAWN_VEHICLES_UNLOCKED) then {
 		// Stop player from entering friendly AI vehicles

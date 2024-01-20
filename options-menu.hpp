@@ -293,6 +293,18 @@ class RSTF_Options {
 				type="checkbox";
 				disabled="!RSTF_MONEY_ENABLED";
 			};
+			class RSTF_ENABLE_AI_SUPPORT_VEHICLES {
+				title="Allow buying AI vehicles by players";
+				description="Allow players to buy support AI vehicles";
+				type="checkbox";
+				disabled="!RSTF_MONEY_ENABLED";
+			};
+			class RSTF_AI_VEHICLE_SUPPORT_COST_MULTIPLIER {
+				title="AI vehicle price multiplier";
+				description="Vehicle cost multiplier applied when player buys AI vehicle";
+				type="number";
+				disabled="!RSTF_MONEY_ENABLED || !RSTF_ENABLE_AI_SUPPORT_VEHICLES";
+			};
 
 			SPACER;
 
@@ -317,6 +329,15 @@ class RSTF_Options {
 			class RSTF_MONEY_PER_TASK {
 				title="Money per task";
 				description="Award for completing task";
+				type="number";
+				disabled="!RSTF_MONEY_ENABLED";
+			};
+
+			SPACER;
+
+			class RSTF_VEHICLE_COST_MULTIPLIER {
+				title="Vehicle cost multiplier";
+				description="Mutliplier applied to cost of every vehicle";
 				type="number";
 				disabled="!RSTF_MONEY_ENABLED";
 			};

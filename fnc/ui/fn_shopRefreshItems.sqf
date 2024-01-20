@@ -7,7 +7,7 @@ private _search = ctrlText ([RSTF_SHOP_layout, "search"] call ZUI_fnc_getControl
 
 private _money = [player] call RSTF_fnc_getPlayerMoney;
 
-_itemsContainer lnbSetColumnsPos [0, 0.05, 0.6, 0.8];
+_itemsContainer lnbSetColumnsPos [0, 0.07, 0.6, 0.8];
 lnbClear _itemsContainer;
 _itemsContainer lnbSetCurSelRow -1;
 
