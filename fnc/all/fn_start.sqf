@@ -45,15 +45,15 @@ if (RSTF_SPAWN_TRANSPORTS) then {
 
 // TODO: What to do with this
 if (!isDedicated) then {
-	call RSTF_fnc_onPointChanged;
+	0 spawn RSTF_fnc_onPointChanged;
 };
-
-// Start gamemode loop
-call RSTF_MODE_startLoop;
 
 // Hide camera border
 waitUntil { time > 0 };
 showCinemaBorder false;
+
+// Start gamemode loop
+call RSTF_MODE_startLoop;
 
 // Time
 call RSTF_fnc_superRandomTime;
@@ -76,7 +76,6 @@ if (RSTF_USE_DEFAULT_DATE) then {
 // Weather
 [] spawn RSTF_fnc_superRandomWeather;
 
-
 // Tell players we started
 RSTF_STARTED = true;
 publicVariable "RSTF_STARTED";
@@ -84,8 +83,7 @@ if (!isDedicated) then {
 	0 spawn RSTF_fnc_onStarted;
 };
 
-// Wait for intro to finish playing
-sleep 2;
+waitUntil { sleep 0.1; !RSTF_INTRO_PLAYING; };
 
 // Start game loop
 0 spawn RSTF_fnc_loop;

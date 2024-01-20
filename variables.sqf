@@ -416,3 +416,5 @@ for [{_i = 1}, { _i <= 31 }, {_i = _i + 1}] do {
 
 // Current player side index
 RSTF_CURRENT_SIDE_INDEX = SIDE_FRIENDLY;
+
+RSTF_INTRO_PLAYING = false;
