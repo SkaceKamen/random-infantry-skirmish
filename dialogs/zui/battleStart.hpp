@@ -50,7 +50,7 @@ class BattleStartDialog: ZUI_ColumnLayout
 					class list: ZUI_Listview
 					{
 						id = "bluforFactions";
-						columns[] = { 0, 0.9 };
+						columns[] = { 0, 0.94 };
 						font = GUI_STANDARD_FONT;
 						shadow = 2;
 					};
