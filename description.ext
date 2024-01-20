@@ -21,6 +21,7 @@
 #include "dialogs\zui\factionSelector.hpp"
 #include "dialogs\zui\supplyDrop.hpp"
 #include "dialogs\zui\vehicleConfiguration.hpp"
+#include "dialogs\zui\battleStart.hpp"
 
 #include "modes.hpp"
 #include "options-menu.hpp"

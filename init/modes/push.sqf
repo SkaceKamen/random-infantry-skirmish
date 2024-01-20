@@ -181,6 +181,8 @@ RSTF_MODE_PUSH_startLoop = {
 	_marker setMarkerSize [100, 100];
 	_marker setMarkerColor RSTF_COLOR_NEUTRAL;
 
+	waitUntil { sleep 0.1; !RSTF_INTRO_PLAYING; };
+
 	call RSTF_MODE_PUSH_NEXT_POINT;
 
 	0 spawn {

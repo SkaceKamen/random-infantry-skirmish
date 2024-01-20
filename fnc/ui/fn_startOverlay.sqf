@@ -17,8 +17,9 @@ if (RSTF_UI_SHOW_VEHICLE_MARKERS) then {
 	}];
 };
 
-_layer = 1586;
-_layer cutRsc ["ARCADE_UI", "PLAIN"];
+waitUntil { sleep 0.1; !RSTF_INTRO_PLAYING };
+
+"RSTF_INGAME_UI" cutRsc ["ARCADE_UI", "PLAIN", 1, false];
 
 waitUntil {!isNull(uinamespace getVariable ['ARCADE_UI', displaynull]) };
 
