@@ -29,6 +29,8 @@ if (!isNull(_parent)) then {
 };
 
 RSTF_FACTIONS_CONFIG_layout = [missionConfigFile >> "FactionSelectorDialog", _parent] call ZUI_fnc_createDisplay;
+RSTF_FACTIONS_UNIT_DIRECTION = 45;
+RSTF_FACTIONS_UNIT_ANGLE = 0;
 
 private _display = [RSTF_FACTIONS_CONFIG_layout] call ZUI_fnc_display;
 _display displayAddEventHandler ["unload", {
@@ -295,23 +297,26 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 			_isMan = getNumber(configFile >> "cfgVehicles" >> _class >> "isMan");
 
 			if (_isMan != 0) then {
-				RSTF_FACTIONS_SOLDIER = RSTF_FACTIONS_GROUP createUnit [_class, _position, [], 0, "CAN_COLLIDE"];
+				RSTF_FACTIONS_SOLDIER = RSTF_FACTIONS_GROUP createUnit [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 				RSTF_FACTIONS_SOLDIER setpos _position;
 				RSTF_FACTIONS_SOLDIER enableSimulation false;
+				// RSTF_FACTIONS_SOLDIER setDir RSTF_FACTIONS_UNIT_DIRECTION;
 				RSTF_CAM camSetRelPos [0, 3, 1.5];
 				RSTF_CAM camCommit 0.1;
 			} else {
-				RSTF_FACTIONS_SOLDIER = createVehicle [_class, _position, [], 0, "CAN_COLLIDE"];
-				RSTF_FACTIONS_SOLDIER setDir 45;
+				RSTF_FACTIONS_SOLDIER = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+				//RSTF_FACTIONS_SOLDIER setDir 45;
+				// RSTF_FACTIONS_SOLDIER setDir RSTF_FACTIONS_UNIT_DIRECTION;
 				RSTF_FACTIONS_SOLDIER setpos _position;
 				RSTF_FACTIONS_SOLDIER enableSimulation false;
 				RSTF_CAM camSetRelPos [0, 10, 5];
 				RSTF_CAM camCommit 0.1;
 			};
+
+			call RSTF_fnc_uiApplyUnitAngles;
 		};
 	};
 }];
-
 
 _method = compile(format [_template_tree, "weaponsTree", "RSTF_WEAPONS_BANNED", 2]);
 _ctrl = [RSTF_FACTIONS_CONFIG_layout, "weaponBanToggle"] call ZUI_fnc_getControlById;
@@ -350,5 +355,50 @@ _ctrl ctrlAddEventHandler ["TreeSelChanged", {
 	};
 }];
 
-
 call RSTF_fnc_factionsUpdate;
+
+RSTF_FACTIONS_IS_ROTATING = false;
+
+_display displayAddEventHandler ["MouseButtonDown", {
+	RSTF_FACTIONS_IS_ROTATING = true;
+}];
+
+_display displayAddEventHandler ["MouseButtonUp", {
+	RSTF_FACTIONS_IS_ROTATING = false;
+}];
+
+RSTF_fnc_uiApplyUnitAngles = {
+	private _yaw = RSTF_FACTIONS_UNIT_DIRECTION;
+	private _pitch = RSTF_FACTIONS_UNIT_ANGLE;
+	private _roll = 0;
+	RSTF_FACTIONS_SOLDIER setVectorDirAndUp [
+		[sin _yaw * cos _pitch, cos _yaw * cos _pitch, sin _pitch],
+		[[sin _roll, -sin _pitch, cos _roll * cos _pitch], -_yaw] call BIS_fnc_rotateVector2D
+	];
+};
+
+_display displayAddEventHandler ["MouseMoving", {
+	params ["_display", "_xPos", "_yPos"];
+
+	if (RSTF_FACTIONS_IS_ROTATING) then {
+		RSTF_FACTIONS_UNIT_DIRECTION = RSTF_FACTIONS_UNIT_DIRECTION - _xPos * 2;
+		RSTF_FACTIONS_UNIT_ANGLE = RSTF_FACTIONS_UNIT_ANGLE - _yPos * 2;
+
+		call RSTF_fnc_uiApplyUnitAngles;
+	};
+}];
+
+
+/*
+0 spawn {
+	while { true } do {
+		if (!isNull(RSTF_FACTIONS_SOLDIER)) then {
+			RSTF_FACTIONS_UNIT_DIRECTION = RSTF_FACTIONS_UNIT_DIRECTION + 0.2;
+			RSTF_FACTIONS_SOLDIER setDir RSTF_FACTIONS_UNIT_DIRECTION;
+			// RSTF_FACTIONS_SOLDIER setDir (direction(RSTF_FACTIONS_SOLDIER) + 0.2);
+		};
+
+		sleep 0.01;
+	};
+};
+*/
