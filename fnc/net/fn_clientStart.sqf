@@ -6,17 +6,4 @@
 */
 call RSTF_fnc_clientEvents;
 
-if (count(RSTF_POINT) > 0) then {
-	0 spawn RSTF_fnc_onPointChanged;
-};
-
-if (!RSTF_STARTED) then {
-	if (call BIS_fnc_admin > 0) then {
-		//0 spawn RSTF_fnc_showModeSelector;
-		0 spawn RSTF_fnc_showChangelog;
-	} else {
-		0 spawn RSTF_fnc_showWaiting;
-	};
-} else {
-	0 spawn RSTF_fnc_onStarted;
-};
+[clientOwner] remoteExec ["RSTF_fnc_clientInitRequest", 2];

@@ -169,6 +169,8 @@ class RSTF
 		class onPointChanged {};
 		class onScore {};
 		class onEnd {};
+		class clientInitRequest {};
+		class clientInit {};
 	};
 
 	class support

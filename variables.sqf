@@ -284,8 +284,8 @@ if (isNil("RSTF_SKIP_CONFIG")) then {
 	RSTF_SKIP_CONFIG = false;
 };
 
-// Inidicates if game has started
-RSTF_STARTED = false;
+// Indicates if game has started
+RSTF_STARTED = if (isNil("RSTF_STARTED")) then { false } else { RSTF_STARTED };
 
 // Contains units assinged to players
 RSTF_ASSIGNED_UNITS = [];

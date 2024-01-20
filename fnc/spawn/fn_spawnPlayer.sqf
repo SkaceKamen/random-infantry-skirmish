@@ -10,11 +10,10 @@ switch(RSTF_SPAWN_TYPE) do {
 		_closestDistance = 0;
 		{
 			_grp = _x;
-			_alive = 0;
 			{
 				if (_x call _usable) then {
 					_dis = _x distance RSTF_DEATH_POSITION;
-					if (isNull(_spawn) ||  _dis < _closestDistance) then {
+					if (isNull(_spawn) || _dis < _closestDistance) then {
 						_spawn = _x;
 						_closestDistance = _dis;
 					};
