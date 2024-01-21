@@ -76,7 +76,7 @@ while { true } do {
 			private _moneyCount = 0;
 
 			{
-				_aliveUnits = _aliveUnits + count(units(_x));
+				_aliveUnits = _aliveUnits + ({ alive(_x) } count(units(_x)));
 				{
 					private _name = _x getVariable ["ORIGINAL_NAME", -1];
 					if (!(_name isEqualTo -1)) then {

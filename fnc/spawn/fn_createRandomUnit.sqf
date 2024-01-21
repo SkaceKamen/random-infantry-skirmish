@@ -25,6 +25,29 @@ if (RSTF_SPAWN_AT_OWN_GROUP) then {
 	_position = [_side] call RSTF_fnc_randomSpawn;
 };
 
+private _possibilities = RSTF_MEN#_side;
+
+if (RSTF_GROUP_UNIT_RESTRICTION > 0) then {
+	private _targetFaction = _group getVariable ["RSTF_TARGET_FACTION", ""];
+	private _targetVehicleClass = _group getVariable ["RSTF_TARGET_VEHICLE_CLASS", ""];
+
+	if (_targetFaction == "" || _targetVehicleClass == "" || units(_group) findIf { alive(_x) } == -1) then {
+		private _usableFactions = (([_side] call RSTF_fnc_getFactionsForSide) apply { toLower(_x) }) select { _x in RSTF_MEN_PER_FACTION_CLASS };
+		_targetFaction = selectRandom _usableFactions;
+		_targetVehicleClass = selectRandom (keys (RSTF_MEN_PER_FACTION_CLASS get _targetFaction));
+		
+		_group setVariable ["RSTF_TARGET_FACTION", _targetFaction, true];
+		_group setVariable ["RSTF_TARGET_VEHICLE_CLASS", _targetVehicleClass, true];
+	};
+
+	if (RSTF_GROUP_UNIT_RESTRICTION == 2) then {
+	 	_possibilities = (RSTF_MEN_PER_FACTION_CLASS get _targetFaction) get _targetVehicleClass;
+	} else {
+		_possibilities = RSTF_MEN_PER_FACTION get _targetFaction;
+	};
+};
+
+
 // Try to spawn next to our group, but only if they're inside spawn
 if (!RSTF_MODE_DEFEND_ENABLED) then {
 	private _width = 300;
@@ -39,7 +62,7 @@ if (!RSTF_MODE_DEFEND_ENABLED) then {
 	} forEach units(_group);
 };
 
-private _unitClass = _side call RSTF_fnc_getRandomSoldier;
+private _unitClass = selectRandom _possibilities;
 private _unit = _group createUnit [_unitClass, _position, [], 10, "NONE"];
 
 if (isNull(_unit)) exitWith {

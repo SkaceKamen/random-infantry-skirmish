@@ -118,6 +118,7 @@ class RSTF
 		class getVehicleClassSkins {};
 		class getVehicleClassComponents {};
 		class applyUnitEquipment{};
+		class getFactionsForSide {};
 	};
 
 	class ui
