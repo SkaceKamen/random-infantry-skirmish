@@ -9,6 +9,13 @@ private _groupsWithoutPlayer = _grps select {
 	units(_x) findIf { isPlayer(_x) && _x != player } == -1
 };
 
+if (isNil("RSTF_DEATH_POSITION")) then {
+	RSTF_DEATH_POSITION = RSTF_POINT;
+};
+if (isNil("RSTF_DEATH_GROUP")) then {
+	RSTF_DEATH_GROUP = grpNull;
+};
+
 switch(RSTF_SPAWN_TYPE) do {
 	case RSTF_SPAWN_CLOSEST: {
 		_closestDistance = 0;
@@ -18,6 +25,7 @@ switch(RSTF_SPAWN_TYPE) do {
 				{
 					if (_x call _usable) then {
 						_dis = _x distance RSTF_DEATH_POSITION;
+						systemChat str([_x, _dis]);
 						if (isNull(_spawn) || _dis < _closestDistance) then {
 							_spawn = _x;
 							_closestDistance = _dis;

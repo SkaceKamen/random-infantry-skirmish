@@ -89,6 +89,24 @@ if (!isDedicated) then {
 // Start game loop
 0 spawn RSTF_fnc_loop;
 
+// Wait a second
+sleep 2;
+
+// This is initial spawn for players other than server
+0 spawn {
+	private _playersToAssign = call BIS_fnc_listPlayers;
+
+	waitUntil { sleep 1; count(RSTF_GROUPS#SIDE_FRIENDLY) > 0 && count(RSTF_GROUPS#SIDE_ENEMY) > 0 };
+
+	{
+		if (_x != player) then {
+			private _playerSide = [side(_x)] call RSTF_fnc_sideIndex;
+			_playerSide remoteExec ["RSTF_fnc_spawnPlayer", owner(_x)];
+		};
+	} foreach _playersToAssign;
+
+};
+
 /*
 TEST OF: RSTF_fnc_getObjectiveDistance
 private _line = createMarker ["LINE", RSTF_POINT];

@@ -126,7 +126,7 @@ if (!_vehicular) then {
 				_unit spawn RSTF_fnc_assignPlayer;
 			};
 		};
-	} foreach (call BIS_fnc_listPlayers);
+	} foreach [player];
 };
 
 _unit setVariable ["SPAWNED_SIDE", side(_group), true];
