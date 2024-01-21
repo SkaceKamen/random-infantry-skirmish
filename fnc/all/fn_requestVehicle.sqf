@@ -38,7 +38,7 @@ if (_cost > _money) exitWith {
 private _previousPosition = getPos(_player);
 
 // Spawn vehicle
-private _vehicle = [_player, SIDE_FRIENDLY, _vehicleClass, _crewParam, _camouflage, _components] call RSTF_fnc_spawnBoughtVehicle;
+private _vehicle = [_player, [side _player] call RSTF_fnc_sideIndex, _vehicleClass, _crewParam, _camouflage, _components] call RSTF_fnc_spawnBoughtVehicle;
 
 // Camera animation
 [_previousPosition, _vehicle] remoteExec ["RSTF_fnc_moveCamera", _player];

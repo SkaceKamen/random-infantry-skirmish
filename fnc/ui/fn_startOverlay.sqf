@@ -13,7 +13,7 @@ if (RSTF_UI_SHOW_VEHICLE_MARKERS) then {
 				+ (if (_air) then { "armor" } else { "air" })
 				+ ".paa";
 			drawIcon3D [_icon, [0.5, 0.5, 1, 0.8], _pos, 0.8, 0.8, 0];
-		} foreach (RSTF_AI_VEHICLES select SIDE_FRIENDLY);
+		} foreach (RSTF_AI_VEHICLES select RSTF_CURRENT_SIDE_INDEX);
 	}];
 };
 

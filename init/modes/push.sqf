@@ -16,7 +16,8 @@ RSTF_MODE_PUSH_ENABLED = false;
 RSTF_MODE_PUSH_COUNTS = [];
 RSTF_MODE_PUSH_POINTS = [];
 RSTF_MODE_PUSH_POINT_INDEX = -1;
-RSTF_MODE_PUSH_TASK = "";
+RSTF_MODE_PUSH_TASK_ATTACKERS = "";
+RSTF_MODE_PUSH_TASK_DEFENDERS = "";
 
 RSTF_MODE_DEFENDERS_SIDE = 0;
 RSTF_MODE_ATTACKERS_SIDE = 1;
@@ -77,12 +78,9 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 	];
 
 	// Finish previous task
-	if (RSTF_MODE_PUSH_TASK != "") then {
-		if (RSTF_MODE_DEFENDERS_SIDE == SIDE_ENEMY) then {
-			[RSTF_MODE_PUSH_TASK, "Succeeded", true] call BIS_fnc_taskSetState;
-		} else {
-			[RSTF_MODE_PUSH_TASK, "FAILED", true] call BIS_fnc_taskSetState;
-		};
+	if (RSTF_MODE_PUSH_TASK_ATTACKERS != "") then {
+		[RSTF_MODE_PUSH_TASK_ATTACKERS, "Succeeded", true] call BIS_fnc_taskSetState;
+		[RSTF_MODE_PUSH_TASK_DEFENDERS, "FAILED", true] call BIS_fnc_taskSetState;
 	};
 
 	0 spawn {
@@ -92,30 +90,27 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 
 		private _pointLetter = toString [65 + (RSTF_MODE_PUSH_POINT_INDEX % 26)];
 
-		// Start new task
-		if (RSTF_MODE_DEFENDERS_SIDE == SIDE_ENEMY) then {
-			RSTF_MODE_PUSH_TASK = [
-				side(player),
-				"CAPTURE" + str(RSTF_MODE_PUSH_POINT_INDEX),
-				["We need to capture this point to advance", "Capture point " + _pointLetter,""],
-				RSTF_POINT,
-				"ASSIGNED",
-				0,
-				true,
-				"attack"
-			] call BIS_fnc_taskCreate;
-		} else {
-			RSTF_MODE_PUSH_TASK = [
-				side(player),
-				"DEFEND" + str(RSTF_MODE_PUSH_POINT_INDEX),
-				["Defend this point to prevent enemies advance", "Defend point " + _pointLetter,""],
-				RSTF_POINT,
-				"ASSIGNED",
-				0,
-				true,
-				"defend"
-			] call BIS_fnc_taskCreate;
-		};
+		RSTF_MODE_PUSH_TASK_ATTACKERS = [
+			[RSTF_MODE_ATTACKERS_SIDE] call RSTF_fnc_indexSide,
+			"CAPTURE" + str(RSTF_MODE_PUSH_POINT_INDEX),
+			["We need to capture this point to advance", "Capture point " + _pointLetter,""],
+			RSTF_POINT,
+			"ASSIGNED",
+			0,
+			true,
+			"attack"
+		] call BIS_fnc_taskCreate;
+
+		RSTF_MODE_PUSH_TASK_DEFENDERS = [
+			[RSTF_MODE_DEFENDERS_SIDE] call RSTF_fnc_indexSide,
+			"DEFEND" + str(RSTF_MODE_PUSH_POINT_INDEX),
+			["Defend this point to prevent enemies advance", "Defend point " + _pointLetter,""],
+			RSTF_POINT,
+			"ASSIGNED",
+			0,
+			true,
+			"defend"
+		] call BIS_fnc_taskCreate;
 	};
 };
 

@@ -90,14 +90,14 @@ if (alive(_unit)) then {
 			private _groupHasPlayer = false;
 
 			{
-				if (isPlayer(_x)) exitWith {
+				if (isPlayer(_x) && _x != player) exitWith {
 					_groupHasPlayer = true;
 				};
 			} foreach units(group(player));
 
 			if (!_groupHasPlayer) then {
 				// Make sure player is leader
-				[group(player), player] remoteExec ["selectLeader", REMOTE_TARGET_SERVER];
+				[group(_unit), _unit] remoteExec ["selectLeader", REMOTE_TARGET_SERVER];
 			};
 		} else {
 			group(player) selectLeader player;

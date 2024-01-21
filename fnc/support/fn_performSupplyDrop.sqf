@@ -22,7 +22,7 @@ private _cost = getNumber(missionConfigFile >> "RSTF_BUYABLE_SUPPORTS" >> _class
 private _money = [_player] call RSTF_fnc_getPlayerMoney;
 
 if (_money >= _cost) then {
-	[player, -_cost] call RSTF_fnc_addPlayerMoney;
+	[_player, -_cost] call RSTF_fnc_addPlayerMoney;
 
 	private _para = "B_Parachute_02_F";
 	private _smokeShell = "SmokeShellRed";

@@ -13,7 +13,7 @@ RSTF_SHOP_CURRENT_ITEM = [];
 RSTF_SHOP_CURRENT_ITEMS = [];
 
 // Create categorized list of vehicles
-private _vehicles = RSTF_BUYABLE_VEHICLES select SIDE_FRIENDLY;
+private _vehicles = RSTF_BUYABLE_VEHICLES select RSTF_CURRENT_SIDE_INDEX;
 private _categories = [ "All", "Wheeled", "Tracked", "Planes", "Helicopters", "Other", "Support" ];
 private _parents = [ "*", "Car", "Tank", "Plane", "Helicopter", "*" ];
 

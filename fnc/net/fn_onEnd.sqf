@@ -25,7 +25,7 @@ RSTF_CAM camCommit 5;
 
 waitUntil { camCommitted RSTF_CAM; };
 
-if (_winner == SIDE_FRIENDLY) then {
+if (_winner == RSTF_CURRENT_SIDE_INDEX) then {
 	"END1" call BIS_fnc_endMission;
 } else {
 	["LOSER", false, true] call BIS_fnc_endMission;

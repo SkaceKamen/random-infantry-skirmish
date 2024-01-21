@@ -5,26 +5,37 @@ private _usable = {
 	alive(_x) && !(_x getVariable ["USED", false])
 };
 
+private _groupsWithoutPlayer = _grps select {
+	units(_x) findIf { isPlayer(_x) && _x != player } == -1
+};
+
 switch(RSTF_SPAWN_TYPE) do {
 	case RSTF_SPAWN_CLOSEST: {
 		_closestDistance = 0;
 		{
-			_grp = _x;
 			{
-				if (_x call _usable) then {
-					_dis = _x distance RSTF_DEATH_POSITION;
-					if (isNull(_spawn) || _dis < _closestDistance) then {
-						_spawn = _x;
-						_closestDistance = _dis;
+				_grp = _x;
+				{
+					if (_x call _usable) then {
+						_dis = _x distance RSTF_DEATH_POSITION;
+						if (isNull(_spawn) || _dis < _closestDistance) then {
+							_spawn = _x;
+							_closestDistance = _dis;
+						};
 					};
-				};
-			} foreach units(_grp);
-		} foreach _grps;
+				} foreach units(_grp);
+			} foreach _x;
+
+			if (!isNull(_spawn)) exitWith {};
+		} foreach [_groupsWithoutPlayer, _grps];
 	};
+
 	case RSTF_SPAWN_GROUP: {
+		private _groupsToTry = _groupsWithoutPlayer + _grps;
+
 		_grp = RSTF_DEATH_GROUP;
 		_index = 0;
-		while { _index < count(_grps) } do {
+		while { _index < count(_groupsToTry) } do {
 			if (leader(_grp) call _usable) exitWith {
 				_spawn = leader(_grp);
 			};
@@ -37,21 +48,26 @@ switch(RSTF_SPAWN_TYPE) do {
 
 			if (!isNull(_spawn)) exitWith { };
 
-			_grp = _grps select _index;
+			_grp = _groupsToTry select _index;
 			_index = _index + 1;
 		};
 	};
+
 	case RSTF_SPAWN_RANDOM: {
-		_grps = _grps call RSTF_fnc_arrayShuffle;
 		{
-			_grp = _x;
+			_x = _x call RSTF_fnc_arrayShuffle;
 			{
-				if (_x call _usable) exitWith {
-					_spawn = _x;
-				};
-			} foreach units(_grp);
+				_grp = _x;
+				{
+					if (_x call _usable) exitWith {
+						_spawn = _x;
+					};
+				} foreach units(_grp);
+				if (!isNull(_spawn)) exitWith {};
+			} foreach _x;
+
 			if (!isNull(_spawn)) exitWith {};
-		} foreach _grps;
+		} foreach [_groupsWithoutPlayer, _grps];
 	};
 };
 
