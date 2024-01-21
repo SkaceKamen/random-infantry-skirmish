@@ -246,7 +246,8 @@ RSTF_PROFILE_VALUES = [
 // Profile values that are specific to local player (don't broadcast them)
 RSTF_PRIVATE_PROFILE_VALUES = [
 	"RSTF_PLAYER_EQUIPMENT",
-	"RSTF_BUY_MENU_ACTION"
+	"RSTF_BUY_MENU_ACTION",
+	"RSTF_BUY_MENU_SHOW_AS_ACTION"
 ];
 
 // List of spawns, indexed by side

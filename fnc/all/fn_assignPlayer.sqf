@@ -60,6 +60,20 @@ if (alive(_unit)) then {
 	selectPlayer _unit;
 	_unit setVariable ["RSTF_UID", RSTF_PLAYER_UID, true];
 
+	if (RSTF_BUY_MENU_SHOW_AS_ACTION) then {
+		_unit addAction [
+			"<t color='#999999'>Open Shop</t>",
+			{ [] spawn RSTFUI_fnc_showShopDialog; },
+			[],
+			0,
+			false,
+			false,
+			"",
+			"_this == _target",
+			0
+		];
+	};
+
 	// Hide camera
 	call RSTF_fnc_destroyCam;
 
@@ -73,6 +87,7 @@ if (alive(_unit)) then {
 		[_x, ([_x] call BIS_fnc_taskState), false] call BIS_fnc_taskSetState;
 	} foreach RSTF_CURRENT_TASKS;
 
+	/*
 	// Display support menu hint if needed
 	if (RSTF_HINT_SUPPORT_MENU && RSTF_MONEY_VEHICLES_ENABLED) then {
 		// Only display this hint once, so disable it and save
@@ -84,6 +99,7 @@ if (alive(_unit)) then {
 		// Display the hint
 		hint(parseText(format["Press <t color='#999999'>%1</t> key to open <t color='#999999'>vehicle shop</t>.", _keyName]));
 	};
+	*/
 
 	if (RSTF_PLAYER_ALWAYS_LEADER) then {
 		if (isMultiplayer) then {

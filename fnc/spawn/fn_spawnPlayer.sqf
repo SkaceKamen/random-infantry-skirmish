@@ -25,7 +25,6 @@ switch(RSTF_SPAWN_TYPE) do {
 				{
 					if (_x call _usable) then {
 						_dis = _x distance RSTF_DEATH_POSITION;
-						systemChat str([_x, _dis]);
 						if (isNull(_spawn) || _dis < _closestDistance) then {
 							_spawn = _x;
 							_closestDistance = _dis;

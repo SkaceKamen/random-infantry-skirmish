@@ -31,49 +31,68 @@ if (!isNull(_killer)) then {
 	};
 };
 
-_dialogName = "RSTF_RscDeathDialog";
-_ok = createDialog _dialogName;
-if (!_ok) exitWith {
-	RSTF_DEATH_SHOWN = false;
-	systemChat "Fatal error. Couldn't create death dialog.";
-	_side call RSTF_fnc_spawnPlayer;
-};
+"RSTF_DEATH_SCREEN" cutRsc ["RscTitleDisplayEmpty", "PLAIN", 0.5, false];
+private _display = uiNamespace getVariable "RscTitleDisplayEmpty";
+
+// Show title
+RSTF_DEATH_DIALOG_BG_layout = [missionConfigFile >> "DeathTitle", _display] call ZUI_fnc_createDisplay;
+[RSTF_DEATH_DIALOG_BG_layout, 1] call ZUI_fnc_fadeIn;
+
+sleep 1;
+
+RSTF_DEATH_DIALOG_layout = [missionConfigFile >> "DeathDialog"] call ZUI_fnc_createDisplay;
+[RSTF_DEATH_DIALOG_layout, 0.5] call ZUI_fnc_fadeIn;
 
 RSTF_DEATH_SIDE = _side;
 RSTF_DEATH_KILLER = _killer;
 RSTF_DEATH_BODY = _body;
 
-_display = _dialogName call RSTF_fnc_getDisplay;
+_display = [RSTF_DEATH_DIALOG_layout] call ZUI_fnc_display;
 _display displayAddEventHandler ["unload", {
 	RSTF_DEATH_SHOWN = false;
 	if (_this select 1 != 1) then {
+		([RSTF_DEATH_DIALOG_BG_layout] call ZUI_fnc_display) closeDisplay 0;
 		RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer
 	};
 }];
 
-_ctrl = [_dialogName, "spawn"] call RSTF_fnc_getCtrl;
+_ctrl = [RSTF_DEATH_DIALOG_layout, "respawn"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	RSTF_DEATH_SHOWN = false;
 	RSTF_CAM camCommit 0;
-	closeDialog 0;
+	
+	([RSTF_DEATH_DIALOG_layout] call ZUI_fnc_display) closeDisplay 0;
+}];
+ctrlSetFocus _ctrl;
+
+_ctrl = [RSTF_DEATH_DIALOG_layout, "settings"] call ZUI_fnc_getControlById;
+_ctrl ctrlAddEventHandler ["ButtonClick", {
+	[[RSTF_DEATH_DIALOG_layout] call ZUI_fnc_display, true] spawn RSTF_fnc_showAdvancedConfig;
 }];
 
-_ctrl = [_dialogName, "equip"] call RSTF_fnc_getCtrl;
-_ctrl ctrlShow RSTF_CUSTOM_EQUIPMENT;
+_ctrl = [RSTF_DEATH_DIALOG_layout, "equipment"] call ZUI_fnc_getControlById;
+_ctrl ctrlEnable RSTF_CUSTOM_EQUIPMENT;
+
+if (!RSTF_CUSTOM_EQUIPMENT) then {
+	_ctrl ctrlSetTooltip "Custom equipment is disabled";
+};
+
 _ctrl ctrlAddEventHandler ["ButtonClick", {
-	closeDialog 1;
+	([RSTF_DEATH_DIALOG_layout] call ZUI_fnc_display) closeDisplay 1;
 	[true, [RSTF_DEATH_SIDE, RSTF_DEATH_KILLER, RSTF_DEATH_BODY]] spawn RSTF_fnc_showEquip;
 	true;
 }];
 
 if (isNull(_killer)) then {
-	_ctrl = [_dialogName, "weaponName"] call RSTF_fnc_getCtrl;
+	_ctrl = [RSTF_DEATH_DIALOG_layout, "killer"] call ZUI_fnc_getControlById;
 	_ctrl ctrlShow false;
-	_ctrl = [_dialogName, "weaponImage"] call RSTF_fnc_getCtrl;
+	_ctrl = [RSTF_DEATH_DIALOG_layout, "weapon"] call ZUI_fnc_getControlById;
 	_ctrl ctrlShow false;
-	_ctrl = [_dialogName, "distance"] call RSTF_fnc_getCtrl;
+	_ctrl = [RSTF_DEATH_DIALOG_layout, "weaponImage"] call ZUI_fnc_getControlById;
 	_ctrl ctrlShow false;
 } else {
+	private _cfg = configFile >> "cfgVehicles" >> typeof(_killer);
+	private _cfgName = getText(_cfg >> "displayName");
 	_isMan = getNumber(configFile >> "cfgVehicles" >> typeof(_killer) >> "isMan");
 	_distance = _killer distance _body;
 	_weapon = currentWeapon(_killer);
@@ -85,11 +104,11 @@ if (isNull(_killer)) then {
 	} else {
 		_image = getText(configFile >> "cfgVehicles" >> typeOf(vehicle(_killer)) >> "picture");
 	};
-	
-	_ctrl = [_dialogName, "weaponName"] call RSTF_fnc_getCtrl;
-	_ctrl ctrlSetText "By " + _name;
-	_ctrl = [_dialogName, "weaponImage"] call RSTF_fnc_getCtrl;
+
+	_ctrl = [RSTF_DEATH_DIALOG_layout, "killer"] call ZUI_fnc_getControlById;
+	_ctrl ctrlSetText ("Killed by " + (if (isPlayer(_killer)) then { name(_killer) } else { _cfgName }));
+	_ctrl = [RSTF_DEATH_DIALOG_layout, "weapon"] call ZUI_fnc_getControlById;
+	_ctrl ctrlSetText ("With " + _name + " from distance of " + str(round(_distance)) + " m");
+	_ctrl = [RSTF_DEATH_DIALOG_layout, "weaponImage"] call ZUI_fnc_getControlById;
 	_ctrl ctrlSetText _image;
-	_ctrl = [_dialogName, "distance"] call RSTF_fnc_getCtrl;
-	_ctrl ctrlSetText "From distance of " + str(round(_distance)) + " m";
 };

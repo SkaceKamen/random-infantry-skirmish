@@ -8,6 +8,10 @@ RSTF_CAM camSetTarget RSTF_CAM_TARGET;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
 
+if (RSTF_DEBUG) exitWith {
+	0 spawn RSTF_fnc_start;
+};
+
 RSTF_MAIN_CONFIG_layout = [
 	missionConfigFile >> "MainConfigDialog",
 	displayNull,
@@ -95,13 +99,8 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 		[parseText(_message), "Configuration error", true, false, [RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display] spawn BIS_fnc_GUImessage;
 	};
 
-	// Broadcast settings
-	{
-		// Skip values that should be player specific
-		if (!(_x in RSTF_PRIVATE_PROFILE_VALUES)) then {
-			publicVariable _x;
-		};
-	} foreach RSTF_PROFILE_VALUES;
+	// Broadcast settings	
+	call RSTF_fnc_syncServerOptions;
 
 	// Save config to profile namespace
 	call RSTF_fnc_profileSave;

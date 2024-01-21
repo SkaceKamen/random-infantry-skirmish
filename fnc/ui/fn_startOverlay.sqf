@@ -3,8 +3,8 @@
 disableSerialization;
 
 // Vehicle icons
-if (RSTF_UI_SHOW_VEHICLE_MARKERS) then {
-	addMissionEventHandler ["Draw3D", {
+addMissionEventHandler ["Draw3D", {
+	if (RSTF_UI_SHOW_VEHICLE_MARKERS) then {
 		{
 			private _pos = (getPosATLVisual _x) vectorAdd [0, 0, 4];
 			// _pos set [2, (_x modelToWorld [0,0,1.5]) select 2];
@@ -14,8 +14,9 @@ if (RSTF_UI_SHOW_VEHICLE_MARKERS) then {
 				+ ".paa";
 			drawIcon3D [_icon, [0.5, 0.5, 1, 0.8], _pos, 0.8, 0.8, 0];
 		} foreach (RSTF_AI_VEHICLES select RSTF_CURRENT_SIDE_INDEX);
-	}];
-};
+	};
+}];
+
 
 waitUntil { sleep 0.1; !RSTF_INTRO_PLAYING };
 
@@ -42,63 +43,9 @@ _ctrlPushProgressBackground = _display displayCtrl RSTFUI_ARCADE_PUSH_PROGRESS_B
 
 _ctrlDefenseProgress = _display displayCtrl RSTFUI_ARCADE_DEFENSE_PROGRESS_IDC;
 
-_modeId = call RSTF_fnc_getModeId;
+private _modeId = call RSTF_fnc_getModeId;
 
-if (!RSTF_UI_SHOW_GAMEMODE_SCORE) then {
-	{
-		_x ctrlShow false;
-		_x ctrlCommit 0;
-	} foreach [
-		_ctrlScoreFriendly, _ctrlScoreEnemy, _ctrlGlobalMessages,
-		_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground
-	];
-} else {
-	switch (_modeId) do {
-		case "Classic": {
-			{
-				_x ctrlShow false;
-				_x ctrlCommit 0;
-			} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground];
-		};
-
-		case "KOTH": {
-			{
-				_x ctrlShow false;
-				_x ctrlCommit 0;
-			} foreach [_ctrlPushProgress, _ctrlPushProgressBackground];
-		};
-
-		case "Push": {
-			{
-				_x ctrlShow false;
-				_x ctrlCommit 0;
-			} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
-
-			_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
-			_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
-		};
-
-		case "PushDefense": {
-			{
-				_x ctrlShow false;
-				_x ctrlCommit 0;
-			} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
-
-			_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
-			_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
-		};
-
-		case "Defense": {
-			{
-				_x ctrlShow false;
-				_x ctrlCommit 0;
-			} foreach [_ctrlScoreFriendly, _ctrlScoreEnemy];
-
-			_ctrlUserCountFriendly ctrlSetBackgroundColor [0, 0, 0.77, 0.9];
-			_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
-		};
-	};
-};
+call RSTF_fnc_updateOverlay;
 
 _ctrlOwner ctrlShow false;
 _ctrlOwner ctrlCommit 0;

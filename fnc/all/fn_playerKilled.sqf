@@ -14,5 +14,5 @@ if (!isMultiplayer) then {
 		_side = SIDE_FRIENDLY;
 	};
 
-	[_side, _this select 1, _unit] call RSTF_fnc_showDeath;
+	[_side, _this select 1, _unit] spawn RSTF_fnc_showDeath;
 };

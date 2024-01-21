@@ -102,3 +102,5 @@ _categoriesContainer ctrlAddEventHandler ["LBSelChanged", {
 ([RSTF_SHOP_layout, "buy"] call ZUI_fnc_getControlById) ctrlEnable false;
 ([RSTF_SHOP_layout, "buyAi"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", { [] spawn RSTFUI_fnc_shopBuyForAi; }];
 ([RSTF_SHOP_layout, "buyAi"] call ZUI_fnc_getControlById) ctrlEnable false;
+
+([RSTF_SHOP_layout, "settings"] call ZUI_fnc_getControlById) ctrlAddEventHandler ["ButtonClick", { [displayNull, true] spawn RSTF_fnc_showAdvancedConfig; }];

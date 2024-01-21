@@ -6,6 +6,10 @@ if (isNull(_oldUnit) || isNull(_newUnit)) exitWith {};
 // selectPlayer RSTF_BACKUP_PLAYER;
 
 _newUnit setPos getPos(RSTF_BACKUP_PLAYER);
+_newUnit enableSimulation false;
+_newUnit allowDamage false;
+_newUnit hideObject true;
+_newUnit disableAI "ALL";
 
 private _side = SIDE_ENEMY;
 if (PLAYER_SIDE == west) then {

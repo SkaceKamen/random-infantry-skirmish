@@ -46,18 +46,31 @@ class ShopDialog: ZUI_ColumnLayout
 		{
 			margin[] = { SHOP_SPACING, 0, 0, 0 };
 
-			class categories: ZUI_RowLayout
+			class left: ZUI_ColumnLayout
 			{
-				background[] = SHOP_BACKGROUND;
-
-				width = 0.2;
 				margin[] = { 0, SHOP_SPACING, 0, 0 };
-				padding = SHOP_SPACING;
+				width = 0.25;
 
-				class categoriesItems: ZUI_Listview
+				class categories: ZUI_RowLayout
 				{
-					id = "categories";
-					columns[] = { 0, 0.8 };
+					background[] = SHOP_BACKGROUND;
+
+					padding = SHOP_SPACING;
+					margin[] = SPACING_BOTTOM;
+
+					class categoriesItems: ZUI_Listview
+					{
+						id = "categories";
+						columns[] = { 0, 0.8 };
+					};
+				};
+
+				class settings: ZUI_Button
+				{
+					id = "settings";
+					text = "RIS SETTINGS";
+					height = 0.05;
+					heightType = ZUI_SIZE_ABSOLUTE;
 				};
 			};
 

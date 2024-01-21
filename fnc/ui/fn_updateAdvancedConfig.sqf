@@ -28,6 +28,23 @@ private _yy = 0;
 		_ctrl ctrlCommit 0;
 		_ctrl ctrlAddEventHandler ["ButtonClick", format["[""%1""] spawn RSTF_fnc_showAdvancedOptions", _category]];
 
+		if (RSTF_ADVANCED_CONFIG_INGAME) then {
+			private _allowIngame = isNumber(_x >> "ingame") && { getNumber(_x >> "ingame") == 1 };
+			_ctrl ctrlEnable _allowIngame;
+			if (!_allowIngame) then {
+				_ctrl ctrlSetTooltip "This section can only be changed in the lobby";
+			};
+
+			private _onlyClient = isMultiplayer && !isServer && (admin clientOwner) == 0;
+			if (_onlyClient) then {
+				private _allowClient = isNumber(_x >> "client") && { getNumber(_x >> "client") == 1 };
+				_ctrl ctrlEnable _allowClient;
+				if (!_allowClient) then {
+					_ctrl ctrlSetTooltip "This section can only be accessed by admin";
+				};
+			};
+		};
+
 		RSTF_ADVANCED_LASTCATEGORIES pushBack _ctrl;
 
 		_idc = _idc + 1;

@@ -544,7 +544,10 @@ RSTF_CLEAN = true;
 RSTF_CLEAN_INTERVAL = 3*60;
 RSTF_CLEAN_INTERVAL_VEHICLES = 3*60;
 
+// Shortcut to open buy menu
 RSTF_BUY_MENU_ACTION = 0;
+// Show BUY menu as an player action
+RSTF_BUY_MENU_SHOW_AS_ACTION = true;
 
 // Minimal infantry spawn distance in meters
 RSTF_SPAWN_DISTANCE_MIN = 350;

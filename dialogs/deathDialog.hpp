@@ -81,7 +81,7 @@ class RSTF_RscDeathDialog
 			y = RSTF_DEATH_Y + RSTF_DEATH_H - RSTF_DEATH_BUTTON_H * 2 - 0.01;
 			w = RSTF_DEATH_W;
 			h = RSTF_DEATH_BUTTON_H;
-			text = "Equipment";
+			text = "EQUIPMENT";
 		};
 		class spawn : RSTF_DEATH_Button
 		{
@@ -90,7 +90,7 @@ class RSTF_RscDeathDialog
 			y = RSTF_DEATH_Y + RSTF_DEATH_H - RSTF_DEATH_BUTTON_H;
 			w = RSTF_DEATH_W;
 			h = RSTF_DEATH_BUTTON_H;
-			text = "Spawn";
+			text = "SPAWN";
 		};
 	};
 };

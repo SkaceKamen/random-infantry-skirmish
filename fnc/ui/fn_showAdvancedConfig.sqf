@@ -3,8 +3,10 @@
 disableSerialization;
 
 private _parent = param [0, displayNull];
+private _ingame = param [1, false];
 
-RSTF_ADVANCED_CONFIG_DISPLAY = [_parent createDisplay "RSTF_RscDialogAdvancedConfig"];
+RSTF_ADVANCED_CONFIG_DISPLAY = [(findDisplay 46) createDisplay "RSTF_RscDialogAdvancedConfig"];
+RSTF_ADVANCED_CONFIG_INGAME = _ingame;
 
 RSTF_ADVANCED_LASTCATEGORIES = [];
 
@@ -13,12 +15,24 @@ _saveButton ctrlAddEventHandler ["ButtonClick", {
 	call RSTF_fnc_saveAdvancedOptions;
 	RSTF_ADVANCED_LASTOPTIONS = [];
 	call RSTF_fnc_profileSave;
-	call RSTF_fnc_updateMainConfigScreen;
+	call RSTF_fnc_syncServerOptions;
+
+	if (!RSTF_ADVANCED_CONFIG_INGAME) then {
+		call RSTF_fnc_updateMainConfigScreen;
+	} else {
+		if (RSTF_DEATH_SHOWN) then {
+			0 spawn RSTF_fnc_deathUpdate;
+			0 spawn RSTF_fnc_updateOverlay;
+		};
+	};
+
 	RSTF_ADVANCED_CONFIG_DISPLAY#0 closeDisplay 0;
 	RSTF_ADVANCED_CONFIG_DISPLAY = [];
 }];
 
+
 _resetButton = ["RSTF_RscDialogAdvancedConfig", "resetButton"] call RSTF_fnc_getCtrl;
+_resetButton ctrlShow !RSTF_ADVANCED_CONFIG_INGAME;
 _resetButton ctrlAddEventHandler ["ButtonClick", {
 	0 spawn {
 		if (["Do you really want to reset all configuration to default values?", "Reset", "Yes", "No", RSTF_ADVANCED_CONFIG_DISPLAY#0] call BIS_fnc_GUImessage) then {
@@ -34,4 +48,11 @@ _resetButton ctrlAddEventHandler ["ButtonClick", {
 
 private _config = missionConfigFile >> "RSTF_Options";
 private _categories = "true" configClasses _config;
-[configName(_categories select 0), true] spawn RSTF_fnc_showAdvancedOptions;
+private _defaultCategory = "General";
+private _onlyClient = isMultiplayer && !isServer && (admin clientOwner) == 0;
+
+if (_onlyClient) then {
+	_defaultCategory = "Player";
+};
+
+[_defaultCategory, true] spawn RSTF_fnc_showAdvancedOptions;

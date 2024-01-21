@@ -157,6 +157,8 @@ class RSTF
 		class updateMainConfigScreen {};
 
 		class showVehicleConfiguration {};
+		class deathUpdate {};
+		class updateOverlay {};
 	};
 
 	class net
@@ -174,6 +176,7 @@ class RSTF
 		class clientInitRequest {};
 		class clientInit {};
 		class assignPlayerAsLeader {};
+		class syncServerOptions {};
 	};
 
 	class support

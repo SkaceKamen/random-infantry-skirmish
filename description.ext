@@ -22,6 +22,8 @@
 #include "dialogs\zui\supplyDrop.hpp"
 #include "dialogs\zui\vehicleConfiguration.hpp"
 #include "dialogs\zui\battleStart.hpp"
+#include "dialogs\zui\death.hpp"
+#include "dialogs\zui\deathTitle.hpp"
 
 #include "modes.hpp"
 #include "options-menu.hpp"

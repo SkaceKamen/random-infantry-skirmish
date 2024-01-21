@@ -8,6 +8,7 @@ class RSTF_ADV_CATEGORY: RscButton
 	h = 0.1;
 	font = GUI_BUTTON_FONT;
 	colorBackground[] = { 0, 0, 0, 0.8 };
+	colorBackgroundDisabled[] = { 0, 0, 0, 0.5 };
 };
 
 class RSTF_ADV_LABEL: RscTextRight

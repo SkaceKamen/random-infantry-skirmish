@@ -4,6 +4,7 @@
 class RSTF_Options {
 	class General {
 		title = "Mode";
+		ingame=1;
 
 		class Items {
 			class RSTF_MODE_SELECTED {
@@ -20,12 +21,14 @@ class RSTF_Options {
 				description="One side wins after reaching this limit.";
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'KOTH'";
+				ingame=1;
 			};
 			class RSTF_MODE_KOTH_SCORE_INTERVAL {
 				title="Point award interval";
 				description="In seconds. Interval in which is point awarded to side that holds the objective.";
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'KOTH'";
+				ingame=1;
 			};
 
 			// Classic
@@ -34,24 +37,28 @@ class RSTF_Options {
 				description="One side wins after reaching this limit.";
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+				ingame=1;
 			};
 			class RSTF_SCORE_PER_KILL {
 				title="Score per kill";
 				description="Score you get for killing soldier.";
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+				ingame=1;
 			};
 			class RSTF_SCORE_PER_TASK {
 				title="Score per task";
 				description="Score you get for completing task.";
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+				ingame=1;
 			};
 			class RSTF_ENEMY_ADVANTAGE_SCORE {
 				title="Enemy score multiplier";
 				description="Enemy score will be multiplied by this.";
 				type="float";
 				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+				ingame=1;
 			};
 
 			// Push
@@ -59,38 +66,41 @@ class RSTF_Options {
 				title="Side";
 				description="Which side will BLUFOR be on";
 				type="select";
-				visible = IS_PUSH;
+				visible=IS_PUSH;
 				optionsVariable="RSTF_MODE_PUSH_SIDE_OPTIONS";
 			};
 			class RSTF_MODE_PUSH_POINT_COUNT {
 				title="Points to capture";
 				description="Number of points that you have to capture to win";
 				type="number";
-				visible = IS_PUSH;
+				visible=IS_PUSH;
 			};
 			class RSTF_MODE_PUSH_SCORE_LIMIT {
 				title="Score to capture";
 				description="Point is captured when one side reaches this number of points";
 				type="number";
-				visible = IS_PUSH;
+				visible=IS_PUSH;
+				ingame=1;
 			};
 			class RSTF_MODE_PUSH_SCORE_INTERVAL {
 				title="Point award interval";
 				description="In seconds. Interval in which is point awarded to side that holds the objective.";
 				type="number";
-				visible = IS_PUSH;
+				visible=IS_PUSH;
+				ingame=1;
 			};
 			class RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT {
 				title="Number of defensive emplacements";
 				description="Number of defensive emplacements spawned, only works when faction has suitable static emplacements.";
 				type="number";
-				visible = IS_PUSH;
+				visible=IS_PUSH;
 			};
 			class RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE {
 				title="Attackers group advantage";
 				description="Attackers will have this much more groups.";
 				type="number";
-				visible = IS_PUSH;
+				visible=IS_PUSH;
+				ingame=1;
 			};
 
 			// Defense
@@ -99,66 +109,78 @@ class RSTF_Options {
 				description="Number of seconds that the point has to be defended to win the battle.";
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
+				ingame=1;
 			};
 			class RSTF_MODE_DEFEND_RADIUS {
 				title="Defended point radius";
 				description="Capture radius of the defended point";
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
+				ingame=1;
 			};
 			class RSTF_MODE_DEFEND_SCORE_LIMIT {
 				title="Score to capture";
 				description="Point is lost when attackers reach this score";
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
+				ingame=1;
 			};
 			class RSTF_MODE_DEFEND_SCORE_INTERVAL {
 				title="Point award interval";
 				description="In seconds. Interval in which is point awarded to attackers when they have majority on the objective.";
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
+				ingame=1;
 			};
 		};
 	};
 	
 	class Spawning {
 		title = "Spawning";
+		ingame=1;
 
 		class Items {
 			class RSTF_LIMIT_GROUPS {
 				title="Groups per side";
 				description="Number of groups spawned for each side.";
 				type="number";
+				ingame=1;
 			};
 			class RSTF_ENEMY_ADVANTAGE_GROUPS {
 				title="Enemy groups advantage";
 				description="Enemy will have this much more groups.";
 				type="number";
+				ingame=1;
 			};
 			class RSTF_LIMIT_UNITS {
 				title="Units per group";
 				description="Number of soldiers in single group.";
 				type="number";
+				ingame=1;
 			};
 			class RSTF_ENEMY_ADVANTAGE_UNITS {
 				title="Enemy units advantage";
 				description="Enemy groups will have this much more units.";
 				type="number";
+				ingame=1;
 			};
 			class RSTF_LIMIT_SPAWN {
 				title="Wave spawn time";
 				description="Interval in seconds in which reinforcements are spawned";
 				type="number";
+				ingame=1;
 			};
 			class RSTF_SPAWN_REUSE_GROUPS {
 				title="Reuse existing groups when spawning";
 				description="Don't create new groups when spawning new units, reuse existing ones. Can cause AI issues";
 				type="checkbox";
+				ingame=1;
 			};
 			class RSTF_SPAWN_AT_OWN_GROUP {
 				title="Spawn new units near group";
 				description="Spawn new units near group when there's no enemy near";
 				type="checkbox";
+				ingame=1;
 			};
 
 			SPACER;
@@ -168,12 +190,14 @@ class RSTF_Options {
 				description="Minimum unit skill, value from 0 to 1";
 				type="float";
 				validator="_this call RSTF_VALIDATOR_SKILL_MIN";
+				ingame=1;
 			};
 			class RSTF_SKILL_MAX {
 				title="Maximum unit skill";
 				description="Maximum unit skill, value from 0 to 1";
 				type="float";
 				validator="_this call RSTF_VALIDATOR_SKILL_MAX";
+				ingame=1;
 			};
 
 			SPACER;
@@ -183,12 +207,14 @@ class RSTF_Options {
 				description="Minimal spawn distance from center of battle, in meters";
 				type="number";
 				validator="_this call RSTF_VALIDATOR_SPAWN_DISTANCE_MIN";
+				ingame=1;
 			};
 			class RSTF_SPAWN_DISTANCE_MAX {
 				title="Maximal spawn distance";
 				description="Maximal spawn distance from center of battle, in meters";
 				type="number";
 				validator="_this call RSTF_VALIDATOR_SPAWN_DISTANCE_MAX";
+				ingame=1;
 			};
 
 			SPACER;
@@ -198,17 +224,20 @@ class RSTF_Options {
 				description="Restricts which units are placed in same group. When set to faction, each unit in group will have same randomy selected faction. Same with category.";
 				type="select";
 				optionsVariable="RSTF_GROUP_UNIT_RESTRICTION_OPTIONS";
+				ingame=1;
 			};
 			class RSTF_RANDOMIZE_WEAPONS {
 				title="Randomize weapons for units";
 				description="Each soldier will be given random weapon.";
 				type="checkbox";
+				ingame=1;
 			};
 			class RSTF_RANDOMIZE_WEAPONS_RESTRICT {
 				title="Restrict random weapons to sides";
 				description="When weapons are randomized, only use weapons that origins from unit faction. (Useful for weapon mods).";
 				type="checkbox";
 				disabled="!RSTF_RANDOMIZE_WEAPONS";
+				ingame=1;
 			};
 
 			SPACER;
@@ -223,6 +252,8 @@ class RSTF_Options {
 
 	class Player {
 		title = "Player";
+		ingame=1;
+		client=1;
 
 		class Items {
 			class RSTF_SPAWN_TYPE {
@@ -230,26 +261,38 @@ class RSTF_Options {
 				description="How to select unit to spawn to. Closest - unit closest to your death, Group - unit in your group, Random - random unit";
 				type="select";
 				optionsVariable="RSTF_SPAWN_TYPES";
+				ingame=1;
 			};
 			class RSTF_PLAYER_ALWAYS_LEADER {
 				title="Always set player as leader";
 				description="Always set player as a leader of group of selected unit";
 				type="checkbox";
 				optionsVariable="RSTF_SPAWN_TYPES";
+				ingame=1;
 			};
 			class RSTF_CUSTOM_EQUIPMENT {
 				title="Enable player custom equipment";
 				description="Enable player to customize his equipment, which will be used when switching to soldier.";
 				type="checkbox";
+				ingame=1;
 			};
 
 			SPACER;
 
 			class RSTF_BUY_MENU_ACTION {
-				title="Buy button";
+				title="Buy shortcut";
 				description="What button opens vehicle shop.";
 				type="select";
 				optionsVariable="RSTF_POSSIBLE_KEYS_NAMES";
+				ingame=1;
+				client=1;
+			};
+			class RSTF_BUY_MENU_SHOW_AS_ACTION {
+				title="Add 'Open Shop' action";
+				description="Enable 'Open Shop' action";
+				type="checkbox";
+				ingame=1;
+				client=1;
 			};
 		};
 	};
@@ -301,6 +344,7 @@ class RSTF_Options {
 	};
 	class Money {
 		title = "Money";
+		ingame=1;
 
 		class Items {
 			class RSTF_MONEY_ENABLED {
@@ -316,24 +360,28 @@ class RSTF_Options {
 				description="Allow players to buy vehicles for their money";
 				type="checkbox";
 				disabled="!RSTF_MONEY_ENABLED";
+				ingame=1;
 			};
 			class RSTF_ENABLE_SUPPORTS {
 				title="Allow buying supports";
 				description="Allow players to buy supports (artillery)";
 				type="checkbox";
 				disabled="!RSTF_MONEY_ENABLED";
+				ingame=1;
 			};
 			class RSTF_ENABLE_AI_SUPPORT_VEHICLES {
 				title="Allow buying AI vehicles by players";
 				description="Allow players to buy support AI vehicles";
 				type="checkbox";
 				disabled="!RSTF_MONEY_ENABLED";
+				ingame=1;
 			};
 			class RSTF_AI_VEHICLE_SUPPORT_COST_MULTIPLIER {
 				title="AI vehicle price multiplier";
 				description="Vehicle cost multiplier applied when player buys AI vehicle";
 				type="number";
 				disabled="!RSTF_MONEY_ENABLED || !RSTF_ENABLE_AI_SUPPORT_VEHICLES";
+				ingame=1;
 			};
 
 			SPACER;
@@ -349,18 +397,21 @@ class RSTF_Options {
 				description="Award for killing enemy";
 				type="number";
 				disabled="!RSTF_MONEY_ENABLED";
+				ingame=1;
 			};
 			class RSTF_MULTIKILL_BONUS {
 				title="Bonus for multikill";
 				description="Bonus money for multikills, awarded for each kill over 1";
 				type="number";
 				disabled="!RSTF_MONEY_ENABLED";
+				ingame=1;
 			};
 			class RSTF_MONEY_PER_TASK {
 				title="Money per task";
 				description="Award for completing task";
 				type="number";
 				disabled="!RSTF_MONEY_ENABLED";
+				ingame=1;
 			};
 
 			SPACER;
@@ -370,6 +421,7 @@ class RSTF_Options {
 				description="Mutliplier applied to cost of every vehicle";
 				type="number";
 				disabled="!RSTF_MONEY_ENABLED";
+				ingame=1;
 			};
 
 			SPACER;
@@ -379,23 +431,27 @@ class RSTF_Options {
 				description="AI money reward multiplier, AI usually have less kills than player, so this helps them to catch up";
 				type="number";
 				disabled="!RSTF_MONEY_ENABLED";
+				ingame=1;
 			};
 			class RSTF_AI_MONEY_PER_SECOND {
 				title="AI money per second";
 				description="Money added per second to all AI units, allows AI to catch up with player";
 				type="number";
 				disabled="!RSTF_MONEY_ENABLED";
+				ingame=1;
 			};
 		};
 	};
 	class Vehicles {
 		title = "Vehicles";
+		ingame=1;
 
 		class Items {
 			class RSTF_AI_VEHICLES_ENABLED {
 				title="Allow AI Vehicles";
 				description="Allow AI to buy vehicles for their money";
 				type="checkbox";
+				ingame=1;
 			};
 
 			class RSTF_SPAWN_VEHICLES_UNLOCKED {
@@ -403,6 +459,7 @@ class RSTF_Options {
 				description="Allow players to enter AI vehicles";
 				type="checkbox";
 				disabled="!RSTF_AI_VEHICLES_ENABLED";
+				ingame=1;
 			};
 
 			class RSTF_MONEY_VEHICLES_AI_LIMIT {
@@ -410,6 +467,7 @@ class RSTF_Options {
 				description="Maximum number of spawned AI vehicles per side";
 				type="number";
 				disabled="!RSTF_AI_VEHICLES_ENABLED";
+				ingame=1;
 			};
 
 			class RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS {
@@ -417,6 +475,7 @@ class RSTF_Options {
 				description="Limit how many vehicles can spawn per-class. Global limit will be applied too.";
 				type="checkbox";
 				disabled="!RSTF_AI_VEHICLES_ENABLED";
+				ingame=1;
 			};
 
 			class RSTF_MONEY_VEHICLES_AI_AIR_LIMIT {
@@ -424,6 +483,7 @@ class RSTF_Options {
 				description="Maximum number of spawned air AI vehicles per side. Global limit will be applied too.";
 				type="number";
 				disabled="!RSTF_AI_VEHICLES_ENABLED || !RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS";
+				ingame=1;
 			};
 
 			class RSTF_MONEY_VEHICLES_AI_LAND_LIMIT {
@@ -431,41 +491,48 @@ class RSTF_Options {
 				description="Maximum number of spawned land AI vehicles per side. Global limit will be applied too.";
 				type="number";
 				disabled="!RSTF_AI_VEHICLES_ENABLED || !RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS";
+				ingame=1;
 			};
 		};
 	};
 	class UI {
 		title = "UI";
+		ingame=1;
 
 		class Items {
 			class RSTF_UI_SHOW_PLAYER_FEED {
 				title="Show player feed";
 				description="Show messages when player score changes.";
 				type="checkbox";
+				ingame=1;
 			};
 
 			class RSTF_UI_SHOW_PLAYER_MONEY {
 				title="Show player money";
 				description="Show current player money.";
 				type="checkbox";
+				ingame=1;
 			};
 
 			class RSTF_UI_SHOW_VEHICLE_MARKERS {
 				title="Show vehicle markers";
 				description="Show 3D markers of friendly vehicles.";
 				type="checkbox";
+				ingame=1;
 			};
 
 			class RSTF_UI_SHOW_GAMEMODE_SCORE {
 				title="Show game mode info";
 				description="Show current state of game mode, such team points in KoTH.";
 				type="checkbox";
+				ingame=1;
 			};
 
 			class RSTF_UI_SHOW_GAMEMODE_UNIT_COUNT {
 				title="Show game mode unit count";
 				description="Show exact unit count when showing capture state.";
 				type="checkbox";
+				ingame=1;
 			};
 		};
 	};

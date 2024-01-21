@@ -79,6 +79,7 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 	_ctrl ctrlSetText str(_value);
 	_ctrl ctrlSetTooltip _description;
 	_ctrl ctrlShow false;
+	_ctrl ctrlSetFontHeight (((((safezoneW / safezoneH) min 1.2)/ 1.2)/ 25) * 0.8);
 
 	// Checkbox have fixed size and diferent input
 	if (_type == "checkbox") then {
@@ -147,6 +148,23 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 			call RSTF_fnc_saveAdvancedOptions;
 			call RSTF_fnc_updateAdvancedConfig;
 		}];
+	};
+
+	if (RSTF_ADVANCED_CONFIG_INGAME) then {
+		private _allowIngame = isNumber(_x >> "ingame") && { getNumber(_x >> "ingame") == 1 };
+		_ctrl ctrlEnable _allowIngame;
+		if (!_allowIngame) then {
+			_ctrl ctrlSetTooltip "This option can only be changed in the lobby";
+		};
+
+		private _onlyClient = isMultiplayer && !isServer && (admin clientOwner) == 0;
+		if (_onlyClient) then {
+			private _allowClient = isNumber(_x >> "client") && { getNumber(_x >> "client") == 1 };
+			_ctrl ctrlEnable _allowClient;
+			if (!_allowClient) then {
+				_ctrl ctrlSetTooltip "This can only be changed by admin";
+			};
+		};
 	};
 
 	// Save created option for later manipulation
