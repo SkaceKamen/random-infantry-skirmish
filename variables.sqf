@@ -239,7 +239,8 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_AI_VEHICLE_SUPPORT_COST_MULTIPLIER",
 	"RSTF_ENABLE_AI_SUPPORT_VEHICLES",
 	"RSTF_VEHICLE_COST_MULTIPLIER",
-	"RSTF_MODE_PUSH_SIDE"
+	"RSTF_MODE_PUSH_SIDE",
+	"RSTF_GROUP_UNIT_RESTRICTION"
 ];
 
 // Profile values that are specific to local player (don't broadcast them)
@@ -424,3 +425,5 @@ RSTF_INTRO_PLAYING = false;
 
 // Which side will player be playing as
 RSTF_MODE_PUSH_SIDE_OPTIONS = ["Attackers", "Defenders"];
+
+RSTF_GROUP_UNIT_RESTRICTION_OPTIONS = ["None", "Faction", "Faction and category"];

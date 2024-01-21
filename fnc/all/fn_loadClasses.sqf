@@ -1,4 +1,6 @@
 RSTF_MEN = [ [], [], [] ];
+RSTF_MEN_PER_FACTION_CLASS = createHashMap;
+RSTF_MEN_PER_FACTION = createHashMap;
 
 {
 	private _side = _x select 0;
@@ -8,6 +10,27 @@ RSTF_MEN = [ [], [], [] ];
 	private _vehicles = [_factions] call RSTF_fnc_loadVehicles;
 	RSTF_MEN set [_side, _list select 0];
 	RSTF_VEHICLES set [_side, _vehicles];
+
+	{
+		private _cfg = configFile >> "cfgVehicles" >> _x;
+		private _faction = toLower(getText(_cfg >> "faction"));
+		private _vehicleClass = toLower(getText(_cfg >> "vehicleClass"));
+
+		if (!(_faction in RSTF_MEN_PER_FACTION_CLASS)) then {
+			RSTF_MEN_PER_FACTION_CLASS set [_faction, createHashMap];
+			RSTF_MEN_PER_FACTION set [_faction, []];
+		};
+
+		(RSTF_MEN_PER_FACTION get _faction) pushBack _x;
+
+		private _menPerClass = RSTF_MEN_PER_FACTION_CLASS get _faction;
+
+		if (!(_vehicleClass in _menPerClass)) then {
+			_menPerClass set [_vehicleClass, []];
+		};
+
+		(_menPerClass get _vehicleClass) pushBack _x;
+	} foreach _list#0;
 
 	diag_log format[
 		"Loaded %1 soldiers, %2 transport vehicles, %3 apcs and %4 static weapons for side %5 from factions %6",

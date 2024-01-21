@@ -193,6 +193,12 @@ class RSTF_Options {
 
 			SPACER;
 
+			class RSTF_GROUP_UNIT_RESTRICTION {
+				title="Restrict units in group";
+				description="Restricts which units are placed in same group. When set to faction, each unit in group will have same randomy selected faction. Same with category.";
+				type="select";
+				optionsVariable="RSTF_GROUP_UNIT_RESTRICTION_OPTIONS";
+			};
 			class RSTF_RANDOMIZE_WEAPONS {
 				title="Randomize weapons for units";
 				description="Each soldier will be given random weapon.";
