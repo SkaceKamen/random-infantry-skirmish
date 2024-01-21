@@ -11,4 +11,4 @@
 	Returns:
 	Money owned [Number]
 */
-[getPlayerUID(param [0, player])] call RSTF_fnc_getUnitMoney;
+[(param [0, player]) getVariable ["RSTF_UID", "unknown"]] call RSTF_fnc_getUnitMoney;

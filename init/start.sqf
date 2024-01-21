@@ -1,7 +1,10 @@
 RSTF_PREDEFINED_LOCATIONS = call RSTF_fnc_loadPredefined;
 
+RSTF_PLAYER_UID = "NET:" + str(clientOwner);
+
 if (!isDedicated) then {
 	player setVariable ["ASSIGNED", false, true];
+	player setVariable ["RSTF_UID", RSTF_PLAYER_UID, true];
 };
 
 waitUntil { time > 0 };

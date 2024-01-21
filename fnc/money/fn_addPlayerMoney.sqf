@@ -12,4 +12,4 @@
 	Returns:
 	Resulting amount [Number]
 */
-[getPlayerUID(param [0]), param [1]] call RSTF_fnc_addUnitMoney;
+[(param [0, player]) getVariable ["RSTF_UID", "unknown"], param [1]] call RSTF_fnc_addUnitMoney;

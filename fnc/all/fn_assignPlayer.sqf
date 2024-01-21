@@ -58,6 +58,7 @@ if (alive(_unit)) then {
 
 	// Move player into new unit
 	selectPlayer _unit;
+	_unit setVariable ["RSTF_UID", RSTF_PLAYER_UID, true];
 
 	// Hide camera
 	call RSTF_fnc_destroyCam;
