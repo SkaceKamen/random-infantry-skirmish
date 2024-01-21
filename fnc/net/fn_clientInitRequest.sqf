@@ -16,7 +16,7 @@ publicVariable "RSTF_DISTANCE";
 publicVariable "RSTF_POINT";
 publicVariable "RSTF_SCORE";
 publicVariable "RSTF_GROUPS";
-
+publicVariable "RSTF_BUYABLE_VEHICLES";
 publicVariable "RSTF_MODE_KOTH_ENABLED";
 publicVariable "RSTF_MODE_PUSH_ENABLED";
 publicVariable "RSTF_MODE_DEFEND_ENABLED";
