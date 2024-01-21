@@ -25,7 +25,7 @@ if (_sideIndex == 1) then {
 };
 
 // Clear empty groups
-_groups = _groups select { !isNull(_x) && { count(units(_x)) > 0 } };
+_groups = _groups select { !isNull(_x) && { { alive(_x) } count(units(_x)) > 0 } };
 RSTF_GROUPS set [_sideIndex, _groups];
 
 // Enemy can have units advantage
@@ -46,7 +46,7 @@ if (RSTF_MODE_PUSH_ENABLED && RSTF_MODE_ATTACKERS_SIDE == _sideIndex) then {
 private _totalUnits = _unitsPerGroup * _groupsPerSide;
 private _aliveUnits = 0;
 {
-	private _count = count(units(_x));
+	private _count = { alive(_x) } count (units(_x));
 	_aliveUnits = _aliveUnits + _count;
 	_x setVariable ["RSTF_UNITS_COUNT", _count];
 } foreach _groups;
