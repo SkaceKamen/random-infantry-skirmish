@@ -173,6 +173,7 @@ class RSTF
 		class clientInitRequest {};
 		class clientInit {};
 		class assignPlayerAsLeader {};
+		class setPlayerVote {};
 	};
 
 	class support

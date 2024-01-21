@@ -420,3 +420,6 @@ for [{_i = 1}, { _i <= 31 }, {_i = _i + 1}] do {
 RSTF_CURRENT_SIDE_INDEX = SIDE_FRIENDLY;
 
 RSTF_INTRO_PLAYING = false;
+
+// List of player who already submitted their map votes
+RSTF_VOTES_SUBMITTED = [];

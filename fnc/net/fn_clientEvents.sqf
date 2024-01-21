@@ -5,6 +5,7 @@
 	Assigns client specific event handlers.
 */
 
+/*
 if (RSTF_SHOW_CONFIG != -1) then {
 	if (RSTF_SHOW_CONFIG == clientOwner) then {
 		0 spawn RSTF_fnc_showConfig;
@@ -55,3 +56,4 @@ if (RSTF_SHOW_CONFIG != -1) then {
 		0 spawn RSTF_fnc_showConfig;
 	};
 };
+*/

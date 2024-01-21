@@ -4,6 +4,10 @@ if (isNull(RSTF_CAM)) then {
 	call RSTF_fnc_createCam;
 };
 
+if (RSTF_DEBUG) exitWith {
+	call RSTF_fnc_start;
+};
+
 RSTF_CAM camSetTarget RSTF_CAM_TARGET;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
@@ -15,7 +19,8 @@ RSTF_MAIN_CONFIG_layout = [
 ] call RSTF_fnc_spawnZUIDialog;
 
 private _display = [RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display;
-if (typeName(_display) == typeName(false) && { !_display }) then {
+
+if ((typeName(_display) == typeName(false) && { !_display })) exitWith {
 	call RSTF_fnc_start;
 };
 
@@ -124,7 +129,7 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 		RSTF_POINT_VOTES pushBack 0;
 	} foreach RSTF_POINTS;
 
-	RSTF_POINT_VOTES pushBack 0 ;
+	RSTF_POINT_VOTES pushBack 0;
 
 	// Stop if no battle was found
 	if (count(RSTF_POINTS) == 0) exitWith {

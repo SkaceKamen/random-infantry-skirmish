@@ -131,9 +131,10 @@ _ctrlVote ctrlAddEventHandler ["ButtonClick", {
 				publicVariable "RSTF_POINT_VOTES";
 				call RSTF_fnc_updateBattles;
 			} else {
+				
 				if (isNil("RSTF_POINT_VOTE")) then {
 					RSTF_POINT_VOTE = _selected;
-					publicVariable "RSTF_POINT_VOTE";
+					[_selected] remoteExec ["RSTF_fnc_setPlayerVote", REMOTE_TARGET_SERVER];
 				};
 			};
 		};

@@ -1,15 +1,5 @@
 ["Initializing server events"] call RSTF_fnc_Log;
 
-// This receives map votes from clients
-"RSTF_POINT_VOTE" addPublicVariableEventHandler {
-	_this spawn {
-		_index = _this select 1;
-		RSTF_POINT_VOTES set [_index, (RSTF_POINT_VOTES select _index) + 1];
-		publicVariable "RSTF_POINT_VOTES";
-		call RSTF_fnc_updateBattles;
-	};
-};
-
 // Admin closed config dialog
 "RSTF_CONFIG_DONE" addPublicVariableEventHandler {
 	["Admin closed config, staring game"] call RSTF_fnc_Log;
@@ -25,9 +15,19 @@
 	};
 };
 
-addMissionEventHandler ["PlayerConnected", {
-	if (admin (_this select 4) > 0 && RSTF_SHOW_CONFIG == -1) then {
-		RSTF_SHOW_CONFIG = (_this select 4);
-		publicVariable "RSTF_SHOW_CONFIG";
-	};
-}];
+if (isDedicated) then {
+	addMissionEventHandler [
+		"PlayerConnected",
+		{
+			params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+
+			if (admin _owner > 0 && RSTF_SHOW_CONFIG == -1) then {
+				// RSTF_SHOW_CONFIG = (_this select 4);
+				// publicVariable "RSTF_SHOW_CONFIG";
+
+				RSTF_SHOW_CONFIG = _owner;
+				[] remoteExec ["RSTF_fnc_showConfig", _owner];
+			};
+		}
+	];
+};
