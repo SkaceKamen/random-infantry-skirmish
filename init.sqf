@@ -26,11 +26,13 @@ RSTF_initScripts = [
 	call compile(preprocessFileLineNumbers(format["%1init\%2.sqf", SCRIPTS_ROOT, _x]));
 } foreach RSTF_initScripts;
 
-{
-	_x disableAI "ALL";
-	_x allowDamage false;
-	_x enableSimulationGlobal false;
-} foreach allUnits;
+if (!isMultiplayer || isServer) then {
+	{
+		_x disableAI "ALL";
+		_x allowDamage false;
+		_x enableSimulationGlobal false;
+	} foreach allUnits;
+};
 
 addMissionEventHandler ["Loaded", {
 	// Start UI features

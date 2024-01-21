@@ -17,6 +17,10 @@ publicVariable "RSTF_POINT";
 publicVariable "RSTF_SCORE";
 publicVariable "RSTF_GROUPS";
 
+publicVariable "RSTF_MODE_KOTH_ENABLED";
+publicVariable "RSTF_MODE_PUSH_ENABLED";
+publicVariable "RSTF_MODE_DEFEND_ENABLED";
+
 /*
 TODO: 
 publicVariable "RSTF_VOTES_TIMEOUT";

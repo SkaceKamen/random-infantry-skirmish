@@ -98,14 +98,6 @@ if (!RSTF_UI_SHOW_GAMEMODE_SCORE) then {
 			_ctrlUserCountEnemy ctrlSetBackgroundColor [0.9, 0.14, 0.14, 0.9];
 		};
 	};
-
-	// Hide KOTH only controls
-	if (!RSTF_MODE_KOTH_ENABLED && !RSTF_MODE_PUSH_ENABLED && !RSTF_MODE_DEFEND_ENABLED) then {
-		{
-			_x ctrlShow false;
-			_x ctrlCommit 0;
-		} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy];
-	};
 };
 
 _ctrlOwner ctrlShow false;

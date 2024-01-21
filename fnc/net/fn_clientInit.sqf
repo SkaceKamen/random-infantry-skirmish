@@ -1,8 +1,6 @@
 _this spawn {
 	private _status = param [0];
 
-	systemChat format ["Mission Status: %1", _status];
-
 	switch (_status) do {
 		case "started": {
 			// Start UI & stuff

@@ -117,6 +117,7 @@ class RSTF
 		class getVehicleClassCrew {};
 		class getVehicleClassSkins {};
 		class getVehicleClassComponents {};
+		class applyUnitEquipment{};
 	};
 
 	class ui
@@ -171,6 +172,7 @@ class RSTF
 		class onEnd {};
 		class clientInitRequest {};
 		class clientInit {};
+		class assignPlayerAsLeader {};
 	};
 
 	class support

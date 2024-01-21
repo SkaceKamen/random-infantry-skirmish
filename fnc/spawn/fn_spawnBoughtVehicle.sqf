@@ -112,8 +112,6 @@ if (typeName(_camouflage) != typeName(false) || typeName(_components) != typeNam
 		_camouflageArg = [_camouflage, 1];
 	};
 
-	systemChat str([_camouflageArg, _componentsArg]);
-
 	[_vehicle, _camouflageArg, _componentsArg] call BIS_fnc_initVehicle;
 };
 

@@ -78,11 +78,8 @@ _categoriesContainer lnbSetCurSelRow 0;
 
 _categoriesContainer ctrlAddEventHandler ["LBSelChanged", {
 	params ["_control", "_selectedIndex"];
-		systemChat str(_selectedIndex);
-		systemChat str(_control lnbData [_selectedIndex, 0]);
 
 	private _index = parseNumber(_control lnbData [_selectedIndex, 0]);
-	systemChat str(_index);
 	[_index] spawn RSTFUI_fnc_shopCategoryClicked
 }];
 

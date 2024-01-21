@@ -1,5 +1,7 @@
 #include "dialogs\keys.hpp"
 
+REMOTE_TARGET_SERVER = 2;
+
 RSTF_DEBUG = true;
 
 // Indexes used for various arrays

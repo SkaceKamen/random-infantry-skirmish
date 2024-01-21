@@ -59,11 +59,6 @@ if (alive(_unit)) then {
 	// Move player into new unit
 	selectPlayer _unit;
 
-	// Remove respawned unit in multiplayer
-	if (isMultiplayer && _previous != RSTF_BACKUP_PLAYER) then {
-		deleteVehicle _previous;
-	};
-
 	// Hide camera
 	call RSTF_fnc_destroyCam;
 
@@ -90,7 +85,22 @@ if (alive(_unit)) then {
 	};
 
 	if (RSTF_PLAYER_ALWAYS_LEADER) then {
-		group(player) selectLeader player;
+		if (isMultiplayer) then {
+			private _groupHasPlayer = false;
+
+			{
+				if (isPlayer(_x)) exitWith {
+					_groupHasPlayer = true;
+				};
+			} foreach units(group(player));
+
+			if (!_groupHasPlayer) then {
+				// Make sure player is leader
+				[group(player), player] remoteExec ["selectLeader", REMOTE_TARGET_SERVER];
+			};
+		} else {
+			group(player) selectLeader player;
+		};
 	};
 } else {
 	// Simulate killed handler
