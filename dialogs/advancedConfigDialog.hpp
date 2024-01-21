@@ -44,7 +44,7 @@ class RSTF_RscDialogAdvancedConfig
 			w = RSTF_ADV_W;
 			h = RSTF_ADV_TITLE_H;
 			colorBackground[] = { TITLE_BG_RGBA };
-			text = "Advanced configuration";
+			text = "Mission Configuration";
 			font = GUI_TITLE_FONT;
 		};
 

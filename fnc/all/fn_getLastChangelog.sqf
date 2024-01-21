@@ -15,6 +15,9 @@
 	<t size='1.25' font='PuristaLight'>Improved vehicle shop</t><br />
 	Player can now choose vehicle seat and skin when buying a new vehicle. Players can also buy AI vehicles as a support.<br />
 	<br /> 
+	<t size='1.25' font='PuristaLight'>Ingame configuration changes</t><br />
+	You can now change some game options even after the start. Settings are accessible through shop dialog or death.<br />
+	<br />
 	<t size='1.25' font='PuristaLight'>New configuration options</t><br />
 	You can now select a mission date in the configuration and vehicle prices can now be globally adjusted by a multiplier. You can also restrict number of AI air vehicles.<br />
 	<br />
