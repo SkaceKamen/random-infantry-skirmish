@@ -35,23 +35,27 @@ private _bluforCtrl = [RSTF_START_layout, "bluforFactions"] call ZUI_fnc_getCont
 
 {
 	private _cfg = configFile >> "cfgFactionClasses" >> _x;
-	private _name = getText(_cfg >> "displayName");
-	private _icon = getText(_cfg >> "icon");
+	if (isClass(_cfg)) then {
+		private _name = getText(_cfg >> "displayName");
+		private _icon = getText(_cfg >> "icon");
 
-	private _row = _bluforCtrl lnbAddRow [""];
-	_bluforCtrl lnbSetTextRight [[_row, 0], _name];
-	_bluforCtrl lnbSetPictureRight [[_row, 0], _icon];
+		private _row = _bluforCtrl lnbAddRow [""];
+		_bluforCtrl lnbSetTextRight [[_row, 0], _name];
+		_bluforCtrl lnbSetPictureRight [[_row, 0], _icon];
+	};
 } foreach FRIENDLY_FACTIONS;
 
 private _opforCtrl = [RSTF_START_layout, "opforFactions"] call ZUI_fnc_getControlById;
 
 {
 	private _cfg = configFile >> "cfgFactionClasses" >> _x;
-	private _name = getText(_cfg >> "displayName");
-	private _icon = getText(_cfg >> "icon");
+	if (isClass(_cfg)) then {
+		private _name = getText(_cfg >> "displayName");
+		private _icon = getText(_cfg >> "icon");
 
-	private _row = _opforCtrl lnbAddRow [_name];
-	_opforCtrl lnbSetPicture [[_row, 0], _icon];
+		private _row = _opforCtrl lnbAddRow [_name];
+		_opforCtrl lnbSetPicture [[_row, 0], _icon];
+	};
 } foreach ENEMY_FACTIONS;
 
 sleep 6;

@@ -268,11 +268,13 @@ class RSTF_Options {
 				title="Number of maps to pick";
 				description="Number of maps that will be proposed to player(s). 0 for unlimited";
 				type="number";
+				disabled="!RSTF_MAP_VOTE";
 			};
 			class RSTF_MAP_VOTE_TIMEOUT {
 				title="Vote timeout (secs)";
 				description="Time in seconds to wait for votes (only in multiplayer).";
 				type="number";
+				visible="isMultiplayer";
 			};
 		};
 	};

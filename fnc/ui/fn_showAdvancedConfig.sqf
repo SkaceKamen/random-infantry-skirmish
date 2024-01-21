@@ -21,7 +21,7 @@ _saveButton ctrlAddEventHandler ["ButtonClick", {
 _resetButton = ["RSTF_RscDialogAdvancedConfig", "resetButton"] call RSTF_fnc_getCtrl;
 _resetButton ctrlAddEventHandler ["ButtonClick", {
 	0 spawn {
-		if (["Do you really want to reset all configuration to default values?", "Reset", "Yes", "No"] call BIS_fnc_GUImessage) then {
+		if (["Do you really want to reset all configuration to default values?", "Reset", "Yes", "No", RSTF_ADVANCED_CONFIG_DISPLAY#0] call BIS_fnc_GUImessage) then {
 			RSTF_ADVANCED_LASTOPTIONS = [];
 			call RSTF_fnc_profileReset;
 			RSTF_ADVANCED_CONFIG_DISPLAY#0 closeDisplay 0;
