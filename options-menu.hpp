@@ -3,7 +3,7 @@
 
 class RSTF_Options {
 	class General {
-		title = "General";
+		title = "Mode";
 
 		class Items {
 			class RSTF_MODE_SELECTED {
@@ -118,24 +118,9 @@ class RSTF_Options {
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
 			};
-
-			SPACER;
-			
-			class RSTF_SKILL_MIN {
-				title="Minimum unit skill";
-				description="Minimum unit skill, value from 0 to 1";
-				type="float";
-				validator="_this call RSTF_VALIDATOR_SKILL_MIN";
-			};
-			class RSTF_SKILL_MAX {
-				title="Maximum unit skill";
-				description="Maximum unit skill, value from 0 to 1";
-				type="float";
-				validator="_this call RSTF_VALIDATOR_SKILL_MAX";
-			};
 		};
 	};
-
+	
 	class Spawning {
 		title = "Spawning";
 
@@ -178,43 +163,17 @@ class RSTF_Options {
 
 			SPACER;
 
-			class RSTF_SPAWN_TYPE {
-				title="Respawn player to";
-				description="How to select unit to spawn to. Closest - unit closest to your death, Group - unit in your group, Random - random unit";
-				type="select";
-				optionsVariable="RSTF_SPAWN_TYPES";
+			class RSTF_SKILL_MIN {
+				title="Minimum unit skill";
+				description="Minimum unit skill, value from 0 to 1";
+				type="float";
+				validator="_this call RSTF_VALIDATOR_SKILL_MIN";
 			};
-			class RSTF_PLAYER_ALWAYS_LEADER {
-				title="Always set player as leader";
-				description="Always set player as a leader of group of selected unit";
-				type="checkbox";
-				optionsVariable="RSTF_SPAWN_TYPES";
-			};
-			class RSTF_RANDOMIZE_WEAPONS {
-				title="Randomize player weapons";
-				description="Each soldier will be given random weapon.";
-				type="checkbox";
-				disabled="RSTF_CUSTOM_EQUIPMENT";
-			};
-			class RSTF_RANDOMIZE_WEAPONS_RESTRICT {
-				title="Restrict weapons to sides";
-				description="When weapons are randomized, only use weapons that origins from unit faction. (Useful for mods).";
-				type="checkbox";
-				disabled="!RSTF_RANDOMIZE_WEAPONS";
-			};
-			class RSTF_CUSTOM_EQUIPMENT {
-				title="Enable custom equipment";
-				description="Enable player to customize his equipment, which will be used when switching to soldier.";
-				type="checkbox";
-				disabled="RSTF_RANDOMIZE_WEAPONS";
-			};
-
-			SPACER;
-
-			class RSTF_SPAWN_TRANSPORTS {
-				title="Vehicles at spawn";
-				description="Tries to spawn transport vehicles at side spawns to cover unit spawning.";
-				type="checkbox";
+			class RSTF_SKILL_MAX {
+				title="Maximum unit skill";
+				description="Maximum unit skill, value from 0 to 1";
+				type="float";
+				validator="_this call RSTF_VALIDATOR_SKILL_MAX";
 			};
 
 			SPACER;
@@ -231,8 +190,64 @@ class RSTF_Options {
 				type="number";
 				validator="_this call RSTF_VALIDATOR_SPAWN_DISTANCE_MAX";
 			};
+
+			SPACER;
+
+			class RSTF_RANDOMIZE_WEAPONS {
+				title="Randomize weapons for units";
+				description="Each soldier will be given random weapon.";
+				type="checkbox";
+			};
+			class RSTF_RANDOMIZE_WEAPONS_RESTRICT {
+				title="Restrict random weapons to sides";
+				description="When weapons are randomized, only use weapons that origins from unit faction. (Useful for weapon mods).";
+				type="checkbox";
+				disabled="!RSTF_RANDOMIZE_WEAPONS";
+			};
+
+			SPACER;
+
+			class RSTF_SPAWN_TRANSPORTS {
+				title="Spawn vehicles at spawn";
+				description="Tries to spawn transport vehicles at side spawns to cover unit spawning.";
+				type="checkbox";
+			};
 		};
 	};
+
+	class Player {
+		title = "Player";
+
+		class Items {
+			class RSTF_SPAWN_TYPE {
+				title="Respawn player to";
+				description="How to select unit to spawn to. Closest - unit closest to your death, Group - unit in your group, Random - random unit";
+				type="select";
+				optionsVariable="RSTF_SPAWN_TYPES";
+			};
+			class RSTF_PLAYER_ALWAYS_LEADER {
+				title="Always set player as leader";
+				description="Always set player as a leader of group of selected unit";
+				type="checkbox";
+				optionsVariable="RSTF_SPAWN_TYPES";
+			};
+			class RSTF_CUSTOM_EQUIPMENT {
+				title="Enable player custom equipment";
+				description="Enable player to customize his equipment, which will be used when switching to soldier.";
+				type="checkbox";
+			};
+
+			SPACER;
+
+			class RSTF_BUY_MENU_ACTION {
+				title="Buy button";
+				description="What button opens vehicle shop.";
+				type="select";
+				optionsVariable="RSTF_POSSIBLE_KEYS_NAMES";
+			};
+		};
+	};
+
 	class Neutrals {
 		title = "Neutrals";
 		visible = "call RSTF_fnc_doesModeSupportNeutrals";
@@ -477,41 +492,6 @@ class RSTF_Options {
 		title = "Other";
 
 		class Items {
-			class RSTF_BUY_MENU_ACTION {
-				title="Buy button";
-				description="What button opens vehicle shop.";
-				type="select";
-				optionsVariable="RSTF_POSSIBLE_KEYS_NAMES";
-			};
-		
-			SPACER;
-
-			class RSTF_CLEAR_HISTORIC_ITEMS {
-				title="Clear modern things";
-				description="Simple script that will try to remove modern things from map, intended to be used with WW2 mods on modern maps.";
-				type="checkbox";
-			};
-
-			SPACER;
-
-			class RSTF_CLEAN {
-				title="Clear dead bodies";
-				description="Dead bodies will be destroyed after 3 minutes. This helps performance.";
-				type="checkbox";
-			};
-			class RSTF_CLEAN_INTERVAL {
-				title="Infantry clean interval";
-				description="After how much time should be dead bodies removed. In seconds.";
-				type="number";
-			};
-			class RSTF_CLEAN_INTERVAL_VEHICLES {
-				title="Vehicles clean interval";
-				description="After how much time should be empty/destroyed vehicles removed. In seconds.";
-				type="number";
-			};
-
-			SPACER;
-
 			class RSTF_WEATHER {
 				title="Weather";
 				description="Mission weather.";
@@ -552,6 +532,32 @@ class RSTF_Options {
 				type="select";
 				optionsVariable="RSTF_AVAILABLE_DAYS";
 				disabled="RSTF_USE_DEFAULT_DATE";
+			};
+
+			SPACER;
+
+			class RSTF_CLEAR_HISTORIC_ITEMS {
+				title="Clear modern things";
+				description="Simple script that will try to remove modern things from map, intended to be used with WW2 mods on modern maps.";
+				type="checkbox";
+			};
+
+			SPACER;
+
+			class RSTF_CLEAN {
+				title="Clear dead bodies";
+				description="Dead bodies will be destroyed after 3 minutes. This helps performance.";
+				type="checkbox";
+			};
+			class RSTF_CLEAN_INTERVAL {
+				title="Infantry clean interval";
+				description="After how much time should be dead bodies removed. In seconds.";
+				type="number";
+			};
+			class RSTF_CLEAN_INTERVAL_VEHICLES {
+				title="Vehicles clean interval";
+				description="After how much time should be empty/destroyed vehicles removed. In seconds.";
+				type="number";
 			};
 
 			SPACER;
