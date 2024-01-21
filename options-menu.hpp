@@ -55,6 +55,13 @@ class RSTF_Options {
 			};
 
 			// Push
+			class RSTF_MODE_PUSH_SIDE {
+				title="Side";
+				description="Which side will BLUFOR be on";
+				type="select";
+				visible = IS_PUSH;
+				optionsVariable="RSTF_MODE_PUSH_SIDE_OPTIONS";
+			};
 			class RSTF_MODE_PUSH_POINT_COUNT {
 				title="Points to capture";
 				description="Number of points that you have to capture to win";

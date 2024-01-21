@@ -32,8 +32,8 @@ class RSTF_Modes
 
 	class Push
 	{
-		title = "Push - Attack";
-		description = "Capture a series of fortified points.";
+		title = "Push";
+		description = "Capture or defend series of fortified points.";
 		enabled = 1;
 		order = 0;
 		hasNeutralFaction = 0;
@@ -47,13 +47,13 @@ class RSTF_Modes
 
 	class PushDefense
 	{
-		title = "Push - Defense";
+		title = "Push";
 		description = "Defend a series of fortified points.";
-		enabled = 1;
+		enabled = 0;
 		order = 1;
 		hasNeutralFaction = 0;
 
-		init = "RSTF_MODE_PUSH_initDefense";
+		init = "RSTF_MODE_PUSH_init";
 		startLoop = "RSTF_MODE_PUSH_startLoop";
 		unitKilled = "RSTF_MODE_PUSH_unitKilled";
 		taskCompleted = "RSTF_MODE_PUSH_taskCompleted";

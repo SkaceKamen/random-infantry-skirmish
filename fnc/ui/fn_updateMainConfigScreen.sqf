@@ -38,6 +38,7 @@ switch (call RSTF_fnc_getModeId) do {
 		_ctrl lnbAddRow ["Points to defend", str(RSTF_MODE_PUSH_POINT_COUNT)];
 	};
 	case "Push": {
+		_ctrl lnbAddRow ["Side", RSTF_MODE_PUSH_SIDE_OPTIONS#RSTF_MODE_PUSH_SIDE];
 		_ctrl lnbAddRow ["Points to push", str(RSTF_MODE_PUSH_POINT_COUNT)];
 	};
 	case "Classic": {

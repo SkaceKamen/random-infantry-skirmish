@@ -560,6 +560,8 @@ RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT = 5;
 RSTF_MODE_PUSH_FIRST_POINT_EMPLACEMENTS = true;
 // Attackers will have this much more groups
 RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE = 1;
+// Which side will BLUEFOR be
+RSTF_MODE_PUSH_SIDE = 0;
 
 // Remove un-historical items from map
 RSTF_CLEAR_HISTORIC_ITEMS = false;
