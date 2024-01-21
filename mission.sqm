@@ -8,7 +8,7 @@ class EditorData
 	toggles=2;
 	class ItemIDProvider
 	{
-		nextID=4152;
+		nextID=4200;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=2417;
+		nextID=3038;
 	};
 	class Camera
 	{
-		pos[]={14749.255,47.728859,16266.158};
-		dir[]={-0.10024855,-0.53556925,0.83864546};
-		up[]={-0.063567676,0.8444736,0.53180969};
-		aside[]={0.99303001,2.7864007e-007,0.11870164};
+		pos[]={14086.443,76.68824,16410.629};
+		dir[]={0.45828941,-0.68801892,0.56280047};
+		up[]={0.43446523,0.72565442,0.53354114};
+		aside[]={0.77548593,-9.7230077e-007,-0.63147509};
 	};
 };
 binarizationWanted=0;
@@ -84,7 +84,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=31;
+		items=30;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -157,143 +157,138 @@ class AddonsMetaData
 		};
 		class Item10
 		{
-			className="WW2_Objects_c_Misc_WW2_SimpleObjects_c_CUP";
-			name="WW2_Objects_c_Misc_WW2_SimpleObjects_c_CUP";
-		};
-		class Item11
-		{
 			className="A3_Misc_F";
 			name="Arma 3 - 3D Aids and Helpers";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item12
+		class Item11
 		{
 			className="A3_Structures_F_Exp_Commercial";
 			name="Arma 3 Apex - Commercial Buildings";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item13
+		class Item12
 		{
 			className="A3_Props_F_Exp";
 			name="Arma 3 Apex - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item14
+		class Item13
 		{
 			className="A3_Structures_F_Enoch_Cultural";
 			name="Arma 3 Contact Platform - Cultural Buildings";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item15
+		class Item14
 		{
 			className="A3_Rocks_F";
 			name="Arma 3 - Rocks and Stones";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item16
+		class Item15
 		{
 			className="A3_Data_F";
 			name="Arma 3 - Main Configuration";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item17
+		class Item16
 		{
 			className="A3_Structures_F";
 			name="Arma 3 - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item18
+		class Item17
 		{
 			className="A3_Structures_F_EPB";
 			name="Arma 3 Adapt Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item19
+		class Item18
 		{
 			className="A3_Structures_F_Households";
 			name="Arma 3 - Houses";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item20
+		class Item19
 		{
 			className="A3_Structures_F_Enoch_Industrial";
 			name="Arma 3 Contact Platform - Industrial Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item21
+		class Item20
 		{
 			className="A3_Structures_F_Oldman";
 			name="Arma 3 Old Man - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item22
+		class Item21
 		{
 			className="A3_Structures_F_Wrecks";
 			name="Arma 3 - Vehicle Wrecks";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item23
+		class Item22
 		{
 			className="A3_Props_F_Orange";
 			name="Arma 3 Orange - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item24
+		class Item23
 		{
 			className="A3_Structures_F_Enoch_Civilian";
 			name="Arma 3 Contact Platform - Civilian Buildings";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item25
+		class Item24
 		{
 			className="A3_Supplies_F_Exp";
 			name="Arma 3 Apex - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item26
+		class Item25
 		{
 			className="A3_Structures_F_Enoch_Infrastructure";
 			name="Arma 3 Contact Platform - Infrastructure Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item27
+		class Item26
 		{
 			className="A3_Structures_F_Exp_Infrastructure";
 			name="Arma 3 Apex - Infrastructure Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item28
+		class Item27
 		{
 			className="A3_Structures_F_Bootcamp";
 			name="Arma 3 Bootcamp Update - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item29
+		class Item28
 		{
 			className="A3_Structures_F_Enoch_Military";
 			name="Arma 3 Contact Platform - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item30
+		class Item29
 		{
 			className="A3_Structures_F_EPA";
 			name="Arma 3 Survive Episode - Buildings and Structures";
@@ -400,7 +395,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=110;
+		items=118;
 		class Item0
 		{
 			dataType="Marker";
@@ -421,8 +416,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14090.172,16.810787,16447.982};
-						angles[]={0.0077281403,0,0.001381068};
+						position[]={14088.793,16.845943,16442.309};
+						angles[]={0.0077318083,0,0.0013788101};
 					};
 					side="West";
 					flags=6;
@@ -430,7 +425,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this allowDamage false;";
-						description="Player";
+						description="SLOT";
 						isPlayer=1;
 						isPlayable=1;
 					};
@@ -485,7 +480,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14088.729,16.819086,16446.58};
+						position[]={14087.634,16.836763,16443.311};
 						angles[]={0.0071558496,0,0.0013788101};
 					};
 					side="West";
@@ -494,7 +489,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this allowDamage false;";
-						description="Player";
+						description="SLOT";
 						isPlayable=1;
 					};
 					id=23;
@@ -548,8 +543,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14091.606,16.821819,16446.752};
-						angles[]={0.0071596238,0,0.001381068};
+						position[]={14089.892,16.850462,16442.283};
+						angles[]={0.0071558496,0,0.0013788101};
 					};
 					side="West";
 					flags=6;
@@ -557,7 +552,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this allowDamage false;";
-						description="Player";
+						description="SLOT";
 						isPlayable=1;
 					};
 					id=25;
@@ -611,8 +606,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14087.487,16.82905,16444.885};
-						angles[]={0.0045281379,0,0.0039967569};
+						position[]={14087.515,16.841913,16442.068};
+						angles[]={0.0045204028,0,0.0039968039};
 					};
 					side="West";
 					flags=6;
@@ -620,7 +615,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this allowDamage false;";
-						description="Player";
+						description="SLOT";
 						isPlayable=1;
 					};
 					id=40;
@@ -674,8 +669,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14093.141,16.845703,16444.75};
-						angles[]={0.0071596238,0,0.012974046};
+						position[]={14091.031,16.853184,16442.26};
+						angles[]={0.0071558496,0,0.012967796};
 					};
 					side="West";
 					flags=6;
@@ -683,7 +678,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this allowDamage false;";
-						description="Player";
+						description="SLOT";
 						isPlayable=1;
 					};
 					id=42;
@@ -746,7 +741,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this allowDamage false;";
-						description="Player ";
+						description="SLOT";
 						isPlayable=1;
 					};
 					id=44;
@@ -800,7 +795,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14091.398,16.846361,16443.283};
+						position[]={14089.927,16.844467,16443.266};
 						angles[]={0.0071558496,0,0.0013788101};
 					};
 					side="West";
@@ -809,7 +804,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this allowDamage false;";
-						description="Player";
+						description="SLOT";
 						isPlayable=1;
 					};
 					id=46;
@@ -863,7 +858,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14090.202,16.853712,16441.84};
+						position[]={14091.027,16.845404,16443.346};
 						angles[]={0.0045204028,0,0.0039968039};
 					};
 					side="West";
@@ -872,7 +867,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this allowDamage false;";
-						description="Player";
+						description="SLOT";
 						isPlayable=1;
 					};
 					id=48;
@@ -10552,6 +10547,494 @@ class Mission
 			id=4134;
 			type="Land_Wall_IndCnc_4_F";
 			atlOffset=1.4291077;
+		};
+		class Item110
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14168.35,16.794378,16494.148};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="this allowDamage false;";
+						description="SLOT";
+						isPlayable=1;
+					};
+					id=4181;
+					type="O_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=4180;
+		};
+		class Item111
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14168.172,16.796848,16492.947};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="this allowDamage false;";
+						description="SLOT";
+						isPlayable=1;
+					};
+					id=4187;
+					type="O_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=4186;
+		};
+		class Item112
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14169.523,16.795589,16493.961};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="this allowDamage false;";
+						description="SLOT";
+						isPlayable=1;
+					};
+					id=4189;
+					type="O_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=4188;
+		};
+		class Item113
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14169.346,16.798059,16492.76};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="this allowDamage false;";
+						description="SLOT";
+						isPlayable=1;
+					};
+					id=4191;
+					type="O_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=4190;
+		};
+		class Item114
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14170.952,16.796743,16493.883};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="this allowDamage false;";
+						description="SLOT";
+						isPlayable=1;
+					};
+					id=4193;
+					type="O_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=4192;
+		};
+		class Item115
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14170.774,16.799213,16492.682};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="this allowDamage false;";
+						description="SLOT";
+						isPlayable=1;
+					};
+					id=4195;
+					type="O_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=4194;
+		};
+		class Item116
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14172.246,16.797678,16493.863};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="this allowDamage false;";
+						description="SLOT";
+						isPlayable=1;
+					};
+					id=4197;
+					type="O_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=4196;
+		};
+		class Item117
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14172.068,16.800148,16492.662};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="this allowDamage false;";
+						description="SLOT";
+						isPlayable=1;
+					};
+					id=4199;
+					type="O_Soldier_unarmed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=4198;
 		};
 	};
 };
