@@ -238,7 +238,8 @@ RSTF_PROFILE_VALUES = [
 	"RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS",
 	"RSTF_AI_VEHICLE_SUPPORT_COST_MULTIPLIER",
 	"RSTF_ENABLE_AI_SUPPORT_VEHICLES",
-	"RSTF_VEHICLE_COST_MULTIPLIER"
+	"RSTF_VEHICLE_COST_MULTIPLIER",
+	"RSTF_MODE_PUSH_SIDE"
 ];
 
 // Profile values that are specific to local player (don't broadcast them)
@@ -420,3 +421,6 @@ for [{_i = 1}, { _i <= 31 }, {_i = _i + 1}] do {
 RSTF_CURRENT_SIDE_INDEX = [side player] call RSTF_fnc_sideIndex;
 
 RSTF_INTRO_PLAYING = false;
+
+// Which side will player be playing as
+RSTF_MODE_PUSH_SIDE_OPTIONS = ["Attackers", "Defenders"];

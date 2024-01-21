@@ -112,6 +112,9 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 			"defend"
 		] call BIS_fnc_taskCreate;
 	};
+
+	// Relocate helper markers
+	[RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
 };
 
 RSTF_MODE_PUSH_initDefense = {
@@ -159,12 +162,31 @@ RSTF_MODE_PUSH_startLoop = {
 	];
 
 	while { count(RSTF_MODE_PUSH_POINTS) < RSTF_MODE_PUSH_POINT_COUNT } do {
+		private _newCenter = _center;
+		private _advance = _radius * 0.8;
+		private _iteration = 0;
+		private _adjustment = if (random 1 > 0.5) then { 1 } else { -1 };
+		
 		_direction = _direction - 20 + random 40;
-		_center = _center vectorAdd [
-			sin(_direction) * _radius * 0.8,
-			cos(_direction) * _radius * 0.8,
-			0
-		];
+
+		while { _iteration < 100000 } do {
+			_newCenter = _center vectorAdd [
+				sin(_direction) * _advance,
+				cos(_direction) * _advance,
+				0
+			];
+
+			if (!(surfaceIsWater _newCenter)) exitWith {};
+
+			_iteration = _iteration + 1;
+			_direction = _direction + _adjustment * 10;
+
+			if (_iteration mod 10 == 0) then {
+				_advance = _advance * 1.2;
+			};
+		};
+
+		_center = _newCenter;
 
 		if (RSTF_DEBUG) then {
 			private _marker = createMarkerLocal [str(_center), _center];

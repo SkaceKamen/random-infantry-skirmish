@@ -35,20 +35,16 @@ if (RSTF_MODE_DEFEND_ENABLED || (call RSTF_fnc_getModeId) == 'Defense') then {
 			for [{_xx = -160},{_xx <= 160},{_xx = _xx + 64}] do {
 				_noise = random(50);
 				_xxx = _xx - 20 + random(40);
-				_marker = "";
+				private _marker = "SPAWN " + str(_foreachIndex) + str(_xx);
+				private _markerPos = _x vectorAdd [sin(_direction - 90) * _xxx + sin(_direction) * _noise, cos(_direction - 90) * _xxx + cos(_direction) * _noise, 0];
 
 				if (_local) then {
-					_marker = createMarkerLocal [
-						"SPAWN " + str(_foreachIndex) + str(_xx),
-						_x vectorAdd [sin(_direction - 90) * _xxx + sin(_direction) * _noise, cos(_direction - 90) * _xxx + cos(_direction) * _noise, 0]
-					];
+					createMarkerLocal [_marker, _markerPos];
 				} else {
-					_marker = createMarker [
-						"SPAWN " + str(_foreachIndex) + str(_xx),
-						_x vectorAdd [sin(_direction - 90) * _xxx + sin(_direction) * _noise, cos(_direction - 90) * _xxx + cos(_direction) * _noise, 0]
-					];
+					createMarker [_marker, _markerPos];
 				};
 
+				_marker setMarkerPos _markerPos;
 				_marker setMarkerShape "ICON";
 				_marker setMarkerType "mil_ambush";
 				_marker setMarkerDir (_direction - 90);
