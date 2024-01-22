@@ -13,9 +13,9 @@ from utils import buildPreview
 ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools\\AddonBuilder\\AddonBuilder.exe'
 PUBLISHER = "c:\\Users\\menxm\\source\\repos\\A3MissionPublisher\\A3MissionPublisher\\bin\\x64\\Release\\net6.0\\A3MissionPublisher.exe"
 
-SKIP_PUBLISH = False
-SKIP_PUBLISHED = True
-ONLY_PUBLISH = ["SPE_Normandy"]
+SKIP_PUBLISH = True
+SKIP_PUBLISHED = False
+ONLY_PUBLISH = None
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
@@ -38,7 +38,7 @@ if os.path.exists(idsPath):
 
 def removeSteamDebug(dbg):
   return re.sub(
-    'Setting breakpad minidump AppID = [0-9]+\nSteam_SetMinidumpSteamID:  Caching Steam ID:  [0-9]+ \[API loaded no\]',
+    'Setting breakpad minidump AppID = [0-9]+\nSteam_SetMinidumpSteamID:  Caching Steam ID:  [0-9]+ \\[API loaded no\\]',
     '',
     str(dbg).replace('\r', '')
   )
@@ -57,7 +57,7 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   if not os.path.exists(previewPath):
     previewPath = os.path.join(previewsPath, "%s.jpg" % 'unknown')
 
-  if len(ONLY_PUBLISH) > 0 and not island in ONLY_PUBLISH:
+  if ONLY_PUBLISH != None and not island in ONLY_PUBLISH:
     continue
 
   if SKIP_PUBLISHED and existingId != 0:
@@ -74,7 +74,7 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   if os.path.exists(missionPath):
     shutil.rmtree(missionPath)
 
-  shutil.copytree(risPath, missionPath, ignore=shutil.ignore_patterns('.*', 'mission.sqm'))
+  shutil.copytree(risPath, missionPath, ignore=shutil.ignore_patterns('.*', 'mission.sqm', 'local.sqf'))
   shutil.copyfile(variant, os.path.join(missionPath, 'mission.sqm'))
 
   with open(os.path.join(missionPath, 'mission.sqm'), 'r') as f:
