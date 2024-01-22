@@ -14,11 +14,19 @@
 		private _toCheck = [];
 
 		{
+			// No need to check dead units
 			if (!alive(_x)) then {
 				continue;
 			};
 
+			// Obviously skip players
 			if (isPlayer(_x)) then {
+				_toCheck pushBack _x;
+				continue;
+			};
+
+			// Player units can have orders and stuff
+			if (group(_x) findIf { isPlayer(_x) }) then {
 				_toCheck pushBack _x;
 				continue;
 			};
