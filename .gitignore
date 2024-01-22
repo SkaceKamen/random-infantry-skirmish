@@ -5,3 +5,5 @@
 .scripts/changelog.txt
 
 *.pyc
+
+local.sqf
