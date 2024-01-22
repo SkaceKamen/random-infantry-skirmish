@@ -61,12 +61,11 @@ class ScenarioData
 	author="Kamen";
 	overviewText="Instant infantry battle for randomly selected place on the map.";
 	overViewPicture="random.paa";
-	joinUnassigned=0;
 	class Header
 	{
 		gameType="Coop";
 		minPlayers=1;
-		maxPlayers=8;
+		maxPlayers=16;
 	};
 };
 class CustomAttributes
