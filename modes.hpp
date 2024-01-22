@@ -2,7 +2,7 @@ class RSTF_Modes
 {
 	class Classic
 	{
-		title = "Classic";
+		title = "Team Deathmatch";
 		description = "Score-based team deathmatch, where first one that reaches specific number of points wins.";
 		enabled = 1;
 		order = 4;
