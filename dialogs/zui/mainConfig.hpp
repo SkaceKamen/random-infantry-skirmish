@@ -124,7 +124,7 @@ class MainConfigDialog: ZUI_ColumnLayout
 					class Edit: ZUI_Button
 					{
 						id = "editConfig";
-						text = "EDIT";
+						text = "EDIT CONFIGURATION";
 						margin[] = { GUI_SPACING, 0, 0, 0 };
 						heightType = ZUI_SIZE_ABSOLUTE;
 						height = 0.05;
