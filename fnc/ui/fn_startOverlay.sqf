@@ -5,14 +5,16 @@ disableSerialization;
 // Vehicle icons
 addMissionEventHandler ["Draw3D", {
 	if (RSTF_UI_SHOW_VEHICLE_MARKERS) then {
+		private _iconsColor = [0.5, 0.5, 1, 0.8];
+
 		{
-			private _pos = (getPosATLVisual _x) vectorAdd [0, 0, 4];
+			private _pos = (getPosATLVisual (_x#1)) vectorAdd [0, 0, 4];
 			// _pos set [2, (_x modelToWorld [0,0,1.5]) select 2];
-			private _air = _x isKindOf "Air";
+			private _air = _x#2;
 			private _icon = "\a3\ui_f\data\Map\Markers\NATO\b_"
 				+ (if (_air) then { "armor" } else { "air" })
 				+ ".paa";
-			drawIcon3D [_icon, [0.5, 0.5, 1, 0.8], _pos, 0.8, 0.8, 0];
+			drawIcon3D [_icon, _iconsColor, _pos, 0.8, 0.8, 0];
 		} foreach (RSTF_AI_VEHICLES select RSTF_CURRENT_SIDE_INDEX);
 	};
 }];

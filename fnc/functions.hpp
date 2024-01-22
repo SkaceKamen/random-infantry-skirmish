@@ -55,6 +55,7 @@ class RSTF
 		class getLastChangelog {};
 
 		class startMovementCheckLoop {};
+		class startVehicleCheckLoop {};
 	};
 
 	class money
@@ -119,6 +120,7 @@ class RSTF
 		class getVehicleClassComponents {};
 		class applyUnitEquipment{};
 		class getFactionsForSide {};
+		class clearWaypoints {};
 	};
 
 	class ui
@@ -196,6 +198,7 @@ class RSTF
 
 		class refreshSideWaypoints {};
 		class refreshGroupWaypoints {};
+		class refreshVehicleWaypoints {};
 	};
 
 	class config

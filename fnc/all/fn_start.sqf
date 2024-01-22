@@ -22,6 +22,9 @@ call RSTFGC_fnc_init;
 // Checks if AI units aren't stuck somewhere
 call RSTF_fnc_startMovementCheckLoop;
 
+// Vehicles handling
+call RSTF_fnc_startVehicleCheckLoop;
+
 // Clear unhistoric items if needed
 if (RSTF_CLEAR_HISTORIC_ITEMS) then {
 	[RSTF_POINT, 3000] call RSTF_fnc_clearHistoricItems;
