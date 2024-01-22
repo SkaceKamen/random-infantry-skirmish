@@ -19,7 +19,7 @@ class BattleStartDialog: ZUI_ColumnLayout
 			class title: ZUI_TextCenter
 			{
 				heightType = ZUI_SIZE_ABSOLUTE;
-				height = 0.2;
+				height = 0.15;
 				font = "PuristaBold";
 				textSize = GUI_TEXT_SIZE_LARGE * 3;
 				text = "";
@@ -30,12 +30,13 @@ class BattleStartDialog: ZUI_ColumnLayout
 			class subTitle: ZUI_TextCenter
 			{
 				heightType = ZUI_SIZE_ABSOLUTE;
-				height = 0.15;
+				height = 0.1;
 				font = GUI_STANDARD_FONT;
 				textSize = GUI_TEXT_SIZE_LARGE * 1.5;
 				text = "";
 				id = "mode";
 				shadow = 1;
+				margin[] = { 0, 0, GUI_SPACING * 5, 0 };
 			};
 
 			class sides: ZUI_RowLayout
