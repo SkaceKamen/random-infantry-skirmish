@@ -1,4 +1,4 @@
-private _start = 9;
+private _start = 17;
 private _world_anchor = getArray(configFile >> "CfgWorlds" >> worldName >> "SafePositionAnchor");
 if (count(_world_anchor) == 0) then {
 	_world_anchor = [0, 0, 0];
@@ -27,7 +27,7 @@ private _template = loadFile('template.sqf');
 } foreach _locations;
 
 _args = [
-	str(count(_locations) + 9),
+	str(count(_locations) + 17), // 1 marker, 8 BLUFOR, 8 OPFOR
 	_text,
 	_map
 ];

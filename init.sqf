@@ -35,6 +35,8 @@ if (!isMultiplayer || isServer) then {
 		_x disableAI "ALL";
 		_x allowDamage false;
 		_x enableSimulationGlobal false;
+		_x setPos [-1000, -1000, 1000];
+		_x hideObjectGlobal true;
 	} foreach allUnits;
 };
 
