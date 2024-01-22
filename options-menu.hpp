@@ -493,6 +493,27 @@ class RSTF_Options {
 				disabled="!RSTF_AI_VEHICLES_ENABLED || !RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS";
 				ingame=1;
 			};
+
+			class RSTF_VEHICLES_SPAWN_DISTANCE {
+				title="Vehicles spawn distance";
+				description="Distance from side spawn that vehicles spawn at";
+				type="number";
+				ingame=1;
+			};
+
+			class RSTF_AIR_VEHICLES_SPAWN_DISTANCE {
+				title="Air vehicles spawn distance";
+				description="Distance from center that air vehicles spawn at";
+				type="number";
+				ingame=1;
+			};
+
+			class RSTF_PLANES_SPAWN_DISANCE {
+				title="Planes spawn distance";
+				description="Distance from center that planes spawn at";
+				type="number";
+				ingame=1;
+			};
 		};
 	};
 	class UI {

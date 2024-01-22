@@ -28,16 +28,16 @@ private _parents = [configFile >> "cfgVehicles" >> _vehicleClass, true] call BIS
 private _plane = "Plane" in _parents;
 private _air = "Air" in _parents;
 
-private _distance = (RSTF_SPAWN_DISTANCE_MIN + random(RSTF_SPAWN_DISTANCE_MAX - RSTF_SPAWN_DISTANCE_MIN)) + 500;
+private _distance = (RSTF_SPAWN_DISTANCE_MIN + random(RSTF_SPAWN_DISTANCE_MAX - RSTF_SPAWN_DISTANCE_MIN)) + RSTF_VEHICLES_SPAWN_DISTANCE;
 private _height = 0;
 
 if (_air) then {
-	_distance = 1000;
+	_distance = RSTF_AIR_VEHICLES_SPAWN_DISTANCE;
 	_height = 500;
 };
 
 if (_plane) then {
-	_distance = 3000;
+	_distance = RSTF_PLANES_SPAWN_DISANCE;
 	_height = 500;
 };
 

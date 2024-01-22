@@ -611,3 +611,12 @@ RSTF_VEHICLE_COST_MULTIPLIER = 1;
 
 // 0 = NO RESTRICTION, 1 = RESTRICT UNITS TO SAME FACTION, 2 = RESTRICT UNITS TO SAME CLASS IN FACTION
 RSTF_GROUP_UNIT_RESTRICTION = 1;
+
+// Distance at which vehicles spawn (from side spawn)
+RSTF_VEHICLES_SPAWN_DISTANCE = 500;
+
+// Distance at which air vehicles spawn (from center)
+RSTF_AIR_VEHICLES_SPAWN_DISTANCE = 1000;
+
+// Distance at which planes spawn (from center)
+RSTF_PLANES_SPAWN_DISANCE = 3000;
