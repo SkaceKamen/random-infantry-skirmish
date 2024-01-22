@@ -1,4 +1,4 @@
-version=53;
+version=54;
 class EditorData
 {
 	moveGridStep=1;
@@ -23,6 +23,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
+sourceName="mapLoader";
 addons[]=
 {
 	"A3_Ui_F",
@@ -75,13 +76,7 @@ class CustomAttributes
 			{
 				class data
 				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
+					singleType="ARRAY";
 					class value
 					{
 						items=1;
@@ -89,13 +84,7 @@ class CustomAttributes
 						{
 							class data
 							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
+								singleType="STRING";
 								value="None";
 							};
 						};
@@ -116,13 +105,7 @@ class CustomAttributes
 			{
 				class data
 				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
+					singleType="SCALAR";
 					value=0;
 				};
 			};
@@ -134,7 +117,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="RIS - %3";
+		briefingName="RIS - Hellanmaa winter";
 		overviewText="Random skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;
@@ -154,7 +137,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=%1;
+		items=35;
 		class Item0
 		{
 			dataType="Marker";
@@ -162,6 +145,7 @@ class Mission
 			name="RSTF_FACTION_CAM";
 			type="Empty";
 			id=0;
+			atlOffset=-11.440001;
 		};
 		class Item1
 		{
@@ -190,6 +174,7 @@ class Mission
 					};
 					id=2;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-12.520651;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -200,13 +185,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male10ENG";
 								};
 							};
@@ -219,13 +198,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -238,6 +211,7 @@ class Mission
 			{
 			};
 			id=1;
+			atlOffset=-12.520651;
 		};
 		class Item2
 		{
@@ -265,6 +239,7 @@ class Mission
 					};
 					id=23;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-12.512352;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -275,13 +250,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -294,13 +263,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -313,6 +276,7 @@ class Mission
 			{
 			};
 			id=22;
+			atlOffset=-12.512352;
 		};
 		class Item3
 		{
@@ -340,6 +304,7 @@ class Mission
 					};
 					id=25;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-12.509619;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -350,13 +315,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male07ENG";
 								};
 							};
@@ -369,13 +328,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -388,6 +341,7 @@ class Mission
 			{
 			};
 			id=24;
+			atlOffset=-12.509619;
 		};
 		class Item4
 		{
@@ -415,6 +369,7 @@ class Mission
 					};
 					id=40;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-12.502388;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -425,13 +380,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -444,13 +393,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -463,6 +406,7 @@ class Mission
 			{
 			};
 			id=39;
+			atlOffset=-12.502388;
 		};
 		class Item5
 		{
@@ -490,6 +434,7 @@ class Mission
 					};
 					id=42;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-12.485735;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -500,13 +445,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male07ENG";
 								};
 							};
@@ -519,13 +458,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -538,6 +471,7 @@ class Mission
 			{
 			};
 			id=41;
+			atlOffset=-12.485735;
 		};
 		class Item6
 		{
@@ -565,6 +499,7 @@ class Mission
 					};
 					id=44;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-12.490229;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -575,13 +510,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -594,13 +523,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -613,6 +536,7 @@ class Mission
 			{
 			};
 			id=43;
+			atlOffset=-12.490229;
 		};
 		class Item7
 		{
@@ -640,6 +564,7 @@ class Mission
 					};
 					id=46;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-12.485077;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -650,13 +575,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male07ENG";
 								};
 							};
@@ -669,13 +588,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -688,6 +601,7 @@ class Mission
 			{
 			};
 			id=45;
+			atlOffset=-12.485077;
 		};
 		class Item8
 		{
@@ -715,6 +629,7 @@ class Mission
 					};
 					id=48;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-12.477726;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -725,13 +640,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -744,13 +653,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -763,6 +666,7 @@ class Mission
 			{
 			};
 			id=47;
+			atlOffset=-12.477726;
 		};
 		class Item9
 		{
@@ -788,6 +692,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-12.53376;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -824,6 +729,7 @@ class Mission
 			{
 			};
 			id=4001;
+			atlOffset=-12.53376;
 		};
 		class Item10
 		{
@@ -849,6 +755,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-12.53376;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -885,6 +792,7 @@ class Mission
 			{
 			};
 			id=4002;
+			atlOffset=-12.53376;
 		};
 		class Item11
 		{
@@ -910,6 +818,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-12.53376;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -946,6 +855,7 @@ class Mission
 			{
 			};
 			id=4003;
+			atlOffset=-12.53376;
 		};
 		class Item12
 		{
@@ -971,6 +881,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-12.53376;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1007,6 +918,7 @@ class Mission
 			{
 			};
 			id=4003;
+			atlOffset=-12.53376;
 		};
 		class Item13
 		{
@@ -1032,6 +944,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-12.53376;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1068,6 +981,7 @@ class Mission
 			{
 			};
 			id=4005;
+			atlOffset=-12.53376;
 		};
 		class Item14
 		{
@@ -1093,6 +1007,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-12.53376;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1129,6 +1044,7 @@ class Mission
 			{
 			};
 			id=4006;
+			atlOffset=-12.53376;
 		};
 		class Item15
 		{
@@ -1154,6 +1070,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-12.53376;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1190,6 +1107,7 @@ class Mission
 			{
 			};
 			id=4007;
+			atlOffset=-12.53376;
 		};
 		class Item16
 		{
@@ -1215,6 +1133,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-12.53376;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1251,7 +1170,241 @@ class Mission
 			{
 			};
 			id=4008;
+			atlOffset=-12.53376;
 		};
-		%2
+		class Item17
+		{
+			dataType="Marker";
+			position[]={2534.9099,0,970.65997};
+			name="RSTF_POSITION_0";
+			text="Jankos industrial area";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=17;
+			atlOffset=-54.700001;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={1433.23,0,3019.2};
+			name="RSTF_POSITION_1";
+			text="Troihari";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=18;
+			atlOffset=-53.845848;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={3614.8899,0,2739.6101};
+			name="RSTF_POSITION_2";
+			text="Nyman";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=19;
+			atlOffset=-61.246696;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={1744.55,0,4381.9902};
+			name="RSTF_POSITION_3";
+			text="Kokkila";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=20;
+			atlOffset=-52.944607;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={4477.2598,0,3097.97};
+			name="RSTF_POSITION_4";
+			text="HÃ¶Ã¶pakka";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=21;
+			atlOffset=-54.549179;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={5551.5498,0,901.966};
+			name="RSTF_POSITION_5";
+			text="Kettula";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=22;
+			atlOffset=-47.650883;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={5589.3101,0,673.45001};
+			name="RSTF_POSITION_6";
+			text="Kouras metal";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=23;
+			atlOffset=-48.319775;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={5714.6602,0,2239.6799};
+			name="RSTF_POSITION_7";
+			text="Juusola";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=24;
+			atlOffset=-50.634304;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={3671.9099,0,4959.02};
+			name="RSTF_POSITION_8";
+			text="Somppi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=25;
+			atlOffset=-53.898922;
+		};
+		class Item26
+		{
+			dataType="Marker";
+			position[]={752.51398,0,6470.3701};
+			name="RSTF_POSITION_9";
+			text="Rautakorpi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=26;
+			atlOffset=-56.116192;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={6379.1001,0,3631.21};
+			name="RSTF_POSITION_10";
+			text="Kangas";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=27;
+			atlOffset=-48.610836;
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={6889.8999,0,2647.9299};
+			name="RSTF_POSITION_11";
+			text="Huhtala";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=28;
+			atlOffset=-46.171181;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={3828.52,0,6949.4399};
+			name="RSTF_POSITION_12";
+			text="Koivikko";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=29;
+			atlOffset=-47.435097;
+		};
+		class Item30
+		{
+			dataType="Marker";
+			position[]={7795.29,0,3240.4399};
+			name="RSTF_POSITION_13";
+			text="Kontio";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=30;
+			atlOffset=-38.848377;
+		};
+		class Item31
+		{
+			dataType="Marker";
+			position[]={3696.0901,0,7763.3901};
+			name="RSTF_POSITION_14";
+			text="Heikkola";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=31;
+			atlOffset=-45.303841;
+		};
+		class Item32
+		{
+			dataType="Marker";
+			position[]={7214.6899,0,5550.0898};
+			name="RSTF_POSITION_15";
+			text="Taipale";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=32;
+			atlOffset=-40.305553;
+		};
+		class Item33
+		{
+			dataType="Marker";
+			position[]={6235.9302,0,6781.4702};
+			name="RSTF_POSITION_16";
+			text="Luoma";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=33;
+			atlOffset=-43.170429;
+		};
+		class Item34
+		{
+			dataType="Marker";
+			position[]={7420.7402,0,7381.6899};
+			name="RSTF_POSITION_17";
+			text="Jussila";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=34;
+			atlOffset=-33.295643;
+		};
 	};
 };

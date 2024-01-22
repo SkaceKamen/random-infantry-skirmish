@@ -1,4 +1,4 @@
-version=53;
+version=54;
 class EditorData
 {
 	moveGridStep=1;
@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=79;
+		nextID=85;
 	};
 	class MarkerIDProvider
 	{
@@ -16,13 +16,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14083.045,39.067047,16442.834};
-		dir[]={-0.0030744011,-0.9995234,-0.030823361};
-		up[]={-0.099202663,0.030955145,-0.99458575};
-		aside[]={-0.99506563,8.934876e-009,0.099250555};
+		pos[]={2836.8245,237.8688,7804.1563};
+		dir[]={-0.58002794,-0.60828006,0.54183197};
+		up[]={-0.44450587,0.7937215,0.41523403};
+		aside[]={0.68264377,3.5588164e-007,0.73076504};
 	};
 };
 binarizationWanted=0;
+sourceName="mapLoader";
 addons[]=
 {
 	"A3_Ui_F",
@@ -75,13 +76,7 @@ class CustomAttributes
 			{
 				class data
 				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
+					singleType="ARRAY";
 					class value
 					{
 						items=1;
@@ -89,13 +84,7 @@ class CustomAttributes
 						{
 							class data
 							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
+								singleType="STRING";
 								value="None";
 							};
 						};
@@ -116,13 +105,7 @@ class CustomAttributes
 			{
 				class data
 				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
+					singleType="SCALAR";
 					value=0;
 				};
 			};
@@ -134,7 +117,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="RIS - %3";
+		briefingName="RIS - Tembelan Island";
 		overviewText="Random skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;
@@ -154,7 +137,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=%1;
+		items=55;
 		class Item0
 		{
 			dataType="Marker";
@@ -162,6 +145,7 @@ class Mission
 			name="RSTF_FACTION_CAM";
 			type="Empty";
 			id=0;
+			atlOffset=41.879997;
 		};
 		class Item1
 		{
@@ -179,7 +163,7 @@ class Mission
 						angles[]={0.0077281403,0,0.001381068};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						skill=0.60000002;
@@ -190,6 +174,7 @@ class Mission
 					};
 					id=2;
 					type="B_Soldier_unarmed_F";
+					atlOffset=40.799347;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -200,13 +185,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male10ENG";
 								};
 							};
@@ -219,13 +198,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -238,6 +211,7 @@ class Mission
 			{
 			};
 			id=1;
+			atlOffset=40.799347;
 		};
 		class Item2
 		{
@@ -255,7 +229,7 @@ class Mission
 						angles[]={0.0071558496,0,0.0013788101};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						skill=0.60000002;
@@ -265,6 +239,7 @@ class Mission
 					};
 					id=23;
 					type="B_Soldier_unarmed_F";
+					atlOffset=40.807648;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -275,13 +250,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -294,13 +263,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -313,6 +276,7 @@ class Mission
 			{
 			};
 			id=22;
+			atlOffset=40.807648;
 		};
 		class Item3
 		{
@@ -330,7 +294,7 @@ class Mission
 						angles[]={0.0071596238,0,0.001381068};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						skill=0.60000002;
@@ -340,6 +304,7 @@ class Mission
 					};
 					id=25;
 					type="B_Soldier_unarmed_F";
+					atlOffset=40.810379;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -350,13 +315,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male07ENG";
 								};
 							};
@@ -369,13 +328,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -388,6 +341,7 @@ class Mission
 			{
 			};
 			id=24;
+			atlOffset=40.810379;
 		};
 		class Item4
 		{
@@ -405,7 +359,7 @@ class Mission
 						angles[]={0.0045281379,0,0.0039967569};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						skill=0.60000002;
@@ -415,6 +369,7 @@ class Mission
 					};
 					id=40;
 					type="B_Soldier_unarmed_F";
+					atlOffset=40.817612;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -425,13 +380,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -444,13 +393,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -463,6 +406,7 @@ class Mission
 			{
 			};
 			id=39;
+			atlOffset=40.817612;
 		};
 		class Item5
 		{
@@ -480,7 +424,7 @@ class Mission
 						angles[]={0.0071596238,0,0.012974046};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						skill=0.60000002;
@@ -490,6 +434,7 @@ class Mission
 					};
 					id=42;
 					type="B_Soldier_unarmed_F";
+					atlOffset=40.834267;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -500,13 +445,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male07ENG";
 								};
 							};
@@ -519,13 +458,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -538,6 +471,7 @@ class Mission
 			{
 			};
 			id=41;
+			atlOffset=40.834267;
 		};
 		class Item6
 		{
@@ -555,7 +489,7 @@ class Mission
 						angles[]={0.0045204028,0,0.0039968039};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						skill=0.60000002;
@@ -565,6 +499,7 @@ class Mission
 					};
 					id=44;
 					type="B_Soldier_unarmed_F";
+					atlOffset=40.829773;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -575,13 +510,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -594,13 +523,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -613,6 +536,7 @@ class Mission
 			{
 			};
 			id=43;
+			atlOffset=40.829773;
 		};
 		class Item7
 		{
@@ -630,7 +554,7 @@ class Mission
 						angles[]={0.0071558496,0,0.0013788101};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						skill=0.60000002;
@@ -640,6 +564,7 @@ class Mission
 					};
 					id=46;
 					type="B_Soldier_unarmed_F";
+					atlOffset=40.834923;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -650,13 +575,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male07ENG";
 								};
 							};
@@ -669,13 +588,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -688,6 +601,7 @@ class Mission
 			{
 			};
 			id=45;
+			atlOffset=40.834923;
 		};
 		class Item8
 		{
@@ -705,7 +619,7 @@ class Mission
 						angles[]={0.0045204028,0,0.0039968039};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						skill=0.60000002;
@@ -715,6 +629,7 @@ class Mission
 					};
 					id=48;
 					type="B_Soldier_unarmed_F";
+					atlOffset=40.842274;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -725,13 +640,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -744,13 +653,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -763,6 +666,7 @@ class Mission
 			{
 			};
 			id=47;
+			atlOffset=40.842274;
 		};
 		class Item9
 		{
@@ -779,7 +683,7 @@ class Mission
 						position[]={14172.246,16.797678,16493.863};
 					};
 					side="East";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						init="this allowDamage false;";
@@ -788,6 +692,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=40.78624;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -824,6 +729,7 @@ class Mission
 			{
 			};
 			id=4001;
+			atlOffset=40.78624;
 		};
 		class Item10
 		{
@@ -840,7 +746,7 @@ class Mission
 						position[]={14172.246,16.797678,16493.863};
 					};
 					side="East";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						init="this allowDamage false;";
@@ -849,6 +755,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=40.78624;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -885,6 +792,7 @@ class Mission
 			{
 			};
 			id=4002;
+			atlOffset=40.78624;
 		};
 		class Item11
 		{
@@ -901,7 +809,7 @@ class Mission
 						position[]={14172.246,16.797678,16493.863};
 					};
 					side="East";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						init="this allowDamage false;";
@@ -910,6 +818,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=40.78624;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -946,6 +855,7 @@ class Mission
 			{
 			};
 			id=4003;
+			atlOffset=40.78624;
 		};
 		class Item12
 		{
@@ -962,7 +872,7 @@ class Mission
 						position[]={14172.246,16.797678,16493.863};
 					};
 					side="East";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						init="this allowDamage false;";
@@ -971,6 +881,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=40.78624;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1007,6 +918,7 @@ class Mission
 			{
 			};
 			id=4003;
+			atlOffset=40.78624;
 		};
 		class Item13
 		{
@@ -1023,7 +935,7 @@ class Mission
 						position[]={14172.246,16.797678,16493.863};
 					};
 					side="East";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						init="this allowDamage false;";
@@ -1032,6 +944,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=40.78624;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1068,6 +981,7 @@ class Mission
 			{
 			};
 			id=4005;
+			atlOffset=40.78624;
 		};
 		class Item14
 		{
@@ -1084,7 +998,7 @@ class Mission
 						position[]={14172.246,16.797678,16493.863};
 					};
 					side="East";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						init="this allowDamage false;";
@@ -1093,6 +1007,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=40.78624;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1129,6 +1044,7 @@ class Mission
 			{
 			};
 			id=4006;
+			atlOffset=40.78624;
 		};
 		class Item15
 		{
@@ -1145,7 +1061,7 @@ class Mission
 						position[]={14172.246,16.797678,16493.863};
 					};
 					side="East";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						init="this allowDamage false;";
@@ -1154,6 +1070,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=40.78624;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1190,6 +1107,7 @@ class Mission
 			{
 			};
 			id=4007;
+			atlOffset=40.78624;
 		};
 		class Item16
 		{
@@ -1206,7 +1124,7 @@ class Mission
 						position[]={14172.246,16.797678,16493.863};
 					};
 					side="East";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						init="this allowDamage false;";
@@ -1215,6 +1133,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=40.78624;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1251,7 +1170,486 @@ class Mission
 			{
 			};
 			id=4008;
+			atlOffset=40.78624;
 		};
-		%2
+		class Item17
+		{
+			dataType="Marker";
+			position[]={9144.9102,0,5249.0801};
+			name="RSTF_POSITION_0";
+			text="Kumuh Persegi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=17;
+			atlOffset=-28.84145;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={5772.04,0,7978.8701};
+			name="RSTF_POSITION_1";
+			text="Kalah Desa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=18;
+			atlOffset=-14.926174;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={5875.4458,10.280783,6775.4678};
+			name="RSTF_POSITION_2";
+			text="Lapangan Futsal North";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=19;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={5243.3198,0,7335.3198};
+			name="RSTF_POSITION_3";
+			text="Dink Desa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=20;
+			atlOffset=-32.066551;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={7494.8467,47.950001,4685.6475};
+			name="RSTF_POSITION_4";
+			text="Parit";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=21;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={6335.23,0,5664.0898};
+			name="RSTF_POSITION_5";
+			text="Terapung";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=22;
+			atlOffset=-19.908558;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={6773.9844,4.1120267,5196.1318};
+			name="RSTF_POSITION_6";
+			text="Pondok";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=23;
+			atlOffset=4.7683716e-007;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={5434.8008,12.217776,6512.1421};
+			name="RSTF_POSITION_7";
+			text="Lapangan Futsal Central";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=24;
+			atlOffset=9.5367432e-007;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={4667.9702,0,6953.73};
+			name="RSTF_POSITION_8";
+			text="Lapangan Futsal Industrial";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=25;
+			atlOffset=-24.947466;
+		};
+		class Item26
+		{
+			dataType="Marker";
+			position[]={4937.4502,0,6472.1899};
+			name="RSTF_POSITION_9";
+			text="Lubang Sial";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=26;
+			atlOffset=-25.116467;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={5815.5498,0,5508.4399};
+			name="RSTF_POSITION_10";
+			text="Gereja";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=27;
+			atlOffset=-5.9699998;
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={6179.2461,13.808352,4910.9888};
+			name="RSTF_POSITION_11";
+			text="Ekspor";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=28;
+			atlOffset=-9.5367432e-007;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={7228.1353,22.272057,3966.2175};
+			name="RSTF_POSITION_12";
+			text="Dicuri Rusak";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=29;
+		};
+		class Item30
+		{
+			dataType="Marker";
+			position[]={5093.3701,0,5717.4399};
+			name="RSTF_POSITION_13";
+			text="Lapangan Futsal South";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=30;
+			atlOffset=-11.841373;
+		};
+		class Item31
+		{
+			dataType="Marker";
+			position[]={7086.5791,5.5335822,3693.8972};
+			name="RSTF_POSITION_14";
+			text="Irigasi Desa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=31;
+			atlOffset=4.7683716e-007;
+		};
+		class Item32
+		{
+			dataType="Marker";
+			position[]={2157.6899,0,9305.4902};
+			name="RSTF_POSITION_15";
+			text="Ditolak Desa";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=32;
+			atlOffset=-6;
+		};
+		class Item33
+		{
+			dataType="Marker";
+			position[]={2372.8955,5.98,8205.0801};
+			name="RSTF_POSITION_16";
+			text="Ikan Kota";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=33;
+		};
+		class Item34
+		{
+			dataType="Marker";
+			position[]={3438.02,0,6377.7002};
+			name="RSTF_POSITION_17";
+			text="Toko Tempat";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=34;
+			atlOffset=-9.2799997;
+		};
+		class Item35
+		{
+			dataType="Marker";
+			position[]={6254.0498,0,3080.0901};
+			name="RSTF_POSITION_18";
+			text="Tersebar";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=35;
+			atlOffset=-6.5058022;
+		};
+		class Item36
+		{
+			dataType="Marker";
+			position[]={1438.42,0,8771.3896};
+			name="RSTF_POSITION_19";
+			text="Pertemuan";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=36;
+			atlOffset=-2.539777;
+		};
+		class Item37
+		{
+			dataType="Marker";
+			position[]={5463.3901,0,3557.03};
+			name="RSTF_POSITION_20";
+			text="Pengolahan Industrial";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=37;
+			atlOffset=-13.126916;
+		};
+		class Item38
+		{
+			dataType="Marker";
+			position[]={5016.5977,5.9868045,3631.771};
+			name="RSTF_POSITION_21";
+			text="Garasi";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=38;
+		};
+		class Item39
+		{
+			dataType="Marker";
+			position[]={2632.7061,6.3953285,6244.8252};
+			name="RSTF_POSITION_22";
+			text="Desa Ikan";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=39;
+		};
+		class Item40
+		{
+			dataType="Marker";
+			position[]={5803.2061,5.98,2630.5337};
+			name="RSTF_POSITION_23";
+			text="Terangkat";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=40;
+		};
+		class Item41
+		{
+			dataType="Marker";
+			position[]={1427.0244,2.1615918,7503.5815};
+			name="RSTF_POSITION_24";
+			text="Tertutup";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=41;
+			atlOffset=2.3841858e-007;
+		};
+		class Item42
+		{
+			dataType="Marker";
+			position[]={1519.02,0,7026.29};
+			name="RSTF_POSITION_25";
+			text="Bangunan Site B";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=42;
+			atlOffset=-11.122642;
+		};
+		class Item43
+		{
+			dataType="Marker";
+			position[]={1500.7417,8.1099997,6619.4175};
+			name="RSTF_POSITION_26";
+			text="Bangunan Site A";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=43;
+		};
+		class Item44
+		{
+			dataType="Marker";
+			position[]={4591.7949,22.01,2678.2976};
+			name="RSTF_POSITION_27";
+			text="Segi Tiga";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=44;
+		};
+		class Item45
+		{
+			dataType="Marker";
+			position[]={3273.53,0,3491.79};
+			name="RSTF_POSITION_28";
+			text="Tepi Pantai Resort";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=45;
+			atlOffset=-7.7482562;
+		};
+		class Item46
+		{
+			dataType="Marker";
+			position[]={1533.5967,7.1300001,5557.915};
+			name="RSTF_POSITION_29";
+			text="Bagain";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=46;
+		};
+		class Item47
+		{
+			dataType="Marker";
+			position[]={1704.74,0,4812.8701};
+			name="RSTF_POSITION_30";
+			text="Besar Airbase";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=47;
+			atlOffset=-12.41;
+		};
+		class Item48
+		{
+			dataType="Marker";
+			position[]={3796.8101,0,818};
+			name="RSTF_POSITION_31";
+			text="Bawah Naval Base";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=48;
+			atlOffset=-3.9200001;
+		};
+		class Item49
+		{
+			dataType="Marker";
+			position[]={4115.3301,0,499.42999};
+			name="RSTF_POSITION_32";
+			text="Hijau Solar Wind Farm";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=49;
+			atlOffset=-10.462249;
+		};
+		class Item50
+		{
+			dataType="Marker";
+			position[]={2807.9314,149.96045,7868.9077};
+			name="RSTF_POSITION_33";
+			text="Ikan Kota";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=79;
+		};
+		class Item51
+		{
+			dataType="Marker";
+			position[]={3316.05,157.66443,7019.3721};
+			name="RSTF_POSITION_34";
+			text="Toko Tempat";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=81;
+		};
+		class Item52
+		{
+			dataType="Marker";
+			position[]={2908.9146,29.653318,7182.8682};
+			name="RSTF_POSITION_35";
+			text="Toko Tempat";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=82;
+		};
+		class Item53
+		{
+			dataType="Marker";
+			position[]={5279.6021,11.831748,6341.3477};
+			name="RSTF_POSITION_36";
+			text="Lapangan Futsal Central";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=83;
+		};
+		class Item54
+		{
+			dataType="Marker";
+			position[]={5861.4546,4.7800002,6057.6348};
+			name="RSTF_POSITION_37";
+			text="Terapung";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=84;
+		};
 	};
 };

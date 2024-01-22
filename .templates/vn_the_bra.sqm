@@ -1,4 +1,4 @@
-version=53;
+version=54;
 class EditorData
 {
 	moveGridStep=1;
@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=79;
+		nextID=85;
 	};
 	class MarkerIDProvider
 	{
@@ -16,13 +16,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14083.045,39.067047,16442.834};
-		dir[]={-0.0030744011,-0.9995234,-0.030823361};
-		up[]={-0.099202663,0.030955145,-0.99458575};
-		aside[]={-0.99506563,8.934876e-009,0.099250555};
+		pos[]={2510.9668,393.77557,1240.5682};
+		dir[]={-0.0042935414,-0.9998607,0.016750611};
+		up[]={-0.24825668,0.017130058,0.96853745};
+		aside[]={0.96869075,1.6473859e-007,0.24829598};
 	};
 };
 binarizationWanted=0;
+sourceName="mapLoader";
 addons[]=
 {
 	"A3_Ui_F",
@@ -75,13 +76,7 @@ class CustomAttributes
 			{
 				class data
 				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
+					singleType="ARRAY";
 					class value
 					{
 						items=1;
@@ -89,13 +84,7 @@ class CustomAttributes
 						{
 							class data
 							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
+								singleType="STRING";
 								value="None";
 							};
 						};
@@ -116,13 +105,7 @@ class CustomAttributes
 			{
 				class data
 				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
+					singleType="SCALAR";
 					value=0;
 				};
 			};
@@ -134,7 +117,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="RIS - %3";
+		briefingName="RIS - The Bra";
 		overviewText="Random skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;
@@ -154,7 +137,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=%1;
+		items=34;
 		class Item0
 		{
 			dataType="Marker";
@@ -162,6 +145,7 @@ class Mission
 			name="RSTF_FACTION_CAM";
 			type="Empty";
 			id=0;
+			atlOffset=-38.978363;
 		};
 		class Item1
 		{
@@ -190,6 +174,7 @@ class Mission
 					};
 					id=2;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-13.906971;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -200,13 +185,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male10ENG";
 								};
 							};
@@ -219,13 +198,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -238,6 +211,7 @@ class Mission
 			{
 			};
 			id=1;
+			atlOffset=-13.906971;
 		};
 		class Item2
 		{
@@ -265,6 +239,7 @@ class Mission
 					};
 					id=23;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-13.656235;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -275,13 +250,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -294,13 +263,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -313,6 +276,7 @@ class Mission
 			{
 			};
 			id=22;
+			atlOffset=-13.656235;
 		};
 		class Item3
 		{
@@ -340,6 +304,7 @@ class Mission
 					};
 					id=25;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-13.984476;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -350,13 +315,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male07ENG";
 								};
 							};
@@ -369,13 +328,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -388,6 +341,7 @@ class Mission
 			{
 			};
 			id=24;
+			atlOffset=-13.984476;
 		};
 		class Item4
 		{
@@ -415,6 +369,7 @@ class Mission
 					};
 					id=40;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-13.327526;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -425,13 +380,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -444,13 +393,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -463,6 +406,7 @@ class Mission
 			{
 			};
 			id=39;
+			atlOffset=-13.327526;
 		};
 		class Item5
 		{
@@ -490,6 +434,7 @@ class Mission
 					};
 					id=42;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-14.079847;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -500,13 +445,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male07ENG";
 								};
 							};
@@ -519,13 +458,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -538,6 +471,7 @@ class Mission
 			{
 			};
 			id=41;
+			atlOffset=-14.079847;
 		};
 		class Item6
 		{
@@ -565,6 +499,7 @@ class Mission
 					};
 					id=44;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-13.38015;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -575,13 +510,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -594,13 +523,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -613,6 +536,7 @@ class Mission
 			{
 			};
 			id=43;
+			atlOffset=-13.38015;
 		};
 		class Item7
 		{
@@ -640,6 +564,7 @@ class Mission
 					};
 					id=46;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-13.775991;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -650,13 +575,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male07ENG";
 								};
 							};
@@ -669,13 +588,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -688,6 +601,7 @@ class Mission
 			{
 			};
 			id=45;
+			atlOffset=-13.775991;
 		};
 		class Item8
 		{
@@ -715,6 +629,7 @@ class Mission
 					};
 					id=48;
 					type="B_Soldier_unarmed_F";
+					atlOffset=-13.507973;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -725,13 +640,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male11ENG";
 								};
 							};
@@ -744,13 +653,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.04;
 								};
 							};
@@ -763,6 +666,7 @@ class Mission
 			{
 			};
 			id=47;
+			atlOffset=-13.507973;
 		};
 		class Item9
 		{
@@ -788,6 +692,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-27.056948;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -824,6 +729,7 @@ class Mission
 			{
 			};
 			id=4001;
+			atlOffset=-27.056948;
 		};
 		class Item10
 		{
@@ -849,6 +755,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-27.056948;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -885,6 +792,7 @@ class Mission
 			{
 			};
 			id=4002;
+			atlOffset=-27.056948;
 		};
 		class Item11
 		{
@@ -910,6 +818,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-27.056948;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -946,6 +855,7 @@ class Mission
 			{
 			};
 			id=4003;
+			atlOffset=-27.056948;
 		};
 		class Item12
 		{
@@ -971,6 +881,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-27.056948;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1007,6 +918,7 @@ class Mission
 			{
 			};
 			id=4003;
+			atlOffset=-27.056948;
 		};
 		class Item13
 		{
@@ -1032,6 +944,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-27.056948;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1068,6 +981,7 @@ class Mission
 			{
 			};
 			id=4005;
+			atlOffset=-27.056948;
 		};
 		class Item14
 		{
@@ -1093,6 +1007,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-27.056948;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1129,6 +1044,7 @@ class Mission
 			{
 			};
 			id=4006;
+			atlOffset=-27.056948;
 		};
 		class Item15
 		{
@@ -1154,6 +1070,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-27.056948;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1190,6 +1107,7 @@ class Mission
 			{
 			};
 			id=4007;
+			atlOffset=-27.056948;
 		};
 		class Item16
 		{
@@ -1215,6 +1133,7 @@ class Mission
 					};
 					id=4197;
 					type="O_Soldier_unarmed_F";
+					atlOffset=-27.056948;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1251,7 +1170,225 @@ class Mission
 			{
 			};
 			id=4008;
+			atlOffset=-27.056948;
 		};
-		%2
+		class Item17
+		{
+			dataType="Marker";
+			position[]={2289.1299,0,392};
+			name="RSTF_POSITION_0";
+			text="Pia Hom";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=17;
+			atlOffset=-10.575971;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={759.72998,0,2550.1201};
+			name="RSTF_POSITION_1";
+			text="Antoum";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=18;
+			atlOffset=-13.639371;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={1525.6801,0,2410.53};
+			name="RSTF_POSITION_2";
+			text="Pak Ha";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=19;
+			atlOffset=-10.75575;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={735.08002,0,3300.5801};
+			name="RSTF_POSITION_3";
+			text="Ban Onglouang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=20;
+			atlOffset=-9.3929005;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={2010.96,0,3388.4099};
+			name="RSTF_POSITION_4";
+			text="Ban Pakha";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=21;
+			atlOffset=-28.596161;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={2481.8,0,3257.76};
+			name="RSTF_POSITION_5";
+			text="Vangtat Kang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=22;
+			atlOffset=-15.744322;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={3801.75,0,1894.39};
+			name="RSTF_POSITION_6";
+			text="Ban Chom";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=23;
+			atlOffset=-0.37271667;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={479.35999,0,4526.7002};
+			name="RSTF_POSITION_7";
+			text="Phouvong";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=24;
+			atlOffset=-16.25;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={1331.8199,0,4480.2202};
+			name="RSTF_POSITION_8";
+			text="Ban Dac Maruk";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=25;
+			atlOffset=-30.01;
+		};
+		class Item26
+		{
+			dataType="Marker";
+			position[]={3718.3101,0,2908.54};
+			name="RSTF_POSITION_9";
+			text="Nam Phat";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=26;
+			atlOffset=-10.030697;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={3570.6101,0,3293.1201};
+			name="RSTF_POSITION_10";
+			text="Ban Phiadouang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=27;
+			atlOffset=-11.01;
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={4787.96,0,2752.6899};
+			name="RSTF_POSITION_11";
+			text="Xayden";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=28;
+			atlOffset=-17.75;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={3954.8384,-0.86000001,1329.5396};
+			name="RSTF_POSITION_12";
+			text="Ban Chom";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=79;
+		};
+		class Item30
+		{
+			dataType="Marker";
+			position[]={3013.4531,27.824253,782.84821};
+			name="RSTF_POSITION_13";
+			text="Pia Hom";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=81;
+		};
+		class Item31
+		{
+			dataType="Marker";
+			position[]={955.34052,7.1399999,1511.8873};
+			name="RSTF_POSITION_14";
+			text="Pia Hom";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=82;
+		};
+		class Item32
+		{
+			dataType="Marker";
+			position[]={3352.4707,31.980001,4389.0439};
+			name="RSTF_POSITION_15";
+			text="Ban Phiadouang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=83;
+			atlOffset=-11.01;
+		};
+		class Item33
+		{
+			dataType="Marker";
+			position[]={2490.8857,18.400578,1292.9771};
+			name="RSTF_POSITION_16";
+			text="Ban Phiadouang";
+			markerType="ELLIPSE";
+			type="ellipse";
+			a=100;
+			b=100;
+			id=84;
+			atlOffset=-11.01;
+		};
 	};
 };

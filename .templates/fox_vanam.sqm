@@ -134,7 +134,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="RIS - %3";
+		briefingName="RIS - Vanam";
 		overviewText="Random skirmish on random place on island";
 		resistanceWest=0;
 		startWeather=0.28999999;
@@ -154,7 +154,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=%1;
+		items=25;
 		class Item0
 		{
 			dataType="Marker";
@@ -1252,6 +1252,102 @@ class Mission
 			};
 			id=4008;
 		};
-		%2
+		
+		class Item17
+		{
+			dataType="Marker";
+			position[]={976.78,0,1786.86};
+			name="RSTF_POSITION_0";
+			markerType="ELLIPSE";
+			type="ellipse";
+			text="Beng";
+			a=100;
+			b=100;
+			id=17;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={3762.42,0,1414.98};
+			name="RSTF_POSITION_1";
+			markerType="ELLIPSE";
+			type="ellipse";
+			text="Bos Pey";
+			a=100;
+			b=100;
+			id=18;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={1625.17,0,4941.62};
+			name="RSTF_POSITION_2";
+			markerType="ELLIPSE";
+			type="ellipse";
+			text="Bo Tuc";
+			a=100;
+			b=100;
+			id=19;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={4160.22,0,4740.47};
+			name="RSTF_POSITION_3";
+			markerType="ELLIPSE";
+			type="ellipse";
+			text="Task force base";
+			a=100;
+			b=100;
+			id=20;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={8474.11,0,2007.73};
+			name="RSTF_POSITION_4";
+			markerType="ELLIPSE";
+			type="ellipse";
+			text="Bac Nui";
+			a=100;
+			b=100;
+			id=21;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={2820.77,0,9026.66};
+			name="RSTF_POSITION_5";
+			markerType="ELLIPSE";
+			type="ellipse";
+			text="Ban Soung";
+			a=100;
+			b=100;
+			id=22;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={6219.63,0,7455.37};
+			name="RSTF_POSITION_6";
+			markerType="ELLIPSE";
+			type="ellipse";
+			text="Phum Chong";
+			a=100;
+			b=100;
+			id=23;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={8164.84,0,8741.03};
+			name="RSTF_POSITION_7";
+			markerType="ELLIPSE";
+			type="ellipse";
+			text="Koh Han";
+			a=100;
+			b=100;
+			id=24;
+		};
 	};
 };
