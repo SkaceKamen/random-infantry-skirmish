@@ -8,7 +8,7 @@ RSTF_CAM camSetTarget RSTF_CAM_TARGET;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
 
-if (RSTF_DEBUG) exitWith {
+if (RSTF_DEBUG_SKIP_CONFIG) exitWith {
 	0 spawn RSTF_fnc_start;
 };
 

@@ -18,7 +18,7 @@
 
 				if (count(_lastPos) > 0) then {
 					if (_lastPos distance getPos(_vehicle) < 5) then {
-						private _stuckTimeout = _vehicle getVariable ["RSTF_stuckTimeout", 0] + 1;
+						private _stuckTimeout = (_vehicle getVariable ["RSTF_stuckTimeout", 0]) + 1;
 						if (_stuckTimeout > 1) then {
 							_isStuck = true;
 						} else {
@@ -65,6 +65,6 @@
 
 		} foreach RSTF_AI_VEHICLES;
 
-		sleep 60;
+		sleep 10;
 	};
 };

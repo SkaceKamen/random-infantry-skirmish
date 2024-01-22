@@ -288,7 +288,7 @@ class RSTF_Options {
 				client=1;
 			};
 			class RSTF_BUY_MENU_SHOW_AS_ACTION {
-				title="Add 'Open Shop' action";
+				title="Add 'Open Shop' context menu item";
 				description="Enable 'Open Shop' action";
 				type="checkbox";
 				ingame=1;

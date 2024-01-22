@@ -2,7 +2,8 @@
 
 REMOTE_TARGET_SERVER = 2;
 
-RSTF_DEBUG = true;
+RSTF_DEBUG = false;
+RSTF_DEBUG_SKIP_CONFIG = false;
 
 // Indexes used for various arrays
 SIDE_ENEMY = 0;
