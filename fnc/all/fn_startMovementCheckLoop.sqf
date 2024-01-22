@@ -26,7 +26,7 @@
 			};
 
 			// Player units can have orders and stuff
-			if (group(_x) findIf { isPlayer(_x) }) then {
+			if (units(group(_x)) findIf { isPlayer(_x) } != -1) then {
 				_toCheck pushBack _x;
 				continue;
 			};

@@ -34,7 +34,7 @@
 				// Readiness vehicle check
 				private _isUseless = _isStuck
 					|| !canFire(_vehicle)
-					|| { _hasGunner && { count(_gunners select { alive _x }) == 0 } }
+					|| { _hasGunner && { _gunners findIf { alive _x } == -1 } }
 					|| { count(crew(_vehicle)) == 0 }
 					|| { !canMove(_vehicle) && _vehicle distance RSTF_POINT > 300 };
 
