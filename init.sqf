@@ -12,6 +12,10 @@ call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "variables.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "options-menu.sqf"));
 call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "options.sqf"));
 
+if (fileExists(SCRIPTS_ROOT + "local.sqf")) then {
+	call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "local.sqf"));
+};
+
 RSTF_initScripts = [
 	"tasks",
 	"tasks\clear",

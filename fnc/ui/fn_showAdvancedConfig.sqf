@@ -5,7 +5,11 @@ disableSerialization;
 private _parent = param [0, displayNull];
 private _ingame = param [1, false];
 
-RSTF_ADVANCED_CONFIG_DISPLAY = [(findDisplay 46) createDisplay "RSTF_RscDialogAdvancedConfig"];
+if (isNull(_parent)) then {
+	_parent = findDisplay 46;
+};
+
+RSTF_ADVANCED_CONFIG_DISPLAY = [_parent createDisplay "RSTF_RscDialogAdvancedConfig"];
 RSTF_ADVANCED_CONFIG_INGAME = _ingame;
 
 RSTF_ADVANCED_LASTCATEGORIES = [];

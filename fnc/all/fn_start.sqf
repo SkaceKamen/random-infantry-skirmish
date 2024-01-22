@@ -22,6 +22,9 @@ call RSTFGC_fnc_init;
 // Checks if AI units aren't stuck somewhere
 call RSTF_fnc_startMovementCheckLoop;
 
+// Vehicles handling
+call RSTF_fnc_startVehicleCheckLoop;
+
 // Clear unhistoric items if needed
 if (RSTF_CLEAR_HISTORIC_ITEMS) then {
 	[RSTF_POINT, 3000] call RSTF_fnc_clearHistoricItems;
@@ -94,15 +97,13 @@ sleep 2;
 
 // This is initial spawn for players other than server
 0 spawn {
-	private _playersToAssign = call BIS_fnc_listPlayers;
+	private _playersToAssign = (call BIS_fnc_listPlayers) select { _x != player };
 
 	waitUntil { sleep 1; count(RSTF_GROUPS#SIDE_FRIENDLY) > 0 && count(RSTF_GROUPS#SIDE_ENEMY) > 0 };
 
 	{
-		if (_x != player) then {
-			private _playerSide = [side(_x)] call RSTF_fnc_sideIndex;
-			_playerSide remoteExec ["RSTF_fnc_spawnPlayer", owner(_x)];
-		};
+		private _playerSide = [side(_x)] call RSTF_fnc_sideIndex;
+		_playerSide remoteExec ["RSTF_fnc_spawnPlayer", owner(_x)];
 	} foreach _playersToAssign;
 
 };
