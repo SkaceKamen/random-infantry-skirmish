@@ -377,8 +377,8 @@ class RSTF_Options {
 				ingame=1;
 			};
 			class RSTF_AI_VEHICLE_SUPPORT_COST_MULTIPLIER {
-				title="AI vehicle price multiplier";
-				description="Vehicle cost multiplier applied when player buys AI vehicle";
+				title="AI vehicle support price multiplier";
+				description="Vehicle cost multiplier applied when player buys vehicle as AI support";
 				type="number";
 				disabled="!RSTF_MONEY_ENABLED || !RSTF_ENABLE_AI_SUPPORT_VEHICLES";
 				ingame=1;
