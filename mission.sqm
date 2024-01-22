@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=3038;
+		nextID=3245;
 	};
 	class Camera
 	{
 		pos[]={14086.443,76.68824,16410.629};
-		dir[]={0.45828941,-0.68801892,0.56280047};
-		up[]={0.43446523,0.72565442,0.53354114};
-		aside[]={0.77548593,-9.7230077e-007,-0.63147509};
+		dir[]={0.28409502,-0.69199514,0.66365117};
+		up[]={0.27232552,0.72190213,0.63615733};
+		aside[]={0.91930902,-1.4901161e-008,-0.39353675};
 	};
 };
 binarizationWanted=0;
@@ -313,12 +313,11 @@ class ScenarioData
 	overviewText="Instant infantry battle for randomly selected place on the map.";
 	overViewPicture="random.paa";
 	briefing=0;
-	joinUnassigned=0;
 	class Header
 	{
 		gameType="Coop";
 		minPlayers=1;
-		maxPlayers=8;
+		maxPlayers=16;
 	};
 };
 class CustomAttributes
