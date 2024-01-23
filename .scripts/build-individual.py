@@ -14,7 +14,7 @@ ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools
 PUBLISHER = "c:\\Users\\menxm\\source\\repos\\A3MissionPublisher\\A3MissionPublisher\\bin\\x64\\Release\\net6.0\\A3MissionPublisher.exe"
 
 SKIP_PUBLISH = False
-SKIP_PUBLISHED = True
+SKIP_PUBLISHED = False
 ONLY_PUBLISH = None
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -143,6 +143,9 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
 
     print("  " + "\n  ".join(output.split('\n')))
 
+    if "RESULT = k_EResultAccessDenied" in output:
+      raise "Failed to publish: Access Denied"
+
     if "RESULT = k_EResultTooManyPending" in output:
       tries += 1
 
@@ -153,7 +156,7 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
       print(" ... Waiting one second before trying again")
       time.sleep(1)
     else:
-      match = re.search("ID = ([0-9]+)", output)
+      match = re.search("WID = ([0-9]+)", output)
 
       if match:
         newId = int(match[1])
