@@ -2,7 +2,7 @@ private _side = _this;
 private _grps = RSTF_GROUPS select _side;
 private _spawn = objNull;
 private _usable = {
-	alive(_x) && !(_x getVariable ["USED", false])
+	alive(_this) && !(_this getVariable ["USED", false])
 };
 
 private _groupsWithoutPlayer = _grps select {
@@ -43,7 +43,7 @@ switch(RSTF_SPAWN_TYPE) do {
 		_grp = RSTF_DEATH_GROUP;
 		_index = 0;
 		while { _index < count(_groupsToTry) } do {
-			if (leader(_grp) call _usable) exitWith {
+			if (!isNull(_grp) && leader(_grp) call _usable) exitWith {
 				_spawn = leader(_grp);
 			};
 

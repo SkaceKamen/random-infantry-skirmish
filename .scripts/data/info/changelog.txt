@@ -1,6 +1,3 @@
 [list]
-  [*] Improved UI, better (squad-based) spawn system
-  [*] Configuration can now be changed ingame, tons of new configuration options
-  [*] New supports, possibility to buy AI vehicle support
-  [*] Bugfixes for MP, PvP added
+  [*] Small bugfix
 [/list]
