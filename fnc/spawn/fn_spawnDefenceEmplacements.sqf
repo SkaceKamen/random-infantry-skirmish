@@ -224,6 +224,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 					_x setVariable ["SPAWNED_SIDE", side(_group), true];
 					_x setVariable ["SPAWNED_SIDE_INDEX", _side, true];
 					_x addEventHandler ["Killed", RSTF_fnc_unitKilled];
+					[_x, RSTF_CLEAN_INTERVAL] call RSTFGC_fnc_attach;
 				} foreach units(_group);
 
 				// In case the static gets destroyed (incorrectly placed), remove it
@@ -258,6 +259,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 			_unit setVariable ["SPAWNED_SIDE", side(_group), true];
 			_unit setVariable ["SPAWNED_SIDE_INDEX", _sideIndex, true];
 			_unit addEventHandler ["Killed", RSTF_fnc_unitKilled];
+			[_unit, RSTF_CLEAN_INTERVAL] call RSTFGC_fnc_attach;
 
 			_pos = getPosWorld(_x);
 			_dir = vectorDir(_x);

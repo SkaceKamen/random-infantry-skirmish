@@ -58,5 +58,5 @@ if (count(_errors) > 0) then {
 	{
 		_message = _message + _x + "<br />";
 	} foreach _errors;
-	[parseText(_message), "Configuration error"] spawn BIS_fnc_GUImessage;
+	[parseText(_message), "Configuration error", true, false, RSTF_ADVANCED_CONFIG_DISPLAY#0] spawn BIS_fnc_GUImessage;
 };

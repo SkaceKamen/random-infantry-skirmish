@@ -23,6 +23,8 @@ if (typeName(_display) == typeName(false) && { !_display }) then {
 	call RSTF_fnc_start;
 };
 
+[RSTF_MAIN_CONFIG_layout, 0.5] call ZUI_fnc_fadeIn;
+
 RSTF_FACTIONS = call RSTF_fnc_loadFactions;
 
 call RSTF_fnc_profileLoad;

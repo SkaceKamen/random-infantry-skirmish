@@ -154,7 +154,8 @@ RSTF_Presets_RefreshInfo = {
 				format["Do you really want to delete preset %1", _preset#0],
 				"Confirmation",
 				"Yes",
-				"No"
+				"No",
+				([RSTF_Presets_Layout] call ZUI_fnc_display)
 			] call BIS_fnc_guiMessage;
 
 			if (_result) then {

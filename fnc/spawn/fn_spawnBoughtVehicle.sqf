@@ -20,7 +20,7 @@
 private _unit = param [0];
 private _side = param [1];
 private _vehicleClass = param [2];
-private _crewParam = param [3];
+private _crewParam = param [3, ["", "effectiveCommander"]];
 private _camouflage = param [4, false];
 private _components = param [5, false];
 
