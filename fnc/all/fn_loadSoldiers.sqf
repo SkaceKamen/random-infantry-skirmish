@@ -8,6 +8,10 @@ private _weapons = [];
 
 private _classes = objNull;
 
+if (count(RSTF_SOLDIER_CLASSES_CACHE) == 0) then {
+	RSTF_SOLDIER_CLASSES_CACHE = "getNumber(_x >> 'scope') == 2 && getNumber(_x >> 'isMan') == 1" configClasses (configFile >> "CfgVehicles");
+};
+
 {
 	private _faction = _x;
 	private _factionLower = toLower(_faction);
@@ -22,10 +26,6 @@ private _classes = objNull;
 		_soldiers = _soldiers + _cached#0;
 		_weapons = _weapons + _cached#1;
 		continue;
-	};
-
-	if (typeName _classes == typeName objNull) then {
-		_classes = "getNumber(_x >> 'scope') == 2 && getNumber(_x >> 'isMan') == 1" configClasses (configFile >> "CfgVehicles");
 	};
 
 	private _localSoldiers = [];
@@ -56,13 +56,12 @@ private _classes = objNull;
 				};
 			};
 		};
-	} forEach _classes;
+	} forEach RSTF_SOLDIER_CLASSES_CACHE;
 	
 	RSTF_FACTIONS_SOLDIERS_CACHE set [_factionLower, [_localSoldiers, _localWeapons]];
 
 	_soldiers = _soldiers + _localSoldiers;
 	_weapons = _weapons + _localWeapons;
-
 } foreach _factions;
 
 // Deduplicate array
@@ -74,8 +73,11 @@ private _resultWeapons = [];
 private _resultSoldiers = _soldiers;
 
 if (!_ignore_bans) then {
-	_resultSoldiers = _resultSoldiers select { !(_x in RSTF_SOLDIERS_BANNED) };
-	_resultWeapons = _resultWeapons select { !(_x in RSTF_WEAPONS_BANNED) };
+	_bannedSoldiers = RSTF_SOLDIERS_BANNED createHashMapFromArray [];
+	_bannedWeapons = RSTF_WEAPONS_BANNED createHashMapFromArray [];
+
+	_resultSoldiers = _resultSoldiers select { !(_x in _bannedSoldiers) };
+	_resultWeapons = _resultWeapons select { !(_x in _bannedWeapons) };
 };
 
 [_resultSoldiers, _resultWeapons];

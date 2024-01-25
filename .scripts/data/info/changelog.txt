@@ -1,3 +1,4 @@
 [list]
-  [*] Small bugfix
+  [*] Fixed small UI issues
+  [*] Performance improvements
 [/list]
