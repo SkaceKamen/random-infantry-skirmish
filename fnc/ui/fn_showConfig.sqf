@@ -23,7 +23,7 @@ if (typeName(_display) == typeName(false) && { !_display }) then {
 	call RSTF_fnc_start;
 };
 
-[RSTF_MAIN_CONFIG_layout, 0.5] call ZUI_fnc_fadeIn;
+[RSTF_MAIN_CONFIG_layout, 0] call ZUI_fnc_fadeOut;
 
 RSTF_FACTIONS = call RSTF_fnc_loadFactions;
 
@@ -40,6 +40,8 @@ startLoadingScreen ["Loading factions"];
 } foreach RSTF_FACTIONS;
 
 endLoadingScreen;
+
+[RSTF_MAIN_CONFIG_layout, 0.5] call ZUI_fnc_fadeIn;
 
 private _template = '
 	[[RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display, %2, {

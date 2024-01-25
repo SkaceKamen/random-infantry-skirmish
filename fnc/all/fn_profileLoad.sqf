@@ -11,12 +11,12 @@ if (RSTF_MODE_SELECTED == "PushDefense") then {
 };
 
 // Decrease the default dead bodies clean interval
-if (profileNamespace getVariable ["RSTF_NEW_CLEAN_APPLIED", false] == false) then {
-	if (RSTF_CLEAN_INTERVAL == 3*60) then {
+if (!(profileNamespace getVariable ["RSTF_NEW_CLEAN_APPLIED", false])) then {
+	if (RSTF_CLEAN_INTERVAL > 30) then {
 		RSTF_CLEAN_INTERVAL = 30;
 	};
 
-	if (RSTF_CLEAN_INTERVAL_VEHICLES == 3*60) then {
+	if (RSTF_CLEAN_INTERVAL_VEHICLES > 60) then {
 		RSTF_CLEAN_INTERVAL_VEHICLES = 60;
 	};
 
