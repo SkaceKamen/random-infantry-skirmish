@@ -75,6 +75,12 @@ class RSTF_Options {
 				type="number";
 				visible=IS_PUSH;
 			};
+			class RSTF_MODE_PUSH_POINT_RADIUS {
+				title="Point capture radius";
+				description="Capture radius of the point in meters";
+				type="number";
+				visible=IS_PUSH;
+			}
 			class RSTF_MODE_PUSH_SCORE_LIMIT {
 				title="Score to capture";
 				description="Point is captured when one side reaches this number of points";

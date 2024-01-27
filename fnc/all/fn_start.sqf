@@ -1,13 +1,12 @@
+"Battle is being initialized..." call RSTF_fnc_dbg;
+
+"Picking point..." call RSTF_fnc_dbg;
+
 if (count(RSTF_POINT) == 0) then {
 	((1 call RSTF_fnc_pickRandomPoints) select 0) call RSTF_fnc_assignPoint;
 };
 
-// Create helper marker
-/*
-_marker = createMarker ["TARGET", RSTF_POINT];
-_marker setMarkerShape "ICON";
-_marker setMarkerType "mil_objective";
-*/
+"Starting start overlay..." call RSTF_fnc_dbg;
 
 // TODO: Is this good place?
 if (!isDedicated) then {
@@ -15,6 +14,7 @@ if (!isDedicated) then {
 	0 spawn RSTF_fnc_onPointChanged;
 };
 
+"Initializing loops..." call RSTF_fnc_dbg;
 
 // Initialize GC
 call RSTFGC_fnc_init;
@@ -27,8 +27,12 @@ call RSTF_fnc_startVehicleCheckLoop;
 
 // Clear unhistoric items if needed
 if (RSTF_CLEAR_HISTORIC_ITEMS) then {
+	"Clearing historic items..." call RSTF_fnc_dbg;
+
 	[RSTF_POINT, 3000] call RSTF_fnc_clearHistoricItems;
 };
+
+"Initializing mode..." call RSTF_fnc_dbg;
 
 // Initialize selected gamemode
 call RSTF_fnc_initializeMode;
@@ -36,15 +40,22 @@ call RSTF_fnc_initializeMode;
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
 
+"Spawning neutrals.." call RSTF_fnc_dbg;
+
 // Spawn neutral units
 call RSTF_fnc_spawnNeutrals;
 
 // Spawn spawns
 if (RSTF_SPAWN_TRANSPORTS) then {
+	"Spawning transports on spawns..." call RSTF_fnc_dbg;
+
 	{
 		[_foreachIndex, _x] call RSTF_fnc_spawnSpawnDefenses;
 	} foreach RSTF_SPAWNS;
 };
+
+
+"Loading classes..." call RSTF_fnc_dbg;
 
 // Load avaible weapons and classes
 call RSTF_fnc_loadWeapons;

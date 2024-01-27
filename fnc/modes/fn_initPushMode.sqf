@@ -148,6 +148,8 @@ RSTF_MODE_PUSH_init = {
 	RSTF_TASKS_IFV_ENABLED = false;
 	RSTF_TASKS_CLEAR_ENABLED = false;
 	RSTF_TASKS_EMP_ENABLED = false;
+	// Distance used by AI
+	RSTF_DISTANCE = RSTF_MODE_PUSH_POINT_RADIUS + 20;
 };
 
 RSTF_MODE_PUSH_startLoop = {
@@ -216,16 +218,15 @@ RSTF_MODE_PUSH_startLoop = {
 
 	private _marker = createMarker ["PUSH_OBJECTIVE", _center];
 	_marker setMarkerShape "ELLIPSE";
-	_marker setMarkerSize [100, 100];
+	_marker setMarkerSize [RSTF_MODE_PUSH_POINT_RADIUS, RSTF_MODE_PUSH_POINT_RADIUS];
 	_marker setMarkerColor RSTF_COLOR_NEUTRAL;
-
 
 	0 spawn {
 		waitUntil { sleep 0.1; !RSTF_INTRO_PLAYING; };
 		call RSTF_MODE_PUSH_NEXT_POINT;
 
 		private _center = RSTF_POINT;
-		private _radius = 100;
+		private _radius = RSTF_MODE_PUSH_POINT_RADIUS;
 		private _currentOwner = -1;
 		private _last = time;
 

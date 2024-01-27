@@ -565,6 +565,8 @@ RSTF_MODE_PUSH_FIRST_POINT_EMPLACEMENTS = true;
 RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE = 1;
 // Which side will BLUEFOR be
 RSTF_MODE_PUSH_SIDE = 0;
+// Point size in meters
+RSTF_MODE_PUSH_POINT_RADIUS = 100;
 
 // Remove un-historical items from map
 RSTF_CLEAR_HISTORIC_ITEMS = false;

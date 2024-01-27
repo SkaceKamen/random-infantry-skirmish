@@ -50,6 +50,7 @@ switch (call RSTF_fnc_getModeId) do {
 	case "Push": {
 		[_ctrl, "Side", RSTF_MODE_PUSH_SIDE_OPTIONS#RSTF_MODE_PUSH_SIDE] call _pushItem;
 		[_ctrl, "Points to push", str(RSTF_MODE_PUSH_POINT_COUNT)] call _pushItem;
+		[_ctrl, "Point size", str(RSTF_MODE_PUSH_POINT_RADIUS) + " m"] call _pushItem;
 	};
 	case "Classic": {
 		[_ctrl, "Score to win", str(RSTF_SCORE_LIMIT)] call _pushItem;
