@@ -29,18 +29,6 @@ RSTF_FACTIONS = call RSTF_fnc_loadFactions;
 
 call RSTF_fnc_profileLoad;
 
-startLoadingScreen ["Loading factions"];
-
-// This will fill cache
-{
-	[[_x], true] call RSTF_fnc_loadSoldiers;
-	[[_x], true] call RSTF_fnc_loadVehicles;
-
-	progressLoadingScreen (_foreachIndex/(count RSTF_FACTIONS));
-} foreach RSTF_FACTIONS;
-
-endLoadingScreen;
-
 [RSTF_MAIN_CONFIG_layout, 0.5] call ZUI_fnc_fadeIn;
 
 private _template = '

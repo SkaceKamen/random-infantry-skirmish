@@ -4,6 +4,18 @@ waitUntil { time > 0 };
 
 showCinemaBorder false;
 
+startLoadingScreen ["Loading factions"];
+
+// This will fill cache
+{
+	[[_x], true] call RSTF_fnc_loadSoldiers;
+	[[_x], true] call RSTF_fnc_loadVehicles;
+
+	progressLoadingScreen (_foreachIndex/(count RSTF_FACTIONS));
+} foreach RSTF_FACTIONS;
+
+endLoadingScreen;
+
 private _parent = param [0, displayNull];
 
 _list = _this select 1;
