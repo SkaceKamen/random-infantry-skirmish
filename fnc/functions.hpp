@@ -59,6 +59,8 @@ class RSTF
 
 		class startMovementCheckLoop {};
 		class startVehicleCheckLoop {};
+
+		class dbg {};
 	};
 
 	class money

@@ -90,6 +90,7 @@ _weather = {
 	RSTF_WEATHER_WIND call RSTF_WEATHER_ehWind;
 };
 
+
 skipTime -24;
 0 call _weather;
 skipTime 24;

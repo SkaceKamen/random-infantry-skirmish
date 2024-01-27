@@ -151,6 +151,8 @@ RSTF_MODE_PUSH_init = {
 };
 
 RSTF_MODE_PUSH_startLoop = {
+	"Starting push loop..." call RSTF_fnc_dbg;
+
 	// Build points
 	private _center = RSTF_POINT;
 	private _radius = RSTF_DISTANCE;
@@ -165,6 +167,8 @@ RSTF_MODE_PUSH_startLoop = {
 		cos(_direction + 180) * _radius,
 		0
 	];
+
+	"Building push points..." call RSTF_fnc_dbg;
 
 	while { count(RSTF_MODE_PUSH_POINTS) < RSTF_MODE_PUSH_POINT_COUNT } do {
 		private _newCenter = _center;
@@ -207,16 +211,19 @@ RSTF_MODE_PUSH_startLoop = {
 		};
 	};
 
+	
+	"Starting push gameplay loop..." call RSTF_fnc_dbg;
+
 	private _marker = createMarker ["PUSH_OBJECTIVE", _center];
 	_marker setMarkerShape "ELLIPSE";
 	_marker setMarkerSize [100, 100];
 	_marker setMarkerColor RSTF_COLOR_NEUTRAL;
 
-	waitUntil { sleep 0.1; !RSTF_INTRO_PLAYING; };
-
-	call RSTF_MODE_PUSH_NEXT_POINT;
 
 	0 spawn {
+		waitUntil { sleep 0.1; !RSTF_INTRO_PLAYING; };
+		call RSTF_MODE_PUSH_NEXT_POINT;
+
 		private _center = RSTF_POINT;
 		private _radius = 100;
 		private _currentOwner = -1;

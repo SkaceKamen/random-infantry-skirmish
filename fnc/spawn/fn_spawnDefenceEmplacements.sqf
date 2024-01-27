@@ -24,11 +24,6 @@ private _direction = param [2];
 private _sideIndex = param [3, SIDE_ENEMY];
 private _side = [_sideIndex] call RSTF_fnc_indexSide;
 
-private _additionalStatics = [
-	//["RHS_ZU23_MSV", STATIC_HIGH, CATEGORY_AA],
-	//["RHS_ZU23_VDV", STATIC_HIGH, CATEGORY_AA]
-];
-
 // Fist index - SIZE_LOW/SIZE_HIGH, Second index - CATEGORY_AA/CATEGORY_AI/CATEGORY_AT
 private _staticWeapons = [
 	[[], [], []],
@@ -82,23 +77,8 @@ private _statics = (RSTF_VEHICLES select _sideIndex) select RSTF_VEHICLE_STATIC;
 	};
 } foreach _statics;
 
-// Add predefined static weapons if possible
 {
-	private _item = _x#0;
-	private _height = _x#1;
-	private _category = _x#2;
-
-	if (isClass(configFile >> "cfgVehicles" >> _item) && { _item in _statics }) then {
-		private _list = (_staticWeapons#_height)#_category;
-
-		if (!(_item in _list)) then {
-			_list pushBack _item;
-		};
-	};
-} forEach _additionalStatics;
-
-{
-	diag_log text(format["[RSTF] %1: %2", _x#0, str(_staticWeapons select (_x#1))]);
+	diag_log text(format["[RSTF] Loaded static weapons %1: %2", _x#0, str(_staticWeapons select (_x#1))]);
 } forEach [["LOW", STATIC_LOW], ["HIGH", STATIC_HIGH]];
 
 // Load list of weapon types with at least one item

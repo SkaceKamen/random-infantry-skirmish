@@ -1,10 +1,3 @@
-// Load avaible weapons and classes
-call RSTF_fnc_loadWeapons;
-call RSTF_fnc_loadClasses;
-
-// Send list of available vehicles to other players
-publicVariable "RSTF_BUYABLE_VEHICLES";
-
 if (count(RSTF_POINT) == 0) then {
 	((1 call RSTF_fnc_pickRandomPoints) select 0) call RSTF_fnc_assignPoint;
 };
@@ -15,6 +8,13 @@ _marker = createMarker ["TARGET", RSTF_POINT];
 _marker setMarkerShape "ICON";
 _marker setMarkerType "mil_objective";
 */
+
+// TODO: Is this good place?
+if (!isDedicated) then {
+	RSTF_INTRO_PLAYING = true;
+	0 spawn RSTF_fnc_onPointChanged;
+};
+
 
 // Initialize GC
 call RSTFGC_fnc_init;
@@ -46,21 +46,28 @@ if (RSTF_SPAWN_TRANSPORTS) then {
 	} foreach RSTF_SPAWNS;
 };
 
-// TODO: What to do with this
-if (!isDedicated) then {
-	RSTF_INTRO_PLAYING = true;
-	0 spawn RSTF_fnc_onPointChanged;
-};
+// Load avaible weapons and classes
+call RSTF_fnc_loadWeapons;
+call RSTF_fnc_loadClasses;
+
+// Send list of available vehicles to other players
+publicVariable "RSTF_BUYABLE_VEHICLES";
 
 // Hide camera border
 waitUntil { time > 0 };
 showCinemaBorder false;
 
+"Starting mode loop..." call RSTF_fnc_dbg;
+
 // Start gamemode loop
 call RSTF_MODE_startLoop;
 
+"Time init..." call RSTF_fnc_dbg;
+
 // Time
 call RSTF_fnc_superRandomTime;
+
+"Date init..." call RSTF_fnc_dbg;
 
 // Date
 private _currentDate = date;
@@ -77,10 +84,10 @@ if (RSTF_USE_DEFAULT_DATE) then {
 	setDate _currentDate;
 };
 
+"Weather init..." call RSTF_fnc_dbg;
+
 // Weather
 [] spawn RSTF_fnc_superRandomWeather;
-
-waitUntil { sleep 0.1; !RSTF_INTRO_PLAYING; };
 
 // Tell players we started
 RSTF_STARTED = true;
@@ -89,23 +96,34 @@ if (!isDedicated) then {
 	0 spawn RSTF_fnc_onStarted;
 };
 
+"Waiting for intro to finish..." call RSTF_fnc_dbg;
+
+waitUntil { sleep 0.1; !RSTF_INTRO_PLAYING; };
+
+"Starting gameplay loop..." call RSTF_fnc_dbg;
+
 // Start game loop
 0 spawn RSTF_fnc_loop;
+
+"Starting player spawn..." call RSTF_fnc_dbg;
 
 // Wait a second
 sleep 2;
 
-// This is initial spawn for players other than server
-0 spawn {
-	private _playersToAssign = (call BIS_fnc_listPlayers) select { _x != player };
+if (isMultiplayer) then {
+	"Spawning remote players..." call RSTF_fnc_dbg;
 
-	waitUntil { sleep 1; count(RSTF_GROUPS#SIDE_FRIENDLY) > 0 && count(RSTF_GROUPS#SIDE_ENEMY) > 0 };
+	// This is initial spawn for players other than server
+	0 spawn {
+		private _playersToAssign = (call BIS_fnc_listPlayers) select { _x != player };
 
-	{
-		private _playerSide = [side(_x)] call RSTF_fnc_sideIndex;
-		_playerSide remoteExec ["RSTF_fnc_spawnPlayer", owner(_x)];
-	} foreach _playersToAssign;
+		waitUntil { sleep 1; count(RSTF_GROUPS#SIDE_FRIENDLY) > 0 && count(RSTF_GROUPS#SIDE_ENEMY) > 0 };
 
+		{
+			private _playerSide = [side(_x)] call RSTF_fnc_sideIndex;
+			_playerSide remoteExec ["RSTF_fnc_spawnPlayer", owner(_x)];
+		} foreach _playersToAssign;
+	};
 };
 
 /*
