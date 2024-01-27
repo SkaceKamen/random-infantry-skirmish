@@ -4,6 +4,9 @@ class RSTF
 	{
 		file = "fnc\all";
 
+		class init {};
+		class startMission {};
+
 		class startBattleSelection {};
 		class assignPoint {};
 		class assignPlayer {};
@@ -206,5 +209,23 @@ class RSTF
 		file = "fnc\config";
 
 		class getEmplacements {};
+	};
+
+	class modes
+	{
+		file = "fnc\modes";
+
+		class initClassicMode {};
+		class initKothMode {};
+		class initDefendMode {};
+		class initPushMode {};
+	};
+
+	class tasks
+	{
+		file = "fnc\tasks";
+
+		class initTasks {};
+		class initClearHouseTask {};
 	};
 };

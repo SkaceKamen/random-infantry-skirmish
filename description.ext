@@ -32,6 +32,7 @@
 
 class cfgFunctions
 {
+	#include "lib\zui\zui-functions.hpp"
 	#include "fnc\functions.hpp"
 	#include "fnc\ui.hpp"
 	#include "fnc\gc.hpp"

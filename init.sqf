@@ -1,49 +1,20 @@
 waitUntil { not isNull player };
 
-// Load ZUI functions
-call compile(preprocessFileLineNumbers("lib\zui\zui-functions.sqf"));
-call compile(preprocessFileLineNumbers("lib\zdbg\zdbg.sqf"));
-ZDBG_Prefix = '[RSTF] ';
+call ZUI_fnc_init;
 
-SCRIPTS_ROOT = "";
-call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init\modes.sqf"));
-call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "init-game.sqf"));
-call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "variables.sqf"));
-call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "options-menu.sqf"));
-call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "options.sqf"));
+call compile(preprocessFileLineNumbers("variables.sqf"));
+call compile(preprocessFileLineNumbers("options.sqf"));
+call compile(preprocessFileLineNumbers("options-menu.sqf"));
 
-if (fileExists(SCRIPTS_ROOT + "local.sqf")) then {
-	call compile(preprocessFileLineNumbers(SCRIPTS_ROOT + "local.sqf"));
+if (fileExists("local.sqf")) then {
+	call compile(preprocessFileLineNumbers("local.sqf"));
 };
 
-RSTF_initScripts = [
-	"tasks",
-	"tasks\clear",
-	// "tasks\rescue-house",
-	// "tasks\rescue-vehicle",
-	// "tasks\kill-vehicle",
-	// "tasks\emplacement",
-	"start"
-];
+call RSTF_fnc_initKothMode;
+call RSTF_fnc_initPushMode;
+call RSTF_fnc_initDefendMode;
+call RSTF_fnc_initClassicMode;
+call RSTF_fnc_initTasks;
+call RSTF_fnc_init;
 
-{
-	call compile(preprocessFileLineNumbers(format["%1init\%2.sqf", SCRIPTS_ROOT, _x]));
-} foreach RSTF_initScripts;
-
-if (!isMultiplayer || isServer) then {
-	{
-		_x disableAI "ALL";
-		_x allowDamage false;
-		_x enableSimulationGlobal false;
-		_x setPos [-1000, -1000, 1000];
-		_x hideObjectGlobal true;
-	} foreach allUnits;
-};
-
-addMissionEventHandler ["Loaded", {
-	// Start UI features
-	[] spawn RSTFUI_fnc_startOverlay;
-
-	// Update score display
-	[] spawn RSTF_fnc_onScore;
-}];
+call RSTF_fnc_startMission;
