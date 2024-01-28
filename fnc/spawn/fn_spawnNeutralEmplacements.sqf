@@ -6,7 +6,6 @@
 	Spawn static emplacements and assign tasks
 	to find and destroy them.
 */
-
 private _neutrals_side = param [0];
 
 // 0 - AA, 1 - AT, 2 - AI
@@ -27,18 +26,21 @@ private _statics = (RSTF_VEHICLES select SIDE_NEUTRAL) select RSTF_VEHICLE_STATI
 private _emplacementsCount = 5;
 private _masterTask = "";
 
+["Picking statics from", _statics] call RSTF_fnc_dbg;
+
 // Try to load static weapons from config
 {
 	_threat = getArray(configFile >> "cfgVehicles" >> _x >> "threat");
-	if (_threat select 2 >= 0.8) then {
+	if (_threat select 2 >= 0.75) then {
 		_staticWeaponsAA pushBack _x;
 	};
-	if (_threat select 1 > 0.8) then {
+	if (_threat select 1 >= 0.75) then {
 		_staticWeaponsAT pushBack _x;
 	};
-	if (_threat select 0 > 0.8) then {
+	if (_threat select 0 >= 0.75) then {
 		_staticWeaponsAI pushBack _x;
 	};
+	["Static", _x, "threats", _threat] call RSTF_fnc_dbg;
 } foreach _statics;
 
 // Add predefined static weapons if possible
@@ -61,9 +63,13 @@ private _masterTask = "";
 	};
 } foreach _staticWeapons;
 
+if (!RSTF_NEUTRALS_EMPLACEMENTS ||  _emplacementsCount == 0) exitWith {
+	("Neutral emplacements are disabled or emplacements count is set to 0") call RSTF_fnc_dbg;
+};
+
 // Don't try to place emplacements when there aren't any static weapons
-if (count(_staticWeaponsTypes) == 0 || !RSTF_NEUTRALS_EMPLACEMENTS) then {
-	_emplacementsCount = 0;
+if (count(_staticWeaponsTypes) == 0) exitWith {
+	("ERROR: Unable to load any static weapons for neutrals, skipping emplacements") call RSTF_fnc_dbg;
 };
 
 // Start task if enabled
@@ -127,16 +133,16 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 	// Make position 3D
 	_position set [2, 0];
 
-	/*
-	_marker = createMarker ["ASGFJHDASJHD" + str(_position), _position];
-	_marker setmarkerShape "ICON";
-	_marker setMarkerType "mil_dot";
-	_marker setMarkerText "EMPLACEMENT HERE";
-	*/
+	if (RSTF_DEBUG) then {
+		_marker = createMarker ["ASGFJHDASJHD" + str(_position), _position];
+		_marker setmarkerShape "ICON";
+		_marker setMarkerType "mil_dot";
+		_marker setMarkerText "Neutral emplacement";
+	};
 
 	// Create emplacement
 	_empType = selectRandom(_emplacements);
-	_spawned = [_position, random 360, _empType] call RSTF_fnc_spawnComposition;
+	_spawned = [_position, RSTF_DIRECTION + 180 + (random [-1, 0, 1]) * 20, _empType] call RSTF_fnc_spawnComposition;
 
 	// Replace weapon placeholder with actual weapon
 	{
