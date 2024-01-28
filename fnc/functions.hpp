@@ -63,6 +63,8 @@ class RSTF
 		class dbg {};
 
 		class setState {};
+
+		class loadAllClasses {};
 	};
 
 	class money

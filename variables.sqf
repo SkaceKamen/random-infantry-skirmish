@@ -444,3 +444,5 @@ RSTF_STATE_BATTLE = "battle";
 RSTF_STATE_END = "end";
 // Current state can be one of RSTF_STATE_* variables
 RSTF_CURRENT_STATE = RSTF_STATE_CONFIG;
+
+RSTF_ALL_CLASSES_LOADED = false;

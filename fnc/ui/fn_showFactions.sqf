@@ -4,17 +4,13 @@ waitUntil { time > 0 };
 
 showCinemaBorder false;
 
-startLoadingScreen ["Loading factions"];
+if (!RSTF_ALL_CLASSES_LOADED) then {
+	startLoadingScreen ["Loading factions"];
+	call RSTF_fnc_loadAllClasses;
+	endLoadingScreen;
 
-// This will fill cache
-{
-	[[_x], true] call RSTF_fnc_loadSoldiers;
-	[[_x], true] call RSTF_fnc_loadVehicles;
-
-	progressLoadingScreen (_foreachIndex/(count RSTF_FACTIONS));
-} foreach RSTF_FACTIONS;
-
-endLoadingScreen;
+	RSTF_ALL_CLASSES_LOADED = true;
+};
 
 private _parent = param [0, displayNull];
 
