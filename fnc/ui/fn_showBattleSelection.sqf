@@ -115,7 +115,7 @@ _ctrlVote ctrlAddEventHandler ["ButtonClick", {
 		if (!isMultiplayer) then {
 			closeDialog 0;
 			_place call RSTF_fnc_assignPoint;
-			0 spawn RSTF_fnc_start;
+			0 spawn RSTF_fnc_startBattle;
 		} else {
 			// Disable voting button
 			_ctrlVote ctrlEnable false;

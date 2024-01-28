@@ -27,7 +27,7 @@ class RSTF
 		class superRandomWeather {};
 
 		class initializeMode {};
-		class start {};
+		class startBattle {};
 		class loopMultikills {};
 		class loop {};
 

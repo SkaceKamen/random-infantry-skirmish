@@ -34,6 +34,15 @@ if (RSTF_CLEAR_HISTORIC_ITEMS) then {
 	[RSTF_POINT, 3000] call RSTF_fnc_clearHistoricItems;
 };
 
+"Loading classes..." call RSTF_fnc_dbg;
+
+// Load avaible weapons and classes
+call RSTF_fnc_loadWeapons;
+call RSTF_fnc_loadClasses;
+
+// Send list of available vehicles to other players
+publicVariable "RSTF_BUYABLE_VEHICLES";
+
 "Initializing mode..." call RSTF_fnc_dbg;
 
 // Initialize selected gamemode
@@ -55,16 +64,6 @@ if (RSTF_SPAWN_TRANSPORTS) then {
 		[_foreachIndex, _x] call RSTF_fnc_spawnSpawnDefenses;
 	} foreach RSTF_SPAWNS;
 };
-
-
-"Loading classes..." call RSTF_fnc_dbg;
-
-// Load avaible weapons and classes
-call RSTF_fnc_loadWeapons;
-call RSTF_fnc_loadClasses;
-
-// Send list of available vehicles to other players
-publicVariable "RSTF_BUYABLE_VEHICLES";
 
 // Hide camera border
 waitUntil { time > 0 };

@@ -20,7 +20,7 @@
 		} else {
 			["Starting game without battle selection"] call RSTF_fnc_Log;
 			(RSTF_POINTS select 0) call RSTF_fnc_assignPoint;
-			0 spawn RSTF_fnc_start;
+			0 spawn RSTF_fnc_startBattle;
 		}
 	};
 };

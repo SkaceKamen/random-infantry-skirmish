@@ -55,7 +55,7 @@ if (isServer && isMultiplayer) then {
 		};
 
 		(selectRandom(_max)) call RSTF_fnc_assignPoint;
-		0 spawn RSTF_fnc_start;
+		0 spawn RSTF_fnc_startBattle;
 	};
 
 	publicVariable "RSTF_POINT_VOTES";

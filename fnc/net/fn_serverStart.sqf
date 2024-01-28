@@ -3,7 +3,7 @@ call RSTF_fnc_serverEvents;
 if (RSTF_SKIP_CONFIG) then {
 	// Start game without config
 	["Skipping config, starting server"] call RSTF_fnc_Log;
-	call RSTF_fnc_start;
+	call RSTF_fnc_startBattle;
 } else {
 	if (hasInterface) then {
 		["Showing config screen"] call RSTF_fnc_Log;
