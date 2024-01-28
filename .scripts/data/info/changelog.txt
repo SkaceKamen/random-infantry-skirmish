@@ -1,5 +1,3 @@
 [list]
-  [*] Added push point radius config value
-  [*] Fixed intro blocking some init functions
-  [*] Fixed AI in Push not focusing on the point too much
+  [*] Improve faction loading performance
 [/list]
