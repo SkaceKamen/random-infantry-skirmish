@@ -11,24 +11,30 @@ import re
 
 templatesPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".templates"))
 
-toFind = """class Attributes
+toFind = r"""class Attributes
 			{
 			};
 			id=47;
+			atlOffset=([^;]*);
 		};"""
 
 for variant in glob.glob(os.path.join(templatesPath, "*.sqm")):
   print("Applying new template to " + variant)
 
   content = pathlib.Path(variant).read_text()
+  
+  if content.find("class Item9\n") != -1:
+    print ("...skip")
+    continue
+
   matched = re.search(r"items=([0-9]+);", content[content.find("class Entities"):])
   if matched is None:
     raise Exception("Could not find items count in " + variant)
   count = int(matched.group(1))
   
-  content = content.replace("items=" + str(count) + ";", "items=" + str(count + 8) + ";")
-  content = re.sub(r"class Item([0-9]+)", lambda m: "class Item" + str(int(m.group(1)) + 8) if int(m.group(1)) > 8 else m.group(0), content)
-  content = content.replace(toFind, toFind + """
+  #content = content.replace("items=" + str(count) + ";", "items=" + str(count + 8) + ";")
+  #content = re.sub(r"class Item([0-9]+)", lambda m: "class Item" + str(int(m.group(1)) + 8) if int(m.group(1)) > 8 else m.group(0), content)
+  content = re.sub(toFind, lambda match: match.group(0) + """
 		class Item9
 		{
 			dataType="Group";
@@ -516,6 +522,6 @@ for variant in glob.glob(os.path.join(templatesPath, "*.sqm")):
 			{
 			};
 			id=4008;
-		};""")
+		};""", content)
   with open(variant, "w") as f:
     f.write(content)
