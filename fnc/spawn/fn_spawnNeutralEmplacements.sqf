@@ -133,16 +133,26 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 	// Make position 3D
 	_position set [2, 0];
 
+	// Create emplacement
+	private _empType = selectRandom(_emplacements);
+
+	// When allied with enemy, just point emplacements to west, othewise pick random side
+	private _direction = if (RSTF_NEUTRALS_EAST) then {
+		RSTF_DIRECTION + 180 + (random [-1, 0, 1]) * 20
+	} else {
+		RSTF_DIRECTION + selectRandom [0, 180] + (random [-1, 0, 1]) * 20
+	};
+
 	if (RSTF_DEBUG) then {
 		_marker = createMarker ["ASGFJHDASJHD" + str(_position), _position];
 		_marker setmarkerShape "ICON";
-		_marker setMarkerType "mil_dot";
+		_marker setMarkerColor "ColorGreen";
+		_marker setMarkerDir _direction;
+		_marker setMarkerType "mil_arrow2";
 		_marker setMarkerText "Neutral emplacement";
 	};
 
-	// Create emplacement
-	_empType = selectRandom(_emplacements);
-	_spawned = [_position, RSTF_DIRECTION + 180 + (random [-1, 0, 1]) * 20, _empType] call RSTF_fnc_spawnComposition;
+	private _spawned = [_position, RSTF_DIRECTION + 180 + (random [-1, 0, 1]) * 20, _empType] call RSTF_fnc_spawnComposition;
 
 	// Replace weapon placeholder with actual weapon
 	{
