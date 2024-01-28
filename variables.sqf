@@ -436,3 +436,11 @@ RSTF_INTRO_PLAYING = false;
 RSTF_MODE_PUSH_SIDE_OPTIONS = ["Attackers", "Defenders"];
 
 RSTF_GROUP_UNIT_RESTRICTION_OPTIONS = ["None", "Faction", "Faction and category"];
+
+// WIP: State driven by server
+RSTF_STATE_CONFIG = "config";
+RSTF_STATE_MAP_VOTING = "mapVoting";
+RSTF_STATE_BATTLE = "battle";
+RSTF_STATE_END = "end";
+// Current state can be one of RSTF_STATE_* variables
+RSTF_CURRENT_STATE = RSTF_STATE_CONFIG;

@@ -1,3 +1,5 @@
+[RSTF_STATE_MAP_VOTING] call RSTF_fnc_setState;
+
 if (isServer && isMultiplayer) then {
 	["Starting map tick at server"] call RSTF_fnc_Log;
 

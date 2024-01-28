@@ -1,3 +1,5 @@
+[RSTF_STATE_BATTLE] call RSTF_fnc_setState;
+
 "Battle is being initialized..." call RSTF_fnc_dbg;
 
 "Picking point..." call RSTF_fnc_dbg;

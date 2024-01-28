@@ -61,6 +61,8 @@ class RSTF
 		class startVehicleCheckLoop {};
 
 		class dbg {};
+
+		class setState {};
 	};
 
 	class money
@@ -126,6 +128,7 @@ class RSTF
 		class applyUnitEquipment{};
 		class getFactionsForSide {};
 		class clearWaypoints {};
+		class countCaptureUnits {};
 	};
 
 	class ui

@@ -27,31 +27,7 @@ RSTF_MODE_KOTH_startLoop = {
 
 		while { !RSTF_ENDED } do {
 			// Count men for each side inside this point
-			private _counts = [];
-			{
-				_counts set [_x, 0];
-			} foreach RSTF_SIDES;
-
-			private _nearest = nearestObjects [_center, ["Man"], _radius, true];
-			{
-				_index = -1;
-				if (alive(_x)) then {
-					if (side(_x) == west) then {
-						_index = SIDE_FRIENDLY;
-					};
-					if (side(_x) == east) then {
-						_index = SIDE_ENEMY;
-					};
-					if (side(_x) == resistance) then {
-						_index = SIDE_NEUTRAL;
-					};
-				};
-
-				if (_index >= 0) then {
-					_counts set [_index, (_counts select _index) + 1];
-				};
-			} foreach _nearest;
-
+			private _counts = [_center, _radius/2] call RSTF_fnc_countCaptureUnits;
 			RSTF_MODE_KOTH_COUNTS = _counts;
 
 			// Now find side with most men

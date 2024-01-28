@@ -47,9 +47,7 @@ if (!isNull(leader(_group))) then {
 				if (_objectiveDistance > 30) then {
 					_order = "MOVE";
 					_speed = "FULL";
-				} else {
-					_order = "HOLD";
-				}
+				};
 			}
 		};
 
@@ -65,9 +63,7 @@ if (!isNull(leader(_group))) then {
 		case "Defense": {
 			private _distance = _groupLeaderPos distance2D RSTF_POINT;
 
-			if (_sideIndex == SIDE_FRIENDLY) then {
-				_order = "HOLD";
-			} else {
+			if (_sideIndex == SIDE_ENEMY) then {
 				if (_distance >RSTF_MODE_DEFEND_RADIUS) then {
 					_order = "MOVE";
 					_speed = "FULL";

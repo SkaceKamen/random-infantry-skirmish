@@ -39,9 +39,8 @@ RSTF_MODE_DEFEND_startLoop = {
 		_marker setMarkerSize [_radius, _radius];
 		_marker setMarkerColor RSTF_COLOR_NEUTRAL;
 
-		// Start new task
-		RSTF_MODE_DEFEND_TASK = [
-			side(player),
+		RSTF_MODE_DEFEND_TASK_DEFENDERS = [
+			west,
 			"Defend this area",
 			["This area is important for our efforts, defend it at all cost", "Defend this area",""],
 			RSTF_POINT,
@@ -51,33 +50,20 @@ RSTF_MODE_DEFEND_startLoop = {
 			"defend"
 		] call BIS_fnc_taskCreate;
 
+		RSTF_MODE_DEFEND_TASK_ATTACKERS = [
+			east,
+			"Capture this area",
+			["This area is important for our efforts, take it!", "Capture this area",""],
+			RSTF_POINT,
+			"ASSIGNED",
+			0,
+			true,
+			"attack"
+		] call BIS_fnc_taskCreate;
+
 		while { !RSTF_ENDED } do {
 			// Count men for each side inside this point
-			private _counts = [];
-			{
-				_counts set [_x, 0];
-			} foreach RSTF_SIDES;
-
-			private _nearest = nearestObjects [RSTF_POINT, ["Man"], _radius, true];
-			{
-				_index = -1;
-				if (alive(_x)) then {
-					if (side(_x) == west) then {
-						_index = SIDE_FRIENDLY;
-					};
-					if (side(_x) == east) then {
-						_index = SIDE_ENEMY;
-					};
-					if (side(_x) == resistance) then {
-						_index = SIDE_NEUTRAL;
-					};
-				};
-
-				if (_index >= 0) then {
-					_counts set [_index, (_counts select _index) + 1];
-				};
-			} foreach _nearest;
-
+			private _counts = [RSTF_POINT, _radius] call RSTF_fnc_countCaptureUnits;
 			RSTF_MODE_PUSH_COUNTS = _counts;
 
 			// Now find side with most men
