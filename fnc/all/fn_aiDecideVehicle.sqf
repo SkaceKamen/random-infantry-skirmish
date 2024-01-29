@@ -57,10 +57,10 @@ private _overflow = false;
 
 if (RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS) then {
 	if (_air) then {
-		private _airVehicles = count((RSTF_AI_VEHICLES#_side) select { _x isKindOf "Air" });
+		private _airVehicles = count((RSTF_AI_VEHICLES#_side) select { (_x#1) isKindOf "Air" });
 		_overflow = (_airVehicles >= RSTF_MONEY_VEHICLES_AI_AIR_LIMIT);
 	} else {
-		private _groundVehicles = count((RSTF_AI_VEHICLES#_side) select { !(_x isKindOf "Air") });
+		private _groundVehicles = count((RSTF_AI_VEHICLES#_side) select { !((_x#1) isKindOf "Air") });
 		_overflow = _groundVehicles >= RSTF_MONEY_VEHICLES_AI_LAND_LIMIT;
 	};
 };
