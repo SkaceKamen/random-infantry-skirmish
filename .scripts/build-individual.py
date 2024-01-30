@@ -77,7 +77,7 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
   shutil.copytree(risPath, missionPath, ignore=shutil.ignore_patterns('.*', 'mission.sqm', 'local.sqf'))
   shutil.copyfile(variant, os.path.join(missionPath, 'mission.sqm'))
 
-  with open(os.path.join(missionPath, 'mission.sqm'), 'r') as f:
+  with open(os.path.join(missionPath, 'mission.sqm'), 'r', encoding='utf-8') as f:
     data = f.read()
     missionTitle = re.search("briefingName=\"([^\"]*)\"", data)[1]
 
