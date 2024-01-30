@@ -36,7 +36,7 @@ private _queue = [];
 	if (_timeout < time || _force) then {
 		// Safety check, don't delete vehicle with crew in it
 		if (!(_object isKindOf "Man") && { count([_object] call RSTF_fnc_aliveCrew) > 0 }) then {
-			[_object, _x getVariable ["GC_delay", 30], true] call RSTFGC_fnc_attach;
+			[_object, _object getVariable ["GC_delay", 30], true] call RSTFGC_fnc_attach;
 		} else {
 			deleteVehicle _object;
 		};
