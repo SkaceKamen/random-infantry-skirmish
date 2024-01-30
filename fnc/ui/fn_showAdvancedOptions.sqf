@@ -34,15 +34,12 @@ private _items = "true" configClasses (_options >> "Items");
 private _idc = 2000;
 
 private _padding = 0.05;
-private _yy = _padding;
-private _xx = _padding;
 private _width = RSTF_ADV_OPS_W - _padding * 2;
 {
 	private _configItem = _x;
 	private _type = getText(_x >> "type");
 
 	if (_type == 'spacer') then {
-		_yy = _yy + 0.03;
 		RSTF_ADVANCED_LASTOPTIONS pushBack [controlNull, controlNull, _type, "", -1, _x];
 		continue;
 	};
@@ -170,8 +167,6 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 	// Save created option for later manipulation
 	RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name, _validator, _x];
 	_idc = _idc + 1;
-
-	_yy = _yy + 0.06;
 } foreach _items;
 
 call RSTF_fnc_updateAdvancedOptions;

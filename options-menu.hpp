@@ -1,5 +1,6 @@
 #define IS_PUSH "(call RSTF_fnc_getModeId) == 'Push' || (call RSTF_fnc_getModeId) == 'PushDefense'"
 #define SPACER class spacer2##__LINE__ { type = "spacer"; }
+#define CONDITIONAL_SPACER(COND) class spacer2##__LINE__ { type = "spacer"; visible = COND; }
 
 class RSTF_Options {
 	class General {
@@ -69,6 +70,9 @@ class RSTF_Options {
 				visible=IS_PUSH;
 				optionsVariable="RSTF_MODE_PUSH_SIDE_OPTIONS";
 			};
+			
+			CONDITIONAL_SPACER(IS_PUSH);
+
 			class RSTF_MODE_PUSH_POINT_COUNT {
 				title="Points to capture";
 				description="Number of points that you have to capture to win";
@@ -80,7 +84,20 @@ class RSTF_Options {
 				description="Capture radius of the point in meters";
 				type="number";
 				visible=IS_PUSH;
-			}
+			};
+
+			CONDITIONAL_SPACER(IS_PUSH);
+			
+			class RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE {
+				title="Attackers group advantage";
+				description="Attackers will have this much more groups.";
+				type="number";
+				visible=IS_PUSH;
+				ingame=1;
+			};
+
+			CONDITIONAL_SPACER(IS_PUSH);
+
 			class RSTF_MODE_PUSH_SCORE_LIMIT {
 				title="Score to capture";
 				description="Point is captured when one side reaches this number of points";
@@ -88,6 +105,7 @@ class RSTF_Options {
 				visible=IS_PUSH;
 				ingame=1;
 			};
+
 			class RSTF_MODE_PUSH_SCORE_INTERVAL {
 				title="Point award interval";
 				description="In seconds. Interval in which is point awarded to side that holds the objective.";
@@ -95,18 +113,14 @@ class RSTF_Options {
 				visible=IS_PUSH;
 				ingame=1;
 			};
+
+			CONDITIONAL_SPACER(IS_PUSH);
+
 			class RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT {
 				title="Number of defensive emplacements";
 				description="Number of defensive emplacements spawned, only works when faction has suitable static emplacements.";
 				type="number";
 				visible=IS_PUSH;
-			};
-			class RSTF_MODE_PUSH_ATTACKERS_ADVANTAGE {
-				title="Attackers group advantage";
-				description="Attackers will have this much more groups.";
-				type="number";
-				visible=IS_PUSH;
-				ingame=1;
 			};
 
 			// Defense
@@ -152,15 +166,16 @@ class RSTF_Options {
 				type="number";
 				ingame=1;
 			};
-			class RSTF_ENEMY_ADVANTAGE_GROUPS {
-				title="Enemy groups advantage";
-				description="Enemy will have this much more groups.";
-				type="number";
-				ingame=1;
-			};
 			class RSTF_LIMIT_UNITS {
 				title="Units per group";
 				description="Number of soldiers in single group.";
+				type="number";
+				ingame=1;
+			};
+
+			class RSTF_ENEMY_ADVANTAGE_GROUPS {
+				title="Enemy groups advantage";
+				description="Enemy will have this much more groups.";
 				type="number";
 				ingame=1;
 			};
@@ -170,10 +185,22 @@ class RSTF_Options {
 				type="number";
 				ingame=1;
 			};
+
+			SPACER;
+
 			class RSTF_LIMIT_SPAWN {
 				title="Wave spawn time";
 				description="Interval in seconds in which reinforcements are spawned";
 				type="number";
+				ingame=1;
+			};
+
+			SPACER;
+
+			class RSTF_SPAWN_AT_OWN_GROUP {
+				title="Spawn new units near group";
+				description="Spawn new units near group when there's no enemy near";
+				type="checkbox";
 				ingame=1;
 			};
 			class RSTF_SPAWN_REUSE_GROUPS {
@@ -181,12 +208,7 @@ class RSTF_Options {
 				description="Don't create new groups when spawning new units, reuse existing ones. Can cause AI issues";
 				type="checkbox";
 				ingame=1;
-			};
-			class RSTF_SPAWN_AT_OWN_GROUP {
-				title="Spawn new units near group";
-				description="Spawn new units near group when there's no enemy near";
-				type="checkbox";
-				ingame=1;
+				enabled="!RSTF_SPAWN_AT_OWN_GROUP";
 			};
 
 			SPACER;
@@ -468,6 +490,8 @@ class RSTF_Options {
 				ingame=1;
 			};
 
+			SPACER;
+
 			class RSTF_MONEY_VEHICLES_AI_LIMIT {
 				title="Max AI vehicles per side";
 				description="Maximum number of spawned AI vehicles per side";
@@ -499,6 +523,8 @@ class RSTF_Options {
 				disabled="!RSTF_AI_VEHICLES_ENABLED || !RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS";
 				ingame=1;
 			};
+
+			SPACER;
 
 			class RSTF_VEHICLES_SPAWN_DISTANCE {
 				title="Vehicles spawn distance";

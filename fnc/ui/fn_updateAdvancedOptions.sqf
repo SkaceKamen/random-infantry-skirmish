@@ -10,23 +10,25 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 	private _label = _x select 1;
 	private _config = _x select 5;
 	private _type = getText(_config >> "type");
+	private _shown = true;
+	private _visibleScript = if (isText(_config >> "visible")) then { compile(getText(_config >> "visible")) } else { false };
+
+	if (typeName(_visibleScript) != typeName(false)) then {
+		_shown = (call _visibleScript);
+	};
 
 	if (_type == 'spacer') then {
-		_yy = _yy + 0.05;
+		if (_shown) then {
+			_yy = _yy + 0.05;
+		};
 		continue;
 	};
 
 	private _disabledScript = if (isText(_config >> "disabled")) then { compile(getText(_config >> "disabled")) } else { false };
-	private _visibleScript = if (isText(_config >> "visible")) then { compile(getText(_config >> "visible")) } else { false };
-	private _shown = true;
 
 	if (typeName(_disabledScript) != typeName(false)) then {
 		_ctrl ctrlEnable !(call _disabledScript);
 		_ctrl ctrlCommit 0;
-	};
-
-	if (typeName(_visibleScript) != typeName(false)) then {
-		_shown = (call _visibleScript);
 	};
 
 	_label ctrlSetPosition [_xx, _yy, RSTF_ADV_OPS_W * 0.495 - _padding, 0.037];
