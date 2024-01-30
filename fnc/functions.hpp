@@ -96,6 +96,7 @@ class RSTF
 		class spawnComposition2 {};
 		class spawnDefenceEmplacements {};
 		class getGroupSpawnPosition {};
+		class pickEmplacementPos {};
 	};
 
 	class utils

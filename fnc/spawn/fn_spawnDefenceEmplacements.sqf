@@ -9,6 +9,7 @@
 	_emplacementsCount - number of emplacements to spawn [Number]
 	_center - point to use for spawning [Position]
 	_direction - direction of advance of enemy [Number]
+	_radius - radius of area to spawn in [Number]
 	_sideIndex - side to spawn [Number]
 */
 
@@ -21,7 +22,8 @@
 private _emplacementsCount = param [0];
 private _center = param [1];
 private _direction = param [2];
-private _sideIndex = param [3, SIDE_ENEMY];
+private _radius = param [3];
+private _sideIndex = param [4, SIDE_ENEMY];
 private _side = [_sideIndex] call RSTF_fnc_indexSide;
 
 // Fist index - SIZE_LOW/SIZE_HIGH, Second index - CATEGORY_AA/CATEGORY_AI/CATEGORY_AT
@@ -101,39 +103,7 @@ private _usedPositions = [];
 private _i = 0;
 for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 	// Pick position
-	private _position = [];
-	private _tries = 0;
-
-	while { _tries < 100 } do {
-		private _centerDistance = RSTF_DISTANCE * (0.1 + random(0.1));
-		private _sideDistance = RSTF_DISTANCE * 0.5;
-
-		_position = _center vectorAdd [
-			sin(_direction) * _centerDistance,
-			cos(_direction) * _centerDistance,
-			0
-		];
-
-		_dis = selectRandom([-1,1]) * random(_sideDistance);
-		_position = _position vectorAdd [
-			sin(_direction + 90) * _dis,
-			cos(_direction + 90) * _dis,
-			0
-		];
-
-		_position = [_position, 0, 100, 10, 0, 0.1] call BIS_fnc_findSafePos;
-
-		if (count(_position) > 0) then {
-			private _closest = _usedPositions findIf { _x distance _position < 25 };
-			if (_closest != -1) then {
-				_position = [];
-			};
-		};
-
-		if (count(_position) > 0) exitWith {};
-
-		_tries = _tries + 1;
-	};
+	private _position = [_center, _radius, _direction, _usedPositions] call RSTF_fnc_pickEmplacementPos;
 
 	// Skip if no position was found
 	if (count(_position) < 0) exitWith {

@@ -114,9 +114,9 @@ RSTF_MODE_PUSH_NEXT_POINT = {
 	};
 
 	// Spawn next emplacements
-	if (RSTF_MODE_PUSH_POINT_INDEX < count(RSTF_MODE_PUSH_POINTS) - 1) then {
-		private _nextPoint = RSTF_MODE_PUSH_POINTS#(RSTF_MODE_PUSH_POINT_INDEX + 1);
-		[RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT, _nextPoint#0, _nextPoint#1, RSTF_MODE_DEFENDERS_SIDE] call RSTF_fnc_spawnDefenceEmplacements;
+	if (RSTF_MODE_PUSH_POINT_INDEX < count(RSTF_MODE_PUSH_POINTS) - 2) then {
+		private _nextNextPoint = RSTF_MODE_PUSH_POINTS#(RSTF_MODE_PUSH_POINT_INDEX + 2);
+		[RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT, _nextNextPoint#0, _nextNextPoint#1, RSTF_MODE_PUSH_POINT_RADIUS, RSTF_MODE_DEFENDERS_SIDE] call RSTF_fnc_spawnDefenceEmplacements;
 	};
 
 	// Relocate helper markers
@@ -209,7 +209,7 @@ RSTF_MODE_PUSH_startLoop = {
 
 		// Spawn emplacement, but only for the first 2 points
 		if ((RSTF_MODE_PUSH_FIRST_POINT_EMPLACEMENTS || count(RSTF_MODE_PUSH_POINTS) > 1) && count(RSTF_MODE_PUSH_POINTS) < 3) then {
-			[RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT, _center, _direction, RSTF_MODE_DEFENDERS_SIDE] call RSTF_fnc_spawnDefenceEmplacements;
+			[RSTF_MODE_PUSH_EMPLACEMENTS_PER_POINT, _center, _direction, RSTF_MODE_PUSH_POINT_RADIUS, RSTF_MODE_DEFENDERS_SIDE] call RSTF_fnc_spawnDefenceEmplacements;
 		};
 	};
 

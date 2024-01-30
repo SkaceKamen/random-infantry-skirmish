@@ -139,7 +139,7 @@ if (isMultiplayer) then {
 };
 
 /*
-TEST OF: RSTF_fnc_getObjectiveDistance
+// TEST OF: RSTF_fnc_getObjectiveDistance
 private _line = createMarker ["LINE", RSTF_POINT];
 _line setMarkerShape "RECTANGLE";
 _line setMarkerSize [0.2, 200];
@@ -153,6 +153,17 @@ for [{_i = 0},{_i < 100},{_i = _i + 1}] do {
 	_marker setMarkerType "mil_dot";
 	_marker setMarkerSize [0.2, 0.2];
 	_marker setMarkerText str([_pos] call RSTF_fnc_getObjectiveDistance);
+	_marker setMarkerShadow false;
+};
+*/
+
+/*
+// TEST OF: RSTF_fnc_pickEmplacementPos;
+for [{_i = 0}, {_i < 1000}, {_i = _i + 1}] do {
+	private _pos = [RSTF_POINT, RSTF_MODE_PUSH_POINT_RADIUS, RSTF_DIRECTION, []] call RSTF_fnc_pickEmplacementPos;
+	private _marker = createMarker ["TEST" + str(_i), _pos];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType "mil_dot";
 	_marker setMarkerShadow false;
 };
 */
