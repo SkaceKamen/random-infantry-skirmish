@@ -330,20 +330,41 @@ class RSTF_Options {
 		visible = "call RSTF_fnc_doesModeSupportNeutrals";
 
 		class Items {
-			class RSTF_NEUTRALS_GROUPS {
-				title="Neutral groups";
-				description="Maximum number of neutral groups spawned.";
-				type="number";
-			};
 			class RSTF_NEUTRALS_EAST {
 				title="Friendly with enemies";
 				description="Should neutrals be same side as enemies.";
 				type="checkbox";
 			};
+
+			SPACER;
+
+			class RSTF_NEUTRALS_GROUPS {
+				title="Number of buildings occupied by neutrals";
+				description="Maximum number of neutral groups spawned.";
+				type="number";
+			};
+			class RSTF_NEUTRALS_UNITS_MIN {
+				title = "Minimum number of units in building";
+				description = "Minimum number of units that can be spawned in single building";
+				type = "number";
+			};
+			class RSTF_NEUTRALS_UNITS_MAX {
+				title = "Maximum number of units in building";
+				description = "Maximum number of units that can be spawned in single building";
+				type = "number";
+			};
+
+			SPACER;
+
 			class RSTF_NEUTRALS_EMPLACEMENTS {
 				title="Allow emplacements";
 				description="Spawn neutral emplacements if possible.";
 				type="checkbox";
+			};
+			class RSTF_NEUTRALS_EMPLACEMENTS_COUNT {
+				title="Neutral emplacements count";
+				description="Number of neutral emplacements spawned.";
+				type="number";
 			};
 		};
 	};

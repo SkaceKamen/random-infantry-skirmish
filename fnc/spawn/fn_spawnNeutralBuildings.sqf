@@ -56,7 +56,7 @@ for[{_i = 0},{_i < RSTF_NEUTRALS_GROUPS},{_i = _i + 1}] do {
 
 	// Shuffle positions, then access them by linear index, ensuring no position is used twice
 	_positions = _positions call RSTF_fnc_arrayShuffle;
-	_units = _units max count(_positions);
+	_units = _units min count(_positions);
 
 	// Number of static weapons in the house
 	_statics = 0;

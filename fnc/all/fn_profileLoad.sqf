@@ -22,3 +22,11 @@ if (!(profileNamespace getVariable ["RSTF_NEW_CLEAN_APPLIED", false])) then {
 
 	profileNamespace setVariable ["RSTF_NEW_CLEAN_APPLIED", true];
 };
+
+// Set reasonable neutral limits
+if (!(profileNamespace getVariable ["RSTF_NEW_NEUTRAL_LIMITS", false])) then {
+	RSTF_NEUTRALS_UNITS_MIN = 3;
+	RSTF_NEUTRALS_UNITS_MAX = 8;
+
+	profileNamespace setVariable ["RSTF_NEW_NEUTRAL_LIMITS", true];
+};

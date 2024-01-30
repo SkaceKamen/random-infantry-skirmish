@@ -435,6 +435,10 @@ RSTF_NEUTRALS_UNITS_MAX = 5;
 RSTF_NEUTRALS_EAST = true;
 // Should we spawn emplacements
 RSTF_NEUTRALS_EMPLACEMENTS = true;
+// Number of neutral emplacements spawned
+RSTF_NEUTRALS_EMPLACEMENTS_COUNT = 5;
+// Maximum number of building occupants
+RSTF_NEUTRALS_MAX_BUILDING_OCCUPANCY = 8;
 
 // Score needed to win
 RSTF_SCORE_LIMIT = 10000;

@@ -23,7 +23,7 @@ private _emplacements = [ "emplacement", "emplacement2" ];
 // List of classNames and their class (AA/AT/AI) to be overriden
 private _overrideEmplacements = [ [0, "RHS_ZU23_MSV"], [0, "RHS_ZU23_VDV"] ];
 private _statics = (RSTF_VEHICLES select SIDE_NEUTRAL) select RSTF_VEHICLE_STATIC;
-private _emplacementsCount = 5;
+private _emplacementsCount = RSTF_NEUTRALS_EMPLACEMENTS_COUNT;
 private _masterTask = "";
 
 ["Picking statics from", _statics] call RSTF_fnc_dbg;
@@ -152,7 +152,7 @@ for [{_i = 0}, {_i < _emplacementsCount}, {_i = _i + 1}] do {
 		_marker setMarkerText "Neutral emplacement";
 	};
 
-	private _spawned = [_position, RSTF_DIRECTION + 180 + (random [-1, 0, 1]) * 20, _empType] call RSTF_fnc_spawnComposition;
+	private _spawned = [_position, _direction, _empType] call RSTF_fnc_spawnComposition;
 
 	// Replace weapon placeholder with actual weapon
 	{
