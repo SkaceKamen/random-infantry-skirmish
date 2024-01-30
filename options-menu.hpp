@@ -1,4 +1,5 @@
 #define IS_PUSH "(call RSTF_fnc_getModeId) == 'Push' || (call RSTF_fnc_getModeId) == 'PushDefense'"
+#define IS_KOTH "(call RSTF_fnc_getModeId) == 'KOTH'"
 #define SPACER class spacer2##__LINE__ { type = "spacer"; }
 #define CONDITIONAL_SPACER(COND) class spacer2##__LINE__ { type = "spacer"; visible = COND; }
 
@@ -21,15 +22,25 @@ class RSTF_Options {
 				title="Score to win";
 				description="One side wins after reaching this limit.";
 				type="number";
-				visible = "(call RSTF_fnc_getModeId) == 'KOTH'";
+				visible=IS_KOTH;
 				ingame=1;
 			};
 			class RSTF_MODE_KOTH_SCORE_INTERVAL {
 				title="Point award interval";
 				description="In seconds. Interval in which is point awarded to side that holds the objective.";
 				type="number";
-				visible = "(call RSTF_fnc_getModeId) == 'KOTH'";
+				visible=IS_KOTH;
 				ingame=1;
+			};
+
+			CONDITIONAL_SPACER(IS_KOTH);
+
+			class RSTF_MODE_KOTH_POINT_RADIUS {
+				title="Point radius";
+				description="In meters, capture point radius";
+				type="number";
+				visible=IS_KOTH;
+				postfix="meters";
 			};
 
 			// Classic
@@ -84,6 +95,7 @@ class RSTF_Options {
 				description="Capture radius of the point in meters";
 				type="number";
 				visible=IS_PUSH;
+				postfix="meters";
 			};
 
 			CONDITIONAL_SPACER(IS_PUSH);
@@ -112,6 +124,7 @@ class RSTF_Options {
 				type="number";
 				visible=IS_PUSH;
 				ingame=1;
+				postfix="seconds";
 			};
 
 			CONDITIONAL_SPACER(IS_PUSH);
@@ -130,6 +143,7 @@ class RSTF_Options {
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
 				ingame=1;
+				postfix="seconds";
 			};
 			class RSTF_MODE_DEFEND_RADIUS {
 				title="Defended point radius";
@@ -137,6 +151,7 @@ class RSTF_Options {
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
 				ingame=1;
+				postfix="meters";
 			};
 			class RSTF_MODE_DEFEND_SCORE_LIMIT {
 				title="Score to capture";
@@ -151,6 +166,7 @@ class RSTF_Options {
 				type="number";
 				visible = "(call RSTF_fnc_getModeId) == 'Defense'";
 				ingame=1;
+				postfix="seconds";
 			};
 		};
 	};
@@ -193,6 +209,7 @@ class RSTF_Options {
 				description="Interval in seconds in which reinforcements are spawned";
 				type="number";
 				ingame=1;
+				postfix="seconds";
 			};
 
 			SPACER;
@@ -236,6 +253,7 @@ class RSTF_Options {
 				type="number";
 				validator="_this call RSTF_VALIDATOR_SPAWN_DISTANCE_MIN";
 				ingame=1;
+				postfix="meters";
 			};
 			class RSTF_SPAWN_DISTANCE_MAX {
 				title="Maximal spawn distance";
@@ -243,6 +261,7 @@ class RSTF_Options {
 				type="number";
 				validator="_this call RSTF_VALIDATOR_SPAWN_DISTANCE_MAX";
 				ingame=1;
+				postfix="meters";
 			};
 
 			SPACER;
@@ -552,6 +571,7 @@ class RSTF_Options {
 				description="Distance from side spawn that vehicles spawn at";
 				type="number";
 				ingame=1;
+				postfix="meters";
 			};
 
 			class RSTF_AIR_VEHICLES_SPAWN_DISTANCE {
@@ -559,6 +579,7 @@ class RSTF_Options {
 				description="Distance from center that air vehicles spawn at";
 				type="number";
 				ingame=1;
+				postfix="meters";
 			};
 
 			class RSTF_PLANES_SPAWN_DISANCE {
@@ -566,6 +587,7 @@ class RSTF_Options {
 				description="Distance from center that planes spawn at";
 				type="number";
 				ingame=1;
+				postfix="meters";
 			};
 		};
 	};
@@ -700,11 +722,13 @@ class RSTF_Options {
 				title="Infantry clean interval";
 				description="After how much time should be dead bodies removed. In seconds.";
 				type="number";
+				postfix="seconds";
 			};
 			class RSTF_CLEAN_INTERVAL_VEHICLES {
 				title="Vehicles clean interval";
 				description="After how much time should be empty/destroyed vehicles removed. In seconds.";
 				type="number";
+				postfix="seconds";
 			};
 
 			SPACER;

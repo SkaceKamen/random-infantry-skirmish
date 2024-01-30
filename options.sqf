@@ -437,8 +437,6 @@ RSTF_NEUTRALS_EAST = true;
 RSTF_NEUTRALS_EMPLACEMENTS = true;
 // Number of neutral emplacements spawned
 RSTF_NEUTRALS_EMPLACEMENTS_COUNT = 5;
-// Maximum number of building occupants
-RSTF_NEUTRALS_MAX_BUILDING_OCCUPANCY = 8;
 
 // Score needed to win
 RSTF_SCORE_LIMIT = 10000;
@@ -521,9 +519,10 @@ RSTF_AI_MONEY_PER_SECOND = 2;
 
 // Interval in which are points awarded to side holding objective in KOTH
 RSTF_MODE_KOTH_SCORE_INTERVAL = 10;
-
 // Score limit in KOTH
 RSTF_MODE_KOTH_SCORE_LIMIT = 100;
+// Overriden KOTH point radius size
+RSTF_MODE_KOTH_POINT_RADIUS = 150;
 
 // Display support menu hint
 RSTF_HINT_SUPPORT_MENU = true;

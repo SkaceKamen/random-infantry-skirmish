@@ -23,8 +23,10 @@ call RSTF_fnc_updateAdvancedConfig;
 {
 	ctrlDelete (_x select 0);
 	ctrlDelete (_x select 1);
+	ctrlDelete (_x select 2);
 	(_x select 0) ctrlCommit 0;
 	(_x select 1) ctrlCommit 0;
+	(_x select 2) ctrlCommit 0;
 } foreach RSTF_ADVANCED_LASTOPTIONS;
 
 RSTF_ADVANCED_LASTOPTIONS = [];
@@ -40,7 +42,7 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 	private _type = getText(_x >> "type");
 
 	if (_type == 'spacer') then {
-		RSTF_ADVANCED_LASTOPTIONS pushBack [controlNull, controlNull, _type, "", -1, _x];
+		RSTF_ADVANCED_LASTOPTIONS pushBack [controlNull, controlNull, controlNull, _type, "", -1, _x];
 		continue;
 	};
 
@@ -77,6 +79,17 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 	_ctrl ctrlSetTooltip _description;
 	_ctrl ctrlShow false;
 	_ctrl ctrlSetFontHeight (((((safezoneW / safezoneH) min 1.2)/ 1.2)/ 25) * 0.8);
+
+	private _postfixCtrl = controlNull;
+
+	if (isText(_x >> "postfix")) then {
+		_postfixCtrl = _display ctrlCreate ["RSTF_ADV_POSTFIX", _idc, _optionsContainer];
+		_postfixCtrl ctrlSetText getText(_x >> "postfix");
+		_postfixCtrl ctrlShow false;
+		_postfixCtrl ctrlCommit 0;
+
+		_idc = _idc + 1;
+	};
 
 	// Checkbox have fixed size and diferent input
 	if (_type == "checkbox") then {
@@ -165,7 +178,7 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 	};
 
 	// Save created option for later manipulation
-	RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _type, _name, _validator, _x];
+	RSTF_ADVANCED_LASTOPTIONS pushBack [_ctrl, _label, _postfixCtrl, _type, _name, _validator, _x];
 	_idc = _idc + 1;
 } foreach _items;
 

@@ -10,13 +10,18 @@ RSTF_MODE_KOTH_init = {
 
 	// Reset score
 	RSTF_SCORE = [0, 0, 0];
+
+	// Set point size
+	if (RSTF_MODE_KOTH_OVERRIDE_POINT_SIZE) then {
+		RSTF_DISTANCE = RSTF_MODE_KOTH_POINT_RADIUS * 2;
+	};
 };
 
 RSTF_MODE_KOTH_startLoop = {
 	0 spawn {
 		// Hill parameters
 		private _center = RSTF_POINT;
-		private _radius = RSTF_DISTANCE * 0.6;
+		private _radius = RSTF_DISTANCE / 2;
 
 		private _currentOwner = -1;
 		private _last = time;

@@ -18,6 +18,14 @@ class RSTF_ADV_LABEL: RscTextRight
 	sizeEx = GUI_TEXT_SIZE_SMALL;
 };
 
+
+class RSTF_ADV_POSTFIX: RscText
+{
+	shadow = 0;
+	font = GUI_STANDARD_FONT;
+	sizeEx = GUI_TEXT_SIZE_SMALL;
+};
+
 class RSTF_RscDialogAdvancedConfig
 {
     idd = 12;

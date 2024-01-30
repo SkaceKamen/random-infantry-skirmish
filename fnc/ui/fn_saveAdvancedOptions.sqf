@@ -3,10 +3,11 @@ private _errors = [];
 {
 	private _ctrl = _x select 0;
 	private _label = _x select 1;
-	private _type = _x select 2;
-	private _name = _x select 3;
-	private _callback = _x param [4, -1, [-1, {}]];
-	private _config = _x select 5;
+	private _postfixCtrl = _x select 2;
+	private _type = _x select 3;
+	private _name = _x select 4;
+	private _callback = _x param [5, -1, [-1, {}]];
+	private _config = _x select 6;
 
 	private _value = -1;
 
