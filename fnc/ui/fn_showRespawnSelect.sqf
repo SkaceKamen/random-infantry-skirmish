@@ -43,4 +43,7 @@ _listCtrl ctrlAddEventHandler ["LBSelChanged", {
 	};
 }] call ZUI_fnc_on;
 
+private _spawnCtrl = [RSTF_RESPAWN_SELECT_layout, "respawn"] call ZUI_fnc_getControlById;
+ctrlSetFocus _spawnCtrl;
+
 call RSTF_fnc_refreshRespawnSelect;
