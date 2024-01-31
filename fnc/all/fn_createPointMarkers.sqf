@@ -34,7 +34,7 @@ if (RSTF_MODE_DEFEND_ENABLED || (call RSTF_fnc_getModeId) == 'Defense') exitWith
 
 if (call RSTF_fnc_getModeId == 'Arena') exitWith {
 	for [{ _d = 0 }, { _d < 360 }, { _d = _d + 50 }] do {
-		private _distance = RSTF_MODE_DEFEND_RADIUS + 150 + random(50);
+		private _distance = RSTF_MODE_ARENA_RECTANGLE_SIZE + 50 + random(50);
 		private _direction = _d + random(8);
 		private _marker = "";
 

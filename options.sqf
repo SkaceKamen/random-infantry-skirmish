@@ -625,3 +625,6 @@ RSTF_AIR_VEHICLES_SPAWN_DISTANCE = 1000;
 
 // Distance at which planes spawn (from center)
 RSTF_PLANES_SPAWN_DISANCE = 3000;
+
+// Size of arena rectangle
+RSTF_MODE_ARENA_RECTANGLE_SIZE = 200;

@@ -57,6 +57,11 @@ switch (call RSTF_fnc_getModeId) do {
 		[_ctrl, "Score per kill", str(RSTF_SCORE_PER_KILL)] call _pushItem;
 		[_ctrl, "Score per task", str(RSTF_SCORE_PER_TASK)] call _pushItem;
 	};
+	case "Arena": {
+		[_ctrl, "Score to win", str(RSTF_SCORE_LIMIT)] call _pushItem;
+		[_ctrl, "Score per kill", str(RSTF_SCORE_PER_KILL)] call _pushItem;
+		[_ctrl, "Rectangle size", str(RSTF_MODE_ARENA_RECTANGLE_SIZE) + " m"] call _pushItem;
+	};
 };
 
 private _dateTime = "";

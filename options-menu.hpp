@@ -1,5 +1,6 @@
 #define IS_PUSH "(call RSTF_fnc_getModeId) == 'Push' || (call RSTF_fnc_getModeId) == 'PushDefense'"
 #define IS_KOTH "(call RSTF_fnc_getModeId) == 'KOTH'"
+#define IS_ARENA "(call RSTF_fnc_getModeId) == 'Arena'"
 #define SPACER class spacer2##__LINE__ { type = "spacer"; }
 #define CONDITIONAL_SPACER(COND) class spacer2##__LINE__ { type = "spacer"; visible = COND; }
 
@@ -16,6 +17,17 @@ class RSTF_Options {
 				optionsVariable="RSTF_MODES_OPTIONS";
 				optionType="string";
 			};
+
+			// Arena
+			class RSTF_MODE_ARENA_RECTANGLE_SIZE {
+				title="Rectangle size";
+				description="Size of the rectangle where the fighting happens";
+				type="number";
+				visible=IS_ARENA;
+				postfix="meters";
+			};
+
+			CONDITIONAL_SPACER(IS_ARENA);
 
 			// KOTH
 			class RSTF_MODE_KOTH_SCORE_LIMIT {
@@ -48,14 +60,14 @@ class RSTF_Options {
 				title="Score to win";
 				description="One side wins after reaching this limit.";
 				type="number";
-				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+				visible = "(call RSTF_fnc_getModeId) == 'Classic' || (call RSTF_fnc_getModeId) == 'Arena'";
 				ingame=1;
 			};
 			class RSTF_SCORE_PER_KILL {
 				title="Score per kill";
 				description="Score you get for killing soldier.";
 				type="number";
-				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+				visible = "(call RSTF_fnc_getModeId) == 'Classic' || (call RSTF_fnc_getModeId) == 'Arena'";
 				ingame=1;
 			};
 			class RSTF_SCORE_PER_TASK {
@@ -69,7 +81,7 @@ class RSTF_Options {
 				title="Enemy score multiplier";
 				description="Enemy score will be multiplied by this.";
 				type="float";
-				visible = "(call RSTF_fnc_getModeId) == 'Classic'";
+				visible = "(call RSTF_fnc_getModeId) == 'Classic' || (call RSTF_fnc_getModeId) == 'Arena'";
 				ingame=1;
 			};
 
