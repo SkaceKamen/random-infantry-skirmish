@@ -19,7 +19,7 @@ private _side = param [1];
 private _checkMovement = param [2, false];
 private _position = [];
 
-if (RSTF_SPAWN_AT_OWN_GROUP) then {
+if (!RSTF_DISABLE_GROUP_SPAWNS && RSTF_SPAWN_AT_OWN_GROUP) then {
 	_position = [_group, _side] call RSTF_fnc_getGroupSpawnPosition;
 } else {
 	_position = [_side] call RSTF_fnc_randomSpawn;
@@ -50,8 +50,8 @@ if (RSTF_GROUP_UNIT_RESTRICTION > 0) then {
 
 // Try to spawn next to our group, but only if they're inside spawn
 if (!RSTF_MODE_DEFEND_ENABLED) then {
-	private _width = 300;
-	private _height = 60;
+	private _width = RSTF_RANDOM_SPAWN_WIDTH;
+	private _height = RSTF_RANDOM_SPAWN_HEIGHT;
 	private _direction = RSTF_DIRECTION;
 	private _spawn = RSTF_SPAWNS select _side;
 	

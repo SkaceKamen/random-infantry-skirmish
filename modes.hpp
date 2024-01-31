@@ -5,7 +5,7 @@ class RSTF_Modes
 		title = "Team Deathmatch";
 		description = "Score-based team deathmatch, where first one that reaches specific number of points wins.";
 		enabled = 1;
-		order = 4;
+		order = 3;
 		hasNeutralFaction = 1;
 
 		init = "RSTF_MODE_CLASSIC_init";
@@ -65,7 +65,7 @@ class RSTF_Modes
 		title = "Defense - BETA";
 		description = "Hold area for predefined amount of time agains never ending waves of enemies. This game mode is in BETA stage and could be unablanced.";
 		enabled = 1;
-		order = 3;
+		order = 5;
 		hasNeutralFaction = 0;
 
 		init = "RSTF_MODE_DEFEND_init";
@@ -73,5 +73,20 @@ class RSTF_Modes
 		unitKilled = "RSTF_MODE_DEFEND_unitKilled";
 		taskCompleted = "RSTF_MODE_DEFEND_taskCompleted";
 		vehicleKilled = "RSTF_MODE_DEFEND_vehicleKilled";
+	};
+
+	class Arena
+	{
+		title = "Arena Team Deathmatch";
+		description = "Classic team deathmatch, but all units spawn within the same predefined area.";
+		enabled = 1;
+		order = 4;
+		hasNeutralFaction = 0;
+
+		init = "RSTF_MODE_ARENA_init";
+		startLoop = "RSTF_MODE_ARENA_startLoop";
+		unitKilled = "RSTF_MODE_ARENA_unitKilled";
+		taskCompleted = "RSTF_MODE_ARENA_taskCompleted";
+		vehicleKilled = "RSTF_MODE_ARENA_vehicleKilled";
 	};
 };

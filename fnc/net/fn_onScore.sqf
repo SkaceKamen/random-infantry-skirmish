@@ -9,7 +9,7 @@ if (RSTF_ENDED) exitWith {
 private _display = uinamespace getVariable ['ARCADE_UI', displaynull];
 private _modeId = call RSTF_fnc_getModeId;
 
-if (_modeId == "Classic" || _modeId == "KOTH") then {
+if (_modeId == "Classic" || _modeId == "KOTH" || _modeId == "Arena") then {
 	for [{_i = 0}, {_i < 2}, {_i = _i + 1}] do {
 		_score = RSTF_SCORE select _i;
 		(_display displayCtrl (4 - _i)) ctrlSetText str(_score);

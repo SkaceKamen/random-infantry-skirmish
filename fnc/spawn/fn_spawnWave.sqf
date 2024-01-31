@@ -61,7 +61,7 @@ private _pickNextGroup = {
 
 	// Try to use existing group
 	private _resultGroup = grpNull;
-	if (RSTF_SPAWN_REUSE_GROUPS || RSTF_SPAWN_AT_OWN_GROUP) then {
+	if (!RSTF_DISABLE_GROUP_SPAWNS && (RSTF_SPAWN_REUSE_GROUPS || RSTF_SPAWN_AT_OWN_GROUP)) then {
 		{
 			if (_x getVariable ["RSTF_UNITS_COUNT", 0] < _unitsPerGroup) exitWith {
 				_resultGroup = _x;

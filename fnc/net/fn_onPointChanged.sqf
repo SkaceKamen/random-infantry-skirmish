@@ -58,7 +58,7 @@ private _opforCtrl = [RSTF_START_layout, "opforFactions"] call ZUI_fnc_getContro
 	};
 } foreach ENEMY_FACTIONS;
 
-sleep 6;
+sleep 3;
 
 [RSTF_START_layout, 1] call ZUI_fnc_fadeOut;
 

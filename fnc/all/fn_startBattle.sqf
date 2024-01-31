@@ -51,13 +51,15 @@ call RSTF_fnc_initializeMode;
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
 
-"Spawning neutrals.." call RSTF_fnc_dbg;
+if (call RSTF_fnc_doesModeSupportNeutrals) then {
+	"Spawning neutrals.." call RSTF_fnc_dbg;
 
-// Spawn neutral units
-call RSTF_fnc_spawnNeutrals;
+	// Spawn neutral units
+	call RSTF_fnc_spawnNeutrals;
+};
 
 // Spawn spawns
-if (RSTF_SPAWN_TRANSPORTS) then {
+if (RSTF_SPAWN_TRANSPORTS && !RSTF_DISABLE_SPAWN_TRANSPORTS) then {
 	"Spawning transports on spawns..." call RSTF_fnc_dbg;
 
 	{

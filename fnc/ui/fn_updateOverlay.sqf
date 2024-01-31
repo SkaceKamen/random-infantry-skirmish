@@ -39,6 +39,12 @@ if (!RSTF_UI_SHOW_GAMEMODE_SCORE) then {
 	];
 } else {
 	switch (call RSTF_fnc_getModeId) do {
+		case "Arena": {
+			{
+				_x ctrlShow false;
+			} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground];
+		};
+
 		case "Classic": {
 			{
 				_x ctrlShow false;

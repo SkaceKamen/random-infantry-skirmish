@@ -20,9 +20,11 @@
 private _side = param [0];
 private _center = param [1, RSTF_SPAWNS select _side];
 private _direction = param [2, RSTF_DIRECTION];
-private _width = param [3, 300];
-private _height = param [4, 60];
+private _width = param [3, RSTF_RANDOM_SPAWN_WIDTH];
+private _height = param [4, RSTF_RANDOM_SPAWN_HEIGHT];
 private _water = param [5, false];
+
+private _sideSide = [_side] call RSTF_fnc_indexSide;
 
 private _position = [];
 private _try = 0;
@@ -70,6 +72,14 @@ while { _try < 100 } do {
 
 	// Find suitable empty position near the choosen position
 	private _emptyPosition = _position findEmptyPosition [0, 20, "C_Soldier_VR_F"];
+
+	// Avoid enemies
+	if (count(_emptyPosition) > 0 && RSTF_RANDOM_SPAWN_AVOID_ENEMIES) then {
+		private _nearby = nearestObjects [_emptyPosition, ["Man", "Land"], 3, true];
+		if ({ side(_x) != _sideSide } count(_nearby) > 0) then {
+			_emptyPosition = [];
+		};
+	};
 
 	// Return this empty position if correct and not on water
 	if (count(_emptyPosition) > 0 && { _water || !surfaceIsWater _emptyPosition }) exitWith {

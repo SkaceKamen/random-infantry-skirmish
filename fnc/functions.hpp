@@ -227,6 +227,7 @@ class RSTF
 		class initKothMode {};
 		class initDefendMode {};
 		class initPushMode {};
+		class initArenaMode {};
 	};
 
 	class tasks
