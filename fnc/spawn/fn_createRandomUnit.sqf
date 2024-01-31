@@ -146,7 +146,7 @@ if (!_vehicular) then {
 			publicVariable "RSTF_ASSIGNED_UNITS";
 
 			if (!isDedicated && _player == player) then {
-				_unit spawn RSTF_fnc_assignPlayer;
+				[_unit] spawn RSTF_fnc_assignPlayer;
 			};
 		};
 	} foreach [player];

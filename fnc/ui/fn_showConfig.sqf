@@ -15,7 +15,8 @@ if (RSTF_DEBUG_SKIP_CONFIG) exitWith {
 RSTF_MAIN_CONFIG_layout = [
 	missionConfigFile >> "MainConfigDialog",
 	displayNull,
-	RSTF_fnc_showConfig
+	RSTF_fnc_showConfig,
+	true
 ] call RSTF_fnc_spawnZUIDialog;
 
 private _display = [RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display;

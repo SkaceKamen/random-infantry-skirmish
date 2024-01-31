@@ -1,4 +1,5 @@
-private _unit = _this;
+private _unit = param [0];
+private _speed = param [1, 1];
 
 RSTF_BACKUP_PLAYER setVariable ["ASSIGNED", true, true];
 _unit setVariable ["USED", true, true];
@@ -14,11 +15,11 @@ if (isNull(RSTF_CAM)) then {
 
 // Move camera to new player
 RSTF_CAM camSetTarget _unit;
-RSTF_CAM camSetRelPos [0, -1, 0.5];
-RSTF_CAM camCommit 1;
+RSTF_CAM camSetRelPos [0, -1, 1.2];
+RSTF_CAM camCommit _speed;
 
 // Sleep is more reliable and we don't want players stuck on camera animation
-sleep 1;
+sleep _speed;
 // waitUntil { camCommitted RSTF_CAM; };
 
 // Check if target unit is alive, it's possible it died before we got to it

@@ -140,13 +140,15 @@ for[{_i = 0},{_i < 24},{_i = _i + 1}] do {
 RSTF_SPAWN_TYPES = [
 	"Closest unit",
 	"My group unit",
-	"Random unit"
+	"Random unit",
+	"Let player pick"
 ];
 RSTF_SPAWN_CLOSEST = 0;
 RSTF_SPAWN_GROUP = 1;
 RSTF_SPAWN_RANDOM = 2;
+RSTF_SPAWN_PICKER = 3;
 
-RSTF_SPAWN_TYPE = RSTF_SPAWN_RANDOM;
+RSTF_SPAWN_TYPE = RSTF_SPAWN_CLOSEST;
 
 //RSTF_SELECTED_WORLD = worldName;
 

@@ -35,12 +35,12 @@ if (!isNull(_killer)) then {
 private _display = uiNamespace getVariable "RscTitleDisplayEmpty";
 
 // Show title
-RSTF_DEATH_DIALOG_BG_layout = [missionConfigFile >> "DeathTitle", _display] call ZUI_fnc_createDisplay;
+RSTF_DEATH_DIALOG_BG_layout = [missionConfigFile >> "DeathTitle", _display, true] call ZUI_fnc_createDisplay;
 [RSTF_DEATH_DIALOG_BG_layout, 1] call ZUI_fnc_fadeIn;
 
 sleep 1;
 
-RSTF_DEATH_DIALOG_layout = [missionConfigFile >> "DeathDialog"] call ZUI_fnc_createDisplay;
+RSTF_DEATH_DIALOG_layout = [missionConfigFile >> "DeathDialog", displayNull, true] call ZUI_fnc_createDisplay;
 [RSTF_DEATH_DIALOG_layout, 0.5] call ZUI_fnc_fadeIn;
 
 RSTF_DEATH_SIDE = _side;
@@ -61,7 +61,13 @@ _ctrl ctrlAddEventHandler ["ButtonClick", {
 	RSTF_DEATH_SHOWN = false;
 	RSTF_CAM camCommit 0;
 	
-	([RSTF_DEATH_DIALOG_layout] call ZUI_fnc_display) closeDisplay 0;
+	if (RSTF_SPAWN_TYPE != RSTF_SPAWN_PICKER) then {
+		([RSTF_DEATH_DIALOG_layout] call ZUI_fnc_display) closeDisplay 0;
+	} else {
+		([RSTF_DEATH_DIALOG_layout] call ZUI_fnc_display) closeDisplay 1;
+		([RSTF_DEATH_DIALOG_BG_layout] call ZUI_fnc_display) closeDisplay 0;
+		[getPos(RSTF_DEATH_BODY)] spawn RSTF_fnc_showRespawnSelect;
+	};
 }];
 ctrlSetFocus _ctrl;
 

@@ -172,6 +172,9 @@ class RSTF
 		class showVehicleConfiguration {};
 		class deathUpdate {};
 		class updateOverlay {};
+
+		class showRespawnSelect {};
+		class refreshRespawnSelect {};
 	};
 
 	class net

@@ -29,7 +29,7 @@ if (RSTF_SHOW_CONFIG != -1) then {
 	_msg = _this select 1;
 
 	if (_msg select 0 == player) then {
-		(_msg select 1) spawn RSTF_fnc_assignPlayer;
+		[_msg select 1] spawn RSTF_fnc_assignPlayer;
 	};
 };
 

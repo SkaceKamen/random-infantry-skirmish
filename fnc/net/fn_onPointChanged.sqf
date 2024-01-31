@@ -22,7 +22,7 @@ private _modeName = getText(missionConfigFile >> "RSTF_Modes" >> call RSTF_fnc_g
 "RSTF_START_SCREEN" cutRsc ["RscTitleDisplayEmpty", "PLAIN", 0.5, false];
 private _display = uiNamespace getVariable "RscTitleDisplayEmpty";
 
-RSTF_START_layout = [missionConfigFile >> "BattleStartDialog", _display] call ZUI_fnc_createDisplay;
+RSTF_START_layout = [missionConfigFile >> "BattleStartDialog", _display, true] call ZUI_fnc_createDisplay;
 [RSTF_START_layout, 1] call ZUI_fnc_fadeIn;
 
 private _titleCtrl = [RSTF_START_layout, "title"] call ZUI_fnc_getControlById;

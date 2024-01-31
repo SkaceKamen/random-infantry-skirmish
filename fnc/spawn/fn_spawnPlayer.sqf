@@ -84,4 +84,4 @@ if (isNull(_spawn)) exitWith {
 	_this spawn RSTF_fnc_spawnPlayer;
 };
 
-_spawn spawn RSTF_fnc_assignPlayer;
+[_spawn] spawn RSTF_fnc_assignPlayer;
