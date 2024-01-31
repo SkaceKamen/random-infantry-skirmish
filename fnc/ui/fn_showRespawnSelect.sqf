@@ -35,7 +35,7 @@ _listCtrl ctrlAddEventHandler ["LBSelChanged", {
 	private _row = lnbCurSelRow _ctrl;
 	private _unit = RSTF_RESPAWN_SELECT_UNITS select _row;
 
-	if (alive _unit) then {
+	if (alive _unit || isPlayer _unit) then {
 		[_unit, 0.5] spawn RSTF_fnc_assignPlayer;
 		([RSTF_RESPAWN_SELECT_layout] call ZUI_fnc_display) closeDisplay 0;
 	} else {

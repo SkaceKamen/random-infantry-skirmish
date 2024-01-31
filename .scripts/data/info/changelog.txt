@@ -1,3 +1,6 @@
 [list]
-  [*] Improve faction loading performance
+  [*] New game mode: Arena Team Deathmatch
+  [*] New spawn mode: Let player pick - allows players to select which unit they want
+  [*] Fixed UI fade in effect glitching
+  [*] Fixed some other small issues
 [/list]

@@ -2,7 +2,7 @@ private _side = _this;
 private _grps = RSTF_GROUPS select _side;
 private _spawn = objNull;
 private _usable = {
-	alive(_this) && !(_this getVariable ["USED", false])
+	alive(_this) && !(_this getVariable ["USED", false]) && !isPlayer(_this)
 };
 
 private _groupsWithoutPlayer = _grps select {
@@ -43,15 +43,14 @@ switch(RSTF_SPAWN_TYPE) do {
 		_grp = RSTF_DEATH_GROUP;
 		_index = 0;
 		while { _index < count(_groupsToTry) } do {
-			if (!isNull(_grp) && leader(_grp) call _usable) exitWith {
-				_spawn = leader(_grp);
-			};
+			// Pick usable units
+			private _usableUnits = units(_grp) select { _x call _usable };
 
-			{
-				if (_x call _usable) exitWith {
-					_spawn = _x;
-				};
-			} foreach units(_grp);
+			if (count(_usableUnits) > 0) then {
+				// Sort by distance and pick the first
+				_usableUnits = [_usableUnits, [], { _x distance RSTF_DEATH_POSITION }] call BIS_fnc_sortBy;
+				_spawn = _usableUnits select 0;
+			};
 
 			if (!isNull(_spawn)) exitWith { };
 

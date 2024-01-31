@@ -139,7 +139,7 @@ for[{_i = 0},{_i < 24},{_i = _i + 1}] do {
 
 RSTF_SPAWN_TYPES = [
 	"Closest unit",
-	"My group unit",
+	"Closest group unit",
 	"Random unit",
 	"Let player pick"
 ];
