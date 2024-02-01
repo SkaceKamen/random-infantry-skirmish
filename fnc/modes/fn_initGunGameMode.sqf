@@ -72,6 +72,8 @@ RSTF_MODE_GUN_GAME_getProgress = {
 		RSTF_MODE_GUN_GAME_PROGRESS get _unitIdent;
 	};
 
+	RSTF_MODE_GUN_GAME_PROGRESS set [_unitIdent, 0];
+
 	0;
 };
 
@@ -82,6 +84,8 @@ RSTF_MODE_GUN_GAME_getKills = {
 	if (_unitIdent in RSTF_MODE_GUN_GAME_KILLS) exitWith {
 		RSTF_MODE_GUN_GAME_KILLS get _unitIdent;
 	};
+
+	RSTF_MODE_GUN_GAME_KILLS set [_unitIdent, 0];
 
 	0;
 };
@@ -97,6 +101,11 @@ RSTF_MODE_GUN_GAME_addKill = {
 
 	if (_kills >= RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON) then {
 		[_unit] call RSTF_MODE_GUN_GAME_addProgress;
+	};
+
+	// MP compatibility
+	if (isPlayer(_unit)) then {
+		publicVariable "RSTF_MODE_GUN_GAME_KILLS";
 	};
 };
 
@@ -146,6 +155,11 @@ RSTF_MODE_GUN_GAME_addProgress = {
 		[format["<t color='#ddddff'>You've earned <t color='#ffffff'><img image='%2' /></t> %1</t>", _name, _image], 5] remoteExec ["RSTFUI_fnc_addMessage", _unit];
 		
 		playSound "DefaultNotification";
+	};
+
+	// MP compatibility
+	if (isPlayer(_unit)) then {
+		publicVariable "RSTF_MODE_GUN_GAME_KILLS";
 	};
 };
 
@@ -203,6 +217,9 @@ RSTF_MODE_GUN_GAME_unitKilled = {
 			[format["Kill %1/%2", _kills + 1, RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON], 5] remoteExec ["RSTFUI_fnc_addMessage", _killer];
 		};
 	};
+
+	// Make sure players can't pick their weapon
+	removeAllWeapons _killed;
 };
 RSTF_MODE_GUN_GAME_taskCompleted = {};
 RSTF_MODE_GUN_GAME_vehicleKilled = {};
@@ -238,8 +255,6 @@ RSTF_MODE_GUN_GAME_overlayLoop = {
 				};
 				
 			} forEach RSTF_MODE_GUN_GAME_WEAPONS;
-
-			_text call RSTF_fnc_dbg;
 
 			_text = _text + "</t>";
 

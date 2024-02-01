@@ -109,6 +109,29 @@ while { true } do {
 		_debugText pushBack "<br/>";
 		_debugText pushBack format["AVG MONEY: %1", _avgMoney joinString " | "];
 
+		if (call RSTF_fnc_getModeId == 'GunGame') then {
+			private _progress = createHashMap;
+
+			{
+				private _key = _x;
+				private _value = _y;
+
+				if (!(_value in _progress)) then {
+					_progress set [_value, 1];
+				} else {
+					_progress set [_value, (_progress get _value) + 1];
+				};
+			} forEach RSTF_MODE_GUN_GAME_PROGRESS;
+
+			_debugText pushBack "<br/>";
+			{
+				private _key = _x;
+				private _value = _y;
+
+				_debugText pushBack format["%1: %2<br />", _key, _value];
+			} foreach _progress;
+		};
+
 		hintSilent parseText(_debugText joinString "");
 	};
 

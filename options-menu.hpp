@@ -30,7 +30,7 @@ class RSTF_Options {
 
 			CONDITIONAL_SPACER(IS_GUN_GAME);
 
-			class RSTF_MODE_GUN_GAME_RECTANGLE_SIZE {
+			class RSTF_MODE_GUN_GAME_WEAPONS_COUNT {
 				title="Number of weapons";
 				description="The number of weapons that each player will have to go through";
 				type="number";
