@@ -231,6 +231,7 @@ class RSTF
 		class initDefendMode {};
 		class initPushMode {};
 		class initArenaMode {};
+		class initGunGameMode {};
 	};
 
 	class tasks

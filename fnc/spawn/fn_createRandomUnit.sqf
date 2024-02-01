@@ -49,7 +49,7 @@ if (RSTF_GROUP_UNIT_RESTRICTION > 0) then {
 
 
 // Try to spawn next to our group, but only if they're inside spawn
-if (!RSTF_MODE_DEFEND_ENABLED) then {
+if (!RSTF_MODE_DEFEND_ENABLED && !RSTF_DISABLE_WAVE_GROUP_SPAWNS) then {
 	private _width = RSTF_RANDOM_SPAWN_WIDTH;
 	private _height = RSTF_RANDOM_SPAWN_HEIGHT;
 	private _direction = RSTF_DIRECTION;
@@ -117,11 +117,9 @@ private _names = RSTF_QUEUE_NAMES select _side;
 if (count(_names) > 0) then {
 	_name = [_names] call BIS_fnc_arrayShift;
 	_unit setVariable ["ORIGINAL_NAME", _name];
-	_unit setName _name;
 } else {
 	RSTF_ID_COUNTER = RSTF_ID_COUNTER + 1;
 	_unit setVariable ["ORIGINAL_NAME", str(RSTF_ID_COUNTER)];
-	_unit setName str(RSTF_ID_COUNTER);
 };
 
 /*
@@ -178,6 +176,10 @@ if (RSTF_DEBUG) then {
 
 		deleteMarker _marker;
 	};
+};
+
+if (!_vehicular) then {
+	[_unit] call RSTF_MODE_unitSpawned;
 };
 
 _unit;

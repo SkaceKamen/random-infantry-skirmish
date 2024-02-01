@@ -120,6 +120,8 @@ if (alive(_unit)) then {
 			group(player) selectLeader player;
 		};
 	};
+
+	[_unit] call RSTF_MODE_playerAssigned;
 } else {
 	// Simulate killed handler
 	[_unit, objNull] call RSTF_fnc_playerKilled;
