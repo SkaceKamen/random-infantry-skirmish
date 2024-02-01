@@ -1,6 +1,7 @@
 #define IS_PUSH "(call RSTF_fnc_getModeId) == 'Push' || (call RSTF_fnc_getModeId) == 'PushDefense'"
 #define IS_KOTH "(call RSTF_fnc_getModeId) == 'KOTH'"
 #define IS_ARENA "(call RSTF_fnc_getModeId) == 'Arena'"
+#define IS_GUN_GAME "(call RSTF_fnc_getModeId) == 'GunGame'"
 #define SPACER class spacer2##__LINE__ { type = "spacer"; }
 #define CONDITIONAL_SPACER(COND) class spacer2##__LINE__ { type = "spacer"; visible = COND; }
 
@@ -16,6 +17,31 @@ class RSTF_Options {
 				type="select";
 				optionsVariable="RSTF_MODES_OPTIONS";
 				optionType="string";
+			};
+
+			// Gun Game
+			class RSTF_MODE_GUN_GAME_RECTANGLE_SIZE {
+				title="Rectangle size";
+				description="Size of the rectangle where the fighting happens";
+				type="number";
+				visible=IS_GUN_GAME;
+				postfix="meters";
+			};
+
+			CONDITIONAL_SPACER(IS_GUN_GAME);
+
+			class RSTF_MODE_GUN_GAME_RECTANGLE_SIZE {
+				title="Number of weapons";
+				description="The number of weapons that each player will have to go through";
+				type="number";
+				visible=IS_GUN_GAME;
+			};
+
+			class RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON {
+				title="Kills per weapon";
+				description="Number of kills player have to achieve to move to next weapon";
+				type="number";
+				visible=IS_GUN_GAME;
 			};
 
 			// Arena

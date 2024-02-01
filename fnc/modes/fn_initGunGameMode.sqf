@@ -17,13 +17,17 @@ RSTF_MODE_GUN_GAME_init = {
 	RSTF_DISABLE_SPAWN_TRANSPORTS = true;
 	RSTF_DISABLE_WAVE_GROUP_SPAWNS = false;
 	
-	// TODO: Neutrals?
-	// RSTF_SPAWNS set [SIDE_NEUTRAL, RSTF_POINT];
-
 	"Generating weapons..." call RSTF_fnc_dbg;
 
-	// TODO: This won't work when faction restrictions are enabled
-	private _availableWeapons = RSTF_PISTOLS + RSTF_PISTOLS + RSTF_PISTOLS + RSTF_WEAPONS;
+	private _availableWeapons = if (RSTF_RANDOMIZE_WEAPONS_RESTRICT) then {
+		RSTF_PISTOLS#SIDE_FRIENDLY
+			+ RSTF_PISTOLS#SIDE_ENEMY
+			+ RSTF_WEAPONS#SIDE_FRIENDLY
+			+ RSTF_WEAPONS#SIDE_ENEMY
+	} else {
+		RSTF_PISTOLS + RSTF_WEAPONS;
+	};
+
 	for [{_i = 0},{_i < RSTF_MODE_GUN_GAME_WEAPONS_COUNT},{_i = _i + 1}] do {
 		private _weapon = "";
 		while { count(_availableWeapons) > 0 } do {
@@ -217,17 +221,24 @@ RSTF_MODE_GUN_GAME_overlayLoop = {
 		private _progress = [player] call RSTF_MODE_GUN_GAME_getProgress;
 
 		if (_progress != _lastProgress) then {
-			private _text = "<t align='center'>";
+			private _text = "<t align='center' shadow='0'>";
 
 			{
 				private _config = configFile >> "cfgWeapons" >> _x;
 				private _name = getText(_config >> "displayName");
 				private _icon = getText(_config >> "picture");
-				private _color = if (_foreachIndex == _progress) then { "#ffffff" } else { "#99ffffff" };
+				private _color = if (_foreachIndex <= _progress) then { "#ffffff" } else { "#99ffffff" };
 				private _size = if (_foreachIndex == _progress) then { "3" } else { "1.5" };
 
 				_text = _text + format["<t color='%2' size='%3'><img image='%1' /></t>", _icon, _color, _size];
+
+				if (_foreachIndex != count(RSTF_MODE_GUN_GAME_WEAPONS) - 1) then {
+					_text = _text + format["<t size='1.5' color='%1'><img image='arrow-white.paa' /></t>", if (_foreachIndex >= _progress) then { "#44333333" } else { "#ffffff" }];
+				};
+				
 			} forEach RSTF_MODE_GUN_GAME_WEAPONS;
+
+			_text call RSTF_fnc_dbg;
 
 			_text = _text + "</t>";
 

@@ -63,7 +63,7 @@ if (call RSTF_fnc_getModeId == 'GunGame') then {
 		waitUntil { count(RSTF_MODE_GUN_GAME_WEAPONS) > 0 };
 
 		private _weaponsCtrl = [RSTF_START_layout, "gunGameWeapons"] call ZUI_fnc_getControlById;
-		private _text = "<t align='center'>";
+		private _text = "<t align='center' shadow='1'>";
 		{
 			private _config = configFile >> "cfgWeapons" >> _x;
 			private _icon = getText(_config >> "picture");
