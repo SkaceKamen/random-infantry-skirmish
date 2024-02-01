@@ -9,7 +9,7 @@
 	Jan Zípek
 */
 
-if (RSTF_MONEY_ENABLED) then {
+if (RSTF_MONEY_ENABLED && !RSTF_DISABLE_MONEY) then {
 	{
 		// Key is player uid
 		private _key = _x;

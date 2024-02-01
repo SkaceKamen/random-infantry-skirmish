@@ -456,10 +456,11 @@ RSTF_CURRENT_STATE = RSTF_STATE_CONFIG;
 
 RSTF_ALL_CLASSES_LOADED = false;
 
-// Disable any group-related spawning
+// Allow game modes to disable specific features
 RSTF_DISABLE_GROUP_SPAWNS = false;
 RSTF_DISABLE_WAVE_GROUP_SPAWNS = false;
 RSTF_DISABLE_SPAWN_TRANSPORTS = false;
+RSTF_DISABLE_MONEY = false;
 
 RSTF_RANDOM_SPAWN_WIDTH = 300;
 RSTF_RANDOM_SPAWN_HEIGHT = 60;

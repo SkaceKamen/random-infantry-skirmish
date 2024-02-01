@@ -61,7 +61,7 @@ if (alive(_unit)) then {
 	selectPlayer _unit;
 	_unit setVariable ["RSTF_UID", RSTF_PLAYER_UID, true];
 
-	if (RSTF_BUY_MENU_SHOW_AS_ACTION) then {
+	if (RSTF_MONEY_ENABLED && !RSTF_DISABLE_MONEY && RSTF_BUY_MENU_SHOW_AS_ACTION) then {
 		_unit addAction [
 			"<t color='#999999'>Open Shop</t>",
 			{ [] spawn RSTFUI_fnc_showShopDialog; },

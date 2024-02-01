@@ -16,6 +16,7 @@ RSTF_MODE_GUN_GAME_init = {
 	RSTF_DISABLE_GROUP_SPAWNS = true;
 	RSTF_DISABLE_SPAWN_TRANSPORTS = true;
 	RSTF_DISABLE_WAVE_GROUP_SPAWNS = false;
+	RSTF_DISABLE_MONEY = true;
 	
 	"Generating weapons..." call RSTF_fnc_dbg;
 
