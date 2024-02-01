@@ -45,6 +45,17 @@ if (!RSTF_UI_SHOW_GAMEMODE_SCORE) then {
 			} foreach [_ctrlUserCountIcon, _ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground];
 		};
 
+		case "GunGame": {
+			// Gun game has its own overlay, hide everything!
+			{
+				_x ctrlShow false;
+			} foreach [
+				_ctrlScoreFriendly, _ctrlScoreEnemy, _ctrlGlobalMessages, _ctrlUserCountIcon,
+				_ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground,
+				_ctrlMoney
+			];
+		};
+
 		case "Classic": {
 			{
 				_x ctrlShow false;

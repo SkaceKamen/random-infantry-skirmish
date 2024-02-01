@@ -105,5 +105,6 @@ class RSTF_Modes
 		vehicleKilled = "RSTF_MODE_GUN_GAME_vehicleKilled";
 		unitSpawned = "RSTF_MODE_GUN_GAME_unitSpawned";
 		playerAssigned = "RSTF_MODE_GUN_GAME_unitSpawned";
+		overlayLoop = "RSTF_MODE_GUN_GAME_overlayLoop";
 	};
 };

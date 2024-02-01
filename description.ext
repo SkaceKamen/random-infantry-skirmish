@@ -25,6 +25,7 @@
 #include "dialogs\zui\death.hpp"
 #include "dialogs\zui\deathTitle.hpp"
 #include "dialogs\zui\respawnSelect.hpp"
+#include "dialogs\zui\gunGameOverlay.hpp"
 
 #include "modes.hpp"
 #include "options-menu.hpp"

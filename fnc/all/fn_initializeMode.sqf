@@ -39,6 +39,7 @@ RSTF_MODE_taskCompleted = [_mode, "taskCompleted"] call _loadCallback;
 RSTF_MODE_vehicleKilled = [_mode, "vehicleKilled"] call _loadCallback;
 RSTF_MODE_unitSpawned = [_mode, "unitSpawned", false] call _loadCallback;
 RSTF_MODE_playerAssigned = [_mode, "playerAssigned", false] call _loadCallback;
+RSTF_MODE_overlayLoop = [_mode, "overlayLoop", false] call _loadCallback;
 
 // Initialize gamemode
 0 call RSTF_MODE_init;
