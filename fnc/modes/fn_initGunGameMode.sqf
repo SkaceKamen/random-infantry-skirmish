@@ -113,6 +113,12 @@ RSTF_MODE_GUN_GAME_addProgress = {
 		private _side = _unit getVariable ["SPAWNED_SIDE", civilian];
 		private _sideIndex = [_side] call RSTF_fnc_sideIndex;
 
+		[format [
+			"<t size='3'><t color='%1'>%2</t> has won the game!</t>",
+			RSTF_SIDES_COLORS_TEXT select _sideIndex,
+			name(_unit)
+		], 20] remoteExec ["RSTFUI_fnc_addGlobalMessage"];
+
 		[_sideIndex] remoteExec ["RSTF_fnc_onEnd"];
 	};
 
@@ -126,7 +132,16 @@ RSTF_MODE_GUN_GAME_addProgress = {
 	[_unit] call RSTF_MODE_GUN_GAME_clearKills;
 	[_unit] call RSTF_MODE_GUN_GAME_unitSpawned;
 	
-	playSound "DefaultNotification";
+	if (isPlayer(_unit)) then {
+		private _progress = [_unit] call RSTF_MODE_GUN_GAME_getProgress;
+		private _weapon = RSTF_MODE_GUN_GAME_WEAPONS select _progress;
+		private _name = getText(configFile >> "cfgWeapons" >> _weapon >> "displayName");
+		private _image = getText(configFile >> "cfgWeapons" >> _weapon >> "picture");
+
+		[format["<t color='#ddddff'>You've earned <t color='#ffffff'><img image='%2' /></t> %1</t>", _name, _image], 5] remoteExec ["RSTFUI_fnc_addMessage", _unit];
+		
+		playSound "DefaultNotification";
+	};
 };
 
 RSTF_MODE_GUN_GAME_unitSpawned = {
@@ -179,7 +194,7 @@ RSTF_MODE_GUN_GAME_unitKilled = {
 		private _kills = [_killer] call RSTF_MODE_GUN_GAME_getKills;
 		[_killer] call RSTF_MODE_GUN_GAME_addKill;
 
-		if (isPlayer(_killer)) then {
+		if (isPlayer(_killer) && _kills + 1 != RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON) then {
 			[format["Kill %1/%2", _kills + 1, RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON], 5] remoteExec ["RSTFUI_fnc_addMessage", _killer];
 		};
 	};

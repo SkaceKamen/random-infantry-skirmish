@@ -50,7 +50,7 @@ if (!RSTF_UI_SHOW_GAMEMODE_SCORE) then {
 			{
 				_x ctrlShow false;
 			} foreach [
-				_ctrlScoreFriendly, _ctrlScoreEnemy, _ctrlGlobalMessages, _ctrlUserCountIcon,
+				_ctrlScoreFriendly, _ctrlScoreEnemy, _ctrlUserCountIcon,
 				_ctrlUserCountFriendly, _ctrlUserCountEnemy, _ctrlPushProgress, _ctrlPushProgressBackground,
 				_ctrlMoney
 			];

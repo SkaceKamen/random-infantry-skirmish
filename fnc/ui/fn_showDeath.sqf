@@ -16,6 +16,11 @@ RSTF_CAM camCommit 0;
 RSTF_CAM camSetRelPos [3, 0, 3];
 RSTF_CAM camCommit 2;
 
+// Don't show anything when the game already ended
+if (RSTF_ENDED) exitWith {
+	true;
+};
+
 // Focus on killer too, if possible
 if (!isNull(_killer)) then {
 	[_killer] spawn {
