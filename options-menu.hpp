@@ -36,13 +36,18 @@ class RSTF_Options {
 				type="number";
 				visible=IS_GUN_GAME;
 			};
-
 			class RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON {
 				title="Kills per weapon";
 				description="Number of kills player have to achieve to move to next weapon";
 				type="number";
 				visible=IS_GUN_GAME;
 			};
+			class RSTF_MODE_GUN_GAME_RESTRICT_WEAPONS {
+				title="Restrict weapons to sides";
+				description="Only use weapons that origins from picked factions.";
+				type="checkbox";
+				visible=IS_GUN_GAME;
+			}
 
 			// Arena
 			class RSTF_MODE_ARENA_RECTANGLE_SIZE {

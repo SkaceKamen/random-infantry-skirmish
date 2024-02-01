@@ -20,7 +20,7 @@ RSTF_MODE_GUN_GAME_init = {
 	
 	"Generating weapons..." call RSTF_fnc_dbg;
 
-	private _availableWeapons = if (RSTF_RANDOMIZE_WEAPONS_RESTRICT) then {
+	private _availableWeapons = if (RSTF_RANDOMIZE_WEAPONS_RESTRICT || RSTF_MODE_GUN_GAME_RESTRICT_WEAPONS) then {
 		RSTF_PISTOLS#SIDE_FRIENDLY
 			+ RSTF_PISTOLS#SIDE_ENEMY
 			+ RSTF_WEAPONS#SIDE_FRIENDLY
@@ -239,6 +239,8 @@ RSTF_MODE_GUN_GAME_overlayLoop = {
 		private _progress = [player] call RSTF_MODE_GUN_GAME_getProgress;
 
 		if (_progress != _lastProgress) then {
+			_lastProgress = _progress;
+
 			private _text = "<t align='center' shadow='0'>";
 
 			{
@@ -261,6 +263,6 @@ RSTF_MODE_GUN_GAME_overlayLoop = {
 			_weaponsCtrl ctrlSetStructuredText parseText _text;
 		};
 
-		uisleep 1;
+		uisleep 0.2;
 	};
 };

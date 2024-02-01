@@ -630,10 +630,10 @@ RSTF_PLANES_SPAWN_DISANCE = 3000;
 RSTF_MODE_ARENA_RECTANGLE_SIZE = 200;
 
 // Size of gun game arena
-RSTF_MODE_GUN_GAME_RECTANGLE_SIZE = 100;
-
+RSTF_MODE_GUN_GAME_RECTANGLE_SIZE = 130;
 // Number of weapon levels
 RSTF_MODE_GUN_GAME_WEAPONS_COUNT = 10;
-
 // Number of kills required per weapon
 RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON = 2;
+// Restrict weapons to the picked factions
+RSTF_MODE_GUN_GAME_RESTRICT_WEAPONS = false;
