@@ -40,23 +40,20 @@ class RSTF_Options {
 				title="";
 				buttonText="EDIT WEAPONS";
 				type="button";
-				visible=IS_GUN_GAME;
-				disabled="RSTF_MODE_GUN_GAME_RANDOMIZED";
+				visible="(call RSTF_fnc_getModeId) == 'GunGame' && !RSTF_MODE_GUN_GAME_RANDOMIZED";
 				action="0 spawn RSTF_fnc_showGunGameEditor";
 			};
 			class RSTF_MODE_GUN_GAME_WEAPONS_COUNT {
 				title="Number of weapons";
 				description="The number of weapons that each player will have to go through";
 				type="number";
-				visible=IS_GUN_GAME;
-				disabled="!RSTF_MODE_GUN_GAME_RANDOMIZED";
+				visible="(call RSTF_fnc_getModeId) == 'GunGame' && RSTF_MODE_GUN_GAME_RANDOMIZED";
 			};
 			class RSTF_MODE_GUN_GAME_RESTRICT_WEAPONS {
 				title="Restrict weapons to sides";
 				description="Only use weapons that origins from picked factions.";
 				type="checkbox";
-				visible=IS_GUN_GAME;
-				disabled="!RSTF_MODE_GUN_GAME_RANDOMIZED";
+				visible="(call RSTF_fnc_getModeId) == 'GunGame' && RSTF_MODE_GUN_GAME_RANDOMIZED";
 			};
 
 			CONDITIONAL_SPACER(IS_GUN_GAME);

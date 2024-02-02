@@ -48,8 +48,6 @@ switch (_action) do {
 			[RSTF_GUN_GAME_EDITOR_PRESET_layout, "load"] call ZUI_fnc_destroyChild;
 		};
 
-		"Refresh after visibility change" call RSTF_fnc_dbg;
-
 		[RSTF_GUN_GAME_EDITOR_PRESET_layout, safeZoneW, safeZoneH, safeZoneX, safeZoneY] call ZUI_fnc_refresh;
 
 		["update"] call RSTF_fnc_gunGamePresetDialog;
@@ -71,7 +69,7 @@ switch (_action) do {
 			private _row = _ctrl lnbAddRow [_name, _weapons];
 
 			if (count(_missing) > 0) then {
-				_row lnbSetColor [[_row, 1], [1, 0, 0, 1]];
+				_ctrl lnbSetColor [[_row, 1], [1, 0, 0, 1]];
 			};
 		} forEach RSTF_GUN_GAME_EDITOR_PRESETS;
 	};
@@ -97,7 +95,7 @@ switch (_action) do {
 	};
 
 	case "load": {
-		private _ctrl = [RSTF_GUN_GAME_EDITOR_LOAD_PRESET_layout, "presets"] call ZUI_fnc_getControlById;
+		private _ctrl = [RSTF_GUN_GAME_EDITOR_PRESET_layout, "presets"] call ZUI_fnc_getControlById;
 		private _row = lnbCurSelRow _ctrl;
 
 		if (_row >= 0) then {

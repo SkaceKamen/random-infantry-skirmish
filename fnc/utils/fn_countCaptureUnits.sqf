@@ -1,6 +1,7 @@
 private _center = param [0, [0,0,0], [[0, 0, 0]]];
 private _radius = param [1, 100, [100]];
 private _vehiclesCountAs = param [2, 0, [0]];
+private _includeNeutrals = param [3, false, [false]];
 
 private _counts = [0, 0, 0];
 private _nearest = nearestObjects [_center, ["Man"], _radius, true];
@@ -13,7 +14,7 @@ private _nearest = nearestObjects [_center, ["Man"], _radius, true];
 		if (side(_x) == east) then {
 			_index = SIDE_ENEMY;
 		};
-		if (side(_x) == resistance) then {
+		if (_includeNeutrals && side(_x) == resistance) then {
 			_index = SIDE_NEUTRAL;
 		};
 	};
@@ -34,7 +35,7 @@ if (_vehiclesCountAs > 0) then {
 			if (side(_x) == east) then {
 				_index = SIDE_ENEMY;
 			};
-			if (side(_x) == resistance) then {
+			if (_includeNeutrals && side(_x) == resistance) then {
 				_index = SIDE_NEUTRAL;
 			};
 		};

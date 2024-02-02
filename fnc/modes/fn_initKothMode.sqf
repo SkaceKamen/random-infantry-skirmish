@@ -31,6 +31,7 @@ RSTF_MODE_KOTH_startLoop = {
 		while { !RSTF_ENDED } do {
 			// Count men for each side inside this point
 			private _counts = [_center, _radius/2] call RSTF_fnc_countCaptureUnits;
+			
 			RSTF_MODE_KOTH_COUNTS = _counts;
 
 			// Now find side with most men

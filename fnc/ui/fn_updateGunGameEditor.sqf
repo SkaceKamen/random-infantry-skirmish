@@ -20,4 +20,8 @@ lnbClear _ctrl;
 	private _row = _ctrl lnbAddRow [_name];
 	_ctrl lnbSetPicture [[_row, 0], _icon];
 	_ctrl lnbSetTooltip [[_row, 0], format["Classname: %1\nAttachments: %2", _x, _linkedItems]];
+
+	if (!isClass(_config)) then {
+		_ctrl lnbSetColor [[_row, 0], [1, 0, 0, 1]];
+	};
 } foreach RSTF_GUN_GAME_EDITOR_WEAPONS;

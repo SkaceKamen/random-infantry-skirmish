@@ -23,16 +23,18 @@ _validation = [
 	compile(format[_factionsCheck, ENEMY_FACTIONS, "Enemy side"])
 ];
 
-if (call RSTF_fnc_doesModeSupportNeutrals) then {
-	_validation pushBack compile(format[_factionsCheck, NEUTRAL_FACTIONS, "Netural side"]);
-};
-
 _errors = [];
 {
 	_result = call _x;
 	if (typeName(_result) == typeName("")) then {
-		_errors set [count(_errors), _result];
+		_errors pushBack _result;
 	};
 } foreach _validation;
+
+if (call RSTF_fnc_getModeId == 'GunGame') then {
+	if (!RSTF_MODE_GUN_GAME_RANDOMIZED && { isClass (configFile >> "CfgWeapons" >> _x) } count RSTF_MODE_GUN_GAME_CUSTOM_WEAPONS == 0) then {
+		_errors pushBack "No custom weapons defined for Gun Game mode.";
+	};
+};
 
 _errors;

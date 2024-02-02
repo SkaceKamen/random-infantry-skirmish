@@ -75,6 +75,10 @@ private _total = 0;
 private _percentage = 0;
 
 {
+	if (!(_x#ZUI_L_VISIBLE)) then {
+		continue;
+	};
+
 	private _otherSizeType = [_x, _otherSizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
 	private _otherSize = [[_x, _otherSizeConfigName, true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
 	private _sizeType = [_x, _sizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
@@ -89,7 +93,6 @@ private _percentage = 0;
 			case ZUI_SIZE_TEXT: {
 				_size = if (_index == 1) then { ctrlTextHeight (_x#ZUI_L_CTRL) } else { ctrlTextWidth (_x#ZUI_L_CTRL) };
 				_parentSize = _parentSize - _size;
-				diag_log _size;
 			};
 			case ZUI_SIZE_PERCENTS: {
 				_percentage = _percentage + _size;
@@ -102,6 +105,10 @@ private _percentage = 0;
 } foreach _children;
 
 {
+	if (!(_x#ZUI_L_VISIBLE)) then {
+		continue;
+	};
+
 	private _otherSizeType = [_x, _otherSizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
 	private _otherSize = [[_x, _otherSizeConfigName, true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
 	private _sizeType = [_x, _sizeTypeConfigName, true, ZUI_SIZE_RELATIVE] call ZUI_fnc_getProp;
@@ -112,7 +119,6 @@ private _percentage = 0;
 		case ZUI_SIZE_ABSOLUTE: {};
 		case ZUI_SIZE_TEXT: {
 			_size = if (_index == 1) then { ctrlTextHeight (_x#ZUI_L_CTRL) } else { ctrlTextWidth (_x#ZUI_L_CTRL) };
-			diag_log _size;
 		};
 		case ZUI_SIZE_PERCENTS: {
 			_size = _size * _parentSize;
