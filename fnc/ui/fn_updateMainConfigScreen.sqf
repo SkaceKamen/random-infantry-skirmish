@@ -63,7 +63,11 @@ switch (call RSTF_fnc_getModeId) do {
 		[_ctrl, "Rectangle size", str(RSTF_MODE_ARENA_RECTANGLE_SIZE) + " m"] call _pushItem;
 	};
 	case "GunGame": {
-		[_ctrl, "Weapons", str(RSTF_MODE_GUN_GAME_WEAPONS_COUNT)] call _pushItem;
+		if (RSTF_MODE_GUN_GAME_RANDOMIZED) then {
+			[_ctrl, "Weapons", str(RSTF_MODE_GUN_GAME_WEAPONS_COUNT) + " randomized"] call _pushItem;
+		} else {
+			[_ctrl, "Weapons", str(count(RSTF_MODE_GUN_GAME_CUSTOM_WEAPONS)) + " pre-selected"] call _pushItem;
+		};
 		[_ctrl, "Kills per level", str(RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON)] call _pushItem;
 		[_ctrl, "Rectangle size", str(RSTF_MODE_GUN_GAME_RECTANGLE_SIZE) + " m"] call _pushItem;
 	};

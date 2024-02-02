@@ -1,6 +1,7 @@
 RSTF_MODE_GUN_GAME_WEAPONS = [];
 RSTF_MODE_GUN_GAME_PROGRESS = createHashMap;
 RSTF_MODE_GUN_GAME_KILLS = createHashMap;
+RSTF_MODE_GUN_GAME_WEAPONS_INITIALIZED = false;
 
 RSTF_MODE_GUN_GAME_init = {
 	"Moving spawns..." call RSTF_fnc_dbg;
@@ -20,38 +21,50 @@ RSTF_MODE_GUN_GAME_init = {
 	
 	"Generating weapons..." call RSTF_fnc_dbg;
 
-	private _availableWeapons = if (RSTF_RANDOMIZE_WEAPONS_RESTRICT || RSTF_MODE_GUN_GAME_RESTRICT_WEAPONS) then {
-		RSTF_PISTOLS#SIDE_FRIENDLY
-			+ RSTF_PISTOLS#SIDE_ENEMY
-			+ RSTF_WEAPONS#SIDE_FRIENDLY
-			+ RSTF_WEAPONS#SIDE_ENEMY
-	} else {
-		RSTF_PISTOLS + RSTF_WEAPONS;
+	RSTF_MODE_GUN_GAME_WEAPONS_INITIALIZED = false;
+
+	private _compatibleWeapons = RSTF_MODE_GUN_GAME_CUSTOM_WEAPONS select {
+		isClass(configFile >> "cfgWeapons" >> _x);
 	};
 
-	for [{_i = 0},{_i < RSTF_MODE_GUN_GAME_WEAPONS_COUNT},{_i = _i + 1}] do {
-		private _weapon = "";
-		while { count(_availableWeapons) > 0 } do {
-			_weapon = selectRandom _availableWeapons;
-			_availableWeapons = _availableWeapons - [_weapon];
+	if (RSTF_MODE_GUN_GAME_RANDOMIZED || count(_compatibleWeapons) == 0) then {
+		private _availableWeapons = if (RSTF_RANDOMIZE_WEAPONS_RESTRICT || RSTF_MODE_GUN_GAME_RESTRICT_WEAPONS) then {
+			RSTF_PISTOLS#SIDE_FRIENDLY
+				+ RSTF_PISTOLS#SIDE_ENEMY
+				+ RSTF_WEAPONS#SIDE_FRIENDLY
+				+ RSTF_WEAPONS#SIDE_ENEMY
+		} else {
+			RSTF_PISTOLS + RSTF_WEAPONS;
+		};
 
-			// Attempt to prevent duplicate weapons (with different mods attached)
-			private _exists = RSTF_MODE_GUN_GAME_WEAPONS findIf {
-				private _nameA = getText(configFile >> "cfgWeapons" >> _weapon >> "displayName");
-				private _nameB = getText(configFile >> "cfgWeapons" >> _x >> "displayName");
+		for [{_i = 0},{_i < RSTF_MODE_GUN_GAME_WEAPONS_COUNT},{_i = _i + 1}] do {
+			private _weapon = "";
+			while { count(_availableWeapons) > 0 } do {
+				_weapon = selectRandom _availableWeapons;
+				_availableWeapons = _availableWeapons - [_weapon];
 
-				[_nameA, _nameB] call BIS_fnc_inString || [_nameB, _nameA] call BIS_fnc_inString;
+				// Attempt to prevent duplicate weapons (with different mods attached)
+				private _exists = RSTF_MODE_GUN_GAME_WEAPONS findIf {
+					private _nameA = getText(configFile >> "cfgWeapons" >> _weapon >> "displayName");
+					private _nameB = getText(configFile >> "cfgWeapons" >> _x >> "displayName");
+
+					[_nameA, _nameB] call BIS_fnc_inString || [_nameB, _nameA] call BIS_fnc_inString;
+				};
+
+				if (_exists == -1) then {
+					break;
+				}
 			};
 
-			if (_exists == -1) then {
-				break;
-			}
+			if (_weapon != "") then {
+				RSTF_MODE_GUN_GAME_WEAPONS pushBack _weapon;
+			};
 		};
-
-		if (_weapon != "") then {
-			RSTF_MODE_GUN_GAME_WEAPONS pushBack _weapon;
-		};
+	} else {
+		RSTF_MODE_GUN_GAME_WEAPONS = _compatibleWeapons;
 	};
+
+	RSTF_MODE_GUN_GAME_WEAPONS_INITIALIZED = true;
 };
 
 RSTF_MODE_GUN_GAME_getUnitIdent = {
@@ -152,7 +165,7 @@ RSTF_MODE_GUN_GAME_addProgress = {
 		private _name = getText(configFile >> "cfgWeapons" >> _weapon >> "displayName");
 		private _image = getText(configFile >> "cfgWeapons" >> _weapon >> "picture");
 
-		[format["<t color='#ddddff'>You've earned <t color='#ffffff'><img image='%2' /></t> %1</t>", _name, _image], 5] remoteExec ["RSTFUI_fnc_addMessage", _unit];
+		[format["<t color='#ddddff'><t color='#ffffff'><img image='%2' /></t> %1</t>", _name, _image], 5] remoteExec ["RSTFUI_fnc_addMessage", _unit];
 		
 		playSound "DefaultNotification";
 	};

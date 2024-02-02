@@ -30,24 +30,43 @@ class RSTF_Options {
 
 			CONDITIONAL_SPACER(IS_GUN_GAME);
 
+			class RSTF_MODE_GUN_GAME_RANDOMIZED {
+				title="Generate weapons randomly";
+				description="Randomly pick weapons";
+				type="checkbox";
+				visible=IS_GUN_GAME;
+			};
+			class GUN_GAME_EDITOR {
+				title="";
+				buttonText="EDIT WEAPONS";
+				type="button";
+				visible=IS_GUN_GAME;
+				disabled="RSTF_MODE_GUN_GAME_RANDOMIZED";
+				action="0 spawn RSTF_fnc_showGunGameEditor";
+			};
 			class RSTF_MODE_GUN_GAME_WEAPONS_COUNT {
 				title="Number of weapons";
 				description="The number of weapons that each player will have to go through";
 				type="number";
 				visible=IS_GUN_GAME;
-			};
-			class RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON {
-				title="Kills per weapon";
-				description="Number of kills player have to achieve to move to next weapon";
-				type="number";
-				visible=IS_GUN_GAME;
+				disabled="!RSTF_MODE_GUN_GAME_RANDOMIZED";
 			};
 			class RSTF_MODE_GUN_GAME_RESTRICT_WEAPONS {
 				title="Restrict weapons to sides";
 				description="Only use weapons that origins from picked factions.";
 				type="checkbox";
 				visible=IS_GUN_GAME;
-			}
+				disabled="!RSTF_MODE_GUN_GAME_RANDOMIZED";
+			};
+
+			CONDITIONAL_SPACER(IS_GUN_GAME);
+
+			class RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON {
+				title="Kills per weapon";
+				description="Number of kills player have to achieve to move to next weapon";
+				type="number";
+				visible=IS_GUN_GAME;
+			};
 
 			// Arena
 			class RSTF_MODE_ARENA_RECTANGLE_SIZE {

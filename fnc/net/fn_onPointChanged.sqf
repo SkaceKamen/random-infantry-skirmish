@@ -60,7 +60,7 @@ private _opforCtrl = [RSTF_START_layout, "opforFactions"] call ZUI_fnc_getContro
 
 if (call RSTF_fnc_getModeId == 'GunGame') then {
 	0 spawn {
-		waitUntil { count(RSTF_MODE_GUN_GAME_WEAPONS) > 0 };
+		waitUntil { RSTF_MODE_GUN_GAME_WEAPONS_INITIALIZED };
 
 		private _weaponsCtrl = [RSTF_START_layout, "gunGameWeapons"] call ZUI_fnc_getControlById;
 		private _text = "<t align='center' shadow='1'>";

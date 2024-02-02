@@ -22,7 +22,7 @@ private _margin = [[_comp, "margin", true, 0] call ZUI_fnc_getProp] call ZUI_fnc
 private _position = [_comp, "position", true, ZUI_POSITION_RELATIVE] call ZUI_fnc_getProp;
 
 //diag_log text("[RSTF] " + str([configName(_comp#ZUI_L_CONFIG), _xPos, _yPos, _parentWidth, _parentHeight, _margin]));
-
+//diag_log text("[RSTF] Children: " + str(_children apply { configName (_x#ZUI_L_CONFIG) }));
 
 if (_position == ZUI_POSITION_ABSOLUTE) then {
 	_xPos = [[_comp, "x", true, 0] call ZUI_fnc_getProp] call ZUI_fnc_parseNumberProp;
