@@ -3,7 +3,7 @@
 ## How to add a new map
 
 1. Create mission on desired island, call it "mapLoader"
-2. Copy included scripts to the newly created mission folder (`mapLoader.[island]`)
+2. Copy files from `.scripts/mapLoader` to the newly created mission folder (`mapLoader.[island]`)
 3. Start the mission in editor and quit it immediately
 4. Paste clipboard contents to `mission.sqm` file that's inside the mission folder (`mapLoader.[island]`)
 5. Load the mission again, you should now see all the mission markers
