@@ -1,3 +1,8 @@
+"""
+This script builds and publishes the RIS missions to the workshop
+"""
+
+import argparse
 from datetime import datetime
 import shutil
 import glob
@@ -13,9 +18,16 @@ from utils import buildPreview
 ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools\\AddonBuilder\\AddonBuilder.exe'
 PUBLISHER = "c:\\Users\\menxm\\source\\repos\\A3MissionPublisher\\A3MissionPublisher\\bin\\x64\\Release\\net6.0\\A3MissionPublisher.exe"
 
-SKIP_PUBLISH = False
-SKIP_PUBLISHED = False
-ONLY_PUBLISH = None
+parser = argparse.ArgumentParser(description='Build and publish RIS missions')
+parser.add_argument('--publish', action='store_true', help='Skip publishing')
+parser.add_argument('--skip-published', action='store_true', help='Skip already published missions')
+parser.add_argument('--only', action='append', help='Only publish specific mission')
+
+args = parser.parse_args()
+
+SKIP_PUBLISH = not args.publish
+SKIP_PUBLISHED = args.skip_published
+ONLY_PUBLISH = args.only if args.only != None and len(args.only) > 0 else None
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
@@ -31,6 +43,17 @@ logoOverlayPath = os.path.join(dataPath, "info", "logo-overlay.png")
 previewTempPath = os.path.abspath(os.path.join(resultsPath, "preview.png"))
 
 ids = {}
+
+print("Building RIS missions")
+print(" Publish to workshop: %r" % (not SKIP_PUBLISH))
+print(" Skip already published: %r" % (SKIP_PUBLISHED))
+print(" Only publish: " + str(ONLY_PUBLISH if ONLY_PUBLISH != None else "all"))
+
+if not SKIP_PUBLISH and not os.path.exists(ADDON_BUILDER):
+  raise Exception("Addon Builder not found")
+
+if not SKIP_PUBLISH and not os.path.exists(PUBLISHER):
+  raise Exception("Workshop Publisher not found")
 
 if os.path.exists(idsPath):
   with open(idsPath, 'r') as f:

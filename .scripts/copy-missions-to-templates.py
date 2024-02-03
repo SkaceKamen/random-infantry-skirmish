@@ -3,8 +3,6 @@ import glob
 import os
 import subprocess
 
-ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools\\AddonBuilder\\AddonBuilder.exe'
-
 templatesPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".templates", "%s.sqm"))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 

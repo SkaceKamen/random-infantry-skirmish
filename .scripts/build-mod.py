@@ -1,3 +1,7 @@
+"""
+This script builds a mod version of the RIS missions
+"""
+
 import shutil
 import glob
 import os
