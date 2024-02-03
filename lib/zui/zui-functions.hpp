@@ -12,6 +12,7 @@ class ZUI
 		class getControlById {};
 		class getComponentById {};
 		class destroy {};
+		class destroyChild {};
 		class clearChildren {};
 		class closeDisplay {};
 		class createDisplay {};

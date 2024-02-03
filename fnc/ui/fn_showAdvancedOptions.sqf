@@ -59,7 +59,7 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 
 	// Add label
 	private _label = _display ctrlCreate ["RSTF_ADV_LABEL", _idc, _optionsContainer];
-	_label ctrlSetText (_title + ":");
+	_label ctrlSetText (if (count(_title) > 0) then { (_title + ":") } else { "" });
 	_label ctrlSetTooltip _description;
 	_label ctrlShow false;
 	_label ctrlCommit 0;
@@ -71,6 +71,7 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 	switch (_type) do {
 		case "checkbox": { _ctrlType = "RscCheckBox"; };
 		case "select": { _ctrlType = "RscCombo"; };
+		case "button": { _ctrlType = "RscButton"; };
 	};
 
 	// Build input control
@@ -158,6 +159,12 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 			call RSTF_fnc_saveAdvancedOptions;
 			call RSTF_fnc_updateAdvancedConfig;
 		}];
+	};
+
+	if (_type == "button") then {
+		private _action = getText(_x >> "action");
+		_ctrl ctrlAddEventHandler ["ButtonClick", compile(_action)];
+		_ctrl ctrlSetText getText(_x >> "buttonText");
 	};
 
 	if (RSTF_ADVANCED_CONFIG_INGAME) then {

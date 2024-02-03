@@ -89,4 +89,22 @@ class RSTF_Modes
 		taskCompleted = "RSTF_MODE_ARENA_taskCompleted";
 		vehicleKilled = "RSTF_MODE_ARENA_vehicleKilled";
 	};
+
+	class GunGame
+	{
+		title = "Arena Gun Game";
+		description = "You get predefined list of weapons and progress through it by killing enemies. First one that reaches the end of the list wins.";
+		enabled = 1;
+		order = 6;
+		hasNeutralFaction = 0;
+
+		init = "RSTF_MODE_GUN_GAME_init";
+		startLoop = "RSTF_MODE_GUN_GAME_startLoop";
+		unitKilled = "RSTF_MODE_GUN_GAME_unitKilled";
+		taskCompleted = "RSTF_MODE_GUN_GAME_taskCompleted";
+		vehicleKilled = "RSTF_MODE_GUN_GAME_vehicleKilled";
+		unitSpawned = "RSTF_MODE_GUN_GAME_unitSpawned";
+		playerAssigned = "RSTF_MODE_GUN_GAME_unitSpawned";
+		overlayLoop = "RSTF_MODE_GUN_GAME_overlayLoop";
+	};
 };

@@ -175,6 +175,13 @@ class RSTF
 
 		class showRespawnSelect {};
 		class refreshRespawnSelect {};
+
+		class showGunGameEditor {};
+		class updateGunGameEditor {};
+		class showGunGameEditorWeaponPick {};
+		class updateGunGameEditorWeaponPick {};
+
+		class gunGamePresetDialog {};
 	};
 
 	class net
@@ -231,6 +238,7 @@ class RSTF
 		class initDefendMode {};
 		class initPushMode {};
 		class initArenaMode {};
+		class initGunGameMode {};
 	};
 
 	class tasks

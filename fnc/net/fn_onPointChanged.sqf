@@ -58,7 +58,30 @@ private _opforCtrl = [RSTF_START_layout, "opforFactions"] call ZUI_fnc_getContro
 	};
 } foreach ENEMY_FACTIONS;
 
-sleep 3;
+if (call RSTF_fnc_getModeId == 'GunGame') then {
+	0 spawn {
+		waitUntil { RSTF_MODE_GUN_GAME_WEAPONS_INITIALIZED };
+
+		private _weaponsCtrl = [RSTF_START_layout, "gunGameWeapons"] call ZUI_fnc_getControlById;
+		private _text = "<t align='center' shadow='1'>";
+		{
+			private _config = configFile >> "cfgWeapons" >> _x;
+			private _icon = getText(_config >> "picture");
+
+			_text = _text + format ["<t size='3' color='#FFFFFF'><img image='%1' /></t>", _icon];
+
+			if (_foreachIndex != 0 && _foreachIndex % 7 == 0) then {
+				_text = _text + "<br />";	
+			};
+		} forEach RSTF_MODE_GUN_GAME_WEAPONS;
+		_text = _text + "</t>";
+		_weaponsCtrl ctrlSetStructuredText parseText(_text);
+	};
+};
+
+private _sleepTime = if (call RSTF_fnc_getModeId == 'GunGame') then { 5 } else { 3 };
+
+sleep _sleepTime;
 
 [RSTF_START_layout, 1] call ZUI_fnc_fadeOut;
 

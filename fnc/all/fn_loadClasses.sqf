@@ -42,7 +42,7 @@ RSTF_MEN_PER_FACTION = createHashMap;
 		_factions
 	];
 
-	if (RSTF_RANDOMIZE_WEAPONS_RESTRICT) then {
+	if (RSTF_RANDOMIZE_WEAPONS_RESTRICT || RSTF_MODE_GUN_GAME_RESTRICT_WEAPONS) then {
 		_launchers = [];
 		_weapons = [];
 		_pistols = [];

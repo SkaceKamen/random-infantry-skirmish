@@ -75,5 +75,15 @@ class BattleStartDialog: ZUI_ColumnLayout
 		SPACER_COMPONENT;
 	};
 
-	SPACER_COMPONENT;
+	//SPACER_COMPONENT;
+
+	class gunGameInfo: ZUI_RowLayout
+	{
+		margin[] = { 0, 0, GUI_SPACING * 5, 0 };
+		
+		class gunGameWeapons: ZUI_StructuredText
+		{
+			id = "gunGameWeapons";
+		};
+	};
 };

@@ -28,7 +28,7 @@ _display displayAddEventHandler ["KeyDown", {
 		_keys = actionKeys _action;
 	};
 
-	if (!dialog && { _code in _Keys }) exitWith {
+	if (RSTF_MONEY_ENABLED && !RSTF_DISABLE_MONEY && !dialog && { _code in _Keys }) exitWith {
 		// Make sure there isn't any other dialog displayed
 		closeDialog 0;
 

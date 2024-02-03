@@ -1,6 +1,7 @@
 #define IS_PUSH "(call RSTF_fnc_getModeId) == 'Push' || (call RSTF_fnc_getModeId) == 'PushDefense'"
 #define IS_KOTH "(call RSTF_fnc_getModeId) == 'KOTH'"
 #define IS_ARENA "(call RSTF_fnc_getModeId) == 'Arena'"
+#define IS_GUN_GAME "(call RSTF_fnc_getModeId) == 'GunGame'"
 #define SPACER class spacer2##__LINE__ { type = "spacer"; }
 #define CONDITIONAL_SPACER(COND) class spacer2##__LINE__ { type = "spacer"; visible = COND; }
 
@@ -16,6 +17,52 @@ class RSTF_Options {
 				type="select";
 				optionsVariable="RSTF_MODES_OPTIONS";
 				optionType="string";
+			};
+
+			// Gun Game
+			class RSTF_MODE_GUN_GAME_RECTANGLE_SIZE {
+				title="Rectangle size";
+				description="Size of the rectangle where the fighting happens";
+				type="number";
+				visible=IS_GUN_GAME;
+				postfix="meters";
+			};
+
+			CONDITIONAL_SPACER(IS_GUN_GAME);
+
+			class RSTF_MODE_GUN_GAME_RANDOMIZED {
+				title="Generate weapons randomly";
+				description="Randomly pick weapons";
+				type="checkbox";
+				visible=IS_GUN_GAME;
+			};
+			class GUN_GAME_EDITOR {
+				title="";
+				buttonText="EDIT WEAPONS";
+				type="button";
+				visible="(call RSTF_fnc_getModeId) == 'GunGame' && !RSTF_MODE_GUN_GAME_RANDOMIZED";
+				action="0 spawn RSTF_fnc_showGunGameEditor";
+			};
+			class RSTF_MODE_GUN_GAME_WEAPONS_COUNT {
+				title="Number of weapons";
+				description="The number of weapons that each player will have to go through";
+				type="number";
+				visible="(call RSTF_fnc_getModeId) == 'GunGame' && RSTF_MODE_GUN_GAME_RANDOMIZED";
+			};
+			class RSTF_MODE_GUN_GAME_RESTRICT_WEAPONS {
+				title="Restrict weapons to sides";
+				description="Only use weapons that origins from picked factions.";
+				type="checkbox";
+				visible="(call RSTF_fnc_getModeId) == 'GunGame' && RSTF_MODE_GUN_GAME_RANDOMIZED";
+			};
+
+			CONDITIONAL_SPACER(IS_GUN_GAME);
+
+			class RSTF_MODE_GUN_GAME_KILLS_PER_WEAPON {
+				title="Kills per weapon";
+				description="Number of kills player have to achieve to move to next weapon";
+				type="number";
+				visible=IS_GUN_GAME;
 			};
 
 			// Arena

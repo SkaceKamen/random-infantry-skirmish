@@ -63,6 +63,8 @@ _ctrlLocalMessages ctrlCommit 0;
 // Last displayed owner of objective in KOTH
 _lastOwner = RSTF_MODE_KOTH_OWNER;
 
+0 spawn RSTF_MODE_overlayLoop;
+
 while { true } do {
 	// Filter outdated messages
 	RSTF_UI_GLOBAL_MESSAGES = RSTF_UI_GLOBAL_MESSAGES select { _x select 1 > time };

@@ -34,9 +34,9 @@ class ARCADE_UI
 		class GlobalMessages : RscStructuredText
 		{
 			idc = RSTFUI_ARCADE_GLOBAL_MESSAGES_IDC;
-			x = SafeZoneX + SafeZoneW / 2 - 0.25;
+			x = SafeZoneX + SafeZoneW / 2 - 0.5;
 			y = RSTFUI_ARCADE_USER_ICON_Y + RSTFUI_ARCADE_USER_ICON_H + 0.005;
-			w = 0.5;
+			w = 1;
 			h = 0.2;
 
 			size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
