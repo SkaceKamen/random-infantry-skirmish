@@ -65,7 +65,7 @@ class RSTF_Modes
 		title = "Defense - BETA";
 		description = "Hold area for predefined amount of time agains never ending waves of enemies. This game mode is in BETA stage and could be unablanced.";
 		enabled = 1;
-		order = 5;
+		order = 6;
 		hasNeutralFaction = 0;
 
 		init = "RSTF_MODE_DEFEND_init";
@@ -95,7 +95,7 @@ class RSTF_Modes
 		title = "Arena Gun Game";
 		description = "You get predefined list of weapons and progress through it by killing enemies. First one that reaches the end of the list wins.";
 		enabled = 1;
-		order = 6;
+		order = 5;
 		hasNeutralFaction = 0;
 
 		init = "RSTF_MODE_GUN_GAME_init";

@@ -30,7 +30,7 @@ RSTF_FACTIONS = call RSTF_fnc_loadFactions;
 
 call RSTF_fnc_profileLoad;
 
-[RSTF_MAIN_CONFIG_layout, 0.5] call ZUI_fnc_fadeIn;
+[RSTF_MAIN_CONFIG_layout, 0.3] call ZUI_fnc_fadeIn;
 
 private _template = '
 	[[RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display, %2, {
@@ -77,6 +77,17 @@ _ctrl = [RSTF_MAIN_CONFIG_layout, "showPresets"] call ZUI_fnc_getControlById;
 _ctrl ctrlAddEventHandler ["ButtonClick", {
 	[[RSTF_MAIN_CONFIG_layout] call ZUI_fnc_display] spawn RSTFUI_fnc_showPresetDialog;
 }];
+
+_ctrl = [RSTF_MAIN_CONFIG_layout, "switchSides"] call ZUI_fnc_getControlById;
+_ctrl ctrlAddEventHandler ["ButtonClick", {
+	private _enemyFactions = ENEMY_FACTIONS;
+	ENEMY_FACTIONS = FRIENDLY_FACTIONS;
+	FRIENDLY_FACTIONS = _enemyFactions;
+
+	["friendly", FRIENDLY_FACTIONS] call RSTF_fnc_configUpdateFactions;
+	["enemy", ENEMY_FACTIONS] call RSTF_fnc_configUpdateFactions;
+}];
+_ctrl ctrlSetTooltip "Switch friendly and enemy factions";
 
 call RSTF_fnc_updateEquipment;
 

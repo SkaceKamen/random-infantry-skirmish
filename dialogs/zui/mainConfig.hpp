@@ -53,20 +53,37 @@ class MainConfigDialog: ZUI_ColumnLayout
 				{
 					width = 1.75;
 
-					class FriendlyFactions : FactionConfig
+					class FirstFactions: ZUI_ColumnLayout
 					{
-						margin[] = { 0, GUI_SPACING, 0, 0 };
-						class Title: Title { text = "Friendly factions"; };
-						class List: List { class List: List { id = "friendlyList"; }; };
-						class Edit: Edit { id = "friendlyEdit"; };
-					};
+						width = 2;
 
-					class EnemyFactions : FactionConfig
-					{
-						margin[] = { 0, GUI_SPACING, 0, 0 };
-						class Title: Title { text = "Enemy factions"; };
-						class List: List { class List: List { id = "enemyList"; }; };
-						class Edit: Edit { id = "enemyEdit"; };
+						class factions: ZUI_RowLayout
+						{
+							class FriendlyFactions : FactionConfig
+							{
+								margin[] = { 0, GUI_SPACING, 0, 0 };
+								class Title: Title { text = "Friendly factions"; };
+								class List: List { class List: List { id = "friendlyList"; }; };
+								class Edit: Edit { id = "friendlyEdit"; };
+							};
+
+							class EnemyFactions : FactionConfig
+							{
+								margin[] = { 0, GUI_SPACING, 0, 0 };
+								class Title: Title { text = "Enemy factions"; };
+								class List: List { class List: List { id = "enemyList"; }; };
+								class Edit: Edit { id = "enemyEdit"; };
+							};
+						};
+
+						class switchSides: ZUI_Button
+						{
+							id = "switchSides";
+							text = "SWITCH FACTIONS";
+							margin[] = { GUI_SPACING, GUI_SPACING, 0, 0, 0 };
+							heightType = ZUI_SIZE_ABSOLUTE;
+							height = 0.05;
+						}
 					};
 
 					class NeutralFactions : FactionConfig
