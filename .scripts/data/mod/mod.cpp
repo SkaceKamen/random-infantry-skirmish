@@ -1,8 +1,8 @@
-name = "Random Skirmish";
-description = "Random Skirmish missions";
-tooltip = "Random Skirmish missions";
+name = "Random Infantry Skirmish";
+description = "Random Infantry Skirmish module";
+tooltip = "Random Infantry Skirmish module";
 tooltipOwned = "RIS";
-overview = "Random Skirmish missions, collection of dynamically generated random missions for various maps";
+overview = "Random Infantry Skirmish module, start the skirmish on any map";
 author = "SkaceKamen";
-overviewText = "Random Skirmish";
-overviewFootnote = "Random Skirmish missions";
+overviewText = "Random Infantry Skirmish";
+overviewFootnote = "Random Infantry Skirmish module";

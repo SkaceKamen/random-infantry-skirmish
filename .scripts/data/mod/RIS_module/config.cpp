@@ -14,7 +14,7 @@ class CfgFactionClasses
   class NO_CATEGORY;
   class RIS_modules: NO_CATEGORY
   {
-    displayName = "Random Skirmish";
+    displayName = "Random Infantry Skirmish";
   };
 };
 
@@ -36,7 +36,7 @@ class CfgVehicles
   class RIS_ModuleInit: Module_F
   {
     scope = 2;
-    displayName = "Random Skirmish - Init";
+    displayName = "Random Infantry Skirmish";
     // TODO: icon
     category = "RIS_modules";
     function = "RSTF_fnc_missionInit";
