@@ -32,10 +32,15 @@ shutil.copytree(modFunctionsPath, os.path.join(modBuildPath, "fnc"))
 shutil.copytree(modDialogsPath, os.path.join(modBuildPath, "dialogs"))
 shutil.copytree(modLibPath, os.path.join(modBuildPath, "lib"))
 shutil.copytree(os.path.join(risPath, "compositions"), os.path.join(modBuildPath, "compositions"))
+
 shutil.copy(os.path.join(risPath, "modes.hpp"), os.path.join(modBuildPath, "modes.hpp"))
 shutil.copy(os.path.join(risPath, "options-menu.hpp"), os.path.join(modBuildPath, "options-menu.hpp"))
 shutil.copy(os.path.join(risPath, "supports.hpp"), os.path.join(modBuildPath, "supports.hpp"))
 shutil.copy(os.path.join(risPath, "compositions.hpp"), os.path.join(modBuildPath, "compositions.hpp"))
+shutil.copy(os.path.join(risPath, "scripts.inc"), os.path.join(modBuildPath, "scripts.inc"))
+shutil.copy(os.path.join(risPath, "random.paa"), os.path.join(modBuildPath, "random.paa"))
+shutil.copy(os.path.join(risPath, "rstf-logo.paa"), os.path.join(modBuildPath, "rstf-logo.paa"))
+shutil.copy(os.path.join(risPath, "arrow-white.paa"), os.path.join(modBuildPath, "arrow-white.paa"))
 
 def fixIncludePaths(path):
 	with open(path, "r") as f:
@@ -43,14 +48,23 @@ def fixIncludePaths(path):
 	with open(path, "w") as f:
 		for line in lines:
 			if "file = \"" in line:
-				f.write(line.replace("file = \"", "file = \"\\RIS_module\\"))
+				f.write(line.replace("file = \"", "file = \"\\RIS\\"))
 			else:
 				f.write(line)
+
+def fixConfigUsage(path):
+	with open(path, "r") as f:
+		everything = f.read()
+	with open(path, "w") as f:
+			f.write(everything.replace("missionConfigFile", "configFile"))
 
 fixIncludePaths(os.path.join(modBuildPath, "fnc/functions.hpp"))
 fixIncludePaths(os.path.join(modBuildPath, "fnc/gc.hpp"))
 fixIncludePaths(os.path.join(modBuildPath, "fnc/ui.hpp"))
 fixIncludePaths(os.path.join(modBuildPath, "lib/zui/zui-functions.hpp"))
+
+for file in glob.glob(os.path.join(modBuildPath, "**", "*.sqf"), recursive=True):
+	fixConfigUsage(file)
 
 # os.makedirs(modMissionsPath)
 os.makedirs(modAddonsPath)

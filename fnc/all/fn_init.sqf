@@ -1,4 +1,6 @@
-params [["_root", ""], ["_player", false]];
+// params [["_root", ""], ["_player", false]];
+
+diag_log _this;
 
 //Make sure we can spawn everything
 EQ = createcenter east;
@@ -13,10 +15,10 @@ EAST setFriend [RESISTANCE, 0];
 RESISTANCE setFriend [WEST, 0];
 RESISTANCE setFriend [EAST, 0];
 
-SCRIPTS_ROOT = _root;
+// SCRIPTS_ROOT = _root;
 
 // Create player if needed
-if (_player) then {
+/* if (_player) then {
 	_unit = (creategroup west) createUnit [ "B_Soldier_F", [0, 0, 0], [], 0, "NONE" ];
 	_unit allowDamage false;
 	{
@@ -25,7 +27,7 @@ if (_player) then {
 	
 	setPlayable _unit;
 	selectPlayer _unit;
-};
+}; */
 
 // This is needed for some MP sessions for some reason
 player allowDamage false;

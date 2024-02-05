@@ -2,9 +2,8 @@ waitUntil { not isNull player };
 
 call ZUI_fnc_init;
 
-call compile(preprocessFileLineNumbers("variables.sqf"));
-call compile(preprocessFileLineNumbers("options.sqf"));
-call compile(preprocessFileLineNumbers("options-menu.sqf"));
+call RSTF_fnc_initVariables;
+call RSTF_fnc_initOptions;
 
 if (fileExists("local.sqf")) then {
 	call compile(preprocessFileLineNumbers("local.sqf"));

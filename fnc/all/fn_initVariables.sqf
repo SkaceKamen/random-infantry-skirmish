@@ -1,4 +1,4 @@
-#include "dialogs\keys.hpp"
+#include "..\..\dialogs\keys.hpp"
 
 REMOTE_TARGET_SERVER = 2;
 
