@@ -27,6 +27,7 @@ class CfgVehicles
     {
       class Default;
       class ModuleDescription;
+      class Edit;
     };
     class ModuleDescription
     {
@@ -36,7 +37,7 @@ class CfgVehicles
   class RIS_ModuleInit: Module_F
   {
     scope = 2;
-    displayName = "Random Infantry Skirmish";
+    displayName = "RIS - Game Mode";
     // TODO: icon
     category = "RIS_modules";
     function = "RSTF_fnc_missionInit";
@@ -44,6 +45,48 @@ class CfgVehicles
     isTriggerActivated = 0;
     isDisposable = 0;
     is3DEN = 0;
+
+    class Attributes: AttributesBase
+    {
+      class ModuleDescription : ModuleDescription {};
+    };
+
+    class ModuleDescription : ModuleDescription
+    {
+      description = "Initializes and runs the Random Infantry Skirmish mode";
+    };
+  };
+
+  class RIS_Location: Module_F
+  {
+    scope = 2;
+    displayName = "RIS - Location";
+    category = "RIS_modules";
+    isGlobal = 0;
+    isTriggerActivated = 0;
+    isDisposable = 0;
+    is3DEN = 0;
+
+    class Attributes: AttributesBase
+    {
+      class Name: Edit
+      {
+        displayName = "Location Name";
+        tooltip = "Location name that'll be shown in location picker";
+        property = "RIS_Location_Name";
+        defaultValue = """""";
+      };
+
+      class ModuleDescription : ModuleDescription {};
+    };
+
+    class ModuleDescription : ModuleDescription
+    {
+      description = "Custom location that'll be available in the RIS mode";
+      position = 1;
+      direction = 1;
+      duplicate = 1;
+    };
   };
 };
 

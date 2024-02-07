@@ -77,7 +77,9 @@ for [{_i = 0}, {_i < count(_locations) && (_count == 0 || count(_results) < _cou
 
 	if (_valid) then {
 		_results pushBack [_center, _spawns, _direction, _distance];
-	};
+	} else {
+		["Invalid location", _center#0] call RSTF_fnc_dbg;
+	}
 };
 
 _results;

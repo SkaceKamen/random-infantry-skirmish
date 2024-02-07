@@ -58,13 +58,33 @@ def fixConfigUsage(path):
 	with open(path, "w") as f:
 			f.write(everything.replace("missionConfigFile", "configFile"))
 
+def fixRisPrefix(path):
+	with open(path, "r") as f:
+		everything = f.read()
+	with open(path, "w") as f:
+			f.write(everything.replace("RIS_fnc_", "RISM_fnc_"))
+
+def fixImagesUsage(path):
+	with open(path, "r") as f:
+		everything = f.read()
+	with open(path, "w") as f:
+			f.write(
+				everything
+					.replace("'arrow-white.paa'", "'\\RIS\\arrow-white.paa'")
+					.replace("'rstf-logo.paa'", "'\\RIS\\rstf-logo.paa'")
+			)
+
 fixIncludePaths(os.path.join(modBuildPath, "fnc/functions.hpp"))
 fixIncludePaths(os.path.join(modBuildPath, "fnc/gc.hpp"))
 fixIncludePaths(os.path.join(modBuildPath, "fnc/ui.hpp"))
 fixIncludePaths(os.path.join(modBuildPath, "lib/zui/zui-functions.hpp"))
 
-for file in glob.glob(os.path.join(modBuildPath, "**", "*.sqf"), recursive=True):
-	fixConfigUsage(file)
+for file in glob.glob(os.path.join(modBuildPath, "**", "*"), recursive=True):
+	if file.endswith(".hpp"):
+		fixImagesUsage(file)
+	if file.endswith(".sqf"):
+		fixImagesUsage(file)
+		fixConfigUsage(file)
 
 # os.makedirs(modMissionsPath)
 os.makedirs(modAddonsPath)
