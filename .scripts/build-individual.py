@@ -104,10 +104,10 @@ for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
     data = f.read()
     missionTitle = re.search("briefingName=\"([^\"]*)\"", data)[1]
 
-  with open(os.path.join(missionPath, 'variables.sqf'), 'r') as f:
+  with open(os.path.join(missionPath, 'fnc/all/fn_initVariables.sqf'), 'r') as f:
     variablesSqf = f.read()
 
-  with open(os.path.join(missionPath, 'variables.sqf'), 'w') as f:
+  with open(os.path.join(missionPath, 'fnc/all/fn_initVariables.sqf'), 'w') as f:
     f.write(variablesSqf.replace(
       'RSTF_DEBUG = true;',
       'RSTF_DEBUG = false;'
