@@ -5,7 +5,7 @@ Immediately jump into random infantry skirmish on random place on the map. You c
   [*] [b]Fast paced[/b], dynamically generated firefight with infantry and land/air vehicles
   [*] Compatible with [b]any mod[/b] that has proper units definitions
   [*] Fully customizable, set your own rules, select your gear, pick location, pick factions
-  [*] 3 game modes: [b]Push[/b], [b]King of the Hill[/b] and [b]Team Deathmatch[/b]
+  [*] 5 game modes: [b]Push[/b], [b]King of the Hill[/b], [b]Team Deathmatch[/b], [b]Arena Team Deathmatch[/b], [b]Arena Gun Game[/b] and [b]Defense[/b]
   [*] Supports [b]Singleplayer[/b], [b]COOP[/b] and [b]PvP[/b] (up to 8 players per side)
 [/list]
 
@@ -14,10 +14,26 @@ Immediately jump into random infantry skirmish on random place on the map. You c
  [*] [b]Push[/b] - attack and capture sequence of points, one after another while defenders put fierce resistence
  [*] [b]King of the Hill[/b] - team that has more units in specified area gets points over time, the team that reaches point limit first wins
  [*] [b]Team Deathmatch[/b] - get points for killing enemy units, the team that reaches point limit first wins
+ [*] [b]Arena Team Deathmatch[/b] - get points for killing enemy units, the team that reaches point limit first wins, fought in small arena
+ [*] [b]Arena Gun Game[/b] - starts with predefined list of weapons, everybody starts with the first weapon and progresses to next one once they manage to kill 2 opponents. First player to reach the last weapon and achieve the 2 kills wins the game
+ [*] [b]Defense[/b] - defend area against increasingly more difficult waves of enemies
 [/list]
 
-[h2]Latest update[/h2]
-[h3]2024-01-22[/h3]
+[h1]Can't find the map you want? Just use the module version![/h1]
+[b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3156354979]RIS - Module[/url][/b] The module version allows you to start the mission on any map you want. Note that the module version is a mod that needs to be enabled in the launcher.
+
+[hr][/hr]
+[h2]2024-02-08[/h2]
+[list]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3156354979]Module version[/url] released, easily start the game mode to any map you want
+ [*] Fixed issue with dedicated servers
+[/list]
+[h2]2024-02-05[/h2]
+[list]
+  [*] Added a Gun Game and Area Team Deathmatch modes
+  [*] Smaller performance improvements and bug fixes
+[/list]
+[h2]2024-01-22[/h2]
 [list]
   [*] Improved UI, better (squad-based) spawn system
   [*] Configuration can now be changed ingame, tons of new configuration options
@@ -25,9 +41,10 @@ Immediately jump into random infantry skirmish on random place on the map. You c
   [*] Bugfixes for MP, PvP added
 [/list]
 
-[h2]No support dedicated servers[/h2]
+[hr][/hr]
+[h1]🟦 Limited multiplayer dedicated servers support[/h1]
 Since this mission relies on UI dialog, where user can configure his experience, dedicated server requires admin to configure and start the mission.
 
-[h1]Where to report issues / suggest changes[/h1]
+[h1⚠️ Where to report issues / suggest changes[/h1]
 Please direct all requests and issues to the source code repository:
 https://github.com/SkaceKamen/random-infantry-skirmish/issues

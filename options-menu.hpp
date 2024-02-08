@@ -27,6 +27,13 @@ class RSTF_Options {
 				visible=IS_GUN_GAME;
 				postfix="meters";
 			};
+			class RSTF_MODE_GUN_GAME_RESPAWN_ENEMY_CHECK_RADIUS {
+				title="Enemy spawn check distance";
+				description="How close to enemy can unit spawn";
+				type="number";
+				visible=IS_GUN_GAME;
+				postfix="meters";
+			};
 
 			CONDITIONAL_SPACER(IS_GUN_GAME);
 
@@ -69,6 +76,13 @@ class RSTF_Options {
 			class RSTF_MODE_ARENA_RECTANGLE_SIZE {
 				title="Rectangle size";
 				description="Size of the rectangle where the fighting happens";
+				type="number";
+				visible=IS_ARENA;
+				postfix="meters";
+			};
+			class RSTF_MODE_ARENA_RESPAWN_ENEMY_CHECK_RADIUS {
+				title="Enemy spawn check distance";
+				description="How close to enemy can unit spawn";
 				type="number";
 				visible=IS_ARENA;
 				postfix="meters";

@@ -75,7 +75,7 @@ while { _try < 100 } do {
 
 	// Avoid enemies
 	if (count(_emptyPosition) > 0 && RSTF_RANDOM_SPAWN_AVOID_ENEMIES) then {
-		private _nearby = nearestObjects [_emptyPosition, ["Man", "Land"], 3, true];
+		private _nearby = nearestObjects [_emptyPosition, ["Man", "Land"], RSTF_RANDOM_SPAWN_AVOID_ENEMIES_RADIUS, true];
 		if ({ side(_x) != _sideSide } count(_nearby) > 0) then {
 			_emptyPosition = [];
 		};
