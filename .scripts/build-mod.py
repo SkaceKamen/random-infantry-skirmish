@@ -62,7 +62,21 @@ def fixRisPrefix(path):
 	with open(path, "r") as f:
 		everything = f.read()
 	with open(path, "w") as f:
-			f.write(everything.replace("RIS_fnc_", "RISM_fnc_"))
+			f.write(everything
+					 	.replace("RSTF_fnc_", "RSTFM_fnc_")
+						.replace("RSTFGC_fnc_", "RSTFMGC_fnc_")
+						.replace("RSTFUI_fnc_", "RSTFMUI_fnc_")
+					)
+			
+def fixRisFunction(path):
+	with open(path, "r") as f:
+		everything = f.read()
+	with open(path, "w") as f:
+			f.write(everything
+					 	.replace("class RSTF\n{", "class RSTFM\n{")
+						.replace("class RSTFGC\n{", "class RSTFMGC\n{")
+						.replace("class RSTFUI\n{", "class RSTFMUI\n{")
+			)
 
 def fixImagesUsage(path):
 	with open(path, "r") as f:
@@ -82,9 +96,12 @@ fixIncludePaths(os.path.join(modBuildPath, "lib/zui/zui-functions.hpp"))
 for file in glob.glob(os.path.join(modBuildPath, "**", "*"), recursive=True):
 	if file.endswith(".hpp"):
 		fixImagesUsage(file)
+		fixRisPrefix(file)
+		fixRisFunction(file)
 	if file.endswith(".sqf"):
 		fixImagesUsage(file)
 		fixConfigUsage(file)
+		fixRisPrefix(file)
 
 # os.makedirs(modMissionsPath)
 os.makedirs(modAddonsPath)

@@ -40,7 +40,7 @@ class CfgVehicles
     displayName = "RIS - Game Mode";
     // TODO: icon
     category = "RIS_modules";
-    function = "RSTF_fnc_missionInit";
+    function = "RSTFM_fnc_missionInit";
     isGlobal = 0;
     isTriggerActivated = 0;
     isDisposable = 0;
