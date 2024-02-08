@@ -668,7 +668,7 @@ RSTF_PLANES_SPAWN_DISANCE = 3000;
 // Size of arena rectangle
 RSTF_MODE_ARENA_RECTANGLE_SIZE = 200;
 // Distance from the spawn to check for enemies
-RSTF_MODE_ARENA_RESPAWN_ENEMY_CHECK_RADIUS = 5;
+RSTF_MODE_ARENA_RESPAWN_ENEMY_CHECK_RADIUS = 10;
 
 // Size of gun game arena
 RSTF_MODE_GUN_GAME_RECTANGLE_SIZE = 130;
@@ -683,4 +683,4 @@ RSTF_MODE_GUN_GAME_RANDOMIZED = true;
 // List of weapons when using custom list
 RSTF_MODE_GUN_GAME_CUSTOM_WEAPONS = [];
 // Distance from the spawn to check for enemies
-RSTF_MODE_GUN_GAME_RESPAWN_ENEMY_CHECK_RADIUS = 5;
+RSTF_MODE_GUN_GAME_RESPAWN_ENEMY_CHECK_RADIUS = 10;
