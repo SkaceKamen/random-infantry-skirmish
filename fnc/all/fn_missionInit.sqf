@@ -1,7 +1,9 @@
 // Clear module args if there're any
 _this = [];
 
-waitUntil { not isNull player };
+if (!isDedicated) then {
+	waitUntil { not isNull player };
+};
 
 call ZUI_fnc_init;
 
