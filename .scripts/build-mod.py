@@ -15,119 +15,101 @@ dataPath = os.path.join(os.path.dirname(__file__), "data")
 modSourcePath = os.path.join(dataPath, "mod")
 modTargetPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "@RIS"))
 modAddonsPath = os.path.join(modTargetPath, "AddOns")
-modBuildPath = os.path.join(modTargetPath, "ris-missions")
+modBuildPath = os.path.join(modTargetPath, "RIS_module")
 modMissionsPath = os.path.join(modBuildPath, "missions")
 modBuildConfigPath = os.path.join(modBuildPath, "config.cpp")
 includePath = os.path.join(os.path.dirname(__file__), "include.txt")
+
+modFunctionsPath = os.path.join(risPath, "fnc")
+modDialogsPath = os.path.join(risPath, "dialogs")
+modLibPath = os.path.join(risPath, "lib")
 
 if os.path.exists(modTargetPath):
   shutil.rmtree(modTargetPath)
 
 shutil.copytree(modSourcePath, modTargetPath)
+shutil.copytree(modFunctionsPath, os.path.join(modBuildPath, "fnc"))
+shutil.copytree(modDialogsPath, os.path.join(modBuildPath, "dialogs"))
+shutil.copytree(modLibPath, os.path.join(modBuildPath, "lib"))
+shutil.copytree(os.path.join(risPath, "compositions"), os.path.join(modBuildPath, "compositions"))
+
+shutil.copy(os.path.join(risPath, "modes.hpp"), os.path.join(modBuildPath, "modes.hpp"))
+shutil.copy(os.path.join(risPath, "options-menu.hpp"), os.path.join(modBuildPath, "options-menu.hpp"))
+shutil.copy(os.path.join(risPath, "supports.hpp"), os.path.join(modBuildPath, "supports.hpp"))
+shutil.copy(os.path.join(risPath, "compositions.hpp"), os.path.join(modBuildPath, "compositions.hpp"))
+shutil.copy(os.path.join(risPath, "scripts.inc"), os.path.join(modBuildPath, "scripts.inc"))
+shutil.copy(os.path.join(risPath, "random.paa"), os.path.join(modBuildPath, "random.paa"))
+shutil.copy(os.path.join(risPath, "rstf-logo.paa"), os.path.join(modBuildPath, "rstf-logo.paa"))
+shutil.copy(os.path.join(risPath, "arrow-white.paa"), os.path.join(modBuildPath, "arrow-white.paa"))
+
+def fixIncludePaths(path):
+	with open(path, "r") as f:
+		lines = f.readlines()
+	with open(path, "w") as f:
+		for line in lines:
+			if "file = \"" in line:
+				f.write(line.replace("file = \"", "file = \"\\RIS\\"))
+			else:
+				f.write(line)
+
+def fixConfigUsage(path):
+	with open(path, "r") as f:
+		everything = f.read()
+	with open(path, "w") as f:
+			f.write(everything.replace("missionConfigFile", "configFile"))
+
+def fixRisPrefix(path):
+	with open(path, "r") as f:
+		everything = f.read()
+	with open(path, "w") as f:
+			f.write(everything
+					 	.replace("RSTF_fnc_", "RSTFM_fnc_")
+						.replace("RSTFGC_fnc_", "RSTFMGC_fnc_")
+						.replace("RSTFUI_fnc_", "RSTFMUI_fnc_")
+					)
+			
+def fixRisFunction(path):
+	with open(path, "r") as f:
+		everything = f.read()
+	with open(path, "w") as f:
+			f.write(everything
+					 	.replace("class RSTF\n{", "class RSTFM\n{")
+						.replace("class RSTFGC\n{", "class RSTFMGC\n{")
+						.replace("class RSTFUI\n{", "class RSTFMUI\n{")
+			)
+
+def fixImagesUsage(path):
+	with open(path, "r") as f:
+		everything = f.read()
+	with open(path, "w") as f:
+			f.write(
+				everything
+					.replace("'arrow-white.paa'", "'\\RIS\\arrow-white.paa'")
+					.replace("'rstf-logo.paa'", "'\\RIS\\rstf-logo.paa'")
+			)
+
+fixIncludePaths(os.path.join(modBuildPath, "fnc/functions.hpp"))
+fixIncludePaths(os.path.join(modBuildPath, "fnc/gc.hpp"))
+fixIncludePaths(os.path.join(modBuildPath, "fnc/ui.hpp"))
+fixIncludePaths(os.path.join(modBuildPath, "lib/zui/zui-functions.hpp"))
+
+for file in glob.glob(os.path.join(modBuildPath, "**", "*"), recursive=True):
+	if file.endswith(".hpp"):
+		fixImagesUsage(file)
+		fixRisPrefix(file)
+		fixRisFunction(file)
+	if file.endswith(".sqf"):
+		fixImagesUsage(file)
+		fixConfigUsage(file)
+		fixRisPrefix(file)
+
 # os.makedirs(modMissionsPath)
 os.makedirs(modAddonsPath)
 
 shutil.copy(os.path.join(risPath, "random.paa"), os.path.join(modBuildPath, "random.paa"))
 
-missionsConfig = ""
-
-for variant in glob.glob(os.path.join(risPath, ".templates", "*.sqm")):
-  island = os.path.splitext(os.path.basename(variant))[0]
-  missionPath = missionsPath % island
-
-  if os.path.exists(missionPath):
-    shutil.rmtree(missionPath)
-  shutil.copytree(risPath, missionPath, ignore=shutil.ignore_patterns('.*', 'mission.sqm'))
-  shutil.copyfile(variant, os.path.join(missionPath, 'mission.sqm'))
-
-  modMissionPath = os.path.join(modMissionsPath, "RIS-Build.%s" % island)
-
-  shutil.copytree(missionPath, modMissionPath)
-
-  description = ""
-  with open(os.path.join(modMissionPath, 'description.ext'), 'r') as f:
-    description = f.read()
-  
-  with open(os.path.join(modMissionPath, 'description.ext'), 'w') as f:
-    description = f.write(description.replace(
-      'overviewPicture = "random.paa";',
-      'overviewPicture = "RIS\\random.paa";'
-    ))
-
-  with open(os.path.join(modMissionPath, 'variables.sqf'), 'r') as f:
-    variablesSqf = f.read()
-	
-  with open(os.path.join(modMissionPath, 'variables.sqf'), 'w') as f:
-    variablesSqf = f.write(variablesSqf.replace(
-      'RSTF_DEBUG = true;',
-      'RSTF_DEBUG = false;'
-    ))
-
-  missionsConfig += """
-			class RIS_%s
-			{
-				directory = "RIS\missions\RIS-Build.%s";
-				risMap = "%s";
-			};
-  """ % (island.replace('-', ''), island, island)
-
-configFile = """
-class CfgPatches
-{
-	class RIS
-	{
-		name = "Random Infantry Skirmish";
-		author = "SkaceKamen";
-
-		requiredVersion = 1.60;
-		requiredAddons[] = { "A3_Functions_F" };
-		units[] = {};
-		weapons[] = {};
-	};
-};
-
-class CfgMissions
-{
-	class missions
-	{
-		/*
-		DISABLED FOR NOW
-		class RIS_Launcher
-		{
-			directory = "RIS\missions\RIS_Launcher.Altis";
-		};
-		*/
-
-		class RIS_Missions
-		{
-			briefingName = "Random Infantry Skirmish";
-			author = "SkaceKamen";
-			description = "Collection of random dynamic skirmish missions for various maps.";
-
-			%s
-		};
-	};
-
-	class MPMissions
-	{
-		class RIS_Missions
-		{
-			briefingName = "Random Infantry Skirmish";
-			author = "SkaceKamen";
-			description = "Collection of random dynamic skirmish missions for various maps.";
-
-			%s
-		};
-	};
-};
-""" % (missionsConfig, missionsConfig)
-
-with open(modBuildConfigPath, "w") as f:
-  f.write(configFile)
-
 subprocess.check_call(
-	[ADDON_BUILDER, modBuildPath, os.path.join(modAddonsPath), "-prefix=RIS", "-include=%s" % includePath],
-	stdout=subprocess.DEVNULL
+	[ADDON_BUILDER, modBuildPath, os.path.join(modAddonsPath), "-prefix=RIS", "-include=%s" % includePath]
 )
 
 #shutil.move(os.path.join(modAddonsPath, 'MPScenarios.pbo'), os.path.join(modAddonsPath, 'ris_missions.pbo'))

@@ -65,6 +65,11 @@ class RSTF
 		class setState {};
 
 		class loadAllClasses {};
+
+		class missionInit {};
+
+		class initVariables {};
+		class initOptions {};
 	};
 
 	class money

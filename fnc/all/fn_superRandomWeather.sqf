@@ -4,6 +4,8 @@ RSTF_WEATHER_ehOvercast = {
 	(_this select 0) setOvercast (_this select 1);
 };
 RSTF_WEATHER_ehRain = {
+	["Set rain to", _this select 1] call RSTF_fnc_dbg;
+
 	(_this select 0) setRain (_this select 1);
 };
 RSTF_WEATHER_ehWind = {

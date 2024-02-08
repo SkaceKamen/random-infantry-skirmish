@@ -21,4 +21,14 @@ private _locations = [];
 		deleteMarker _x;
 	};
 } forEach allMapMarkers;
+
+{
+	_locations pushBack [
+		_x getVariable ["Name", "Unknown"],
+		getPos(_x),
+		[100, 100],
+		getDir(_x)
+	];
+} forEach (entities "RIS_Location");
+
 _locations;
