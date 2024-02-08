@@ -1,3 +1,4 @@
 [list]
   [*] Fixed issue with dedicated servers
+  [*] Configurable enemy respawn check for Arena modes
 [/list]

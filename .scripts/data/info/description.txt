@@ -26,7 +26,8 @@ Immediately jump into random infantry skirmish on random place on the map. You c
 [h2]2024-02-08[/h2]
 [list]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3156354979]Module version[/url] released, easily start the game mode to any map you want
- [*] Fixed issue with dedicated servers
+  [*] Fixed issue with dedicated servers
+  [*] Configurable enemy respawn check for Arena modes
 [/list]
 [h2]2024-02-05[/h2]
 [list]
