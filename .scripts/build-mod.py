@@ -85,7 +85,9 @@ def fixImagesUsage(path):
 			f.write(
 				everything
 					.replace("'arrow-white.paa'", "'\\RIS\\arrow-white.paa'")
+					.replace('"arrow-white.paa"', '"\\RIS\\arrow-white.paa"')
 					.replace("'rstf-logo.paa'", "'\\RIS\\rstf-logo.paa'")
+					.replace('"rstf-logo.paa"', '"\\RIS\\rstf-logo.paa"')
 			)
 
 fixIncludePaths(os.path.join(modBuildPath, "fnc/functions.hpp"))
