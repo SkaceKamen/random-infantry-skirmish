@@ -13,6 +13,18 @@ RSTF_CAM camSetTarget RSTF_CAM_TARGET;
 RSTF_CAM camSetRelPos [3, 3, 2];
 RSTF_CAM camCommit 0;
 
+// Switch to admin console when user logs in
+0 spawn {
+	while { !RSTF_STARTED } do {
+		if (call BIS_fnc_admin > 0) then {
+			closeDialog 0;
+			0 spawn RSTF_fnc_showModeSelector;
+		};
+
+		sleep 1;
+	};
+}
+
 /*
 0 spawn {
 	RSTF_LOADERS = [];

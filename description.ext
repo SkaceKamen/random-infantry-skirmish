@@ -68,3 +68,14 @@ class CfgRespawnTemplates
 		respawnOnStart = 0;
 	};
 };
+
+class Params
+{
+	class skipConfig
+	{
+		title = "Skip config screen, go straight into battle";
+		texts[] = { "No", "Yes" };
+		values[] = { 0, 1 };
+		default = 0;
+	};
+};
