@@ -21,7 +21,7 @@ ADDON_BUILDER = os.getenv('ADDON_BUILDER')
 PUBLISHER = os.getenv('MISSION_PUBLISHER')
 
 parser = argparse.ArgumentParser(description='Build and publish RIS missions')
-parser.add_argument('--publish', action='store_true', help='Skip publishing')
+parser.add_argument('--publish', action='store_true', help='Publish missions to workshop')
 parser.add_argument('--skip-published', action='store_true', help='Skip already published missions')
 parser.add_argument('--only', action='append', help='Only publish specific mission')
 

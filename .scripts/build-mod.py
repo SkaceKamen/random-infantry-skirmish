@@ -1,5 +1,5 @@
 """
-This script builds a mod version of the RIS missions
+This script builds a module version
 """
 
 import shutil
@@ -7,21 +7,30 @@ import glob
 import os
 import subprocess
 import dotenv
+import argparse
 
 dotenv.load_dotenv()
 
 ADDON_BUILDER = os.getenv('ADDON_BUILDER')
 ADDON_SIGNER = os.getenv('ADDON_SIGNER')
+ADDON_PUBLISHER = os.getenv('ADDON_PUBLISHER')
 PRIVATE_KEY_PATH = os.getenv('PRIVATE_KEY_PATH')
+MOD_WORKSHOP_ID = os.getenv('MOD_WORKSHOP_ID')
+
+parser = argparse.ArgumentParser(description='Build and publish RIS module')
+parser.add_argument('--publish', action='store_true', help='Publish the mod to workshop')
+
+args = parser.parse_args()
+
+PUBLISH = args.publish
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
 dataPath = os.path.join(os.path.dirname(__file__), "data")
+changelogPath = os.path.join(dataPath, "changelog-mod.txt")
 modSourcePath = os.path.join(dataPath, "mod")
 modTargetPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "@RIS"))
 modAddonsPath = os.path.join(modTargetPath, "AddOns")
 modBuildPath = os.path.join(modTargetPath, "RIS_module")
-modMissionsPath = os.path.join(modBuildPath, "missions")
 modBuildConfigPath = os.path.join(modBuildPath, "config.cpp")
 includePath = os.path.join(os.path.dirname(__file__), "include.txt")
 
@@ -115,12 +124,28 @@ os.makedirs(modAddonsPath)
 
 shutil.copy(os.path.join(risPath, "random.paa"), os.path.join(modBuildPath, "random.paa"))
 
+print("Building mod...")
+
 subprocess.check_call(
 	[ADDON_BUILDER, modBuildPath, os.path.join(modAddonsPath), "-prefix=RIS", "-include=%s" % includePath]
 )
+
+print("Signing mod...")
 
 subprocess.check_call(
 	[ADDON_SIGNER, PRIVATE_KEY_PATH, os.path.join(modAddonsPath, "RIS_module.pbo")]
 )
 
+print("Cleaning up...")
+
 shutil.rmtree(modBuildPath)
+
+if PUBLISH:
+	print("Publishing mod...")
+
+	if MOD_WORKSHOP_ID is None or len(MOD_WORKSHOP_ID) == 0:
+		raise Exception("MOD_WORKSHOP_ID is not set")
+
+	subprocess.check_call(
+		[ADDON_PUBLISHER, "/id:%s" % MOD_WORKSHOP_ID, "/changeNoteFile:%s" % changelogPath, "/path:%s" % modTargetPath, "/nologo"]
+	)
