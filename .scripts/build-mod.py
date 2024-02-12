@@ -6,8 +6,13 @@ import shutil
 import glob
 import os
 import subprocess
+import dotenv
 
-ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools\\AddonBuilder\\AddonBuilder.exe'
+dotenv.load_dotenv()
+
+ADDON_BUILDER = os.getenv('ADDON_BUILDER')
+ADDON_SIGNER = os.getenv('ADDON_SIGNER')
+PRIVATE_KEY_PATH = os.getenv('PRIVATE_KEY_PATH')
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 missionsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "RIS-Build.%s"))
@@ -114,5 +119,8 @@ subprocess.check_call(
 	[ADDON_BUILDER, modBuildPath, os.path.join(modAddonsPath), "-prefix=RIS", "-include=%s" % includePath]
 )
 
-#shutil.move(os.path.join(modAddonsPath, 'MPScenarios.pbo'), os.path.join(modAddonsPath, 'ris_missions.pbo'))
+subprocess.check_call(
+	[ADDON_SIGNER, PRIVATE_KEY_PATH, os.path.join(modAddonsPath, "RIS_module.pbo")]
+)
+
 shutil.rmtree(modBuildPath)

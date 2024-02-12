@@ -3,7 +3,6 @@ This script builds and publishes the RIS missions to the workshop
 """
 
 import argparse
-from datetime import datetime
 import shutil
 import glob
 import os
@@ -14,9 +13,12 @@ import sys
 import re
 from PIL import Image
 from utils import buildPreview
+import dotenv
 
-ADDON_BUILDER = 'c:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3 Tools\\AddonBuilder\\AddonBuilder.exe'
-PUBLISHER = "c:\\Users\\menxm\\source\\repos\\A3MissionPublisher\\A3MissionPublisher\\bin\\x64\\Release\\net6.0\\A3MissionPublisher.exe"
+dotenv.load_dotenv()
+
+ADDON_BUILDER = os.getenv('ADDON_BUILDER')
+PUBLISHER = os.getenv('MISSION_PUBLISHER')
 
 parser = argparse.ArgumentParser(description='Build and publish RIS missions')
 parser.add_argument('--publish', action='store_true', help='Skip publishing')
