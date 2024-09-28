@@ -26,7 +26,7 @@ PUBLISH = args.publish
 
 risPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 dataPath = os.path.join(os.path.dirname(__file__), "data")
-changelogPath = os.path.join(dataPath, "changelog-mod.txt")
+changelogPath = os.path.join(dataPath, "info", "changelog-mod.txt")
 modSourcePath = os.path.join(dataPath, "mod")
 modTargetPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "@RIS"))
 modAddonsPath = os.path.join(modTargetPath, "AddOns")
@@ -147,5 +147,6 @@ if PUBLISH:
 		raise Exception("MOD_WORKSHOP_ID is not set")
 
 	subprocess.check_call(
-		[ADDON_PUBLISHER, "/id:%s" % MOD_WORKSHOP_ID, "/changeNoteFile:%s" % changelogPath, "/path:%s" % modTargetPath, "/nologo"]
+		[ADDON_PUBLISHER, "update", "/id:%s" % MOD_WORKSHOP_ID, "/changeNoteFile:%s" % changelogPath, "/path:%s" % modTargetPath, "/nologo"],
+		stderr=subprocess.STDOUT, shell=True, universal_newlines=True
 	)

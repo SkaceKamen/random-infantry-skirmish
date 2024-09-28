@@ -1,0 +1,5 @@
+[list]
+  [*] Fixed UI not working for other players in MP
+  [*] Fixed Gun Game mode not working properly for other players in PM
+  [*] Fixed edge cases in MP that could result in spawning issues
+[/list]
