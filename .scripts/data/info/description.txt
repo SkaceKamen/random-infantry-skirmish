@@ -23,6 +23,12 @@ Immediately jump into random infantry skirmish on random place on the map. You c
 [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3156354979]RIS - Module[/url][/b] The module version allows you to start the mission on any map you want. Note that the module version is a mod that needs to be enabled in the launcher.
 
 [hr][/hr]
+[h2]2024-09-28[/h2]
+[list]
+  [*] Fixed UI not working for other players in MP
+  [*] Fixed Gun Game mode not working properly for other players in PM
+  [*] Fixed edge cases in MP that could result in spawning issues
+[/list]
 [h2]2024-02-08[/h2]
 [list]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3156354979]Module version[/url] released, easily start the game mode to any map you want
@@ -46,6 +52,6 @@ Immediately jump into random infantry skirmish on random place on the map. You c
 [h1]🟦 Limited multiplayer dedicated servers support[/h1]
 Since this mission relies on UI dialog, where user can configure his experience, dedicated server requires admin to configure and start the mission.
 
-[h1⚠️ Where to report issues / suggest changes[/h1]
+[h1]⚠️ Where to report issues / suggest changes[/h1]
 Please direct all requests and issues to the source code repository:
 https://github.com/SkaceKamen/random-infantry-skirmish/issues
