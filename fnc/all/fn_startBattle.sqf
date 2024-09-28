@@ -48,6 +48,9 @@ publicVariable "RSTF_BUYABLE_VEHICLES";
 // Initialize selected gamemode
 call RSTF_fnc_initializeMode;
 
+// Start the gamemode
+0 call RSTF_MODE_init;
+
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
 

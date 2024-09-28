@@ -13,7 +13,7 @@ SIDE_NEUTRAL = 2;
 // Center point
 RSTF_POINT = [];
 RSTF_DIRECTION = 0;
-RSTF_LOCATION = locationNull;
+RSTF_LOCATION = [];
 
 // Building that shouldn't be populated
 RSTF_BANNED_BUILDINGS = [ "Land_Pier_F", "Land_Metal_Shed_F" ];

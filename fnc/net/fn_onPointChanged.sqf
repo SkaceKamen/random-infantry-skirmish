@@ -7,6 +7,8 @@
 
 closeDialog 0;
 
+if (count(RSTF_POINT) == 0) exitWith {};
+
 if (isNull(RSTF_CAM)) then {
 	call RSTF_fnc_createCam;
 };

@@ -66,6 +66,10 @@ RSTF_MODE_GUN_GAME_init = {
 	};
 
 	RSTF_MODE_GUN_GAME_WEAPONS_INITIALIZED = true;
+
+	publicVariable "RSTF_MODE_GUN_GAME_WEAPONS";
+	publicVariable "RSTF_MODE_GUN_GAME_WEAPONS_INITIALIZED";
+	publicVariable "RSTF_MODE_GUN_GAME_PROGRESS";
 };
 
 RSTF_MODE_GUN_GAME_getUnitIdent = {
@@ -75,6 +79,7 @@ RSTF_MODE_GUN_GAME_getUnitIdent = {
 	} else {
 		_unit getVariable ["ORIGINAL_NAME", -1];
 	};
+
 	_unitIdent;
 };
 
@@ -87,6 +92,7 @@ RSTF_MODE_GUN_GAME_getProgress = {
 	};
 
 	RSTF_MODE_GUN_GAME_PROGRESS set [_unitIdent, 0];
+	publicVariable "RSTF_MODE_GUN_GAME_PROGRESS";
 
 	0;
 };
@@ -128,6 +134,7 @@ RSTF_MODE_GUN_GAME_clearKills = {
 	private _unitIdent = [_unit] call RSTF_MODE_GUN_GAME_getUnitIdent;
 
 	RSTF_MODE_GUN_GAME_KILLS set [_unitIdent, 0];
+	publicVariable "RSTF_MODE_GUN_GAME_KILLS";
 };
 
 RSTF_MODE_GUN_GAME_addProgress = {
@@ -157,8 +164,10 @@ RSTF_MODE_GUN_GAME_addProgress = {
 	};
 
 	RSTF_MODE_GUN_GAME_PROGRESS set [_unitIdent, _current + _change];
+	publicVariable "RSTF_MODE_GUN_GAME_PROGRESS";
+
 	[_unit] call RSTF_MODE_GUN_GAME_clearKills;
-	[_unit] call RSTF_MODE_GUN_GAME_unitSpawned;
+	[_unit] remoteExec ["RSTF_MODE_GUN_GAME_unitSpawned", owner(_unit)];
 	
 	if (isPlayer(_unit)) then {
 		private _progress = [_unit] call RSTF_MODE_GUN_GAME_getProgress;
@@ -179,6 +188,12 @@ RSTF_MODE_GUN_GAME_addProgress = {
 
 RSTF_MODE_GUN_GAME_unitSpawned = {
 	private _unit = param [0];
+
+	// We need to execute this local to the target unit
+	if (owner(_unit) != 0 && owner(_unit) != clientOwner) exitWith {
+		_this remoteExec ["RSTF_MODE_GUN_GAME_unitSpawned", owner(_unit)];
+	};
+
 	private _progress = [_unit] call RSTF_MODE_GUN_GAME_getProgress;
 	private _weapon = RSTF_MODE_GUN_GAME_WEAPONS select _progress;
 	private _weaponConfig = configFile >> "cfgWeapons" >> _weapon;
@@ -207,7 +222,7 @@ RSTF_MODE_GUN_GAME_unitSpawned = {
 		} foreach _muzzles;
 	};
 
-	_unit addWeapon _weapon;
+	_unit addWeaponGlobal _weapon;
 	_unit selectWeapon _weapon;
 };
 
