@@ -70,6 +70,10 @@ RSTF_MODE_GUN_GAME_init = {
 	publicVariable "RSTF_MODE_GUN_GAME_WEAPONS";
 	publicVariable "RSTF_MODE_GUN_GAME_WEAPONS_INITIALIZED";
 	publicVariable "RSTF_MODE_GUN_GAME_PROGRESS";
+	publicVariable "RSTF_DISABLE_GROUP_SPAWNS";
+	publicVariable "RSTF_DISABLE_SPAWN_TRANSPORTS";
+	publicVariable "RSTF_DISABLE_WAVE_GROUP_SPAWNS";
+	publicVariable "RSTF_DISABLE_MONEY";
 };
 
 RSTF_MODE_GUN_GAME_getUnitIdent = {
