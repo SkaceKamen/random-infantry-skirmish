@@ -22,6 +22,11 @@ RSTF_CAM camCommit _speed;
 sleep _speed;
 // waitUntil { camCommitted RSTF_CAM; };
 
+// Safety check - somebody already took this unit in MP - lets select different unit
+if (isPlayer(_unit) && _unit != player) exitWith {
+	RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer;
+};
+
 // Check if target unit is alive, it's possible it died before we got to it
 if (alive(_unit)) then {
 	// Assign custom equipment if set
@@ -121,8 +126,12 @@ if (alive(_unit)) then {
 		};
 	};
 
-	[_unit] call RSTF_MODE_playerAssigned;
+	[_unit] remoteExec ["RSTF_MODE_playerAssigned", 2];
 } else {
 	// Simulate killed handler
-	[_unit, objNull] call RSTF_fnc_playerKilled;
+	if (isMultiplayer) then {
+		RSTF_DEATH_SIDE spawn RSTF_fnc_spawnPlayer;
+	} else {
+		[_unit, objNull] call RSTF_fnc_playerKilled;
+	};
 };

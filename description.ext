@@ -58,6 +58,7 @@ briefing = 0;
 respawn = "INSTANT";
 respawnTemplates[] = { "RSTF_Respawn" };
 respawnOnStart = 0;
+respawnDelay = 0;
 
 class CfgRespawnTemplates
 {

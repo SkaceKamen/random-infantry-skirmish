@@ -21,6 +21,9 @@ if (RSTF_SHOW_CONFIG != -1) then {
 "RSTF_STARTED" addPublicVariableEventHandler {
 	if (_this select 1) then {
 		0 spawn RSTF_fnc_onStarted;
+
+		// Initialize game mode info
+		0 spawn RSTF_fnc_initializeMode;
 	};
 };
 
