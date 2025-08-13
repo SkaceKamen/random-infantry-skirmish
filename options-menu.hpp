@@ -332,6 +332,7 @@ class RSTF_Options {
 				description="Allows you to override the ratios for enemies";
 				type="checkbox";
 				ingame=1;
+				disabled="!RSTF_SPAWN_CLASSIFICATION_RATIOS";
 			};
 
 			class RSTF_SPAWN_CLASSIFICATION_ENEMY_AI_RATIO {
