@@ -20,6 +20,10 @@ private _errors = [];
 		_value = cbChecked(_ctrl);
 	};
 
+	if (_type == "range") then {
+		_value = sliderPosition(_ctrl);
+	};
+
 	if (_type == "number" || _type == "float") then {
 		_value = parseNumber(ctrlText(_ctrl));
 	};
