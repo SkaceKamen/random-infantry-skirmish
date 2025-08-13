@@ -93,17 +93,32 @@ if (RSTF_SPAWN_CLASSIFICATION_RATIOS) then {
 	private _classifications = [];
 	if (count(_possibilitiesByClassification#RSTF_CLASSIFICATION_AA_VEHICLE) > 0) then {
 		_classifications pushBack RSTF_CLASSIFICATION_AA_VEHICLE;
-		_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AA_RATIO;
+
+		if (RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS && _side != SIDE_FRIENDLY) then {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_ENEMY_AA_RATIO;
+		} else {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AA_RATIO;
+		};
 	};
 
 	if (count(_possibilitiesByClassification#RSTF_CLASSIFICATION_AT_VEHICLE) > 0) then {
 		_classifications pushBack RSTF_CLASSIFICATION_AT_VEHICLE;
-		_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AT_RATIO;
+		
+		if (RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS && _side != SIDE_FRIENDLY) then {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_ENEMY_AT_RATIO;
+		} else {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AT_RATIO;
+		};
 	};
 
 	if (count(_possibilitiesByClassification#RSTF_CLASSIFICATION_GENERAL_VEHICLE) > 0) then {
 		_classifications pushBack RSTF_CLASSIFICATION_GENERAL_VEHICLE;
-		_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AI_RATIO;
+		
+		if (RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS && _side != SIDE_FRIENDLY) then {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_ENEMY_AI_RATIO;
+		} else {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AI_RATIO;
+		};
 	};
 
 	if (count(_classifications) > 0) then {
