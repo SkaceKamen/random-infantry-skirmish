@@ -462,6 +462,12 @@ RSTF_SKILL_MIN = 0.5;
 // Maximum skill
 RSTF_SKILL_MAX = 1;
 
+// Gives soldiers a chance based on their class to be spawned
+RSTF_SPAWN_CLASSIFICATION_RATIOS = true;
+RSTF_SPAWN_CLASSIFICATION_AI_RATIO = 0.1;
+RSTF_SPAWN_CLASSIFICATION_AT_RATIO = 0.2;
+RSTF_SPAWN_CLASSIFICATION_AA_RATIO = 1000;
+
 // Number of neutral groups in location
 RSTF_NEUTRALS_GROUPS = 5;
 // Radius of neutrals placement

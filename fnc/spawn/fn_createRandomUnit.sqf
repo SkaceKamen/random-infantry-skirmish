@@ -26,6 +26,7 @@ if (!RSTF_DISABLE_GROUP_SPAWNS && RSTF_SPAWN_AT_OWN_GROUP) then {
 };
 
 private _possibilities = RSTF_MEN#_side;
+private _possibilitiesWeighted = [];
 
 if (RSTF_GROUP_UNIT_RESTRICTION > 0) then {
 	private _targetFaction = _group getVariable ["RSTF_TARGET_FACTION", ""];
@@ -47,6 +48,23 @@ if (RSTF_GROUP_UNIT_RESTRICTION > 0) then {
 	};
 };
 
+if (RSTF_SPAWN_CLASSIFICATION_RATIOS) then {
+	{
+		private _weight = RSTF_SPAWN_CLASSIFICATION_AI_RATIO;
+		private _classification = [configFile >> "cfgVehicles" >> _x] call RSTF_fnc_classifyVehicle;
+
+		if (_classification == RSTF_CLASSIFICATION_AA_VEHICLE) then {
+			_weight = RSTF_SPAWN_CLASSIFICATION_AA_RATIO;
+		};
+
+		if (_classification == RSTF_CLASSIFICATION_AT_VEHICLE) then {
+				_weight = RSTF_SPAWN_CLASSIFICATION_AT_RATIO;
+		};
+
+		_possibilitiesWeighted pushBack _x;
+		_possibilitiesWeighted pushBack _weight;
+	} foreach _possibilities;
+};
 
 // Try to spawn next to our group, but only if they're inside spawn
 if (!RSTF_MODE_DEFEND_ENABLED && !RSTF_DISABLE_WAVE_GROUP_SPAWNS) then {
@@ -63,6 +81,37 @@ if (!RSTF_MODE_DEFEND_ENABLED && !RSTF_DISABLE_WAVE_GROUP_SPAWNS) then {
 };
 
 private _unitClass = selectRandom _possibilities;
+
+if (RSTF_SPAWN_CLASSIFICATION_RATIOS) then {
+	// TODO: This should be cached
+	private _possibilitiesByClassification = [[], [], []];
+	{
+		private _classification = [configFile >> "cfgVehicles" >> _x] call RSTF_fnc_classifyVehicle;
+		_possibilitiesByClassification#_classification pushBack _x;
+	} forEach _possibilities;
+
+	private _classifications = [];
+	if (count(_possibilitiesByClassification#RSTF_CLASSIFICATION_AA_VEHICLE) > 0) then {
+		_classifications pushBack RSTF_CLASSIFICATION_AA_VEHICLE;
+		_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AA_RATIO;
+	};
+
+	if (count(_possibilitiesByClassification#RSTF_CLASSIFICATION_AT_VEHICLE) > 0) then {
+		_classifications pushBack RSTF_CLASSIFICATION_AT_VEHICLE;
+		_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AT_RATIO;
+	};
+
+	if (count(_possibilitiesByClassification#RSTF_CLASSIFICATION_GENERAL_VEHICLE) > 0) then {
+		_classifications pushBack RSTF_CLASSIFICATION_GENERAL_VEHICLE;
+		_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AI_RATIO;
+	};
+
+	if (count(_classifications) > 0) then {
+		private _pickedClassification = selectRandomWeighted _classifications;
+		_unitClass = selectRandom (_possibilitiesByClassification#_pickedClassification);
+	};
+};
+
 private _unit = _group createUnit [_unitClass, _position, [], 10, "NONE"];
 
 if (isNull(_unit)) exitWith {
