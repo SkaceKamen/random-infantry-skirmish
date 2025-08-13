@@ -289,7 +289,7 @@ class RSTF_Options {
 
 			class RSTF_SPAWN_CLASSIFICATION_RATIOS {
 				title="Control class spawn ratios";
-				description="Controls probability of spawning AT/AA infantry, when disabled the classes are spawned randomly.";
+				description="Controls probability of spawning AT/AA infantry, when disabled the classes are spawned randomly. DOES NOT WORK WITH RANDOM WEAPONS.";
 				type="checkbox";
 				ingame=1;
 			};
