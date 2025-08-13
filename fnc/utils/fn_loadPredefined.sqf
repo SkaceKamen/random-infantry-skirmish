@@ -6,7 +6,7 @@
 
 
 	Returns:
-	ARRAY - each element is [NAME, POSITION, [SIZE_X, SIZE_Y], ROTATION]
+	ARRAY - each element is [NAME, POSITION, [SIZE_X, SIZE_Y], ROTATION, FORCE_VALID]
 */
 
 private _locations = [];
@@ -16,7 +16,8 @@ private _locations = [];
 			markerText(_x),
 			markerPos(_x),
 			markerSize(_x),
-			markerDir(_x)
+			markerDir(_x),
+			false
 		];
 		deleteMarker _x;
 	};
@@ -27,7 +28,8 @@ private _locations = [];
 		_x getVariable ["Name", "Unknown"],
 		getPos(_x),
 		[100, 100],
-		getDir(_x)
+		getDir(_x),
+		true
 	];
 } forEach (entities "RIS_Location");
 

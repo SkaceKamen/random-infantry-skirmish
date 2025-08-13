@@ -27,7 +27,8 @@ private _locations = if (count(RSTF_PREDEFINED_LOCATIONS) == 0) then {
 				text(_x),
 				getPos(_x),
 				[100, 100],
-				0
+				0,
+				false
 			]
 		];
 	} forEach _locs;
@@ -45,6 +46,8 @@ _locations = _locations call RSTF_fnc_arrayShuffle;
 for [{_i = 0}, {_i < count(_locations) && (_count == 0 || count(_results) < _count)},{_i = _i + 1}] do {
 	// Direction and distance between two spawns
 	_center = _locations select _i;
+	_forceValid = _center#4;
+
 	_direction = random(360);
 	_distance = RSTF_SPAWN_DISTANCE_MIN + random(RSTF_SPAWN_DISTANCE_MAX - RSTF_SPAWN_DISTANCE_MIN);
 
@@ -64,6 +67,11 @@ for [{_i = 0}, {_i < count(_locations) && (_count == 0 || count(_results) < _cou
 			_position vectorAdd [sin(180 + _direction) * _distance, cos(180 + _direction) * _distance, 0],
 			[0,0,0] //For netural defenders
 		];
+
+		if (_forceValid) exitWith {
+			_valid = true;
+			true;
+		};
 
 		if (!surfaceIsWater(_spawns select 0) &&
 			!surfaceIsWater(_spawns select 1)) exitWith {
