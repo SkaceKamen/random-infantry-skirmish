@@ -72,6 +72,7 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 		case "checkbox": { _ctrlType = "RscCheckBox"; };
 		case "select": { _ctrlType = "RscCombo"; };
 		case "button": { _ctrlType = "RscButton"; };
+		case "range": { _ctrlType = "RscXSliderH"; };
 	};
 
 	// Build input control
@@ -133,6 +134,25 @@ private _width = RSTF_ADV_OPS_W - _padding * 2;
 		} foreach _selectOptions;
 
 		_ctrl ctrlAddEventHandler ["LBSelChanged", {
+			0 spawn {
+				call RSTF_fnc_saveAdvancedOptions;
+				call RSTF_fnc_updateAdvancedConfig;
+			}
+		}];
+	};
+
+	if (_type == "range") then {
+		private _min = getNumber(_x >> "min");
+		private _max = getNumber(_x >> "max");
+		private _speed = getNumber(_x >> "speed");
+
+		_ctrl sliderSetRange [_min, _max];
+		_ctrl sliderSetSpeed [_speed, _speed];
+		_ctrl sliderSetPosition _value;
+
+		diag_log text(format["[RSTF] Slider %1: min=%2, max=%3, speed=%4, value=%5", _name, _min, _max, _speed, _value]);
+
+		_ctrl ctrlAddEventHandler ["SliderPosChanged", {
 			0 spawn {
 				call RSTF_fnc_saveAdvancedOptions;
 				call RSTF_fnc_updateAdvancedConfig;

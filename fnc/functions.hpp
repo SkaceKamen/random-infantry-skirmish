@@ -137,6 +137,7 @@ class RSTF
 		class getFactionsForSide {};
 		class clearWaypoints {};
 		class countCaptureUnits {};
+		class classifyVehicle {};
 	};
 
 	class ui

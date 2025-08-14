@@ -287,6 +287,89 @@ class RSTF_Options {
 
 			SPACER;
 
+			class RSTF_SPAWN_CLASSIFICATION_RATIOS {
+				title="Control class spawn ratios";
+				description="Controls probability of spawning AT/AA infantry, when disabled the classes are spawned randomly. DOES NOT WORK WITH RANDOM WEAPONS.";
+				type="checkbox";
+				ingame=1;
+			};
+
+			class RSTF_SPAWN_CLASSIFICATION_AI_RATIO {
+				title="Anti-infantry";
+				description="Ratio of AI infantry spawned, 0 to disable.";
+				type="range";
+				min=0;
+				max=1;
+				speed=0.5;
+				ingame=1;
+				disabled="!RSTF_SPAWN_CLASSIFICATION_RATIOS";
+			};
+
+			class RSTF_SPAWN_CLASSIFICATION_AT_RATIO {
+				title="Anti-tank";
+				description="Ratio of AT infantry spawned, 0 to disable.";
+				type="range";
+				min=0;
+				max=1;
+				speed=0.1;
+				ingame=1;
+				disabled="!RSTF_SPAWN_CLASSIFICATION_RATIOS";
+			};
+
+			class RSTF_SPAWN_CLASSIFICATION_AA_RATIO {
+				title="Anti-air";
+				description="Ratio of AA infantry spawned, 0 to disable.";
+				type="range";
+				min=0;
+				max=1;
+				speed=0.1;
+				ingame=1;
+				disabled="!RSTF_SPAWN_CLASSIFICATION_RATIOS";
+			};
+
+			class RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS {
+				title="Set different ratios for enemies";
+				description="Allows you to override the ratios for enemies";
+				type="checkbox";
+				ingame=1;
+				disabled="!RSTF_SPAWN_CLASSIFICATION_RATIOS";
+			};
+
+			class RSTF_SPAWN_CLASSIFICATION_ENEMY_AI_RATIO {
+				title="Enemy anti-infantry";
+				description="Ratio of AI infantry spawned, 0 to disable.";
+				type="range";
+				min=0;
+				max=1;
+				speed=0.5;
+				ingame=1;
+				visible="RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS";
+			};
+
+			class RSTF_SPAWN_CLASSIFICATION_ENEMY_AT_RATIO {
+				title="Enemy anti-tank";
+				description="Ratio of AT infantry spawned, 0 to disable.";
+				type="range";
+				min=0;
+				max=1;
+				speed=0.1;
+				ingame=1;
+				visible="RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS";
+			};
+
+			class RSTF_SPAWN_CLASSIFICATION_ENEMY_AA_RATIO {
+				title="Enemy anti-air";
+				description="Ratio of AA infantry spawned, 0 to disable.";
+				type="range";
+				min=0;
+				max=1;
+				speed=0.1;
+				ingame=1;
+				visible="RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS";
+			};
+
+			SPACER;
+
 			class RSTF_SPAWN_AT_OWN_GROUP {
 				title="Spawn new units near group";
 				description="Spawn new units near group when there's no enemy near";

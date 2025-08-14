@@ -26,6 +26,7 @@ if (!RSTF_DISABLE_GROUP_SPAWNS && RSTF_SPAWN_AT_OWN_GROUP) then {
 };
 
 private _possibilities = RSTF_MEN#_side;
+private _possibilitiesCacheKey = [str(_side)];
 
 if (RSTF_GROUP_UNIT_RESTRICTION > 0) then {
 	private _targetFaction = _group getVariable ["RSTF_TARGET_FACTION", ""];
@@ -42,11 +43,13 @@ if (RSTF_GROUP_UNIT_RESTRICTION > 0) then {
 
 	if (RSTF_GROUP_UNIT_RESTRICTION == 2) then {
 	 	_possibilities = (RSTF_MEN_PER_FACTION_CLASS get _targetFaction) get _targetVehicleClass;
+		_possibilitiesCacheKey pushBack _targetFaction;
+		_possibilitiesCacheKey pushBack _targetVehicleClass;
 	} else {
 		_possibilities = RSTF_MEN_PER_FACTION get _targetFaction;
+		_possibilitiesCacheKey pushBack _targetFaction;
 	};
 };
-
 
 // Try to spawn next to our group, but only if they're inside spawn
 if (!RSTF_MODE_DEFEND_ENABLED && !RSTF_DISABLE_WAVE_GROUP_SPAWNS) then {
@@ -60,6 +63,63 @@ if (!RSTF_MODE_DEFEND_ENABLED && !RSTF_DISABLE_WAVE_GROUP_SPAWNS) then {
 			_position = getPos(_x);
 		};
 	} forEach units(_group);
+};
+
+if (RSTF_SPAWN_CLASSIFICATION_RATIOS) then {
+	private _possibilitiesByClassification = [[], [], []];
+
+	// Load from cache if available
+	private _cacheKey = _possibilitiesCacheKey joinString ":";
+	private _cachedPossibilities = RSTF_POSSIBILITIES_CACHE getOrDefault [_cacheKey, -1];
+
+	if (typeName(_cachedPossibilities) == "ARRAY") then {
+		_possibilitiesByClassification = _cachedPossibilities;
+	} else {
+		// Otherwise, classify the unit possibilities as AI/AT/AA
+		{
+			private _classification = [configFile >> "cfgVehicles" >> _x] call RSTF_fnc_classifyVehicle;
+			_possibilitiesByClassification#_classification pushBack _x;
+		} forEach _possibilities;
+
+		RSTF_POSSIBILITIES_CACHE set [_cacheKey, _possibilitiesByClassification];
+	};
+
+	// Build list of possible classifications and their ratios
+	private _classifications = [];
+	if (count(_possibilitiesByClassification#RSTF_CLASSIFICATION_AA_VEHICLE) > 0) then {
+		_classifications pushBack RSTF_CLASSIFICATION_AA_VEHICLE;
+
+		if (RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS && _side != SIDE_FRIENDLY) then {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_ENEMY_AA_RATIO;
+		} else {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AA_RATIO;
+		};
+	};
+
+	if (count(_possibilitiesByClassification#RSTF_CLASSIFICATION_AT_VEHICLE) > 0) then {
+		_classifications pushBack RSTF_CLASSIFICATION_AT_VEHICLE;
+		
+		if (RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS && _side != SIDE_FRIENDLY) then {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_ENEMY_AT_RATIO;
+		} else {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AT_RATIO;
+		};
+	};
+
+	if (count(_possibilitiesByClassification#RSTF_CLASSIFICATION_GENERAL_VEHICLE) > 0) then {
+		_classifications pushBack RSTF_CLASSIFICATION_GENERAL_VEHICLE;
+		
+		if (RSTF_SPAWN_CLASSIFICATION_ENEMY_RATIOS && _side != SIDE_FRIENDLY) then {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_ENEMY_AI_RATIO;
+		} else {
+			_classifications pushBack RSTF_SPAWN_CLASSIFICATION_AI_RATIO;
+		};
+	};
+
+	if (count(_classifications) > 0) then {
+		private _pickedClassification = selectRandomWeighted _classifications;
+		_possibilities = _possibilitiesByClassification#_pickedClassification;
+	};
 };
 
 private _unitClass = selectRandom _possibilities;
