@@ -1,5 +1,4 @@
 [list]
-  [*] Fixed UI not working for other players in MP
-  [*] Fixed Gun Game mode not working properly for other players in PM
-  [*] Fixed edge cases in MP that could result in spawning issues
+  [*] Added class-based spawn ratios with possibility to define ratios for AntiAir, AntiTank, Infantry
+  [*] Fixed manually placed mod locations being filtered out when not deemed good enough
 [/list]
