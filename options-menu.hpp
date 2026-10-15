@@ -673,18 +673,18 @@ class RSTF_Options {
 		class Items {
 			class RSTF_VEHICLE_SPAWN_MODE {
 				title="Vehicle spawn mode";
-				description="How vehicles enter the battle. Money buying - AI uses its money to buy vehicles (classic behavior). Battlefield - configured vehicles are spawned automatically and respawn after being destroyed.";
+				description="How vehicles enter the battle. Money buying - AI uses its money to buy vehicles (classic behavior). Static spawns - configured vehicles are spawned automatically and respawn after being destroyed.";
 				type="select";
 				optionsVariable="RSTF_VEHICLE_SPAWN_MODE_OPTIONS";
 				ingame=1;
 			};
 
-			class VEHICLE_SPAWNS_EDITOR {
+			class STATIC_VEHICLE_SPAWNS_EDITOR {
 				title="";
-				buttonText="EDIT VEHICLE SPAWNS";
+				buttonText="EDIT STATIC VEHICLE SPAWNS";
 				type="button";
-				visible="RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_BATTLEFIELD && !RSTF_DISABLE_VEHICLE_SPAWNS && (call RSTF_fnc_getModeId) != 'GunGame'";
-				action="0 spawn RSTF_fnc_showVehicleSpawnEditor";
+				visible="RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_STATIC && !RSTF_DISABLE_STATIC_VEHICLE_SPAWNS && (call RSTF_fnc_getModeId) != 'GunGame'";
+				action="0 spawn RSTF_fnc_showStaticVehicleSpawnEditor";
 				ingame=1;
 			};
 

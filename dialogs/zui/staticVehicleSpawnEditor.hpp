@@ -1,4 +1,4 @@
-class VehicleSpawnEditorDialog: ZUI_RowLayout
+class StaticVehicleSpawnEditorDialog: ZUI_RowLayout
 {
 	SPACER_COMPONENT;
 
@@ -10,7 +10,7 @@ class VehicleSpawnEditorDialog: ZUI_RowLayout
 
 		class Title: ZTitle
 		{
-			text = "VEHICLE SPAWN EDITOR";
+			text = "STATIC VEHICLE SPAWNS";
 			margin[] = SPACING_BOTTOM;
 		};
 
@@ -26,7 +26,7 @@ class VehicleSpawnEditorDialog: ZUI_RowLayout
 				class CurrentList: ZUI_Listview
 				{
 					id = "vehicles";
-					columns[] = { 0, 0.12, 0.25, 0.85 };
+					columns[] = { 0, 0.8, 0.8, 0.9 };
 					shadow = 1;
 					font = GUI_STANDARD_FONT;
 					textSize = GUI_TEXT_SIZE_SMALL;
@@ -44,6 +44,15 @@ class VehicleSpawnEditorDialog: ZUI_RowLayout
 					margin[] = SPACING_BOTTOM;
 				};
 
+				class Edit: ZUI_Button
+				{
+					id = "edit";
+					text = "EDIT VEHICLE";
+					height = 0.05;
+					heightType = ZUI_SIZE_ABSOLUTE;
+					margin[] = SPACING_BOTTOM;
+				};
+
 				class Remove: ZUI_Button
 				{
 					id = "remove";
@@ -51,6 +60,14 @@ class VehicleSpawnEditorDialog: ZUI_RowLayout
 					height = 0.05;
 					heightType = ZUI_SIZE_ABSOLUTE;
 					margin[] = SPACING_BOTTOM;
+				};
+
+				class spacer: ZUI_RowLayout
+				{
+					background[] = GUI_BODY_BG;
+					margin[] = SPACING_BOTTOM;
+					height = 0.075;
+					heightType = ZUI_SIZE_ABSOLUTE;
 				};
 
 				class Up: ZUI_Button
@@ -71,14 +88,6 @@ class VehicleSpawnEditorDialog: ZUI_RowLayout
 					margin[] = SPACING_BOTTOM;
 				};
 
-				class spacer: ZUI_RowLayout
-				{
-					background[] = GUI_BODY_BG;
-					margin[] = SPACING_BOTTOM;
-					height = 0.075;
-					heightType = ZUI_SIZE_ABSOLUTE;
-				};
-
 				class Clear: ZUI_Button
 				{
 					id = "clear";
@@ -86,6 +95,24 @@ class VehicleSpawnEditorDialog: ZUI_RowLayout
 					height = 0.05;
 					heightType = ZUI_SIZE_ABSOLUTE;
 					margin[] = SPACING_BOTTOM;
+				};
+
+				class spacer3: ZUI_RowLayout
+				{
+					background[] = GUI_BODY_BG;
+					margin[] = SPACING_BOTTOM;
+					height = 0.075;
+					heightType = ZUI_SIZE_ABSOLUTE;
+				};
+
+				class Random: ZUI_Button
+				{
+					id = "random";
+					text = "RANDOM FILL";
+					height = 0.05;
+					heightType = ZUI_SIZE_ABSOLUTE;
+					margin[] = SPACING_BOTTOM;
+					tooltip = "Generate a random vehicle list for both sides, matching vehicles by price";
 				};
 
 				class spacer2: ZUI_RowLayout

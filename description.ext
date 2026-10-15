@@ -29,8 +29,9 @@
 #include "dialogs\zui\gunGameEditor.hpp"
 #include "dialogs\zui\gunGameEditorWeaponPick.hpp"
 #include "dialogs\zui\gunGameEditorPreset.hpp"
-#include "dialogs\zui\vehicleSpawnEditor.hpp"
-#include "dialogs\zui\vehicleSpawnPicker.hpp"
+#include "dialogs\zui\staticVehicleSpawnEditor.hpp"
+#include "dialogs\zui\staticVehicleSpawnPicker.hpp"
+#include "dialogs\zui\staticVehicleSpawnRandom.hpp"
 
 #include "modes.hpp"
 #include "options-menu.hpp"

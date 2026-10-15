@@ -1,11 +1,11 @@
 /*
 	Function:
-	RSTF_fnc_startBattlefieldVehicleLoop
+	RSTF_fnc_startStaticVehicleSpawnLoop
 
 	Description:
-	Starts battlefield-like automatic vehicle spawning. Every configured entry
-	spawns up to its count of AI crewed vehicles at battle start and respawns a
-	destroyed (or otherwise lost) vehicle after the entry's respawn delay.
+	Starts static vehicle spawning. Every configured entry spawns up to its
+	count of AI crewed vehicles at battle start and respawns a destroyed (or
+	otherwise lost) vehicle after the entry's respawn delay.
 
 	Entries have following format: [SIDE, CLASSNAME, COUNT, RESPAWN_DELAY]
 
@@ -33,7 +33,7 @@ if (!isServer) exitWith {};
 		for "_i" from 1 to _count do {
 			_slots pushBack [_side, _class, _air, objNull, 0, _respawn];
 		};
-	} foreach RSTF_VEHICLE_SPAWNS;
+	} foreach RSTF_STATIC_VEHICLE_SPAWNS;
 
 	if (count(_slots) == 0) exitWith {};
 

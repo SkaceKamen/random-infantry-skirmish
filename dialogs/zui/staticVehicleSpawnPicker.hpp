@@ -1,4 +1,4 @@
-class VehicleSpawnPickerDialog: ZUI_RowLayout
+class StaticVehicleSpawnPickerDialog: ZUI_RowLayout
 {
 	SPACER_COMPONENT;
 
@@ -10,31 +10,68 @@ class VehicleSpawnPickerDialog: ZUI_RowLayout
 
 		class Title: ZTitle
 		{
+			id = "title";
 			text = "PICK A VEHICLE";
 			margin[] = SPACING_BOTTOM;
 		};
 
-		class Side: ZUI_RowLayout
+		class Options: ZUI_RowLayout
 		{
 			background[] = GUI_BODY_BG;
 			height = 0.05;
 			heightType = ZUI_SIZE_ABSOLUTE;
 			margin[] = SPACING_BOTTOM;
 
-			class label: ZUI_Text
+			class sideLabel: ZUI_Text
 			{
 				text = "Side:";
-				width = 0.05;
+				width = 0.08;
 				widthType = ZUI_SIZE_ABSOLUTE;
 				margin[] = SPACING_RIGHT;
 				font = GUI_STANDARD_FONT;
 				textSize = GUI_TEXT_SIZE_SMALL;
 			};
 
-			class combo: ZUI_Combo
+			class side: ZUI_Combo
 			{
 				id = "side";
+				width = 0.15;
+				widthType = ZUI_SIZE_ABSOLUTE;
+				margin[] = SPACING_RIGHT;
+			};
+
+			class countLabel: ZUI_TextRight
+			{
+				text = "Count:";
+				width = 0.08;
+				widthType = ZUI_SIZE_ABSOLUTE;
+				margin[] = SPACING_RIGHT;
+				font = GUI_STANDARD_FONT;
+				textSize = GUI_TEXT_SIZE_SMALL;
+			};
+
+			class count: ZUI_Edit
+			{
+				id = "count";
+				width = 0.10;
+				widthType = ZUI_SIZE_ABSOLUTE;
+				margin[] = SPACING_RIGHT;
+			};
+
+			class respawnLabel: ZUI_TextRight
+			{
+				text = "Respawn (sec):";
 				width = 0.2;
+				widthType = ZUI_SIZE_ABSOLUTE;
+				margin[] = SPACING_RIGHT;
+				font = GUI_STANDARD_FONT;
+				textSize = GUI_TEXT_SIZE_SMALL;
+			};
+
+			class respawn: ZUI_Edit
+			{
+				id = "respawn";
+				width = 0.10;
 				widthType = ZUI_SIZE_ABSOLUTE;
 			};
 		};
@@ -48,30 +85,30 @@ class VehicleSpawnPickerDialog: ZUI_RowLayout
 				padding = GUI_SPACING;
 				margin[] = SPACING_RIGHT;
 
-				class Search: ZUI_Edit
+				class Filters: ZUI_RowLayout
 				{
-					id = "search";
 					height = 0.05;
 					heightType = ZUI_SIZE_ABSOLUTE;
 					margin[] = SPACING_BOTTOM;
-				};
 
-				class Categories: ZUI_Listview
-				{
-					id = "categories";
-					columns[] = { 0, 0.8 };
-					height = 0.25;
-					heightType = ZUI_SIZE_ABSOLUTE;
-					margin[] = SPACING_BOTTOM;
-					shadow = 1;
-					font = GUI_STANDARD_FONT;
-					textSize = GUI_TEXT_SIZE_SMALL;
+					class category: ZUI_Combo
+					{
+						id = "category";
+						width = 0.15;
+						widthType = ZUI_SIZE_ABSOLUTE;
+						margin[] = SPACING_RIGHT;
+					};
+
+					class search: ZUI_Edit
+					{
+						id = "search";
+					};
 				};
 
 				class Items: ZUI_Listview
 				{
 					id = "vehicles";
-					columns[] = { 0, 0.6 };
+					columns[] = { 0, 0.45, 0.75 };
 					shadow = 1;
 					font = GUI_STANDARD_FONT;
 					textSize = GUI_TEXT_SIZE_SMALL;
@@ -92,46 +129,11 @@ class VehicleSpawnPickerDialog: ZUI_RowLayout
 			};
 		};
 
-		class Inputs: ZUI_RowLayout
+		class Actions: ZUI_RowLayout
 		{
 			margin[] = SPACING_TOP;
 			height = 0.05;
 			heightType = ZUI_SIZE_ABSOLUTE;
-
-			class countLabel: ZUI_Text
-			{
-				text = "Count:";
-				width = 0.05;
-				widthType = ZUI_SIZE_ABSOLUTE;
-				margin[] = SPACING_RIGHT;
-				font = GUI_STANDARD_FONT;
-				textSize = GUI_TEXT_SIZE_SMALL;
-			};
-
-			class count: ZUI_Edit
-			{
-				id = "count";
-				width = 0.05;
-				widthType = ZUI_SIZE_ABSOLUTE;
-				margin[] = SPACING_RIGHT;
-			};
-
-			class respawnLabel: ZUI_Text
-			{
-				text = "Respawn (sec):";
-				width = 0.1;
-				widthType = ZUI_SIZE_ABSOLUTE;
-				margin[] = SPACING_RIGHT;
-				font = GUI_STANDARD_FONT;
-				textSize = GUI_TEXT_SIZE_SMALL;
-			};
-
-			class respawn: ZUI_Edit
-			{
-				id = "respawn";
-				width = 0.06;
-				widthType = ZUI_SIZE_ABSOLUTE;
-			};
 
 			SPACER_COMPONENT;
 
@@ -147,7 +149,7 @@ class VehicleSpawnPickerDialog: ZUI_RowLayout
 			class Pick: ZUI_Button
 			{
 				id = "pick";
-				text = "ADD";
+				text = "SAVE";
 				width = 0.2;
 				widthType = ZUI_SIZE_ABSOLUTE;
 			};

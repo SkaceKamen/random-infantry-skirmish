@@ -51,11 +51,11 @@ call RSTF_fnc_initializeMode;
 // Start the gamemode
 0 call RSTF_MODE_init;
 
-// Battlefield-style vehicle spawns (spawns AI crewed vehicles and respawns them when lost)
-if (RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_BATTLEFIELD && !RSTF_DISABLE_VEHICLE_SPAWNS) then {
-	"Spawning battlefield vehicles..." call RSTF_fnc_dbg;
+// Static vehicle spawns (spawns AI crewed vehicles and respawns them when lost)
+if (RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_STATIC && !RSTF_DISABLE_STATIC_VEHICLE_SPAWNS) then {
+	"Spawning static vehicles..." call RSTF_fnc_dbg;
 
-	call RSTF_fnc_startBattlefieldVehicleLoop;
+	call RSTF_fnc_startStaticVehicleSpawnLoop;
 };
 
 // Helper markers for spawns
