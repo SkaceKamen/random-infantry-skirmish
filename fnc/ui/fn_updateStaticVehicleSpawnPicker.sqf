@@ -11,7 +11,7 @@ RSTF_STATIC_VEHICLE_SPAWN_PICKER_SELECT = "";
 
 private _ctrl = [RSTF_STATIC_VEHICLE_SPAWN_PICKER_LAYOUT, "vehicles"] call ZUI_fnc_getControlById;
 lnbClear _ctrl;
-_ctrl lnbSetColumnsPos [0, 0.45, 0.75];
+//_ctrl lnbSetColumnsPos [0, 0.45, 0.75];
 
 private _selectRow = -1;
 private _row = 0;

@@ -26,7 +26,7 @@ class StaticVehicleSpawnEditorDialog: ZUI_RowLayout
 				class CurrentList: ZUI_Listview
 				{
 					id = "vehicles";
-					columns[] = { 0, 0.8, 0.8, 0.9 };
+					columns[] = { 0, 0.1, 0.22, 0.6, 0.85 };
 					shadow = 1;
 					font = GUI_STANDARD_FONT;
 					textSize = GUI_TEXT_SIZE_SMALL;
@@ -68,24 +68,6 @@ class StaticVehicleSpawnEditorDialog: ZUI_RowLayout
 					margin[] = SPACING_BOTTOM;
 					height = 0.075;
 					heightType = ZUI_SIZE_ABSOLUTE;
-				};
-
-				class Up: ZUI_Button
-				{
-					id = "up";
-					text = "MOVE UP";
-					height = 0.05;
-					heightType = ZUI_SIZE_ABSOLUTE;
-					margin[] = SPACING_BOTTOM;
-				};
-
-				class Down: ZUI_Button
-				{
-					id = "down";
-					text = "MOVE DOWN";
-					height = 0.05;
-					heightType = ZUI_SIZE_ABSOLUTE;
-					margin[] = SPACING_BOTTOM;
 				};
 
 				class Clear: ZUI_Button

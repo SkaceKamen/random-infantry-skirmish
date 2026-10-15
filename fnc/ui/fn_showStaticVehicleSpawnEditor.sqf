@@ -36,32 +36,6 @@ RSTF_STATIC_VEHICLE_SPAWN_EDITOR_INDEX = -1;
 	call RSTF_fnc_updateStaticVehicleSpawnEditor;
 }] call ZUI_fnc_on;
 
-[RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT, "up", "ButtonClick", {
-	private _ctrl = [RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT, "vehicles"] call ZUI_fnc_getControlById;
-	private _index = lnbCurSelRow _ctrl;
-	if (_index <= 0) exitWith {};
-
-	private _entry = RSTF_STATIC_VEHICLE_SPAWNS_EDITOR select _index;
-	RSTF_STATIC_VEHICLE_SPAWNS_EDITOR set [_index, RSTF_STATIC_VEHICLE_SPAWNS_EDITOR select (_index - 1)];
-	RSTF_STATIC_VEHICLE_SPAWNS_EDITOR set [_index - 1, _entry];
-
-	call RSTF_fnc_updateStaticVehicleSpawnEditor;
-	_ctrl lnbSetCurSelRow (_index - 1);
-}] call ZUI_fnc_on;
-
-[RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT, "down", "ButtonClick", {
-	private _ctrl = [RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT, "vehicles"] call ZUI_fnc_getControlById;
-	private _index = lnbCurSelRow _ctrl;
-	if (_index < 0 || _index >= count(RSTF_STATIC_VEHICLE_SPAWNS_EDITOR) - 1) exitWith {};
-
-	private _entry = RSTF_STATIC_VEHICLE_SPAWNS_EDITOR select _index;
-	RSTF_STATIC_VEHICLE_SPAWNS_EDITOR set [_index, RSTF_STATIC_VEHICLE_SPAWNS_EDITOR select (_index + 1)];
-	RSTF_STATIC_VEHICLE_SPAWNS_EDITOR set [_index + 1, _entry];
-
-	call RSTF_fnc_updateStaticVehicleSpawnEditor;
-	_ctrl lnbSetCurSelRow (_index + 1);
-}] call ZUI_fnc_on;
-
 [RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT, "clear", "ButtonClick", {
 	RSTF_STATIC_VEHICLE_SPAWNS_EDITOR = [];
 	call RSTF_fnc_updateStaticVehicleSpawnEditor;
