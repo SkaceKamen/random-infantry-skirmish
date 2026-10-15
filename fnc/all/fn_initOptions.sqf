@@ -642,6 +642,17 @@ RSTF_SPAWN_VEHICLES_UNLOCKED = false;
 // Enable AI vehicles
 RSTF_AI_VEHICLES_ENABLED = true;
 
+// How vehicles get into the battle:
+// RSTF_VEHICLE_SPAWN_MONEY - AI buys vehicles with money
+// RSTF_VEHICLE_SPAWN_BATTLEFIELD - configured vehicles are spawned automatically and respawn when destroyed
+RSTF_VEHICLE_SPAWN_MONEY = 0;
+RSTF_VEHICLE_SPAWN_BATTLEFIELD = 1;
+RSTF_VEHICLE_SPAWN_MODE = RSTF_VEHICLE_SPAWN_MONEY;
+RSTF_VEHICLE_SPAWN_MODE_OPTIONS = ["Money buying", "Battlefield"];
+
+// List of battlefield vehicle spawn entries, each entry is [SIDE, CLASSNAME, COUNT, RESPAWN_DELAY]
+RSTF_VEHICLE_SPAWNS = [];
+
 // Skip initial mode select screen
 RSTF_SKIP_MODE_SELECT = false;
 

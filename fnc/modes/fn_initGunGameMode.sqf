@@ -19,6 +19,7 @@ RSTF_MODE_GUN_GAME_init = {
 	RSTF_DISABLE_SPAWN_TRANSPORTS = true;
 	RSTF_DISABLE_WAVE_GROUP_SPAWNS = false;
 	RSTF_DISABLE_MONEY = true;
+	RSTF_DISABLE_VEHICLE_SPAWNS = true;
 	
 	"Generating weapons..." call RSTF_fnc_dbg;
 
@@ -74,6 +75,7 @@ RSTF_MODE_GUN_GAME_init = {
 	publicVariable "RSTF_DISABLE_SPAWN_TRANSPORTS";
 	publicVariable "RSTF_DISABLE_WAVE_GROUP_SPAWNS";
 	publicVariable "RSTF_DISABLE_MONEY";
+	publicVariable "RSTF_DISABLE_VEHICLE_SPAWNS";
 };
 
 RSTF_MODE_GUN_GAME_getUnitIdent = {

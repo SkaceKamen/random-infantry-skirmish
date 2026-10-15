@@ -31,11 +31,18 @@
 					_vehicle setVariable ["RSTF_lastPos", getPos(_vehicle)];
 				};
 
+				// Cache whether the vehicle is weaponized, unarmed vehicles can't fire but are still useful
+				private _weaponized = _vehicle getVariable ["RSTF_weaponized", -1];
+				if (_weaponized isEqualTo -1) then {
+					_weaponized = count([typeOf(_vehicle)] call RSTF_fnc_getVehicleWeapons) > 0;
+					_vehicle setVariable ["RSTF_weaponized", _weaponized];
+				};
+
 				// Readiness vehicle check
 				private _isUseless = _isStuck
-					|| !canFire(_vehicle)
+					|| { _weaponized && { !canFire(_vehicle) } }
 					|| { _hasGunner && { _gunners findIf { alive _x } == -1 } }
-					|| { count(crew(_vehicle)) == 0 }
+					|| { count([_vehicle] call RSTF_fnc_aliveCrew) == 0 }
 					|| { !canMove(_vehicle) && _vehicle distance RSTF_POINT > 300 };
 
 				if (_isUseless) then {

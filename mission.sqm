@@ -8,7 +8,7 @@ class EditorData
 	toggles=2;
 	class ItemIDProvider
 	{
-		nextID=4200;
+		nextID=4202;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=4280;
+		nextID=4694;
 	};
 	class Camera
 	{
 		pos[]={14064.55,128.88147,16360.662};
-		dir[]={0.26916364,-0.55812919,0.78488392};
-		up[]={0.18105133,0.82975405,0.52794755};
-		aside[]={0.94592357,0,-0.32438964};
+		dir[]={0.61781728,-0.60547656,0.50169712};
+		up[]={0.47002286,0.79586315,0.38168097};
+		aside[]={0.63038111,-1.4901161e-008,-0.77628583};
 	};
 };
 binarizationWanted=0;
@@ -78,13 +78,14 @@ addons[]=
 	"A3_Structures_F_EPA_Civ_Camping",
 	"A3_Structures_F_Civ_Camping",
 	"A3_Structures_F_Civ_Accessories",
-	"A3_Structures_F_EPB_Civ_Accessories"
+	"A3_Structures_F_EPB_Civ_Accessories",
+	"A3_Characters_F_Orange"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=30;
+		items=31;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -295,6 +296,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item30
+		{
+			className="A3_Characters_F_Orange";
+			name="Arma 3 Orange - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
@@ -395,7 +403,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=118;
+		items=119;
 		class Item0
 		{
 			dataType="Marker";
@@ -11035,6 +11043,36 @@ class Mission
 			{
 			};
 			id=4198;
+		};
+		class Item118
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14216.911,16.859064,16472.166};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+					};
+					id=4201;
+					type="B_soldier_mine_F";
+					atlOffset=-1.7166138e-005;
+				};
+			};
+			class Attributes
+			{
+			};
+			id=4200;
+			atlOffset=-1.7166138e-005;
 		};
 	};
 };

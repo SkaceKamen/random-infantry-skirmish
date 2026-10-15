@@ -671,10 +671,30 @@ class RSTF_Options {
 		ingame=1;
 
 		class Items {
+			class RSTF_VEHICLE_SPAWN_MODE {
+				title="Vehicle spawn mode";
+				description="How vehicles enter the battle. Money buying - AI uses its money to buy vehicles (classic behavior). Battlefield - configured vehicles are spawned automatically and respawn after being destroyed.";
+				type="select";
+				optionsVariable="RSTF_VEHICLE_SPAWN_MODE_OPTIONS";
+				ingame=1;
+			};
+
+			class VEHICLE_SPAWNS_EDITOR {
+				title="";
+				buttonText="EDIT VEHICLE SPAWNS";
+				type="button";
+				visible="RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_BATTLEFIELD && !RSTF_DISABLE_VEHICLE_SPAWNS && (call RSTF_fnc_getModeId) != 'GunGame'";
+				action="0 spawn RSTF_fnc_showVehicleSpawnEditor";
+				ingame=1;
+			};
+
+			SPACER;
+
 			class RSTF_AI_VEHICLES_ENABLED {
 				title="Allow AI Vehicles";
 				description="Allow AI to buy vehicles for their money";
 				type="checkbox";
+				visible="RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_MONEY";
 				ingame=1;
 			};
 
@@ -682,7 +702,7 @@ class RSTF_Options {
 				title="Allow players to access AI vehicles";
 				description="Allow players to enter AI vehicles";
 				type="checkbox";
-				disabled="!RSTF_AI_VEHICLES_ENABLED";
+				disabled="!RSTF_AI_VEHICLES_ENABLED && RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_MONEY";
 				ingame=1;
 			};
 
@@ -692,6 +712,7 @@ class RSTF_Options {
 				title="Max AI vehicles per side";
 				description="Maximum number of spawned AI vehicles per side";
 				type="number";
+				visible="RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_MONEY";
 				disabled="!RSTF_AI_VEHICLES_ENABLED";
 				ingame=1;
 			};
@@ -700,6 +721,7 @@ class RSTF_Options {
 				title="Limit vehicles per class";
 				description="Limit how many vehicles can spawn per-class. Global limit will be applied too.";
 				type="checkbox";
+				visible="RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_MONEY";
 				disabled="!RSTF_AI_VEHICLES_ENABLED";
 				ingame=1;
 			};
@@ -708,6 +730,7 @@ class RSTF_Options {
 				title="Max air AI vehicles per side";
 				description="Maximum number of spawned air AI vehicles per side. Global limit will be applied too.";
 				type="number";
+				visible="RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_MONEY";
 				disabled="!RSTF_AI_VEHICLES_ENABLED || !RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS";
 				ingame=1;
 			};
@@ -716,6 +739,7 @@ class RSTF_Options {
 				title="Max land AI vehicles per side";
 				description="Maximum number of spawned land AI vehicles per side. Global limit will be applied too.";
 				type="number";
+				visible="RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_MONEY";
 				disabled="!RSTF_AI_VEHICLES_ENABLED || !RSTF_MONEY_VEHICLES_AI_CLASS_LIMITS";
 				ingame=1;
 			};

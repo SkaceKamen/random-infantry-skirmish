@@ -51,6 +51,13 @@ call RSTF_fnc_initializeMode;
 // Start the gamemode
 0 call RSTF_MODE_init;
 
+// Battlefield-style vehicle spawns (spawns AI crewed vehicles and respawns them when lost)
+if (RSTF_VEHICLE_SPAWN_MODE == RSTF_VEHICLE_SPAWN_BATTLEFIELD && !RSTF_DISABLE_VEHICLE_SPAWNS) then {
+	"Spawning battlefield vehicles..." call RSTF_fnc_dbg;
+
+	call RSTF_fnc_startBattlefieldVehicleLoop;
+};
+
 // Helper markers for spawns
 [RSTF_POINT, RSTF_SPAWNS] call RSTF_fnc_createPointMarkers;
 

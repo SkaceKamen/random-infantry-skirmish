@@ -98,6 +98,7 @@ class RSTF
 		class shouldSpawnVehicle {};
 		class spawnWave {};
 		class spawnAiVehicle {};
+		class startBattlefieldVehicleLoop {};
 		class spawnComposition2 {};
 		class spawnDefenceEmplacements {};
 		class getGroupSpawnPosition {};
@@ -186,6 +187,12 @@ class RSTF
 		class updateGunGameEditor {};
 		class showGunGameEditorWeaponPick {};
 		class updateGunGameEditorWeaponPick {};
+
+		class showVehicleSpawnEditor {};
+		class updateVehicleSpawnEditor {};
+		class showVehicleSpawnPicker {};
+		class updateVehicleSpawnPicker {};
+		class vehicleSpawnPickerAddVehicle {};
 
 		class gunGamePresetDialog {};
 	};
