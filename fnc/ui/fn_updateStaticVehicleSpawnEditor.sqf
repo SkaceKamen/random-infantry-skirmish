@@ -30,7 +30,6 @@ RSTF_STATIC_VEHICLE_SPAWNS_EDITOR = [RSTF_STATIC_VEHICLE_SPAWNS_EDITOR, [], {
 private _ctrl = [RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT, "vehicles"] call ZUI_fnc_getControlById;
 
 lnbClear _ctrl;
-_ctrl lnbSetColumnsPos [0, 0.1, 0.22, 0.6, 0.85];
 
 {
 	_x params ["_side", "_class", "_count", "_respawn"];
@@ -42,7 +41,7 @@ _ctrl lnbSetColumnsPos [0, 0.1, 0.22, 0.6, 0.85];
 	private _category = (_categoryBySide#_side) getOrDefault [_class, 0];
 	private _categoryName = if (_category > 0) then { RSTF_VEHICLES_NAMES#_category } else { "-" };
 
-	private _row = _ctrl lnbAddRow [_sideName, _categoryName, _name, str(_count), str(_respawn)];
+	private _row = _ctrl lnbAddRow [_sideName, _categoryName, _name, str(_count) + "x", str(_respawn) + "s"];
 
 	if (isClass(_config)) then {
 		_ctrl lnbSetPicture [[_row, 2], getText(_config >> "picture")];

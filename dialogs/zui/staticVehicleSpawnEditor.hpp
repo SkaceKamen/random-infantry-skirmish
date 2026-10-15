@@ -26,7 +26,7 @@ class StaticVehicleSpawnEditorDialog: ZUI_RowLayout
 				class CurrentList: ZUI_Listview
 				{
 					id = "vehicles";
-					columns[] = { 0, 0.1, 0.22, 0.6, 0.85 };
+					columns[] = { 0, 0.1, 0.22, 0.9, 0.95 };
 					shadow = 1;
 					font = GUI_STANDARD_FONT;
 					textSize = GUI_TEXT_SIZE_SMALL;
