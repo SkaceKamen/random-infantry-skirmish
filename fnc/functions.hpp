@@ -134,6 +134,7 @@ class RSTF
 		class getVehicleClassCrew {};
 		class getVehicleClassSkins {};
 		class getVehicleClassComponents {};
+		class getVehicleShopCategory {};
 		class applyUnitEquipment{};
 		class getFactionsForSide {};
 		class clearWaypoints {};

@@ -19,16 +19,7 @@ RSTF_STATIC_VEHICLE_SPAWN_PICKER_SELECT = _select;
 
 // When editing, preselect the category of the edited vehicle so it is visible in the list
 if (_select != "") then {
-	private _factions = if (_side == SIDE_ENEMY) then { ENEMY_FACTIONS } else { FRIENDLY_FACTIONS };
-	private _vehicles = [_factions] call RSTF_fnc_loadVehicles;
-
-	RSTF_STATIC_VEHICLE_SPAWN_PICKER_CATEGORY = 0;
-
-	{
-		if (_select in (_vehicles#_x)) exitWith {
-			RSTF_STATIC_VEHICLE_SPAWN_PICKER_CATEGORY = _forEachIndex + 1;
-		};
-	} foreach [RSTF_VEHICLE_APC, RSTF_VEHICLE_AIR];
+	RSTF_STATIC_VEHICLE_SPAWN_PICKER_CATEGORY = [_select] call RSTF_fnc_getVehicleShopCategory;
 };
 
 private _parent = ([RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT] call ZUI_fnc_display) createDisplay "RscDisplayEmpty";

@@ -1,31 +1,40 @@
 private _layout = RSTF_STATIC_VEHICLE_SPAWN_RANDOM_LAYOUT;
 
 private _counts = [
-	parseNumber(ctrlText ([_layout, "apc"] call ZUI_fnc_getControlById)),
-	parseNumber(ctrlText ([_layout, "air"] call ZUI_fnc_getControlById))
+	parseNumber(ctrlText ([_layout, "wheeled"] call ZUI_fnc_getControlById)),
+	parseNumber(ctrlText ([_layout, "tracked"] call ZUI_fnc_getControlById)),
+	parseNumber(ctrlText ([_layout, "planes"] call ZUI_fnc_getControlById)),
+	parseNumber(ctrlText ([_layout, "helicopters"] call ZUI_fnc_getControlById)),
+	parseNumber(ctrlText ([_layout, "other"] call ZUI_fnc_getControlById))
 ];
 
 private _respawn = parseNumber(ctrlText ([_layout, "respawn"] call ZUI_fnc_getControlById));
 if (_respawn < 0) then { _respawn = 0; };
 
-private _categories = [RSTF_VEHICLE_APC, RSTF_VEHICLE_AIR];
+// Vehicle pool per side, indexed by side index (SIDE_ENEMY, SIDE_FRIENDLY)
+private _poolPerSide = [];
+{
+	private _factions = if (_x == SIDE_ENEMY) then { ENEMY_FACTIONS } else { FRIENDLY_FACTIONS };
+	private _vehicles = [_factions] call RSTF_fnc_loadVehicles;
+	private _pool = [];
 
-// Vehicles indexed by side index (SIDE_ENEMY, SIDE_FRIENDLY)
-private _vehiclesPerSide = [
-	[ENEMY_FACTIONS] call RSTF_fnc_loadVehicles,
-	[FRIENDLY_FACTIONS] call RSTF_fnc_loadVehicles
-];
+	{
+		_pool append (_vehicles#_x);
+	} foreach [RSTF_VEHICLE_APC, RSTF_VEHICLE_AIR];
+
+	_poolPerSide set [_x, _pool];
+} foreach [SIDE_ENEMY, SIDE_FRIENDLY];
 
 private _entries = [];
 
 {
 	private _count = _counts#_forEachIndex;
-	private _category = _x;
+	private _category = _forEachIndex + 1;
 
 	if (_count <= 0) then { continue; };
 
-	private _friendly = (_vehiclesPerSide#SIDE_FRIENDLY)#_category;
-	private _enemy = (_vehiclesPerSide#SIDE_ENEMY)#_category;
+	private _friendly = (_poolPerSide#SIDE_FRIENDLY) select { ([_x] call RSTF_fnc_getVehicleShopCategory) == _category };
+	private _enemy = (_poolPerSide#SIDE_ENEMY) select { ([_x] call RSTF_fnc_getVehicleShopCategory) == _category };
 
 	for "_i" from 1 to _count do {
 		// Pick a random seed vehicle, preferring the friendly side
@@ -65,16 +74,10 @@ private _entries = [];
 
 		// Fall back to absolute random when there is nothing similar to match with
 		if (_match == "") then {
-			private _fallback = [];
-
-			{
-				_fallback append ((_vehiclesPerSide#_otherSide)#_x);
-			} foreach _categories;
+			private _fallback = _poolPerSide#_otherSide;
 
 			if (count(_fallback) == 0) then {
-				{
-					_fallback append ((_vehiclesPerSide#_seedSide)#_x);
-				} foreach _categories;
+				_fallback = _poolPerSide#_seedSide;
 			};
 
 			if (count(_fallback) > 0) then {
@@ -86,7 +89,7 @@ private _entries = [];
 			_entries pushBack [_otherSide, _match, 1, _respawn];
 		};
 	};
-} foreach _categories;
+} foreach RSTF_STATIC_VEHICLE_SPAWN_CATEGORIES;
 
 RSTF_STATIC_VEHICLE_SPAWNS_EDITOR = _entries;
 

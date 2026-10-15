@@ -6,7 +6,7 @@ class StaticVehicleSpawnRandomDialog: ZUI_RowLayout
 	{
 		width = 0.6;
 		widthType = ZUI_SIZE_ABSOLUTE;
-		margin[] = { 0.15, 0, 0.15, 0 };
+		margin[] = { 0.1, 0, 0.1, 0 };
 
 		class Title: ZTitle
 		{
@@ -20,7 +20,7 @@ class StaticVehicleSpawnRandomDialog: ZUI_RowLayout
 			padding = GUI_SPACING;
 			margin[] = SPACING_BOTTOM;
 
-			class Apc: ZUI_RowLayout
+			class Wheeled: ZUI_RowLayout
 			{
 				height = 0.05;
 				heightType = ZUI_SIZE_ABSOLUTE;
@@ -28,7 +28,7 @@ class StaticVehicleSpawnRandomDialog: ZUI_RowLayout
 
 				class label: ZUI_Text
 				{
-					text = "APC / IFV:";
+					text = "Wheeled:";
 					width = 0.15;
 					widthType = ZUI_SIZE_ABSOLUTE;
 					margin[] = SPACING_RIGHT;
@@ -38,13 +38,13 @@ class StaticVehicleSpawnRandomDialog: ZUI_RowLayout
 
 				class input: ZUI_Edit
 				{
-					id = "apc";
+					id = "wheeled";
 					width = 0.06;
 					widthType = ZUI_SIZE_ABSOLUTE;
 				};
 			};
 
-			class Air: ZUI_RowLayout
+			class Tracked: ZUI_RowLayout
 			{
 				height = 0.05;
 				heightType = ZUI_SIZE_ABSOLUTE;
@@ -52,7 +52,7 @@ class StaticVehicleSpawnRandomDialog: ZUI_RowLayout
 
 				class label: ZUI_Text
 				{
-					text = "Air:";
+					text = "Tracked:";
 					width = 0.15;
 					widthType = ZUI_SIZE_ABSOLUTE;
 					margin[] = SPACING_RIGHT;
@@ -62,7 +62,79 @@ class StaticVehicleSpawnRandomDialog: ZUI_RowLayout
 
 				class input: ZUI_Edit
 				{
-					id = "air";
+					id = "tracked";
+					width = 0.06;
+					widthType = ZUI_SIZE_ABSOLUTE;
+				};
+			};
+
+			class Planes: ZUI_RowLayout
+			{
+				height = 0.05;
+				heightType = ZUI_SIZE_ABSOLUTE;
+				margin[] = SPACING_BOTTOM;
+
+				class label: ZUI_Text
+				{
+					text = "Planes:";
+					width = 0.15;
+					widthType = ZUI_SIZE_ABSOLUTE;
+					margin[] = SPACING_RIGHT;
+					font = GUI_STANDARD_FONT;
+					textSize = GUI_TEXT_SIZE_SMALL;
+				};
+
+				class input: ZUI_Edit
+				{
+					id = "planes";
+					width = 0.06;
+					widthType = ZUI_SIZE_ABSOLUTE;
+				};
+			};
+
+			class Helicopters: ZUI_RowLayout
+			{
+				height = 0.05;
+				heightType = ZUI_SIZE_ABSOLUTE;
+				margin[] = SPACING_BOTTOM;
+
+				class label: ZUI_Text
+				{
+					text = "Helicopters:";
+					width = 0.15;
+					widthType = ZUI_SIZE_ABSOLUTE;
+					margin[] = SPACING_RIGHT;
+					font = GUI_STANDARD_FONT;
+					textSize = GUI_TEXT_SIZE_SMALL;
+				};
+
+				class input: ZUI_Edit
+				{
+					id = "helicopters";
+					width = 0.06;
+					widthType = ZUI_SIZE_ABSOLUTE;
+				};
+			};
+
+			class Other: ZUI_RowLayout
+			{
+				height = 0.05;
+				heightType = ZUI_SIZE_ABSOLUTE;
+				margin[] = SPACING_BOTTOM;
+
+				class label: ZUI_Text
+				{
+					text = "Other:";
+					width = 0.15;
+					widthType = ZUI_SIZE_ABSOLUTE;
+					margin[] = SPACING_RIGHT;
+					font = GUI_STANDARD_FONT;
+					textSize = GUI_TEXT_SIZE_SMALL;
+				};
+
+				class input: ZUI_Edit
+				{
+					id = "other";
 					width = 0.06;
 					widthType = ZUI_SIZE_ABSOLUTE;
 				};
