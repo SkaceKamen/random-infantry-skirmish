@@ -2,7 +2,6 @@ private _parent = ([RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT] call ZUI_fnc_displa
 
 RSTF_STATIC_VEHICLE_SPAWN_RANDOM_LAYOUT = [missionConfigFile >> "StaticVehicleSpawnRandomDialog", _parent] call ZUI_fnc_createDisplay;
 
-([RSTF_STATIC_VEHICLE_SPAWN_RANDOM_LAYOUT, "transport"] call ZUI_fnc_getControlById) ctrlSetText "0";
 ([RSTF_STATIC_VEHICLE_SPAWN_RANDOM_LAYOUT, "apc"] call ZUI_fnc_getControlById) ctrlSetText "0";
 ([RSTF_STATIC_VEHICLE_SPAWN_RANDOM_LAYOUT, "air"] call ZUI_fnc_getControlById) ctrlSetText "0";
 ([RSTF_STATIC_VEHICLE_SPAWN_RANDOM_LAYOUT, "respawn"] call ZUI_fnc_getControlById) ctrlSetText "60";

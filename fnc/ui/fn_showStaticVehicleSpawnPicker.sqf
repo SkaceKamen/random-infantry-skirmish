@@ -28,7 +28,7 @@ if (_select != "") then {
 		if (_select in (_vehicles#_x)) exitWith {
 			RSTF_STATIC_VEHICLE_SPAWN_PICKER_CATEGORY = _forEachIndex + 1;
 		};
-	} foreach [RSTF_VEHICLE_TRANSPORT, RSTF_VEHICLE_APC, RSTF_VEHICLE_AIR];
+	} foreach [RSTF_VEHICLE_APC, RSTF_VEHICLE_AIR];
 };
 
 private _parent = ([RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT] call ZUI_fnc_display) createDisplay "RscDisplayEmpty";

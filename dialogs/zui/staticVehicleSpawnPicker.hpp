@@ -108,7 +108,7 @@ class StaticVehicleSpawnPickerDialog: ZUI_RowLayout
 				class Items: ZUI_Listview
 				{
 					id = "vehicles";
-					columns[] = { 0, 0.45, 0.75 };
+					columns[] = { 0, 0.6 };
 					shadow = 1;
 					font = GUI_STANDARD_FONT;
 					textSize = GUI_TEXT_SIZE_SMALL;

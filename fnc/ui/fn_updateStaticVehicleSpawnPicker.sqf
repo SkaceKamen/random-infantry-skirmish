@@ -1,7 +1,7 @@
 private _side = RSTF_STATIC_VEHICLE_SPAWN_PICKER_SIDE;
 private _categoryFilter = RSTF_STATIC_VEHICLE_SPAWN_PICKER_CATEGORY;
 
-// Load vehicles of selected side (static weapons are excluded, they can't be AI crewed like vehicles)
+// Load vehicles of selected side (static weapons and transports are excluded)
 private _factions = if (_side == SIDE_ENEMY) then { ENEMY_FACTIONS } else { FRIENDLY_FACTIONS };
 private _vehicles = [_factions] call RSTF_fnc_loadVehicles;
 
@@ -15,7 +15,7 @@ lnbClear _ctrl;
 private _selectRow = -1;
 private _row = 0;
 
-// Vehicles are grouped by category (Transport, APC, Air) and sorted by name inside each category
+// Vehicles are grouped by category (APC, Air) and sorted by name inside each category
 {
 	private _category = _x;
 
@@ -34,7 +34,7 @@ private _row = 0;
 
 			if (_search == "" || { [_search, _name] call BIS_fnc_inString }) then {
 				private _className = configName(_x);
-				_ctrl lnbAddRow [_name, RSTF_VEHICLES_NAMES#_category, getText(_x >> "vehicleClass")];
+				_ctrl lnbAddRow [_name, RSTF_VEHICLES_NAMES#_category];
 				_ctrl lnbSetPicture [[_row, 0], getText(_x >> "picture")];
 				_ctrl lnbSetData [[_row, 0], _className];
 
@@ -46,7 +46,7 @@ private _row = 0;
 			};
 		} foreach _configs;
 	};
-} foreach [RSTF_VEHICLE_TRANSPORT, RSTF_VEHICLE_APC, RSTF_VEHICLE_AIR];
+} foreach [RSTF_VEHICLE_APC, RSTF_VEHICLE_AIR];
 
 private _detailCtrl = [RSTF_STATIC_VEHICLE_SPAWN_PICKER_LAYOUT, "detail"] call ZUI_fnc_getControlById;
 

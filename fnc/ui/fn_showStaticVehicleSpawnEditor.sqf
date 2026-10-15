@@ -1,7 +1,15 @@
 private _parent = (RSTF_ADVANCED_CONFIG_DISPLAY#0) createDisplay "RscDisplayEmpty";
 
 RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT = [missionConfigFile >> "StaticVehicleSpawnEditorDialog", _parent] call ZUI_fnc_createDisplay;
-RSTF_STATIC_VEHICLE_SPAWNS_EDITOR = +RSTF_STATIC_VEHICLE_SPAWNS;
+
+// Transports are not used - drop them when loading the list
+private _transportClasses = [];
+{
+	private _factions = if (_x == SIDE_ENEMY) then { ENEMY_FACTIONS } else { FRIENDLY_FACTIONS };
+	_transportClasses append (([_factions] call RSTF_fnc_loadVehicles)#RSTF_VEHICLE_TRANSPORT);
+} foreach [SIDE_ENEMY, SIDE_FRIENDLY];
+
+RSTF_STATIC_VEHICLE_SPAWNS_EDITOR = RSTF_STATIC_VEHICLE_SPAWNS select { !((_x#1) in _transportClasses) };
 RSTF_STATIC_VEHICLE_SPAWN_EDITOR_INDEX = -1;
 
 [RSTF_STATIC_VEHICLE_SPAWN_EDITOR_LAYOUT, "add", "ButtonClick", {

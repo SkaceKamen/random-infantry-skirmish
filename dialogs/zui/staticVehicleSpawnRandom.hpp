@@ -20,30 +20,6 @@ class StaticVehicleSpawnRandomDialog: ZUI_RowLayout
 			padding = GUI_SPACING;
 			margin[] = SPACING_BOTTOM;
 
-			class Transport: ZUI_RowLayout
-			{
-				height = 0.05;
-				heightType = ZUI_SIZE_ABSOLUTE;
-				margin[] = SPACING_BOTTOM;
-
-				class label: ZUI_Text
-				{
-					text = "Transport:";
-					width = 0.15;
-					widthType = ZUI_SIZE_ABSOLUTE;
-					margin[] = SPACING_RIGHT;
-					font = GUI_STANDARD_FONT;
-					textSize = GUI_TEXT_SIZE_SMALL;
-				};
-
-				class input: ZUI_Edit
-				{
-					id = "transport";
-					width = 0.06;
-					widthType = ZUI_SIZE_ABSOLUTE;
-				};
-			};
-
 			class Apc: ZUI_RowLayout
 			{
 				height = 0.05;

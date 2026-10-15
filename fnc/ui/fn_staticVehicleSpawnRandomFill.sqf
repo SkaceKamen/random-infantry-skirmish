@@ -1,7 +1,6 @@
 private _layout = RSTF_STATIC_VEHICLE_SPAWN_RANDOM_LAYOUT;
 
 private _counts = [
-	parseNumber(ctrlText ([_layout, "transport"] call ZUI_fnc_getControlById)),
 	parseNumber(ctrlText ([_layout, "apc"] call ZUI_fnc_getControlById)),
 	parseNumber(ctrlText ([_layout, "air"] call ZUI_fnc_getControlById))
 ];
@@ -9,7 +8,7 @@ private _counts = [
 private _respawn = parseNumber(ctrlText ([_layout, "respawn"] call ZUI_fnc_getControlById));
 if (_respawn < 0) then { _respawn = 0; };
 
-private _categories = [RSTF_VEHICLE_TRANSPORT, RSTF_VEHICLE_APC, RSTF_VEHICLE_AIR];
+private _categories = [RSTF_VEHICLE_APC, RSTF_VEHICLE_AIR];
 
 // Vehicles indexed by side index (SIDE_ENEMY, SIDE_FRIENDLY)
 private _vehiclesPerSide = [
